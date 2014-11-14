@@ -33,6 +33,8 @@ vala_precompile(VALA_C ${EXEC_NAME}
     src/TaskStore.vala
     src/TaskManager.vala
     src/TaskList.vala
+    src/TaskTimer.vala
+    src/TimerView.vala
     src/MainWindow.vala
     src/Main.vala
     
