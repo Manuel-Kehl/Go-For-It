@@ -46,8 +46,21 @@ public class TimerView : Gtk.Grid {
         // Connect the timer's signals
         timer.timer_updated.connect (set_time);
         timer.timer_running_changed.connect (set_running);
+        timer.active_task_changed.connect ((source, reference) => {
+            if (reference.valid ()) {
+                // Get Gtk.TreeIterator from reference
+                var path = reference.get_path ();
+                var model = reference.get_model ();
+                Gtk.TreeIter iter;
+                model.get_iter (out iter, path);
+                // Update display
+                string description;
+                model.get (iter, 1, out description, -1);
+                active_task_lbl.label = description;
+            }
+        });
         
-        // Reset timer once, to refresh the view
+        // Update timer, to refresh the view
         timer.update ();
     }
     
@@ -74,9 +87,9 @@ public class TimerView : Gtk.Grid {
     /** 
      * Configures the widgets attachted to TimerView.
      */
-    public void setup_widgets () {
+    private void setup_widgets () {
         /* Instantiation */
-        active_task_lbl = new Gtk.Label ("Active Task");
+        active_task_lbl = new Gtk.Label ("Nothing to do...");
         
         this.add (active_task_lbl);
         
@@ -87,7 +100,7 @@ public class TimerView : Gtk.Grid {
     /**
      * Configures the container with the timer elements.
      */
-    public void setup_timer_container () {
+    private void setup_timer_container () {
         /* Instantiation */
         timer_grid = new Gtk.Grid ();
         h_spin = new Gtk.SpinButton.with_range (0, 59, 1);
@@ -159,6 +172,9 @@ public class TimerView : Gtk.Grid {
         reset_btn.clicked.connect ((e) => {
             timer.stop ();
             timer.reset ();
+        });
+        done_btn.clicked.connect ((e) => {
+            timer.set_active_task_done();
         });
         
         /* Add Widgets */
