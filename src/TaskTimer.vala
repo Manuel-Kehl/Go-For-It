@@ -21,6 +21,7 @@
  */
 public class TaskTimer {
     public bool running { get; private set; default = false; }
+    public bool break_active {get; private set; default = false; }
     private Time total_duration;
     /**
      * A proxy attribute, that does not store any data itself, but provides
@@ -50,7 +51,7 @@ public class TaskTimer {
             if (!running) {
                 _active_task = value;
                 // Emit the corresponding notifier signal
-                active_task_changed (_active_task);
+                active_task_changed (_active_task, break_active);
             }
         }
     }
@@ -58,9 +59,10 @@ public class TaskTimer {
     /* Signals */
     public signal void timer_updated (Time remaining_duration);
     public signal void timer_running_changed (bool running);
-    public signal void timer_finished ();
+    public signal void timer_finished (bool break_active);
     public signal void active_task_done (Gtk.TreeRowReference task);
-    public signal void active_task_changed (Gtk.TreeRowReference task);
+    public signal void active_task_changed (Gtk.TreeRowReference task, 
+        bool break_active);
     
     public TaskTimer () {
        /*
@@ -71,8 +73,8 @@ public class TaskTimer {
         Timeout.add_full (Priority.DEFAULT, 500, () => {
             if (running) {
                 if (has_finished ()) {
-                    running = false;
-                    reset ();
+                    stop ();
+                    toggle_break ();
                 }
                 timer_updated (remaining_duration);
             }
@@ -100,7 +102,12 @@ public class TaskTimer {
     
     public void reset () {
         // TODO: Replace hardcoded value by user's settings
-        time_t default_duration = 25 * 60;
+        time_t default_duration;
+        if (break_active) {
+            default_duration = 5 * 60;
+        } else {
+            default_duration = 25 * 60;
+        }
         total_duration = Time.gm (default_duration);
         timer_updated (remaining_duration);
     }
@@ -136,5 +143,29 @@ public class TaskTimer {
         } else {
             return Time.gm (0);
         }
+    }
+    
+    /**
+     * Used to toggle between break and work state.
+     */
+    public void toggle_break () {
+        break_active = !break_active;
+        reset ();
+        if (break_active) {
+            start ();
+        }
+        active_task_changed (_active_task, break_active);
+    }
+    
+    /** 
+     * The routine, that is to be executed when the timer has finished.
+     * Handles switchting between breaks and active tasks as well as
+     * emitting all corresponding signals.
+     */
+    private void on_timer_finished ()  {
+        timer_finished (break_active);
+        stop ();
+        toggle_break ();
+        // Emit the "timer_finished" signal
     }
 }
