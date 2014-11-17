@@ -46,6 +46,7 @@ class MainWindow : Gtk.ApplicationWindow {
         
         setup_window ();
         setup_widgets ();
+        load_css ();
         
         this.show_all ();
     }
@@ -107,15 +108,36 @@ class MainWindow : Gtk.ApplicationWindow {
                 model.get_iter (out iter, path);
                 var reference = new Gtk.TreeRowReference (model, path);
                 task_timer.active_task = reference;
-                 
-                /*TODO: Remove me
-                string description;
-                model.get (iter, 1, out description, -1);
-                timer_view.set_active_task (description);*/
             }
         });
         
         // Add main_layout to the window
         this.add (main_layout);
+    }
+    
+    /**
+     * Searches the system for a css stylesheet, that corresponds to just-do-it.
+     * If it has been found in one of the potential data directories, it gets
+     * applied to the application.
+     */
+    public void load_css () {
+        var screen = this.get_screen();
+        var css_provider = new Gtk.CssProvider();
+        // Scan all potential data dirs for the corresponding css file
+        foreach (var dir in Environment.get_system_data_dirs ()) {
+            // The path where the file is to be located
+            var path = Path.build_filename (dir, JDI.APP_SYSTEM_NAME, 
+                "style", "just-do-it.css");
+            // Only proceed, if file has been found
+            if (FileUtils.test (path, FileTest.EXISTS)) {
+                try {
+                    css_provider.load_from_path(path);
+                    Gtk.StyleContext.add_provider_for_screen(screen,css_provider,
+                    Gtk.STYLE_PROVIDER_PRIORITY_USER);
+                } catch (Error e) {
+                    error ("Cannot load CSS stylesheet: %s", e.message);
+                }
+            }
+        }
     }
 }
