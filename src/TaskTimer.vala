@@ -22,27 +22,27 @@
 public class TaskTimer {
     public bool running { get; private set; default = false; }
     public bool break_active {get; private set; default = false; }
-    private Time total_duration;
+    private DateTime total_duration;
     /**
      * A proxy attribute, that does not store any data itself, but provides
      * convenient access to total_duration considering the current runtime.
      */
-    public Time remaining_duration {
-        get {
-            var diff = total_duration.mktime () - get_runtime ().mktime ();
-            return Time.gm (diff);
+    public DateTime remaining_duration {
+        // owned, so that it returns a strong reference
+        owned get {
+            var diff = total_duration.difference (get_runtime ());
+            return new DateTime.from_unix_utc (0).add (diff);
         }
         set {
             // Don't change, while timer is running
             if (!running) {
-                var diff = value.mktime () - remaining_duration.mktime ();
-                var new_total_duration = total_duration.mktime () + diff;
-                total_duration = Time.gm (new_total_duration);
+                TimeSpan diff = value.difference (remaining_duration);
+                this.total_duration = this.total_duration.add (diff);
                 timer_updated (remaining_duration);
             }
         }
     }
-    public Time start_time;
+    public DateTime start_time;
     private Gtk.TreeRowReference _active_task;
     public Gtk.TreeRowReference active_task {
         get { return _active_task; }
@@ -57,7 +57,7 @@ public class TaskTimer {
     }
     
     /* Signals */
-    public signal void timer_updated (Time remaining_duration);
+    public signal void timer_updated (DateTime remaining_duration);
     public signal void timer_running_changed (bool running);
     public signal void timer_finished (bool break_active);
     public signal void active_task_done (Gtk.TreeRowReference task);
@@ -85,7 +85,7 @@ public class TaskTimer {
      
     public void start () {
         if (!running) {
-            start_time = Time.gm (time_t ());
+            start_time = new DateTime.now_utc ();
             running = true;
             timer_running_changed (running);
         }
@@ -101,13 +101,13 @@ public class TaskTimer {
     
     public void reset () {
         // TODO: Replace hardcoded value by user's settings
-        time_t default_duration;
+        int64 default_duration;
         if (break_active) {
             default_duration = 5 * 60;
         } else {
             default_duration = 25 * 60;
         }
-        total_duration = Time.gm (default_duration);
+        total_duration = new DateTime.from_unix_utc (default_duration);
         timer_updated (remaining_duration);
     }
     
@@ -135,16 +135,15 @@ public class TaskTimer {
      * duration.
      */
     private bool has_finished () {
-        return (get_runtime ().mktime () >= total_duration.mktime ());
+        return (get_runtime ().compare (total_duration) >= 0);
     }
     
-    public Time get_runtime () {
+    public DateTime get_runtime () {
         if (running) {
-            var current_time = Time.gm (time_t ());
-            var diff = current_time.mktime () - start_time.mktime ();
-            return Time.gm (diff);
+            var diff = new DateTime.now_utc ().difference (start_time);
+            return new DateTime.from_unix_utc (0).add (diff);
         } else {
-            return Time.gm (0);
+            return new DateTime.from_unix_utc (0);
         }
     }
     

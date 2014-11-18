@@ -70,10 +70,10 @@ public class TimerView : Gtk.Grid {
         timer.update ();
     }
     
-    public void set_time (Time time) {
-        h_spin.value = time.hour;
-        m_spin.value = time.minute;
-        s_spin.value = time.second;
+    public void set_time (DateTime time) {
+        h_spin.value = time.get_hour ();
+        m_spin.value = time.get_minute ();
+        s_spin.value = time.get_second ();
     }
     
     public void set_running (bool running) {
@@ -90,6 +90,14 @@ public class TimerView : Gtk.Grid {
                 timer.start ();
             });
         }
+    }
+    
+    public DateTime get_timer_values ()  {
+        var duration = new DateTime.from_unix_utc (0);
+        duration = duration.add_hours ((int) h_spin.value);
+        duration = duration.add_minutes ((int) m_spin.value);
+        duration = duration.add_seconds (s_spin.value);
+        return duration;
     }
     
     /** 
@@ -129,31 +137,14 @@ public class TimerView : Gtk.Grid {
         s_spin.orientation = Gtk.Orientation.VERTICAL;
         
         /* Signal Handling */
-        /*
-         * TODO: Reduce code redundancy by connecting to a function.
-         * I tried it, but for some reason the compiler keeps stating, that 
-         * it's name does not exist in the given context.
-         */
         h_spin.value_changed.connect (() => {
-            timer.remaining_duration = JDI.Utils.hms_to_time (
-                (int) h_spin.value,
-                (int) m_spin.value,
-                (int) s_spin.value
-            );
+            timer.remaining_duration = get_timer_values ();
         });
         m_spin.value_changed.connect (() => {
-            timer.remaining_duration = JDI.Utils.hms_to_time (
-                (int) h_spin.value,
-                (int) m_spin.value,
-                (int) s_spin.value
-            );
+            timer.remaining_duration = get_timer_values ();
         });
         s_spin.value_changed.connect (() => {
-            timer.remaining_duration = JDI.Utils.hms_to_time (
-                (int) h_spin.value,
-                (int) m_spin.value,
-                (int) s_spin.value
-            );
+            timer.remaining_duration = get_timer_values ();
         });
         
         /* Add Widgets */
