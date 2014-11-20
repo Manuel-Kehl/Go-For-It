@@ -165,6 +165,10 @@ public class TimerView : Gtk.Grid {
         m_spin.orientation = Gtk.Orientation.VERTICAL;
         s_spin.orientation = Gtk.Orientation.VERTICAL;
         
+        use_leading_zeros (h_spin);
+        use_leading_zeros (m_spin);
+        use_leading_zeros (s_spin);
+        
         /* Signal Handling */
         h_spin.value_changed.connect (() => {
             timer.remaining_duration = get_timer_values ();
@@ -183,6 +187,21 @@ public class TimerView : Gtk.Grid {
         timer_grid.add (new Gtk.Label (" : "));
         timer_grid.add (s_spin);
         this.add (timer_grid);
+    }
+    
+    /**
+     * Makes the passed Gtk.SpinButton fill the display with a leading zero.
+     */
+    private void use_leading_zeros (Gtk.SpinButton spin) {
+        spin.output.connect ((s) => {
+            var val = spin.get_value_as_int ();
+            // If val <= 10, it's a single digit, so a leading zero is necessary
+            if (val <= 10) {
+                spin.text = "0" + val.to_string ();
+                return true;
+            }
+            return false;
+        });
     }
     
     /**
