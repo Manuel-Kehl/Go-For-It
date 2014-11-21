@@ -49,6 +49,8 @@ class MainWindow : Gtk.ApplicationWindow {
         load_css ();
         
         this.show_all ();
+        
+        setup_notifications ();
     }
     
     /**
@@ -115,12 +117,29 @@ class MainWindow : Gtk.ApplicationWindow {
         this.add (main_layout);
     }
     
+    private void setup_notifications () {
+        task_timer.active_task_changed.
+                connect ((s, reference, break_active) => {
+            var task = JDI.Utils.tree_row_ref_to_task (reference);
+            Notification notification;
+            if (break_active) {
+                notification = new Notification ("Take a Break");
+                notification.set_body ("Relax and stop thinking about your "
+                    + "current task for a while :-)");
+            } else {
+                notification = new Notification ("The Break is over");
+                notification.set_body ("Start working on: " + task);
+            }
+            application.send_notification (null, notification);
+        });
+    }
+    
     /**
      * Searches the system for a css stylesheet, that corresponds to just-do-it.
      * If it has been found in one of the potential data directories, it gets
      * applied to the application.
      */
-    public void load_css () {
+    private void load_css () {
         var screen = this.get_screen();
         var css_provider = new Gtk.CssProvider();
         // Scan all potential data dirs for the corresponding css file
