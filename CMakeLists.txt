@@ -32,10 +32,10 @@ vala_precompile(VALA_C ${EXEC_NAME}
     src/Utils.vala
     src/TaskStore.vala
     src/TaskManager.vala
-    src/TaskList.vala
+    src/view/TaskList.vala
     src/TaskTimer.vala
-    src/TimerView.vala
-    src/MainWindow.vala
+    src/view/TimerView.vala
+    src/view/MainWindow.vala
     src/Main.vala
     
 # tell what libraries to use when compiling
