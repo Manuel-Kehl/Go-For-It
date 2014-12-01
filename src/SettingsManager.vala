@@ -21,7 +21,7 @@
  * Its main motivation is the option of easily replacing Glib.KeyFile with 
  * another settings storage mechanism in the future.
  */
-class SettingsManager {
+public class SettingsManager {
     private KeyFile key_file;
     
     /*
@@ -29,6 +29,7 @@ class SettingsManager {
      */
      
      private const string GROUP_TODO_TXT = "Todo.txt";
+     private const string GROUP_TIMER = "Timer";
     
     /*
      * A list of settings values with their corresponding access methods.
@@ -37,6 +38,20 @@ class SettingsManager {
      public string todo_txt_location {
         owned get { return get_value (GROUP_TODO_TXT, "location"); }
         set { set_value (GROUP_TODO_TXT, "location", value); }
+     }
+     public int task_duration {
+        owned get { 
+            var duration = get_value (GROUP_TIMER, "task_duration", "1500");
+            return int.parse (duration);
+        }
+        set { set_value (GROUP_TIMER, "task_duration", value.to_string ()); }
+     }
+     public int break_duration {
+        owned get { 
+            var duration = get_value (GROUP_TIMER, "break_duration", "600");
+            return int.parse (duration);
+        }
+        set { set_value (GROUP_TIMER, "break_duration", value.to_string ()); }
      }
     
     /**
@@ -67,17 +82,19 @@ class SettingsManager {
      * Public access is granted via the SettingsManager's attributes, so this
      * function has been declared private
      */
-    private string get_value (string group, string key) {
-        // use key_file, if it has been assigned
-        if (key_file != null) {
-            try {
-                return key_file.get_value(group, key);
-            } catch (Error e) {
+    private string get_value (string group, string key, string default = "") {
+        try {
+            // use key_file, if it has been assigned
+            if (key_file != null 
+                && key_file.has_group (group)
+                && key_file.has_key (group, key)) {
+                    return key_file.get_value(group, key);
+            } else {
+                return default;
+            }
+        } catch (Error e) {
                 error ("An error occured while reading the setting"
                     +" %s.%s: %s", group, key, e.message);
-            }
-        } else {
-            return "";
         }
     }
     
@@ -89,8 +106,8 @@ class SettingsManager {
     private void set_value (string group, string key, string value) {
         if (key_file != null) {
             try {
-                key_file.set_value(group, key, value);
-                key_file.save_to_file(JDI.Utils.config_file);
+                key_file.set_value (group, key, value);
+                key_file.save_to_file (JDI.Utils.config_file);
             } catch (Error e) {
                 error ("An error occured while setting the setting"
                     +" %s.%s to %s: %s", group, key, value, e.message);
