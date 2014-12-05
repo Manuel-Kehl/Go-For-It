@@ -169,18 +169,15 @@ class TaskManager {
             for (bool next = store.get_iter_first (out iter); next;
                     next = store.iter_next (ref iter)) {
                 // Get data out of store
-                Value out1, out2;
-                store.get_value (iter, 0, out out1);
-                store.get_value (iter, 1, out out2);
-                // Cast to the corresponding types
-                bool done = (bool) out1;
-                string text = (string) out2;
+                Value done, text;
+                store.get_value (iter, 0, out done);
+                store.get_value (iter, 1, out text);
                 
-                if (done) {
-                    text = "x" + text;
+                if ((bool) done) {
+                    text = "x" + (string) text;
                 }
                 
-                stream_out.put_string (text + "\n");
+                stream_out.put_string ((string) text + "\n");
             }
         } catch (Error e) {
             error ("%s", e.message);
