@@ -80,7 +80,7 @@ public class TaskTimer {
         Timeout.add_full (Priority.DEFAULT, 500, () => {
             if (running) {
                 if (has_finished ()) {
-                    on_timer_finished ();
+                    end_iteration ();
                 }
                 update ();
             }
@@ -175,11 +175,12 @@ public class TaskTimer {
     }
     
     /** 
-     * The routine, that is to be executed when the timer has finished.
+     * Ends the current iteration of the timer (either active task or break)
+     * Is to be executed when the timer finishes, or skip has been initiated.
      * Handles switchting between breaks and active tasks as well as
      * emitting all corresponding signals.
      */
-    private void on_timer_finished ()  {
+    public void end_iteration ()  {
         // Emit the "timer_finished" signal
         timer_finished (break_active);
         stop ();
