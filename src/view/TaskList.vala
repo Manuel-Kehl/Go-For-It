@@ -109,7 +109,6 @@ class TaskList : Gtk.Grid {
     private void setup_add_new () {
         add_new_grid = new Gtk.Grid ();
         add_new_grid.orientation = Gtk.Orientation.HORIZONTAL;
-        add_new_grid.margin = 7;
         
         add_new_txt = new Gtk.Entry ();
         add_new_txt.hexpand = true;
