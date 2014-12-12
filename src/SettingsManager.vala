@@ -65,6 +65,8 @@ public class SettingsManager {
         if (!FileUtils.test (JDI.Utils.config_file, FileTest.EXISTS)) {
             // Fill with default values, if it does not exist yet
             generate_configuration ();
+            var dia = new SettingsDialog (true, this);
+            dia.show ();
         } else {
             // If it does exist, read existing values
             try {
