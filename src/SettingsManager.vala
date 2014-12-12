@@ -37,7 +37,10 @@ public class SettingsManager {
      */
      public string todo_txt_location {
         owned get { return get_value (GROUP_TODO_TXT, "location"); }
-        set { set_value (GROUP_TODO_TXT, "location", value); }
+        set { 
+            set_value (GROUP_TODO_TXT, "location", value); 
+            todo_txt_location_changed ();
+        }
      }
      public int task_duration {
         owned get { 
@@ -53,6 +56,8 @@ public class SettingsManager {
         }
         set { set_value (GROUP_TIMER, "break_duration", value.to_string ()); }
      }
+     
+     public signal void todo_txt_location_changed ();
     
     /**
      * Constructs a SettingsManager object from a configuration file.
@@ -87,7 +92,7 @@ public class SettingsManager {
     private string get_value (string group, string key, string default = "") {
         try {
             // use key_file, if it has been assigned
-            if (key_file != null 
+            if (key_file != null
                 && key_file.has_group (group)
                 && key_file.has_key (group, key)) {
                     return key_file.get_value(group, key);

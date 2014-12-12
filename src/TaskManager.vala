@@ -30,31 +30,21 @@ class TaskManager {
     private File done_txt;
     public TaskStore todo_store;
     public TaskStore done_store;
+    private bool read_only ;
     
     public TaskManager (SettingsManager settings) {
         this.settings = settings;
-        this.todo_txt_dir = File.new_for_path(settings.todo_txt_location);
-        this.todo_txt = todo_txt_dir.get_child ("todo.txt");
-        this.done_txt = todo_txt_dir.get_child ("done.txt");
         
         // Initialize TaskStores
-        this.todo_store = new TaskStore (false);
-        this.done_store = new TaskStore (true);
+        todo_store = new TaskStore (false);
+        done_store = new TaskStore (true);
+        
+        load_task_stores ();
         
         /* Signal processing */
-        // Save data, as soon as something has changed
-        this.todo_store.task_data_changed.connect (save_tasks);
-        this.done_store.task_data_changed.connect (save_tasks);
+        settings.todo_txt_location_changed.connect (load_task_stores);
         
-        // Move task from one list to another, if done or undone
-        this.todo_store.task_done_changed.connect ((source, iter) => {
-            transfer_task(iter, todo_store, done_store);
-        });
-        this.done_store.task_done_changed.connect ((source, iter) => {
-            transfer_task(iter, done_store, todo_store);
-        });
         
-        load_tasks ();
         // Move done tasks off the todo list on startup
         auto_transfer_tasks();
     }
@@ -106,14 +96,42 @@ class TaskManager {
         }
     }
     
+    private void load_task_stores () {
+        stdout.printf("load_task_stores");
+        todo_txt_dir = File.new_for_path(settings.todo_txt_location);
+        todo_txt = todo_txt_dir.get_child ("todo.txt");
+        done_txt = todo_txt_dir.get_child ("done.txt");
+        
+        // Save data, as soon as something has changed
+        todo_store.task_data_changed.connect (save_tasks);
+        done_store.task_data_changed.connect (save_tasks);
+        
+        // Move task from one list to another, if done or undone
+        todo_store.task_done_changed.connect ((source, iter) => {
+            transfer_task(iter, todo_store, done_store);
+        });
+        done_store.task_done_changed.connect ((source, iter) => {
+            transfer_task(iter, done_store, todo_store);
+        });
+        
+        load_tasks ();
+    }
+    
     private void load_tasks () {
+        // read_only flag, so that "clear()" does not delete the files' content
+        read_only = true;
+        todo_store.clear ();
+        done_store.clear ();
+        read_only = false;
         read_task_file (this.todo_store, this.todo_txt);
         read_task_file (this.done_store, this.done_txt);
     }
     
     private void save_tasks () {
-        write_task_file (this.todo_store, this.todo_txt);
-        write_task_file (this.done_store, this.done_txt);
+        if (!read_only) {
+            write_task_file (this.todo_store, this.todo_txt);
+            write_task_file (this.done_store, this.done_txt);
+        }
     }
     
     /**
