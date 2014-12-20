@@ -58,16 +58,8 @@ public class TimerView : Gtk.Grid {
         timer.timer_running_changed.connect (set_running);
         timer.active_task_changed.connect ((s, reference, break_active) => {
             if (reference.valid ()) {
-                // Get Gtk.TreeIterator from reference
-                var path = reference.get_path ();
-                var model = reference.get_model ();
-                Gtk.TreeIter iter;
-                model.get_iter (out iter, path);
-                
-                // Update display
-                string description;
-                model.get (iter, 1, out description, -1);
-                task_description_lbl.label = description;
+                task_description_lbl.label = JDI.Utils.
+                    tree_row_ref_to_task (reference);
                 var style = task_description_lbl.get_style_context ();
                 
                 // Append correct class according to break status
