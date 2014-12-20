@@ -28,3 +28,9 @@ More backends may be added in the future, but won't be available in the initial 
 _Just Do It!_ is free and open source software published using the GPLv3. It has been written in _Vala_ making heavy use of the _GTK_ framework.
 
 The user interface is inspired by the design philosophy of [elementary OS](http://elementaryos.org/) and [Gnome](http://www.gnome.org/) applications, striving for elegant simplicity.
+
+## How To Build
+- `mkdir build`
+- `cmake ..`
+- `make`
+- `sudo make install`
