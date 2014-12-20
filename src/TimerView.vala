@@ -46,7 +46,7 @@ public class TimerView : Gtk.Grid {
         // Connect the timer's signals
         timer.timer_updated.connect (set_time);
         timer.timer_running_changed.connect (set_running);
-        timer.active_task_changed.connect ((source, reference) => {
+        timer.active_task_changed.connect ((s, reference, break_active) => {
             if (reference.valid ()) {
                 // Get Gtk.TreeIterator from reference
                 var path = reference.get_path ();
@@ -56,6 +56,10 @@ public class TimerView : Gtk.Grid {
                 // Update display
                 string description;
                 model.get (iter, 1, out description, -1);
+                // Append break notice, if break is active
+                if (break_active) {
+                    description = "Take a break... Your next task:\n" + description;
+                }
                 active_task_lbl.label = description;
             }
         });
