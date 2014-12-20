@@ -1,23 +1,23 @@
 /* Copyright 2013 Manuel Kehl (mank319)
 *
-* This file is part of Just Do It!.
+* This file is part of Go For It!.
 *
-* Just Do It! is free software: you can redistribute it
+* Go For It! is free software: you can redistribute it
 * and/or modify it under the terms of the GNU General Public License as
 * published by the Free Software Foundation, either version 3 of the
 * License, or (at your option) any later version.
 *
-* Just Do It! is distributed in the hope that it will be
+* Go For It! is distributed in the hope that it will be
 * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 * Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Just Do It!. If not, see http://www.gnu.org/licenses/.
+* with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
 /**
- * The main window of Just Do It!.
+ * The main window of Go For It!.
  */
 class MainWindow : Gtk.ApplicationWindow {
     /* Various Variables */
@@ -70,10 +70,10 @@ class MainWindow : Gtk.ApplicationWindow {
      * Configures the window's properties.
      */
     private void setup_window () {
-        this.title = JDI.APP_NAME;
+        this.title = GOFI.APP_NAME;
         this.set_border_width (0);
         this.set_position (Gtk.WindowPosition.CENTER);
-        this.set_default_size (JDI.DEFAULT_WIN_WIDTH, JDI.DEFAULT_WIN_HEIGHT);
+        this.set_default_size (GOFI.DEFAULT_WIN_WIDTH, GOFI.DEFAULT_WIN_HEIGHT);
         this.destroy.connect (Gtk.main_quit);
     }
     
@@ -106,7 +106,7 @@ class MainWindow : Gtk.ApplicationWindow {
             Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
         // Add widgets to the activity stack
         activity_stack.add_titled (todo_list, "todo", "To-Do");
-        activity_stack.add_titled (timer_view, "doit", "Just Do It!");
+        activity_stack.add_titled (timer_view, "doit", GOFI.APP_NAME);
         activity_stack.add_titled (done_list, "done", "Done");
             
         // GTK Header Bar
@@ -209,7 +209,7 @@ class MainWindow : Gtk.ApplicationWindow {
         task_timer.active_task_changed.
                 connect ((s, reference, break_active) => {
             if (break_previously_active != break_active) {
-                var task = JDI.Utils.tree_row_ref_to_task (reference);
+                var task = GOFI.Utils.tree_row_ref_to_task (reference);
                 Notification notification;
                 if (break_active) {
                     notification = new Notification ("Take a Break");
@@ -226,7 +226,7 @@ class MainWindow : Gtk.ApplicationWindow {
     }
     
     /**
-     * Searches the system for a css stylesheet, that corresponds to just-do-it.
+     * Searches the system for a css stylesheet, that corresponds to go-for-it.
      * If it has been found in one of the potential data directories, it gets
      * applied to the application.
      */
@@ -236,8 +236,8 @@ class MainWindow : Gtk.ApplicationWindow {
         // Scan all potential data dirs for the corresponding css file
         foreach (var dir in Environment.get_system_data_dirs ()) {
             // The path where the file is to be located
-            var path = Path.build_filename (dir, JDI.APP_SYSTEM_NAME, 
-                "style", "just-do-it.css");
+            var path = Path.build_filename (dir, GOFI.APP_SYSTEM_NAME, 
+                "style", "go-for-it.css");
             // Only proceed, if file has been found
             if (FileUtils.test (path, FileTest.EXISTS)) {
                 try {
