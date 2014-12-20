@@ -23,6 +23,7 @@
  * by addressing the corresponding TaskStore instance.
  */
 class TaskManager {
+    private SettingsManager settings;
     // The user's todo.txt related files
     private File todo_txt_dir;
     private File todo_txt;
@@ -30,8 +31,9 @@ class TaskManager {
     public TaskStore todo_store;
     public TaskStore done_store;
     
-    public TaskManager (File todo_txt_dir) {
-        this.todo_txt_dir = todo_txt_dir;
+    public TaskManager (SettingsManager settings) {
+        this.settings = settings;
+        this.todo_txt_dir = File.new_for_path(settings.todo_txt_location);
         this.todo_txt = todo_txt_dir.get_child ("todo.txt");
         this.done_txt = todo_txt_dir.get_child ("done.txt");
         
