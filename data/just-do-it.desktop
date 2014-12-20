@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Just Do It!
 GenericName=Just Do It!
-Comment=A todo list with built-in productivity timer.
+Comment=A stylish to-do list with built-in productivity timer.
 Categories=GTK;Utility;
-Exec=do-it
+Exec=just-do-it
 Icon=just-do-it
 Terminal=false
 Type=Application
