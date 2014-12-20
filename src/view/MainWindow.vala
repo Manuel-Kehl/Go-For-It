@@ -34,6 +34,10 @@ class MainWindow : Gtk.ApplicationWindow {
     private TimerView timer_view;
     private Gtk.Toolbar toolbar;
     private Gtk.ToggleToolButton menu_btn;
+    // Application Menu
+    private Gtk.Menu app_menu;
+    private Gtk.MenuItem config_item;
+    private Gtk.MenuItem about_item;
     /**
      * Used to determine if a notification should be sent.
      */
@@ -51,6 +55,7 @@ class MainWindow : Gtk.ApplicationWindow {
         this.task_timer = task_timer;
         
         setup_window ();
+        setup_menu ();
         setup_widgets ();
         load_css ();
         
@@ -137,8 +142,40 @@ class MainWindow : Gtk.ApplicationWindow {
             }
         });
         
+        menu_btn.toggled.connect ((s) => {
+            if (s.active) {
+                app_menu.popup (null, null, null, 0,
+                    Gtk.get_current_event_time ());
+                app_menu.select_first (true);
+            } else {
+                app_menu.popdown ();
+            }
+        });
+        
         // Add main_layout to the window
         this.add (main_layout);
+    }
+    
+    private void setup_menu () {
+        /* Initialization */
+        app_menu = new Gtk.Menu ();
+        config_item = new Gtk.MenuItem.with_label ("Configuration");
+        about_item = new Gtk.MenuItem.with_label ("About");
+        
+        /* Signal and Action Handling */
+        // Untoggle menu button, when menu is hidden
+        app_menu.hide.connect ((e) => {
+            menu_btn.active = false;
+        });
+        
+        /* Add Items to Menu */
+        app_menu.add (config_item);
+        app_menu.add (about_item);
+        
+        /* And make all children visible */
+        foreach (var child in app_menu.get_children ()) {
+            child.visible = true;
+        }
     }
     
     /**
@@ -181,8 +218,8 @@ class MainWindow : Gtk.ApplicationWindow {
             if (FileUtils.test (path, FileTest.EXISTS)) {
                 try {
                     css_provider.load_from_path(path);
-                    Gtk.StyleContext.add_provider_for_screen(screen,css_provider,
-                    Gtk.STYLE_PROVIDER_PRIORITY_USER);
+                    Gtk.StyleContext.add_provider_for_screen(
+                        screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
                 } catch (Error e) {
                     error ("Cannot load CSS stylesheet: %s", e.message);
                 }
