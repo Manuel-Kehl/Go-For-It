@@ -191,6 +191,10 @@ class MainWindow : Gtk.ApplicationWindow {
             var dialog = new SettingsDialog (false, settings);
             dialog.show ();
         });
+        about_item.activate.connect ((e) => {
+            var dialog = new AboutDialog ();
+            dialog.show ();
+        });
         
         /* Add Items to Menu */
         app_menu.add (config_item);
