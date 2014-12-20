@@ -1,31 +1,31 @@
 /* Copyright 2013 Manuel Kehl (mank319)
 *
-* This file is part of Just Do It!.
+* This file is part of Go For It!.
 *
-* Just Do It! is free software: you can redistribute it
+* Go For It! is free software: you can redistribute it
 * and/or modify it under the terms of the GNU General Public License as
 * published by the Free Software Foundation, either version 3 of the
 * License, or (at your option) any later version.
 *
-* Just Do It! is distributed in the hope that it will be
+* Go For It! is distributed in the hope that it will be
 * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 * Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Just Do It!. If not, see http://www.gnu.org/licenses/.
+* with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
 /**
- * The JDI namespace is a central collection of static constants that are 
- * realted to "Just Do it!".
+ * The GOFI namespace is a central collection of static constants that are 
+ * realted to "Go For It!".
  */
-namespace JDI {
+namespace GOFI {
     /* Strings */
-    const string APP_NAME = "Just Do It!";
-    const string APP_SYSTEM_NAME = "just-do-it";
-    const string APP_ID = "de.manuel-kehl.just-do-it";
-    const string FILE_CONF = "just-do-it.conf";
+    const string APP_NAME = "Go For It!";
+    const string APP_SYSTEM_NAME = "go-for-it";
+    const string APP_ID = "de.manuel-kehl.go-for-it";
+    const string FILE_CONF = "go-for-it.conf";
     const string[] TEST_DIRS = {
         "Todo", "todo", ".todo", 
         "Dropbox/Todo", "Dropbox/todo"
@@ -39,7 +39,7 @@ namespace JDI {
      * A collection of static utility functions.
      */
     class Utils {
-        // A convenient way to get the path of JDI's configuration file
+        // A convenient way to get the path of GOFI's configuration file
         public static string config_file {
             owned get {
                 string config_dir = Environment.get_user_config_dir ();

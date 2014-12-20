@@ -1,19 +1,19 @@
 /* Copyright 2013 Manuel Kehl (mank319)
 *
-* This file is part of Just Do It!.
+* This file is part of Go For It!.
 *
-* Just Do It! is free software: you can redistribute it
+* Go For It! is free software: you can redistribute it
 * and/or modify it under the terms of the GNU General Public License as
 * published by the Free Software Foundation, either version 3 of the
 * License, or (at your option) any later version.
 *
-* Just Do It! is distributed in the hope that it will be
+* Go For It! is distributed in the hope that it will be
 * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 * Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Just Do It!. If not, see http://www.gnu.org/licenses/.
+* with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
 /**
@@ -74,7 +74,7 @@ public class SettingsManager {
         // Instantiate the key_file object
         key_file = new KeyFile ();
         
-        if (!FileUtils.test (JDI.Utils.config_file, FileTest.EXISTS)) {
+        if (!FileUtils.test (GOFI.Utils.config_file, FileTest.EXISTS)) {
             // Fill with default values, if it does not exist yet
             generate_configuration ();
             var dia = new SettingsDialog (true, this);
@@ -82,10 +82,10 @@ public class SettingsManager {
         } else {
             // If it does exist, read existing values
             try {
-                key_file.load_from_file (JDI.Utils.config_file,
+                key_file.load_from_file (GOFI.Utils.config_file,
                    KeyFileFlags.KEEP_COMMENTS | KeyFileFlags.KEEP_TRANSLATIONS);
             } catch (Error e) {
-                stderr.printf("Reading %s failed", JDI.Utils.config_file);
+                stderr.printf("Reading %s failed", GOFI.Utils.config_file);
                 error ("%s", e.message);
             }
         }
@@ -121,7 +121,7 @@ public class SettingsManager {
         if (key_file != null) {
             try {
                 key_file.set_value (group, key, value);
-                key_file.save_to_file (JDI.Utils.config_file);
+                key_file.save_to_file (GOFI.Utils.config_file);
             } catch (Error e) {
                 error ("An error occured while setting the setting"
                     +" %s.%s to %s: %s", group, key, value, e.message);
@@ -133,17 +133,17 @@ public class SettingsManager {
      * Generates the default configuration.
      * It also tries to automatically determine the location of the user's 
      * Todo.txt directory by checking a set of common potential 
-     * "standard locations", which are defined in JDI.TEST_DIRS in Utils.vala.
+     * "standard locations", which are defined in GOFI.TEST_DIRS in Utils.vala.
      */
     private void generate_configuration () {
         string user_dir = Environment.get_home_dir ();
         
         /* Determine the Todo.txt Directory */
         // Start by setting the default fallback directory
-        var todo_dir = Path.build_filename (user_dir, JDI.TEST_DIRS[0]);
+        var todo_dir = Path.build_filename (user_dir, GOFI.TEST_DIRS[0]);
         
         // Try a set of possible "standard locations"
-        foreach (var test_sub_dir in JDI.TEST_DIRS) {
+        foreach (var test_sub_dir in GOFI.TEST_DIRS) {
             var test_dir = Path.build_filename (user_dir, test_sub_dir);
             if (FileUtils.test (test_dir, FileTest.EXISTS)) {
                 todo_dir = test_dir;

@@ -1,19 +1,19 @@
 /* Copyright 2013 Manuel Kehl (mank319)
 *
-* This file is part of Just Do It!.
+* This file is part of Go For It!.
 *
-* Just Do It! is free software: you can redistribute it
+* Go For It! is free software: you can redistribute it
 * and/or modify it under the terms of the GNU General Public License as
 * published by the Free Software Foundation, either version 3 of the
 * License, or (at your option) any later version.
 *
-* Just Do It! is distributed in the hope that it will be
+* Go For It! is distributed in the hope that it will be
 * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 * Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Just Do It!. If not, see http://www.gnu.org/licenses/.
+* with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
 /**
@@ -78,11 +78,11 @@ public class SettingsDialog : Gtk.Dialog {
     }
     
     /** 
-     * Displays a welcome message with basic information about Just Do It!
+     * Displays a welcome message with basic information about Go For It!
      */
     private void setup_welcome () {
         welcome_lbl = new Gtk.Label (
-"""<b>Welcome to <i>Just Do It!</i></b>
+"""<b>Welcome to <i>Go For It!</i></b>
         
 The stylish to-do list with built-in productivity timer
 """);
