@@ -22,6 +22,7 @@
 class MainWindow : Gtk.ApplicationWindow {
     /* Various Variables */
     private TaskManager task_manager;
+    private TaskTimer task_timer;
     
     /* Various GTK Widgets */
     private Gtk.Grid main_layout;
@@ -30,15 +31,18 @@ class MainWindow : Gtk.ApplicationWindow {
     private Gtk.HeaderBar header_bar;
     private TaskList todo_list;
     private TaskList done_list;
+    private TimerView timer_view;
     
     /**
      * The constructor of the MainWindow class.
      */
-    public MainWindow (Gtk.Application app_context, TaskManager task_manager) {
+    public MainWindow (Gtk.Application app_context, TaskManager task_manager,
+            TaskTimer task_timer) {
         // Pass the applicaiton context via GObject-based construction, because
         // constructor chaining is not possible for Gtk.ApplicationWindow
         Object (application: app_context);
         this.task_manager = task_manager;
+        this.task_timer = task_timer;
         
         setup_window ();
         setup_widgets ();
@@ -68,8 +72,7 @@ class MainWindow : Gtk.ApplicationWindow {
         activity_switcher = new Gtk.StackSwitcher ();
         todo_list = new TaskList (this.task_manager.todo_store, true);
         done_list = new TaskList (this.task_manager.done_store, false);
-        // TODO: replace this with proper clock widget
-        var placeholder = new Gtk.Label ("Recent Task + Clock");
+        timer_view = new TimerView (task_timer);
         
         /* Widget Settings */
         // Main Layout
@@ -82,7 +85,7 @@ class MainWindow : Gtk.ApplicationWindow {
             Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
         // Add widgets to the activity stack
         activity_stack.add_titled (todo_list, "todo", "Todo");
-        activity_stack.add_titled (placeholder, "doit", "Just Do it!");
+        activity_stack.add_titled (timer_view, "doit", "Just Do it!");
         activity_stack.add_titled (done_list, "done", "Done");
             
         // GTK Header Bar
