@@ -19,19 +19,12 @@
 /**
  * The JDI namespace is a central collection of static constants that are 
  * realted to "Just Do it!".
- *
- * The naming rules are as follows:
- * - Entries describing a KeyFile group: CONF_GROUP_groupname
- * - Entries describing a KeyFile entry: CONF_groupname_configname
- * - Entries describing file names: FILE_filename
  */
 namespace JDI {
     /* Strings */
     const string APP_NAME = "Just Do It!";
     const string APP_SYSTEM_NAME = "just-do-it";
     const string APP_ID = "de.manuel-kehl.just-do-it";
-    const string CONF_GROUP_TODO_TXT = "Todo.txt";
-    const string CONF_TODO_TXT_LOCATION = "location";
     const string FILE_CONF = "just-do-it.conf";
     const string[] TEST_DIRS = {
         "Todo", "todo", ".todo", 
@@ -46,6 +39,15 @@ namespace JDI {
      * A collection of static utility functions.
      */
     class Utils {
+        // A convenient way to get the path of JDI's configuration file
+        public static string config_file {
+            owned get {
+                string config_dir = Environment.get_user_config_dir ();
+                return Path.build_filename (config_dir, FILE_CONF);
+            }
+            private set {}
+        }
+        
         public static string tree_row_ref_to_task (
                 Gtk.TreeRowReference reference) {
             // Get Gtk.TreeIterator from reference

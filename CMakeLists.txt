@@ -30,6 +30,7 @@ ensure_vala_version("0.16" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C ${EXEC_NAME}
     src/Utils.vala
+    src/SettingsManager.vala
     src/TaskStore.vala
     src/TaskManager.vala
     src/view/TaskList.vala
