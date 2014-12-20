@@ -51,3 +51,18 @@ install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/just-do-it.desktop DESTINATION ${DATADIR}/applications/)
 # install the application's stylesheet
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/style/just-do-it.css DESTINATION ${PKGDATADIR}/style/)
+# install the application's icons
+set(SYSTEM_DEFAULT_THEME ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/16x16/apps/just-do-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/16x16/apps)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/24x24/apps/just-do-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/24x24/apps)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/32x32/apps/just-do-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/32x32/apps)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/48x48/apps/just-do-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/48x48/apps)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/64x64/apps/just-do-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/64x64/apps)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/128x128/apps/just-do-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/128x128/apps)
+
+install(
+    CODE
+    "execute_process (COMMAND gtk-update-icon-cache -t -f ${SYSTEM_DEFAULT_THEME})"
+    CODE
+    "message (STATUS \"Updated icon cache in ${SYSTEM_DEFAULT_THEME}\")"
+    )
