@@ -32,6 +32,8 @@ class MainWindow : Gtk.ApplicationWindow {
     private TaskList todo_list;
     private TaskList done_list;
     private TimerView timer_view;
+    private Gtk.Toolbar toolbar;
+    private Gtk.ToggleToolButton menu_btn;
     /**
      * Used to determine if a notification should be sent.
      */
@@ -80,6 +82,11 @@ class MainWindow : Gtk.ApplicationWindow {
         todo_list = new TaskList (this.task_manager.todo_store, true);
         done_list = new TaskList (this.task_manager.done_store, false);
         timer_view = new TimerView (task_timer);
+        toolbar = new Gtk.Toolbar ();
+        // ToolButons and their corresponding images
+        var menu_img = new Gtk.Image.from_icon_name ("open-menu",
+            Gtk.IconSize.LARGE_TOOLBAR);
+        menu_btn = new Gtk.ToggleToolButton ();
         
         /* Widget Settings */
         // Main Layout
@@ -99,6 +106,19 @@ class MainWindow : Gtk.ApplicationWindow {
         header_bar.set_show_close_button (true);
         header_bar.custom_title = activity_switcher;
         this.set_titlebar (header_bar);
+        
+        // Toolbar Items
+        var space = new Gtk.SeparatorToolItem ();
+        space.draw = false;
+        menu_btn.label_widget = menu_img;
+        // Add Toolbar Buttons here
+        toolbar.add (space);
+        toolbar.add (menu_btn);
+        
+        // Toolbar
+        toolbar.orientation = Gtk.Orientation.HORIZONTAL;
+        main_layout.add (toolbar);
+        toolbar.child_set(space, expand:true);
         
         /* Action and Signal Handling */
         todo_list.add_new_task.connect (task_manager.add_new_task);
