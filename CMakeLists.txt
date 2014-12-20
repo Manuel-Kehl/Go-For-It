@@ -1,4 +1,4 @@
-project (just-do-it)
+project (go-for-it)
 
 cmake_minimum_required (VERSION 2.6)
 # tell cmake where its modules can be found in our project directory
@@ -6,8 +6,8 @@ list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 # where we install data directory (if we have any)
 set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 
-set (PKGDATADIR "${DATADIR}/just-do-it")
-set (EXEC_NAME "just-do-it")
+set (PKGDATADIR "${DATADIR}/go-for-it")
+set (EXEC_NAME "go-for-it")
 set (RELEASE_NAME "A stylish to-do list with built-in productivity timer.")
 set (VERSION "0.1")
 set (VERSION_INFO "initial release")
@@ -50,17 +50,17 @@ add_executable(${EXEC_NAME} ${VALA_C})
 # install the binaries we just made
 install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
 # install .desktop file so the Applications menu will display it
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/just-do-it.desktop DESTINATION ${DATADIR}/applications/)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/go-for-it.desktop DESTINATION ${DATADIR}/applications/)
 # install the application's stylesheet
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/style/just-do-it.css DESTINATION ${PKGDATADIR}/style/)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/style/go-for-it.css DESTINATION ${PKGDATADIR}/style/)
 # install the application's icons
 set(SYSTEM_DEFAULT_THEME ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor)
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/16x16/apps/just-do-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/16x16/apps)
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/24x24/apps/just-do-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/24x24/apps)
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/32x32/apps/just-do-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/32x32/apps)
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/48x48/apps/just-do-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/48x48/apps)
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/64x64/apps/just-do-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/64x64/apps)
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/128x128/apps/just-do-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/128x128/apps)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/16x16/apps/go-for-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/16x16/apps)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/24x24/apps/go-for-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/24x24/apps)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/32x32/apps/go-for-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/32x32/apps)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/48x48/apps/go-for-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/48x48/apps)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/64x64/apps/go-for-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/64x64/apps)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/hicolor/128x128/apps/go-for-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/128x128/apps)
 
 install(
     CODE

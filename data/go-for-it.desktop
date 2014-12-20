@@ -1,11 +1,11 @@
 [Desktop Entry]
-Name=Just Do It!
-GenericName=Just Do It!
+Name=Go For It!
+GenericName=Go For It!
 Comment=A stylish to-do list with built-in productivity timer.
 Categories=GTK;Utility;
-Exec=just-do-it
-Icon=just-do-it
+Exec=go-for-it
+Icon=go-for-it
 Terminal=false
 Type=Application
-X-GNOME-Gettext-Domain=just-do-it
+X-GNOME-Gettext-Domain=go-for-it
 X-GNOME-Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
