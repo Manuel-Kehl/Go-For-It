@@ -38,7 +38,7 @@ public class TaskTimer {
             if (!running) {
                 TimeSpan diff = value.difference (remaining_duration);
                 this.total_duration = this.total_duration.add (diff);
-                timer_updated (remaining_duration);
+                update ();
             }
         }
     }
@@ -58,6 +58,7 @@ public class TaskTimer {
     
     /* Signals */
     public signal void timer_updated (DateTime remaining_duration);
+    public signal void timer_updated_relative (double progress);
     public signal void timer_running_changed (bool running);
     public signal void timer_finished (bool break_active);
     public signal void active_task_done (Gtk.TreeRowReference task);
@@ -75,7 +76,7 @@ public class TaskTimer {
                 if (has_finished ()) {
                     on_timer_finished ();
                 }
-                timer_updated (remaining_duration);
+                update ();
             }
             // TODO: Check if it may make sense to check for program exit state
             return true;
@@ -108,7 +109,7 @@ public class TaskTimer {
             default_duration = 25 * 60;
         }
         total_duration = new DateTime.from_unix_utc (default_duration);
-        timer_updated (remaining_duration);
+        update ();
     }
     
     /**
@@ -116,6 +117,11 @@ public class TaskTimer {
      */
     public void update () {
         timer_updated (remaining_duration);
+        
+        double runtime = (double) get_runtime ().to_unix ();
+        double total = (double) total_duration.to_unix ();
+        double progress = runtime / total;
+        timer_updated_relative (progress);
     }
     
     /**
