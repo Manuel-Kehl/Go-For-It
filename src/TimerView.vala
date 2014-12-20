@@ -188,7 +188,7 @@ public class TimerView : Gtk.Grid {
         spin.output.connect ((s) => {
             var val = spin.get_value_as_int ();
             // If val <= 10, it's a single digit, so a leading zero is necessary
-            if (val <= 10) {
+            if (val < 10) {
                 spin.text = "0" + val.to_string ();
                 return true;
             }
