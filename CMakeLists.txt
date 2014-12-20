@@ -47,5 +47,7 @@ PACKAGES
 add_executable(${EXEC_NAME} ${VALA_C})
 # install the binaries we just made
 install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
-# install our .desktop file so the Applications menu will see it
+# install .desktop file so the Applications menu will display it
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/just-do-it.desktop DESTINATION ${DATADIR}/applications/)
+# install the application's stylesheet
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/style/just-do-it.css DESTINATION ${PKGDATADIR}/style/)
