@@ -48,7 +48,7 @@ public class SettingsManager {
      }
      public int break_duration {
         owned get { 
-            var duration = get_value (GROUP_TIMER, "break_duration", "600");
+            var duration = get_value (GROUP_TIMER, "break_duration", "300");
             return int.parse (duration);
         }
         set { set_value (GROUP_TIMER, "break_duration", value.to_string ()); }
