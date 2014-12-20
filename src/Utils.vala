@@ -28,6 +28,7 @@
 namespace JDI {
     /* Strings */
     const string APP_NAME = "Just Do It!";
+    const string APP_SYSTEM_NAME = "just-do-it";
     const string APP_ID = "de.manuel-kehl.just-do-it";
     const string CONF_GROUP_TODO_TXT = "Todo.txt";
     const string CONF_TODO_TXT_LOCATION = "location";
