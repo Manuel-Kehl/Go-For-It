@@ -124,6 +124,10 @@ public class TaskTimer {
     public void set_active_task_done () {
         stop ();
         active_task_done (_active_task);
+        // Resume break, only keep stopped when a task is active
+        if (break_active) {
+            start ();
+        }
     }
     
     /**
