@@ -32,6 +32,10 @@ class MainWindow : Gtk.ApplicationWindow {
     private TaskList todo_list;
     private TaskList done_list;
     private TimerView timer_view;
+    /**
+     * Used to determine if a notification should be sent.
+     */
+    private bool break_previously_active { get; set; default = false; }
     
     /**
      * The constructor of the MainWindow class.
@@ -117,20 +121,26 @@ class MainWindow : Gtk.ApplicationWindow {
         this.add (main_layout);
     }
     
+    /**
+     * Configures the emission of notifications when tasks/breaks are over
+     */
     private void setup_notifications () {
         task_timer.active_task_changed.
                 connect ((s, reference, break_active) => {
-            var task = JDI.Utils.tree_row_ref_to_task (reference);
-            Notification notification;
-            if (break_active) {
-                notification = new Notification ("Take a Break");
-                notification.set_body ("Relax and stop thinking about your "
-                    + "current task for a while :-)");
-            } else {
-                notification = new Notification ("The Break is over");
-                notification.set_body ("Start working on: " + task);
+            if (break_previously_active != break_active) {
+                var task = JDI.Utils.tree_row_ref_to_task (reference);
+                Notification notification;
+                if (break_active) {
+                    notification = new Notification ("Take a Break");
+                    notification.set_body ("Relax and stop thinking about your "
+                        + "current task for a while :-)");
+                } else {
+                    notification = new Notification ("The Break is Over");
+                    notification.set_body ("Your next task is: " + task);
+                }
+                application.send_notification (null, notification);
             }
-            application.send_notification (null, notification);
+            break_previously_active = break_active;
         });
     }
     
