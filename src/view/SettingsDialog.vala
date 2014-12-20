@@ -38,7 +38,7 @@ public class SettingsDialog : Gtk.Dialog {
         main_layout = new Gtk.Grid ();
         
         /* General Settigns */
-        this.set_default_size (500, 500);
+        this.set_default_size (450, 500);
         this.get_content_area ().margin = 10;
         this.get_content_area ().pack_start (main_layout);
         main_layout.visible = true;
@@ -83,13 +83,18 @@ public class SettingsDialog : Gtk.Dialog {
     private void setup_welcome () {
         welcome_lbl = new Gtk.Label (
 """<b>Welcome to <i>Go For It!</i></b>
-        
-The stylish to-do list with built-in productivity timer
+
+Your stylish to-do list with built-in productivity timer.
+
+To develop cool, new features and keep the project 
+running, I rely on your <a href="https://github.com/mank319/Go-For-It">contributions</a> and <a href="http://manuel-kehl.de/donations">donations</a>.
+
+Thank you!
 """);
         
         /* Configuration */
         welcome_lbl.set_use_markup (true);
-        welcome_lbl.set_line_wrap (true);
+        welcome_lbl.set_line_wrap (false);
         
         /* Add widgets */
         main_layout.add (welcome_lbl);
@@ -101,7 +106,7 @@ The stylish to-do list with built-in productivity timer
         directory_btn = new Gtk.FileChooserButton ("Todo.txt directory",
             Gtk.FileChooserAction.SELECT_FOLDER);
         directory_lbl = new Gtk.Label (
-            """<a href="http://todo.txt">Todo.txt</a> directory:""");
+            """<a href="http://todotxt.com">Todo.txt</a> directory:""");
         
         /* Configuration */
         settings_lbl.set_use_markup (true);
