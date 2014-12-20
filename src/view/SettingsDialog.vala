@@ -43,6 +43,7 @@ public class SettingsDialog : Gtk.Dialog {
         this.get_content_area ().pack_start (main_layout);
         main_layout.visible = true;
         main_layout.orientation = Gtk.Orientation.VERTICAL;
+        main_layout.row_spacing = 15;
         
         /* Differentiate between "First Start" or "Regular Settings Dialog" */
         if (first_start) {
@@ -84,7 +85,6 @@ public class SettingsDialog : Gtk.Dialog {
 """<b>Welcome to <i>Just Do It!</i></b>
         
 The stylish to-do list with built-in productivity timer
-
 """);
         
         /* Configuration */
@@ -97,14 +97,11 @@ The stylish to-do list with built-in productivity timer
     
     private void setup_settings_widgets (bool advanced) {
         /* Instantiation */
-        settings_lbl = new Gtk.Label(
-"""<b>Settings</b>
-""");
+        settings_lbl = new Gtk.Label("""<b>Settings</b>""");
         directory_btn = new Gtk.FileChooserButton ("Todo.txt directory",
             Gtk.FileChooserAction.SELECT_FOLDER);
         directory_lbl = new Gtk.Label (
-"""<a href="http://todo.txt">Todo.txt</a> directory:
-""");
+            """<a href="http://todo.txt">Todo.txt</a> directory:""");
         
         /* Configuration */
         settings_lbl.set_use_markup (true);
