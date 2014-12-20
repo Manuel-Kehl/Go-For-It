@@ -26,7 +26,6 @@ public class Main : Gtk.Application {
      */
     private Main () {
         Object (application_id: JDI.APP_ID, flags: ApplicationFlags.FLAGS_NONE);
-        set_inactivity_timeout (10000);
     }
     
     /**
@@ -58,7 +57,8 @@ public class Main : Gtk.Application {
             
             /* Instantiation of the Core Classes of the Application */
             var task_manager = new TaskManager(dir);
-            var win = new MainWindow (this, task_manager);
+            var task_timer = new TaskTimer ();
+            new MainWindow (this, task_manager, task_timer);
             
         } catch (Error e) {
             // Basically the only reason for this try/catch is the suppression
@@ -95,8 +95,8 @@ public class Main : Gtk.Application {
      * Creates a default configuration file in the corresponding subdirectory of 
      * the user's home directory. It also tries to automatically determine the 
      * location of the user's Todo.txt directory, by checking a set of 
-     * common potential "standard locations". 
-     * Such test directories can be appended to JDI.TEST_DIRS in Utils.vala.
+     * common potential "standard Such". 
+     * locations test directories can be appended to JDI.TEST_DIRS in Utils.vala.
      */
     private void create_default_conf_file () {
         string user_dir = Environment.get_home_dir ();
