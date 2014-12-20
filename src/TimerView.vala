@@ -79,11 +79,13 @@ public class TimerView : Gtk.Grid {
     public void set_running (bool running) {
         if (running) {
             run_btn.label = "Pau_se";
+            run_btn.get_style_context ().remove_class ("suggested-action");
             run_btn.clicked.connect ((e) => { 
                 timer.stop ();
             });
         } else {
             run_btn.label = "_Start";
+            run_btn.get_style_context ().add_class ("suggested-action");
             run_btn.clicked.connect ((e) => {
                 timer.start ();
             });
@@ -183,9 +185,12 @@ public class TimerView : Gtk.Grid {
         done_btn.margin = 7;
         run_btn.margin = 7;
         reset_btn.margin = 7;
+        // Use Mnemonics
         done_btn.use_underline = true;
         reset_btn.use_underline = true;
         run_btn.use_underline = true;
+        // Apply style
+        reset_btn.get_style_context ().add_class ("destructive-action");
         
         /* Action Handling */
         reset_btn.clicked.connect ((e) => {
