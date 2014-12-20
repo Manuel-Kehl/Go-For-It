@@ -30,6 +30,8 @@ public class TimerView : Gtk.Grid {
     private Gtk.SpinButton m_spin;
     private Gtk.SpinButton s_spin;
     private Gtk.Grid action_grid;
+    private Gtk.Grid action_timer_grid;
+    private Gtk.Grid action_task_grid;
     private Gtk.Button run_btn;
     private Gtk.Button reset_btn;
     private Gtk.Button done_btn;
@@ -76,12 +78,12 @@ public class TimerView : Gtk.Grid {
     
     public void set_running (bool running) {
         if (running) {
-            run_btn.label = "Stop";
-            run_btn.clicked.connect ((e) => {
+            run_btn.label = "Pau_se";
+            run_btn.clicked.connect ((e) => { 
                 timer.stop ();
             });
         } else {
-            run_btn.label = "Start";
+            run_btn.label = "_Start";
             run_btn.clicked.connect ((e) => {
                 timer.start ();
             });
@@ -95,6 +97,8 @@ public class TimerView : Gtk.Grid {
         /* Instantiation */
         active_task_lbl = new Gtk.Label ("Nothing to do...");
         
+        /* Configuration */
+        active_task_lbl.margin_top = 50;
         this.add (active_task_lbl);
         
         setup_timer_container ();
@@ -114,6 +118,8 @@ public class TimerView : Gtk.Grid {
         /* Configuration */
         timer_grid.expand = true;
         timer_grid.orientation = Gtk.Orientation.HORIZONTAL;
+        timer_grid.halign = Gtk.Align.CENTER;
+        timer_grid.valign = Gtk.Align.CENTER;
         h_spin.orientation = Gtk.Orientation.VERTICAL;
         m_spin.orientation = Gtk.Orientation.VERTICAL;
         s_spin.orientation = Gtk.Orientation.VERTICAL;
@@ -161,16 +167,25 @@ public class TimerView : Gtk.Grid {
     private void setup_action_container () {
         /* Instantiation */
         action_grid = new Gtk.Grid ();
+        action_timer_grid = new Gtk.Grid ();
+        action_task_grid = new Gtk.Grid ();
         run_btn = new Gtk.Button ();
-        reset_btn = new Gtk.Button.with_label ("Reset");
-        done_btn = new Gtk.Button.with_label ("Done");
+        reset_btn = new Gtk.Button.with_label ("_Reset");
+        done_btn = new Gtk.Button.with_label ("_Done");
         
         /* Configuration */
         action_grid.orientation = Gtk.Orientation.HORIZONTAL;
         action_grid.hexpand = true;
+        action_timer_grid.hexpand = true;
+        action_task_grid.hexpand = true;
+        action_timer_grid.halign = Gtk.Align.END;
+        action_task_grid.halign = Gtk.Align.START;
+        done_btn.margin = 7;
         run_btn.margin = 7;
         reset_btn.margin = 7;
-        done_btn.margin = 7;
+        done_btn.use_underline = true;
+        reset_btn.use_underline = true;
+        run_btn.use_underline = true;
         
         /* Action Handling */
         reset_btn.clicked.connect ((e) => {
@@ -182,9 +197,11 @@ public class TimerView : Gtk.Grid {
         });
         
         /* Add Widgets */
-        action_grid.add (run_btn);
-        action_grid.add (reset_btn);
-        action_grid.add (done_btn);
+        action_timer_grid.add (reset_btn);
+        action_timer_grid.add (run_btn);
+        action_task_grid.add (done_btn);
+        action_grid.add (action_task_grid);
+        action_grid.add (action_timer_grid);
         this.add (action_grid);
     }
 }
