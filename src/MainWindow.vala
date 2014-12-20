@@ -84,8 +84,8 @@ class MainWindow : Gtk.ApplicationWindow {
         activity_stack.set_transition_type(
             Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
         // Add widgets to the activity stack
-        activity_stack.add_titled (todo_list, "todo", "Todo");
-        activity_stack.add_titled (timer_view, "doit", "Just Do it!");
+        activity_stack.add_titled (todo_list, "todo", "To-Do");
+        activity_stack.add_titled (timer_view, "doit", "Just Do It!");
         activity_stack.add_titled (done_list, "done", "Done");
             
         // GTK Header Bar
