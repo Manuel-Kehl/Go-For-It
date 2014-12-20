@@ -144,7 +144,7 @@ class MainWindow : Gtk.ApplicationWindow {
         
         menu_btn.toggled.connect ((s) => {
             if (s.active) {
-                app_menu.popup (null, null, null, 0,
+                app_menu.popup (null, null, calc_menu_position, 0,
                     Gtk.get_current_event_time ());
                 app_menu.select_first (true);
             } else {
@@ -154,6 +154,24 @@ class MainWindow : Gtk.ApplicationWindow {
         
         // Add main_layout to the window
         this.add (main_layout);
+    }
+    
+    private void calc_menu_position (Gtk.Menu menu, out int x, out int y) {
+        /* Get relevant position values */
+        int win_x, win_y;
+        this.get_position (out win_x, out win_y);
+        Gtk.Allocation btn_alloc, menu_alloc;
+        menu_btn.get_allocation (out btn_alloc);
+        app_menu.get_allocation (out menu_alloc);
+        
+        /*
+         * The menu located below the app menu button.
+         * Its right border is algined to the right side of the menu button,
+         * because the button is the rightmost element of the toolbar.
+         * This way the menu never overlaps the right side of the app's window.
+         */
+        x = win_x + btn_alloc.x - menu_alloc.width + btn_alloc.width;
+        y = win_y + btn_alloc.y + btn_alloc.height;
     }
     
     private void setup_menu () {
