@@ -35,7 +35,7 @@ public class TimerView : Gtk.Grid {
     private Gtk.Grid action_timer_grid;
     private Gtk.Grid action_task_grid;
     private Gtk.Button run_btn;
-    private Gtk.Button reset_btn;
+    private Gtk.Button skip_btn;
     private Gtk.Button done_btn;
     
     public TimerView (TaskTimer timer) {
@@ -205,7 +205,7 @@ public class TimerView : Gtk.Grid {
         action_timer_grid = new Gtk.Grid ();
         action_task_grid = new Gtk.Grid ();
         run_btn = new Gtk.Button ();
-        reset_btn = new Gtk.Button.with_label ("_Reset");
+        skip_btn = new Gtk.Button.with_label ("_Skip");
         done_btn = new Gtk.Button.with_label ("_Done");
         
         /* Configuration */
@@ -217,25 +217,24 @@ public class TimerView : Gtk.Grid {
         action_task_grid.halign = Gtk.Align.START;
         done_btn.margin = 7;
         run_btn.margin = 7;
-        reset_btn.margin = 7;
+        skip_btn.margin = 7;
         // Use Mnemonics
         done_btn.use_underline = true;
-        reset_btn.use_underline = true;
+        skip_btn.use_underline = true;
         run_btn.use_underline = true;
         // Apply style
-        reset_btn.get_style_context ().add_class ("destructive-action");
+        skip_btn.get_style_context ().add_class ("destructive-action");
         
         /* Action Handling */
-        reset_btn.clicked.connect ((e) => {
-            timer.stop ();
-            timer.reset ();
+        skip_btn.clicked.connect ((e) => {
+            timer.end_iteration ();
         });
         done_btn.clicked.connect ((e) => {
             timer.set_active_task_done();
         });
         
         /* Add Widgets */
-        action_timer_grid.add (reset_btn);
+        action_timer_grid.add (skip_btn);
         action_timer_grid.add (run_btn);
         action_task_grid.add (done_btn);
         action_grid.add (action_task_grid);
