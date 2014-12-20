@@ -1,3 +1,22 @@
-.timerview GtkSpinButton {
-    font-size: 350%;
+GtkLabel.task_status {
+    font-size: 200%;
+    font-weight: bold;
 }
+
+GtkLabel.task_break {
+    font-size: 120%;
+    color: #ababab;
+}
+
+GtkLabel.task_active {
+    font-size: 120%;
+}
+
+.timerview GtkSpinButton {
+    font-size: 400%;
+}
+
+.timerview GtkLabel {
+    font-size: 250%;
+}
+

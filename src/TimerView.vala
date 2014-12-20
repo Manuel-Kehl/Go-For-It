@@ -24,7 +24,9 @@ public class TimerView : Gtk.Grid {
     private TaskTimer timer;
 
     /* GTK Widgets */
-    private Gtk.Label active_task_lbl;
+    private Gtk.ProgressBar progress;
+    private Gtk.Label task_status_lbl;
+    private Gtk.Label task_description_lbl;
     private Gtk.Grid timer_grid;
     private Gtk.SpinButton h_spin;
     private Gtk.SpinButton m_spin;
@@ -42,7 +44,13 @@ public class TimerView : Gtk.Grid {
         /* Settings of the widget itself */
         this.orientation = Gtk.Orientation.VERTICAL;
         this.expand = true;
-        setup_widgets ();
+        
+        setup_task_widgets ();
+        setup_timer_container ();
+        setup_action_container ();
+        
+        //this.add (progress);
+        
         set_running (false);
         
         // Connect the timer's signals
@@ -55,15 +63,27 @@ public class TimerView : Gtk.Grid {
                 var model = reference.get_model ();
                 Gtk.TreeIter iter;
                 model.get_iter (out iter, path);
+                
                 // Update display
                 string description;
                 model.get (iter, 1, out description, -1);
-                // Append break notice, if break is active
+                task_description_lbl.label = description;
+                var style = task_description_lbl.get_style_context ();
+                
+                // Append correct class according to break status
                 if (break_active) {
-                    description = "Take a break... Your next task:\n" + description;
+                    task_status_lbl.label = "Take a Break!";
+                    style.remove_class ("task_active");
+                    style.add_class ("task_break");
+                } else {
+                    task_status_lbl.label = "Active Task:";
+                    style.remove_class ("task_break");
+                    style.add_class ("task_active");
                 }
-                active_task_lbl.label = description;
             }
+        });
+        timer.timer_updated_relative.connect ((s, p) => {
+            progress.set_fraction (p);
         });
         
         // Update timer, to refresh the view
@@ -80,7 +100,7 @@ public class TimerView : Gtk.Grid {
         if (running) {
             run_btn.label = "Pau_se";
             run_btn.get_style_context ().remove_class ("suggested-action");
-            run_btn.clicked.connect ((e) => { 
+            run_btn.clicked.connect ((e) => {
                 timer.stop ();
             });
         } else {
@@ -100,19 +120,28 @@ public class TimerView : Gtk.Grid {
         return duration;
     }
     
-    /** 
-     * Configures the widgets attachted to TimerView.
+    /**
+     * Configures the widgets that indicate the active task and its progress
      */
-    private void setup_widgets () {
+    private void setup_task_widgets () {
         /* Instantiation */
-        active_task_lbl = new Gtk.Label ("Nothing to do...");
+        progress = new Gtk.ProgressBar ();
+        task_status_lbl = new Gtk.Label ("Relax!");
+        task_description_lbl = new Gtk.Label ("You have nothing to do");
         
         /* Configuration */
-        active_task_lbl.margin_top = 50;
-        this.add (active_task_lbl);
+        progress.hexpand = true;
+        task_status_lbl.margin_top = 30;
+        task_status_lbl.get_style_context ().add_class ("task_status");
+        task_description_lbl.margin = 20;
+        task_description_lbl.margin_top = 30;
+        task_description_lbl.lines = 3;
+        task_description_lbl.wrap = true;
         
-        setup_timer_container ();
-        setup_action_container ();
+        /* Add Widgets */
+        this.add (progress);
+        this.add (task_status_lbl);
+        this.add (task_description_lbl);
     }
     
     /**
