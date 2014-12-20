@@ -20,6 +20,7 @@
  * The central class for handling and coordinating timer functionality
  */
 public class TaskTimer {
+    private SettingsManager settings;
     public bool running { get; private set; default = false; }
     public bool break_active {get; private set; default = false; }
     /** 
@@ -69,7 +70,8 @@ public class TaskTimer {
     public signal void active_task_changed (Gtk.TreeRowReference task, 
         bool break_active);
     
-    public TaskTimer () {
+    public TaskTimer (SettingsManager settings) {
+        this.settings = settings;
        /*
         * The TaskTimer's update loop. Actual time tracking is implemnted
         * by comparing timestamps, so the update interval has no influence 
@@ -106,12 +108,11 @@ public class TaskTimer {
     }
     
     public void reset () {
-        // TODO: Replace hardcoded value by user's settings
         int64 default_duration;
         if (break_active) {
-            default_duration = 5 * 60;
+            default_duration = settings.break_duration;
         } else {
-            default_duration = 25 * 60;
+            default_duration = settings.task_duration;
         }
         duration_till_end = new DateTime.from_unix_utc (default_duration);
         previous_runtime = 0;
