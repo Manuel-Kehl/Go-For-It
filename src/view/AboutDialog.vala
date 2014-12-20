@@ -49,6 +49,8 @@ public class AboutDialog : Gtk.Dialog {
         content_lbl = new Gtk.Label (
 """<b>About</b>
 
+<a href="http://manuel-kehl.de/projects/go-for-it">Website</a>
+
 <i>Go For It!</i> is a stylish to-do list with built-in productivity timer.
 
 For developing new features and keeping the project running,
@@ -59,9 +61,9 @@ Thank you!
 
 <b>Contributors</b>
 
-- Manuel Kehl (mank319) - Concept and Development
+- <a href="http://manuel-kehl.de">Manuel Kehl (mank319)</a> - Concept and Development
 
-- Micah Ilbery (TraumaD91) - Icon Design
+- <a href="http://traumad91.deviantart.com">Micah Ilbery (TraumaD91)</a> - Icon Design
 """);
         
         /* Configuration */
