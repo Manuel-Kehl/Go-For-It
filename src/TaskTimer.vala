@@ -32,6 +32,7 @@ public class TaskTimer {
             return Time.gm (diff);
         }
         set {
+            // Don't change, while timer is running
             if (!running) {
                 var diff = value.mktime () - remaining_duration.mktime ();
                 var new_total_duration = total_duration.mktime () + diff;
@@ -41,12 +42,25 @@ public class TaskTimer {
         }
     }
     public Time start_time;
+    private Gtk.TreeRowReference _active_task;
+    public Gtk.TreeRowReference active_task {
+        get { return _active_task; }
+        set {
+            // Don't change task, while timer is running
+            if (!running) {
+                _active_task = value;
+                // Emit the corresponding notifier signal
+                active_task_changed (_active_task);
+            }
+        }
+    }
     
     /* Signals */
-    public signal void active_task_changed ();
     public signal void timer_updated (Time remaining_duration);
     public signal void timer_running_changed (bool running);
     public signal void timer_finished ();
+    public signal void active_task_done (Gtk.TreeRowReference task);
+    public signal void active_task_changed (Gtk.TreeRowReference task);
     
     public TaskTimer () {
        /*
@@ -69,15 +83,19 @@ public class TaskTimer {
     }
      
     public void start () {
-        total_duration = remaining_duration;
-        start_time = Time.gm (time_t ());
-        running = true;
-        timer_running_changed (running);
+        if (!running) {
+            start_time = Time.gm (time_t ());
+            running = true;
+            timer_running_changed (running);
+        }
     }
     
     public void stop () {
-        running = false;
-        timer_running_changed (running);
+        if (running) {
+            total_duration = remaining_duration;
+            running = false;
+            timer_running_changed (running);
+        }
     }
     
     public void reset () {
@@ -92,6 +110,14 @@ public class TaskTimer {
      */
     public void update () {
         timer_updated (remaining_duration);
+    }
+    
+    /**
+     * Used to emit an "active_task_done" signal from outside of this class.
+     */
+    public void set_active_task_done () {
+        stop ();
+        active_task_done (_active_task);
     }
     
     /**

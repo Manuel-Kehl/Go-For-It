@@ -22,7 +22,7 @@
 class TaskList : Gtk.Grid {
     /* GTK Widgets */
     private Gtk.ScrolledWindow scroll_view;
-    private Gtk.TreeView task_view;
+    public Gtk.TreeView task_view;
     private Gtk.Grid add_new_grid;
     private Gtk.Entry add_new_txt;
     
