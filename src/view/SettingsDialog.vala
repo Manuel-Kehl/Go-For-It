@@ -27,6 +27,10 @@ public class SettingsDialog : Gtk.Dialog {
     private Gtk.Label settings_lbl;
     private Gtk.Label directory_lbl;
     private Gtk.FileChooserButton directory_btn;
+    private Gtk.Label task_lbl;
+    private Gtk.SpinButton task_spin;
+    private Gtk.Label break_lbl;
+    private Gtk.SpinButton break_spin;
     
     public SettingsDialog (bool first_start, SettingsManager settings) {
         this.settings = settings;
@@ -126,6 +130,29 @@ The stylish to-do list with built-in productivity timer
     }
     
     private void setup_advanced_settings_widgets () {
+        /* Instantiation */
+        task_lbl = new Gtk.Label ("Task Duration (in Minutes):");
+        break_lbl = new Gtk.Label ("Break Duration (in Minutes):");
+        // No more than one day: 60 * 24 -1 = 1439
+        task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
+        break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         
+        /* Configuration */
+        task_spin.value = settings.task_duration / 60;
+        break_spin.value = settings.break_duration / 60;
+        
+        /* Signal Handling */
+        task_spin.value_changed.connect ((e) => {
+            settings.task_duration = task_spin.get_value_as_int () * 60;
+        });
+        break_spin.value_changed.connect ((e) => {
+            settings.break_duration = break_spin.get_value_as_int () * 60;
+        });
+        
+        /* Add widgets */
+        main_layout.add (task_lbl);
+        main_layout.add (task_spin);
+        main_layout.add (break_lbl);
+        main_layout.add (break_spin);
     }
 }

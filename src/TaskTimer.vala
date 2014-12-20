@@ -72,11 +72,18 @@ public class TaskTimer {
     
     public TaskTimer (SettingsManager settings) {
         this.settings = settings;
-       /*
-        * The TaskTimer's update loop. Actual time tracking is implemnted
-        * by comparing timestamps, so the update interval has no influence 
-        * on that.
-        */
+        /* Signal Handling*/
+        settings.timer_duration_changed.connect ((e) => {
+            if (!running) {
+                reset ();
+            }
+        });
+        
+        /*
+         * The TaskTimer's update loop. Actual time tracking is implemnted
+         * by comparing timestamps, so the update interval has no influence 
+         * on that.
+         */
         Timeout.add_full (Priority.DEFAULT, 500, () => {
             if (running) {
                 if (has_finished ()) {
