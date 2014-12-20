@@ -73,8 +73,7 @@ public class TaskTimer {
         Timeout.add_full (Priority.DEFAULT, 500, () => {
             if (running) {
                 if (has_finished ()) {
-                    stop ();
-                    toggle_break ();
+                    on_timer_finished ();
                 }
                 timer_updated (remaining_duration);
             }
@@ -163,9 +162,9 @@ public class TaskTimer {
      * emitting all corresponding signals.
      */
     private void on_timer_finished ()  {
+        // Emit the "timer_finished" signal
         timer_finished (break_active);
         stop ();
         toggle_break ();
-        // Emit the "timer_finished" signal
     }
 }
