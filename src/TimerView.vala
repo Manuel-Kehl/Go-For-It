@@ -122,6 +122,8 @@ public class TimerView : Gtk.Grid {
         timer_grid.orientation = Gtk.Orientation.HORIZONTAL;
         timer_grid.halign = Gtk.Align.CENTER;
         timer_grid.valign = Gtk.Align.CENTER;
+        // Add CSS class
+        timer_grid.get_style_context ().add_class ("timerview");
         h_spin.orientation = Gtk.Orientation.VERTICAL;
         m_spin.orientation = Gtk.Orientation.VERTICAL;
         s_spin.orientation = Gtk.Orientation.VERTICAL;
