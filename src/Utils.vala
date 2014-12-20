@@ -41,14 +41,4 @@ namespace JDI {
     /* Numeric Values */
     const int DEFAULT_WIN_WIDTH = 350;
     const int DEFAULT_WIN_HEIGHT = 700;
-    
-    /** 
-     * A collection of static utility functions.
-     */
-    public class Utils {
-        public static Time hms_to_time (int h, int m, int s) {
-            int time = s + m * 60 + h * 3600;
-            return Time.local (time);
-        }
-    }
 }
