@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Just Do It!
+GenericName=Just Do It!
+Comment=A todo list with built-in productivity timer.
+Categories=GTK;Utility;
+Exec=do-it
+Icon=just-do-it
+Terminal=false
+Type=Application
+X-GNOME-Gettext-Domain=just-do-it
+X-GNOME-Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
