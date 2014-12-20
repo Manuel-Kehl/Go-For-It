@@ -64,6 +64,17 @@ class TaskManager {
         todo_store.add_task (task);
     }
     
+    public void mark_task_done (Gtk.TreeRowReference reference) {
+        if (reference.valid ()) {
+            // Get Gtk.TreeIterator from reference
+            var path = reference.get_path ();
+            Gtk.TreeIter iter;
+            todo_store.get_iter (out iter, path);
+            // Remove task from the todo lists
+            transfer_task (iter, todo_store, done_store);
+        }
+    }
+    
     /** 
      * Transfers a task from one TaskStore to another.
      */

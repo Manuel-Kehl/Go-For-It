@@ -58,6 +58,7 @@ public class Main : Gtk.Application {
             /* Instantiation of the Core Classes of the Application */
             var task_manager = new TaskManager(dir);
             var task_timer = new TaskTimer ();
+            task_timer.active_task_done.connect (task_manager.mark_task_done);
             new MainWindow (this, task_manager, task_timer);
             
         } catch (Error e) {

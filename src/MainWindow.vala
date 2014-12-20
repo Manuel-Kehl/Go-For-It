@@ -95,6 +95,25 @@ class MainWindow : Gtk.ApplicationWindow {
         
         /* Action and Signal Handling */
         todo_list.add_new_task.connect (task_manager.add_new_task);
+        var todo_selection = todo_list.task_view.get_selection ();
+        // Change active task upon selection change
+        todo_selection.changed.connect ( (source) => {
+            if (todo_selection.count_selected_rows () > 0) {
+                Gtk.TreeModel model;
+                Gtk.TreeIter iter;
+                // Get first selected row
+                var path = todo_selection.
+                    get_selected_rows (out model).nth_data (0);
+                model.get_iter (out iter, path);
+                var reference = new Gtk.TreeRowReference (model, path);
+                task_timer.active_task = reference;
+                 
+                /*TODO: Remove me
+                string description;
+                model.get (iter, 1, out description, -1);
+                timer_view.set_active_task (description);*/
+            }
+        });
         
         // Add main_layout to the window
         this.add (main_layout);
