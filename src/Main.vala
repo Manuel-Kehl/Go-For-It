@@ -49,7 +49,7 @@ public class Main : Gtk.Application {
         var task_manager = new TaskManager(settings);
         var task_timer = new TaskTimer (settings);
         task_timer.active_task_done.connect (task_manager.mark_task_done);
-        new MainWindow (this, task_manager, task_timer);
+        new MainWindow (this, task_manager, task_timer, settings);
         
         
     }

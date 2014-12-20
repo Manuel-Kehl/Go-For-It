@@ -23,6 +23,7 @@ class MainWindow : Gtk.ApplicationWindow {
     /* Various Variables */
     private TaskManager task_manager;
     private TaskTimer task_timer;
+    private SettingsManager settings;
     
     /* Various GTK Widgets */
     private Gtk.Grid main_layout;
@@ -47,12 +48,13 @@ class MainWindow : Gtk.ApplicationWindow {
      * The constructor of the MainWindow class.
      */
     public MainWindow (Gtk.Application app_context, TaskManager task_manager,
-            TaskTimer task_timer) {
+            TaskTimer task_timer, SettingsManager settings) {
         // Pass the applicaiton context via GObject-based construction, because
         // constructor chaining is not possible for Gtk.ApplicationWindow
         Object (application: app_context);
         this.task_manager = task_manager;
         this.task_timer = task_timer;
+        this.settings = settings;
         
         setup_window ();
         setup_menu ();
@@ -184,6 +186,10 @@ class MainWindow : Gtk.ApplicationWindow {
         // Untoggle menu button, when menu is hidden
         app_menu.hide.connect ((e) => {
             menu_btn.active = false;
+        });
+        config_item.activate.connect ((e) => {
+            var dialog = new SettingsDialog (false, settings);
+            dialog.show ();
         });
         
         /* Add Items to Menu */
