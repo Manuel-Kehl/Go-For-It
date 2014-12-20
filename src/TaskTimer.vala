@@ -22,27 +22,31 @@
 public class TaskTimer {
     public bool running { get; private set; default = false; }
     public bool break_active {get; private set; default = false; }
-    private DateTime total_duration;
+    /** 
+     * The duration till the end, since the last start of the timer
+     */
+    private DateTime duration_till_end;
     /**
      * A proxy attribute, that does not store any data itself, but provides
-     * convenient access to total_duration considering the current runtime.
+     * convenient access to duration_till_end considering the current runtime.
      */
     public DateTime remaining_duration {
         // owned, so that it returns a strong reference
         owned get {
-            var diff = total_duration.difference (get_runtime ());
+            var diff = duration_till_end.difference (get_runtime ());
             return new DateTime.from_unix_utc (0).add (diff);
         }
         set {
             // Don't change, while timer is running
             if (!running) {
                 TimeSpan diff = value.difference (remaining_duration);
-                this.total_duration = this.total_duration.add (diff);
+                duration_till_end = duration_till_end.add (diff);
                 update ();
             }
         }
     }
     public DateTime start_time;
+    private int64 previous_runtime { get; set; default = 0; }
     private Gtk.TreeRowReference _active_task;
     public Gtk.TreeRowReference active_task {
         get { return _active_task; }
@@ -94,7 +98,8 @@ public class TaskTimer {
     
     public void stop () {
         if (running) {
-            total_duration = remaining_duration;
+            duration_till_end = remaining_duration;
+            previous_runtime += get_runtime ().to_unix ();
             running = false;
             timer_running_changed (running);
         }
@@ -108,7 +113,8 @@ public class TaskTimer {
         } else {
             default_duration = 25 * 60;
         }
-        total_duration = new DateTime.from_unix_utc (default_duration);
+        duration_till_end = new DateTime.from_unix_utc (default_duration);
+        previous_runtime = 0;
         update ();
     }
     
@@ -118,8 +124,10 @@ public class TaskTimer {
     public void update () {
         timer_updated (remaining_duration);
         
-        double runtime = (double) get_runtime ().to_unix ();
-        double total = (double) total_duration.to_unix ();
+        double runtime = 
+            (double) (get_runtime ().to_unix () + previous_runtime);
+        double total = 
+            (double) (duration_till_end.to_unix () + previous_runtime);
         double progress = runtime / total;
         timer_updated_relative (progress);
     }
@@ -141,7 +149,7 @@ public class TaskTimer {
      * duration.
      */
     private bool has_finished () {
-        return (get_runtime ().compare (total_duration) >= 0);
+        return (get_runtime ().compare (duration_till_end) >= 0);
     }
     
     public DateTime get_runtime () {
