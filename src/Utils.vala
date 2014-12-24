@@ -60,5 +60,35 @@ namespace GOFI {
             model.get (iter, 1, out description, -1);
             return description;
         }
+        
+        /**
+         * Loads the first icon in the list, which is contained in the 
+         * active icon theme. This way one can avoid the "broken image" icon
+         * by offering a list of fallback icon names.
+         */
+        public static Gtk.Image load_image_fallback (Gtk.IconSize size, 
+                string icon_name, ...) {
+            Gtk.Image result = new Gtk.Image.from_icon_name (icon_name, size);
+            // If icon_name is present, simply return the related image
+            if (Gtk.IconTheme.get_default ().has_icon (icon_name)) {
+                return result;
+            }
+            
+            // Iterate through the list of fallbacks, if icon_name was not found
+            var fallbacks = va_list();
+            while (true) {
+                string? fallback_name = fallbacks.arg();
+                if (fallback_name == null) {
+                    // end of the varargs list without a matching fallback
+                    // in this case the "broken image" icon is returned
+                    return result; 
+                }
+                
+                // If fallback is found, return the related image
+                if (Gtk.IconTheme.get_default ().has_icon (fallback_name)) {
+                    return new Gtk.Image.from_icon_name (fallback_name, size);
+                }
+            }
+        }
     }
 }
