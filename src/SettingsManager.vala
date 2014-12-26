@@ -27,25 +27,25 @@ public class SettingsManager {
     /*
      * A list of constants that define settings group names
      */
-     
-     private const string GROUP_TODO_TXT = "Todo.txt";
-     private const string GROUP_TIMER = "Timer";
+    
+    private const string GROUP_TODO_TXT = "Todo.txt";
+    private const string GROUP_TIMER = "Timer";
     
     /*
      * A list of settings values with their corresponding access methods.
      * The "heart" of the SettingsManager class.
      */
-     
-     /*---GROUP:Todo.txt------------------------------------------------------*/
-     public string todo_txt_location {
+    
+    /*---GROUP:Todo.txt------------------------------------------------------*/
+    public string todo_txt_location {
         owned get { return get_value (GROUP_TODO_TXT, "location"); }
         set {
             set_value (GROUP_TODO_TXT, "location", value); 
             todo_txt_location_changed ();
         }
-     }
-     /*---GROUP:Timer---------------------------------------------------------*/
-     public int task_duration {
+    }
+    /*---GROUP:Timer---------------------------------------------------------*/
+    public int task_duration {
         owned get {
             var duration = get_value (GROUP_TIMER, "task_duration", "1500");
             return int.parse (duration);
@@ -55,7 +55,7 @@ public class SettingsManager {
             timer_duration_changed ();
         }
      }
-     public int break_duration {
+    public int break_duration {
         owned get {
             var duration = get_value (GROUP_TIMER, "break_duration", "300");
             return int.parse (duration);
@@ -64,10 +64,11 @@ public class SettingsManager {
             set_value (GROUP_TIMER, "break_duration", value.to_string ());
             timer_duration_changed ();
         }
-     }
+    }
      
-     public signal void todo_txt_location_changed ();
-     public signal void timer_duration_changed ();
+    /* Signals */
+    public signal void todo_txt_location_changed ();
+    public signal void timer_duration_changed ();
     
     /**
      * Constructs a SettingsManager object from a configuration file.
