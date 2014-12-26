@@ -35,6 +35,8 @@ public class SettingsManager {
      * A list of settings values with their corresponding access methods.
      * The "heart" of the SettingsManager class.
      */
+     
+     /*---GROUP:Todo.txt------------------------------------------------------*/
      public string todo_txt_location {
         owned get { return get_value (GROUP_TODO_TXT, "location"); }
         set {
@@ -42,6 +44,7 @@ public class SettingsManager {
             todo_txt_location_changed ();
         }
      }
+     /*---GROUP:Timer---------------------------------------------------------*/
      public int task_duration {
         owned get {
             var duration = get_value (GROUP_TIMER, "task_duration", "1500");
