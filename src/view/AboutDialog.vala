@@ -19,24 +19,17 @@
 /**
  * The widget for selecting, displaying and controlling the active task.
  */
-public class AboutDialog : Gtk.Dialog {
-    /* GTK Widgets */
-    private Gtk.Label content_lbl;
-    
+public class AboutDialog : Gtk.AboutDialog {
     public AboutDialog () {
         /* Initalization */
-        
-        /* General Settigns */
         this.set_default_size (450, 500);
         this.get_content_area ().margin = 10;
-        this.title = "About";
+        this.title = "About Go For It!";
         setup_content ();
-        
-        /* Close Button */
-        this.add_button ("Close", Gtk.ResponseType.CLOSE);
+
         /* Action Handling */
         this.response.connect ((s, response) => {
-            if (response == Gtk.ResponseType.CLOSE) {
+            if (response == Gtk.ResponseType.DELETE_EVENT) {
                 this.destroy ();
             }
         });
@@ -46,33 +39,13 @@ public class AboutDialog : Gtk.Dialog {
      * Displays a welcome message with basic information about Go For It!
      */
     private void setup_content () {
-        content_lbl = new Gtk.Label (
-"""<b>About</b>
-
-<a href="http://manuel-kehl.de/projects/go-for-it">Website</a>
-
-<i>Go For It!</i> is a stylish to-do list with built-in productivity timer.
-
-For developing new features and keeping the project running,
-I rely on your <a href="https://github.com/mank319/Go-For-It">contributions</a> and <a href="http://manuel-kehl.de/donations">donations</a>.
-
-Thank you!
-
-
-<b>Contributors</b>
-
-- <a href="http://manuel-kehl.de">Manuel Kehl (mank319)</a> - Concept and Development
-
-- <a href="http://traumad91.deviantart.com">Micah Ilbery (TraumaD91)</a> - Icon Design
-""");
+        program_name = "Go For It!";
+        logo_icon_name = "go-for-it";
         
-        /* Configuration */
-        content_lbl.set_use_markup (true);
-        content_lbl.set_line_wrap (false);
-        content_lbl.halign = Gtk.Align.START;
-        content_lbl.visible = true;
-        
-        /* Add widget */
-        this.get_content_area ().add (content_lbl);
+        comments = "A stylish to-do list with built-in productivity timer.";
+        website = "http://manuel-kehl.de/projects/go-for-it";
+
+        authors = { "<a href='http://manuel-kehl.de'>Manuel Kehl</a>" };
+        artists = { "<a href='http://traumad91.deviantart.com'>Micah Ilbery</a>" };
     }
 }
