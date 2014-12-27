@@ -51,7 +51,7 @@ public class TimerView : Gtk.Grid {
         
         //this.add (progress);
         
-        set_running (false);
+        set_running (timer.running);
         
         // Connect the timer's signals
         timer.timer_updated.connect (set_time);
