@@ -113,7 +113,9 @@ class TaskList : Gtk.Grid {
         add_new_txt = new Gtk.Entry ();
         add_new_txt.hexpand = true;
         add_new_txt.placeholder_text = "Add new task...";
-        
+        add_new_txt.margin_start = 5;
+        add_new_txt.margin_end = 5;
+
         add_new_txt.set_icon_from_icon_name (
             Gtk.EntryIconPosition.SECONDARY, "list-add-symbolic");
             
