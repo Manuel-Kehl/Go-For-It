@@ -103,8 +103,13 @@ class MainWindow : Gtk.ApplicationWindow {
             Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
         // Add widgets to the activity stack
         activity_stack.add_titled (todo_list, "todo", "To-Do");
-        activity_stack.add_titled (timer_view, "doit", GOFI.APP_NAME);
+        activity_stack.add_titled (timer_view, "timer", GOFI.APP_NAME);
         activity_stack.add_titled (done_list, "done", "Done");
+        
+        if (task_timer.running) {
+            timer_view.show (); // otherwise it won't switch
+            activity_stack.set_visible_child_name ("timer");
+        }
             
         // GTK Header Bar
         header_bar.set_show_close_button (true);
