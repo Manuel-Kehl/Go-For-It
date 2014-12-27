@@ -56,7 +56,7 @@ public class TaskTimer {
             if (!running) {
                 _active_task = value;
                 // Emit the corresponding notifier signal
-                active_task_changed (_active_task, break_active);
+                update_active_task ();
             }
         }
     }
@@ -138,6 +138,13 @@ public class TaskTimer {
             (double) (duration_till_end.to_unix () + previous_runtime);
         double progress = runtime / total;
         timer_updated_relative (progress);
+    }
+    
+    /**
+     * Used to initate an active_task_changed signal
+     */
+    public void update_active_task () {
+        active_task_changed (_active_task, break_active);
     }
     
     /**
