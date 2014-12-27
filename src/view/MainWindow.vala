@@ -132,19 +132,24 @@ class MainWindow : Gtk.ApplicationWindow {
         /* Action and Signal Handling */
         todo_list.add_new_task.connect (task_manager.add_new_task);
         var todo_selection = todo_list.task_view.get_selection ();
+        todo_selection.select_path (task_timer.active_task.get_path ());
         // Change active task upon selection change
-        todo_selection.changed.connect ( (source) => {
-            if (todo_selection.count_selected_rows () > 0) {
-                Gtk.TreeModel model;
-                Gtk.TreeIter iter;
-                // Get first selected row
-                var path = todo_selection.
-                    get_selected_rows (out model).nth_data (0);
-                model.get_iter (out iter, path);
-                var reference = new Gtk.TreeRowReference (model, path);
-                task_timer.active_task = reference;
+        todo_selection.changed.connect ((s) => {
+            Gtk.TreeModel model;
+            Gtk.TreeIter iter;
+            Gtk.TreePath path;
+            
+            // If no row has been selected, select the first in the list
+            if (todo_selection.count_selected_rows () == 0) {
+                todo_selection.select_path (new Gtk.TreePath.first ());
             }
+            
+            // Take the first selected row
+            path = todo_selection.get_selected_rows (out model).nth_data (0);
+            var reference = new Gtk.TreeRowReference (model, path);
+            task_timer.active_task = reference;
         });
+        task_timer.update_active_task ();
         
         menu_btn.toggled.connect ((s) => {
             if (s.active) {
