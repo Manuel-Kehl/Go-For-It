@@ -20,6 +20,9 @@ add_definitions(${DEPS_CFLAGS})
 link_libraries(${DEPS_LIBRARIES})
 link_directories(${DEPS_LIBRARY_DIRS})
 
+# disable c compiler warnings
+add_definitions(-w)
+
 # make sure we have vala
 find_package(Vala REQUIRED)
 # make sure we use vala
