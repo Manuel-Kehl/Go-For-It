@@ -60,9 +60,6 @@ class MainWindow : Gtk.ApplicationWindow {
         setup_menu ();
         setup_widgets ();
         load_css ();
-        
-        this.show_all ();
-        
         setup_notifications ();
     }
     
@@ -74,7 +71,6 @@ class MainWindow : Gtk.ApplicationWindow {
         this.set_border_width (0);
         this.set_position (Gtk.WindowPosition.CENTER);
         this.set_default_size (GOFI.DEFAULT_WIN_WIDTH, GOFI.DEFAULT_WIN_HEIGHT);
-        this.destroy.connect (Gtk.main_quit);
     }
     
     /** 
