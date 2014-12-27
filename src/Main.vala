@@ -21,6 +21,10 @@
  * necessary steps to create a running instance of "Go For It!".
  */
 public class Main : Gtk.Application {
+    private SettingsManager settings;
+    private TaskManager task_manager;
+    private TaskTimer task_timer;
+    private MainWindow win;
     /**
      * Constructor of the Application class.
      */
@@ -39,18 +43,28 @@ public class Main : Gtk.Application {
     
     public override void activate () {
         // Don't create a new window, if one already exists
-        if (this.active_window != null) {
-            // Highlight the existing window instead
-            this.active_window.present ();
+        if (win != null) {
+            win.show_all ();
+            win.present ();
             return;
         }
         
-        var settings = new SettingsManager.load_from_key_file ();
-        var task_manager = new TaskManager(settings);
-        var task_timer = new TaskTimer (settings);
+        settings = new SettingsManager.load_from_key_file ();
+        task_manager = new TaskManager(settings);
+        task_timer = new TaskTimer (settings);
         task_timer.active_task_done.connect (task_manager.mark_task_done);
-        new MainWindow (this, task_manager, task_timer, settings);
+        win = new MainWindow (this, task_manager, task_timer, settings);
+        win.show_all ();
         
+        /*
+         * If the timer is currently active, create a new hidden instance of
+         * MainWindow, so that the app keeps running in the background.
+         */
+        this.window_removed.connect ((e) => {
+            if (task_timer.running) {
+                win = new MainWindow (this, task_manager, task_timer, settings);
+            }
+        });
         
     }
 }
