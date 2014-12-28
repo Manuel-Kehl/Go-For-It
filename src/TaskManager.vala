@@ -105,16 +105,20 @@ class TaskManager {
         // Save data, as soon as something has changed
         todo_store.task_data_changed.connect (save_tasks);
         done_store.task_data_changed.connect (save_tasks);
-        
+
         // Move task from one list to another, if done or undone
-        todo_store.task_done_changed.connect ((source, iter) => {
-            transfer_task(iter, todo_store, done_store);
-        });
-        done_store.task_done_changed.connect ((source, iter) => {
-            transfer_task(iter, done_store, todo_store);
-        });
+        todo_store.task_done_changed.connect (task_done_handler);
+        done_store.task_done_changed.connect (task_done_handler);
         
         load_tasks ();
+    }
+
+    private void task_done_handler (TaskStore source, Gtk.TreeIter iter) {
+        if (source == todo_store) {
+            transfer_task (iter, todo_store, done_store);
+        } else if (source == done_store) {
+            transfer_task (iter, done_store, todo_store);
+        }
     }
     
     private void load_tasks () {
