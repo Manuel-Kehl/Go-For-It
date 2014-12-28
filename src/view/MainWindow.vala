@@ -121,6 +121,7 @@ class MainWindow : Gtk.ApplicationWindow {
         space.draw = false;
         menu_btn.icon_widget = menu_img;
         menu_btn.label_widget = new Gtk.Label ("Menu");
+        menu_btn.toggled.connect (menu_btn_toggled);
         // Add Toolbar Buttons here
         toolbar.add (space);
         toolbar.add (menu_btn);
@@ -135,37 +136,40 @@ class MainWindow : Gtk.ApplicationWindow {
         var todo_selection = todo_list.task_view.get_selection ();
         todo_selection.select_path (task_timer.active_task.get_path ());
         // Change active task upon selection change
-        todo_selection.changed.connect ((s) => {
-            Gtk.TreeModel model;
-            Gtk.TreeIter iter;
-            Gtk.TreePath path;
-            
-            // If no row has been selected, select the first in the list
-            if (todo_selection.count_selected_rows () == 0) {
-                todo_selection.select_path (new Gtk.TreePath.first ());
-            }
-            
-            // Take the first selected row
-            path = todo_selection.get_selected_rows (out model).nth_data (0);
-            var reference = new Gtk.TreeRowReference (model, path);
-            task_timer.active_task = reference;
-        });
+        todo_selection.changed.connect (todo_selection_changed);
         task_timer.update_active_task ();
-        
-        menu_btn.toggled.connect ((s) => {
-            if (s.active) {
-                app_menu.popup (null, null, calc_menu_position, 0,
-                    Gtk.get_current_event_time ());
-                app_menu.select_first (true);
-            } else {
-                app_menu.popdown ();
-            }
-        });
-        
+
         // Add main_layout to the window
         this.add (main_layout);
     }
-    
+
+    private void todo_selection_changed () {
+        Gtk.TreeModel model;
+        Gtk.TreeIter iter;
+        Gtk.TreePath path;
+        var todo_selection = todo_list.task_view.get_selection ();
+
+        // If no row has been selected, select the first in the list
+        if (todo_selection.count_selected_rows () == 0) {
+            todo_selection.select_path (new Gtk.TreePath.first ());
+        }
+
+        // Take the first selected row
+        path = todo_selection.get_selected_rows (out model).nth_data (0);
+        var reference = new Gtk.TreeRowReference (model, path);
+        task_timer.active_task = reference;
+    }
+
+    private void menu_btn_toggled (Gtk.ToggleToolButton source) {
+        if (source.active) {
+            app_menu.popup (null, null, calc_menu_position, 0,
+                            Gtk.get_current_event_time ());
+            app_menu.select_first (true);
+        } else {
+            app_menu.popdown ();
+        }
+    }
+
     private void calc_menu_position (Gtk.Menu menu, out int x, out int y) {
         /* Get relevant position values */
         int win_x, win_y;
@@ -218,25 +222,28 @@ class MainWindow : Gtk.ApplicationWindow {
      * Configures the emission of notifications when tasks/breaks are over
      */
     private void setup_notifications () {
-        task_timer.active_task_changed.
-                connect ((s, reference, break_active) => {
-            if (break_previously_active != break_active) {
-                var task = GOFI.Utils.tree_row_ref_to_task (reference);
-                Notification notification;
-                if (break_active) {
-                    notification = new Notification ("Take a Break");
-                    notification.set_body ("Relax and stop thinking about your "
-                        + "current task for a while :-)");
-                } else {
-                    notification = new Notification ("The Break is Over");
-                    notification.set_body ("Your next task is: " + task);
-                }
-                application.send_notification (null, notification);
-            }
-            break_previously_active = break_active;
-        });
+        task_timer.active_task_changed.connect (task_timer_activated);
     }
-    
+
+    private void task_timer_activated (Gtk.TreeRowReference reference,
+                                       bool break_active) {
+
+        if (break_previously_active != break_active) {
+            var task = GOFI.Utils.tree_row_ref_to_task (reference);
+            Notification notification;
+            if (break_active) {
+                notification = new Notification ("Take a Break");
+                notification.set_body ("Relax and stop thinking about your "
+                                       + "current task for a while :-)");
+            } else {
+                notification = new Notification ("The Break is Over");
+                notification.set_body ("Your next task is: " + task);
+            }
+            application.send_notification (null, notification);
+        }
+        break_previously_active = break_active;
+    }
+
     /**
      * Searches the system for a css stylesheet, that corresponds to go-for-it.
      * If it has been found in one of the potential data directories, it gets

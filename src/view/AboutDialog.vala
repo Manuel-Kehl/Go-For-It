@@ -28,11 +28,7 @@ public class AboutDialog : Gtk.AboutDialog {
         setup_content ();
 
         /* Action Handling */
-        this.response.connect ((s, response) => {
-            if (response == Gtk.ResponseType.DELETE_EVENT) {
-                this.destroy ();
-            }
-        });
+        this.response.connect (response_handler);
     }
     
     /** 
@@ -47,5 +43,11 @@ public class AboutDialog : Gtk.AboutDialog {
 
         authors = { "<a href='http://manuel-kehl.de'>Manuel Kehl</a>" };
         artists = { "<a href='http://traumad91.deviantart.com'>Micah Ilbery</a>" };
+    }
+
+    private void response_handler (int response) {
+        if (response == Gtk.ResponseType.DELETE_EVENT) {
+            this.destroy ();
+        }
     }
 }
