@@ -25,7 +25,10 @@ class TaskList : Gtk.Grid {
     public Gtk.TreeView task_view;
     private Gtk.Grid add_new_grid;
     private Gtk.Entry add_new_txt;
-    
+
+    /* Data Model */
+    private TaskStore model;
+
     /* Signals */
     public signal void add_new_task (string task);
     
@@ -37,9 +40,10 @@ class TaskList : Gtk.Grid {
         /* Settings of the widget itself */
         this.orientation = Gtk.Orientation.VERTICAL;
         this.expand = true;
+        this.model = model;
         
         /* Setup the widget's children */
-        setup_task_view (model);
+        setup_task_view ();
         if (add_new) {
             setup_add_new ();
         }
@@ -48,7 +52,7 @@ class TaskList : Gtk.Grid {
     /** 
      * Configures the list to display the task entries.
      */
-    private void setup_task_view (TaskStore model) {
+    private void setup_task_view () {
         this.scroll_view = new Gtk.ScrolledWindow (null, null);
         this.task_view = new Gtk.TreeView ();
         
@@ -77,32 +81,36 @@ class TaskList : Gtk.Grid {
         
         /* Action and Signal Handling */
         // Handle tasks being marked done/undone
-        toggle_cell.toggled.connect ((toggle, path) => {
-            var tree_path = new Gtk.TreePath.from_string (path);
-            Gtk.TreeIter iter;
-            model.get_iter (out iter, tree_path);
-            /* 
-             * Handle action on higher level via the signal mechanism.
-             * Necessary, because it requires an interaction between multiple
-             * TaskStore instances for transferring done/undone tasks from
-             * one list to another
-             */
-            model.task_done_changed (iter);
-        });
-        
+        toggle_cell.toggled.connect (toggle_cell_toggled);
+
         // Handle text editing events
-        text_cell.edited.connect ( (path, edited_text) => {
-            Gtk.TreeIter iter;
-            model.get_iter (out iter, new Gtk.TreePath.from_string (path));
-            // Can be directly applied to the corresponding TaskStore
-            model.edit_text (iter, edited_text);
-        });
-        
+        text_cell.edited.connect (text_cell_edited);
+
         // Add to the main widget
         scroll_view.add (task_view);
         this.add (scroll_view);
     }
-    
+
+    private void toggle_cell_toggled (string path) {
+        var tree_path = new Gtk.TreePath.from_string (path);
+        Gtk.TreeIter iter;
+        model.get_iter (out iter, tree_path);
+        /**
+         * Handle action on higher level via the signal mechanism.
+         * Necessary, because it requires an interaction between multiple
+         * TaskStore instances for transferring done/undone tasks from
+         * one list to another
+         */
+        model.task_done_changed (iter);
+    }
+
+    private void text_cell_edited (string path, string edited_text) {
+        Gtk.TreeIter iter;
+        model.get_iter (out iter, new Gtk.TreePath.from_string (path));
+        // Can be directly applied to the corresponding TaskStore
+        model.edit_text (iter, edited_text);
+    }
+
     /**
      * Configures the container with the "add new task" text entry.
      */
