@@ -65,8 +65,8 @@ public class TimerView : Gtk.Grid {
         timer.update ();
     }
 
-    private timer_active_task_changed (Gtk.TreeRowReference referernce,
-                                       bool break_active) {
+    private void timer_active_task_changed (Gtk.TreeRowReference reference,
+                                            bool break_active) {
 
         if (reference.valid ()) {
             task_description_lbl.label = GOFI.Utils.
