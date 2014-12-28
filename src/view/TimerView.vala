@@ -52,36 +52,39 @@ public class TimerView : Gtk.Grid {
         //this.add (progress);
         
         set_running (timer.running);
-        
+
         // Connect the timer's signals
         timer.timer_updated.connect (set_time);
         timer.timer_running_changed.connect (set_running);
-        timer.active_task_changed.connect ((s, reference, break_active) => {
-            if (reference.valid ()) {
-                task_description_lbl.label = GOFI.Utils.
-                    tree_row_ref_to_task (reference);
-                var style = task_description_lbl.get_style_context ();
-                
-                // Append correct class according to break status
-                if (break_active) {
-                    task_status_lbl.label = "Take a Break!";
-                    style.remove_class ("task_active");
-                    style.add_class ("task_break");
-                } else {
-                    task_status_lbl.label = "Active Task:";
-                    style.remove_class ("task_break");
-                    style.add_class ("task_active");
-                }
-            }
-        });
+        timer.active_task_changed.connect (timer_active_task_changed);
         timer.timer_updated_relative.connect ((s, p) => {
             progress.set_fraction (p);
         });
-        
+
         // Update timer, to refresh the view
         timer.update ();
     }
-    
+
+    private timer_active_task_changed (Gtk.TreeRowReference referernce,
+                                       bool break_active) {
+
+        if (reference.valid ()) {
+            task_description_lbl.label = GOFI.Utils.
+            tree_row_ref_to_task (reference);
+            var style = task_description_lbl.get_style_context ();
+
+            // Append correct class according to break status
+            if (break_active) {
+                task_status_lbl.label = "Take a Break!";
+                style.remove_class ("task_active");
+                style.add_class ("task_break");
+            } else {
+                task_status_lbl.label = "Active Task:";
+                style.remove_class ("task_break");
+                style.add_class ("task_active");
+            }
+        }
+    }
     public void set_time (DateTime time) {
         h_spin.value = time.get_hour ();
         m_spin.value = time.get_minute ();
