@@ -38,14 +38,15 @@ class TaskStore : Gtk.ListStore {
         base.set_column_types ({typeof(bool), typeof(string)});
         
         /* Reroute underlying signals to task_data_changed */
-        this.rows_reordered.connect ((source) => {
-            task_data_changed ();
-        });
-        this.row_deleted.connect ((source) => {
-            task_data_changed ();
-        });
+        this.rows_reordered.connect (trigger_task_data_changed);
+
+        this.row_deleted.connect (trigger_task_data_changed);
     }
-    
+
+    private void trigger_task_data_changed () {
+        task_data_changed ();
+    }
+
     /** 
      * To be called when an actually new task is to be added to the list.
      * Therefore it does not need a "done" parameter, as one can determine
