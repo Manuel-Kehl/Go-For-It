@@ -52,6 +52,7 @@ The user interface is inspired by the design philosophy of [elementary OS](http:
 ## How To Build
 
     mkdir build
+    cd build
     cmake ..
     make
     sudo make install
