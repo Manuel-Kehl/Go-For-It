@@ -119,7 +119,8 @@ class MainWindow : Gtk.ApplicationWindow {
         // Toolbar Items
         var space = new Gtk.SeparatorToolItem ();
         space.draw = false;
-        menu_btn.label_widget = menu_img;
+        menu_btn.icon_widget = menu_img;
+        menu_btn.label_widget = new Gtk.Label ("Menu");
         // Add Toolbar Buttons here
         toolbar.add (space);
         toolbar.add (menu_btn);
