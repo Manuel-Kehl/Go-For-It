@@ -112,7 +112,7 @@ class MainWindow : Gtk.ApplicationWindow {
             
         // GTK Header Bar
         header_bar.set_show_close_button (true);
-        header_bar.title = "Go For It!!";
+        header_bar.title = GOFI.APP_NAME;
         this.set_titlebar (header_bar);
         
         // Headerbar Items
