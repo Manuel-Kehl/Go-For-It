@@ -70,6 +70,10 @@ public class Main : Gtk.Application {
         });
         
     }
+    public void show_about () {
+        var dialog = new AboutDialog ();
+        dialog.run ();
+    }
 
     public override int command_line (ApplicationCommandLine command_line) {
         hold ();
@@ -97,6 +101,8 @@ public class Main : Gtk.Application {
             stdout.printf ("%s %s\n", GOFI.APP_NAME, GOFI.APP_VERSION);
             stdout.printf ("Copyright 2011-2014 'Go For it!' Developers.\n");
 
+        } else if (show_about_dialog) {
+            show_about ();
         } else {
             new_window ();
         }
