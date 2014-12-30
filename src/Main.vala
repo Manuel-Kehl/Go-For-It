@@ -25,11 +25,14 @@ public class Main : Gtk.Application {
     private TaskManager task_manager;
     private TaskTimer task_timer;
     private MainWindow win;
+
+    private static bool print_version = false;
+    private static bool show_about_dialog = false;
     /**
      * Constructor of the Application class.
      */
     private Main () {
-        Object (application_id: GOFI.APP_ID, flags: ApplicationFlags.FLAGS_NONE);
+        Object (application_id: GOFI.APP_ID, flags: ApplicationFlags.HANDLES_COMMAND_LINE);
     }
     
     /**
@@ -41,7 +44,7 @@ public class Main : Gtk.Application {
         return status;
     }
     
-    public override void activate () {
+    public void new_window () {
         // Don't create a new window, if one already exists
         if (win != null) {
             win.show_all ();
@@ -67,4 +70,49 @@ public class Main : Gtk.Application {
         });
         
     }
+    public void show_about () {
+        var dialog = new AboutDialog ();
+        dialog.run ();
+    }
+
+    public override int command_line (ApplicationCommandLine command_line) {
+        hold ();
+        int res = _command_line (command_line);
+        release ();
+        return res;
+    }
+
+    private int _command_line (ApplicationCommandLine command_line) {
+        var context = new OptionContext (GOFI.APP_NAME);
+        context.add_main_entries (entries, GOFI.APP_SYSTEM_NAME);
+        context.add_group (Gtk.get_option_group (true));
+
+        string[] args = command_line.get_arguments ();
+
+        try {
+            unowned string[] tmp = args;
+            context.parse (ref tmp);
+        } catch (Error e) {
+            stdout.printf ("%s: Error: %s \n", GOFI.APP_NAME, e.message);
+            return 0;
+        }
+
+        if (print_version) {
+            stdout.printf ("%s %s\n", GOFI.APP_NAME, GOFI.APP_VERSION);
+            stdout.printf ("Copyright 2011-2014 'Go For it!' Developers.\n");
+
+        } else if (show_about_dialog) {
+            show_about ();
+        } else {
+            new_window ();
+        }
+
+        return 0;
+    }
+
+    static const OptionEntry[] entries = {
+        { "version", 'v', 0, OptionArg.NONE, out print_version, N_("Print version info and exit"), null },
+        { "about", 'a', 0, OptionArg.NONE, out show_about_dialog, N_("Show about dialog"), null },
+        { null }
+    };
 }
