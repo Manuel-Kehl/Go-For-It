@@ -8,4 +8,10 @@ Icon=go-for-it
 Terminal=false
 Type=Application
 X-GNOME-Gettext-Domain=go-for-it
+Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
 X-GNOME-Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
+Actions=AboutDialog;
+
+[Desktop Action AboutDialog]
+Name=About Go For It!
+Exec=go-for-it --about
