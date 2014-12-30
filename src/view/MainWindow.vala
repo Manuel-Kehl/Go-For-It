@@ -198,8 +198,8 @@ class MainWindow : Gtk.ApplicationWindow {
             dialog.show ();
         });
         about_item.activate.connect ((e) => {
-            var dialog = new AboutDialog ();
-            dialog.show ();
+            var app = get_application () as Main;
+            app.show_about ();
         });
         
         /* Add Items to Menu */
