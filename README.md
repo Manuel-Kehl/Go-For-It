@@ -23,7 +23,9 @@ I maintain a [Launchpad PPA](http://ppa.launchpad.net/mank319/go-for-it) which c
     sudo add-apt-repository ppa:mank319/go-for-it && sudo apt-get update 
     sudo apt-get install go-for-it
 
-Experimental Windows builds are in the works. An OSX Version may follow in the future.
+The Windows version is available for download [here](http://manuel-kehl.de/projects/go-for-it/download-windows-version).
+
+An OSX Version may follow in the future.
 
 ## Donations
 
