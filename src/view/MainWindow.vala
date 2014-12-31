@@ -127,10 +127,19 @@ class MainWindow : Gtk.ApplicationWindow {
         todo_list.add_new_task.connect (task_manager.add_new_task);
         var todo_selection = todo_list.task_view.get_selection ();
         todo_selection.select_path (task_timer.active_task.get_path ());
-        // Change active task upon selection change
-        todo_selection.changed.connect (todo_selection_changed);
-        task_timer.update_active_task ();
-
+        /* 
+         * If either the selection or the data itself changes, it is 
+         * necessary to check if a different task is to be displayed
+         * in the timer widget and thus todo_selection_changed is to be called
+         */
+        todo_selection.changed.
+            connect (todo_selection_changed);
+        task_manager.done_store.task_data_changed.
+            connect (todo_selection_changed);
+        
+        // Call once to refresh view on startup
+        todo_selection_changed ();
+        
         main_layout.add (activity_switcher);
         main_layout.add (activity_stack);
 
@@ -140,7 +149,6 @@ class MainWindow : Gtk.ApplicationWindow {
 
     private void todo_selection_changed () {
         Gtk.TreeModel model;
-        Gtk.TreeIter iter;
         Gtk.TreePath path;
         var todo_selection = todo_list.task_view.get_selection ();
 
@@ -148,7 +156,13 @@ class MainWindow : Gtk.ApplicationWindow {
         if (todo_selection.count_selected_rows () == 0) {
             todo_selection.select_path (new Gtk.TreePath.first ());
         }
-
+        
+        // Check if TodoStore is empty or not
+        if (task_manager.todo_store.is_empty ()) {
+            timer_view.show_no_task ();
+            return;
+        }
+        
         // Take the first selected row
         path = todo_selection.get_selected_rows (out model).nth_data (0);
         var reference = new Gtk.TreeRowReference (model, path);
