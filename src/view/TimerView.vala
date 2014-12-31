@@ -81,6 +81,7 @@ public class TimerView : Gtk.Grid {
                 task_status_lbl.label = "Active Task:";
                 style.remove_class ("task_break");
                 style.add_class ("task_active");
+                done_btn.visible = true;
             }
         }
     }
@@ -119,8 +120,8 @@ public class TimerView : Gtk.Grid {
      */
     private void setup_task_widgets () {
         /* Instantiation */
-        task_status_lbl = new Gtk.Label ("Relax!");
-        task_description_lbl = new Gtk.Label ("You have nothing to do");
+        task_status_lbl = new Gtk.Label ("Inactive");
+        task_description_lbl = new Gtk.Label ("No task has been selected");
         
         /* Configuration */
         progress.hexpand = true;
@@ -243,5 +244,14 @@ public class TimerView : Gtk.Grid {
     private void setup_progress_bar () {
         progress = new Gtk.ProgressBar ();
         this.add (progress);
+    }
+    
+    /**
+     * This funciton is to be called, when the to-do list is empty
+     */
+    public void show_no_task () {
+        task_status_lbl.label = "Relax!";
+        task_description_lbl.label = "You have nothing to do.";
+        done_btn.visible = false;
     }
 }
