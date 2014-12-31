@@ -25,7 +25,7 @@ namespace GOFI {
     const string APP_NAME = "Go For It!";
     const string APP_SYSTEM_NAME = "go-for-it";
     const string APP_ID = "de.manuel-kehl.go-for-it";
-    const string APP_VERSION = "0.1";
+    const string APP_VERSION = "0.2";
     const string FILE_CONF = "go-for-it.conf";
     const string[] TEST_DIRS = {
         "Todo", "todo", ".todo", 
