@@ -222,8 +222,6 @@ public class TimerView : Gtk.Grid {
         done_btn.use_underline = true;
         skip_btn.use_underline = true;
         run_btn.use_underline = true;
-        // Apply style
-        skip_btn.get_style_context ().add_class ("destructive-action");
         
         /* Action Handling */
         skip_btn.clicked.connect ((e) => {
