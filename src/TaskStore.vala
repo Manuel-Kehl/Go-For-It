@@ -53,8 +53,11 @@ class TaskStore : Gtk.ListStore {
      * that by observing the type of list to be added to.
      */
     public void add_task (string description) {
-        add_initial_task (description, done_by_default);
-        task_data_changed ();
+        // Only add task, if description is not empty
+        if (description._strip () != "") {
+            add_initial_task (description, done_by_default);
+            task_data_changed ();
+        }
     }
     
     /**
