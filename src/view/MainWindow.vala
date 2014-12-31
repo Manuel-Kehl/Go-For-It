@@ -36,6 +36,7 @@ class MainWindow : Gtk.ApplicationWindow {
     private Gtk.ToggleToolButton menu_btn;
     // Application Menu
     private Gtk.Menu app_menu;
+    private Gtk.MenuItem clear_done_item;
     private Gtk.MenuItem config_item;
     private Gtk.MenuItem about_item;
     /**
@@ -185,6 +186,7 @@ class MainWindow : Gtk.ApplicationWindow {
     private void setup_menu () {
         /* Initialization */
         app_menu = new Gtk.Menu ();
+        clear_done_item = new Gtk.MenuItem.with_label ("Clear Done List");
         config_item = new Gtk.MenuItem.with_label ("Configuration");
         about_item = new Gtk.MenuItem.with_label ("About");
         
@@ -192,6 +194,10 @@ class MainWindow : Gtk.ApplicationWindow {
         // Untoggle menu button, when menu is hidden
         app_menu.hide.connect ((e) => {
             menu_btn.active = false;
+        });
+        
+        clear_done_item.activate.connect ((e) => {
+            task_manager.clear_done_store ();
         });
         config_item.activate.connect ((e) => {
             var dialog = new SettingsDialog (false, settings);
@@ -203,6 +209,7 @@ class MainWindow : Gtk.ApplicationWindow {
         });
         
         /* Add Items to Menu */
+        app_menu.add (clear_done_item);
         app_menu.add (config_item);
         app_menu.add (about_item);
         
