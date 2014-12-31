@@ -96,6 +96,13 @@ class TaskManager {
         }
     }
     
+    /**
+     * Deletes all task on the "Done" list
+     */
+    public void clear_done_store () {
+        done_store.clear ();
+    }
+    
     private void load_task_stores () {
         stdout.printf("load_task_stores");
         todo_txt_dir = File.new_for_path(settings.todo_txt_location);
