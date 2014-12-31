@@ -81,7 +81,11 @@ class TaskStore : Gtk.ListStore {
      * Function for modifying the text of a specific task.
      */
     public void edit_text (Gtk.TreeIter iter, string text) {
-        this.set (iter, 1, text);
-        task_data_changed ();
+        if (text._strip () != "") {
+            this.set (iter, 1, text);
+            task_data_changed ();
+        } else {
+            remove_task (iter);
+        }
     }
 }
