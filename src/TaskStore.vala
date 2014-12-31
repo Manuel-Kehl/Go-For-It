@@ -88,4 +88,13 @@ class TaskStore : Gtk.ListStore {
             remove_task (iter);
         }
     }
+    
+    /**
+     * Checks if the TaskStore is empty
+     */
+    public bool is_empty () {
+        // get_iter_first returns false, if tree is empty -> invert result
+        Gtk.TreeIter tmp;
+        return (!this.get_iter_first (out tmp));
+    }
 }
