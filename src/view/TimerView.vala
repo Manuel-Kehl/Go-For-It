@@ -48,11 +48,10 @@ public class TimerView : Gtk.Grid {
         setup_task_widgets ();
         setup_timer_container ();
         setup_action_container ();
-        
-        //this.add (progress);
+        setup_progress_bar ();
         
         set_running (timer.running);
-
+        
         // Connect the timer's signals
         timer.timer_updated.connect (set_time);
         timer.timer_running_changed.connect (set_running);
@@ -120,7 +119,6 @@ public class TimerView : Gtk.Grid {
      */
     private void setup_task_widgets () {
         /* Instantiation */
-        progress = new Gtk.ProgressBar ();
         task_status_lbl = new Gtk.Label ("Relax!");
         task_description_lbl = new Gtk.Label ("You have nothing to do");
         
@@ -134,7 +132,6 @@ public class TimerView : Gtk.Grid {
         task_description_lbl.wrap = true;
         
         /* Add Widgets */
-        this.add (progress);
         this.add (task_status_lbl);
         this.add (task_description_lbl);
     }
@@ -243,5 +240,10 @@ public class TimerView : Gtk.Grid {
         action_grid.add (action_task_grid);
         action_grid.add (action_timer_grid);
         this.add (action_grid);
+    }
+    
+    private void setup_progress_bar () {
+        progress = new Gtk.ProgressBar ();
+        this.add (progress);
     }
 }
