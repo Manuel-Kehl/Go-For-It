@@ -31,6 +31,8 @@ public class SettingsDialog : Gtk.Dialog {
     private Gtk.SpinButton task_spin;
     private Gtk.Label break_lbl;
     private Gtk.SpinButton break_spin;
+    private Gtk.Label reminder_lbl;
+    private Gtk.SpinButton reminder_spin;
     
     public SettingsDialog (bool first_start, SettingsManager settings) {
         this.settings = settings;
@@ -133,15 +135,19 @@ Thank you!
     
     private void setup_advanced_settings_widgets () {
         /* Instantiation */
-        task_lbl = new Gtk.Label ("Task Duration (in Minutes):");
-        break_lbl = new Gtk.Label ("Break Duration (in Minutes):");
+        task_lbl = new Gtk.Label ("Task Duration in Minutes:");
+        break_lbl = new Gtk.Label ("Break Duration in Minutes:");
+        reminder_lbl = new Gtk.Label ("Reminder Time in Seconds (0 to disable):");
         // No more than one day: 60 * 24 -1 = 1439
         task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
+        // More than ten minutes would not make much sense
+        reminder_spin = new Gtk.SpinButton.with_range (0, 600, 1);
         
         /* Configuration */
         task_spin.value = settings.task_duration / 60;
         break_spin.value = settings.break_duration / 60;
+        reminder_spin.value = settings.reminder_time;
         
         /* Signal Handling */
         task_spin.value_changed.connect ((e) => {
@@ -150,11 +156,16 @@ Thank you!
         break_spin.value_changed.connect ((e) => {
             settings.break_duration = break_spin.get_value_as_int () * 60;
         });
+        reminder_spin.value_changed.connect ((e) => {
+            settings.reminder_time = reminder_spin.get_value_as_int ();
+        });
         
         /* Add widgets */
         main_layout.add (task_lbl);
         main_layout.add (task_spin);
         main_layout.add (break_lbl);
         main_layout.add (break_spin);
+        main_layout.add (reminder_lbl);
+        main_layout.add (reminder_spin);
     }
 }

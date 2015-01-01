@@ -65,6 +65,20 @@ public class SettingsManager {
             timer_duration_changed ();
         }
     }
+    public int reminder_time {
+        owned get {
+            var time = get_value (GROUP_TIMER, "reminder_time", "60");
+            return int.parse (time);
+        }
+        set {
+            set_value (GROUP_TIMER, "reminder_time", value.to_string ());
+        }
+    }
+    public bool reminder_active {
+        owned get {
+            return (reminder_time > 0);
+        }
+    }
      
     /* Signals */
     public signal void todo_txt_location_changed ();
