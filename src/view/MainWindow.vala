@@ -107,7 +107,10 @@ class MainWindow : Gtk.ApplicationWindow {
         activity_stack.add_titled (done_list, "done", "Done");
 
         if (task_timer.running) {
-            timer_view.show (); // otherwise it won't switch
+            // Otherwise no task will be displayed in the timer view
+            task_timer.update_active_task ();
+            // Otherwise it won't switch
+            timer_view.show ();
             activity_stack.set_visible_child_name ("timer");
         }
             
