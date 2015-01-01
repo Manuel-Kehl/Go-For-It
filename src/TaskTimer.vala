@@ -60,11 +60,13 @@ public class TaskTimer {
             }
         }
     }
+    private bool almost_over_sent_already { get; set; default = false; }
     
     /* Signals */
     public signal void timer_updated (DateTime remaining_duration);
     public signal void timer_updated_relative (double progress);
     public signal void timer_running_changed (bool running);
+    public signal void timer_almost_over (DateTime remaining_duration);
     public signal void timer_finished (bool break_active);
     public signal void active_task_done (Gtk.TreeRowReference task);
     public signal void active_task_changed (Gtk.TreeRowReference task, 
@@ -138,6 +140,20 @@ public class TaskTimer {
             (double) (duration_till_end.to_unix () + previous_runtime);
         double progress = runtime / total;
         timer_updated_relative (progress);
+        
+        // Check if "almost over" signal is to be send
+        if (remaining_duration.to_unix () <= settings.reminder_time) {
+            if (settings.reminder_active
+                    && !almost_over_sent_already
+                    && running
+                    && !break_active) {
+                
+                timer_almost_over (remaining_duration);
+                almost_over_sent_already = true;
+            }
+        } else {
+            almost_over_sent_already = false;
+        }
     }
     
     /**
