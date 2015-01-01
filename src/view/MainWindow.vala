@@ -238,6 +238,7 @@ class MainWindow : Gtk.ApplicationWindow {
      */
     private void setup_notifications () {
         task_timer.active_task_changed.connect (task_timer_activated);
+        task_timer.timer_almost_over.connect (display_almost_over_notification);
     }
 
     private void task_timer_activated (Gtk.TreeRowReference reference,
@@ -258,7 +259,14 @@ class MainWindow : Gtk.ApplicationWindow {
         }
         break_previously_active = break_active;
     }
-
+    
+    private void display_almost_over_notification (DateTime remaining_time) {
+        int64 secs = remaining_time.to_unix ();
+        var notification = new Notification ("Prepare for your break");
+        notification.set_body (@"You have $secs seconds left");
+        application.send_notification (null, notification);
+    }
+    
     /**
      * Searches the system for a css stylesheet, that corresponds to go-for-it.
      * If it has been found in one of the potential data directories, it gets
