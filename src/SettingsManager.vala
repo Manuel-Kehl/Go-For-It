@@ -30,6 +30,7 @@ public class SettingsManager {
     
     private const string GROUP_TODO_TXT = "Todo.txt";
     private const string GROUP_TIMER = "Timer";
+    private const string GROUP_UI = "Interface";
     
     /*
      * A list of settings values with their corresponding access methods.
@@ -79,7 +80,44 @@ public class SettingsManager {
             return (reminder_time > 0);
         }
     }
-     
+    /*---GROUP:UI-------------------------------------------------------------*/
+    public int win_x {
+        owned get {
+            var x = get_value (GROUP_UI, "win_x", "100");
+            return int.parse (x);
+        }
+        set {
+            set_value (GROUP_UI, "win_x", value.to_string ());
+        }
+    }
+    public int win_y {
+        owned get {
+            var y = get_value (GROUP_UI, "win_y", "100");
+            return int.parse (y);
+        }
+        set {
+            set_value (GROUP_UI, "win_y", value.to_string ());
+        }
+    }
+    public int win_width {
+        owned get {
+            var width = get_value (GROUP_UI, "win_width", "350");
+            return int.parse (width);
+        }
+        set {
+            set_value (GROUP_UI, "win_width", value.to_string ());
+        }
+    }
+    public int win_height {
+        owned get {
+            var height = get_value (GROUP_UI, "win_height", "650");
+            return int.parse (height);
+        }
+        set {
+            set_value (GROUP_UI, "win_height", value.to_string ());
+        }
+    }
+    
     /* Signals */
     public signal void todo_txt_location_changed ();
     public signal void timer_duration_changed ();
