@@ -83,7 +83,7 @@ public class SettingsManager {
     /*---GROUP:UI-------------------------------------------------------------*/
     public int win_x {
         owned get {
-            var x = get_value (GROUP_UI, "win_x", "100");
+            var x = get_value (GROUP_UI, "win_x", "-1");
             return int.parse (x);
         }
         set {
@@ -92,7 +92,7 @@ public class SettingsManager {
     }
     public int win_y {
         owned get {
-            var y = get_value (GROUP_UI, "win_y", "100");
+            var y = get_value (GROUP_UI, "win_y", "-1");
             return int.parse (y);
         }
         set {
