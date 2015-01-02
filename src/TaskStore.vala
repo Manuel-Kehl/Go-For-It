@@ -20,7 +20,17 @@
  * An implementation of Gtk.ListStore that offers special functionality
  * targeted towards the storage of todo list entries
  */
+
+/* Columns */
+public enum Columns {
+    TOGGLE,
+    TEXT,
+    DRAGHANDLE,
+    N_COLUMNS
+}
+
 class TaskStore : Gtk.ListStore {
+
     /* Various Variables */
     public bool done_by_default;
     
@@ -35,7 +45,10 @@ class TaskStore : Gtk.ListStore {
         this.done_by_default = done_by_default;
         
         // Setup the columns
-        base.set_column_types ({typeof(bool), typeof(string)});
+        base.set_column_types ({typeof(bool), /* toggle */
+                    typeof(string), /* title */
+                    typeof(string)  /* drag handle */
+            });
         
         /* Reroute underlying signals to task_data_changed */
         this.rows_reordered.connect (trigger_task_data_changed);
@@ -74,7 +87,11 @@ class TaskStore : Gtk.ListStore {
      */
     public void add_initial_task (string description, 
             bool done = done_by_default) {
-        this.insert_with_values (null, -1, 0, done, 1, description, -1);
+        this.insert_with_values (null, -1,
+                                 Columns.TOGGLE, done,
+                                 Columns.TEXT, description,
+                                 Columns.DRAGHANDLE, "view-list-symbolic",
+                                 -1);
     }
     
     /**
