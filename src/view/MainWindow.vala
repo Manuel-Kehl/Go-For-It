@@ -69,8 +69,13 @@ class MainWindow : Gtk.ApplicationWindow {
     private void setup_window () {
         this.title = GOFI.APP_NAME;
         this.set_border_width (0);
-        this.set_position (Gtk.WindowPosition.CENTER);
-        this.set_default_size (GOFI.DEFAULT_WIN_WIDTH, GOFI.DEFAULT_WIN_HEIGHT);
+        restore_win_geometry ();
+        
+        // Save window state upon deleting the window
+        this.delete_event.connect ((e) => {
+            save_win_geometry ();
+            return false;
+        });
     }
     
     /** 
@@ -294,5 +299,33 @@ class MainWindow : Gtk.ApplicationWindow {
                 }
             }
         }
+    }
+    
+    /**
+     * Restores the window geometry from settings
+     */
+    private void restore_win_geometry () {
+        if (settings.win_x == -1 || settings.win_y == -1) {
+            // Center if no position have been saved yet
+            this.set_position (Gtk.WindowPosition.CENTER);
+        } else {
+            this.move (settings.win_x, settings.win_y);
+        }
+        this.set_default_size (settings.win_width, settings.win_height);
+    }
+    
+    /**
+     * Persistently store the window geometry
+     */
+    private void save_win_geometry () {
+        int x, y, width, height;
+        this.get_position (out x, out y);
+        this.get_size (out width, out height);
+        
+        // Store values in SettingsManager
+        settings.win_x = x;
+        settings.win_y = y;
+        settings.win_width = width;
+        settings.win_height = height;
     }
 }
