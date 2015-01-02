@@ -55,7 +55,9 @@ class TaskList : Gtk.Grid {
     private void setup_task_view () {
         this.scroll_view = new Gtk.ScrolledWindow (null, null);
         this.task_view = new Gtk.TreeView ();
-        
+
+        scroll_view.expand = true;
+
         // Assign the correct TaskStore to the Gtk.TreeView
         task_view.set_model (model);
         
@@ -68,17 +70,27 @@ class TaskList : Gtk.Grid {
         // Set up checkbox cell
         var toggle_cell = new Gtk.CellRendererToggle ();
         task_view.insert_column_with_attributes (-1, "Done", toggle_cell, 
-            "active", 0);
+                                                 "active", Columns.TOGGLE);
         
         // Set up task entry cell
         var text_cell = new Gtk.CellRendererText ();
-        task_view.insert_column_with_attributes (-1, "Task", text_cell,
-            "text", 1);
         text_cell.editable = true;
+        var text_column = new Gtk.TreeViewColumn.with_attributes ("Task", text_cell,
+                                                                  "text", Columns.TEXT);
+        text_column.expand = true;
+        task_view.insert_column (text_column, -1);
+
         if (model.done_by_default) {
             text_cell.strikethrough = true;
         }
-        
+
+        var drag_handler = new Gtk.CellRendererPixbuf ();
+        drag_handler.xpad = 5;
+        var drag_column = new Gtk.TreeViewColumn.with_attributes ("Drag", drag_handler,
+                                                                  "icon_name", Columns.DRAGHANDLE);
+        drag_column.expand = false;
+        task_view.insert_column (drag_column, -1); 
+
         /* Action and Signal Handling */
         // Handle tasks being marked done/undone
         toggle_cell.toggled.connect (toggle_cell_toggled);
