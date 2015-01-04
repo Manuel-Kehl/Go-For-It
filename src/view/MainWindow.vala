@@ -62,7 +62,16 @@ class MainWindow : Gtk.ApplicationWindow {
         load_css ();
         setup_notifications ();
     }
-    
+
+    public override bool delete_event (Gdk.EventAny event) {
+        bool dont_exit = false;
+        if (task_timer.running) {
+            iconify ();
+            dont_exit = true;
+        }
+        return dont_exit;
+    }
+
     /**
      * Configures the window's properties.
      */
