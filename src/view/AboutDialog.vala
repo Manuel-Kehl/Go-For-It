@@ -40,6 +40,7 @@ public class AboutDialog : Gtk.AboutDialog {
         
         comments = "A stylish to-do list with built-in productivity timer.";
         website = "http://manuel-kehl.de/projects/go-for-it";
+        version = GOFI.APP_VERSION;
 
         authors = { "<a href='http://manuel-kehl.de'>Manuel Kehl</a>" };
         artists = { "<a href='http://traumad91.deviantart.com'>Micah Ilbery</a>" };
