@@ -39,9 +39,23 @@ public class Main : Gtk.Application {
      * The entry point for running the application.
      */
     public static int main (string[] args) {
+        apply_desktop_specific_tweaks ();
         Main app = new Main ();
         int status = app.run (args);
         return status;
+    }
+    
+    /**
+     * This function handles different tweaks that have to be applied to
+     * make Go For It! work properly on certain desktop environments.
+     */
+    public static void apply_desktop_specific_tweaks () {
+        string desktop = Environment.get_variable ("DESKTOP_SESSION");
+        
+        if (desktop == "ubuntu") {
+            // Disable overlay scrollbars on unity, to avoid a strange Gtk bug
+            Environment.set_variable ("LIBOVERLAY_SCROLLBAR", "0", true);
+        }
     }
     
     public void new_window () {
@@ -70,6 +84,7 @@ public class Main : Gtk.Application {
         });
         
     }
+    
     public void show_about () {
         var dialog = new AboutDialog ();
         dialog.run ();
