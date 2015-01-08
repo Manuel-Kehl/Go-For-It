@@ -69,6 +69,7 @@ class MainWindow : Gtk.ApplicationWindow {
         save_win_geometry ();
 
         if (task_timer.running) {
+            this.show.connect (restore_win_geometry);
             hide ();
             dont_exit = true;
         }
