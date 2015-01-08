@@ -66,7 +66,7 @@ class MainWindow : Gtk.ApplicationWindow {
     public override bool delete_event (Gdk.EventAny event) {
         bool dont_exit = false;
         if (task_timer.running) {
-            iconify ();
+            hide ();
             dont_exit = true;
         }
         return dont_exit;
