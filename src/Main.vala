@@ -71,17 +71,6 @@ public class Main : Gtk.Application {
         task_timer.active_task_done.connect (task_manager.mark_task_done);
         win = new MainWindow (this, task_manager, task_timer, settings);
         win.show_all ();
-        
-        /*
-         * If the timer is currently active, create a new hidden instance of
-         * MainWindow, so that the app keeps running in the background.
-         */
-        this.window_removed.connect ((e) => {
-            if (task_timer.running) {
-                win = new MainWindow (this, task_manager, task_timer, settings);
-            }
-        });
-        
     }
     
     public void show_about () {
