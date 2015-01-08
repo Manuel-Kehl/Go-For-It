@@ -61,13 +61,13 @@ class MainWindow : Gtk.ApplicationWindow {
         load_css ();
         setup_notifications ();
     }
-
+    
     public override bool delete_event (Gdk.EventAny event) {
         bool dont_exit = false;
-
+        
         // Save window state upon deleting the window
         save_win_geometry ();
-
+        
         if (task_timer.running) {
             this.show.connect (restore_win_geometry);
             hide ();
@@ -75,7 +75,7 @@ class MainWindow : Gtk.ApplicationWindow {
         }
         return dont_exit;
     }
-
+    
     /**
      * Configures the window's properties.
      */
@@ -117,7 +117,7 @@ class MainWindow : Gtk.ApplicationWindow {
         activity_stack.add_titled (todo_list, "todo", "To-Do");
         activity_stack.add_titled (timer_view, "timer", "Timer");
         activity_stack.add_titled (done_list, "done", "Done");
-
+        
         if (task_timer.running) {
             // Otherwise no task will be displayed in the timer view
             task_timer.update_active_task ();
@@ -157,16 +157,16 @@ class MainWindow : Gtk.ApplicationWindow {
         
         main_layout.add (activity_switcher);
         main_layout.add (activity_stack);
-
+        
         // Add main_layout to the window
         this.add (main_layout);
     }
-
+    
     private void todo_selection_changed () {
         Gtk.TreeModel model;
         Gtk.TreePath path;
         var todo_selection = todo_list.task_view.get_selection ();
-
+        
         // If no row has been selected, select the first in the list
         if (todo_selection.count_selected_rows () == 0) {
             todo_selection.select_path (new Gtk.TreePath.first ());
@@ -183,7 +183,7 @@ class MainWindow : Gtk.ApplicationWindow {
         var reference = new Gtk.TreeRowReference (model, path);
         task_timer.active_task = reference;
     }
-
+    
     private void menu_btn_toggled (Gtk.ToggleToolButton source) {
         if (source.active) {
             app_menu.popup (null, null, calc_menu_position, 0,
@@ -193,7 +193,7 @@ class MainWindow : Gtk.ApplicationWindow {
             app_menu.popdown ();
         }
     }
-
+    
     private void calc_menu_position (Gtk.Menu menu, out int x, out int y) {
         /* Get relevant position values */
         int win_x, win_y;
@@ -255,10 +255,10 @@ class MainWindow : Gtk.ApplicationWindow {
         task_timer.active_task_changed.connect (task_timer_activated);
         task_timer.timer_almost_over.connect (display_almost_over_notification);
     }
-
+    
     private void task_timer_activated (Gtk.TreeRowReference reference,
                                        bool break_active) {
-
+        
         if (break_previously_active != break_active) {
             var task = GOFI.Utils.tree_row_ref_to_task (reference);
             Notification notification;
