@@ -61,7 +61,20 @@ class MainWindow : Gtk.ApplicationWindow {
         load_css ();
         setup_notifications ();
     }
-    
+
+    public override bool delete_event (Gdk.EventAny event) {
+        bool dont_exit = false;
+
+        // Save window state upon deleting the window
+        save_win_geometry ();
+
+        if (task_timer.running) {
+            hide ();
+            dont_exit = true;
+        }
+        return dont_exit;
+    }
+
     /**
      * Configures the window's properties.
      */
@@ -69,12 +82,6 @@ class MainWindow : Gtk.ApplicationWindow {
         this.title = GOFI.APP_NAME;
         this.set_border_width (0);
         restore_win_geometry ();
-        
-        // Save window state upon deleting the window
-        this.delete_event.connect ((e) => {
-            save_win_geometry ();
-            return false;
-        });
     }
     
     /** 
