@@ -182,6 +182,7 @@ class MainWindow : Gtk.ApplicationWindow {
         path = todo_selection.get_selected_rows (out model).nth_data (0);
         var reference = new Gtk.TreeRowReference (model, path);
         task_timer.active_task = reference;
+        timer_view.done_btn.visible = false;
     }
     
     private void menu_btn_toggled (Gtk.ToggleToolButton source) {
