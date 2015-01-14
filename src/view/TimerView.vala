@@ -76,6 +76,7 @@ public class TimerView : Gtk.Grid {
                 task_status_lbl.label = "Take a Break!";
                 style.remove_class ("task_active");
                 style.add_class ("task_break");
+                done_btn.visible = false;
             } else {
                 task_status_lbl.label = "Active Task:";
                 style.remove_class ("task_break");
