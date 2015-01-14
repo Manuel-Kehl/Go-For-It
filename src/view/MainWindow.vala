@@ -31,7 +31,7 @@ class MainWindow : Gtk.ApplicationWindow {
     private Gtk.HeaderBar header_bar;
     private TaskList todo_list;
     private TaskList done_list;
-    private TimerView timer_view;
+    public TimerView timer_view;
     private Gtk.ToggleToolButton menu_btn;
     // Application Menu
     private Gtk.Menu app_menu;
