@@ -35,7 +35,7 @@ public class TimerView : Gtk.Grid {
     private Gtk.Grid action_task_grid;
     private Gtk.Button run_btn;
     private Gtk.Button skip_btn;
-    private Gtk.Button done_btn;
+    public Gtk.Button done_btn;
     
     public TimerView (TaskTimer timer) {
         this.timer = timer;
@@ -206,6 +206,7 @@ public class TimerView : Gtk.Grid {
         action_task_grid = new Gtk.Grid ();
         run_btn = new Gtk.Button ();
         skip_btn = new Gtk.Button.with_label ("_Skip");
+        done_btn = new Gtk.Button.with_label ("_Done");
         
         /* Configuration */
         action_grid.orientation = Gtk.Orientation.HORIZONTAL;
@@ -214,9 +215,11 @@ public class TimerView : Gtk.Grid {
         action_task_grid.hexpand = true;
         action_timer_grid.halign = Gtk.Align.END;
         action_task_grid.halign = Gtk.Align.START;
+        done_btn.margin = 7;
         run_btn.margin = 7;
         skip_btn.margin = 7;
         // Use Mnemonics
+        done_btn.use_underline = true;
         skip_btn.use_underline = true;
         run_btn.use_underline = true;
         
@@ -224,10 +227,14 @@ public class TimerView : Gtk.Grid {
         skip_btn.clicked.connect ((e) => {
             timer.end_iteration ();
         });
+        done_btn.clicked.connect ((e) => {
+            timer.set_active_task_done();
+        });
         
         /* Add Widgets */
         action_timer_grid.add (skip_btn);
         action_timer_grid.add (run_btn);
+        action_task_grid.add (done_btn);
         action_grid.add (action_task_grid);
         action_grid.add (action_timer_grid);
         this.add (action_grid);
