@@ -102,6 +102,8 @@ public class TimerView : Gtk.Grid {
             run_btn.get_style_context ().add_class ("suggested-action");
             run_btn.clicked.connect ((e) => {
                 timer.start ();
+                if (!done_btn.visible)
+                    done_btn.visible = true;
             });
         }
     }
