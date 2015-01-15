@@ -91,6 +91,8 @@ public class TimerView : Gtk.Grid {
     }
     
     public void set_running (bool running) {
+        done_btn.visible = !timer.break_active;
+        
         if (running) {
             run_btn.label = "Pau_se";
             run_btn.get_style_context ().remove_class ("suggested-action");
