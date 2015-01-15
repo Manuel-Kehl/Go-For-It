@@ -35,7 +35,7 @@ public class TimerView : Gtk.Grid {
     private Gtk.Grid action_task_grid;
     private Gtk.Button run_btn;
     private Gtk.Button skip_btn;
-    private Gtk.Button done_btn;
+    public Gtk.Button done_btn;
     
     public TimerView (TaskTimer timer) {
         this.timer = timer;
