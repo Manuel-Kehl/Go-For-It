@@ -60,7 +60,7 @@ public class Main : Gtk.Application {
     public void new_window () {
         // Don't create a new window, if one already exists
         if (win != null) {
-            win.show_all ();
+            win.show ();
             win.present ();
             return;
         }
