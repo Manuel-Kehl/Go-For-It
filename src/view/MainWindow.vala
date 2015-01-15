@@ -31,7 +31,7 @@ class MainWindow : Gtk.ApplicationWindow {
     private Gtk.HeaderBar header_bar;
     private TaskList todo_list;
     private TaskList done_list;
-    public TimerView timer_view;
+    private TimerView timer_view;
     private Gtk.ToggleToolButton menu_btn;
     // Application Menu
     private Gtk.Menu app_menu;
@@ -162,7 +162,15 @@ class MainWindow : Gtk.ApplicationWindow {
         this.add (main_layout);
     }
     
-    private void todo_selection_changed () {
+    public override void show_all () {
+        base.show_all ();
+        // Hide done button initially, whenever the window has been shown
+        timer_view.done_btn.visible = false;
+        // Ensure, that the done button is shown again, if there is a task
+        todo_selection_changed ();
+    }
+    
+    public void todo_selection_changed () {
         Gtk.TreeModel model;
         Gtk.TreePath path;
         var todo_selection = todo_list.task_view.get_selection ();
