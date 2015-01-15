@@ -76,6 +76,7 @@ public class TimerView : Gtk.Grid {
                 task_status_lbl.label = "Take a Break!";
                 style.remove_class ("task_active");
                 style.add_class ("task_break");
+                done_btn.visible = false;
             } else {
                 task_status_lbl.label = "Active Task:";
                 style.remove_class ("task_break");
@@ -97,12 +98,16 @@ public class TimerView : Gtk.Grid {
             run_btn.label = "Pau_se";
             run_btn.get_style_context ().remove_class ("suggested-action");
             run_btn.clicked.connect ((e) => {
+                if (task_status_lbl.label == "Take a Break!")
+                    done_btn.visible = false;
                 timer.stop ();
             });
         } else {
             run_btn.label = "_Start";
             run_btn.get_style_context ().add_class ("suggested-action");
             run_btn.clicked.connect ((e) => {
+                if (task_status_lbl.label == "Active Task:")
+                    done_btn.visible = true;
                 timer.start ();
             });
         }

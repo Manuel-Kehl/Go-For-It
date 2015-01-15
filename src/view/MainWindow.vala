@@ -31,7 +31,7 @@ class MainWindow : Gtk.ApplicationWindow {
     private Gtk.HeaderBar header_bar;
     private TaskList todo_list;
     private TaskList done_list;
-    private TimerView timer_view;
+    public TimerView timer_view;
     private Gtk.ToggleToolButton menu_btn;
     // Application Menu
     private Gtk.Menu app_menu;
@@ -190,6 +190,7 @@ class MainWindow : Gtk.ApplicationWindow {
         path = todo_selection.get_selected_rows (out model).nth_data (0);
         var reference = new Gtk.TreeRowReference (model, path);
         task_timer.active_task = reference;
+        timer_view.done_btn.visible = false;
     }
     
     private void menu_btn_toggled (Gtk.ToggleToolButton source) {
