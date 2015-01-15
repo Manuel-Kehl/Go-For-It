@@ -71,7 +71,6 @@ public class Main : Gtk.Application {
         task_timer.active_task_done.connect (task_manager.mark_task_done);
         win = new MainWindow (this, task_manager, task_timer, settings);
         win.show_all ();
-        win.timer_view.done_btn.visible = false;
     }
     
     public void show_about () {
