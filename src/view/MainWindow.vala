@@ -60,6 +60,8 @@ class MainWindow : Gtk.ApplicationWindow {
         setup_widgets ();
         load_css ();
         setup_notifications ();
+        // Enable Notifications for the App
+        Notify.init (GOFI.APP_NAME);
     }
     
     public override bool delete_event (Gdk.EventAny event) {
@@ -269,25 +271,21 @@ class MainWindow : Gtk.ApplicationWindow {
         
         if (break_previously_active != break_active) {
             var task = GOFI.Utils.tree_row_ref_to_task (reference);
-            Notification notification;
+            Notify.Notification notification;
             if (break_active) {
-                notification = new Notification ("Take a Break");
-                notification.set_body ("Relax and stop thinking about your "
-                                       + "current task for a while :-)");
+                notification = new Notify.Notification ("Take a Break", "Relax and stop thinking about your current task for a while :-)", "go-for-it");
             } else {
-                notification = new Notification ("The Break is Over");
-                notification.set_body ("Your next task is: " + task);
+               notification = new Notify.Notification ("The Break is Over", "Your next task is: " + task, "go-for-it");
             }
-            application.send_notification (null, notification);
+            notification.show ();
         }
         break_previously_active = break_active;
     }
     
     private void display_almost_over_notification (DateTime remaining_time) {
         int64 secs = remaining_time.to_unix ();
-        var notification = new Notification ("Prepare for your break");
-        notification.set_body (@"You have $secs seconds left");
-        application.send_notification (null, notification);
+        Notify.Notification notification = new Notify.Notification ("Prepare for your break", @"You have $secs seconds left", "go-for-it");
+        notification.show ();
     }
     
     /**

@@ -15,7 +15,10 @@ set (VERSION_INFO "initial release")
 # find pkgconfig to make sure dependencies are installed
 find_package(PkgConfig)
 # check for the required dependencies
-pkg_check_modules(DEPS REQUIRED gtk+-3.0)
+pkg_check_modules(DEPS REQUIRED 
+    gtk+-3.0
+    libnotify
+    )
 add_definitions(${DEPS_CFLAGS})
 link_libraries(${DEPS_LIBRARIES})
 link_directories(${DEPS_LIBRARY_DIRS})
@@ -47,6 +50,7 @@ vala_precompile(VALA_C ${EXEC_NAME}
 # tell what libraries to use when compiling
 PACKAGES
     gtk+-3.0
+    libnotify
 )
 
 # tell cmake what to call the executable we just made
