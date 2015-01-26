@@ -280,7 +280,12 @@ class MainWindow : Gtk.ApplicationWindow {
             } else {
                notification = new Notify.Notification ("The Break is Over", "Your next task is: " + task, "go-for-it");
             }
-            notification.show ();
+            
+            try {
+                notification.show ();
+            } catch (GLib.Error err){
+                GLib.stderr.printf("Error in notify! (break_active notification)\n");
+            }
         }
         break_previously_active = break_active;
     }
@@ -288,7 +293,11 @@ class MainWindow : Gtk.ApplicationWindow {
     private void display_almost_over_notification (DateTime remaining_time) {
         int64 secs = remaining_time.to_unix ();
         Notify.Notification notification = new Notify.Notification ("Prepare for your break", @"You have $secs seconds left", "go-for-it");
-        notification.show ();
+        try {
+            notification.show ();
+        } catch (GLib.Error err){
+            GLib.stderr.printf("Error in notify! (remaining_time notification)\n");
+        }
     }
     
     /**
