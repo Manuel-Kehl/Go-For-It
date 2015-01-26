@@ -75,6 +75,9 @@ class MainWindow : Gtk.ApplicationWindow {
             hide ();
             dont_exit = true;
         }
+        
+        if (dont_exit == false) Notify.uninit ();
+            
         return dont_exit;
     }
     
