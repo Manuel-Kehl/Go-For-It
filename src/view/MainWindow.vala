@@ -276,15 +276,23 @@ class MainWindow : Gtk.ApplicationWindow {
             var task = GOFI.Utils.tree_row_ref_to_task (reference);
             Notify.Notification notification;
             if (break_active) {
-                notification = new Notify.Notification ("Take a Break", "Relax and stop thinking about your current task for a while :-)", "go-for-it");
+                notification = new Notify.Notification (
+                    "Take a Break", 
+                    "Relax and stop thinking about your"
+                    +" current task for a while :-)",
+                    "go-for-it");
             } else {
-               notification = new Notify.Notification ("The Break is Over", "Your next task is: " + task, "go-for-it");
+                notification = new Notify.Notification (
+                    "The Break is Over", 
+                    "Your next task is: " + task, 
+                    "go-for-it");
             }
             
             try {
                 notification.show ();
             } catch (GLib.Error err){
-                GLib.stderr.printf("Error in notify! (break_active notification)\n");
+                GLib.stderr.printf(
+                    "Error in notify! (break_active notification)\n");
             }
         }
         break_previously_active = break_active;
@@ -292,11 +300,14 @@ class MainWindow : Gtk.ApplicationWindow {
     
     private void display_almost_over_notification (DateTime remaining_time) {
         int64 secs = remaining_time.to_unix ();
-        Notify.Notification notification = new Notify.Notification ("Prepare for your break", @"You have $secs seconds left", "go-for-it");
+        Notify.Notification notification = new Notify.Notification (
+            "Prepare for your break",
+            @"You have $secs seconds left", "go-for-it");
         try {
             notification.show ();
         } catch (GLib.Error err){
-            GLib.stderr.printf("Error in notify! (remaining_time notification)\n");
+            GLib.stderr.printf(
+                "Error in notify! (remaining_time notification)\n");
         }
     }
     
