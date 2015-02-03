@@ -165,12 +165,12 @@ class TaskManager {
             string line;
             
             while ((line = stream_in.read_line (null)) != null) {
-                // Todo.txt notation: completed tasks start with an "x"
-                bool done = line.has_prefix ("x");
+                // Todo.txt notation: completed tasks start with an "x "
+                bool done = line.has_prefix ("x ");
                 
                 if (done) {
-                    // Remove "x" from displayed string
-                    line = line.split ("x", 2)[1];
+                    // Remove "x " from displayed string
+                    line = line.split ("x ", 2)[1];
                 }
                 
                 store.add_initial_task (line, done);
@@ -202,7 +202,7 @@ class TaskManager {
                 store.get_value (iter, 1, out text);
                 
                 if ((bool) done) {
-                    text = "x" + (string) text;
+                    text = "x " + (string) text;
                 }
                 
                 stream_out.put_string ((string) text + "\n");
