@@ -48,20 +48,20 @@ public class SettingsDialog : Gtk.Dialog {
         
         /* Differentiate between "First Start" or "Regular Settings Dialog" */
         if (first_start) {
-            this.title = "Welcome";
+            this.title = _("Welcome");
             setup_welcome ();
             setup_settings_widgets (false);
             this.deletable = false;
-            this.add_button ("Let's go!", Gtk.ResponseType.CLOSE);
+            this.add_button (_("Let's go") + "!", Gtk.ResponseType.CLOSE);
             // Make sure, that the user does not abort the initial dialog
             this.close.connect ((e) => {
                 var new_dia = new SettingsDialog (true, settings);
                 new_dia.show ();
             });
         } else {
-            this.title = "Settings";
+            this.title = _("Settings");
             setup_settings_widgets (true);
-            this.add_button ("Close", Gtk.ResponseType.CLOSE);
+            this.add_button (_("Close"), Gtk.ResponseType.CLOSE);
         }
         
         /* Settings that apply for all widgets in the dialog */
@@ -83,15 +83,17 @@ public class SettingsDialog : Gtk.Dialog {
      */
     private void setup_welcome () {
         welcome_lbl = new Gtk.Label (
-"""<b>Welcome to <i>Go For It!</i></b>
+"""<b>""" + _("Welcome to") + """ <i>Go For It!</i></b>
 
-Your stylish to-do list with built-in productivity timer.
+"""
++
+_("""Your stylish to-do list with built-in productivity timer.
 
 To develop cool, new features and keep the project 
 running, I rely on your <a href="https://github.com/mank319/Go-For-It">contributions</a> and <a href="http://manuel-kehl.de/donations">donations</a>.
 
 Thank you!
-""");
+"""));
         
         /* Configuration */
         welcome_lbl.set_use_markup (true);
@@ -103,11 +105,11 @@ Thank you!
     
     private void setup_settings_widgets (bool advanced) {
         /* Instantiation */
-        settings_lbl = new Gtk.Label("""<b>Settings</b>""");
-        directory_btn = new Gtk.FileChooserButton ("Todo.txt directory",
+        settings_lbl = new Gtk.Label(_("""<b>Settings</b>"""));
+        directory_btn = new Gtk.FileChooserButton ("Todo.txt " + _("directory"),
             Gtk.FileChooserAction.SELECT_FOLDER);
         directory_lbl = new Gtk.Label (
-            """<a href="http://todotxt.com">Todo.txt</a> directory:""");
+            """<a href="http://todotxt.com">Todo.txt</a> """ + _("""directory:"""));
         
         /* Configuration */
         settings_lbl.set_use_markup (true);
@@ -134,9 +136,10 @@ Thank you!
     
     private void setup_advanced_settings_widgets () {
         /* Instantiation */
-        task_lbl = new Gtk.Label ("Task Duration in Minutes:");
-        break_lbl = new Gtk.Label ("Break Duration in Minutes:");
-        reminder_lbl = new Gtk.Label ("Reminder Time in Seconds (0 to disable):");
+        task_lbl = new Gtk.Label (_("Task Duration in Minutes") + ":");
+        break_lbl = new Gtk.Label (_("Break Duration in Minutes") + ":");
+        reminder_lbl = new Gtk.Label (_("Reminder Time in Seconds (0 to disable)")
+            +":");
         // No more than one day: 60 * 24 -1 = 1439
         task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
