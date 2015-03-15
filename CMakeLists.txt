@@ -25,6 +25,7 @@ link_directories(${DEPS_LIBRARY_DIRS})
 
 # disable c compiler warnings
 add_definitions(-w)
+add_definitions(-DGETTEXT_PACKAGE="go-for-it")
 
 # make sure we have vala
 find_package(Vala REQUIRED)
