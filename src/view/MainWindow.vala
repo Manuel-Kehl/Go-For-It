@@ -242,7 +242,7 @@ class MainWindow : Gtk.ApplicationWindow {
             task_manager.clear_done_store ();
         });
         config_item.activate.connect ((e) => {
-            var dialog = new SettingsDialog (false, settings);
+            var dialog = new SettingsDialog (settings);
             dialog.show ();
         });
         about_item.activate.connect ((e) => {

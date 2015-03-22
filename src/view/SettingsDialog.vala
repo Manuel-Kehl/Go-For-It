@@ -22,7 +22,6 @@ public class SettingsDialog : Gtk.Dialog {
     private SettingsManager settings;
     /* GTK Widgets */
     private Gtk.Grid main_layout;
-    private Gtk.Label welcome_lbl;
     private Gtk.Label settings_lbl;
     private Gtk.Label directory_lbl;
     private Gtk.FileChooserButton directory_btn;
@@ -33,7 +32,7 @@ public class SettingsDialog : Gtk.Dialog {
     private Gtk.Label reminder_lbl;
     private Gtk.SpinButton reminder_spin;
     
-    public SettingsDialog (bool first_start, SettingsManager settings) {
+    public SettingsDialog (SettingsManager settings) {
         this.settings = settings;
         /* Initalization */
         main_layout = new Gtk.Grid ();
@@ -46,23 +45,9 @@ public class SettingsDialog : Gtk.Dialog {
         main_layout.orientation = Gtk.Orientation.VERTICAL;
         main_layout.row_spacing = 15;
         
-        /* Differentiate between "First Start" or "Regular Settings Dialog" */
-        if (first_start) {
-            this.title = "Welcome";
-            setup_welcome ();
-            setup_settings_widgets (false);
-            this.deletable = false;
-            this.add_button ("Let's go!", Gtk.ResponseType.CLOSE);
-            // Make sure, that the user does not abort the initial dialog
-            this.close.connect ((e) => {
-                var new_dia = new SettingsDialog (true, settings);
-                new_dia.show ();
-            });
-        } else {
-            this.title = "Settings";
-            setup_settings_widgets (true);
-            this.add_button ("Close", Gtk.ResponseType.CLOSE);
-        }
+        this.title = "Settings";
+        setup_settings_widgets (true);
+        this.add_button ("Close", Gtk.ResponseType.CLOSE);
         
         /* Settings that apply for all widgets in the dialog */
         foreach (var child in main_layout.get_children ()) {
@@ -76,29 +61,6 @@ public class SettingsDialog : Gtk.Dialog {
                 this.destroy ();
             }
         });
-    }
-    
-    /** 
-     * Displays a welcome message with basic information about Go For It!
-     */
-    private void setup_welcome () {
-        welcome_lbl = new Gtk.Label (
-"""<b>Welcome to <i>Go For It!</i></b>
-
-Your stylish to-do list with built-in productivity timer.
-
-To develop cool, new features and keep the project 
-running, I rely on your <a href="https://github.com/mank319/Go-For-It">contributions</a> and <a href="http://manuel-kehl.de/donations">donations</a>.
-
-Thank you!
-""");
-        
-        /* Configuration */
-        welcome_lbl.set_use_markup (true);
-        welcome_lbl.set_line_wrap (false);
-        
-        /* Add widgets */
-        main_layout.add (welcome_lbl);
     }
     
     private void setup_settings_widgets (bool advanced) {
