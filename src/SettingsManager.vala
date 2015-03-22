@@ -31,6 +31,9 @@ public class SettingsManager {
     private const string GROUP_TIMER = "Timer";
     private const string GROUP_UI = "Interface";
     
+    // Whether or not Go For It! has been started for the first time
+    public bool first_start = false;
+    
     /*
      * A list of settings values with their corresponding access methods.
      * The "heart" of the SettingsManager class.
@@ -132,8 +135,7 @@ public class SettingsManager {
         if (!FileUtils.test (GOFI.Utils.config_file, FileTest.EXISTS)) {
             // Fill with default values, if it does not exist yet
             generate_configuration ();
-            var dia = new SettingsDialog (true, this);
-            dia.show ();
+            first_start = true;
         } else {
             // If it does exist, read existing values
             try {

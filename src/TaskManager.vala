@@ -29,7 +29,14 @@ class TaskManager {
     private File done_txt;
     public TaskStore todo_store;
     public TaskStore done_store;
-    private bool read_only ;
+    private bool read_only;
+        
+    string[] default_todos = {
+        "Choose Todo.txt folder via \"Settings\"",
+        "Spread the word about \"Go For It!\"",
+        "Consider a donation to help the project",
+        "Consider contributing to the project"
+    };
     
     public TaskManager (SettingsManager settings) {
         this.settings = settings;
@@ -135,6 +142,16 @@ class TaskManager {
         read_only = false;
         read_task_file (this.todo_store, this.todo_txt);
         read_task_file (this.done_store, this.done_txt);
+        
+        if (settings.first_start) {
+            // Iterate in reverse order because todos are added to position 0
+            for (int i = default_todos.length - 1;
+                 i >= 0;
+                 i--)
+            {
+                todo_store.add_task(default_todos[i], 0);
+            }
+        }
     }
     
     private void save_tasks () {

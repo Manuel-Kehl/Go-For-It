@@ -9,7 +9,7 @@ set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 set (PKGDATADIR "${DATADIR}/go-for-it")
 set (EXEC_NAME "go-for-it")
 set (RELEASE_NAME "A stylish to-do list with built-in productivity timer.")
-set (VERSION "0.1")
+set (VERSION "1.3.1")
 set (VERSION_INFO "initial release")
 
 # find pkgconfig to make sure dependencies are installed
@@ -25,6 +25,7 @@ link_directories(${DEPS_LIBRARY_DIRS})
 
 # disable c compiler warnings
 add_definitions(-w)
+add_definitions(-DGETTEXT_PACKAGE="go-for-it")
 
 # make sure we have vala
 find_package(Vala REQUIRED)
@@ -44,6 +45,7 @@ vala_precompile(VALA_C ${EXEC_NAME}
     src/view/TimerView.vala
     src/view/SettingsDialog.vala
     src/view/AboutDialog.vala
+    src/view/ContributeDialog.vala
     src/view/MainWindow.vala
     src/Main.vala
     
