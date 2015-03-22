@@ -38,7 +38,7 @@ public class AboutDialog : Gtk.AboutDialog {
         logo_icon_name = "go-for-it";
         
         comments = _("A stylish to-do list with built-in productivity timer.");
-        website = "http://manuel-kehl.de/projects/go-for-it";
+        website = GOFI.PROJECT_WEBSITE;
         version = GOFI.APP_VERSION;
 
         authors = { "<a href='http://manuel-kehl.de'>Manuel Kehl</a>" };

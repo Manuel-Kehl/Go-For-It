@@ -76,7 +76,7 @@ public class SettingsDialog : Gtk.Dialog {
         );
             
         directory_explanation_lbl = new Gtk.Label (
-            _("If no appropriate folder has been found, Go For It! defaults to creating a Todo folder in your home directory.")
+            _("If no appropriate folder was found, Go For It! defaults to creating a Todo folder in your home directory.")
         );
         
         /* Configuration */
