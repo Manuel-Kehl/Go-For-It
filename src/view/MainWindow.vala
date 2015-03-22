@@ -35,8 +35,9 @@ class MainWindow : Gtk.ApplicationWindow {
     private Gtk.ToggleToolButton menu_btn;
     // Application Menu
     private Gtk.Menu app_menu;
-    private Gtk.MenuItem clear_done_item;
     private Gtk.MenuItem config_item;
+    private Gtk.MenuItem clear_done_item;
+    private Gtk.MenuItem contribute_item;
     private Gtk.MenuItem about_item;
     /**
      * Used to determine if a notification should be sent.
@@ -228,8 +229,9 @@ class MainWindow : Gtk.ApplicationWindow {
     private void setup_menu () {
         /* Initialization */
         app_menu = new Gtk.Menu ();
+        config_item = new Gtk.MenuItem.with_label (_("Settings"));
         clear_done_item = new Gtk.MenuItem.with_label (_("Clear Done List"));
-        config_item = new Gtk.MenuItem.with_label (_("Configuration"));
+        contribute_item = new Gtk.MenuItem.with_label (_("Contribute / Donate"));
         about_item = new Gtk.MenuItem.with_label (_("About"));
         
         /* Signal and Action Handling */
@@ -238,11 +240,15 @@ class MainWindow : Gtk.ApplicationWindow {
             menu_btn.active = false;
         });
         
+        config_item.activate.connect ((e) => {
+            var dialog = new SettingsDialog (settings);
+            dialog.show ();
+        });
         clear_done_item.activate.connect ((e) => {
             task_manager.clear_done_store ();
         });
-        config_item.activate.connect ((e) => {
-            var dialog = new SettingsDialog (settings);
+        contribute_item.activate.connect ((e) => {
+            var dialog = new ContributeDialog (this);
             dialog.show ();
         });
         about_item.activate.connect ((e) => {
@@ -251,8 +257,9 @@ class MainWindow : Gtk.ApplicationWindow {
         });
         
         /* Add Items to Menu */
-        app_menu.add (clear_done_item);
         app_menu.add (config_item);
+        app_menu.add (clear_done_item);
+        app_menu.add (contribute_item);
         app_menu.add (about_item);
         
         /* And make all children visible */
@@ -280,12 +287,12 @@ class MainWindow : Gtk.ApplicationWindow {
                     _("Take a Break"), 
                     _("Relax and stop thinking about your current task for a while") 
                     + " :-)",
-                    "go-for-it");
+                    GOFI.APP_SYSTEM_NAME);
             } else {
                 notification = new Notify.Notification (
                     _("The Break is Over"), 
                     _("Your next task is") + ": " + task, 
-                    "go-for-it");
+                    GOFI.APP_SYSTEM_NAME);
             }
             
             try {
@@ -302,7 +309,7 @@ class MainWindow : Gtk.ApplicationWindow {
         int64 secs = remaining_time.to_unix ();
         Notify.Notification notification = new Notify.Notification (
             _("Prepare for your break"),
-            _(@"You have $secs seconds left"), "go-for-it");
+            _(@"You have $secs seconds left"), GOFI.APP_SYSTEM_NAME);
         try {
             notification.show ();
         } catch (GLib.Error err){
