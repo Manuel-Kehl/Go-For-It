@@ -22,8 +22,8 @@ public class SettingsDialog : Gtk.Dialog {
     private SettingsManager settings;
     /* GTK Widgets */
     private Gtk.Grid main_layout;
-    private Gtk.Label settings_lbl;
     private Gtk.Label directory_lbl;
+    private Gtk.Label directory_explanation_lbl;
     private Gtk.FileChooserButton directory_btn;
     private Gtk.Label task_lbl;
     private Gtk.SpinButton task_spin;
@@ -38,9 +38,11 @@ public class SettingsDialog : Gtk.Dialog {
         main_layout = new Gtk.Grid ();
         
         /* General Settigns */
-        this.set_default_size (450, 500);
+        // Default to minimum possible size
+        this.set_default_size (1, 1);
         this.get_content_area ().margin = 10;
         this.get_content_area ().pack_start (main_layout);
+        this.set_modal (true);
         main_layout.visible = true;
         main_layout.orientation = Gtk.Orientation.VERTICAL;
         main_layout.row_spacing = 15;
@@ -65,15 +67,22 @@ public class SettingsDialog : Gtk.Dialog {
     
     private void setup_settings_widgets (bool advanced) {
         /* Instantiation */
-        settings_lbl = new Gtk.Label(_("""<b>Settings</b>"""));
         directory_btn = new Gtk.FileChooserButton ("Todo.txt " + _("directory"),
             Gtk.FileChooserAction.SELECT_FOLDER);
+            
         directory_lbl = new Gtk.Label (
-            """<a href="http://todotxt.com">Todo.txt</a> """ + _("""directory:"""));
+            "<a href=\"http://todotxt.com\">Todo.txt</a> "
+            + _("directory") + ":"
+        );
+            
+        directory_explanation_lbl = new Gtk.Label (
+            _("If no appropriate folder has been found, Go For It! defaults to creating a Todo folder in your home directory.")
+        );
         
         /* Configuration */
-        settings_lbl.set_use_markup (true);
+        directory_lbl.set_line_wrap (false);
         directory_lbl.set_use_markup (true);
+        directory_explanation_lbl.set_line_wrap (true);
         directory_btn.create_folders = true;
         directory_btn.set_current_folder (settings.todo_txt_location);
         
@@ -84,8 +93,8 @@ public class SettingsDialog : Gtk.Dialog {
         });
         
         /* Add widgets */
-        main_layout.add (settings_lbl);
         main_layout.add (directory_lbl);
+        main_layout.add (directory_explanation_lbl);
         main_layout.add (directory_btn);
         
         if (advanced) {
@@ -99,8 +108,7 @@ public class SettingsDialog : Gtk.Dialog {
         /* Instantiation */
         task_lbl = new Gtk.Label (_("Task Duration in Minutes") + ":");
         break_lbl = new Gtk.Label (_("Break Duration in Minutes") + ":");
-        reminder_lbl = new Gtk.Label (_("Reminder Time in Seconds (0 to disable)")
-            +":");
+        reminder_lbl = new Gtk.Label (_("Reminder Time in Seconds (0 to disable)") +":");
         // No more than one day: 60 * 24 -1 = 1439
         task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
