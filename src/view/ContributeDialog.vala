@@ -20,14 +20,15 @@
  */
 public class ContributeDialog : Gtk.MessageDialog {
     /* GTK Widgets */
-    public ContributeDialog (Gtk.Window parent)
+    public ContributeDialog ()
     {
-        Object (parent: parent, buttons: Gtk.ButtonsType.OK);
+        Object (buttons: Gtk.ButtonsType.OK);
         this.message_type = Gtk.MessageType.INFO;
-        this.title = _("Contributing / Donating");
+        this.set_modal (true);
+        this.title = _("Contributions and Donations");
         
         this.format_secondary_markup (
-        "<b>" + _("Thanks for supporting") + " <i>Go For It!</i>\n\n\n</b>"
+        "<b>" + _("Thank you for supporting") + " <i>Go For It!</i>\n\n\n</b>"
         + _("Submitting code, artwork, translations or documentation is a great way of contributing to the project:")
         + "\n\n"
         + "<a href=\"" + GOFI.PROJECT_REPO + "\">" + GOFI.PROJECT_REPO + "</a>"
