@@ -16,7 +16,7 @@
 */
 
 /**
- * The widget for selecting, displaying and controlling the active task.
+ * A dialog for changing the application's settings.
  */
 public class SettingsDialog : Gtk.Dialog {
     private SettingsManager settings;
