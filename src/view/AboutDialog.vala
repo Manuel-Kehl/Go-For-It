@@ -23,7 +23,7 @@ public class AboutDialog : Gtk.AboutDialog {
         /* Initalization */
         this.set_default_size (450, 500);
         this.get_content_area ().margin = 10;
-        this.title = "About Go For It!";
+        this.title = _("About") + " Go For It!";
         setup_content ();
 
         /* Action Handling */
@@ -37,7 +37,7 @@ public class AboutDialog : Gtk.AboutDialog {
         program_name = "Go For It!";
         logo_icon_name = "go-for-it";
         
-        comments = "A stylish to-do list with built-in productivity timer.";
+        comments = _("A stylish to-do list with built-in productivity timer.");
         website = "http://manuel-kehl.de/projects/go-for-it";
         version = GOFI.APP_VERSION;
 
