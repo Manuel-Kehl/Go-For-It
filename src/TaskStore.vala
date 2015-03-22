@@ -64,10 +64,10 @@ class TaskStore : Gtk.ListStore {
      * Therefore it does not need a "done" parameter, as one can determine
      * that by observing the type of list to be added to.
      */
-    public void add_task (string description) {
+    public void add_task (string description, int position = -1) {
         // Only add task, if description is not empty
         if (description._strip () != "") {
-            add_initial_task (description, done_by_default);
+            add_initial_task (description, done_by_default, position);
             task_data_changed ();
         }
     }
@@ -84,9 +84,9 @@ class TaskStore : Gtk.ListStore {
      * When tasks are added initially, the "task_data_changed" signal
      * is not emmited.
      */
-    public void add_initial_task (string description, 
-            bool done = done_by_default) {
-        this.insert_with_values (null, -1,
+    public void add_initial_task (string description,
+            bool done = done_by_default, int position = -1) {
+        this.insert_with_values (null, position,
                                  Columns.TOGGLE, done,
                                  Columns.TEXT, description,
                                  Columns.DRAGHANDLE, "view-list-symbolic",

@@ -16,15 +16,14 @@
 */
 
 /**
- * The widget for selecting, displaying and controlling the active task.
+ * A dialog for changing the application's settings.
  */
 public class SettingsDialog : Gtk.Dialog {
     private SettingsManager settings;
     /* GTK Widgets */
     private Gtk.Grid main_layout;
-    private Gtk.Label welcome_lbl;
-    private Gtk.Label settings_lbl;
     private Gtk.Label directory_lbl;
+    private Gtk.Label directory_explanation_lbl;
     private Gtk.FileChooserButton directory_btn;
     private Gtk.Label task_lbl;
     private Gtk.SpinButton task_spin;
@@ -33,36 +32,24 @@ public class SettingsDialog : Gtk.Dialog {
     private Gtk.Label reminder_lbl;
     private Gtk.SpinButton reminder_spin;
     
-    public SettingsDialog (bool first_start, SettingsManager settings) {
+    public SettingsDialog (SettingsManager settings) {
         this.settings = settings;
         /* Initalization */
         main_layout = new Gtk.Grid ();
         
         /* General Settigns */
-        this.set_default_size (450, 500);
+        // Default to minimum possible size
+        this.set_default_size (1, 1);
         this.get_content_area ().margin = 10;
         this.get_content_area ().pack_start (main_layout);
+        this.set_modal (true);
         main_layout.visible = true;
         main_layout.orientation = Gtk.Orientation.VERTICAL;
         main_layout.row_spacing = 15;
         
-        /* Differentiate between "First Start" or "Regular Settings Dialog" */
-        if (first_start) {
-            this.title = "Welcome";
-            setup_welcome ();
-            setup_settings_widgets (false);
-            this.deletable = false;
-            this.add_button ("Let's go!", Gtk.ResponseType.CLOSE);
-            // Make sure, that the user does not abort the initial dialog
-            this.close.connect ((e) => {
-                var new_dia = new SettingsDialog (true, settings);
-                new_dia.show ();
-            });
-        } else {
-            this.title = "Settings";
-            setup_settings_widgets (true);
-            this.add_button ("Close", Gtk.ResponseType.CLOSE);
-        }
+        this.title = _("Settings");
+        setup_settings_widgets (true);
+        this.add_button (_("Close"), Gtk.ResponseType.CLOSE);
         
         /* Settings that apply for all widgets in the dialog */
         foreach (var child in main_layout.get_children ()) {
@@ -78,40 +65,24 @@ public class SettingsDialog : Gtk.Dialog {
         });
     }
     
-    /** 
-     * Displays a welcome message with basic information about Go For It!
-     */
-    private void setup_welcome () {
-        welcome_lbl = new Gtk.Label (
-"""<b>Welcome to <i>Go For It!</i></b>
-
-Your stylish to-do list with built-in productivity timer.
-
-To develop cool, new features and keep the project 
-running, I rely on your <a href="https://github.com/mank319/Go-For-It">contributions</a> and <a href="http://manuel-kehl.de/donations">donations</a>.
-
-Thank you!
-""");
-        
-        /* Configuration */
-        welcome_lbl.set_use_markup (true);
-        welcome_lbl.set_line_wrap (false);
-        
-        /* Add widgets */
-        main_layout.add (welcome_lbl);
-    }
-    
     private void setup_settings_widgets (bool advanced) {
         /* Instantiation */
-        settings_lbl = new Gtk.Label("""<b>Settings</b>""");
-        directory_btn = new Gtk.FileChooserButton ("Todo.txt directory",
+        directory_btn = new Gtk.FileChooserButton ("Todo.txt " + _("directory"),
             Gtk.FileChooserAction.SELECT_FOLDER);
+            
         directory_lbl = new Gtk.Label (
-            """<a href="http://todotxt.com">Todo.txt</a> directory:""");
+            "<a href=\"http://todotxt.com\">Todo.txt</a> "
+            + _("directory") + ":"
+        );
+            
+        directory_explanation_lbl = new Gtk.Label (
+            _("If no appropriate folder was found, Go For It! defaults to creating a Todo folder in your home directory.")
+        );
         
         /* Configuration */
-        settings_lbl.set_use_markup (true);
+        directory_lbl.set_line_wrap (false);
         directory_lbl.set_use_markup (true);
+        directory_explanation_lbl.set_line_wrap (true);
         directory_btn.create_folders = true;
         directory_btn.set_current_folder (settings.todo_txt_location);
         
@@ -122,8 +93,8 @@ Thank you!
         });
         
         /* Add widgets */
-        main_layout.add (settings_lbl);
         main_layout.add (directory_lbl);
+        main_layout.add (directory_explanation_lbl);
         main_layout.add (directory_btn);
         
         if (advanced) {
@@ -132,11 +103,12 @@ Thank you!
         
     }
     
+    // This function allows for advanced settings in the future
     private void setup_advanced_settings_widgets () {
         /* Instantiation */
-        task_lbl = new Gtk.Label ("Task Duration in Minutes:");
-        break_lbl = new Gtk.Label ("Break Duration in Minutes:");
-        reminder_lbl = new Gtk.Label ("Reminder Time in Seconds (0 to disable):");
+        task_lbl = new Gtk.Label (_("Task Duration in Minutes") + ":");
+        break_lbl = new Gtk.Label (_("Break Duration in Minutes") + ":");
+        reminder_lbl = new Gtk.Label (_("Reminder Time in Seconds (0 to disable)") +":");
         // No more than one day: 60 * 24 -1 = 1439
         task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
