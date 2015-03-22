@@ -73,11 +73,11 @@ public class TimerView : Gtk.Grid {
 
             // Append correct class according to break status
             if (break_active) {
-                task_status_lbl.label = "Take a Break!";
+                task_status_lbl.label = _("Take a Break") + "!";
                 style.remove_class ("task_active");
                 style.add_class ("task_break");
             } else {
-                task_status_lbl.label = "Active Task:";
+                task_status_lbl.label = _("Active Task") + ":";
                 style.remove_class ("task_break");
                 style.add_class ("task_active");
                 done_btn.visible = true;
@@ -94,13 +94,13 @@ public class TimerView : Gtk.Grid {
         done_btn.visible = !timer.break_active;
         
         if (running) {
-            run_btn.label = "Pau_se";
+            run_btn.label = _("Pau_se");
             run_btn.get_style_context ().remove_class ("suggested-action");
             run_btn.clicked.connect ((e) => {
                 timer.stop ();
             });
         } else {
-            run_btn.label = "_Start";
+            run_btn.label = _("_Start");
             run_btn.get_style_context ().add_class ("suggested-action");
             run_btn.clicked.connect ((e) => {
                 timer.start ();
@@ -121,8 +121,8 @@ public class TimerView : Gtk.Grid {
      */
     private void setup_task_widgets () {
         /* Instantiation */
-        task_status_lbl = new Gtk.Label ("Inactive");
-        task_description_lbl = new Gtk.Label ("No task has been selected");
+        task_status_lbl = new Gtk.Label (_("Inactive"));
+        task_description_lbl = new Gtk.Label (_("No task has been selected"));
         
         /* Configuration */
         progress.hexpand = true;
@@ -207,8 +207,8 @@ public class TimerView : Gtk.Grid {
         action_timer_grid = new Gtk.Grid ();
         action_task_grid = new Gtk.Grid ();
         run_btn = new Gtk.Button ();
-        skip_btn = new Gtk.Button.with_label ("_Skip");
-        done_btn = new Gtk.Button.with_label ("_Done");
+        skip_btn = new Gtk.Button.with_label (_("S_kip"));
+        done_btn = new Gtk.Button.with_label (_("_Done"));
         
         /* Configuration */
         action_grid.orientation = Gtk.Orientation.HORIZONTAL;
@@ -251,8 +251,8 @@ public class TimerView : Gtk.Grid {
      * This funciton is to be called, when the to-do list is empty
      */
     public void show_no_task () {
-        task_status_lbl.label = "Relax!";
-        task_description_lbl.label = "You have nothing to do.";
+        task_status_lbl.label = _("Relax") + "." ;
+        task_description_lbl.label = _("You have nothing to do.");
         done_btn.visible = false;
     }
 }
