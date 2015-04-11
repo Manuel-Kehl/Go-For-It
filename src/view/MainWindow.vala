@@ -37,6 +37,7 @@ class MainWindow : Gtk.ApplicationWindow {
     private Gtk.Menu app_menu;
     private Gtk.MenuItem config_item;
     private Gtk.MenuItem clear_done_item;
+    private Gtk.MenuItem refresh_item;
     private Gtk.MenuItem contribute_item;
     private Gtk.MenuItem about_item;
     /**
@@ -231,6 +232,7 @@ class MainWindow : Gtk.ApplicationWindow {
         app_menu = new Gtk.Menu ();
         config_item = new Gtk.MenuItem.with_label (_("Settings"));
         clear_done_item = new Gtk.MenuItem.with_label (_("Clear Done List"));
+        refresh_item = new Gtk.MenuItem.with_label (_("Refresh"));
         contribute_item = new Gtk.MenuItem.with_label (_("Contribute / Donate"));
         about_item = new Gtk.MenuItem.with_label (_("About"));
         
@@ -241,24 +243,28 @@ class MainWindow : Gtk.ApplicationWindow {
         });
         
         config_item.activate.connect ((e) => {
-            var dialog = new SettingsDialog (settings);
+            var dialog = new SettingsDialog (this, settings);
             dialog.show ();
         });
         clear_done_item.activate.connect ((e) => {
             task_manager.clear_done_store ();
         });
+        refresh_item.activate.connect ((e) => {
+            task_manager.refresh ();
+        });
         contribute_item.activate.connect ((e) => {
-            var dialog = new ContributeDialog ();
+            var dialog = new ContributeDialog (this);
             dialog.show ();
         });
         about_item.activate.connect ((e) => {
             var app = get_application () as Main;
-            app.show_about ();
+            app.show_about (this);
         });
         
         /* Add Items to Menu */
         app_menu.add (config_item);
         app_menu.add (clear_done_item);
+        app_menu.add (refresh_item);
         app_menu.add (contribute_item);
         app_menu.add (about_item);
         
