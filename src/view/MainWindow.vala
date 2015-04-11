@@ -241,7 +241,7 @@ class MainWindow : Gtk.ApplicationWindow {
         });
         
         config_item.activate.connect ((e) => {
-            var dialog = new SettingsDialog (settings);
+            var dialog = new SettingsDialog (this, settings);
             dialog.show ();
         });
         clear_done_item.activate.connect ((e) => {
@@ -253,7 +253,7 @@ class MainWindow : Gtk.ApplicationWindow {
         });
         about_item.activate.connect ((e) => {
             var app = get_application () as Main;
-            app.show_about ();
+            app.show_about (this);
         });
         
         /* Add Items to Menu */
