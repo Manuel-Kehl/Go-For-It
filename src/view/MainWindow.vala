@@ -248,7 +248,7 @@ class MainWindow : Gtk.ApplicationWindow {
             task_manager.clear_done_store ();
         });
         contribute_item.activate.connect ((e) => {
-            var dialog = new ContributeDialog ();
+            var dialog = new ContributeDialog (this);
             dialog.show ();
         });
         about_item.activate.connect ((e) => {
