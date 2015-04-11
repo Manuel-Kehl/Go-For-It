@@ -80,8 +80,8 @@ public class Main : Gtk.Application {
         win.show_all ();
     }
     
-    public void show_about () {
-        var dialog = new AboutDialog ();
+    public void show_about (Gtk.Window? parent = null) {
+        var dialog = new AboutDialog (parent);
         dialog.run ();
     }
 

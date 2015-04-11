@@ -32,7 +32,8 @@ public class SettingsDialog : Gtk.Dialog {
     private Gtk.Label reminder_lbl;
     private Gtk.SpinButton reminder_spin;
     
-    public SettingsDialog (SettingsManager settings) {
+    public SettingsDialog (Gtk.Window? parent, SettingsManager settings) {
+        this.set_transient_for (parent);
         this.settings = settings;
         /* Initalization */
         main_layout = new Gtk.Grid ();
