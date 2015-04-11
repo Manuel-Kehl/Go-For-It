@@ -109,6 +109,15 @@ class TaskManager {
         done_store.clear ();
     }
     
+    /**
+     * Reloads all tasks.
+     */
+    public void refresh () {
+        load_tasks ();
+        // Some tasks may have been marked as done by other applications.
+        auto_transfer_tasks ();
+    }
+    
     private void load_task_stores () {
         stdout.printf("load_task_stores");
         todo_txt_dir = File.new_for_path(settings.todo_txt_location);
