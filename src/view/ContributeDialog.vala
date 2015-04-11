@@ -20,8 +20,7 @@
  */
 public class ContributeDialog : Gtk.MessageDialog {
     /* GTK Widgets */
-    public ContributeDialog ()
-    {
+    public ContributeDialog (Gtk.Window? parent) {
         Object (buttons: Gtk.ButtonsType.OK);
         this.message_type = Gtk.MessageType.INFO;
         this.set_modal (true);
@@ -45,5 +44,6 @@ public class ContributeDialog : Gtk.MessageDialog {
         
         this.get_action_area ().hexpand = false;
         this.get_action_area ().halign = Gtk.Align.END;
+        this.set_transient_for (parent);
     }
 }
