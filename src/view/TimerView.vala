@@ -130,7 +130,9 @@ public class TimerView : Gtk.Grid {
         task_status_lbl.get_style_context ().add_class ("task_status");
         task_description_lbl.margin = 20;
         task_description_lbl.margin_top = 30;
+#if HAS_GTK310
         task_description_lbl.lines = 3;
+#endif
         task_description_lbl.wrap = true;
         
         /* Add Widgets */
