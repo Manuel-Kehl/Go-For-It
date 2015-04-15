@@ -85,7 +85,7 @@ install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
 # install .desktop file so the Applications menu will display it
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/go-for-it.desktop DESTINATION ${DATADIR}/applications/)
 # install the application's stylesheet
-if (${GTK3_VERSION} VERSION_GREATER 3.4)
+if (${GTK3_VERSION} VERSION_GREATER 3.7)
     install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/style/go-for-it.css DESTINATION ${PKGDATADIR}/style/)
 else ()
     install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/style/legacy-compat/go-for-it.css DESTINATION ${PKGDATADIR}/style/)
