@@ -16,29 +16,22 @@ set (VERSION_INFO "initial release")
 find_package(PkgConfig)
 # check for the required dependencies
 pkg_check_modules(DEPS REQUIRED 
-    gtk+-3.0
+    GTK3 gtk+-3.0
+    GLIB2 glib-2.0
     libnotify
     )
 
 set (GLOBAL_VALAC_OPTIONS)
 
 # checking if have a recent version of Gtk+-3.0
-set ( HAS_GTK310 )
-pkg_check_modules ( GTK310 gtk+-3.0>=3.10 )
-set ( HAS_GTK310 ${GTK310_FOUND} )
-
-if (HAS_GTK310)
+if (${GTK3_VERSION} VERSION_GREATER 3.9)
     set (VALAC_OPTIONS ${VALAC_OPTIONS} -D HAS_GTK310)
 else ()
     message ("-- No recent Gtk+-3.0 found... Using pre 3.10 features.")
 endif ()
 
 # checking if we have a recent version of GLib
-set ( HAS_GLIB241 )
-pkg_check_modules ( GLIB241 glib-2.0>=2.41 )
-set ( HAS_GLIB241 ${GLIB241_FOUND} )
-
-if (HAS_GLIB241)
+if (${GLIB2_VERSION} VERSION_GREATER 2.40 )
     set (VALAC_OPTIONS ${VALAC_OPTIONS} -D HAS_GLIB241)
 else ()
     message ("-- No recent glib-2.0 found")
