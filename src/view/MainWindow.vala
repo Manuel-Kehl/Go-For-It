@@ -427,6 +427,7 @@ class MainWindow : Gtk.ApplicationWindow {
      * applied to the application.
      */
     private void load_css () {
+#if HAS_GTK310
         var screen = this.get_screen();
         var css_provider = new Gtk.CssProvider();
         // Scan all potential data dirs for the corresponding css file
@@ -445,6 +446,7 @@ class MainWindow : Gtk.ApplicationWindow {
                 }
             }
         }
+#endif
     }
     
     /**
