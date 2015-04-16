@@ -47,7 +47,9 @@ public class AboutDialog : Gtk.AboutDialog {
     }
 
     private void response_handler (int response) {
-        if (response == Gtk.ResponseType.DELETE_EVENT) {
+        if (response == Gtk.ResponseType.DELETE_EVENT
+            || response == Gtk.ResponseType.CANCEL
+            || response == Gtk.ResponseType.CLOSE) {
             this.destroy ();
         }
     }
