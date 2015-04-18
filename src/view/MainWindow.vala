@@ -34,6 +34,8 @@ class MainWindow : Gtk.ApplicationWindow {
 #else
     private Gtk.Notebook activity_stack;
     private Gtk.Box activity_switcher;
+    // Flag for controlling whether the activity has been toggled by hand
+    private bool activity_toggled_manually = true;
 #endif
     private Gtk.Box hb_replacement;
     private TaskList todo_list;
@@ -186,16 +188,22 @@ class MainWindow : Gtk.ApplicationWindow {
         // Making sure buttons are updated when user switches a page.
         activity_stack.switch_page.connect ((page, offset) => {
             if (offset == 0) {
+                activity_toggled_manually = false;
                 button2.set_active (false);
                 button3.set_active (false);
+                activity_toggled_manually = true;
             }
             else if (offset == 1) {
+                activity_toggled_manually = false;
                 button1.set_active (false);
                 button3.set_active (false);
+                activity_toggled_manually = true;
             }
             else {
+                activity_toggled_manually = false;
                 button1.set_active (false);
                 button2.set_active (false);
+                activity_toggled_manually = true;
             }
         });
         
@@ -217,16 +225,31 @@ class MainWindow : Gtk.ApplicationWindow {
         activity_switcher.add (button3);
         
         button1.toggled.connect (() => {
-            if (button1.active)
-                activity_stack.set_current_page (0);
+            if (activity_toggled_manually) {
+                if (button1.active) {
+                    activity_stack.set_current_page (0);
+                } else {
+                    button1.set_active (true);
+                }
+            }
         });
         button2.toggled.connect (() => {
-            if (button2.active)
-                activity_stack.set_current_page (1);
+            if (activity_toggled_manually) {
+                if (button2.active) {
+                    activity_stack.set_current_page (1);
+                } else {
+                    button2.set_active (true);
+                }
+            }
         });
         button3.toggled.connect (() => {
-            if (button3.active)
-                activity_stack.set_current_page (2);
+            if (activity_toggled_manually) {
+                if (button3.active) {
+                    activity_stack.set_current_page (2);
+                } else {
+                    button3.set_active (true);
+                }
+            }
         });
         button1.set_active (true);
 #endif
