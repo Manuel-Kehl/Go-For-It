@@ -441,7 +441,7 @@ class MainWindow : Gtk.ApplicationWindow {
                     Gtk.StyleContext.add_provider_for_screen(
                         screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
                 } catch (Error e) {
-                    error ("Cannot load CSS stylesheet: %s", e.message);
+                    warning ("Cannot load CSS stylesheet: %s", e.message);
                 }
             }
         }
