@@ -20,8 +20,6 @@
  * necessary steps to create a running instance of "Go For It!".
  */
 public class Main : Gtk.Application {
-    const string GETTEXT_PACKAGE = "go-for-it";
-
     private SettingsManager settings;
     private TaskManager task_manager;
     private TaskTimer task_timer;
@@ -42,11 +40,6 @@ public class Main : Gtk.Application {
      * The entry point for running the application.
      */
     public static int main (string[] args) {
-        Intl.setlocale(LocaleCategory.MESSAGES, "");
-        Intl.textdomain(GETTEXT_PACKAGE); 
-        Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8"); 
-        Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
-        
         apply_desktop_specific_tweaks ();
         Main app = new Main ();
         int status = app.run (args);
