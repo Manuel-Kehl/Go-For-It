@@ -159,9 +159,9 @@ class MainWindow : Gtk.ApplicationWindow {
         activity_stack.set_transition_type(
             Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
         // Add widgets to the activity stack
-        activity_stack.add_titled (todo_list, "todo", _("To-Do"));
-        activity_stack.add_titled (timer_view, "timer", _("Timer"));
-        activity_stack.add_titled (done_list, "done", _("Done"));
+        activity_stack.add_titled (todo_list, "todo", "To-Do");
+        activity_stack.add_titled (timer_view, "timer", "Timer");
+        activity_stack.add_titled (done_list, "done", "Done");
         
         if (task_timer.running) {
             // Otherwise no task will be displayed in the timer view
@@ -264,7 +264,7 @@ class MainWindow : Gtk.ApplicationWindow {
         menu_btn = new Gtk.ToggleToolButton ();
         // Headerbar Items
         menu_btn.icon_widget = menu_img;
-        menu_btn.label_widget = new Gtk.Label (_("Menu"));
+        menu_btn.label_widget = new Gtk.Label ("Menu");
         menu_btn.toggled.connect (menu_btn_toggled);
 #if HAS_GTK310
         if (use_header_bar) {
@@ -350,11 +350,17 @@ class MainWindow : Gtk.ApplicationWindow {
     private void setup_menu () {
         /* Initialization */
         app_menu = new Gtk.Menu ();
+<<<<<<< HEAD
         config_item = new Gtk.MenuItem.with_label (_("Settings"));
         clear_done_item = new Gtk.MenuItem.with_label (_("Clear Done List"));
         refresh_item = new Gtk.MenuItem.with_label (_("Refresh"));
         contribute_item = new Gtk.MenuItem.with_label (_("Contribute / Donate"));
         about_item = new Gtk.MenuItem.with_label (_("About"));
+=======
+        clear_done_item = new Gtk.MenuItem.with_label ("Clear Done List");
+        config_item = new Gtk.MenuItem.with_label ("Configuration");
+        about_item = new Gtk.MenuItem.with_label ("About");
+>>>>>>> parent of e1c038b... Marked all UI strings to be translated
         
         /* Signal and Action Handling */
         // Untoggle menu button, when menu is hidden
@@ -410,14 +416,14 @@ class MainWindow : Gtk.ApplicationWindow {
             Notify.Notification notification;
             if (break_active) {
                 notification = new Notify.Notification (
-                    _("Take a Break"), 
-                    _("Relax and stop thinking about your current task for a while") 
-                    + " :-)",
+                    "Take a Break", 
+                    "Relax and stop thinking about your"
+                    +" current task for a while :-)",
                     GOFI.APP_SYSTEM_NAME);
             } else {
                 notification = new Notify.Notification (
-                    _("The Break is Over"), 
-                    _("Your next task is") + ": " + task, 
+                    "The Break is Over", 
+                    "Your next task is: " + task, 
                     GOFI.APP_SYSTEM_NAME);
             }
             
@@ -434,8 +440,8 @@ class MainWindow : Gtk.ApplicationWindow {
     private void display_almost_over_notification (DateTime remaining_time) {
         int64 secs = remaining_time.to_unix ();
         Notify.Notification notification = new Notify.Notification (
-            _("Prepare for your break"),
-            _(@"You have $secs seconds left"), GOFI.APP_SYSTEM_NAME);
+            "Prepare for your break",
+            @"You have $secs seconds left", GOFI.APP_SYSTEM_NAME);
         try {
             notification.show ();
         } catch (GLib.Error err){

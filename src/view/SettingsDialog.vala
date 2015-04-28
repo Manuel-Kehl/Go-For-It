@@ -47,10 +47,10 @@ public class SettingsDialog : Gtk.Dialog {
         main_layout.visible = true;
         main_layout.orientation = Gtk.Orientation.VERTICAL;
         main_layout.row_spacing = 15;
-        
-        this.title = _("Settings");
+
+        this.title = "Settings";
         setup_settings_widgets (true);
-        this.add_button (_("Close"), Gtk.ResponseType.CLOSE);
+        this.add_button ("Close", Gtk.ResponseType.CLOSE);
         
         /* Settings that apply for all widgets in the dialog */
         foreach (var child in main_layout.get_children ()) {
@@ -65,19 +65,19 @@ public class SettingsDialog : Gtk.Dialog {
             }
         });
     }
-    
+
     private void setup_settings_widgets (bool advanced) {
         /* Instantiation */
-        directory_btn = new Gtk.FileChooserButton ("Todo.txt " + _("directory"),
+        directory_btn = new Gtk.FileChooserButton ("Todo.txt directory",
             Gtk.FileChooserAction.SELECT_FOLDER);
             
         directory_lbl = new Gtk.Label (
             "<a href=\"http://todotxt.com\">Todo.txt</a> "
-            + _("directory") + ":"
+            + "directory :"
         );
             
         directory_explanation_lbl = new Gtk.Label (
-            _("If no appropriate folder was found, Go For It! defaults to creating a Todo folder in your home directory.")
+            "If no appropriate folder was found, Go For It! defaults to creating a Todo folder in your home directory."
         );
         
         /* Configuration */
@@ -107,9 +107,10 @@ public class SettingsDialog : Gtk.Dialog {
     // This function allows for advanced settings in the future
     private void setup_advanced_settings_widgets () {
         /* Instantiation */
-        task_lbl = new Gtk.Label (_("Task Duration in Minutes") + ":");
-        break_lbl = new Gtk.Label (_("Break Duration in Minutes") + ":");
-        reminder_lbl = new Gtk.Label (_("Reminder Time in Seconds (0 to disable)") +":");
+        task_lbl = new Gtk.Label ("Task Duration in Minutes:");
+        break_lbl = new Gtk.Label ("Break Duration in Minutes:");
+        reminder_lbl = new Gtk.Label ("Reminder Time in Seconds (0 to disable):");
+
         // No more than one day: 60 * 24 -1 = 1439
         task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
