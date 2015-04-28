@@ -175,14 +175,14 @@ class MainWindow : Gtk.ApplicationWindow {
         activity_stack = new Gtk.Notebook ();
         // mimicing Gtk.StackSwitcher with ToggleButtons
         activity_switcher = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        var button1 = new Gtk.ToggleButton.with_label (_("To-Do"));
-        var button2 = new Gtk.ToggleButton.with_label (_("Timer"));
-        var button3 = new Gtk.ToggleButton.with_label (_("Done"));
+        var button1 = new Gtk.ToggleButton.with_label ("To-Do");
+        var button2 = new Gtk.ToggleButton.with_label ("Timer");
+        var button3 = new Gtk.ToggleButton.with_label ("Done");
         
         // Add widgets to the activity notebook
-        activity_stack.append_page (todo_list, new Gtk.Label (_("To-Do")));
-        activity_stack.append_page (timer_view, new Gtk.Label (_("Timer")));
-        activity_stack.append_page (done_list, new Gtk.Label (_("Done")));
+        activity_stack.append_page (todo_list, new Gtk.Label ("To-Do"));
+        activity_stack.append_page (timer_view, new Gtk.Label ("Timer"));
+        activity_stack.append_page (done_list, new Gtk.Label ("Done"));
         activity_stack.show_tabs = false;
         
         // Making sure buttons are updated when user switches a page.

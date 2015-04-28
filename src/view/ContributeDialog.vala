@@ -24,15 +24,15 @@ public class ContributeDialog : Gtk.MessageDialog {
         Object (buttons: Gtk.ButtonsType.OK);
         this.message_type = Gtk.MessageType.INFO;
         this.set_modal (true);
-        this.title = _("Contributions and Donations");
+        this.title = "Contributions and Donations";
         
         this.format_secondary_markup (
-        "<b>" + _("Thank you for supporting") + " <i>Go For It!</i>\n\n\n</b>"
-        + _("Submitting code, artwork, translations or documentation is a great way of contributing to the project:")
+        "<b>" + "Thank you for supporting" + " <i>Go For It!</i>\n\n\n</b>"
+        + "Submitting code, artwork, translations or documentation is a great way of contributing to the project:"
         + "\n\n"
         + "<a href=\"" + GOFI.PROJECT_REPO + "\">" + GOFI.PROJECT_REPO + "</a>"
         + "\n\n\n"
-        +_("Donations give me a chance to dedicate more time towards implementing new features:")
+        +"Donations give me a chance to dedicate more time towards implementing new features:"
         + "\n\n"
         + "<a href=\"" + GOFI.PROJECT_DONATIONS + "\">" + GOFI.PROJECT_DONATIONS
         + "</a>"
