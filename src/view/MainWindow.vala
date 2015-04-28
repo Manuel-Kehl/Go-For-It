@@ -346,17 +346,11 @@ class MainWindow : Gtk.ApplicationWindow {
     private void setup_menu () {
         /* Initialization */
         app_menu = new Gtk.Menu ();
-<<<<<<< HEAD
-        config_item = new Gtk.MenuItem.with_label (_("Settings"));
-        clear_done_item = new Gtk.MenuItem.with_label (_("Clear Done List"));
-        refresh_item = new Gtk.MenuItem.with_label (_("Refresh"));
-        contribute_item = new Gtk.MenuItem.with_label (_("Contribute / Donate"));
-        about_item = new Gtk.MenuItem.with_label (_("About"));
-=======
+        config_item = new Gtk.MenuItem.with_label ("Settings");
         clear_done_item = new Gtk.MenuItem.with_label ("Clear Done List");
-        config_item = new Gtk.MenuItem.with_label ("Configuration");
+        refresh_item = new Gtk.MenuItem.with_label ("Refresh");
+        contribute_item = new Gtk.MenuItem.with_label ("Contribute / Donate");
         about_item = new Gtk.MenuItem.with_label ("About");
->>>>>>> parent of e1c038b... Marked all UI strings to be translated
         
         /* Signal and Action Handling */
         // Untoggle menu button, when menu is hidden
