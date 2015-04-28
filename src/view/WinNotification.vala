@@ -49,7 +49,7 @@ public class WinNotification : Gtk.Dialog {
     /**
      * Displays the "notification"
      */
-    public void send () {
+    public void show () {
         this.show_all ();
         this.move (7, 7);
         /*
