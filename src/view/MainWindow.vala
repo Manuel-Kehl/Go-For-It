@@ -73,8 +73,6 @@ class MainWindow : Gtk.ApplicationWindow {
         setup_widgets ();
         load_css ();
         setup_notifications ();
-        // Enable Notifications for the App
-        Notify.init (GOFI.APP_NAME);
     }
     
     public override bool delete_event (Gdk.EventAny event) {
@@ -89,8 +87,6 @@ class MainWindow : Gtk.ApplicationWindow {
             dont_exit = true;
         }
         
-        if (dont_exit == false) Notify.uninit ();
-            
         return dont_exit;
     }
     
@@ -413,18 +409,16 @@ class MainWindow : Gtk.ApplicationWindow {
         
         if (break_previously_active != break_active) {
             var task = GOFI.Utils.tree_row_ref_to_task (reference);
-            Notify.Notification notification;
+            WinNotification notification;
             if (break_active) {
-                notification = new Notify.Notification (
-                    "Take a Break", 
+                notification = new WinNotification (
+                    "Take a Break",
                     "Relax and stop thinking about your"
-                    +" current task for a while :-)",
-                    GOFI.APP_SYSTEM_NAME);
+                    +" current task for a while :-)");
             } else {
-                notification = new Notify.Notification (
-                    "The Break is Over", 
-                    "Your next task is: " + task, 
-                    GOFI.APP_SYSTEM_NAME);
+                notification = new WinNotification (
+                    "The Break is Over",
+                    "Your next task is: " + task);
             }
             
             try {
@@ -439,9 +433,9 @@ class MainWindow : Gtk.ApplicationWindow {
     
     private void display_almost_over_notification (DateTime remaining_time) {
         int64 secs = remaining_time.to_unix ();
-        Notify.Notification notification = new Notify.Notification (
+        WinNotification notification = new WinNotification (
             "Prepare for your break",
-            @"You have $secs seconds left", GOFI.APP_SYSTEM_NAME);
+            @"You have $secs seconds left");
         try {
             notification.show ();
         } catch (GLib.Error err){
