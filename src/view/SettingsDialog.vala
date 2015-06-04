@@ -107,9 +107,9 @@ public class SettingsDialog : Gtk.Dialog {
     // This function allows for advanced settings in the future
     private void setup_advanced_settings_widgets () {
         /* Instantiation */
-        task_lbl = new Gtk.Label (_("Task duration in minutes") + ":");
-        break_lbl = new Gtk.Label (_("Break duration in minutes") + ":");
-        reminder_lbl = new Gtk.Label (_("Reminder before task ends in seconds") +":");
+        task_lbl = new Gtk.Label (_("Task duration (minutes)") + ":");
+        break_lbl = new Gtk.Label (_("Break duration (minutes)") + ":");
+        reminder_lbl = new Gtk.Label (_("Reminder before task ends (seconds)") +":");
         // No more than one day: 60 * 24 -1 = 1439
         task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
