@@ -23,6 +23,10 @@ I maintain a [Launchpad PPA](https://launchpad.net/~mank319/+archive/ubuntu/go-f
 
     sudo add-apt-repository ppa:mank319/go-for-it && sudo apt-get update 
     sudo apt-get install go-for-it
+    
+Arch Linux:
+
+    yaourt -S go-for-it-git
 
 The Windows version is available for download [here](http://manuel-kehl.de/projects/go-for-it/download-windows-version).
 
