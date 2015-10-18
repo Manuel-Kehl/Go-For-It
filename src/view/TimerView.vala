@@ -125,7 +125,6 @@ public class TimerView : Gtk.Grid {
         task_description_lbl = new Gtk.Label (_("No task has been selected"));
         
         /* Configuration */
-        progress.hexpand = true;
         task_status_lbl.margin_top = 30;
         task_status_lbl.get_style_context ().add_class ("task_status");
         task_description_lbl.margin = 20;
@@ -246,6 +245,7 @@ public class TimerView : Gtk.Grid {
     
     private void setup_progress_bar () {
         progress = new Gtk.ProgressBar ();
+        progress.hexpand = true;
         this.add (progress);
     }
     
