@@ -96,15 +96,18 @@ public class TimerView : Gtk.Grid {
         if (running) {
             run_btn.label = _("Pau_se");
             run_btn.get_style_context ().remove_class ("suggested-action");
-            run_btn.clicked.connect ((e) => {
-                timer.stop ();
-            });
         } else {
             run_btn.label = _("_Start");
             run_btn.get_style_context ().add_class ("suggested-action");
-            run_btn.clicked.connect ((e) => {
-                timer.start ();
-            });
+        }
+    }
+    
+    private void on_run_btn_clicked () {
+        if (timer.running) {
+            timer.stop ();
+        }
+        else {
+            timer.start ();
         }
     }
     
@@ -233,6 +236,7 @@ public class TimerView : Gtk.Grid {
         done_btn.clicked.connect ((e) => {
             timer.set_active_task_done();
         });
+        run_btn.clicked.connect (on_run_btn_clicked);
         
         /* Add Widgets */
         action_timer_grid.add (skip_btn);
