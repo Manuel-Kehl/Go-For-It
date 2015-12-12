@@ -110,6 +110,7 @@ public class SettingsDialog : Gtk.Dialog {
         task_lbl = new Gtk.Label (_("Task duration (minutes)") + ":");
         break_lbl = new Gtk.Label (_("Break duration (minutes)") + ":");
         reminder_lbl = new Gtk.Label (_("Reminder before task ends (seconds)") +":");
+
         // No more than one day: 60 * 24 -1 = 1439
         task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
