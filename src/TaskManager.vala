@@ -191,6 +191,20 @@ class TaskManager {
             string line;
             
             while ((line = stream_in.read_line (null)) != null) {
+                // Removing carriage return at the end of a task and
+                // skipping empty lines
+                int length = line.length;
+                if (length > 0) {
+                    if (line.get_char (length - 1) == 13) {
+                        if (length == 1) {
+                            continue;
+                        }
+                        line = line.slice (0, length - 1);
+                    }
+                } else {
+                    continue;
+                }
+                
                 // Todo.txt notation: completed tasks start with an "x "
                 bool done = line.has_prefix ("x ");
                 
