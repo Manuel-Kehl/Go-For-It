@@ -120,7 +120,10 @@ class MainWindow : Gtk.ApplicationWindow {
         /* Action and Signal Handling */
         todo_list.add_new_task.connect (task_manager.add_new_task);
         var todo_selection = todo_list.task_view.get_selection ();
-        todo_selection.select_path (task_timer.active_task.get_path ());
+        var active_task = task_timer.active_task;
+        if (active_task != null) {
+            todo_selection.select_path (active_task.get_path ());
+        }
         /* 
          * If either the selection or the data itself changes, it is 
          * necessary to check if a different task is to be displayed

@@ -96,15 +96,18 @@ public class TimerView : Gtk.Grid {
         if (running) {
             run_btn.label = "Pau_se";
             run_btn.get_style_context ().remove_class ("suggested-action");
-            run_btn.clicked.connect ((e) => {
-                timer.stop ();
-            });
         } else {
             run_btn.label = "_Start";
             run_btn.get_style_context ().add_class ("suggested-action");
-            run_btn.clicked.connect ((e) => {
-                timer.start ();
-            });
+        }
+    }
+    
+    private void on_run_btn_clicked () {
+        if (timer.running) {
+            timer.stop ();
+        }
+        else {
+            timer.start ();
         }
     }
     
@@ -125,7 +128,6 @@ public class TimerView : Gtk.Grid {
         task_description_lbl = new Gtk.Label ("No task has been selected");
         
         /* Configuration */
-        progress.hexpand = true;
         task_status_lbl.margin_top = 30;
         task_status_lbl.get_style_context ().add_class ("task_status");
         task_description_lbl.margin = 20;
@@ -234,6 +236,7 @@ public class TimerView : Gtk.Grid {
         done_btn.clicked.connect ((e) => {
             timer.set_active_task_done();
         });
+        run_btn.clicked.connect (on_run_btn_clicked);
         
         /* Add Widgets */
         action_timer_grid.add (skip_btn);
@@ -246,6 +249,7 @@ public class TimerView : Gtk.Grid {
     
     private void setup_progress_bar () {
         progress = new Gtk.ProgressBar ();
+        progress.hexpand = true;
         this.add (progress);
     }
     
