@@ -65,7 +65,7 @@ public class Main : Gtk.Application {
             Environment.set_variable ("LIBOVERLAY_SCROLLBAR", "0", true);
         }
         
-        if (desktop == "ubuntu" || desktop == "kde") {
+        if (desktop == "ubuntu" || desktop == "kde" || desktop == "plasma") {
             use_header_bar = false;
         }
     }
