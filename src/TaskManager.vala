@@ -30,6 +30,7 @@ class TaskManager {
     public TaskStore todo_store;
     public TaskStore done_store;
     private bool read_only;
+    private FileMonitor monitor;
         
     string[] default_todos = {
         "Choose Todo.txt folder via \"Settings\"",
@@ -133,6 +134,12 @@ class TaskManager {
         done_store.task_done_changed.connect (task_done_handler);
         
         load_tasks ();
+
+        monitor = todo_txt_dir.monitor_directory (FileMonitorFlags.NONE, null);
+        
+        monitor.changed.connect ((src, dest, event) => {
+            refresh();
+        });
     }
 
     private void task_done_handler (TaskStore source, Gtk.TreeIter iter) {
