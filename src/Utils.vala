@@ -24,7 +24,7 @@ namespace GOFI {
     const string APP_NAME = "Go For It!";
     const string APP_SYSTEM_NAME = "go-for-it";
     const string APP_ID = "de.manuel-kehl.go-for-it";
-    const string APP_VERSION = "1.4.5";
+    const string APP_VERSION = "1.4.6";
     const string FILE_CONF = "go-for-it.conf";
     const string PROJECT_WEBSITE = "http://manuel-kehl.de/projects/go-for-it/";
     const string PROJECT_REPO = "https://github.com/mank319/Go-For-It";
