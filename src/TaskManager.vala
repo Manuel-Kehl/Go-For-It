@@ -30,6 +30,7 @@ class TaskManager {
     public TaskStore todo_store;
     public TaskStore done_store;
     private bool read_only;
+    private bool need_to_add_tasks;
     private FileMonitor monitor;
         
     string[] default_todos = {
@@ -42,6 +43,8 @@ class TaskManager {
     public TaskManager (SettingsManager settings) {
         this.settings = settings;
         
+        need_to_add_tasks = settings.first_start;
+        
         // Initialize TaskStores
         todo_store = new TaskStore (false);
         done_store = new TaskStore (true);
@@ -50,7 +53,6 @@ class TaskManager {
         
         /* Signal processing */
         settings.todo_txt_location_changed.connect (load_task_stores);
-        
         
         // Move done tasks off the todo list on startup
         auto_transfer_tasks();
@@ -135,7 +137,15 @@ class TaskManager {
         
         load_tasks ();
 
-        monitor = todo_txt_dir.monitor_directory (FileMonitorFlags.NONE, null);
+        watch_file ();
+    }
+    
+    private void watch_file () {
+        try {
+            monitor = todo_txt_dir.monitor_directory (FileMonitorFlags.NONE, null);
+        } catch (IOError e) {
+            stderr.printf ("watch_file: %s\n", e.message);
+        }
         
         monitor.changed.connect ((src, dest, event) => {
             refresh();
@@ -155,11 +165,11 @@ class TaskManager {
         read_only = true;
         todo_store.clear ();
         done_store.clear ();
-        read_only = false;
         read_task_file (this.todo_store, this.todo_txt);
         read_task_file (this.done_store, this.done_txt);
+        read_only = false;
         
-        if (settings.first_start) {
+        if (need_to_add_tasks) {
             // Iterate in reverse order because todos are added to position 0
             for (int i = default_todos.length - 1;
                  i >= 0;
@@ -167,13 +177,18 @@ class TaskManager {
             {
                 todo_store.add_task(default_todos[i], 0);
             }
+            need_to_add_tasks = false;
         }
     }
     
     private void save_tasks () {
         if (!read_only) {
+            if (monitor != null) {
+                monitor.cancel ();
+            }
             write_task_file (this.todo_store, this.todo_txt);
             write_task_file (this.done_store, this.done_txt);
+            watch_file ();
         }
     }
     
