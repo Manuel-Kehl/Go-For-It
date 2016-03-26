@@ -9,7 +9,7 @@ set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 set (PKGDATADIR "${DATADIR}/go-for-it")
 set (EXEC_NAME "go-for-it")
 set (RELEASE_NAME "A stylish to-do list with built-in productivity timer.")
-set (VERSION "1.4.5")
+set (VERSION "1.4.6")
 set (VERSION_INFO "initial release")
 
 # find pkgconfig to make sure dependencies are installed
