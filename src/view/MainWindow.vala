@@ -57,15 +57,15 @@ class MainWindow : Gtk.ApplicationWindow {
      * The constructor of the MainWindow class.
      */
     public MainWindow (Gtk.Application app_context, TaskManager task_manager,
-            TaskTimer task_timer, SettingsManager settings, 
-            bool use_header_bar) {
+                       TaskTimer task_timer, SettingsManager settings)
+    {
         // Pass the applicaiton context via GObject-based construction, because
         // constructor chaining is not possible for Gtk.ApplicationWindow
         Object (application: app_context);
         this.task_manager = task_manager;
         this.task_timer = task_timer;
         this.settings = settings;
-        this.use_header_bar = use_header_bar;
+        this.use_header_bar = settings.use_header_bar;
 
         setup_window ();
         setup_menu ();

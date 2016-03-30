@@ -29,7 +29,6 @@ public class Main : Gtk.Application {
 
     private static bool print_version = false;
     private static bool show_about_dialog = false;
-    private static bool use_header_bar = true;
     /**
      * Constructor of the Application class.
      */
@@ -63,10 +62,6 @@ public class Main : Gtk.Application {
             // Disable overlay scrollbars on unity, to avoid a strange Gtk bug
             Environment.set_variable ("LIBOVERLAY_SCROLLBAR", "0", true);
         }
-        
-        if (desktop == "ubuntu" || desktop == "kde" || desktop == "plasma") {
-            use_header_bar = false;
-        }
     }
     
     public void new_window () {
@@ -81,8 +76,7 @@ public class Main : Gtk.Application {
         task_manager = new TaskManager(settings);
         task_timer = new TaskTimer (settings);
         task_timer.active_task_done.connect (task_manager.mark_task_done);
-        win = new MainWindow (this, task_manager, task_timer, settings,
-            use_header_bar);
+        win = new MainWindow (this, task_manager, task_timer, settings);
         win.show_all ();
     }
     
