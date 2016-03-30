@@ -29,8 +29,6 @@ public class Main : Gtk.Application {
 
     private static bool print_version = false;
     private static bool show_about_dialog = false;
-    private static bool refresh_tasks = false;
-    private static bool use_header_bar = true;
     /**
      * Constructor of the Application class.
      */
@@ -64,10 +62,6 @@ public class Main : Gtk.Application {
             // Disable overlay scrollbars on unity, to avoid a strange Gtk bug
             Environment.set_variable ("LIBOVERLAY_SCROLLBAR", "0", true);
         }
-        
-        if (desktop == "ubuntu" || desktop == "kde" || desktop == "plasma") {
-            use_header_bar = false;
-        }
     }
     
     public void new_window () {
@@ -82,17 +76,8 @@ public class Main : Gtk.Application {
         task_manager = new TaskManager(settings);
         task_timer = new TaskTimer (settings);
         task_timer.active_task_done.connect (task_manager.mark_task_done);
-        win = new MainWindow (this, task_manager, task_timer, settings,
-            use_header_bar);
+        win = new MainWindow (this, task_manager, task_timer, settings);
         win.show_all ();
-    }
-    
-    public void refresh () {
-        if (win == null) {
-            stdout.printf ("An instance of Go For It! needs to be running in order for this to work!\n");
-            return;
-        }
-        task_manager.refresh ();
     }
     
     public void show_about (Gtk.Window? parent = null) {
@@ -124,10 +109,8 @@ public class Main : Gtk.Application {
 
         if (print_version) {
             stdout.printf ("%s %s\n", GOFI.APP_NAME, GOFI.APP_VERSION);
-            stdout.printf ("Copyright 2011-2014 'Go For it!' Developers.\n");
-
-        } else if (refresh_tasks) {
-            refresh ();
+            stdout.printf ("Copyright 2011-2016 'Go For it!' Developers.\n");
+            
         } else if (show_about_dialog) {
             show_about ();
         } else {
@@ -139,7 +122,6 @@ public class Main : Gtk.Application {
 
     static const OptionEntry[] entries = {
         { "version", 'v', 0, OptionArg.NONE, out print_version, N_("Print version info and exit"), null },
-        { "refresh", 'r', 0, OptionArg.NONE, out refresh_tasks, N_("Refresh the current window"), null },
         { "about", 'a', 0, OptionArg.NONE, out show_about_dialog, N_("Show about dialog"), null },
         { null }
     };

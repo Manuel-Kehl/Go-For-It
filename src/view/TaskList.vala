@@ -74,6 +74,9 @@ class TaskList : Gtk.Grid {
         // Set up task entry cell
         var text_cell = new Gtk.CellRendererText ();
         text_cell.editable = true;
+        text_cell.wrap_mode = Pango.WrapMode.WORD_CHAR;
+        text_cell.wrap_width = 220;
+        text_cell.width = 220;
         var text_column = new Gtk.TreeViewColumn.with_attributes ("Task", text_cell,
                                                                   "text", Columns.TEXT);
         text_column.expand = true;

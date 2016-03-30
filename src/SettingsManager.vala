@@ -119,6 +119,17 @@ public class SettingsManager {
             set_value (GROUP_UI, "win_height", value.to_string ());
         }
     }
+    public bool use_header_bar {
+        owned get {
+            var use_header_bar = get_value (
+                GROUP_UI, "use_header_bar", header_bar_default()
+            );
+            return bool.parse (use_header_bar);
+        }
+        set {
+            set_value (GROUP_UI, "use_header_bar", value.to_string ());
+        }
+    }
     
     /* Signals */
     public signal void todo_txt_location_changed ();
@@ -145,6 +156,23 @@ public class SettingsManager {
                 stderr.printf("Reading %s failed", GOFI.Utils.config_file);
                 error ("%s", e.message);
             }
+        }
+    }
+    
+    private string header_bar_default () {
+        string desktop = Environment.get_variable ("DESKTOP_SESSION");
+        
+        switch (desktop) {
+            case "ubuntu":
+                return "false";
+            case "kde":
+                return "false";
+            case "plasma":
+                return "false";
+            case "": // probably a custom DE or MS Windows
+                return "false";
+            default:
+                return "true";
         }
     }
     
