@@ -45,7 +45,6 @@ The user interface is inspired by the design philosophy of [elementary OS](http:
 ## Roadmap
 
 - ability to filter the to-do list by projects & context
-- setting for disabling client side window decorations
 - "to-do list only" mode
 
 ## Potential Future Features
