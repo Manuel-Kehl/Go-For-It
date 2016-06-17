@@ -1,0 +1,22 @@
+label.task_status {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+label.task_break {
+    font-size: 120%;
+    color: #ababab;
+}
+
+label.task_active {
+    font-size: 120%;
+}
+
+.timerview spinbutton {
+    font-size: 400%;
+}
+
+.timerview label {
+    font-size: 250%;
+}
+

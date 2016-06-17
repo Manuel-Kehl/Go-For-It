@@ -449,17 +449,30 @@ class MainWindow : Gtk.ApplicationWindow {
     private void load_css () {
         var screen = this.get_screen();
         var css_provider = new Gtk.CssProvider();
-        // Scan all potential data dirs for the corresponding css file
+        var version = Gtk.get_minor_version ();
+        string stylesheet;
+        
+        // Pick the stylesheet that is compatible with the user's Gtk version
+        if (version >= 19) {
+            stylesheet = "go-for-it-3.20.css";
+        } else if (version >= 9) {
+            stylesheet = "go-for-it-3.10.css";
+        } else {
+            stylesheet = "go-for-it-legacy.css";
+        }
+        
+        // Scan potential data dirs for the corresponding css file
         foreach (var dir in Environment.get_system_data_dirs ()) {
             // The path where the file is to be located
             var path = Path.build_filename (dir, GOFI.APP_SYSTEM_NAME, 
-                "style", "go-for-it.css");
+                "style", stylesheet);
             // Only proceed, if file has been found
             if (FileUtils.test (path, FileTest.EXISTS)) {
                 try {
                     css_provider.load_from_path(path);
                     Gtk.StyleContext.add_provider_for_screen(
                         screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
+                    break;
                 } catch (Error e) {
                     warning ("Cannot load CSS stylesheet: %s", e.message);
                 }
