@@ -80,11 +80,11 @@ class TaskStore : Gtk.ListStore {
      * Removes the given task from the list.
      */
     public void remove_task (Gtk.TreeIter iter) {
-        this.remove (iter);
         if (compare_tasks (iter)) {
             active_task = null;
             active_task_removed ();
         }
+        this.remove (iter);
     }
     
     /**
