@@ -30,8 +30,10 @@ class TaskManager {
     public TaskStore todo_store;
     public TaskStore done_store;
     private bool read_only;
+    private bool prevent_refresh;
     private bool need_to_add_tasks;
-    private FileMonitor monitor;
+    private FileMonitor todo_monitor;
+    private FileMonitor done_monitor;
         
     string[] default_todos = {
         "Choose Todo.txt folder via \"Settings\"",
@@ -52,6 +54,8 @@ class TaskManager {
         // Initialize TaskStores
         todo_store = new TaskStore (false);
         done_store = new TaskStore (true);
+        
+        prevent_refresh = false;
         
         load_task_stores ();
         
@@ -125,11 +129,19 @@ class TaskManager {
      * Reloads all tasks.
      */
     public void refresh () {
+        stdout.printf("Refreshing\n");
         refreshing ();
         load_tasks ();
         // Some tasks may have been marked as done by other applications.
         auto_transfer_tasks ();
         refreshed ();
+    }
+    
+    private bool auto_refresh () {
+        refresh ();
+        prevent_refresh = false;
+        
+        return false;
     }
     
     private void load_task_stores () {
@@ -148,19 +160,31 @@ class TaskManager {
         
         load_tasks ();
 
-        watch_file ();
+        watch_files ();
     }
     
-    private void watch_file () {
+    private void watch_files () {
         try {
-            monitor = todo_txt_dir.monitor_directory (FileMonitorFlags.NONE, null);
+            todo_monitor = todo_txt.monitor_file (FileMonitorFlags.NONE, null);
+            done_monitor = done_txt.monitor_file (FileMonitorFlags.NONE, null);
         } catch (IOError e) {
-            stderr.printf ("watch_file: %s\n", e.message);
+            stderr.printf ("watch_files: %s\n", e.message);
         }
         
-        monitor.changed.connect ((src, dest, event) => {
-            refresh();
-        });
+        todo_monitor.changed.connect (on_file_changed);
+        done_monitor.changed.connect (on_file_changed);
+    }
+    
+    private void on_file_changed () {
+        if (!prevent_refresh) {
+            prevent_refresh = true;
+            
+            // Reload after 0.1 seconds so we can be relatively sure, that the 
+            // other application has finished, writing
+            GLib.Timeout.add(
+                100, auto_refresh, GLib.Priority.DEFAULT_IDLE
+            );
+        }
     }
 
     private void task_done_handler (TaskStore source, Gtk.TreeIter iter) {
@@ -201,13 +225,25 @@ class TaskManager {
     
     private void save_tasks () {
         if (!read_only) {
-            if (monitor != null) {
-                monitor.cancel ();
-            }
+            set_refresh_timeout ();
             write_task_file (this.todo_store, this.todo_txt);
             write_task_file (this.done_store, this.done_txt);
-            watch_file ();
         }
+    }
+    
+    private void set_refresh_timeout () {
+        prevent_refresh = true;
+        
+        // It may take some time for the monitors to notice the changes
+        // I don't think that having a 1.5s long blind spot is a problem.
+        GLib.Timeout.add(
+            1500, after_timeout, GLib.Priority.DEFAULT_IDLE
+        );
+    }
+    
+    private bool after_timeout () {
+        prevent_refresh = false;
+        return false;
     }
     
     /**
