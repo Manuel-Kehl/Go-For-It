@@ -30,10 +30,14 @@ class TaskManager {
     public TaskStore todo_store;
     public TaskStore done_store;
     private bool read_only;
-    private bool prevent_refresh;
     private bool need_to_add_tasks;
+    
+    // refreshing
     private FileMonitor todo_monitor;
     private FileMonitor done_monitor;
+    private bool prevent_refresh;
+    private string todo_etag = "";
+    private string done_etag = "";
         
     string[] default_todos = {
         "Choose Todo.txt folder via \"Settings\"",
@@ -138,10 +142,34 @@ class TaskManager {
     }
     
     private bool auto_refresh () {
-        refresh ();
+        if (!check_etags()) {
+            refresh ();
+        }
+        
         prevent_refresh = false;
         
         return false;
+    }
+    
+    private void gen_etags () {
+        try {
+            FileInfo file_info;
+            file_info = todo_txt.query_info (GLib.FileAttribute.ETAG_VALUE, 0);
+            todo_etag = file_info.get_etag ();
+            file_info = done_txt.query_info (GLib.FileAttribute.ETAG_VALUE, 0);
+            done_etag = file_info.get_etag ();
+        } catch (Error e) {
+            warning (e.message);
+        }
+    }
+    
+    private bool check_etags () {
+        string todo_etag_old = todo_etag;
+        string done_etag_old = done_etag;
+        
+        gen_etags ();
+        
+        return (todo_etag == todo_etag_old) && (done_etag == done_etag_old);
     }
     
     private void load_task_stores () {
@@ -225,25 +253,10 @@ class TaskManager {
     
     private void save_tasks () {
         if (!read_only) {
-            set_refresh_timeout ();
             write_task_file (this.todo_store, this.todo_txt);
             write_task_file (this.done_store, this.done_txt);
+            gen_etags ();
         }
-    }
-    
-    private void set_refresh_timeout () {
-        prevent_refresh = true;
-        
-        // It may take some time for the monitors to notice the changes
-        // I don't think that having a 1.5s long blind spot is a problem.
-        GLib.Timeout.add(
-            1500, after_timeout, GLib.Priority.DEFAULT_IDLE
-        );
-    }
-    
-    private bool after_timeout () {
-        prevent_refresh = false;
-        return false;
     }
     
     /**
