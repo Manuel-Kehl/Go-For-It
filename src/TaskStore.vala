@@ -31,11 +31,14 @@ public enum Columns {
 class TaskStore : Gtk.ListStore {
 
     /* Various Variables */
+    public bool active_task_invalid = false;
     public bool done_by_default;
+    public TodoTask? active_task;
     
     /* Signals */
     public signal void task_data_changed ();
     public signal void task_done_changed (Gtk.TreeIter iter);
+    public signal void active_task_removed ();
     
     /**
      * Constructor of the TaskStore class
@@ -44,10 +47,11 @@ class TaskStore : Gtk.ListStore {
         this.done_by_default = done_by_default;
         
         // Setup the columns
-        base.set_column_types ({typeof(bool), /* toggle */
-                    typeof(string), /* title */
-                    typeof(string)  /* drag handle */
-            });
+        base.set_column_types ({
+            typeof(bool),   /* toggle */
+            typeof(string), /* title */
+            typeof(string)  /* drag handle */
+        });
         
         /* Reroute underlying signals to task_data_changed */
         this.rows_reordered.connect (trigger_task_data_changed);
@@ -77,6 +81,10 @@ class TaskStore : Gtk.ListStore {
      */
     public void remove_task (Gtk.TreeIter iter) {
         this.remove (iter);
+        if (compare_tasks (iter)) {
+            active_task = null;
+            active_task_removed ();
+        }
     }
     
     /**
@@ -86,11 +94,19 @@ class TaskStore : Gtk.ListStore {
      */
     public void add_initial_task (string description,
             bool done = done_by_default, int position = -1) {
-        this.insert_with_values (null, position,
+        Gtk.TreeIter iter;
+        this.insert_with_values (out iter, position,
                                  Columns.TOGGLE, done,
                                  Columns.TEXT, description,
                                  Columns.DRAGHANDLE, "view-list-symbolic",
                                  -1);
+        if (active_task_invalid && active_task != null) {
+            if (description == active_task.title) {
+                var path = this.get_path (iter);
+                active_task.reference = new Gtk.TreeRowReference (this, path);
+                active_task_invalid = false;
+            }
+        }
     }
     
     /**
@@ -100,9 +116,28 @@ class TaskStore : Gtk.ListStore {
         if (text._strip () != "") {
             this.set (iter, 1, text);
             task_data_changed ();
+            if (compare_tasks (iter)) {
+                active_task.title = text;
+            }
         } else {
             remove_task (iter);
         }
+    }
+    
+    /**
+     * Checks if iter corresponds to the active task.
+     */
+    private bool compare_tasks (Gtk.TreeIter iter) {
+        if (active_task != null) {
+            var active_path = active_task.reference.get_path ();
+            var iter_path = this.get_path (iter);
+            
+            if (iter_path != null && active_path != null) {
+                return (active_path.compare (iter_path) == 0);
+            }
+        }
+        
+        return false;
     }
     
     /**

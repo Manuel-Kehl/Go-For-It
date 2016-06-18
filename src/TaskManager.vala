@@ -40,6 +40,10 @@ class TaskManager {
         "Consider contributing to the project"
     };
     
+    public signal void active_task_invalid ();
+    public signal void refreshing ();
+    public signal void refreshed ();
+    
     public TaskManager (SettingsManager settings) {
         this.settings = settings;
         
@@ -56,6 +60,11 @@ class TaskManager {
         
         // Move done tasks off the todo list on startup
         auto_transfer_tasks();
+    }
+    
+    public void set_active_task (TodoTask? task) {
+        todo_store.active_task = task;
+        todo_store.active_task_invalid = false;
     }
     
     /**
@@ -116,9 +125,11 @@ class TaskManager {
      * Reloads all tasks.
      */
     public void refresh () {
+        refreshing ();
         load_tasks ();
         // Some tasks may have been marked as done by other applications.
         auto_transfer_tasks ();
+        refreshed ();
     }
     
     private void load_task_stores () {
@@ -165,6 +176,9 @@ class TaskManager {
         read_only = true;
         todo_store.clear ();
         done_store.clear ();
+        if (todo_store.active_task != null) {
+            todo_store.active_task_invalid = true;
+        }
         read_task_file (this.todo_store, this.todo_txt);
         read_task_file (this.done_store, this.done_txt);
         read_only = false;
@@ -178,6 +192,10 @@ class TaskManager {
                 todo_store.add_task(default_todos[i], 0);
             }
             need_to_add_tasks = false;
+        }
+        
+        if (todo_store.active_task_invalid) {
+            active_task_invalid ();
         }
     }
     

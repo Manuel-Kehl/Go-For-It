@@ -75,7 +75,10 @@ public class Main : Gtk.Application {
         settings = new SettingsManager.load_from_key_file ();
         task_manager = new TaskManager(settings);
         task_timer = new TaskTimer (settings);
-        task_timer.active_task_done.connect (task_manager.mark_task_done);
+        task_timer.active_task_done.connect ( (task) => {
+            task_manager.mark_task_done (task.reference);
+        });
+        
         win = new MainWindow (this, task_manager, task_timer, settings);
         win.show_all ();
     }

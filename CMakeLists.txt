@@ -58,6 +58,7 @@ include(ValaPrecompile)
 vala_precompile(VALA_C ${EXEC_NAME}
     src/Utils.vala
     src/SettingsManager.vala
+    src/TodoTask.vala
     src/TaskStore.vala
     src/TaskManager.vala
     src/view/TaskList.vala

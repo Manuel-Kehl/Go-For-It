@@ -47,16 +47,23 @@ public class TaskTimer {
     }
     public DateTime start_time;
     private int64 previous_runtime { get; set; default = 0; }
-    private Gtk.TreeRowReference _active_task;
-    public Gtk.TreeRowReference active_task {
+    private TodoTask? _active_task;
+    public TodoTask? active_task {
         get { return _active_task; }
         set {
-            // Don't change task, while timer is running
-            if (!running) {
-                _active_task = value;
-                // Emit the corresponding notifier signal
-                update_active_task ();
+            stop ();
+            reset ();
+            
+            if (_active_task != null) {
+                _active_task.notify["title"].disconnect (on_task_notify_title);
             }
+            _active_task = value;
+            if (_active_task != null) {
+                _active_task.notify["title"].connect (on_task_notify_title);
+            }
+            
+            // Emit the corresponding notifier signal
+            update_active_task ();
         }
     }
     private bool almost_over_sent_already { get; set; default = false; }
@@ -67,9 +74,9 @@ public class TaskTimer {
     public signal void timer_running_changed (bool running);
     public signal void timer_almost_over (DateTime remaining_duration);
     public signal void timer_finished (bool break_active);
-    public signal void active_task_done (Gtk.TreeRowReference task);
-    public signal void active_task_changed (Gtk.TreeRowReference task, 
-        bool break_active);
+    public signal void active_task_done (TodoTask task);
+    public signal void active_task_title_changed (TodoTask task);
+    public signal void active_task_changed (TodoTask? task, bool break_active);
     
     public TaskTimer (SettingsManager settings) {
         this.settings = settings;
@@ -99,7 +106,7 @@ public class TaskTimer {
     }
      
     public void start () {
-        if (!running) {
+        if (!running && active_task != null) {
             start_time = new DateTime.now_utc ();
             running = true;
             timer_running_changed (running);
@@ -160,6 +167,10 @@ public class TaskTimer {
      */
     public void update_active_task () {
         active_task_changed (_active_task, break_active);
+    }
+    
+    private void on_task_notify_title () {
+        active_task_title_changed (_active_task);
     }
     
     /**
