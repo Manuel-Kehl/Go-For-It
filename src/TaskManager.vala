@@ -126,7 +126,11 @@ class TaskManager {
      * Deletes all task on the "Done" list
      */
     public void clear_done_store () {
+        read_only = true; // Don't save while clearing
         done_store.clear ();
+        read_only = false;
+        
+        save_tasks ();
     }
     
     /**
