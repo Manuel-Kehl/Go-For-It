@@ -38,7 +38,7 @@ class TaskStore : Gtk.ListStore {
     /* Signals */
     public signal void task_data_changed ();
     public signal void task_done_changed (Gtk.TreeIter iter);
-    public signal void active_task_removed ();
+    public signal void refresh_active_task ();
     
     /**
      * Constructor of the TaskStore class
@@ -71,8 +71,12 @@ class TaskStore : Gtk.ListStore {
     public void add_task (string description, int position = -1) {
         // Only add task, if description is not empty
         if (description._strip () != "") {
+            bool was_empty = this.is_empty ();
             add_initial_task (description, done_by_default, position);
             task_data_changed ();
+            if (was_empty) {
+                refresh_active_task ();
+            }
         }
     }
     
@@ -80,11 +84,13 @@ class TaskStore : Gtk.ListStore {
      * Removes the given task from the list.
      */
     public void remove_task (Gtk.TreeIter iter) {
-        if (compare_tasks (iter)) {
-            active_task = null;
-            active_task_removed ();
-        }
+        bool is_active_task = compare_tasks (iter);
+        var _active_task = active_task;
         this.remove (iter);
+        if (is_active_task && _active_task == active_task) {
+            active_task = null;
+            refresh_active_task ();
+        }
     }
     
     /**

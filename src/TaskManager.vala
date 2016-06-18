@@ -190,6 +190,12 @@ class TaskManager {
         todo_store.task_done_changed.connect (task_done_handler);
         done_store.task_done_changed.connect (task_done_handler);
         
+        // When removing the last task or adding a task to an empty list, the
+        // timer should be updated.
+        todo_store.refresh_active_task.connect ( () => {
+            active_task_invalid ();
+        });
+        
         load_tasks ();
 
         watch_files ();
