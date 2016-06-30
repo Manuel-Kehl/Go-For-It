@@ -29,8 +29,6 @@ pkg_check_modules(DEPS REQUIRED
     libnotify
 )
 
-set (GLOBAL_VALAC_OPTIONS)
-
 add_definitions(${DEPS_CFLAGS})
 link_directories(${DEPS_LIBRARY_DIRS})
 
