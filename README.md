@@ -56,6 +56,15 @@ The user interface is inspired by the design philosophy of [elementary OS](http:
 - support for different synchronization and storage backends
 
 ## How To Build
+To build *Go For It!* you need to have the following software installed:
+    
+    valac >= 0.16  (>= 0.26 is recommended if you have GLib > 2.40 installed.)
+    cmake >= 2.6
+    gtk+-3.0 (>= 3.10 recommended)
+    glib-2.0
+    libnotify
+
+Use the following commands in this order to build *Go For It!*:
 
     mkdir build
     cd build
