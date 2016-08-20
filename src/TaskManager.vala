@@ -21,7 +21,7 @@
  * lists. Editing specific tasks (e.g. removing, renaming) is to be done 
  * by addressing the corresponding TaskStore instance.
  */
-class TaskManager {
+class GOFI.TaskManager {
     private SettingsManager settings;
     // The user's todo.txt related files
     private File todo_txt_dir;

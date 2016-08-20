@@ -21,14 +21,14 @@
  */
 
 /* Columns */
-public enum Columns {
+public enum GOFI.Columns {
     TOGGLE,
     TEXT,
     DRAGHANDLE,
     N_COLUMNS
 }
 
-class TaskStore : Gtk.ListStore {
+class GOFI.TaskStore : Gtk.ListStore {
 
     /* Various Variables */
     public bool active_task_invalid = false;

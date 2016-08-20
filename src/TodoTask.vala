@@ -18,7 +18,7 @@
 /**
  * This class stores all task information that should be known to the timer.
  */
-public class TodoTask : GLib.Object {
+public class GOFI.TodoTask : GLib.Object {
     public Gtk.TreeRowReference reference {
         public get;
         public set;

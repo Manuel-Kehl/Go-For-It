@@ -18,7 +18,7 @@
 /**
  * A dialog for changing the application's settings.
  */
-public class SettingsDialog : Gtk.Dialog {
+public class GOFI.SettingsDialog : Gtk.Dialog {
     private SettingsManager settings;
     /* GTK Widgets */
     private Gtk.Grid main_layout;

@@ -20,7 +20,7 @@
  * Its main motivation is the option of easily replacing Glib.KeyFile with 
  * another settings storage mechanism in the future.
  */
-public class SettingsManager {
+public class GOFI.SettingsManager {
     private KeyFile key_file;
     
     /*

@@ -19,7 +19,7 @@
  * The main application class that is responsible for initiating all
  * necessary steps to create a running instance of "Go For It!".
  */
-public class Main : Gtk.Application {
+public class GOFI.Main : Gtk.Application {
     const string GETTEXT_PACKAGE = "go-for-it";
 
     private SettingsManager settings;

@@ -15,10 +15,6 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-/**
- * The GOFI namespace is a central collection of static constants that are 
- * realted to "Go For It!".
- */
 namespace GOFI {
     /**
      * A collection of static utility functions.

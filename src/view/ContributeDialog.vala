@@ -18,7 +18,7 @@
 /**
  * A dialog that displays information about how to support the project.
  */
-public class ContributeDialog : Gtk.MessageDialog {
+public class GOFI.ContributeDialog : Gtk.MessageDialog {
     /* GTK Widgets */
     public ContributeDialog (Gtk.Window? parent) {
         Object (buttons: Gtk.ButtonsType.OK);

@@ -18,7 +18,7 @@
 /**
  * The widget for selecting, displaying and controlling the active task.
  */
-public class AboutDialog : Gtk.AboutDialog {
+public class GOFI.AboutDialog : Gtk.AboutDialog {
     public AboutDialog (Gtk.Window? parent = null) {
         this.set_transient_for (parent);
         /* Initalization */
