@@ -58,9 +58,7 @@ public class GOFI.SettingsDialog : Gtk.Dialog {
         int row = 0;
         setup_txt_settings_widgets (main_layout, ref row);
         setup_timer_settings_widgets (main_layout, ref row);
-#if HAS_GTK310
         setup_csd_settings_widgets (main_layout, ref row);
-#endif
     }
     
     private void add_section (Gtk.Grid grid, Gtk.Label label, ref int row) {
@@ -185,7 +183,6 @@ public class GOFI.SettingsDialog : Gtk.Dialog {
         add_option (grid, reminder_lbl, reminder_spin, ref row);
     }
     
-#if HAS_GTK310
     private void setup_csd_settings_widgets (Gtk.Grid grid, ref int row) {
         Gtk.Label csd_sect_lbl;
         Gtk.Label csd_explanation_lbl;
@@ -211,5 +208,4 @@ public class GOFI.SettingsDialog : Gtk.Dialog {
         add_explanation (grid, csd_explanation_lbl, ref row);
         add_option (grid, headerbar_lbl, headerbar_switch, ref row);
     }
-#endif
 }

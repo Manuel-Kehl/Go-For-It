@@ -29,8 +29,8 @@ set (PROJECT_DONATIONS "http://manuel-kehl.de/donations/")
 find_package(PkgConfig)
 # check for the required dependencies
 pkg_check_modules(DEPS REQUIRED 
-    gtk+-3.0
-    glib-2.0
+    gtk+-3.0>=3.10
+    glib-2.0>=2.41
     libnotify
 )
 
@@ -46,7 +46,7 @@ find_package(Vala REQUIRED)
 # make sure we use vala
 include(ValaVersion)
 # make sure it's the desired version of vala
-ensure_vala_version("0.16" MINIMUM)
+ensure_vala_version("0.26" MINIMUM)
 
 add_subdirectory (src)
 add_subdirectory (data)

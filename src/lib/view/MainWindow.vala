@@ -28,16 +28,9 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     
     /* Various GTK Widgets */
     private Gtk.Grid main_layout;
-#if HAS_GTK310
     private Gtk.Stack activity_stack;
     private Gtk.StackSwitcher activity_switcher;
     private Gtk.HeaderBar header_bar;
-#else
-    private Gtk.Notebook activity_stack;
-    private Gtk.Box activity_switcher;
-    // Flag for controlling whether the activity has been toggled by hand
-    private bool activity_toggled_manually = true;
-#endif
     private Gtk.Box hb_replacement;
     private TaskList todo_list;
     private TaskList done_list;
@@ -153,7 +146,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     }
     
     private void setup_stack () {
-#if HAS_GTK310
         activity_stack = new Gtk.Stack ();
         activity_switcher = new Gtk.StackSwitcher ();
 
@@ -174,89 +166,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             timer_view.show ();
             activity_stack.set_visible_child_name ("timer");
         }
-#else
-        // mimicking Gtk.Stack with Gtk.Notebook
-        activity_stack = new Gtk.Notebook ();
-        // mimicking Gtk.StackSwitcher with ToggleButtons
-        activity_switcher = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        var button1 = new Gtk.ToggleButton.with_label (_("To-Do"));
-        var button2 = new Gtk.ToggleButton.with_label (_("Timer"));
-        var button3 = new Gtk.ToggleButton.with_label (_("Done"));
-        
-        // Add widgets to the activity notebook
-        activity_stack.append_page (todo_list, new Gtk.Label (_("To-Do")));
-        activity_stack.append_page (timer_view, new Gtk.Label (_("Timer")));
-        activity_stack.append_page (done_list, new Gtk.Label (_("Done")));
-        activity_stack.show_tabs = false;
-        
-        // Making sure buttons are updated when user switches a page.
-        activity_stack.switch_page.connect ((page, offset) => {
-            if (offset == 0) {
-                activity_toggled_manually = false;
-                button2.set_active (false);
-                button3.set_active (false);
-                activity_toggled_manually = true;
-            }
-            else if (offset == 1) {
-                activity_toggled_manually = false;
-                button1.set_active (false);
-                button3.set_active (false);
-                activity_toggled_manually = true;
-            }
-            else {
-                activity_toggled_manually = false;
-                button1.set_active (false);
-                button2.set_active (false);
-                activity_toggled_manually = true;
-            }
-        });
-        
-        if (task_timer.running) {
-            // Otherwise no task will be displayed in the timer view
-            task_timer.update_active_task ();
-            // Otherwise it won't switch
-            timer_view.show ();
-            activity_stack.set_current_page (1);
-        }
-        
-        // Mimicing the look of Gtk.StackSwitcher
-        activity_switcher.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
-        activity_switcher.get_style_context ().add_class ("raised");
-        activity_switcher.set_homogeneous (true);
-        
-        activity_switcher.add (button1);
-        activity_switcher.add (button2);
-        activity_switcher.add (button3);
-        
-        button1.toggled.connect (() => {
-            if (activity_toggled_manually) {
-                if (button1.active) {
-                    activity_stack.set_current_page (0);
-                } else {
-                    button1.set_active (true);
-                }
-            }
-        });
-        button2.toggled.connect (() => {
-            if (activity_toggled_manually) {
-                if (button2.active) {
-                    activity_stack.set_current_page (1);
-                } else {
-                    button2.set_active (true);
-                }
-            }
-        });
-        button3.toggled.connect (() => {
-            if (activity_toggled_manually) {
-                if (button3.active) {
-                    activity_stack.set_current_page (2);
-                } else {
-                    button3.set_active (true);
-                }
-            }
-        });
-        button1.set_active (true);
-#endif
         activity_switcher.margin = 5;
     }
     
@@ -270,7 +179,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         menu_btn.icon_widget = menu_img;
         menu_btn.label_widget = new Gtk.Label (_("Menu"));
         menu_btn.toggled.connect (menu_btn_toggled);
-#if HAS_GTK310
         if (use_header_bar) {
             header_bar = new Gtk.HeaderBar ();
         
@@ -283,14 +191,11 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             header_bar.pack_end (menu_btn);
         }
         else {
-#endif
             use_header_bar = false;
             hb_replacement = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             hb_replacement.pack_start (activity_switcher, true, true); 
             hb_replacement.pack_end (menu_btn, false, false);
-#if HAS_GTK310
         }
-#endif
     }
     
     public override void show_all () {
