@@ -9,6 +9,7 @@ include (GNUInstallDirs)
 
 set (PKGDATADIR "${DATADIR}/go-for-it")
 set (FILE_CONF "go-for-it.conf")
+set (PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/${CMAKE_PROJECT_NAME}/plugins")
 
 set (EXEC_NAME "go-for-it")
 set (APP_ID "de.manuel-kehl.go-for-it")
@@ -21,9 +22,17 @@ set (LIBVERSION "0")
 set (SOVERSION 0)
 set (PACKAGE_NAME "go-for-it")
 
+# project info
 set (PROJECT_WEBSITE "http://manuel-kehl.de/projects/go-for-it/")
 set (PROJECT_REPO "https://github.com/mank319/Go-For-It")
 set (PROJECT_DONATIONS "http://manuel-kehl.de/donations/")
+
+# defaults
+set (DEFAULT_PLUGINS "{}")
+
+# ...
+set (PREFIX ${CMAKE_INSTALL_PREFIX})
+set (DOLLAR "$")
 
 # find pkgconfig to make sure dependencies are installed
 find_package(PkgConfig)
@@ -32,6 +41,8 @@ pkg_check_modules(DEPS REQUIRED
     gtk+-3.0>=3.10
     glib-2.0>=2.41
     libnotify
+    libpeas-1.0
+    libpeas-gtk-1.0
 )
 
 add_definitions(${DEPS_CFLAGS})

@@ -28,6 +28,13 @@ namespace GOFI {
             }
             private set {}
         }
+        
+        // The directories to load plugins from
+        public static string[] plugin_dirs {
+            owned get {
+                return {PLUGINDIR};
+            }
+        }
 
         public static string tree_row_ref_to_task (
                 Gtk.TreeRowReference reference) {
@@ -48,7 +55,8 @@ namespace GOFI {
          * by offering a list of fallback icon names.
          */
         public static Gtk.Image load_image_fallback (Gtk.IconSize size, 
-                string icon_name, ...) {
+                                                     string icon_name, ...)
+        {
             Gtk.Image result = new Gtk.Image.from_icon_name (icon_name, size);
             // If icon_name is present, simply return the related image
             if (Gtk.IconTheme.get_default ().has_icon (icon_name)) {

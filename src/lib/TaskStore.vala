@@ -15,19 +15,18 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-/**
- * An implementation of Gtk.ListStore that offers special functionality
- * targeted towards the storage of todo list entries
- */
-
 /* Columns */
-public enum GOFI.Columns {
+enum GOFI.Columns {
     TOGGLE,
     TEXT,
     DRAGHANDLE,
     N_COLUMNS
 }
 
+/**
+ * An implementation of Gtk.ListStore that offers special functionality
+ * targeted towards the storage of todo list entries
+ */
 class GOFI.TaskStore : Gtk.ListStore {
 
     /* Various Variables */

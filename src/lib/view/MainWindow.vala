@@ -21,6 +21,7 @@
 class GOFI.MainWindow : Gtk.ApplicationWindow {
     /* Various Variables */
     private TaskManager task_manager;
+    private PluginManager plugin_manager;
     private TaskTimer task_timer;
     private SettingsManager settings;
     private bool use_header_bar;
@@ -51,12 +52,14 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
      * The constructor of the MainWindow class.
      */
     public MainWindow (Gtk.Application app_context, TaskManager task_manager,
-                       TaskTimer task_timer, SettingsManager settings)
+                       TaskTimer task_timer, SettingsManager settings, 
+                       PluginManager plugin_manager)
     {
         // Pass the applicaiton context via GObject-based construction, because
         // constructor chaining is not possible for Gtk.ApplicationWindow
         Object (application: app_context);
         this.task_manager = task_manager;
+        this.plugin_manager = plugin_manager;
         this.task_timer = task_timer;
         this.settings = settings;
         this.use_header_bar = settings.use_header_bar;
@@ -312,7 +315,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         });
         
         config_item.activate.connect ((e) => {
-            var dialog = new SettingsDialog (this, settings);
+            var dialog = new SettingsDialog (this, settings, plugin_manager);
             dialog.show ();
         });
         clear_done_item.activate.connect ((e) => {

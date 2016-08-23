@@ -23,6 +23,7 @@ public class GOFI.Main : Gtk.Application {
     private SettingsManager settings;
     private TaskManager task_manager;
     private TaskTimer task_timer;
+    private PluginManager plugin_manager;
     private MainWindow win;
 
     private static bool print_version = false;
@@ -53,7 +54,12 @@ public class GOFI.Main : Gtk.Application {
             task_manager.mark_task_done (task.reference);
         });
         
-        win = new MainWindow (this, task_manager, task_timer, settings);
+        plugin_manager = new PluginManager (settings, task_timer);
+        plugin_manager.load_plugins ();
+        
+        win = new MainWindow (
+            this, task_manager, task_timer, settings, plugin_manager
+        );
         win.show_all ();
     }
     

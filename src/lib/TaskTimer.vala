@@ -18,7 +18,7 @@
 /**
  * The central class for handling and coordinating timer functionality
  */
-public class GOFI.TaskTimer {
+class GOFI.TaskTimer {
     private SettingsManager settings;
     public bool running { get; private set; default = false; }
     public bool break_active {get; private set; default = false; }

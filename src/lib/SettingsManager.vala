@@ -20,7 +20,7 @@
  * Its main motivation is the option of easily replacing Glib.KeyFile with 
  * another settings storage mechanism in the future.
  */
-public class GOFI.SettingsManager {
+class GOFI.SettingsManager {
     private KeyFile key_file;
     
     /*
@@ -30,6 +30,7 @@ public class GOFI.SettingsManager {
     private const string GROUP_TODO_TXT = "Todo.txt";
     private const string GROUP_TIMER = "Timer";
     private const string GROUP_UI = "Interface";
+    private const string GROUP_PLUGINS = "Plugins";
     
     // Whether or not Go For It! has been started for the first time
     public bool first_start = false;
@@ -38,8 +39,18 @@ public class GOFI.SettingsManager {
      * A list of settings values with their corresponding access methods.
      * The "heart" of the SettingsManager class.
      */
-    
-    /*---GROUP:Todo.txt------------------------------------------------------*/
+    /*---GROUP:Plugins--------------------------------------------------------*/
+    public string[] enabled_plugins {
+        owned get {
+            return get_value_list (
+                GROUP_PLUGINS, "enabled_plugins", GOFI.DEFAULT_PLUGINS
+            );
+        }
+        set {
+            set_value_list(GROUP_PLUGINS, "enabled_plugins", value);
+        }
+    }
+    /*---GROUP:Todo.txt-------------------------------------------------------*/
     public string todo_txt_location {
         owned get { return get_value (GROUP_TODO_TXT, "location"); }
         set {
@@ -47,7 +58,7 @@ public class GOFI.SettingsManager {
             todo_txt_location_changed ();
         }
     }
-    /*---GROUP:Timer---------------------------------------------------------*/
+    /*---GROUP:Timer----------------------------------------------------------*/
     public int task_duration {
         owned get {
             var duration = get_value (GROUP_TIMER, "task_duration", "1500");
@@ -187,7 +198,7 @@ public class GOFI.SettingsManager {
             if (key_file != null
                 && key_file.has_group (group)
                 && key_file.has_key (group, key)) {
-                    return key_file.get_value(group, key);
+                    return key_file.get_value (group, key);
             } else {
                 return default;
             }
@@ -206,10 +217,51 @@ public class GOFI.SettingsManager {
         if (key_file != null) {
             try {
                 key_file.set_value (group, key, value);
-                key_file.save_to_file (GOFI.Utils.config_file);
+                write_key_file ();
             } catch (Error e) {
                 error ("An error occured while setting the setting"
                     +" %s.%s to %s: %s", group, key, value, e.message);
+            }
+        }
+    }
+    
+    /**
+     * Provides read access to a setting, given a certain group and key.
+     * Public access is granted via the SettingsManager's attributes, so this
+     * function has been declared private
+     */
+    private string[] get_value_list (string group, string key, 
+                                     string[] default = {})
+    {
+        try {
+            // use key_file, if it has been assigned
+            if (key_file != null
+                && key_file.has_group (group)
+                && key_file.has_key (group, key)) {
+                    return key_file.get_string_list(group, key);
+            } else {
+                return default;
+            }
+        } catch (Error e) {
+                warning ("An error occured while reading the setting"
+                    +" %s.%s: %s", group, key, e.message);
+                return default;
+        }
+    }
+    
+    /**
+     * Provides write access to a setting, given a certain group key and value.
+     * Public access is granted via the SettingsManager's attributes, so this
+     * function has been declared private
+     */
+    private void set_value_list (string group, string key, string[] list) {
+        if (key_file != null) {
+            try {
+                key_file.set_string_list (group, key, list);
+                write_key_file ();
+            } catch (Error e) {
+                warning ("An error occured while setting the setting"
+                    +" %s.%s: %s", group, key, e.message);
             }
         }
     }
@@ -237,5 +289,9 @@ public class GOFI.SettingsManager {
         }
         
         this.todo_txt_location = todo_dir;
+    }
+    
+    private void write_key_file () throws FileError {
+        key_file.save_to_file (GOFI.Utils.config_file);
     }
 }

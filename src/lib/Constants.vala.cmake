@@ -17,11 +17,12 @@
 
 namespace GOFI {
     /* Strings */
-    const string APP_NAME = "@APP_NAME@";
+    public const string APP_NAME = "@APP_NAME@";
     const string APP_SYSTEM_NAME = "@EXEC_NAME@";
     const string APP_ID = "@APP_ID@";
-    const string APP_VERSION = "@VERSION@";
+    public const string APP_VERSION = "@VERSION@";
     const string FILE_CONF = "@FILE_CONF@";
+    const string PLUGINDIR = "@PLUGINDIR@";
     const string PROJECT_WEBSITE = "@PROJECT_WEBSITE@";
     const string PROJECT_REPO = "@PROJECT_REPO@";
     const string PROJECT_DONATIONS = "@PROJECT_DONATIONS@";
@@ -29,4 +30,5 @@ namespace GOFI {
         "Todo", "todo", ".todo", 
         "Dropbox/Todo", "Dropbox/todo"
     };
+    const string[] DEFAULT_PLUGINS = @DEFAULT_PLUGINS@;
 }

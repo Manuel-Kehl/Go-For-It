@@ -24,6 +24,8 @@ vala_precompile(VALA_C ${EXEC_NAME}
     Constants.vala
     Utils.vala
     SettingsManager.vala
+    Interface.vala
+    PluginManager.vala
     TodoTask.vala
     TaskStore.vala
     TaskManager.vala
@@ -40,6 +42,8 @@ vala_precompile(VALA_C ${EXEC_NAME}
 PACKAGES
     gtk+-3.0
     libnotify
+    libpeas-1.0
+    libpeas-gtk-1.0
 
 OPTIONS
     ${VALAC_OPTIONS}
