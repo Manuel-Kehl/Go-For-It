@@ -1,3 +1,6 @@
+# install .desktop file so the Applications menu will display it
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/go-for-it.desktop DESTINATION ${DATADIR}/applications/)
+
 # install the application's icons
 set(SYSTEM_DEFAULT_THEME ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/icons/hicolor/16x16/apps/go-for-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/16x16/apps)
