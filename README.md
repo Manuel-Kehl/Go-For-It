@@ -72,4 +72,11 @@ Use the following commands in this order to build *Go For It!*:
     make
     sudo make install
 
+## Installing Dependencies with homebrew on macOS
+
+    brew install vala
+    brew cask install cmake
+    brew install gtk+3
+    brew install libnotify
+
 
