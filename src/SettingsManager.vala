@@ -169,7 +169,8 @@ public class SettingsManager {
                 return "false";
             case "plasma":
                 return "false";
-            case "": // probably a custom DE or MS Windows
+            case "": // probably a custom DE, MS Winodws or macOS
+            case null:
                 return "false";
             default:
                 return "true";
