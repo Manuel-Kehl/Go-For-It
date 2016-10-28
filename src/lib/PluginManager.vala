@@ -25,7 +25,11 @@ class GOFI.PluginManager {
     private Peas.Engine engine;
     private Peas.ExtensionSet exts;
     
+    private GLib.List<TaskListProvider> list_providers;
+    
     public Interface plugin_iface { private set; public get; }
+    
+    public signal void task_lists_added (GLib.List<TaskList> task_lists);
     
     /**
      * Constructor of PluginManager
@@ -49,6 +53,32 @@ class GOFI.PluginManager {
         exts = new Peas.ExtensionSet (engine, typeof (Peas.Activatable), 
             "object", plugin_iface, null);
         connect_signals ();
+    }
+    
+    public void add_provider (TaskListProvider list_provider) {
+        assert (list_providers.index (list_provider) < 0);
+        
+        list_provider.remove.connect (remove_list_provider);
+        task_lists_added (list_provider.get_lists ());
+        list_providers.append (list_provider);
+    }
+    
+    private void remove_list_provider (TaskListProvider list_provider) {
+        foreach (TaskList list in list_provider.lists) {
+            list.remove ();
+        }
+        list_providers.remove (list_provider);
+    }
+    
+    /**
+     * Returns all TaskLists that are available.
+     */
+    public GLib.List<unowned TaskList> get_lists () {
+        var lists = new GLib.List<unowned TaskList> ();
+        foreach (TaskListProvider provider in list_providers) {
+            lists.concat (provider.get_lists());
+        }
+        return lists;
     }
     
     /**

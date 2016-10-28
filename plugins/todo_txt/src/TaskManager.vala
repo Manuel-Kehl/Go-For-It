@@ -21,7 +21,7 @@
  * lists. Editing specific tasks (e.g. removing, renaming) is to be done 
  * by addressing the corresponding TaskStore instance.
  */
-class GOFI.TaskManager {
+class GOFI.Plugins.TodoTXT.TaskManager {
     private SettingsManager settings;
     // The user's todo.txt related files
     private File todo_txt_dir;
@@ -71,7 +71,7 @@ class GOFI.TaskManager {
     }
     
     public void set_active_task (TodoTask? task) {
-        todo_store.active_task = task;
+        todo_store.active_task = (TXTTask) task;
         todo_store.active_task_invalid = false;
     }
     
@@ -179,6 +179,7 @@ class GOFI.TaskManager {
     private void load_task_stores () {
         stdout.printf("load_task_stores\n");
         todo_txt_dir = File.new_for_path(settings.todo_txt_location);
+        stdout.printf ("loading from: %s\n", settings.todo_txt_location);
         todo_txt = todo_txt_dir.get_child ("todo.txt");
         done_txt = todo_txt_dir.get_child ("done.txt");
         

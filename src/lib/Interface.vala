@@ -57,6 +57,13 @@ public class GOFI.Interface : GLib.Object {
     internal Interface (PluginManager plugin_manager) {
         this.plugin_manager = plugin_manager;
     }
+    
+    /**
+     * Adds the TaskListProvider to the plugin manager so it can be used.
+     */
+    internal void register_list_provider (TaskListProvider list_provider) {
+        plugin_manager.add_provider (list_provider);
+    }
 }
 
 namespace GOFI {

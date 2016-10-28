@@ -8,7 +8,7 @@ vala_precompile(VALA_C ${EXEC_NAME}
 # tell what libraries to use when compiling
 PACKAGES
     gtk+-3.0
-    libnotify
+    libpeas-1.0
 
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_BINARY_DIR}/lib/${PACKAGE_NAME}.vapi

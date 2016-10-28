@@ -140,7 +140,9 @@ class GOFI.TimerView : Gtk.Grid {
         task_description_lbl.margin_top = 30;
         task_description_lbl.lines = 3;
         task_description_lbl.wrap = true;
-        
+        task_description_lbl.wrap_mode = Pango.WrapMode.WORD_CHAR;
+        task_description_lbl.width_request = 100;
+
         /* Add Widgets */
         this.add (task_status_lbl);
         this.add (task_description_lbl);
@@ -257,8 +259,13 @@ class GOFI.TimerView : Gtk.Grid {
         this.add (progress);
     }
     
+    public override void show_all () {
+        base.show_all ();
+        done_btn.visible = (timer.active_task != null);
+    }
+
     /**
-     * This funciton is to be called, when the to-do list is empty
+     * This function is to be called, when the to-do list is empty
      */
     public void show_no_task () {
         task_status_lbl.label = _("Relax") + "." ;

@@ -16,7 +16,7 @@
 */
 
 /* Columns */
-enum GOFI.Columns {
+enum GOFI.Plugins.TodoTXT.Columns {
     TOGGLE,
     TEXT,
     DRAGHANDLE,
@@ -27,12 +27,12 @@ enum GOFI.Columns {
  * An implementation of Gtk.ListStore that offers special functionality
  * targeted towards the storage of todo list entries
  */
-class GOFI.TaskStore : Gtk.ListStore {
+class GOFI.Plugins.TodoTXT.TaskStore : Gtk.ListStore {
 
     /* Various Variables */
     public bool active_task_invalid = false;
     public bool done_by_default;
-    public TodoTask? active_task;
+    public TXTTask? active_task;
     
     /* Signals */
     public signal void task_data_changed ();
@@ -122,7 +122,7 @@ class GOFI.TaskStore : Gtk.ListStore {
             this.set (iter, 1, text);
             task_data_changed ();
             if (compare_tasks (iter)) {
-                active_task.title = text;
+                active_task.set_title (text);
             }
         } else {
             remove_task (iter);

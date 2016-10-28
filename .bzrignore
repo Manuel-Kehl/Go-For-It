@@ -1,4 +1,4 @@
 build
 *~
-Constants.vala
+src/lib/Constants.vala
 .git

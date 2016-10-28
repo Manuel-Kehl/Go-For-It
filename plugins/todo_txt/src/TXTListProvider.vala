@@ -15,12 +15,22 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-/**
- * This class stores all task information that should be known to the timer.
- */
-public abstract class GOFI.TodoTask : GLib.Object {
-    public abstract string title {
-        public get;
-        protected set;
+using GOFI;
+    
+class GOFI.Plugins.TodoTXT.TXTListProvider : GOFI.TaskListProvider {
+    
+    public override void activate () {
+        add_list (new TXTList (this.get_plugin_info (), new SettingsManager.load_from_key_file()));
     }
+    
+    public override void deactivate () {}
+}   
+
+    
+[ModuleInit]
+public void peas_register_types (GLib.TypeModule module)
+{
+    var objmodule = module as Peas.ObjectModule;
+    objmodule.register_extension_type (typeof (Peas.Activatable),
+                                       typeof (GOFI.Plugins.TodoTXT.TXTListProvider));
 }

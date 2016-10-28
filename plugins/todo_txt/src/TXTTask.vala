@@ -15,12 +15,31 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-/**
- * This class stores all task information that should be known to the timer.
- */
-public abstract class GOFI.TodoTask : GLib.Object {
-    public abstract string title {
+using GOFI;
+
+class GOFI.Plugins.TodoTXT.TXTTask : TodoTask {
+    public Gtk.TreeRowReference reference {
+        public get;
+        public set;
+    }
+    
+    public override string title {
         public get;
         protected set;
+    }
+    
+    public bool valid {
+        public get {
+            return reference.valid ();
+        }
+    }
+    
+    public TXTTask (Gtk.TreeRowReference reference) {
+        this.reference = reference;
+        this.title = Utils.tree_row_ref_to_task (reference);
+    }
+    
+    public void set_title (string new_title) {
+        title = new_title;
     }
 }

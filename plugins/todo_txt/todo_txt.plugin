@@ -1,0 +1,6 @@
+[Plugin]
+Module=todo_txt
+Loader=C
+Name=Todo.txt
+Description=Todo.txt plugin for Go For It!
+Authors=mank319, JMoerman

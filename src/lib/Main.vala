@@ -21,7 +21,6 @@
  */
 public class GOFI.Main : Gtk.Application {
     private SettingsManager settings;
-    private TaskManager task_manager;
     private TaskTimer task_timer;
     private PluginManager plugin_manager;
     private MainWindow win;
@@ -48,17 +47,13 @@ public class GOFI.Main : Gtk.Application {
         }
         
         settings = new SettingsManager.load_from_key_file ();
-        task_manager = new TaskManager(settings);
         task_timer = new TaskTimer (settings);
-        task_timer.active_task_done.connect ( (task) => {
-            task_manager.mark_task_done (task.reference);
-        });
         
         plugin_manager = new PluginManager (settings, task_timer);
         plugin_manager.load_plugins ();
         
         win = new MainWindow (
-            this, task_manager, task_timer, settings, plugin_manager
+            this, task_timer, settings, plugin_manager
         );
         win.show_all ();
     }
@@ -77,6 +72,7 @@ public class GOFI.Main : Gtk.Application {
 
     private int _command_line (ApplicationCommandLine command_line) {
         var context = new OptionContext (GOFI.APP_NAME);
+        context.set_help_enabled (true);
         context.add_main_entries (entries, GOFI.APP_SYSTEM_NAME);
         context.add_group (Gtk.get_option_group (true));
 

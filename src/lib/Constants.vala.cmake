@@ -26,9 +26,5 @@ namespace GOFI {
     const string PROJECT_WEBSITE = "@PROJECT_WEBSITE@";
     const string PROJECT_REPO = "@PROJECT_REPO@";
     const string PROJECT_DONATIONS = "@PROJECT_DONATIONS@";
-    const string[] TEST_DIRS = {
-        "Todo", "todo", ".todo", 
-        "Dropbox/Todo", "Dropbox/todo"
-    };
     const string[] DEFAULT_PLUGINS = @DEFAULT_PLUGINS@;
 }

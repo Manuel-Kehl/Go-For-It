@@ -28,7 +28,6 @@ class GOFI.SettingsDialog : Gtk.Dialog {
     private Gtk.StackSwitcher switcher;
     // pages
     private SettingsGrid plugins_page;
-    private SettingsGrid txt_page; // to be moved elsewhere later
     private SettingsGrid behavior_page;
     private SettingsGrid appearance_page;
     
@@ -78,7 +77,6 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         
         // pages
         setup_plugins_page ();
-        setup_txt_page ();
         setup_behavior_page ();
         setup_appearance_page ();
         
@@ -86,7 +84,6 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         main_layout.add (switcher);
         main_layout.add (stack);
         stack.add_titled (plugins_page, "plugins", _("Plugins"));
-        stack.add_titled (txt_page, "txt", _("Todo.txt"));
         stack.add_titled (behavior_page, "behavior", _("Behavior"));
         stack.add_titled (appearance_page, "appearance", _("Appearance"));
     }
@@ -104,46 +101,6 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         
         /* Add widgets */
         plugins_page.add (plugin_settings_widget);
-    }
-    
-    private void setup_txt_page () {
-        /* Declaration */
-        Gtk.Label txt_sect_lbl;
-        Gtk.Label directory_lbl;
-        Gtk.Label directory_explanation_lbl;
-        Gtk.FileChooserButton directory_btn;
-        
-        /* Instantiation */
-        txt_page = new SettingsGrid ();
-        txt_sect_lbl = new Gtk.Label ("Todo.txt");
-        directory_btn = new Gtk.FileChooserButton (
-            "Todo.txt " + _("directory"), Gtk.FileChooserAction.SELECT_FOLDER
-        );    
-        directory_lbl = new Gtk.Label (
-            "<a href=\"http://todotxt.com\">Todo.txt</a> "
-            + _("directory") + ":"
-        );
-        directory_explanation_lbl = new Gtk.Label (
-            _("If no appropriate folder was found, Go For It! defaults to creating a Todo folder in your home directory.")
-        );
-        
-        /* Configuration */
-        directory_lbl.set_line_wrap (false);
-        directory_lbl.set_use_markup (true);
-        directory_explanation_lbl.set_line_wrap (true);
-        ((Gtk.Misc) directory_explanation_lbl).xalign = 0f;
-        directory_btn.create_folders = true;
-        directory_btn.set_current_folder (settings.todo_txt_location);
-        
-        /* Signal Handling */
-        directory_btn.file_set.connect ((e) => {
-            var todo_dir = directory_btn.get_file ().get_path ();
-            settings.todo_txt_location = todo_dir;
-        });
-        
-        txt_page.add_section (txt_sect_lbl);
-        txt_page.add_explanation (directory_explanation_lbl);
-        txt_page.add_setting (directory_lbl, directory_btn);
     }
     
     private void setup_behavior_page () {

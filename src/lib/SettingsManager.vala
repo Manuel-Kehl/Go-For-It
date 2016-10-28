@@ -27,7 +27,6 @@ class GOFI.SettingsManager {
      * A list of constants that define settings group names
      */
     
-    private const string GROUP_TODO_TXT = "Todo.txt";
     private const string GROUP_TIMER = "Timer";
     private const string GROUP_UI = "Interface";
     private const string GROUP_PLUGINS = "Plugins";
@@ -48,14 +47,6 @@ class GOFI.SettingsManager {
         }
         set {
             set_value_list(GROUP_PLUGINS, "enabled_plugins", value);
-        }
-    }
-    /*---GROUP:Todo.txt-------------------------------------------------------*/
-    public string todo_txt_location {
-        owned get { return get_value (GROUP_TODO_TXT, "location"); }
-        set {
-            set_value (GROUP_TODO_TXT, "location", value); 
-            todo_txt_location_changed ();
         }
     }
     /*---GROUP:Timer----------------------------------------------------------*/
@@ -143,7 +134,6 @@ class GOFI.SettingsManager {
     }
     
     /* Signals */
-    public signal void todo_txt_location_changed ();
     public signal void timer_duration_changed ();
     
     /**
@@ -156,7 +146,6 @@ class GOFI.SettingsManager {
         
         if (!FileUtils.test (GOFI.Utils.config_file, FileTest.EXISTS)) {
             // Fill with default values, if it does not exist yet
-            generate_configuration ();
             first_start = true;
         } else {
             // If it does exist, read existing values
@@ -264,31 +253,6 @@ class GOFI.SettingsManager {
                     +" %s.%s: %s", group, key, e.message);
             }
         }
-    }
-    
-    /**
-     * Generates the default configuration.
-     * It also tries to automatically determine the location of the user's 
-     * Todo.txt directory by checking a set of common potential 
-     * "standard locations", which are defined in GOFI.TEST_DIRS in Utils.vala.
-     */
-    private void generate_configuration () {
-        string user_dir = Environment.get_home_dir ();
-        
-        /* Determine the Todo.txt Directory */
-        // Start by setting the default fallback directory
-        var todo_dir = Path.build_filename (user_dir, GOFI.TEST_DIRS[0]);
-        
-        // Try a set of possible "standard locations"
-        foreach (var test_sub_dir in GOFI.TEST_DIRS) {
-            var test_dir = Path.build_filename (user_dir, test_sub_dir);
-            if (FileUtils.test (test_dir, FileTest.EXISTS)) {
-                todo_dir = test_dir;
-                break;
-            }
-        }
-        
-        this.todo_txt_location = todo_dir;
     }
     
     private void write_key_file () throws FileError {

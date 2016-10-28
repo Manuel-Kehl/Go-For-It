@@ -20,48 +20,53 @@
  */
 class GOFI.MainWindow : Gtk.ApplicationWindow {
     /* Various Variables */
-    private TaskManager task_manager;
+    private SettingsManager settings;
     private PluginManager plugin_manager;
     private TaskTimer task_timer;
-    private SettingsManager settings;
+    private TaskList task_list = null;
     private bool use_header_bar;
-    private bool refreshing = false;
     
     /* Various GTK Widgets */
-    private Gtk.Grid main_layout;
-    private Gtk.Stack activity_stack;
-    private Gtk.StackSwitcher activity_switcher;
+    private Gtk.Grid layout;
+    private Gtk.Stack stack;
+    private TaskLayout task_layout;
+    private ListChooser selector;
+    
+    private Gtk.ToggleToolButton menu_btn;
+    private Gtk.ToolButton switch_btn;
+    private Gtk.Image switch_img;
+    
     private Gtk.HeaderBar header_bar;
     private Gtk.Box hb_replacement;
-    private TaskList todo_list;
-    private TaskList done_list;
-    private TimerView timer_view;
-    private Gtk.ToggleToolButton menu_btn;
+    
     // Application Menu
     private Gtk.Menu app_menu;
     private Gtk.MenuItem config_item;
-    private Gtk.MenuItem clear_done_item;
     private Gtk.MenuItem contribute_item;
     private Gtk.MenuItem about_item;
+
     /**
      * Used to determine if a notification should be sent.
      */
     private bool break_previously_active { get; set; default = false; }
     
     /**
+     * Used to keep track of which page is shown.
+     */
+    private bool task_layout_shown { get; set; default = false; }
+    
+    /**
      * The constructor of the MainWindow class.
      */
-    public MainWindow (Gtk.Application app_context, TaskManager task_manager,
-                       TaskTimer task_timer, SettingsManager settings, 
-                       PluginManager plugin_manager)
+    public MainWindow (Gtk.Application app_context, TaskTimer task_timer,
+                       SettingsManager settings, PluginManager plugin_manager)
     {
         // Pass the applicaiton context via GObject-based construction, because
         // constructor chaining is not possible for Gtk.ApplicationWindow
         Object (application: app_context);
-        this.task_manager = task_manager;
-        this.plugin_manager = plugin_manager;
         this.task_timer = task_timer;
         this.settings = settings;
+        this.plugin_manager = plugin_manager;
         this.use_header_bar = settings.use_header_bar;
 
         setup_window ();
@@ -85,9 +90,39 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             dont_exit = true;
         }
         
-        if (dont_exit == false) Notify.uninit ();
+        if (dont_exit == false) {
+            task_layout.remove_task_list ();
+            Notify.uninit ();
+        }
             
         return dont_exit;
+    }
+    
+    public void set_task_list (TaskList task_list) {
+        if (this.task_list != task_list) {
+            if (this.task_list != null) {
+                task_layout.remove_task_list ();
+            }
+            this.task_list = task_list;
+            print("Loading: %s, %s\n", task_list.name, task_list.plugin_name);
+            task_layout.set_task_list (task_list);
+            break_previously_active = false;
+            
+            if (task_layout.list_valid) {
+                foreach (Gtk.MenuItem item in task_layout.get_menu_items ()) {
+                    app_menu.add (item);
+                }
+            }
+        }
+        if (task_layout.list_valid) {
+            switch_stack ();
+        }
+        else {
+            warning (
+                "TaskList %s, %s couldn't be loaded!",
+                task_list.name, task_list.plugin_name
+            );
+        }
     }
     
     /**
@@ -103,73 +138,37 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
      * Initializes GUI elements and configures their look and behavior.
      */
     private void setup_widgets () {
-        /* Instantiation of the Widgets */
-        main_layout = new Gtk.Grid ();
+        layout = new Gtk.Grid ();
+        selector = new ListChooser (plugin_manager);
+        task_layout = new TaskLayout (settings, task_timer, use_header_bar);
         
-        todo_list = new TaskList (this.task_manager.todo_store, true);
-        done_list = new TaskList (this.task_manager.done_store, false);
-        timer_view = new TimerView (task_timer);
-        
-        /* Widget Settings */
-        // Main Layout
-        main_layout.orientation = Gtk.Orientation.VERTICAL;
+        layout.orientation = Gtk.Orientation.VERTICAL;
         
         setup_stack ();
         setup_top_bar ();
         
-        /* Action and Signal Handling */
-        todo_list.add_new_task.connect (task_manager.add_new_task);
-        var todo_selection = todo_list.task_view.get_selection ();
-        var active_task = task_timer.active_task;
-        if (active_task != null) {
-            todo_selection.select_path (active_task.reference.get_path ());
+        task_layout.removing_list.connect ( () => {
+            switch_stack ();
+        });
+        selector.list_selected.connect (set_task_list);
+        
+        if (!use_header_bar) {
+            layout.add(hb_replacement);
         }
-        /* 
-         * If either the selection or the data itself changes, it is 
-         * necessary to check if a different task is to be displayed
-         * in the timer widget and thus on_selection_changed is to be called
-         */
-        todo_selection.changed.connect (on_selection_changed);
-        task_manager.done_store.task_data_changed.connect (on_selection_changed);
-        task_manager.active_task_invalid.connect (on_active_task_invalid);
-        task_manager.refreshing.connect (on_refreshing);
-        task_manager.refreshed.connect (on_refreshed);
-        
-        // Call once to refresh view on startup
-        on_active_task_invalid ();
-        
-        if (use_header_bar)
-            main_layout.add (activity_switcher);
-        else
-            main_layout.add (hb_replacement);
-        main_layout.add (activity_stack);
-        
-        // Add main_layout to the window
-        this.add (main_layout);
+        layout.add (stack);
+        this.add (layout);
     }
     
     private void setup_stack () {
-        activity_stack = new Gtk.Stack ();
-        activity_switcher = new Gtk.StackSwitcher ();
+        stack = new Gtk.Stack ();
 
-        // Activity Stack + Switcher
-        activity_switcher.set_stack (activity_stack);
-        activity_switcher.halign = Gtk.Align.CENTER;
-        activity_stack.set_transition_type(
+        stack.set_transition_type(
             Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
-        // Add widgets to the activity stack
-        activity_stack.add_titled (todo_list, "todo", _("To-Do"));
-        activity_stack.add_titled (timer_view, "timer", _("Timer"));
-        activity_stack.add_titled (done_list, "done", _("Done"));
+        // Add widgets to the stack
+        stack.add (selector);
+        stack.add (task_layout);
         
-        if (task_timer.running) {
-            // Otherwise no task will be displayed in the timer view
-            task_timer.update_active_task ();
-            // Otherwise it won't switch
-            timer_view.show ();
-            activity_stack.set_visible_child_name ("timer");
-        }
-        activity_switcher.margin = 5;
+        stack.set_visible_child (selector);
     }
     
     private void setup_top_bar () {
@@ -182,94 +181,53 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         menu_btn.icon_widget = menu_img;
         menu_btn.label_widget = new Gtk.Label (_("Menu"));
         menu_btn.toggled.connect (menu_btn_toggled);
+        
+        switch_img = new Gtk.Image.from_icon_name("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
+        switch_btn = new Gtk.ToolButton (switch_img, _("_Back"));
+        switch_btn.clicked.connect (switch_stack);
+
         if (use_header_bar) {
-            header_bar = new Gtk.HeaderBar ();
-        
-            // GTK Header Bar
-            header_bar.set_show_close_button (true);
-            header_bar.title = GOFI.APP_NAME;
-            this.set_titlebar (header_bar);
-        
-            // Add headerbar Buttons here
-            header_bar.pack_end (menu_btn);
+            setup_headerbar ();
         }
         else {
-            use_header_bar = false;
-            hb_replacement = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            hb_replacement.pack_start (activity_switcher, true, true); 
-            hb_replacement.pack_end (menu_btn, false, false);
+            setup_headerbar_replacement ();
         }
     }
     
-    public override void show_all () {
-        base.show_all ();
-        // Hide done button initially, whenever the window has been shown
-        timer_view.done_btn.visible = false;
-        // Ensure, that the done button is shown again, if there is a task
-        on_selection_changed ();
+    private void setup_headerbar () {
+        header_bar = new Gtk.HeaderBar ();
+    
+        // GTK Header Bar
+        header_bar.set_show_close_button (true);
+        header_bar.title = APP_NAME;
+        this.set_titlebar (header_bar);
+    
+        // Adding elements
+        header_bar.pack_start (switch_btn);
+        header_bar.pack_end (menu_btn);
     }
     
-    private void on_refreshing () {
-        refreshing = true;
-    }
-    
-    private void on_refreshed () {
-        refreshing = false;
-        var active_task = task_timer.active_task;
+    private void setup_headerbar_replacement () {
+        hb_replacement = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         
-        if (active_task == null) {
-            on_active_task_invalid ();
-        } else {
-            todo_list.task_view.get_selection ().select_path (
-                active_task.reference.get_path ()
-            );
+        // Adding elements
+        hb_replacement.pack_start (switch_btn, false, false); 
+        hb_replacement.pack_start (task_layout.get_switcher(), true, true); 
+        hb_replacement.pack_end (menu_btn, false, false);
+    }
+    
+    private void switch_stack () {
+        if (task_layout_shown) {
+            stack.set_visible_child (selector);
+            task_layout.get_switcher().visible = false;
+            task_layout_shown = false;
+            switch_img.set_from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
+        } else if (task_layout.list_valid) {
+            stack.set_visible_child (task_layout);
+            task_layout_shown = true;
+            task_layout.get_switcher().visible = true;
+            switch_img.set_from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
         }
-    }
-    
-    public void on_selection_changed () {
-        if (task_timer.running || refreshing) {
-            return;
-        }
-        
-        var reference = get_current_row ();
-        
-        set_active_task (reference);
-    }
-    
-    private void on_active_task_invalid () {
-        var reference = get_current_row ();
-        
-        set_active_task (reference);
-    }
-    
-    private Gtk.TreeRowReference? get_current_row () {
-        Gtk.TreeModel model;
-        Gtk.TreePath path;
-        // Check if TodoStore is empty or not
-        if (task_manager.todo_store.is_empty ()) {
-            return null;
-        }
-        
-        var todo_selection = todo_list.task_view.get_selection ();
-        
-        // If no row has been selected, select the first in the list
-        if (todo_selection.count_selected_rows () == 0) {
-            todo_selection.select_path (new Gtk.TreePath.first ());
-        }
-        
-        // Take the first selected row
-        path = todo_selection.get_selected_rows (out model).nth_data (0);
-        return new Gtk.TreeRowReference (model, path);
-    }
-    
-    private void set_active_task (Gtk.TreeRowReference? reference) {
-        TodoTask? task = null;
-        if (reference != null) {
-            task = new TodoTask (reference);
-        }
-        
-        task_manager.set_active_task (task);
-        task_timer.active_task = task;
     }
     
     private void menu_btn_toggled (Gtk.ToggleToolButton source) {
@@ -304,7 +262,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         /* Initialization */
         app_menu = new Gtk.Menu ();
         config_item = new Gtk.MenuItem.with_label (_("Settings"));
-        clear_done_item = new Gtk.MenuItem.with_label (_("Clear Done List"));
         contribute_item = new Gtk.MenuItem.with_label (_("Contribute / Donate"));
         about_item = new Gtk.MenuItem.with_label (_("About"));
         
@@ -317,9 +274,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         config_item.activate.connect ((e) => {
             var dialog = new SettingsDialog (this, settings, plugin_manager);
             dialog.show ();
-        });
-        clear_done_item.activate.connect ((e) => {
-            task_manager.clear_done_store ();
+            dialog.destroy.connect (plugin_manager.save_loaded);
         });
         contribute_item.activate.connect ((e) => {
             var dialog = new ContributeDialog (this);
@@ -332,7 +287,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         
         /* Add Items to Menu */
         app_menu.add (config_item);
-        app_menu.add (clear_done_item);
         app_menu.add (contribute_item);
         app_menu.add (about_item);
         

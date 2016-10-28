@@ -2,22 +2,6 @@
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/Constants.vala.cmake ${CMAKE_CURRENT_SOURCE_DIR}/Constants.vala)
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PACKAGE_NAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE_NAME}.pc)
 
-# checking if have a recent version of Gtk+-3.0
-pkg_check_modules( GTK3 gtk+-3.0 )
-if (${GTK3_VERSION} VERSION_GREATER 3.9)
-    set (VALAC_OPTIONS ${VALAC_OPTIONS} -D HAS_GTK310)
-else ()
-    message ("-- No recent Gtk+-3.0 found... Using pre 3.10 features.")
-endif ()
-
-# checking if we have a recent version of GLib
-pkg_check_modules( GLIB2 glib-2.0 )
-if (${GLIB2_VERSION} VERSION_GREATER 2.40 )
-    set (VALAC_OPTIONS ${VALAC_OPTIONS} -D HAS_GLIB241)
-else ()
-    message ("-- No recent glib-2.0 found")
-endif ()
-
 # files we want to compile
 include(ValaPrecompile)
 vala_precompile(VALA_C ${EXEC_NAME}
@@ -27,11 +11,11 @@ vala_precompile(VALA_C ${EXEC_NAME}
     Interface.vala
     PluginManager.vala
     TodoTask.vala
-    TaskStore.vala
-    TaskManager.vala
-    view/TaskList.vala
+    TaskList.vala
     TaskTimer.vala
     view/TimerView.vala
+    view/TaskLayout.vala
+    view/ListChooser.vala
     view/SettingsDialog.vala
     view/AboutDialog.vala
     view/ContributeDialog.vala

@@ -83,12 +83,12 @@ class GOFI.TaskTimer {
         /* Signal Handling*/
         settings.timer_duration_changed.connect ((e) => {
             if (!running) {
-                reset ();
+                reset_time ();
             }
         });
         
         /*
-         * The TaskTimer's update loop. Actual time tracking is implemnted
+         * The TaskTimer's update loop. Actual time tracking is implemented
          * by comparing timestamps, so the update interval has no influence 
          * on that.
          */
@@ -102,9 +102,9 @@ class GOFI.TaskTimer {
             // TODO: Check if it may make sense to check for program exit state
             return true;
         });
-        reset ();
+        reset_time ();
     }
-     
+    
     public void start () {
         if (!running && active_task != null) {
             start_time = new DateTime.now_utc ();
@@ -113,6 +113,9 @@ class GOFI.TaskTimer {
         }
     }
     
+    /**
+     * Stops/pauses the timer.
+     */
     public void stop () {
         if (running) {
             duration_till_end = remaining_duration;
@@ -122,7 +125,17 @@ class GOFI.TaskTimer {
         }
     }
     
+    /**
+     * Reverts the state of this to its initial condition.
+     */
     public void reset () {
+        running = false;
+        break_active = false;
+        _active_task = null;
+        reset_time ();
+    }
+    
+    public void reset_time () {
         int64 default_duration;
         if (break_active) {
             default_duration = settings.break_duration;
@@ -207,7 +220,7 @@ class GOFI.TaskTimer {
      */
     public void toggle_break () {
         break_active = !break_active;
-        reset ();
+        reset_time ();
         if (break_active) {
             start ();
         }

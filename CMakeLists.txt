@@ -3,6 +3,11 @@ project (go-for-it)
 cmake_minimum_required (VERSION 2.6)
 # tell cmake where its modules can be found in our project directory
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+
+# options for what should be built
+option(BuildPlugins "Build plugins when building Go For It!" ON)
+option(BuildTXTPlugin "Build todo.txt plugin" ON)
+
 # where we install data directory (if we have any)
 set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 include (GNUInstallDirs)
@@ -11,6 +16,7 @@ set (PKGDATADIR "${DATADIR}/go-for-it")
 set (FILE_CONF "go-for-it.conf")
 set (PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/${CMAKE_PROJECT_NAME}/plugins")
 
+# names and information of the executable and library
 set (EXEC_NAME "go-for-it")
 set (APP_ID "de.manuel-kehl.go-for-it")
 set (APP_NAME "Go For It!")
@@ -27,10 +33,10 @@ set (PROJECT_WEBSITE "http://manuel-kehl.de/projects/go-for-it/")
 set (PROJECT_REPO "https://github.com/mank319/Go-For-It")
 set (PROJECT_DONATIONS "http://manuel-kehl.de/donations/")
 
-# defaults
+# default configuration
 set (DEFAULT_PLUGINS "{}")
 
-# ...
+# values for pc.cmake files
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
 set (DOLLAR "$")
 
@@ -59,6 +65,9 @@ include(ValaVersion)
 # make sure it's the desired version of vala
 ensure_vala_version("0.26" MINIMUM)
 
-add_subdirectory (src)
-add_subdirectory (data)
-add_subdirectory (style)
+add_subdirectory(src)
+add_subdirectory(data)
+add_subdirectory(style)
+if(BuildPlugins)
+    add_subdirectory(plugins)
+endif()
