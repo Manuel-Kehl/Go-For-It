@@ -72,4 +72,8 @@ Use the following commands in this order to build *Go For It!*:
     make
     sudo make install
 
+To update the translation files, run:
 
+    mkdir build
+    cd build
+    make pot

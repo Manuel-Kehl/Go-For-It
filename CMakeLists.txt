@@ -15,6 +15,7 @@ set (APP_NAME "Go For It!")
 set (RELEASE_NAME "A stylish to-do list with built-in productivity timer.")
 set (VERSION "1.4.7")
 set (VERSION_INFO "initial release")
+set (GETTEXT_PACKAGE "go-for-it")
 
 set (PROJECT_WEBSITE "http://manuel-kehl.de/projects/go-for-it/")
 set (PROJECT_REPO "https://github.com/mank319/Go-For-It")
@@ -34,7 +35,7 @@ link_directories(${DEPS_LIBRARY_DIRS})
 
 # disable c compiler warnings
 add_definitions(-w)
-add_definitions(-DGETTEXT_PACKAGE="go-for-it")
+add_definitions(-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
 
 # make sure we have vala
 find_package(Vala REQUIRED)
@@ -46,3 +47,4 @@ ensure_vala_version("0.16" MINIMUM)
 add_subdirectory (src)
 add_subdirectory (data)
 add_subdirectory (style)
+add_subdirectory (po)
