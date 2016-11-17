@@ -122,7 +122,7 @@ public class SettingsManager {
     public bool use_header_bar {
         owned get {
             var use_header_bar = get_value (
-                GROUP_UI, "use_header_bar", header_bar_default()
+                GROUP_UI, "use_header_bar", header_bar_default ()
             );
             return bool.parse (use_header_bar);
         }
@@ -130,10 +130,23 @@ public class SettingsManager {
             set_value (GROUP_UI, "use_header_bar", value.to_string ());
         }
     }
+    public bool use_dark_theme {
+        owned get {
+            var use_dark = get_value (
+                GROUP_UI, "use_dark_theme", "false"
+            );
+            return bool.parse (use_dark);
+        }
+        set {
+            set_value (GROUP_UI, "use_dark_theme", value.to_string ());
+            use_dark_theme_changed (value);
+        }
+    }
     
     /* Signals */
     public signal void todo_txt_location_changed ();
     public signal void timer_duration_changed ();
+    public signal void use_dark_theme_changed (bool use_dark);
     
     /**
      * Constructs a SettingsManager object from a configuration file.

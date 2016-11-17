@@ -66,7 +66,8 @@ class MainWindow : Gtk.ApplicationWindow {
         this.task_manager = task_manager;
         this.task_timer = task_timer;
         this.settings = settings;
-        this.use_header_bar = settings.use_header_bar;
+        
+        apply_settings ();
 
         setup_window ();
         setup_menu ();
@@ -75,6 +76,19 @@ class MainWindow : Gtk.ApplicationWindow {
         setup_notifications ();
         // Enable Notifications for the App
         Notify.init (GOFI.APP_NAME);
+    }
+    
+    private void apply_settings () {
+        this.use_header_bar = settings.use_header_bar;
+        
+        if (settings.use_dark_theme) {
+            unowned Gtk.Settings gtk_settings = Gtk.Settings.get_default();
+            gtk_settings.gtk_application_prefer_dark_theme = true;
+        }
+        settings.use_dark_theme_changed.connect ( (use_dark_theme) => {
+            unowned Gtk.Settings gtk_settings = Gtk.Settings.get_default();
+            gtk_settings.gtk_application_prefer_dark_theme = use_dark_theme;
+        });
     }
     
     public override bool delete_event (Gdk.EventAny event) {

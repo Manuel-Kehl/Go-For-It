@@ -58,6 +58,7 @@ public class SettingsDialog : Gtk.Dialog {
         int row = 0;
         setup_txt_settings_widgets (main_layout, ref row);
         setup_timer_settings_widgets (main_layout, ref row);
+        setup_appearance_settings_widgets (main_layout, ref row);
 #if HAS_GTK310
         setup_csd_settings_widgets (main_layout, ref row);
 #endif
@@ -183,6 +184,29 @@ public class SettingsDialog : Gtk.Dialog {
         add_option (grid, task_lbl, task_spin, ref row);
         add_option (grid, break_lbl, break_spin, ref row);
         add_option (grid, reminder_lbl, reminder_spin, ref row);
+    }
+    
+    private void setup_appearance_settings_widgets (Gtk.Grid grid, ref int row) {
+        Gtk.Label appearance_sect_lbl;
+        Gtk.Label dark_theme_lbl;
+        Gtk.Switch dark_theme_switch;
+        
+        /* Instantiation */
+        appearance_sect_lbl = new Gtk.Label (_("Appearance"));
+        dark_theme_lbl = new Gtk.Label (_("Dark theme"));
+        dark_theme_switch = new Gtk.Switch ();
+        
+        /* Configuration */
+        dark_theme_switch.active = settings.use_dark_theme;
+        
+        /* Signal Handling */
+        dark_theme_switch.notify["active"].connect ( () => {
+            settings.use_dark_theme = dark_theme_switch.active;
+        });
+        
+        /* Add widgets */
+        add_section (grid, appearance_sect_lbl, ref row);
+        add_option (grid, dark_theme_lbl, dark_theme_switch, ref row);
     }
     
 #if HAS_GTK310
