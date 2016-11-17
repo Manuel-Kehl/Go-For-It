@@ -72,7 +72,7 @@ Use the following commands in this order to build *Go For It!*:
     make
     sudo make install
 
-To update the translation files, run:
+Use the following commands to update the translation files:
 
     mkdir build
     cd build
