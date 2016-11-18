@@ -4,7 +4,8 @@ cmake_minimum_required (VERSION 2.6)
 # tell cmake where its modules can be found in our project directory
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 # where we install data directory (if we have any)
-set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
+set (INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
+set (DATADIR "${INSTALL_PREFIX}/share")
 
 set (PKGDATADIR "${DATADIR}/go-for-it")
 set (FILE_CONF "go-for-it.conf")
