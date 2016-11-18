@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-17 09:23+0100\n"
+"POT-Creation-Date: 2016-11-18 13:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,62 +17,62 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/view/MainWindow.vala:166 ../src/view/MainWindow.vala:182
-#: ../src/view/MainWindow.vala:187
+#: ../src/view/MainWindow.vala:181 ../src/view/MainWindow.vala:197
+#: ../src/view/MainWindow.vala:202
 msgid "To-Do"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:167 ../src/view/MainWindow.vala:183
-#: ../src/view/MainWindow.vala:188 ../src/view/SettingsDialog.vala:154
+#: ../src/view/MainWindow.vala:182 ../src/view/MainWindow.vala:198
+#: ../src/view/MainWindow.vala:203 ../src/view/SettingsDialog.vala:152
 msgid "Timer"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:168 ../src/view/MainWindow.vala:184
-#: ../src/view/MainWindow.vala:189
+#: ../src/view/MainWindow.vala:183 ../src/view/MainWindow.vala:199
+#: ../src/view/MainWindow.vala:204
 msgid "Done"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:271
+#: ../src/view/MainWindow.vala:286
 msgid "Menu"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:398 ../src/view/SettingsDialog.vala:43
+#: ../src/view/MainWindow.vala:440 ../src/view/SettingsDialog.vala:43
 msgid "Settings"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:399
+#: ../src/view/MainWindow.vala:441
 msgid "Clear Done List"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:400
+#: ../src/view/MainWindow.vala:442
 msgid "Contribute / Donate"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:401 ../src/view/AboutDialog.vala:27
+#: ../src/view/MainWindow.vala:443 ../src/view/AboutDialog.vala:27
 msgid "About"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:453 ../src/view/TimerView.vala:78
+#: ../src/view/MainWindow.vala:495 ../src/view/TimerView.vala:78
 msgid "Take a Break"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:454
+#: ../src/view/MainWindow.vala:496
 msgid "Relax and stop thinking about your current task for a while"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:459
+#: ../src/view/MainWindow.vala:501
 msgid "The Break is Over"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:460
+#: ../src/view/MainWindow.vala:502
 msgid "Your next task is"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:477
+#: ../src/view/MainWindow.vala:519
 msgid "Prepare for your break"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:478
+#: ../src/view/MainWindow.vala:520
 msgid "You have $secs seconds left"
 msgstr ""
 
@@ -144,37 +144,37 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:112 ../src/view/SettingsDialog.vala:117
+#: ../src/view/SettingsDialog.vala:110 ../src/view/SettingsDialog.vala:115
 msgid "directory"
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:121
+#: ../src/view/SettingsDialog.vala:119
 msgid ""
 "If no appropriate folder was found, Go For It! defaults to creating a Todo "
 "folder in your home directory."
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:155
+#: ../src/view/SettingsDialog.vala:153
 msgid "Task duration (minutes)"
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:156
+#: ../src/view/SettingsDialog.vala:154
 msgid "Break duration (minutes)"
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:157
+#: ../src/view/SettingsDialog.vala:155
 msgid "Reminder before task ends (seconds)"
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:196
-msgid "Client side decorations"
+#: ../src/view/SettingsDialog.vala:192
+msgid "Appearance"
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:197
-msgid "Go For It! needs to restart for changes to have an effect."
+#: ../src/view/SettingsDialog.vala:193
+msgid "Dark theme"
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:198
+#: ../src/view/SettingsDialog.vala:219
 msgid "Use a header bar"
 msgstr ""
 

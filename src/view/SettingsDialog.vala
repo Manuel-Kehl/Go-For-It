@@ -59,9 +59,6 @@ public class SettingsDialog : Gtk.Dialog {
         setup_txt_settings_widgets (main_layout, ref row);
         setup_timer_settings_widgets (main_layout, ref row);
         setup_appearance_settings_widgets (main_layout, ref row);
-#if HAS_GTK310
-        setup_csd_settings_widgets (main_layout, ref row);
-#endif
     }
     
     private void add_section (Gtk.Grid grid, Gtk.Label label, ref int row) {
@@ -207,18 +204,18 @@ public class SettingsDialog : Gtk.Dialog {
         /* Add widgets */
         add_section (grid, appearance_sect_lbl, ref row);
         add_option (grid, dark_theme_lbl, dark_theme_switch, ref row);
+        
+#if HAS_GTK310
+        setup_csd_settings_widgets (main_layout, ref row);
+#endif
     }
     
 #if HAS_GTK310
     private void setup_csd_settings_widgets (Gtk.Grid grid, ref int row) {
-        Gtk.Label csd_sect_lbl;
-        Gtk.Label csd_explanation_lbl;
         Gtk.Label headerbar_lbl;
         Gtk.Switch headerbar_switch;
         
         /* Instantiation */
-        csd_sect_lbl = new Gtk.Label (_("Client side decorations"));
-        csd_explanation_lbl = new Gtk.Label (_("Go For It! needs to restart for changes to have an effect."));
         headerbar_lbl = new Gtk.Label (_("Use a header bar") + (":"));
         headerbar_switch = new Gtk.Switch ();
         
@@ -231,8 +228,6 @@ public class SettingsDialog : Gtk.Dialog {
         });
         
         /* Add widgets */
-        add_section (grid, csd_sect_lbl, ref row);
-        add_explanation (grid, csd_explanation_lbl, ref row);
         add_option (grid, headerbar_lbl, headerbar_switch, ref row);
     }
 #endif

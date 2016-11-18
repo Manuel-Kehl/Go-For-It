@@ -128,6 +128,7 @@ public class SettingsManager {
         }
         set {
             set_value (GROUP_UI, "use_header_bar", value.to_string ());
+            use_header_bar_changed ();
         }
     }
     public bool use_dark_theme {
@@ -147,6 +148,7 @@ public class SettingsManager {
     public signal void todo_txt_location_changed ();
     public signal void timer_duration_changed ();
     public signal void use_dark_theme_changed (bool use_dark);
+    public signal void use_header_bar_changed ();
     
     /**
      * Constructs a SettingsManager object from a configuration file.

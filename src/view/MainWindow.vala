@@ -38,7 +38,7 @@ class MainWindow : Gtk.ApplicationWindow {
     // Flag for controlling whether the activity has been toggled by hand
     private bool activity_toggled_manually = true;
 #endif
-    private Gtk.Box hb_replacement;
+    private Gtk.Box switcher_box;
     private TaskList todo_list;
     private TaskList done_list;
     private TimerView timer_view;
@@ -85,10 +85,14 @@ class MainWindow : Gtk.ApplicationWindow {
             unowned Gtk.Settings gtk_settings = Gtk.Settings.get_default();
             gtk_settings.gtk_application_prefer_dark_theme = true;
         }
+        
         settings.use_dark_theme_changed.connect ( (use_dark_theme) => {
             unowned Gtk.Settings gtk_settings = Gtk.Settings.get_default();
             gtk_settings.gtk_application_prefer_dark_theme = use_dark_theme;
         });
+#if HAS_GTK310
+        settings.use_header_bar_changed.connect (toggle_headerbar);
+#endif
     }
     
     public override bool delete_event (Gdk.EventAny event) {
@@ -156,10 +160,7 @@ class MainWindow : Gtk.ApplicationWindow {
         // Call once to refresh view on startup
         on_active_task_invalid ();
         
-        if (use_header_bar)
-            main_layout.add (activity_switcher);
-        else
-            main_layout.add (hb_replacement);
+        main_layout.add (switcher_box);
         main_layout.add (activity_stack);
         
         // Add main_layout to the window
@@ -284,28 +285,55 @@ class MainWindow : Gtk.ApplicationWindow {
         menu_btn.icon_widget = menu_img;
         menu_btn.label_widget = new Gtk.Label (_("Menu"));
         menu_btn.toggled.connect (menu_btn_toggled);
-#if HAS_GTK310
-        if (use_header_bar) {
-            header_bar = new Gtk.HeaderBar ();
         
-            // GTK Header Bar
-            header_bar.set_show_close_button (true);
-            header_bar.title = GOFI.APP_NAME;
-            this.set_titlebar (header_bar);
-        
-            // Add headerbar Buttons here
-            header_bar.pack_end (menu_btn);
-        }
-        else {
+        switcher_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        switcher_box.pack_start (activity_switcher, true, true);
+         
+#if !HAS_GTK310
+        use_header_bar = false;
 #endif
-            use_header_bar = false;
-            hb_replacement = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            hb_replacement.pack_start (activity_switcher, true, true); 
-            hb_replacement.pack_end (menu_btn, false, false);
+        if(use_header_bar){
 #if HAS_GTK310
-        }
+            add_headerbar ();
 #endif
+        } else {
+            switcher_box.pack_end (menu_btn, false, false);
+        }
     }
+    
+#if HAS_GTK310
+    public void add_headerbar () {
+        header_bar = new Gtk.HeaderBar ();
+    
+        // GTK Header Bar
+        header_bar.set_show_close_button (true);
+        header_bar.title = GOFI.APP_NAME;
+    
+        // Add headerbar Buttons here
+        header_bar.pack_end (menu_btn);
+        
+        this.set_titlebar (header_bar);
+    }
+    
+    private void toggle_headerbar () {
+        hide ();
+        unrealize ();
+        if (use_header_bar) {
+            header_bar.remove (menu_btn);
+            header_bar = null;
+            set_titlebar (null);
+            switcher_box.pack_end (menu_btn, false, false);
+        } else {
+            switcher_box.remove (menu_btn);
+            add_headerbar ();
+            header_bar.show ();
+        }
+        realize ();
+        show ();
+        
+        use_header_bar = !use_header_bar;
+    }
+#endif
     
     public override void show_all () {
         base.show_all ();
