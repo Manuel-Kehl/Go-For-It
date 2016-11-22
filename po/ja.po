@@ -1,4 +1,182 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-18 13:44+0100\n"
+"PO-Revision-Date: 2016-11-20 04:17+0000\n"
+"Last-Translator: BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) <Unknown>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-11-22 12:12+0000\n"
+"X-Generator: Launchpad (build 18269)\n"
+
+#: ../src/view/MainWindow.vala:181 ../src/view/MainWindow.vala:197
+#: ../src/view/MainWindow.vala:202
+msgid "To-Do"
+msgstr "To-Do"
+
+#: ../src/view/MainWindow.vala:182 ../src/view/MainWindow.vala:198
+#: ../src/view/MainWindow.vala:203 ../src/view/SettingsDialog.vala:152
+msgid "Timer"
+msgstr "タイマー"
+
+#: ../src/view/MainWindow.vala:183 ../src/view/MainWindow.vala:199
+#: ../src/view/MainWindow.vala:204
+msgid "Done"
+msgstr "完了"
+
+#: ../src/view/MainWindow.vala:286
+msgid "Menu"
+msgstr "メニュー"
+
+#: ../src/view/MainWindow.vala:440 ../src/view/SettingsDialog.vala:43
+msgid "Settings"
+msgstr "設定"
+
+#: ../src/view/MainWindow.vala:441
+msgid "Clear Done List"
+msgstr "完了リストをクリア"
+
+#: ../src/view/MainWindow.vala:442
+msgid "Contribute / Donate"
+msgstr "寄付"
+
+#: ../src/view/MainWindow.vala:443 ../src/view/AboutDialog.vala:27
+msgid "About"
+msgstr "このアプリについて"
+
+#: ../src/view/MainWindow.vala:495 ../src/view/TimerView.vala:78
+msgid "Take a Break"
+msgstr "休憩をとる"
+
+#: ../src/view/MainWindow.vala:496
+msgid "Relax and stop thinking about your current task for a while"
+msgstr "リラックスして少しのあいだ今のタスクについて考えるのをやめましょう"
+
+#: ../src/view/MainWindow.vala:501
+msgid "The Break is Over"
+msgstr "休憩終了"
+
+#: ../src/view/MainWindow.vala:502
+msgid "Your next task is"
+msgstr "次の仕事は"
+
+#: ../src/view/MainWindow.vala:519
+msgid "Prepare for your break"
+msgstr "休憩の準備をする"
+
+#: ../src/view/MainWindow.vala:520
+msgid "You have $secs seconds left"
+msgstr "残り $sec 秒"
+
+#: ../src/view/TaskList.vala:137
+msgid "Add new task"
+msgstr "新しいタスクの追加"
+
+#: ../src/view/TimerView.vala:82
+msgid "Active Task"
+msgstr "有効なタスク"
+
+#: ../src/view/TimerView.vala:103
+msgid "Pau_se"
+msgstr "一時停止(_S)"
+
+#: ../src/view/TimerView.vala:106
+msgid "_Start"
+msgstr "開始(_S)"
+
+#: ../src/view/TimerView.vala:133
+msgid "Inactive"
+msgstr "無効"
+
+#: ../src/view/TimerView.vala:134
+msgid "No task has been selected"
+msgstr "選択されたタスクはありません"
+
+#: ../src/view/TimerView.vala:220
+msgid "S_kip"
+msgstr "スキップ(_K)"
+
+#: ../src/view/TimerView.vala:221
+msgid "_Done"
+msgstr "完了(_D)"
+
+#: ../src/view/TimerView.vala:266
+msgid "Relax"
+msgstr "休憩"
+
+#: ../src/view/TimerView.vala:267
+msgid "You have nothing to do."
+msgstr "なにもしません。"
+
+#: ../src/view/ContributeDialog.vala:27
+msgid "Contributions and Donations"
+msgstr "寄付"
+
+#: ../src/view/ContributeDialog.vala:30
+msgid "Thank you for supporting"
+msgstr "支援ありがとうございます"
+
+#: ../src/view/ContributeDialog.vala:31
+msgid ""
+"Submitting code, artwork, translations or documentation is a great way of "
+"contributing to the project:"
+msgstr "コード、アートワーク、翻訳、文書の提出はプロジェクトに貢献する素晴らしい方法です:"
+
+#: ../src/view/ContributeDialog.vala:35
+msgid ""
+"Donations give me a chance to dedicate more time towards implementing new "
+"features:"
+msgstr "寄付によって新しい機能の実装にもっと時間を割くことができます:"
+
+#: ../src/view/AboutDialog.vala:41
+msgid "A stylish to-do list with built-in productivity timer."
+msgstr ""
+
+#: ../src/view/SettingsDialog.vala:45
+msgid "Close"
+msgstr "閉じる"
+
+#: ../src/view/SettingsDialog.vala:110 ../src/view/SettingsDialog.vala:115
+msgid "directory"
+msgstr "フォルダ"
+
+#: ../src/view/SettingsDialog.vala:119
+msgid ""
+"If no appropriate folder was found, Go For It! defaults to creating a Todo "
+"folder in your home directory."
+msgstr "適切なフォルダが見つからない場合、Go For It！ のデフォルトはホームディレクトリに Todo フォルダを作成します。"
+
+#: ../src/view/SettingsDialog.vala:153
+msgid "Task duration (minutes)"
+msgstr "タスクの所要時間(分)"
+
+#: ../src/view/SettingsDialog.vala:154
+msgid "Break duration (minutes)"
+msgstr "休憩時間(分)"
+
+#: ../src/view/SettingsDialog.vala:155
+msgid "Reminder before task ends (seconds)"
+msgstr "タスク終了前のリマインダー(秒)"
+
+#: ../src/view/SettingsDialog.vala:192
+msgid "Appearance"
+msgstr "外観"
+
+#: ../src/view/SettingsDialog.vala:193
+msgid "Dark theme"
+msgstr "ダークテーマ"
+
+#: ../src/view/SettingsDialog.vala:219
+msgid "Use a header bar"
+msgstr "ヘッダーバーを使用する"
+
+#: ../src/Main.vala:127
+msgid "Print version info and exit"
+msgstr "バージョン情報を表示して終了する"
+
+#: ../src/Main.vala:128
+msgid "Show about dialog"
+msgstr "アプリについてのダイアログを表示"

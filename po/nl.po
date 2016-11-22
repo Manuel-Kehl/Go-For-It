@@ -1,4 +1,188 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-18 13:44+0100\n"
+"PO-Revision-Date: 2016-11-18 20:46+0000\n"
+"Last-Translator: Jonathan Moerman <Unknown>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-11-22 12:12+0000\n"
+"X-Generator: Launchpad (build 18269)\n"
+
+#: ../src/view/MainWindow.vala:181 ../src/view/MainWindow.vala:197
+#: ../src/view/MainWindow.vala:202
+msgid "To-Do"
+msgstr "Te doen"
+
+#: ../src/view/MainWindow.vala:182 ../src/view/MainWindow.vala:198
+#: ../src/view/MainWindow.vala:203 ../src/view/SettingsDialog.vala:152
+msgid "Timer"
+msgstr "Timer"
+
+#: ../src/view/MainWindow.vala:183 ../src/view/MainWindow.vala:199
+#: ../src/view/MainWindow.vala:204
+msgid "Done"
+msgstr "Gedaan"
+
+#: ../src/view/MainWindow.vala:286
+msgid "Menu"
+msgstr "Menu"
+
+#: ../src/view/MainWindow.vala:440 ../src/view/SettingsDialog.vala:43
+msgid "Settings"
+msgstr "Instellingen"
+
+#: ../src/view/MainWindow.vala:441
+msgid "Clear Done List"
+msgstr "Wis de gedane taken"
+
+#: ../src/view/MainWindow.vala:442
+msgid "Contribute / Donate"
+msgstr "Draag bij / Doneer"
+
+#: ../src/view/MainWindow.vala:443 ../src/view/AboutDialog.vala:27
+msgid "About"
+msgstr "Over"
+
+#: ../src/view/MainWindow.vala:495 ../src/view/TimerView.vala:78
+msgid "Take a Break"
+msgstr "Neem even pauze"
+
+#: ../src/view/MainWindow.vala:496
+msgid "Relax and stop thinking about your current task for a while"
+msgstr "Ontspan en denk even niet aan uw huidige taak"
+
+#: ../src/view/MainWindow.vala:501
+msgid "The Break is Over"
+msgstr "De pauze is voorbij"
+
+#: ../src/view/MainWindow.vala:502
+msgid "Your next task is"
+msgstr "Uw volgende taak is"
+
+#: ../src/view/MainWindow.vala:519
+msgid "Prepare for your break"
+msgstr "Bereid u voor voor uw pauze"
+
+#: ../src/view/MainWindow.vala:520
+msgid "You have $secs seconds left"
+msgstr "U heeft nog $secs seconden"
+
+#: ../src/view/TaskList.vala:137
+msgid "Add new task"
+msgstr "Voeg een nieuwe taak toe"
+
+#: ../src/view/TimerView.vala:82
+msgid "Active Task"
+msgstr "Huidige taak"
+
+#: ../src/view/TimerView.vala:103
+msgid "Pau_se"
+msgstr "Pauzeer"
+
+#: ../src/view/TimerView.vala:106
+msgid "_Start"
+msgstr "Start"
+
+#: ../src/view/TimerView.vala:133
+msgid "Inactive"
+msgstr "Inactief"
+
+#: ../src/view/TimerView.vala:134
+msgid "No task has been selected"
+msgstr "Er is geen taak geselecteerd"
+
+#: ../src/view/TimerView.vala:220
+msgid "S_kip"
+msgstr "Overslaan"
+
+#: ../src/view/TimerView.vala:221
+msgid "_Done"
+msgstr "_Voltooid"
+
+#: ../src/view/TimerView.vala:266
+msgid "Relax"
+msgstr "Ontspan"
+
+#: ../src/view/TimerView.vala:267
+msgid "You have nothing to do."
+msgstr "U heeft niets om te doen"
+
+#: ../src/view/ContributeDialog.vala:27
+msgid "Contributions and Donations"
+msgstr "Bijdragen en donaties"
+
+#: ../src/view/ContributeDialog.vala:30
+msgid "Thank you for supporting"
+msgstr "Dank u voor het ondersteunen"
+
+#: ../src/view/ContributeDialog.vala:31
+msgid ""
+"Submitting code, artwork, translations or documentation is a great way of "
+"contributing to the project:"
+msgstr ""
+"Het indienen van code, artwork, vertalingen of documentatie is een geweldige "
+"manier om bij te dragen aan het project:"
+
+#: ../src/view/ContributeDialog.vala:35
+msgid ""
+"Donations give me a chance to dedicate more time towards implementing new "
+"features:"
+msgstr ""
+"Donaties geven mij een kans om meer tijd te besteden aan het ontwikkelen van "
+"nieuwe functies"
+
+#: ../src/view/AboutDialog.vala:41
+msgid "A stylish to-do list with built-in productivity timer."
+msgstr "Een stijlvolle takenlijst met ingebouwde productiviteits timer"
+
+#: ../src/view/SettingsDialog.vala:45
+msgid "Close"
+msgstr "Sluiten"
+
+#: ../src/view/SettingsDialog.vala:110 ../src/view/SettingsDialog.vala:115
+msgid "directory"
+msgstr "map"
+
+#: ../src/view/SettingsDialog.vala:119
+msgid ""
+"If no appropriate folder was found, Go For It! defaults to creating a Todo "
+"folder in your home directory."
+msgstr ""
+"Als geen geschikte map werd gevonden maakt Go For It! een Todo map in uw "
+"persoonlijke map aan."
+
+#: ../src/view/SettingsDialog.vala:153
+msgid "Task duration (minutes)"
+msgstr "Duur van de taak (minuten)"
+
+#: ../src/view/SettingsDialog.vala:154
+msgid "Break duration (minutes)"
+msgstr "Duur van de pauze (minuten)"
+
+#: ../src/view/SettingsDialog.vala:155
+msgid "Reminder before task ends (seconds)"
+msgstr "Herinnering voordat de taak eindigt (seconden)"
+
+#: ../src/view/SettingsDialog.vala:192
+msgid "Appearance"
+msgstr "Vormgeving"
+
+#: ../src/view/SettingsDialog.vala:193
+msgid "Dark theme"
+msgstr "Donker thema"
+
+#: ../src/view/SettingsDialog.vala:219
+msgid "Use a header bar"
+msgstr "Gebruik een 'header bar'"
+
+#: ../src/Main.vala:127
+msgid "Print version info and exit"
+msgstr "Toon versie informatie en verlaat applicatie"
+
+#: ../src/Main.vala:128
+msgid "Show about dialog"
+msgstr "Toon info-dialoogvenster"
