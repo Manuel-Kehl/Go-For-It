@@ -7,6 +7,7 @@ Exec=go-for-it
 Icon=go-for-it
 Terminal=false
 Type=Application
+StartupWMClass=go-for-it
 X-GNOME-Gettext-Domain=go-for-it
 Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
 X-GNOME-Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
