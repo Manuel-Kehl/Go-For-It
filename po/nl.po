@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 13:44+0100\n"
-"PO-Revision-Date: 2016-11-18 20:46+0000\n"
+"PO-Revision-Date: 2016-11-22 21:35+0000\n"
 "Last-Translator: Jonathan Moerman <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-11-22 12:12+0000\n"
+"X-Launchpad-Export-Date: 2016-11-23 06:51+0000\n"
 "X-Generator: Launchpad (build 18269)\n"
 
 #: ../src/view/MainWindow.vala:181 ../src/view/MainWindow.vala:197
@@ -81,11 +81,11 @@ msgstr "Huidige taak"
 
 #: ../src/view/TimerView.vala:103
 msgid "Pau_se"
-msgstr "Pauzeer"
+msgstr "Pauzeer (_s)"
 
 #: ../src/view/TimerView.vala:106
 msgid "_Start"
-msgstr "Start"
+msgstr "_Start"
 
 #: ../src/view/TimerView.vala:133
 msgid "Inactive"
@@ -97,7 +97,7 @@ msgstr "Er is geen taak geselecteerd"
 
 #: ../src/view/TimerView.vala:220
 msgid "S_kip"
-msgstr "Overslaan"
+msgstr "Overs_laan"
 
 #: ../src/view/TimerView.vala:221
 msgid "_Done"

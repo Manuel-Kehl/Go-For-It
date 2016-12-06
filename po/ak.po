@@ -1,189 +1,193 @@
+# Akan translation for go-for-it
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the go-for-it package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+# aberba <karabutaworld@gmail.com>, 2016.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: go-for-it\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-11-18 13:44+0100\n"
-"PO-Revision-Date: 2016-12-05 15:19+0000\n"
-"Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2016-11-30 00:09+0000\n"
+"Last-Translator: aberba <karabutaworld@gmail.com>\n"
+"Language-Team: Akan <ak@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-12-06 05:31+0000\n"
+"X-Launchpad-Export-Date: 2016-12-01 05:13+0000\n"
 "X-Generator: Launchpad (build 18282)\n"
 
 #: ../src/view/MainWindow.vala:181 ../src/view/MainWindow.vala:197
 #: ../src/view/MainWindow.vala:202
 msgid "To-Do"
-msgstr "Aufgaben"
+msgstr "To-Do"
 
 #: ../src/view/MainWindow.vala:182 ../src/view/MainWindow.vala:198
 #: ../src/view/MainWindow.vala:203 ../src/view/SettingsDialog.vala:152
 msgid "Timer"
-msgstr "Stoppuhr"
+msgstr "Mmere Nkaee (Timer)"
 
 #: ../src/view/MainWindow.vala:183 ../src/view/MainWindow.vala:199
 #: ../src/view/MainWindow.vala:204
 msgid "Done"
-msgstr "Erledigt"
+msgstr "Wie"
 
 #: ../src/view/MainWindow.vala:286
 msgid "Menu"
-msgstr "Menü"
+msgstr "Menu"
 
 #: ../src/view/MainWindow.vala:440 ../src/view/SettingsDialog.vala:43
 msgid "Settings"
-msgstr "Einstellungen"
+msgstr "Nhyehyɛe"
 
 #: ../src/view/MainWindow.vala:441
 msgid "Clear Done List"
-msgstr "Erledigtliste leeren"
+msgstr "Yi nea woawie no fi mu"
 
 #: ../src/view/MainWindow.vala:442
 msgid "Contribute / Donate"
-msgstr "Mitwirken / Spenden"
+msgstr "Boa Anaa Yi Ntoboa"
 
 #: ../src/view/MainWindow.vala:443 ../src/view/AboutDialog.vala:27
 msgid "About"
-msgstr "Info"
+msgstr "Ɛho Nsɛm"
 
 #: ../src/view/MainWindow.vala:495 ../src/view/TimerView.vala:78
 msgid "Take a Break"
-msgstr "Eine Pause machen"
+msgstr "Gye woahome"
 
 #: ../src/view/MainWindow.vala:496
 msgid "Relax and stop thinking about your current task for a while"
-msgstr ""
-"Relaxe und höre für eine Weile auf über deine aktuelle Aufgabe nachzudenken"
+msgstr "Gye woahome na yi woadwen firi nea woreyɛ no so kakra"
 
 #: ../src/view/MainWindow.vala:501
 msgid "The Break is Over"
-msgstr "Die Pause ist vorbei"
+msgstr "Ahomogye bere no aso"
 
 #: ../src/view/MainWindow.vala:502
 msgid "Your next task is"
-msgstr "Deine nächste Aufgabe ist"
+msgstr "Dwumadi a edi hɔ no ne"
 
 #: ../src/view/MainWindow.vala:519
 msgid "Prepare for your break"
-msgstr "Bereite dich auf deine Pause vor"
+msgstr "Siesie wo ho ma ahomegye bere"
 
 #: ../src/view/MainWindow.vala:520
 msgid "You have $secs seconds left"
-msgstr "Du hast noch $secs Skunden"
+msgstr "Aka sima $secs"
 
 #: ../src/view/TaskList.vala:137
 msgid "Add new task"
-msgstr "Neue Aufgabe hinzufügen"
+msgstr "Fa dwumadi foforɔ ka ho"
 
 #: ../src/view/TimerView.vala:82
 msgid "Active Task"
-msgstr "Aktive Aufgaben"
+msgstr "Dwumadi a Woreyɛ"
 
 #: ../src/view/TimerView.vala:103
 msgid "Pau_se"
-msgstr "Paus_e"
+msgstr "Gyina - (_s)"
 
 #: ../src/view/TimerView.vala:106
 msgid "_Start"
-msgstr "_Starten"
+msgstr "Hyɛ ase - (_S)"
 
 #: ../src/view/TimerView.vala:133
 msgid "Inactive"
-msgstr "Inaktiv"
+msgstr "Ɛnnyɛ adwuma bio"
 
 #: ../src/view/TimerView.vala:134
 msgid "No task has been selected"
-msgstr "Keine Aufgabe wurde ausgewählt"
+msgstr "Wonnya mpaw dwumadi biara"
 
 #: ../src/view/TimerView.vala:220
 msgid "S_kip"
-msgstr "Ü_berspringen"
+msgstr "Tu tra - (_k)"
 
 #: ../src/view/TimerView.vala:221
 msgid "_Done"
-msgstr "_Fertig"
+msgstr "Woa wie - (_D)"
 
 #: ../src/view/TimerView.vala:266
 msgid "Relax"
-msgstr "Entspann dich"
+msgstr "Home"
 
 #: ../src/view/TimerView.vala:267
 msgid "You have nothing to do."
-msgstr "Du hast nichts zutun"
+msgstr "Biribiara nni hɔ bio."
 
 #: ../src/view/ContributeDialog.vala:27
 msgid "Contributions and Donations"
-msgstr "Mitwirkungen und Spenden"
+msgstr "Mmoa ne Ntoboa Ahoroɔ"
 
 #: ../src/view/ContributeDialog.vala:30
 msgid "Thank you for supporting"
-msgstr "Danke für deine Unterstützung"
+msgstr "Yɛda wo ase sɛ woboaee"
 
 #: ../src/view/ContributeDialog.vala:31
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
 msgstr ""
-"Beisteuern von Code, Grafiken, Übersetzungen oder Dokumentationen ist ein "
-"wunderbarer Weg dieses Projekt zu unterstützen:"
+"Ɔkwan a wobɛtumi aboa no bi ne sɛ wo bɛ boa ama wɔayɛ dwumadi yi, wode Art "
+"bɛma, wobɛkyerɛ kasa ase anaa wobɛboa ama wɔatwerɔ dwumadi yi ho nsɛm."
 
 #: ../src/view/ContributeDialog.vala:35
 msgid ""
 "Donations give me a chance to dedicate more time towards implementing new "
 "features:"
 msgstr ""
-"Spenden geben mir die Möglichkeit mehr Zeit für das implementieren von neuen "
-"Funktionen aufzubringen:"
+"Ntoboa boa ma menya bere pii yɛ dwumadi yi ho adwuma ma ɛnya nkɔanim:"
 
 #: ../src/view/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
-msgstr "Eine stilvolle Aufgabenliste mit eingebautem Produktivitätsmesser."
+msgstr "Dwumadi a ɛboa ma woyɛ wo nnwuma ho nhyɛhyɛe de bere toto so."
 
 #: ../src/view/SettingsDialog.vala:45
 msgid "Close"
-msgstr "Schließen"
+msgstr "Yi fi hɔ"
 
 #: ../src/view/SettingsDialog.vala:110 ../src/view/SettingsDialog.vala:115
 msgid "directory"
-msgstr "Verzeichnis"
+msgstr "akoraeɛ"
 
 #: ../src/view/SettingsDialog.vala:119
 msgid ""
 "If no appropriate folder was found, Go For It! defaults to creating a Todo "
 "folder in your home directory."
 msgstr ""
-"Wird kein dazugehöriger Ordner gefunden, erstellt »Go For It!« einen "
-"Aufgabenordner im persönlichen Ordner."
+"Sɛ dwumadi no anhu akorae a woapaw no a, ɛbɛ kora wo nneɛma no home Todo "
+"akorae a ɛwɔ Home akorae no mu."
 
 #: ../src/view/SettingsDialog.vala:153
 msgid "Task duration (minutes)"
-msgstr "Aufgabendauer (Minuten)"
+msgstr "Mmere a ɛda dwumadi no ho (sima)"
 
 #: ../src/view/SettingsDialog.vala:154
 msgid "Break duration (minutes)"
-msgstr "Pausendauer (Minuten)"
+msgstr "Bere a wobɛgye woahome (sima)"
 
 #: ../src/view/SettingsDialog.vala:155
 msgid "Reminder before task ends (seconds)"
-msgstr "Erinnerung bevor Aufgabe endet (Sekunden)"
+msgstr "Mmere dodow a ɛbɛbɔ wo nkae ansa dwuma no awie (sima)"
 
 #: ../src/view/SettingsDialog.vala:192
 msgid "Appearance"
-msgstr "Erscheinungsbild"
+msgstr "Anim Hwɛbea"
 
 #: ../src/view/SettingsDialog.vala:193
 msgid "Dark theme"
-msgstr "Dunkles Thema"
+msgstr "Anim tebea tuntum"
 
 #: ../src/view/SettingsDialog.vala:219
 msgid "Use a header bar"
-msgstr "Eine Kopfzeile benutzen"
+msgstr "Fa Header Bar di dwuma"
 
 #: ../src/Main.vala:127
 msgid "Print version info and exit"
-msgstr "Versionsinformationen anzeigen und beenden"
+msgstr "Printe Version nsɛm no na yi pono no fi hɔ"
 
 #: ../src/Main.vala:128
 msgid "Show about dialog"
-msgstr "Infodialog anzeigen"
+msgstr "Hwɛ ɛho nsɛm pono no"
