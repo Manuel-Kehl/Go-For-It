@@ -31,6 +31,7 @@ class TaskManager {
     public TaskStore done_store;
     private bool read_only;
     private bool need_to_add_tasks;
+    private bool io_failed;
     
     // refreshing
     private FileMonitor todo_monitor;
@@ -45,6 +46,8 @@ class TaskManager {
         "Consider a donation to help the project",
         "Consider contributing to the project"
     };
+    
+    string error_implications = _("Go For It! won't save or load from the current todo.txt directory until it is either restarted or another location is chosen.");
     
     public signal void active_task_invalid ();
     public signal void refreshing ();
@@ -182,6 +185,8 @@ class TaskManager {
         todo_txt = todo_txt_dir.get_child ("todo.txt");
         done_txt = todo_txt_dir.get_child ("done.txt");
         
+        io_failed = false;
+        
         // Save data, as soon as something has changed
         todo_store.task_data_changed.connect (save_tasks);
         done_store.task_data_changed.connect (save_tasks);
@@ -269,10 +274,27 @@ class TaskManager {
         }
     }
     
+    private void show_error_dialog (string error_message) {
+        var dialog = new Gtk.MessageDialog (
+            null, Gtk.DialogFlags.DESTROY_WITH_PARENT, Gtk.MessageType.ERROR, 
+            Gtk.ButtonsType.OK, error_message
+        );
+        dialog.response.connect ((response_id) => {
+            dialog.destroy ();
+		});
+        
+        dialog.show ();
+    }
+    
     /**
      * Reads tasks from a Todo.txt formatted file.
      */
     private void read_task_file (TaskStore store, File file) {
+        if (io_failed) {
+            return;
+        }
+        stdout.printf ("Reading file: %s\n", file.get_path ());
+        
         // Create file and return if it does not exist
         if (!file.query_exists()) {
             DirUtils.create_with_parents (todo_txt_dir.get_path (), 0700);
@@ -315,7 +337,10 @@ class TaskManager {
                 store.add_initial_task (line, done);
             }
         } catch (Error e) {
-            error ("%s", e.message);
+            io_failed = true;
+            var error_message = _("Couldn't read the todo.txt file (%s):").printf(file.get_path ()) + "\n\n%s\n\n".printf(e.message) + error_implications;
+            warning (error_message);
+            show_error_dialog (error_message);
         }
     }
     
@@ -323,6 +348,11 @@ class TaskManager {
      * Saves tasks to a Todo.txt formatted file.
      */
     private void write_task_file (TaskStore store, File file) {
+        if (io_failed) {
+            return;
+        }
+        stdout.printf ("Writing file: %s\n", file.get_path ());
+        
         try {
             /*var stream_out = new DataOutputStream (
                 file.create (FileCreateFlags.REPLACE_DESTINATION));*/
@@ -347,7 +377,10 @@ class TaskManager {
                 stream_out.put_string ((string) text + "\n");
             }
         } catch (Error e) {
-            error ("%s", e.message);
+            io_failed = true;
+            var error_message = _("Couldn't save the todo list (%s):").printf(file.get_path ()) + "\n\n%s\n\n".printf(e.message) + error_implications;
+            warning (error_message);
+            show_error_dialog (error_message);
         }
     }
 }
