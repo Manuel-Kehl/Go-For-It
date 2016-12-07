@@ -354,8 +354,6 @@ class TaskManager {
         stdout.printf ("Writing file: %s\n", file.get_path ());
         
         try {
-            /*var stream_out = new DataOutputStream (
-                file.create (FileCreateFlags.REPLACE_DESTINATION));*/
             var file_io_stream = 
                 file.replace_readwrite (null, true, FileCreateFlags.NONE);
             var stream_out = 

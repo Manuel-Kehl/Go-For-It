@@ -9,14 +9,6 @@ else ()
     message ("-- No recent Gtk+-3.0 found... Using pre 3.10 features.")
 endif ()
 
-# checking if we have a recent version of GLib
-pkg_check_modules( GLIB2 glib-2.0 )
-if (${GLIB2_VERSION} VERSION_GREATER 2.40 )
-    set (VALAC_OPTIONS ${VALAC_OPTIONS} -D HAS_GLIB241)
-else ()
-    message ("-- No recent glib-2.0 found")
-endif ()
-
 # files we want to compile
 include(ValaPrecompile)
 vala_precompile(VALA_C ${EXEC_NAME}

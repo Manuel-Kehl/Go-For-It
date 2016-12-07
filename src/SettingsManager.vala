@@ -233,23 +233,7 @@ public class SettingsManager {
      * Function made for compability with older versions of GLib.
      */
     private void write_key_file () throws Error {
-#if HAS_GLIB241
-        key_file.save_to_file (GOFI.Utils.config_file);
-#else
-        var file = File.new_for_path (GOFI.Utils.config_file);
-        var file_io_stream = 
-            file.replace_readwrite (null, true, FileCreateFlags.NONE);
-        var stream_out = 
-        new DataOutputStream (file_io_stream.output_stream);
-            
-        // writing a short string to the stream
-        uint8[] data = key_file.to_data ().data;
-        long written = 0;
-        while (written < data.length) {
-            // sum of the bytes of 'text' that already have been written to the stream
-            written += stream_out.write (data[written:data.length]);
-        }
-#endif
+        GLib.FileUtils.set_contents (GOFI.Utils.config_file, key_file.to_data());
     }
     
     /**
