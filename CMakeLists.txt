@@ -14,7 +14,7 @@ set (EXEC_NAME "go-for-it")
 set (APP_ID "de.manuel-kehl.go-for-it")
 set (APP_NAME "Go For It!")
 set (RELEASE_NAME "A stylish to-do list with built-in productivity timer.")
-set (VERSION "1.4.7")
+set (VERSION "1.5.0")
 set (VERSION_INFO "initial release")
 set (GETTEXT_PACKAGE "go-for-it")
 
