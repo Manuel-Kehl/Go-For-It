@@ -75,7 +75,6 @@ class MainWindow : Gtk.ApplicationWindow {
         load_css ();
         setup_notifications ();
         // Enable Notifications for the App
-        Notify.init (GOFI.APP_NAME);
     }
     
     private void apply_settings () {
@@ -106,8 +105,6 @@ class MainWindow : Gtk.ApplicationWindow {
             hide ();
             dont_exit = true;
         }
-        
-        if (dont_exit == false) Notify.uninit ();
             
         return dont_exit;
     }
@@ -489,18 +486,16 @@ class MainWindow : Gtk.ApplicationWindow {
             return;
         }
         if (break_previously_active != break_active) {
-            Notify.Notification notification;
+            WinNotification notification;
             if (break_active) {
-                notification = new Notify.Notification (
+                notification = new WinNotification (
                     _("Take a Break"), 
                     _("Relax and stop thinking about your current task for a while") 
-                    + " :-)",
-                    GOFI.APP_SYSTEM_NAME);
+                    + " :-)");
             } else {
-                notification = new Notify.Notification (
+                notification = new WinNotification (
                     _("The Break is Over"), 
-                    _("Your next task is") + ": " + task.title, 
-                    GOFI.APP_SYSTEM_NAME);
+                    _("Your next task is") + ": " + task.title);
             }
             
             try {
@@ -515,9 +510,9 @@ class MainWindow : Gtk.ApplicationWindow {
     
     private void display_almost_over_notification (DateTime remaining_time) {
         int64 secs = remaining_time.to_unix ();
-        Notify.Notification notification = new Notify.Notification (
+        WinNotification notification = new WinNotification (
             _("Prepare for your break"),
-            _(@"You have $secs seconds left"), GOFI.APP_SYSTEM_NAME);
+            _(@"You have $secs seconds left"));
         try {
             notification.show ();
         } catch (GLib.Error err){
