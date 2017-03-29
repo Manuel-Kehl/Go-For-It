@@ -406,7 +406,7 @@ class MainWindow : Gtk.ApplicationWindow {
     private void menu_btn_toggled (Gtk.ToggleToolButton source) {
         if (source.active) {
             app_menu.popup_at_widget (
-                source, Gdk.Gravity.SOUTH_WEST, Gdk.Gravity.NORTH_WEST
+                source, Gdk.Gravity.SOUTH_EAST, Gdk.Gravity.NORTH_EAST
             );
             app_menu.select_first (true);
         } else {
