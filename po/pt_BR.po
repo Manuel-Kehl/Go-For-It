@@ -1,4 +1,184 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-18 13:44+0100\n"
+"PO-Revision-Date: 2016-11-23 02:16+0000\n"
+"Last-Translator: Saulo De Baco <saulodebaco@hotmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-11-25 07:17+0000\n"
+"X-Generator: Launchpad (build 18282)\n"
+
+#: ../src/view/MainWindow.vala:181 ../src/view/MainWindow.vala:197
+#: ../src/view/MainWindow.vala:202
+msgid "To-Do"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:182 ../src/view/MainWindow.vala:198
+#: ../src/view/MainWindow.vala:203 ../src/view/SettingsDialog.vala:152
+msgid "Timer"
+msgstr "Temporizador"
+
+#: ../src/view/MainWindow.vala:183 ../src/view/MainWindow.vala:199
+#: ../src/view/MainWindow.vala:204
+msgid "Done"
+msgstr "Concluído"
+
+#: ../src/view/MainWindow.vala:286
+msgid "Menu"
+msgstr "Menu"
+
+#: ../src/view/MainWindow.vala:440 ../src/view/SettingsDialog.vala:43
+msgid "Settings"
+msgstr "Configurações"
+
+#: ../src/view/MainWindow.vala:441
+msgid "Clear Done List"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:442
+msgid "Contribute / Donate"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:443 ../src/view/AboutDialog.vala:27
+msgid "About"
+msgstr "Sobre"
+
+#: ../src/view/MainWindow.vala:495 ../src/view/TimerView.vala:78
+msgid "Take a Break"
+msgstr "Descanse"
+
+#: ../src/view/MainWindow.vala:496
+msgid "Relax and stop thinking about your current task for a while"
+msgstr "Relaxe e pare de pensar na sua tarefa atual por um tempo"
+
+#: ../src/view/MainWindow.vala:501
+msgid "The Break is Over"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:502
+msgid "Your next task is"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:519
+msgid "Prepare for your break"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:520
+msgid "You have %i seconds left"
+msgstr ""
+
+#: ../src/view/TaskList.vala:137
+msgid "Add new task"
+msgstr ""
+
+#: ../src/view/TimerView.vala:82
+msgid "Active Task"
+msgstr ""
+
+#: ../src/view/TimerView.vala:103
+msgid "Pau_se"
+msgstr ""
+
+#: ../src/view/TimerView.vala:106
+msgid "_Start"
+msgstr "_Iniciar"
+
+#: ../src/view/TimerView.vala:133
+msgid "Inactive"
+msgstr "Inativo"
+
+#: ../src/view/TimerView.vala:134
+msgid "No task has been selected"
+msgstr "Nenhuma tarefa foi selecionada"
+
+#: ../src/view/TimerView.vala:220
+msgid "S_kip"
+msgstr ""
+
+#: ../src/view/TimerView.vala:221
+msgid "_Done"
+msgstr "_Concluído"
+
+#: ../src/view/TimerView.vala:266
+msgid "Relax"
+msgstr "Relaxe"
+
+#: ../src/view/TimerView.vala:267
+msgid "You have nothing to do."
+msgstr "Você não tem tarefas"
+
+#: ../src/view/ContributeDialog.vala:27
+msgid "Contributions and Donations"
+msgstr "Contribuições e Doações"
+
+#: ../src/view/ContributeDialog.vala:30
+msgid "Thank you for supporting"
+msgstr "Obrigado pelo apoio"
+
+#: ../src/view/ContributeDialog.vala:31
+msgid ""
+"Submitting code, artwork, translations or documentation is a great way of "
+"contributing to the project:"
+msgstr ""
+
+#: ../src/view/ContributeDialog.vala:35
+msgid ""
+"Donations give me a chance to dedicate more time towards implementing new "
+"features:"
+msgstr ""
+"Doações me ajudam a dedicar mais tempo à implementação de novos recursos:"
+
+#: ../src/view/AboutDialog.vala:41
+msgid "A stylish to-do list with built-in productivity timer."
+msgstr ""
+"Uma elegante lista de tarefas com temporizador de produtividade incorporado."
+
+#: ../src/view/SettingsDialog.vala:45
+msgid "Close"
+msgstr "Fechar"
+
+#: ../src/view/SettingsDialog.vala:110 ../src/view/SettingsDialog.vala:115
+msgid "directory"
+msgstr "pasta"
+
+#: ../src/view/SettingsDialog.vala:119
+msgid ""
+"If no appropriate folder was found, Go For It! defaults to creating a Todo "
+"folder in your home directory."
+msgstr ""
+
+#: ../src/view/SettingsDialog.vala:153
+msgid "Task duration (minutes)"
+msgstr "Duração da tarefa (minutos)"
+
+#: ../src/view/SettingsDialog.vala:154
+msgid "Break duration (minutes)"
+msgstr "Duração do intervalo (minutos)"
+
+#: ../src/view/SettingsDialog.vala:155
+msgid "Reminder before task ends (seconds)"
+msgstr "Lembrete antes do fim da tarefa (segundos)"
+
+#: ../src/view/SettingsDialog.vala:192
+msgid "Appearance"
+msgstr "Aspecto"
+
+#: ../src/view/SettingsDialog.vala:193
+msgid "Dark theme"
+msgstr "Tema escuro"
+
+#: ../src/view/SettingsDialog.vala:219
+msgid "Use a header bar"
+msgstr ""
+
+#: ../src/Main.vala:127
+msgid "Print version info and exit"
+msgstr ""
+
+#: ../src/Main.vala:128
+msgid "Show about dialog"
+msgstr ""
