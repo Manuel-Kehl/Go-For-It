@@ -21,7 +21,7 @@ If you already use Todo.txt, **beware** of the fact, that *Go For It!* automatic
 
 I maintain a [Launchpad PPA](https://launchpad.net/~go-for-it-team/+archive/ubuntu/go-for-it-daily) which can be used to acquire .deb packages. On Ubuntu (+ derivates) it is recommended to add the PPA for automatic updates:
 
-    sudo add-apt-repository ppa:mank319/go-for-it && sudo apt-get update 
+    sudo add-apt-repository ppa:go-for-it-team/go-for-it-daily && sudo apt-get update 
     sudo apt-get install go-for-it
     
 Arch Linux:
