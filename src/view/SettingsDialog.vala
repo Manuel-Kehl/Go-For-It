@@ -204,31 +204,5 @@ public class SettingsDialog : Gtk.Dialog {
         /* Add widgets */
         add_section (grid, appearance_sect_lbl, ref row);
         add_option (grid, dark_theme_lbl, dark_theme_switch, ref row);
-        
-#if HAS_GTK310
-        setup_csd_settings_widgets (main_layout, ref row);
-#endif
     }
-    
-#if HAS_GTK310
-    private void setup_csd_settings_widgets (Gtk.Grid grid, ref int row) {
-        Gtk.Label headerbar_lbl;
-        Gtk.Switch headerbar_switch;
-        
-        /* Instantiation */
-        headerbar_lbl = new Gtk.Label (_("Use a header bar") + (":"));
-        headerbar_switch = new Gtk.Switch ();
-        
-        /* Configuration */
-        headerbar_switch.active = settings.use_header_bar;
-        
-        /* Signal Handling */
-        headerbar_switch.notify["active"].connect ( () => {
-            settings.use_header_bar = headerbar_switch.active;
-        });
-        
-        /* Add widgets */
-        add_option (grid, headerbar_lbl, headerbar_switch, ref row);
-    }
-#endif
 }
