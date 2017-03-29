@@ -69,8 +69,8 @@ msgid "Prepare for your break"
 msgstr "Bereite dich auf deine Pause vor"
 
 #: ../src/view/MainWindow.vala:520
-msgid "You have $secs seconds left"
-msgstr "Du hast noch $secs Skunden"
+msgid "You have %i seconds left"
+msgstr "Du hast noch %i Skunden"
 
 #: ../src/view/TaskList.vala:137
 msgid "Add new task"

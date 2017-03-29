@@ -517,7 +517,7 @@ class MainWindow : Gtk.ApplicationWindow {
         int64 secs = remaining_time.to_unix ();
         Notify.Notification notification = new Notify.Notification (
             _("Prepare for your break"),
-            _(@"You have $secs seconds left"), GOFI.APP_SYSTEM_NAME);
+            _("You have %i seconds left").printf(secs), GOFI.APP_SYSTEM_NAME);
         try {
             notification.show ();
         } catch (GLib.Error err){

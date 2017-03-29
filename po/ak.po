@@ -74,8 +74,8 @@ msgid "Prepare for your break"
 msgstr "Siesie wo ho ma ahomegye bere"
 
 #: ../src/view/MainWindow.vala:520
-msgid "You have $secs seconds left"
-msgstr "Aka sima $secs"
+msgid "You have %i seconds left"
+msgstr "Aka sima %i"
 
 #: ../src/view/TaskList.vala:137
 msgid "Add new task"
