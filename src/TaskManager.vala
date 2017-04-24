@@ -185,8 +185,16 @@ class TaskManager {
         todo_txt = todo_txt_dir.get_child ("todo.txt");
         done_txt = todo_txt_dir.get_child ("done.txt");
         
-        io_failed = false;
-        
+        if (
+            todo_txt_dir.query_exists () &&
+            todo_txt_dir.query_file_type (FileQueryInfoFlags.NONE) != FileType.DIRECTORY
+        ) {
+            io_failed = true;
+            show_error_dialog (_("The path to the todo.txt directory does not point to a directory, but to a file or mountable location. Please change the path in the settings to a suitable directory or remove this file."));
+        } else {
+            io_failed = false;
+        }
+
         // Save data, as soon as something has changed
         todo_store.task_data_changed.connect (save_tasks);
         done_store.task_data_changed.connect (save_tasks);
@@ -194,7 +202,7 @@ class TaskManager {
         // Move task from one list to another, if done or undone
         todo_store.task_done_changed.connect (task_done_handler);
         done_store.task_done_changed.connect (task_done_handler);
-        
+
         // When removing the last task or adding a task to an empty list, the
         // timer should be updated.
         todo_store.refresh_active_task.connect ( () => {
@@ -203,7 +211,9 @@ class TaskManager {
         
         load_tasks ();
 
-        watch_files ();
+        if (!io_failed) {
+            watch_files ();
+        }
     }
     
     private void watch_files () {
@@ -281,7 +291,7 @@ class TaskManager {
         );
         dialog.response.connect ((response_id) => {
             dialog.destroy ();
-		});
+        });
         
         dialog.show ();
     }
