@@ -15,143 +15,119 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-/**
- * An implementation of Gtk.ListStore that offers special functionality
- * targeted towards the storage of todo list entries
- */
-
-/* Columns */
-public enum Columns {
-    TOGGLE,
-    TEXT,
-    DRAGHANDLE,
-    N_COLUMNS
-}
-
-class TaskStore : Gtk.ListStore {
-
-    /* Various Variables */
-    public bool active_task_invalid = false;
-    public bool done_by_default;
-    public TodoTask? active_task;
+class TaskStore : Object, DragListBoxModel {
+    private Queue<TodoTask> tasks;
+    private uint stamp;
+    
+    public bool done_by_default {
+        public get;
+        construct set;
+    }
     
     /* Signals */
     public signal void task_data_changed ();
-    public signal void task_done_changed (Gtk.TreeIter iter);
-    public signal void refresh_active_task ();
+    public signal void task_done_changed (TodoTask task);
     
     /**
      * Constructor of the TaskStore class
      */
     public TaskStore (bool done_by_default) {
         this.done_by_default = done_by_default;
-        
-        // Setup the columns
-        base.set_column_types ({
-            typeof(bool),   /* toggle */
-            typeof(string), /* title */
-            typeof(string)  /* drag handle */
-        });
-        
-        /* Reroute underlying signals to task_data_changed */
-        this.rows_reordered.connect (trigger_task_data_changed);
-
-        this.row_deleted.connect (trigger_task_data_changed);
+        tasks = new Queue<TodoTask> ();
+        stamp = 0;
     }
-
-    private void trigger_task_data_changed () {
+    
+    public Iterator<Object> iterator() {
+        return new StoreIter (tasks.head, this);
+    }
+    
+    public void add_new_task (TodoTask task) {
+        add_task (task);
+        task_data_changed ();
+    }
+    
+    public void add_task (TodoTask task) {
+        tasks.push_tail (task);
+        task.status_changed.connect (on_task_done);
+        items_added (tasks.length - 1, 1);
+    }
+    
+    public void clear () {
+        items_removed (0, tasks.length);
+        tasks.clear ();
+        task_data_changed ();
+    }
+    
+    public void remove_task (TodoTask task) {
+        stdout.printf ("remove\n");
+        task.status_changed.disconnect (on_task_done);
+        tasks.remove (task);
         task_data_changed ();
     }
 
-    /** 
-     * To be called when an actually new task is to be added to the list.
-     * Therefore it does not need a "done" parameter, as one can determine
-     * that by observing the type of list to be added to.
-     */
-    public void add_task (string description, int position = -1) {
-        // Only add task, if description is not empty
-        if (description._strip () != "") {
-            bool was_empty = this.is_empty ();
-            add_initial_task (description, done_by_default, position);
-            task_data_changed ();
-            if (was_empty) {
-                refresh_active_task ();
-            }
-        }
+    public Object? get_item (uint position) {
+        return tasks.peek_nth (position);
+    }
+
+    public uint get_n_items () {
+        return tasks.length;
     }
     
-    /**
-     * Removes the given task from the list.
-     */
-    public void remove_task (Gtk.TreeIter iter) {
-        bool is_active_task = compare_tasks (iter);
-        var _active_task = active_task;
-        this.remove (iter);
-        if (is_active_task && _active_task == active_task) {
-            active_task = null;
-            refresh_active_task ();
+    public void move_item (uint old_position, uint new_position) {
+        if (old_position == new_position) {
+            return;
+        } else if (new_position > old_position) {
+            new_position++;
         }
+        
+        tasks.push_nth(tasks.pop_nth (old_position), (int) new_position);
     }
     
-    /**
-     * Function for adding a task on application startup.
-     * When tasks are added initially, the "task_data_changed" signal
-     * is not emmited.
-     */
-    public void add_initial_task (string description,
-            bool done = done_by_default, int position = -1) {
-        Gtk.TreeIter iter;
-        this.insert_with_values (out iter, position,
-                                 Columns.TOGGLE, done,
-                                 Columns.TEXT, description,
-                                 Columns.DRAGHANDLE, "view-list-symbolic",
-                                 -1);
-        if (active_task_invalid && active_task != null) {
-            if (description == active_task.title) {
-                var path = this.get_path (iter);
-                active_task.reference = new Gtk.TreeRowReference (this, path);
-                active_task_invalid = false;
-            }
-        }
+    public CompareDataFunc<DragListBoxRow>? get_sort_func () {
+        return null;
     }
     
-    /**
-     * Function for modifying the text of a specific task.
-     */
-    public void edit_text (Gtk.TreeIter iter, string text) {
-        if (text._strip () != "") {
-            this.set (iter, 1, text);
-            task_data_changed ();
-            if (compare_tasks (iter)) {
-                active_task.title = text;
-            }
-        } else {
-            remove_task (iter);
-        }
+    private void on_task_done (TodoTask task) {
+        task_done_changed (task);
     }
     
-    /**
-     * Checks if iter corresponds to the active task.
-     */
-    private bool compare_tasks (Gtk.TreeIter iter) {
-        if (active_task != null) {
-            var active_path = active_task.reference.get_path ();
-            var iter_path = this.get_path (iter);
-            
-            if (iter_path != null && active_path != null) {
-                return (active_path.compare (iter_path) == 0);
+    class StoreIter : Object, Iterator<TodoTask> {
+        private unowned List<TodoTask> link;
+        private unowned TaskStore store;
+        private uint stamp;
+        private bool next_called;
+        
+        public bool valid {
+            get {
+                return link != null && stamp == store.stamp;
             }
         }
         
-        return false;
-    }
-    
-    /**
-     * Checks if the TaskStore is empty
-     */
-    public bool is_empty () {
-        // get_iter_first returns false, if tree is empty -> invert result
-        Gtk.TreeIter tmp;
-        return (!this.get_iter_first (out tmp));
+        public StoreIter (List<TodoTask> link, TaskStore store) {
+            this.link = link;
+            this.store = store;
+            stamp = store.stamp;
+            next_called = false;
+        }
+        
+        public bool next () {
+            if (GLib.unlikely (!next_called)) {
+                next_called = true;
+                return valid;
+            } else if (has_next ()) {
+                link = link.next;
+                return true;
+            }
+            return false;
+        }
+        
+        public bool has_next () {
+            return valid && link.next != null;
+        }
+        
+        public new TodoTask get () {
+            assert (valid);
+            return link.data;
+        }
     }
 }

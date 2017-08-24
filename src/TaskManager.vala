@@ -39,6 +39,9 @@ class TaskManager {
     private bool prevent_refresh;
     private string todo_etag = "";
     private string done_etag = "";
+    
+    private TodoTask active_task;
+    private bool active_task_found;
         
     string[] default_todos = {
         "Choose Todo.txt folder via \"Settings\"",
@@ -48,6 +51,9 @@ class TaskManager {
     };
     
     string error_implications = _("Go For It! won't save or load from the current todo.txt directory until it is either restarted or another location is chosen.");
+    string read_error_message = _("Couldn't read the todo.txt file (%s):") + "\n\n%s\n\n";
+    string write_error_message = _("Couldn't save the todo list (%s):") + "\n\n%s\n\n";
+    string txt_dir_error = _("The path to the todo.txt directory does not point to a directory, but to a file or mountable location. Please change the path in the settings to a suitable directory or remove this file.");
     
     public signal void active_task_invalid ();
     public signal void refreshing ();
@@ -68,61 +74,27 @@ class TaskManager {
         
         /* Signal processing */
         settings.todo_txt_location_changed.connect (load_task_stores);
-        
-        // Move done tasks off the todo list on startup
-        auto_transfer_tasks();
     }
     
     public void set_active_task (TodoTask? task) {
-        todo_store.active_task = task;
-        todo_store.active_task_invalid = false;
+        active_task = task;
     }
     
     /**
      * To be called when adding a new (undone) task.
      */
     public void add_new_task (string task) {
-        todo_store.add_task (task);
+        todo_store.add_new_task (new TodoTask (task, false));
     }
-    
-    public void mark_task_done (Gtk.TreeRowReference reference) {
-        if (reference.valid ()) {
-            // Get Gtk.TreeIterator from reference
-            var path = reference.get_path ();
-            Gtk.TreeIter iter;
-            todo_store.get_iter (out iter, path);
-            // Remove task from the todo lists
-            transfer_task (iter, todo_store, done_store);
-        }
-    }
-    
+
     /** 
      * Transfers a task from one TaskStore to another.
      */
-    private void transfer_task (Gtk.TreeIter iter,
-            TaskStore source, TaskStore destination ) {
-        Value description;
-        source.get_value (iter, 1, out description);
-        destination.add_task ((string) description);
-        source.remove_task (iter);
-    }
-    
-    /**
-     * Cleans the todo list by transfering all done tasks to the done list.
-     */
-    private void auto_transfer_tasks () {
-        Gtk.TreeIter iter;
-        // Iterate through TaskStore
-        for (bool next = todo_store.get_iter_first (out iter); next;
-                    next = todo_store.iter_next (ref iter)) {
-            Value out1;
-            todo_store.get_value (iter, 0, out out1);
-            bool done = (bool) out1;
-            
-            if (done) {
-                transfer_task (iter, todo_store, done_store);
-            }
-        }
+    private void transfer_task (
+        TodoTask task, TaskStore source, TaskStore destination
+    ) {
+        source.remove_task (task);
+        destination.add_new_task (task);
     }
     
     /**
@@ -143,8 +115,6 @@ class TaskManager {
         stdout.printf("Refreshing\n");
         refreshing ();
         load_tasks ();
-        // Some tasks may have been marked as done by other applications.
-        auto_transfer_tasks ();
         refreshed ();
     }
     
@@ -190,7 +160,8 @@ class TaskManager {
             todo_txt_dir.query_file_type (FileQueryInfoFlags.NONE) != FileType.DIRECTORY
         ) {
             io_failed = true;
-            show_error_dialog (_("The path to the todo.txt directory does not point to a directory, but to a file or mountable location. Please change the path in the settings to a suitable directory or remove this file."));
+            show_error_dialog (txt_dir_error);
+            warning (txt_dir_error);
         } else {
             io_failed = false;
         }
@@ -202,12 +173,6 @@ class TaskManager {
         // Move task from one list to another, if done or undone
         todo_store.task_done_changed.connect (task_done_handler);
         done_store.task_done_changed.connect (task_done_handler);
-
-        // When removing the last task or adding a task to an empty list, the
-        // timer should be updated.
-        todo_store.refresh_active_task.connect ( () => {
-            active_task_invalid ();
-        });
         
         load_tasks ();
 
@@ -240,11 +205,11 @@ class TaskManager {
         }
     }
 
-    private void task_done_handler (TaskStore source, Gtk.TreeIter iter) {
+    private void task_done_handler (TaskStore source, TodoTask task) {
         if (source == todo_store) {
-            transfer_task (iter, todo_store, done_store);
+            transfer_task (task, todo_store, done_store);
         } else if (source == done_store) {
-            transfer_task (iter, done_store, todo_store);
+            transfer_task (task, done_store, todo_store);
         }
     }
     
@@ -253,27 +218,30 @@ class TaskManager {
         read_only = true;
         todo_store.clear ();
         done_store.clear ();
-        if (todo_store.active_task != null) {
-            todo_store.active_task_invalid = true;
-        }
-        read_task_file (this.todo_store, this.todo_txt);
-        read_task_file (this.done_store, this.done_txt);
-        read_only = false;
+        active_task_found = active_task == null;
+        read_task_file (this.todo_txt, false);
+        read_task_file (this.done_txt, true);
         
         if (need_to_add_tasks) {
-            // Iterate in reverse order because todos are added to position 0
-            for (int i = default_todos.length - 1;
-                 i >= 0;
-                 i--)
-            {
-                todo_store.add_task(default_todos[i], 0);
-            }
-            need_to_add_tasks = false;
+            add_default_todos ();
         }
         
-        if (todo_store.active_task_invalid) {
+        read_only = false;
+        
+        if (!active_task_found) {
             active_task_invalid ();
         }
+    }
+    
+    private void add_default_todos () {
+        // Iterate in reverse order because todos are added to position 0
+        for (int i = default_todos.length - 1;
+             i >= 0;
+             i--)
+        {
+            todo_store.add_task (new TodoTask (default_todos[i], false));
+        }
+        need_to_add_tasks = false;
     }
     
     private void save_tasks () {
@@ -296,59 +264,85 @@ class TaskManager {
         dialog.show ();
     }
     
+    private void ensure_file_exists (File file) throws Error {
+        // Create file and return if it does not exist
+        if (!file.query_exists()) {
+            DirUtils.create_with_parents (todo_txt_dir.get_path (), 0700);
+            file.create (FileCreateFlags.NONE); 
+        }
+    }
+    
+    string remove_carriage_return (string line) {
+        int length = line.length;
+        if (length > 0) {
+            if (line.get_char (length - 1) == 13) {
+                if (length == 1) {
+                    return "";
+                }
+                return line.slice (0, length - 1);
+            }
+        }
+        
+        return line;
+    }
+    
+    private TodoTask? string_to_task (string _line, bool done_by_default) {
+        string line = _line.strip();
+    
+        line = remove_carriage_return (line);
+        
+        // Todo.txt notation: completed tasks start with an "x "
+        bool done = line.has_prefix ("x ");
+        
+        if (done) {
+            // Remove "x " from displayed string
+            line = line.split ("x ", 2)[1];
+        }
+        
+        line = line.strip ();
+        
+        if (line == "") {
+            return null;
+        }
+        
+        if (!active_task_found && !done) {
+            if (line == active_task.title) {
+                active_task_found = true;
+                return active_task;
+            }
+        }
+        
+        return new TodoTask (line, done | done_by_default);
+    }
+    
     /**
      * Reads tasks from a Todo.txt formatted file.
      */
-    private void read_task_file (TaskStore store, File file) {
+    private void read_task_file (File file, bool done_by_default) {
         if (io_failed) {
             return;
         }
         stdout.printf ("Reading file: %s\n", file.get_path ());
         
-        // Create file and return if it does not exist
-        if (!file.query_exists()) {
-            DirUtils.create_with_parents (todo_txt_dir.get_path (), 0700);
-            try {
-                file.create (FileCreateFlags.NONE); 
-            } catch (Error e) {
-                error ("%s", e.message);
-            }
-            return;
-        }
-        
         // Read data from todo.txt and done.txt files
         try {
+            ensure_file_exists (file);
             var stream_in = new DataInputStream (file.read ());
             string line;
             
             while ((line = stream_in.read_line (null)) != null) {
-                // Removing carriage return at the end of a task and
-                // skipping empty lines
-                int length = line.length;
-                if (length > 0) {
-                    if (line.get_char (length - 1) == 13) {
-                        if (length == 1) {
-                            continue;
-                        }
-                        line = line.slice (0, length - 1);
+                TodoTask? task = string_to_task (line, done_by_default);
+                if (task != null) {
+                    if (task.done) {
+                        done_store.add_task (task);
+                    } else {
+                        todo_store.add_task (task);
                     }
-                } else {
-                    continue;
                 }
-                
-                // Todo.txt notation: completed tasks start with an "x "
-                bool done = line.has_prefix ("x ");
-                
-                if (done) {
-                    // Remove "x " from displayed string
-                    line = line.split ("x ", 2)[1];
-                }
-                
-                store.add_initial_task (line, done);
             }
         } catch (Error e) {
             io_failed = true;
-            var error_message = _("Couldn't read the todo.txt file (%s):").printf(file.get_path ()) + "\n\n%s\n\n".printf(e.message) + error_implications;
+            var error_message = read_error_message.printf(file.get_path (), e.message) + error_implications;
             warning (error_message);
             show_error_dialog (error_message);
         }
@@ -369,24 +363,12 @@ class TaskManager {
             var stream_out = 
                 new DataOutputStream (file_io_stream.output_stream);
             
-            Gtk.TreeIter iter;
-            // Iterate through the TaskStore
-            for (bool next = store.get_iter_first (out iter); next;
-                    next = store.iter_next (ref iter)) {
-                // Get data out of store
-                Value done, text;
-                store.get_value (iter, 0, out done);
-                store.get_value (iter, 1, out text);
-                
-                if ((bool) done) {
-                    text = "x " + (string) text;
-                }
-                
-                stream_out.put_string ((string) text + "\n");
+            foreach (Object task in store) {
+                stream_out.put_string (((TodoTask) task).to_string () + "\n");
             }
         } catch (Error e) {
             io_failed = true;
-            var error_message = _("Couldn't save the todo list (%s):").printf(file.get_path ()) + "\n\n%s\n\n".printf(e.message) + error_implications;
+            var error_message = write_error_message.printf(file.get_path (), e.message) + error_implications;
             warning (error_message);
             show_error_dialog (error_message);
         }

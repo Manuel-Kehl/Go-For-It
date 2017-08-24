@@ -265,4 +265,11 @@ public class TimerView : Gtk.Grid {
         task_description_lbl.label = _("You have nothing to do.");
         done_btn.visible = false;
     }
+    
+    public override void show_all () {
+        base.show_all ();
+        if (timer.break_active) {
+            done_btn.visible = false;
+        }
+    }
 }

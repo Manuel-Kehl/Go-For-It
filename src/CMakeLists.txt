@@ -5,13 +5,17 @@ configure_file (${CMAKE_CURRENT_SOURCE_DIR}/Constants.vala.cmake ${CMAKE_CURRENT
 include(ValaPrecompile)
 vala_precompile(VALA_C ${EXEC_NAME}
     Constants.vala
+    Iterator.vala
     Utils.vala
     SettingsManager.vala
     TodoTask.vala
     TaskStore.vala
     TaskManager.vala
-    view/TaskList.vala
     TaskTimer.vala
+    DragListBoxModel.vala
+    view/TaskRow.vala
+    view/TaskList.vala
+    view/DragListBox.vala
     view/TimerView.vala
     view/SettingsDialog.vala
     view/AboutDialog.vala

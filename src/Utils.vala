@@ -32,19 +32,6 @@ namespace GOFI {
             }
             private set {}
         }
-
-        public static string tree_row_ref_to_task (
-                Gtk.TreeRowReference reference) {
-            // Get Gtk.TreeIterator from reference
-            var path = reference.get_path ();
-            var model = reference.get_model ();
-            Gtk.TreeIter iter;
-            model.get_iter (out iter, path);
-            
-            string description;
-            model.get (iter, 1, out description, -1);
-            return description;
-        }
         
         /**
          * Loads the first icon in the list, which is contained in the 

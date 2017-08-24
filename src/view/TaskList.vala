@@ -21,7 +21,7 @@
 class TaskList : Gtk.Grid {
     /* GTK Widgets */
     private Gtk.ScrolledWindow scroll_view;
-    public Gtk.TreeView task_view;
+    public DragListBox task_view;
     private Gtk.Grid add_new_grid;
     private Gtk.Entry add_new_txt;
 
@@ -30,6 +30,7 @@ class TaskList : Gtk.Grid {
 
     /* Signals */
     public signal void add_new_task (string task);
+    public signal void selection_changed (TodoTask selected_task);
     
     /** 
      * Constructor of the TaskList class.
@@ -48,81 +49,42 @@ class TaskList : Gtk.Grid {
         }
     }
     
+    public TodoTask? get_selected_task () {
+        TaskRow selected_row = (TaskRow) task_view.get_selected_row ();
+        if (selected_row != null) {
+            return selected_row.task;
+        }
+        return null;
+    }
+    
+    private Gtk.Widget create_row (Object task) {
+        return new TaskRow (((TodoTask) task));
+    }
+    
     /** 
      * Configures the list to display the task entries.
      */
     private void setup_task_view () {
         this.scroll_view = new Gtk.ScrolledWindow (null, null);
-        this.task_view = new Gtk.TreeView ();
+        this.task_view = new DragListBox ();
+        
+        task_view.bind_model ((DragListBoxModel)model, create_row);
+        task_view.vadjustment = scroll_view.vadjustment;
+        task_view.row_selected.connect (on_task_view_row_selected);
 
         scroll_view.expand = true;
-
-        // Assign the correct TaskStore to the Gtk.TreeView
-        task_view.set_model (model);
-        
-        /* Configuration of the Gtk.TreeView */
-        task_view.headers_visible = false;
-        task_view.expand = true;
-        task_view.reorderable = true;
-        task_view.vscroll_policy = Gtk.ScrollablePolicy.NATURAL;
-        
-        // Set up checkbox cell
-        var toggle_cell = new Gtk.CellRendererToggle ();
-        task_view.insert_column_with_attributes (-1, "Done", toggle_cell, 
-                                                 "active", Columns.TOGGLE);
-        
-        // Set up task entry cell
-        var text_cell = new Gtk.CellRendererText ();
-        text_cell.editable = true;
-        text_cell.wrap_mode = Pango.WrapMode.WORD_CHAR;
-        text_cell.wrap_width = 220;
-        text_cell.width = 220;
-        var text_column = new Gtk.TreeViewColumn.with_attributes ("Task", text_cell,
-                                                                  "text", Columns.TEXT);
-        text_column.expand = true;
-        task_view.insert_column (text_column, -1);
-
-        if (model.done_by_default) {
-            text_cell.strikethrough = true;
-        }
-
-        var drag_handler = new Gtk.CellRendererPixbuf ();
-        drag_handler.xpad = 5;
-        var drag_column = new Gtk.TreeViewColumn.with_attributes ("Drag", drag_handler,
-                                                                  "icon_name", Columns.DRAGHANDLE);
-        drag_column.expand = false;
-        task_view.insert_column (drag_column, -1); 
-
-        /* Action and Signal Handling */
-        // Handle tasks being marked done/undone
-        toggle_cell.toggled.connect (toggle_cell_toggled);
-
-        // Handle text editing events
-        text_cell.edited.connect (text_cell_edited);
 
         // Add to the main widget
         scroll_view.add (task_view);
         this.add (scroll_view);
     }
-
-    private void toggle_cell_toggled (string path) {
-        var tree_path = new Gtk.TreePath.from_string (path);
-        Gtk.TreeIter iter;
-        model.get_iter (out iter, tree_path);
-        /**
-         * Handle action on higher level via the signal mechanism.
-         * Necessary, because it requires an interaction between multiple
-         * TaskStore instances for transferring done/undone tasks from
-         * one list to another
-         */
-        model.task_done_changed (iter);
-    }
-
-    private void text_cell_edited (string path, string edited_text) {
-        Gtk.TreeIter iter;
-        model.get_iter (out iter, new Gtk.TreePath.from_string (path));
-        // Can be directly applied to the corresponding TaskStore
-        model.edit_text (iter, edited_text);
+    
+    private void on_task_view_row_selected (DragListBoxRow? selected_row) {
+        TodoTask? task = null;
+        if (selected_row != null) {
+            task = ((TaskRow) selected_row).task;
+        }
+        selection_changed (task);
     }
 
     /**

@@ -3,7 +3,7 @@
 * This file is part of Go For It!.
 *
 * Go For It! is free software: you can redistribute it
-* and/or modify it under the terms of version 3 of the 
+* and/or modify it under the terms of version 3 of the
 * GNU General Public License as published by the Free Software Foundation.
 *
 * Go For It! is distributed in the hope that it will be
@@ -35,36 +35,36 @@ public class Main : Gtk.Application {
     private Main () {
         Object (application_id: GOFI.APP_ID, flags: ApplicationFlags.HANDLES_COMMAND_LINE);
     }
-    
+
     /**
      * The entry point for running the application.
      */
     public static int main (string[] args) {
         Intl.setlocale(LocaleCategory.MESSAGES, "");
-        Intl.textdomain(GETTEXT_PACKAGE); 
-        Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8"); 
+        Intl.textdomain(GETTEXT_PACKAGE);
+        Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8");
         string locale_dir = Path.build_filename (GOFI.INSTALL_PREFIX, "share", "locale");
         Intl.bindtextdomain(GETTEXT_PACKAGE, locale_dir);
-        
+
         apply_desktop_specific_tweaks ();
         Main app = new Main ();
         int status = app.run (args);
         return status;
     }
-    
+
     /**
      * This function handles different tweaks that have to be applied to
      * make Go For It! work properly on certain desktop environments.
      */
     public static void apply_desktop_specific_tweaks () {
         string desktop = Environment.get_variable ("DESKTOP_SESSION");
-        
+
         if (desktop == "ubuntu") {
             // Disable overlay scrollbars on unity, to avoid a strange Gtk bug
             Environment.set_variable ("LIBOVERLAY_SCROLLBAR", "0", true);
         }
     }
-    
+
     public void new_window () {
         // Don't create a new window, if one already exists
         if (win != null) {
@@ -72,18 +72,19 @@ public class Main : Gtk.Application {
             win.present ();
             return;
         }
-        
+
         settings = new SettingsManager.load_from_key_file ();
         task_manager = new TaskManager(settings);
         task_timer = new TaskTimer (settings);
         task_timer.active_task_done.connect ( (task) => {
-            task_manager.mark_task_done (task.reference);
+            warning ("stub!");
+            // task_manager.mark_task_done (task.reference);
         });
-        
+
         win = new MainWindow (this, task_manager, task_timer, settings);
         win.show_all ();
     }
-    
+
     public void show_about (Gtk.Window? parent = null) {
         var dialog = new AboutDialog (parent);
         dialog.run ();
@@ -114,7 +115,6 @@ public class Main : Gtk.Application {
         if (print_version) {
             stdout.printf ("%s %s\n", GOFI.APP_NAME, GOFI.APP_VERSION);
             stdout.printf ("Copyright 2011-2016 'Go For it!' Developers.\n");
-            
         } else if (show_about_dialog) {
             show_about ();
         } else {

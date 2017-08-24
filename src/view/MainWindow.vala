@@ -132,21 +132,10 @@ class MainWindow : Gtk.ApplicationWindow {
         
         /* Action and Signal Handling */
         todo_list.add_new_task.connect (task_manager.add_new_task);
-        var todo_selection = todo_list.task_view.get_selection ();
-        var active_task = task_timer.active_task;
-        if (active_task != null) {
-            todo_selection.select_path (active_task.reference.get_path ());
-        }
-        /* 
-         * If either the selection or the data itself changes, it is 
-         * necessary to check if a different task is to be displayed
-         * in the timer widget and thus on_selection_changed is to be called
-         */
-        todo_selection.changed.connect (on_selection_changed);
-        task_manager.done_store.task_data_changed.connect (on_selection_changed);
+        todo_list.selection_changed.connect (on_selection_changed);
         task_manager.active_task_invalid.connect (on_active_task_invalid);
-        task_manager.refreshing.connect (on_refreshing);
-        task_manager.refreshed.connect (on_refreshed);
+//        task_manager.refreshing.connect (on_refreshing);
+//        task_manager.refreshed.connect (on_refreshed);
         
         // Call once to refresh view on startup
         on_active_task_invalid ();
@@ -195,7 +184,7 @@ class MainWindow : Gtk.ApplicationWindow {
         
         switcher_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         switcher_box.pack_start (activity_switcher, true, true);
-        
+
         if(use_header_bar){
             add_headerbar ();
         } else {
@@ -235,75 +224,23 @@ class MainWindow : Gtk.ApplicationWindow {
         use_header_bar = !use_header_bar;
     }
     
-    public override void show_all () {
-        base.show_all ();
-        // Hide done button initially, whenever the window has been shown
-        timer_view.done_btn.visible = false;
-        // Ensure, that the done button is shown again, if there is a task
-        on_selection_changed ();
-    }
-    
-    private void on_refreshing () {
-        refreshing = true;
-    }
-    
-    private void on_refreshed () {
-        refreshing = false;
-        var active_task = task_timer.active_task;
-        
-        if (active_task == null) {
-            on_active_task_invalid ();
-        } else {
-            todo_list.task_view.get_selection ().select_path (
-                active_task.reference.get_path ()
-            );
-        }
-    }
-    
-    public void on_selection_changed () {
+    public void on_selection_changed (TodoTask? selected_task) {
         if (task_timer.running || refreshing) {
             return;
         }
         
-        var reference = get_current_row ();
-        
-        set_active_task (reference);
+        set_active_task (selected_task);
     }
     
     private void on_active_task_invalid () {
-        var reference = get_current_row ();
+        var selected_task = todo_list.get_selected_task ();
         
-        set_active_task (reference);
+        set_active_task (selected_task);
     }
     
-    private Gtk.TreeRowReference? get_current_row () {
-        Gtk.TreeModel model;
-        Gtk.TreePath path;
-        // Check if TodoStore is empty or not
-        if (task_manager.todo_store.is_empty ()) {
-            return null;
-        }
-        
-        var todo_selection = todo_list.task_view.get_selection ();
-        
-        // If no row has been selected, select the first in the list
-        if (todo_selection.count_selected_rows () == 0) {
-            todo_selection.select_path (new Gtk.TreePath.first ());
-        }
-        
-        // Take the first selected row
-        path = todo_selection.get_selected_rows (out model).nth_data (0);
-        return new Gtk.TreeRowReference (model, path);
-    }
-    
-    private void set_active_task (Gtk.TreeRowReference? reference) {
-        TodoTask? task = null;
-        if (reference != null) {
-            task = new TodoTask (reference);
-        }
-        
-        task_manager.set_active_task (task);
-        task_timer.active_task = task;
+    private void set_active_task (TodoTask? active_task) {        
+        task_manager.set_active_task (active_task);
+        task_timer.active_task = active_task;
     }
     
     private void menu_btn_toggled (Gtk.ToggleToolButton source) {
@@ -417,7 +354,7 @@ class MainWindow : Gtk.ApplicationWindow {
         int64 secs = remaining_time.to_unix ();
         Notify.Notification notification = new Notify.Notification (
             _("Prepare for your break"),
-            _("You have %i seconds left").printf((int)secs), GOFI.APP_SYSTEM_NAME);
+            _("You have %s seconds left").printf (secs.to_string ()), GOFI.APP_SYSTEM_NAME);
         try {
             notification.show ();
         } catch (GLib.Error err){

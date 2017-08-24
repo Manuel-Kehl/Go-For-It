@@ -19,24 +19,32 @@
  * This class stores all task information that should be known to the timer.
  */
 public class TodoTask : GLib.Object {
-    public Gtk.TreeRowReference reference {
-        public get;
-        public set;
-    }
-    
     public string title {
         public get;
         public set;
     }
-    
-    public bool valid {
+
+    public bool done {
         public get {
-            return reference.valid ();
+            return _done;
+        }
+        public set {
+            if (_done != value) {
+                _done = value;
+                status_changed ();
+            }
         }
     }
+    private bool _done;
     
-    public TodoTask (Gtk.TreeRowReference reference) {
-        this.reference = reference;
-        this.title = GOFI.Utils.tree_row_ref_to_task (reference);
+    public signal void status_changed ();
+
+    public TodoTask (string title, bool done) {
+        this.title = title;
+        this._done = done;
+    }
+
+    public string to_string () {
+        return (done ? "x " : "") + title;
     }
 }
