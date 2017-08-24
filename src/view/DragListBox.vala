@@ -31,9 +31,21 @@ public class DragListBox : Gtk.Box {
         }
     }
     
+    public virtual signal void activate_cursor_row () {
+        _draglistbox.activate_cursor_row ();
+    }
+    
     public virtual signal void move_cursor (Gtk.MovementStep step, int count) {
         internal_signal = true;
         _draglistbox.move_cursor (step, count);
+    }
+    
+    public virtual signal void row_activated (DragListBoxRow row) {
+        return;
+    }
+    
+    private void on_list_row_activated (Gtk.ListBoxRow row) {
+        row_activated ((DragListBoxRow) row);
     }
     
     private void on_list_move_cursor (Gtk.MovementStep step, int count) {
@@ -62,6 +74,7 @@ public class DragListBox : Gtk.Box {
     public DragListBox () {
         _draglistbox = new _DragListBox ();
         _draglistbox.set_selection_mode (Gtk.SelectionMode.SINGLE);
+        _draglistbox.set_activate_on_single_click (false);
         
         base.add(_draglistbox);
         set_orientation (Gtk.Orientation.VERTICAL);
@@ -72,6 +85,7 @@ public class DragListBox : Gtk.Box {
     
     private void connect_signals () {
         _draglistbox.move_cursor.connect (on_list_move_cursor);
+        _draglistbox.row_activated.connect_after (on_list_row_activated);
         _draglistbox.row_selected.connect (on_list_row_selected);
     }
 
@@ -287,7 +301,6 @@ private class _DragListBox : Gtk.ListBox {
 
     private void _move_row (DragListBoxRow row, int index) {
         int _index = index;
-        stdout.printf ("%i\n", index);
         int old_index = row.get_index ();
         if (old_index != index) {
             if (_index < old_index) {

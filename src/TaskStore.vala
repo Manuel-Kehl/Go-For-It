@@ -59,7 +59,6 @@ class TaskStore : Object, DragListBoxModel {
     }
     
     public void remove_task (TodoTask task) {
-        stdout.printf ("remove\n");
         task.status_changed.disconnect (on_task_done);
         tasks.remove (task);
         task_data_changed ();

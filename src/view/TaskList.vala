@@ -71,6 +71,7 @@ class TaskList : Gtk.Grid {
         task_view.bind_model ((DragListBoxModel)model, create_row);
         task_view.vadjustment = scroll_view.vadjustment;
         task_view.row_selected.connect (on_task_view_row_selected);
+        task_view.row_activated.connect (on_task_view_row_activated);
 
         scroll_view.expand = true;
 
@@ -85,6 +86,10 @@ class TaskList : Gtk.Grid {
             task = ((TaskRow) selected_row).task;
         }
         selection_changed (task);
+    }
+    
+    private void on_task_view_row_activated (DragListBoxRow? selected_row) {
+       ((TaskRow) selected_row).edit ();
     }
 
     /**
