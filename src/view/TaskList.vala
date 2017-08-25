@@ -21,9 +21,11 @@
 class TaskList : Gtk.Grid {
     /* GTK Widgets */
     private Gtk.ScrolledWindow scroll_view;
-    public DragListBox task_view;
+    private DragListBox task_view;
     private Gtk.Grid add_new_grid;
     private Gtk.Entry add_new_txt;
+    private Gtk.SearchEntry filter_entry;
+    private Filter filter;
 
     /* Data Model */
     private TaskStore model;
@@ -43,6 +45,7 @@ class TaskList : Gtk.Grid {
         this.model = model;
         
         /* Setup the widget's children */
+        setup_filter ();
         setup_task_view ();
         if (add_new) {
             setup_add_new ();
@@ -72,6 +75,7 @@ class TaskList : Gtk.Grid {
         task_view.vadjustment = scroll_view.vadjustment;
         task_view.row_selected.connect (on_task_view_row_selected);
         task_view.row_activated.connect (on_task_view_row_activated);
+        task_view.set_filter_func (filter.filter);
 
         scroll_view.expand = true;
 
@@ -126,5 +130,17 @@ class TaskList : Gtk.Grid {
         
         // Add to the main widget
         this.add (add_new_grid);
+    }
+    
+    private void setup_filter () {
+        filter_entry = new Gtk.SearchEntry ();
+        filter = new Filter ();
+        
+        filter_entry.search_changed.connect (() => {
+            filter.parse (filter_entry.text);
+            task_view.invalidate_filter ();
+        });
+        
+        this.add (filter_entry);
     }
 }

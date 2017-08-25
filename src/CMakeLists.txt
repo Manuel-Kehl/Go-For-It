@@ -13,6 +13,7 @@ vala_precompile(VALA_C ${EXEC_NAME}
     TaskManager.vala
     TaskTimer.vala
     DragListBoxModel.vala
+    Filter.vala
     view/TaskRow.vala
     view/TaskList.vala
     view/DragListBox.vala

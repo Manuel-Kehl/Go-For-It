@@ -115,7 +115,19 @@ public class DragListBox : Gtk.Box {
     public DragListBoxRow get_row_at_index (int index) {
         return (DragListBoxRow)_draglistbox.get_row_at_index (index);
     }
+    
+    public void set_filter_func (DragListBoxFilterFunc? filter_func) {
+        _draglistbox.set_filter_func ((row) => {
+            return filter_func ((DragListBoxRow) row);
+        });
+    }
+    
+    public void invalidate_filter () {
+        _draglistbox.invalidate_filter ();
+    }
 }
+
+public delegate bool DragListBoxFilterFunc (DragListBoxRow row);
 
 /**
  * A widget for displaying and manipulating task lists.
@@ -338,6 +350,7 @@ private class _DragListBox : Gtk.ListBox {
         model.items_added.connect (on_model_items_added);
         model.items_removed.connect (on_model_items_removed);
         model.item_moved.connect (on_model_item_moved);
+        model.sorted.connect (on_model_items_sorted);
     }
 
     private void on_model_items_added (uint index, uint amount) {
@@ -362,6 +375,16 @@ private class _DragListBox : Gtk.ListBox {
         _move_row(
             (DragListBoxRow)get_row_at_index((int)old_index), (int)new_index
         );
+    }
+    
+    private void on_model_items_sorted () {
+        CompareDataFunc<DragListBoxRow>? sort_func = model.get_sort_func ();
+        assert (sort_func != null);
+        
+        set_sort_func ((row1, row2) => {
+            return sort_func ((DragListBoxRow) row1, (DragListBoxRow) row2);
+        });
+        set_sort_func (null);
     }
 }
 

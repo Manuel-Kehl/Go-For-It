@@ -68,6 +68,7 @@ class TaskRow: DragListBoxRow {
         
         private bool task_done;
         private bool double_click;
+        private bool entry_visible;
         
         private string markup_string;
         
@@ -90,6 +91,7 @@ class TaskRow: DragListBoxRow {
             _txt_string = txt_string;
             this.task_done = task_done;
             double_click = false;
+            entry_visible = false;
             setup_widgets ();
         }
         
@@ -117,6 +119,9 @@ class TaskRow: DragListBoxRow {
                 return true;
             });
             button_release_event.connect ((event_button) => {
+                if (entry_visible) {
+                    return true;
+                }
                 if (double_click) {
                     double_click = false;
                     edit ();
@@ -143,6 +148,7 @@ class TaskRow: DragListBoxRow {
             entry.grab_focus ();
             entry.activate.connect(stop_editing);
             entry.focus_out_event.connect (on_entry_focus_out);
+            entry_visible = true;
         }
         
         private bool on_entry_focus_out () {
@@ -157,6 +163,7 @@ class TaskRow: DragListBoxRow {
                 set_visible_child (label);
                 remove (_entry);
             }
+            entry_visible = false;
         }
         
         private void stop_editing () {
