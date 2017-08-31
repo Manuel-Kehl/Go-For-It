@@ -179,7 +179,7 @@ class TaskRow: DragListBoxRow {
         
         private void gen_markup () {
             markup_string = make_links (
-                _txt_string, 
+                GLib.Markup.escape_text (_txt_string), 
                 {"+", "@"}, 
                 {"project:", "context:"}
             );

@@ -65,6 +65,7 @@ class MainWindow : Gtk.ApplicationWindow {
         setup_window ();
         setup_menu ();
         setup_widgets ();
+        setup_actions (app_context);
         load_css ();
         setup_notifications ();
         // Enable Notifications for the App
@@ -145,6 +146,20 @@ class MainWindow : Gtk.ApplicationWindow {
         
         // Add main_layout to the window
         this.add (main_layout);
+    }
+    
+    private void setup_actions (Gtk.Application app) {
+        var filter_action = new SimpleAction ("filter", null);
+        filter_action.activate.connect (() => show_search ());
+        app.add_action (filter_action);
+        app.set_accels_for_action ("app.filter", {"<Control>f"});
+    }
+    
+    private void show_search () {
+        var list = activity_stack.visible_child as TaskList;
+        if (list != null) {
+            list.toggle_filter_bar ();
+        }
     }
     
     private void setup_stack () {

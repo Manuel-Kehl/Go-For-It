@@ -23,6 +23,7 @@ class TaskList : Gtk.Grid {
     private Gtk.ScrolledWindow scroll_view;
     private DragListBox task_view;
     private Gtk.Grid add_new_grid;
+    private Gtk.SearchBar search_bar;
     private Gtk.Entry add_new_txt;
     private Gtk.SearchEntry filter_entry;
     private Filter filter;
@@ -61,7 +62,14 @@ class TaskList : Gtk.Grid {
     }
     
     private Gtk.Widget create_row (Object task) {
-        return new TaskRow (((TodoTask) task));
+        TaskRow row = new TaskRow (((TodoTask) task));
+        row.link_clicked.connect (on_row_link_clicked);
+        return row;
+    }
+    
+    private void on_row_link_clicked (string uri) {
+        search_bar.set_search_mode (true);
+        filter_entry.set_text (uri);
     }
     
     /** 
@@ -133,6 +141,7 @@ class TaskList : Gtk.Grid {
     }
     
     private void setup_filter () {
+        search_bar = new Gtk.SearchBar();
         filter_entry = new Gtk.SearchEntry ();
         filter = new Filter ();
         
@@ -141,6 +150,13 @@ class TaskList : Gtk.Grid {
             task_view.invalidate_filter ();
         });
         
-        this.add (filter_entry);
+        search_bar.add (filter_entry);
+        search_bar.set_show_close_button (true);
+        
+        this.add (search_bar);
+    }
+    
+    public void toggle_filter_bar () {
+        search_bar.set_search_mode (!search_bar.search_mode_enabled);
     }
 }
