@@ -12,7 +12,7 @@ class TaskRow: DragListBoxRow {
     
     public TaskRow (TodoTask task) {
         this.task = task;
-        content_layout = get_content ();
+        content_layout = get_content_area ();
         
         check_button = new Gtk.CheckButton ();
         check_button.active = task.done;

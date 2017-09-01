@@ -18,26 +18,45 @@
 /**
  * A widget for displaying and manipulating task lists.
  */
-public class DragListBox : Gtk.Box {
-    private _DragListBox _draglistbox;
+public class DragListBox : Gtk.Bin {
+    private DragListBoxRow? hover_row_top;
+    private DragListBoxRow? hover_row_bottom;
+    internal DragListBoxRow? drag_row;
+    private bool should_scroll = false;
+    private bool scrolling = false;
+    private bool scroll_up;
+
+    private bool ranges_set = false;
+    private IntRange input_range;
+    private IntRange drag_row_range;
+    private IntRange current_hover_range;
+
+    private const int SCROLL_STEP_SIZE = 8;
+    private const int SCROLL_DISTANCE = 30;
+    private const int SCROLL_DELAY = 50;
+
+    internal DragListBoxModel? model;
+    private DragListBoxCreateWidgetFunc? create_widget_func;
+
+    private Gtk.ListBox listbox;
     private bool internal_signal;
 
     public Gtk.Adjustment vadjustment {
         public get {
-            return _draglistbox.get_adjustment ();
+            return listbox.get_adjustment ();
         }
         public set {
-            _draglistbox.set_adjustment (value);
+            listbox.set_adjustment (value);
         }
     }
     
     public virtual signal void activate_cursor_row () {
-        _draglistbox.activate_cursor_row ();
+        listbox.activate_cursor_row ();
     }
     
     public virtual signal void move_cursor (Gtk.MovementStep step, int count) {
         internal_signal = true;
-        _draglistbox.move_cursor (step, count);
+        listbox.move_cursor (step, count);
     }
     
     public virtual signal void row_activated (DragListBoxRow row) {
@@ -62,281 +81,37 @@ public class DragListBox : Gtk.Box {
         row_selected ((DragListBoxRow) row);
     }
 
-    /**
-     * Methods like add, remove
-     */
-    public unowned Gtk.Container list_widget {
-        public get {
-            return _draglistbox;
-        }
-    }
-
     public DragListBox () {
-        _draglistbox = new _DragListBox ();
-        _draglistbox.set_selection_mode (Gtk.SelectionMode.SINGLE);
-        _draglistbox.set_activate_on_single_click (false);
-        
-        base.add(_draglistbox);
-        set_orientation (Gtk.Orientation.VERTICAL);
+        listbox = new Gtk.ListBox ();
+        listbox.set_selection_mode (Gtk.SelectionMode.SINGLE);
+        listbox.set_activate_on_single_click (false);
+        Gtk.drag_dest_set (
+            listbox, Gtk.DestDefaults.ALL, dlb_entries, Gdk.DragAction.MOVE
+        );
         
         internal_signal = false;
+        
+        base.add(listbox);
         connect_signals ();
     }
     
     private void connect_signals () {
-        _draglistbox.move_cursor.connect (on_list_move_cursor);
-        _draglistbox.row_activated.connect_after (on_list_row_activated);
-        _draglistbox.row_selected.connect (on_list_row_selected);
+        listbox.move_cursor.connect (on_list_move_cursor);
+        listbox.row_activated.connect_after (on_list_row_activated);
+        listbox.row_selected.connect (on_list_row_selected);
+        listbox.drag_motion.connect (on_list_drag_motion);
+        listbox.drag_leave.connect (on_list_drag_leave);
+        listbox.drag_data_received.connect (on_list_drag_data_received);
     }
 
     public void bind_model (
         DragListBoxModel? model,
         owned DragListBoxCreateWidgetFunc? create_widget_func
     ) {
-        _draglistbox.bind_model(model, (owned) create_widget_func);
-    }
-    
-    public DragListBoxRow? get_selected_row () {
-        return (DragListBoxRow) _draglistbox.get_selected_row ();
-    }
-
-    public override void add (Gtk.Widget widget) {
-        insert (widget, -1);
-    }
-
-    public void insert (Gtk.Widget widget, int position) {
-        _draglistbox._insert (widget, position);
-    }
-
-    public void move_row (DragListBoxRow row, int index) {
-        _draglistbox.move_row (row, index);
-    }
-
-    public DragListBoxRow get_row_at_index (int index) {
-        return (DragListBoxRow)_draglistbox.get_row_at_index (index);
-    }
-    
-    public void set_filter_func (DragListBoxFilterFunc? filter_func) {
-        _draglistbox.set_filter_func ((row) => {
-            return filter_func ((DragListBoxRow) row);
-        });
-    }
-    
-    public void invalidate_filter () {
-        _draglistbox.invalidate_filter ();
-    }
-}
-
-public delegate bool DragListBoxFilterFunc (DragListBoxRow row);
-
-/**
- * A widget for displaying and manipulating task lists.
- */
-private class _DragListBox : Gtk.ListBox {
-    private Gtk.ListBoxRow? hover_row;
-    internal Gtk.ListBoxRow? drag_row;
-    private bool top = false;
-    private int hover_top;
-    private int hover_bottom;
-    private bool should_scroll = false;
-    private bool scrolling = false;
-    private bool scroll_up;
-
-    private const int SCROLL_STEP_SIZE = 8;
-    private const int SCROLL_DISTANCE = 30;
-    private const int SCROLL_DELAY = 50;
-
-    private DragListBoxModel? model;
-    private DragListBoxCreateWidgetFunc? create_widget_func;
-
-    public _DragListBox () {
-        Gtk.drag_dest_set (
-            this, Gtk.DestDefaults.ALL, dlb_entries, Gdk.DragAction.MOVE
-        );
-    }
-
-    internal void _add (Gtk.Widget widget) {
-        _insert (widget, -1);
-    }
-
-    internal void _insert (Gtk.Widget widget, int position){
-        DragListBoxRow row = widget as DragListBoxRow;
-
-        if (row == null) {
-            row = new DragListBoxRow ();
-            row.get_content ().add(widget);
-        }
-
-        insert (row, position);
-        if (get_selected_row () == null) {
-            select_row (row);
-        }
-    }
-
-    public override bool drag_motion (
-        Gdk.DragContext context, int x, int y, uint time_
-    ) {
-        if (y > hover_top || y < hover_bottom) {
-            Gtk.Allocation alloc;
-            var row = get_row_at_y (y);
-            bool old_top = top;
-
-            row.get_allocation (out alloc);
-            int hover_row_y = alloc.y;
-            int hover_row_height = alloc.height;
-            if (row != drag_row) {
-                if (y < hover_row_y + hover_row_height/2) {
-                    hover_top = hover_row_y;
-                    hover_bottom = hover_top + hover_row_height/2;
-                    row.get_style_context ().add_class ("drag-hover-top");
-                    row.get_style_context ().remove_class ("drag-hover-bottom");
-                    top = true;
-                } else {
-                    hover_top = hover_row_y + hover_row_height/2;
-                    hover_bottom = hover_row_y + hover_row_height;
-                    row.get_style_context ().add_class ("drag-hover-bottom");
-                    row.get_style_context ().remove_class ("drag-hover-top");
-                    top = false;
-                }
-            }
-
-            if (hover_row != null && hover_row != row) {
-                if (old_top)
-                    hover_row.get_style_context ().remove_class ("drag-hover-top");
-                else
-                    hover_row.get_style_context ().remove_class ("drag-hover-bottom");
-            }
-
-            hover_row = row;
-        }
-
-        check_scroll (y);
-        if(should_scroll && !scrolling) {
-            scrolling = true;
-            Timeout.add (SCROLL_DELAY, scroll);
-        }
-
-        return true;
-    }
-
-    public override void drag_leave (Gdk.DragContext context, uint time_) {
-        should_scroll = false;
-    }
-
-    private void check_scroll (int y) {
-        Gtk.Adjustment adjustment = get_adjustment ();
-        if (adjustment == null) {
-            should_scroll = false;
-            return;
-        }
-        double adjustment_min = adjustment.value;
-        double adjustment_max = adjustment.page_size + adjustment_min;
-        double show_min = double.max(0, y - SCROLL_DISTANCE);
-        double show_max = double.min(adjustment.upper, y + SCROLL_DISTANCE);
-        if(adjustment_min > show_min) {
-            should_scroll = true;
-            scroll_up = true;
-        } else if (adjustment_max < show_max){
-            should_scroll = true;
-            scroll_up = false;
-        } else {
-            should_scroll = false;
-        }
-    }
-
-    private bool scroll () {
-        Gtk.Adjustment adjustment = get_adjustment ();
-        if (should_scroll) {
-            if(scroll_up) {
-                adjustment.value -= SCROLL_STEP_SIZE;
-            } else {
-                adjustment.value += SCROLL_STEP_SIZE;
-            }
-        } else {
-            scrolling = false;
-        }
-        return should_scroll;
-    }
-
-    public override void drag_data_received (
-        Gdk.DragContext context, int x, int y,
-        Gtk.SelectionData selection_data, uint info, uint time_
-    ) {
-        // Gtk.Widget handle;
-        DragListBoxRow row;
-
-        int index = 0;
-        if (hover_row != null) {
-            if (top) {
-                index = hover_row.get_index () - 1;
-                hover_row.get_style_context ().remove_class ("drag-hover-top");
-            } else {
-                index = hover_row.get_index ();
-                hover_row.get_style_context ().remove_class ("drag-hover-bottom");
-            }
-            if (selection_data.get_data_type().name () == "DRAG_LIST_BOX_ROW") {
-                row = ((DragListBoxRow[])selection_data.get_data ())[0];
-
-                if (row != hover_row) {
-                    drag_insert_row (row, index);
-                }
-            }
-        }
-        drag_row = null;
-    }
-
-    private void drag_insert_row (DragListBoxRow row, int index) {
-        _DragListBox row_parent = row.get_parent () as _DragListBox;
-
-        if (row_parent == this) {
-            _move_row (row, index);
-        } else {
-            if (model != null) {
-
-            } else {
-                row.get_parent ().remove (row);
-                insert (row, index);
-            }
-        }
-    }
-
-    public void move_row (DragListBoxRow row, int index) {
-        if (model != null) {
-            return;
-        }
-        _DragListBox row_parent = row.get_parent () as _DragListBox;
-
-        if (row_parent == this) {
-            _move_row (row, index);
-        }
-    }
-
-    private void _move_row (DragListBoxRow row, int index) {
-        int _index = index;
-        int old_index = row.get_index ();
-        if (old_index != index) {
-            if (_index < old_index) {
-                _index++;
-            }
-            remove (row);
-            insert (row, _index);
-            if (model != null) {
-                if (index < 0) {
-                    index = (int)model.get_n_items () - 1;
-                }
-                model.move_item (old_index, index);
-            }
-        }
-    }
-
-    public new void bind_model (
-        DragListBoxModel? model, 
-        owned DragListBoxCreateWidgetFunc? create_widget_func
-    ) {
         if (model != null && create_widget_func == null) {
             return;
         }
-        @foreach((widget) => {
+        listbox.@foreach((widget) => {
             remove(widget);
         });
         this.model = model;
@@ -344,7 +119,7 @@ private class _DragListBox : Gtk.ListBox {
 
         for (uint i = 0; i < model.get_n_items (); i++) {
             var row = this.create_widget_func(model.get_item (i));
-            this._add (row);
+            _add (row);
         }
 
         model.items_added.connect (on_model_items_added);
@@ -352,15 +127,15 @@ private class _DragListBox : Gtk.ListBox {
         model.item_moved.connect (on_model_item_moved);
         model.sorted.connect (on_model_items_sorted);
     }
-
+    
     private void on_model_items_added (uint index, uint amount) {
         if (amount == 1) {
-            this._add (this.create_widget_func (model.get_item (index)));
+            _add (create_widget_func (model.get_item (index)));
         } else {
             Iterator<Object> iter = model.iterator_for_position (index);
             while (amount > 0 && iter.next ()) {
-                var row = this.create_widget_func (iter.get());
-                this._add (row);
+                var row = create_widget_func (iter.get());
+                _add (row);
             }
         }
     }
@@ -381,16 +156,308 @@ private class _DragListBox : Gtk.ListBox {
         CompareDataFunc<DragListBoxRow>? sort_func = model.get_sort_func ();
         assert (sort_func != null);
         
-        set_sort_func ((row1, row2) => {
+        listbox.set_sort_func ((row1, row2) => {
             return sort_func ((DragListBoxRow) row1, (DragListBoxRow) row2);
         });
-        set_sort_func (null);
+        listbox.set_sort_func (null);
+    }
+    
+    public DragListBoxRow? get_selected_row () {
+        return (DragListBoxRow) listbox.get_selected_row ();
+    }
+
+    public override void add (Gtk.Widget widget) {
+        insert (widget, -1);
+    }
+    
+    private inline void _add (Gtk.Widget widget) {
+        _insert (widget, -1);
+    }
+    
+
+    public void insert (Gtk.Widget widget, int position) {
+        if (model != null) {
+            _insert (widget, position);
+        }
+    }
+    
+    private void _insert (Gtk.Widget widget, int position) {
+        DragListBoxRow row = widget as DragListBoxRow;
+
+        if (row == null) {
+            row = new DragListBoxRow ();
+            row.get_content_area ().add(widget);
+        }
+
+        listbox.insert (row, position);
+        if (listbox.get_selected_row () == null) {
+            listbox.select_row (row);
+        }
+    }
+
+    public void move_row (DragListBoxRow row, int index) {
+        if (model != null) {
+            return;
+        }
+        Gtk.ListBox row_parent = row.get_parent () as Gtk.ListBox;
+
+        if (row_parent == listbox) {
+            _move_row (row, index);
+        }
+    }
+
+    private void _move_row (DragListBoxRow row, int index) {
+        int _index = index;
+        int old_index = row.get_index ();
+        if (old_index != index) {
+            if (_index > old_index) {
+                _index--;
+            }
+            listbox.remove (row);
+            listbox.insert (row, _index);
+            if (model != null) {
+                if (index < 0) {
+                    index = (int)model.get_n_items () - 1;
+                }
+                model.move_item (old_index, index);
+            }
+        }
+    }
+
+    public DragListBoxRow get_row_at_index (int index) {
+        return (DragListBoxRow)listbox.get_row_at_index (index);
+    }
+    
+    public void set_filter_func (DragListBoxFilterFunc? filter_func) {
+        listbox.set_filter_func ((row) => {
+            return filter_func ((DragListBoxRow) row);
+        });
+    }
+    
+    public void invalidate_filter () {
+        listbox.invalidate_filter ();
+    }
+    
+    private void set_ranges () {
+        if (ranges_set) {
+            return;
+        }
+        input_range = {min: 0, max: -1};
+        current_hover_range = {min: 0, max: -1};
+        drag_row_range = {min: 0, max: -1};
+        
+        int last_index = (int)listbox.get_children ().length () - 1;
+        DragListBoxRow first = get_row_at_index (0);
+        DragListBoxRow last = get_row_at_index (last_index);
+        
+        Gtk.Allocation alloc;
+        first.get_allocation (out alloc);
+        input_range.min = alloc.y + 1;
+        last.get_allocation (out alloc);
+        input_range.max = alloc.y + alloc.height - 1;
+        
+        set_deadzone ();
+        ranges_set = true;
+    }
+    
+    private void set_deadzone () {
+        if (drag_row == null) {
+            return;
+        }
+        
+        int drag_row_index = drag_row.get_index ();
+        Gtk.Allocation alloc;
+        drag_row.get_allocation (out alloc);
+        
+        if (drag_row_index > 1) {
+            drag_row_range.min = get_widget_middle(
+                listbox.get_row_at_index(drag_row_index - 1)
+            );
+        } else {
+            drag_row_range.min = alloc.y;
+        }
+        var next_row = listbox.get_row_at_index (drag_row_index + 1);
+        if (next_row != null) {
+            drag_row_range.max = get_widget_middle (next_row);
+        } else {
+            drag_row_range.max = alloc.y + alloc.height;
+        }
+    }
+    
+    private int get_widget_middle (Gtk.Widget widget) {
+        Gtk.Allocation alloc;
+        
+        widget.get_allocation (out alloc);
+        return alloc.y + alloc.height/2;
+    }
+    
+    private bool on_list_drag_motion (
+        Gdk.DragContext context, int x, int y, uint time_
+    ) {
+        set_ranges ();
+        y = input_range.clamp (y);
+        if (!current_hover_range.contains (y)) {
+            remove_hover_style ();
+            set_hover_rows (y);
+            add_hover_style ();
+        }
+
+        check_scroll (y);
+        if(should_scroll && !scrolling) {
+            scrolling = true;
+            Timeout.add (SCROLL_DELAY, scroll);
+        }
+
+        return true;
+    }
+    
+    private void set_hover_rows (int y) {
+        if (!drag_row_range.contains (y)) {
+            set_hover_rows_deadzone ();
+        } else {
+            set_hover_rows_from_y (y);
+        }
+    }
+    
+    private void set_hover_rows_deadzone () {
+        hover_row_bottom = null;
+        hover_row_top = null;
+        current_hover_range = drag_row_range;
+    }
+    
+    private void set_hover_rows_from_y (int y) {
+        var row = (DragListBoxRow)listbox.get_row_at_y (y);
+        int hover_row_middle = get_widget_middle (row);
+        
+        if (y < hover_row_middle) {
+            hover_row_bottom = row;
+            hover_row_top = get_row_at_index (row.get_index () - 1);
+            current_hover_range.max = hover_row_middle;
+            if (hover_row_top != null) {
+                current_hover_range.min = get_widget_middle (hover_row_top);
+            } else {
+                current_hover_range.min = input_range.min;
+            }
+        } else {
+            hover_row_top = row;
+            hover_row_bottom = get_row_at_index (row.get_index () + 1);
+            current_hover_range.min = hover_row_middle;
+            if (hover_row_bottom != null) {
+                current_hover_range.max = get_widget_middle (hover_row_bottom);
+            } else {
+                current_hover_range.max = input_range.max;
+            }
+        }
+    }
+    
+    private void remove_hover_style () {
+        if (hover_row_top != null) {
+            hover_row_top.get_style_context ().remove_class ("drag-hover-top");
+        }
+        if (hover_row_bottom != null) {
+            hover_row_bottom.get_style_context ().remove_class ("drag-hover-bottom");
+        }
+    }
+    
+    private void add_hover_style () {
+        if (hover_row_top != null) {
+            hover_row_top.get_style_context ().add_class ("drag-hover-top");
+        }
+        if (hover_row_bottom != null) {
+            hover_row_bottom.get_style_context ().add_class ("drag-hover-bottom");
+        }
+    }
+
+    private void on_list_drag_leave (Gdk.DragContext context, uint time_) {
+        should_scroll = false;
+        ranges_set = false;
+        remove_hover_style ();
+    }
+
+    private void check_scroll (int y) {
+        Gtk.Adjustment adjustment = listbox.get_adjustment ();
+        if (adjustment == null) {
+            should_scroll = false;
+            return;
+        }
+        double adjustment_min = adjustment.value;
+        double adjustment_max = adjustment.page_size + adjustment_min;
+        double show_min = double.max(0, y - SCROLL_DISTANCE);
+        double show_max = double.min(adjustment.upper, y + SCROLL_DISTANCE);
+        if(adjustment_min > show_min) {
+            should_scroll = true;
+            scroll_up = true;
+        } else if (adjustment_max < show_max){
+            should_scroll = true;
+            scroll_up = false;
+        } else {
+            should_scroll = false;
+        }
+    }
+
+    private bool scroll () {
+        Gtk.Adjustment adjustment = listbox.get_adjustment ();
+        if (should_scroll) {
+            if(scroll_up) {
+                adjustment.value -= SCROLL_STEP_SIZE;
+            } else {
+                adjustment.value += SCROLL_STEP_SIZE;
+            }
+        } else {
+            scrolling = false;
+        }
+        return should_scroll;
+    }
+
+    private void on_list_drag_data_received (
+        Gdk.DragContext context, int x, int y,
+        Gtk.SelectionData selection_data, uint info, uint time_
+    ) {
+        DragListBoxRow row;
+
+        int index = -1;
+        remove_hover_style ();
+        if (hover_row_bottom != null) {
+            index = hover_row_bottom.get_index ();
+        } else if (hover_row_top != null) {
+            index = hover_row_top.get_index () + 1;
+        }
+        if (index >= 0 && selection_data.get_data_type().name () == "DRAG_LIST_BOX_ROW") {
+            row = ((DragListBoxRow[])selection_data.get_data ())[0];
+            drag_insert_row (row, index);
+        }
+        drag_row = null;
+        hover_row_top = null;
+        hover_row_bottom = null;
+        ranges_set = false;
+    }
+    
+    private void drag_insert_row (DragListBoxRow row, int index) {
+        DragListBox row_draglist = row.get_drag_list_box ();
+
+        if (row_draglist == this) {
+            _move_row (row, index);
+        } else {
+            if (model == null && row_draglist.model == null) {
+                row.get_parent ().remove (row);
+                listbox.insert (row, index);
+            }
+        }
     }
 }
+
+public delegate bool DragListBoxFilterFunc (DragListBoxRow row);
 
 private const Gtk.TargetEntry[] dlb_entries = {
     {"DRAG_LIST_BOX_ROW", Gtk.TargetFlags.SAME_APP, 0}
 };
+
+private struct IntRange {
+    public int min;
+    public int max;
+    public inline bool contains (int val) {return val >= min && val <= max;}
+    public inline int clamp (int val) {return val.clamp (min, max);}
+} 
 
 public class DragListBoxRow : Gtk.ListBoxRow {
     private Gtk.EventBox handle;
@@ -422,12 +489,20 @@ public class DragListBoxRow : Gtk.ListBoxRow {
         handle.drag_data_get.connect (handle_drag_data_get);
     }
 
-    public unowned Gtk.Box get_content () {
+    public unowned Gtk.Box get_content_area () {
         return content;
     }
 
+    public DragListBox? get_drag_list_box () {
+        Gtk.Widget? parent = this.get_parent ();
+        if (parent != null) {
+            return parent.get_parent () as DragListBox;
+        }
+        return null;
+    }
+
     private void handle_drag_begin (Gdk.DragContext context) {
-        _DragListBox parent;
+        DragListBox draglist;
         Gtk.Allocation alloc;
         Cairo.Surface surface;
         Cairo.Context cr;
@@ -439,9 +514,9 @@ public class DragListBoxRow : Gtk.ListBoxRow {
         );
         cr = new Cairo.Context (surface);
 
-        parent = this.get_parent () as _DragListBox;
-        if (parent != null)
-            parent.drag_row = this;
+        draglist = get_drag_list_box ();
+        if (draglist != null)
+            draglist.drag_row = this;
 
         get_style_context ().add_class ("drag-icon");
         draw (cr);
