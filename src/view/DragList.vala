@@ -1,4 +1,4 @@
-/* Copyright 2014-2016 Go For It! developers
+/* Copyright 2017 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -16,7 +16,7 @@
 */
 
 /**
- * A widget for displaying and manipulating task lists.
+ * A Gtk.ListBox based widget with drag and drop support.
  */
 public class DragList : Gtk.Bin {
     private DragListRow? hover_row_top;
