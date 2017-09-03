@@ -3,7 +3,7 @@
 * This file is part of Go For It!.
 *
 * Go For It! is free software: you can redistribute it
-* and/or modify it under the terms of version 3 of the 
+* and/or modify it under the terms of version 3 of the
 * GNU General Public License as published by the Free Software Foundation.
 *
 * Go For It! is distributed in the hope that it will be
@@ -22,7 +22,7 @@ public class TaskTimer {
     private SettingsManager settings;
     public bool running { get; private set; default = false; }
     public bool break_active {get; private set; default = false; }
-    /** 
+    /**
      * The duration till the end, since the last start of the timer
      */
     private DateTime duration_till_end;
@@ -53,7 +53,7 @@ public class TaskTimer {
         set {
             stop ();
             reset ();
-            
+
             if (_active_task != null) {
                 _active_task.notify["title"].disconnect (on_task_notify_title);
             }
@@ -61,13 +61,13 @@ public class TaskTimer {
             if (_active_task != null) {
                 _active_task.notify["title"].connect (on_task_notify_title);
             }
-            
+
             // Emit the corresponding notifier signal
             update_active_task ();
         }
     }
     private bool almost_over_sent_already { get; set; default = false; }
-    
+
     /* Signals */
     public signal void timer_updated (DateTime remaining_duration);
     public signal void timer_updated_relative (double progress);
@@ -77,7 +77,7 @@ public class TaskTimer {
     public signal void active_task_done (TodoTask task);
     public signal void active_task_title_changed (TodoTask task);
     public signal void active_task_changed (TodoTask? task, bool break_active);
-    
+
     public TaskTimer (SettingsManager settings) {
         this.settings = settings;
         /* Signal Handling*/
@@ -86,10 +86,10 @@ public class TaskTimer {
                 reset ();
             }
         });
-        
+
         /*
          * The TaskTimer's update loop. Actual time tracking is implemnted
-         * by comparing timestamps, so the update interval has no influence 
+         * by comparing timestamps, so the update interval has no influence
          * on that.
          */
         Timeout.add_full (Priority.DEFAULT, 500, () => {
@@ -104,7 +104,7 @@ public class TaskTimer {
         });
         reset ();
     }
-     
+
     public void start () {
         if (!running && active_task != null) {
             start_time = new DateTime.now_utc ();
@@ -112,7 +112,7 @@ public class TaskTimer {
             timer_running_changed (running);
         }
     }
-    
+
     public void stop () {
         if (running) {
             duration_till_end = remaining_duration;
@@ -121,7 +121,7 @@ public class TaskTimer {
             timer_running_changed (running);
         }
     }
-    
+
     public void reset () {
         int64 default_duration;
         if (break_active) {
@@ -133,27 +133,27 @@ public class TaskTimer {
         previous_runtime = 0;
         update ();
     }
-    
+
     /**
      * Used to initiate a timer_updated signal from outside of this class.
      */
     public void update () {
         timer_updated (remaining_duration);
-        
-        double runtime = 
+
+        double runtime =
             (double) (get_runtime ().to_unix () + previous_runtime);
-        double total = 
+        double total =
             (double) (duration_till_end.to_unix () + previous_runtime);
         double progress = runtime / total;
         timer_updated_relative (progress);
-        
+
         // Check if "almost over" signal is to be send
         if (remaining_duration.to_unix () <= settings.reminder_time) {
             if (settings.reminder_active
                     && !almost_over_sent_already
                     && running
                     && !break_active) {
-                
+
                 timer_almost_over (remaining_duration);
                 almost_over_sent_already = true;
             }
@@ -161,18 +161,18 @@ public class TaskTimer {
             almost_over_sent_already = false;
         }
     }
-    
+
     /**
      * Used to initate an active_task_changed signal
      */
     public void update_active_task () {
         active_task_changed (_active_task, break_active);
     }
-    
+
     private void on_task_notify_title () {
         active_task_title_changed (_active_task);
     }
-    
+
     /**
      * Used to emit an "active_task_done" signal from outside of this class.
      */
@@ -184,7 +184,7 @@ public class TaskTimer {
             start ();
         }
     }
-    
+
     /**
      * Determines if the running timer has finished, according to runtime and
      * duration.
@@ -192,7 +192,7 @@ public class TaskTimer {
     private bool has_finished () {
         return (get_runtime ().compare (duration_till_end) >= 0);
     }
-    
+
     public DateTime get_runtime () {
         if (running) {
             var diff = new DateTime.now_utc ().difference (start_time);
@@ -201,7 +201,7 @@ public class TaskTimer {
             return new DateTime.from_unix_utc (0);
         }
     }
-    
+
     /**
      * Used to toggle between break and work state.
      */
@@ -213,8 +213,8 @@ public class TaskTimer {
         }
         active_task_changed (_active_task, break_active);
     }
-    
-    /** 
+
+    /**
      * Ends the current iteration of the timer (either active task or break)
      * Is to be executed when the timer finishes, or skip has been initiated.
      * Handles switchting between breaks and active tasks as well as

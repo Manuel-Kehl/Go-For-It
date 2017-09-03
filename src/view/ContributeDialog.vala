@@ -3,7 +3,7 @@
 * This file is part of Go For It!.
 *
 * Go For It! is free software: you can redistribute it
-* and/or modify it under the terms of version 3 of the 
+* and/or modify it under the terms of version 3 of the
 * GNU General Public License as published by the Free Software Foundation.
 *
 * Go For It! is distributed in the hope that it will be
@@ -25,7 +25,7 @@ public class ContributeDialog : Gtk.MessageDialog {
         this.message_type = Gtk.MessageType.INFO;
         this.set_modal (true);
         this.title = _("Contributions and Donations");
-        
+
         this.format_secondary_markup (
         "<b>" + _("Thank you for supporting") + " <i>Go For It!</i>\n\n\n</b>"
         + _("Submitting code, artwork, translations or documentation is a great way of contributing to the project:")
@@ -37,11 +37,11 @@ public class ContributeDialog : Gtk.MessageDialog {
         + "<a href=\"" + GOFI.PROJECT_DONATIONS + "\">" + GOFI.PROJECT_DONATIONS
         + "</a>"
         );
-        
+
         this.response.connect ((e) => {
             this.destroy ();
         });
-        
+
         this.get_action_area ().hexpand = false;
         this.get_action_area ().halign = Gtk.Align.END;
         this.set_transient_for (parent);

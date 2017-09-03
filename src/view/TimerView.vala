@@ -3,7 +3,7 @@
 * This file is part of Go For It!.
 *
 * Go For It! is free software: you can redistribute it
-* and/or modify it under the terms of version 3 of the 
+* and/or modify it under the terms of version 3 of the
 * GNU General Public License as published by the Free Software Foundation.
 *
 * Go For It! is distributed in the hope that it will be
@@ -36,21 +36,21 @@ public class TimerView : Gtk.Grid {
     private Gtk.Button run_btn;
     private Gtk.Button skip_btn;
     public Gtk.Button done_btn;
-    
+
     public TimerView (TaskTimer timer) {
         this.timer = timer;
-        
+
         /* Settings of the widget itself */
         this.orientation = Gtk.Orientation.VERTICAL;
         this.expand = true;
-        
+
         setup_task_widgets ();
         setup_timer_container ();
         setup_action_container ();
         setup_progress_bar ();
-        
+
         set_running (timer.running);
-        
+
         // Connect the timer's signals
         timer.timer_updated.connect (set_time);
         timer.timer_running_changed.connect (set_running);
@@ -69,7 +69,7 @@ public class TimerView : Gtk.Grid {
             show_no_task ();
             return;
         }
-        
+
         update_title (task);
         var style = task_description_lbl.get_style_context ();
 
@@ -85,20 +85,20 @@ public class TimerView : Gtk.Grid {
             done_btn.visible = true;
         }
     }
-    
+
     private void update_title (TodoTask task) {
         task_description_lbl.label = task.title;
     }
-    
+
     public void set_time (DateTime time) {
         h_spin.value = time.get_hour ();
         m_spin.value = time.get_minute ();
         s_spin.value = time.get_second ();
     }
-    
+
     public void set_running (bool running) {
         done_btn.visible = !timer.break_active;
-        
+
         if (running) {
             run_btn.label = _("Pau_se");
             run_btn.get_style_context ().remove_class ("suggested-action");
@@ -107,7 +107,7 @@ public class TimerView : Gtk.Grid {
             run_btn.get_style_context ().add_class ("suggested-action");
         }
     }
-    
+
     private void on_run_btn_clicked () {
         if (timer.running) {
             timer.stop ();
@@ -116,7 +116,7 @@ public class TimerView : Gtk.Grid {
             timer.start ();
         }
     }
-    
+
     public DateTime get_timer_values ()  {
         var duration = new DateTime.from_unix_utc (0);
         duration = duration.add_hours ((int) h_spin.value);
@@ -124,7 +124,7 @@ public class TimerView : Gtk.Grid {
         duration = duration.add_seconds (s_spin.value);
         return duration;
     }
-    
+
     /**
      * Configures the widgets that indicate the active task and its progress
      */
@@ -132,7 +132,7 @@ public class TimerView : Gtk.Grid {
         /* Instantiation */
         task_status_lbl = new Gtk.Label (_("Inactive"));
         task_description_lbl = new Gtk.Label (_("No task has been selected"));
-        
+
         /* Configuration */
         task_status_lbl.margin_top = 30;
         task_status_lbl.get_style_context ().add_class ("task_status");
@@ -140,12 +140,12 @@ public class TimerView : Gtk.Grid {
         task_description_lbl.margin_top = 30;
         task_description_lbl.lines = 3;
         task_description_lbl.wrap = true;
-        
+
         /* Add Widgets */
         this.add (task_status_lbl);
         this.add (task_description_lbl);
     }
-    
+
     /**
      * Configures the container with the timer elements.
      */
@@ -155,7 +155,7 @@ public class TimerView : Gtk.Grid {
         h_spin = new Gtk.SpinButton.with_range (0, 59, 1);
         m_spin = new Gtk.SpinButton.with_range (0, 59, 1);
         s_spin = new Gtk.SpinButton.with_range (0, 59, 1);
-        
+
         /* Configuration */
         timer_grid.expand = true;
         timer_grid.orientation = Gtk.Orientation.HORIZONTAL;
@@ -166,11 +166,11 @@ public class TimerView : Gtk.Grid {
         h_spin.orientation = Gtk.Orientation.VERTICAL;
         m_spin.orientation = Gtk.Orientation.VERTICAL;
         s_spin.orientation = Gtk.Orientation.VERTICAL;
-        
+
         use_leading_zeros (h_spin);
         use_leading_zeros (m_spin);
         use_leading_zeros (s_spin);
-        
+
         /* Signal Handling */
         h_spin.value_changed.connect (() => {
             timer.remaining_duration = get_timer_values ();
@@ -181,7 +181,7 @@ public class TimerView : Gtk.Grid {
         s_spin.value_changed.connect (() => {
             timer.remaining_duration = get_timer_values ();
         });
-        
+
         /* Add Widgets */
         timer_grid.add (h_spin);
         timer_grid.add (new Gtk.Label (" : "));
@@ -190,7 +190,7 @@ public class TimerView : Gtk.Grid {
         timer_grid.add (s_spin);
         this.add (timer_grid);
     }
-    
+
     /**
      * Makes the passed Gtk.SpinButton fill the display with a leading zero.
      */
@@ -205,7 +205,7 @@ public class TimerView : Gtk.Grid {
             return false;
         });
     }
-    
+
     /**
      * Configures the container with the action buttons.
      */
@@ -217,7 +217,7 @@ public class TimerView : Gtk.Grid {
         run_btn = new Gtk.Button ();
         skip_btn = new Gtk.Button.with_label (_("S_kip"));
         done_btn = new Gtk.Button.with_label (_("_Done"));
-        
+
         /* Configuration */
         action_grid.orientation = Gtk.Orientation.HORIZONTAL;
         action_grid.hexpand = true;
@@ -232,7 +232,7 @@ public class TimerView : Gtk.Grid {
         done_btn.use_underline = true;
         skip_btn.use_underline = true;
         run_btn.use_underline = true;
-        
+
         /* Action Handling */
         skip_btn.clicked.connect ((e) => {
             timer.end_iteration ();
@@ -241,7 +241,7 @@ public class TimerView : Gtk.Grid {
             timer.set_active_task_done ();
         });
         run_btn.clicked.connect (on_run_btn_clicked);
-        
+
         /* Add Widgets */
         action_timer_grid.add (skip_btn);
         action_timer_grid.add (run_btn);
@@ -250,13 +250,13 @@ public class TimerView : Gtk.Grid {
         action_grid.add (action_timer_grid);
         this.add (action_grid);
     }
-    
+
     private void setup_progress_bar () {
         progress = new Gtk.ProgressBar ();
         progress.hexpand = true;
         this.add (progress);
     }
-    
+
     /**
      * This funciton is to be called, when the to-do list is empty
      */
@@ -265,7 +265,7 @@ public class TimerView : Gtk.Grid {
         task_description_lbl.label = _("You have nothing to do.");
         done_btn.visible = false;
     }
-    
+
     public override void show_all () {
         base.show_all ();
         if (timer.break_active) {

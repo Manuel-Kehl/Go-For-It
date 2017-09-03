@@ -3,7 +3,7 @@
 * This file is part of Go For It!.
 *
 * Go For It! is free software: you can redistribute it
-* and/or modify it under the terms of version 3 of the 
+* and/or modify it under the terms of version 3 of the
 * GNU General Public License as published by the Free Software Foundation.
 *
 * Go For It! is distributed in the hope that it will be
@@ -36,7 +36,7 @@ public class TodoTask : GLib.Object {
         }
     }
     private bool _done;
-    
+
     public signal void status_changed ();
 
     public TodoTask (string title, bool done) {

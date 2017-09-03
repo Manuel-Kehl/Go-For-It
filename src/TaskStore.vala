@@ -3,7 +3,7 @@
 * This file is part of Go For It!.
 *
 * Go For It! is free software: you can redistribute it
-* and/or modify it under the terms of version 3 of the 
+* and/or modify it under the terms of version 3 of the
 * GNU General Public License as published by the Free Software Foundation.
 *
 * Go For It! is distributed in the hope that it will be
@@ -15,118 +15,112 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-class TaskStore : Object, DragListBoxModel {
+class TaskStore : Object, ListModel, DragListBoxModel {
     private Queue<TodoTask> tasks;
-    private uint stamp;
-    
+    private unowned List<TodoTask> iter_link;
+    private unowned int iter_link_index;
+
     public bool done_by_default {
         public get;
-        construct set;
+        private set;
     }
-    
+
     /* Signals */
     public signal void task_data_changed ();
     public signal void task_done_changed (TodoTask task);
-    
+
     /**
      * Constructor of the TaskStore class
      */
     public TaskStore (bool done_by_default) {
         this.done_by_default = done_by_default;
         tasks = new Queue<TodoTask> ();
-        stamp = 0;
     }
-    
-    public Iterator<Object> iterator() {
-        return new StoreIter (tasks.head, this);
+
+    private void move_iter_link_to_index (int index) {
+        unowned List<TodoTask> closest_link;
+        int distance;
+        int distance_head = index;
+        int distance_tail = (int)tasks.length - 1;
+        int distance_iter;
+
+        if (distance_tail < distance_head) {
+            closest_link = tasks.tail;
+            distance = -distance_tail;
+        } else {
+            closest_link = tasks.head;
+            distance = distance_head;
+        }
+        if (iter_link != null) {
+            distance_iter = index - iter_link_index;
+            if (distance.abs () > distance_iter.abs ()) {
+                distance = distance_iter;
+                closest_link = iter_link;
+            }
+        }
+
+        if (distance > 0) {
+            iter_link = closest_link.nth (distance);
+        } else {
+            iter_link = closest_link.nth_prev (distance.abs ());
+        }
+        iter_link_index = index;
     }
-    
+
     public void add_new_task (TodoTask task) {
         add_task (task);
         task_data_changed ();
     }
-    
+
     public void add_task (TodoTask task) {
+        iter_link = null;
         tasks.push_tail (task);
         task.status_changed.connect (on_task_done);
-        items_added (tasks.length - 1, 1);
+        items_changed (tasks.length - 1, 0, 1);
     }
-    
+
     public void clear () {
-        items_removed (0, tasks.length);
+        iter_link = null;
+        items_changed (0, tasks.length, 0);
         tasks.clear ();
         task_data_changed ();
     }
-    
+
     public void remove_task (TodoTask task) {
+        iter_link = null;
         task.status_changed.disconnect (on_task_done);
         tasks.remove (task);
         task_data_changed ();
     }
 
+    public Type get_item_type () {
+        return typeof (TodoTask);
+    }
+
     public Object? get_item (uint position) {
-        return tasks.peek_nth (position);
+        if (position < tasks.length) {
+            move_iter_link_to_index ((int)position);
+            return iter_link.data;
+        }
+        return null;
     }
 
     public uint get_n_items () {
         return tasks.length;
     }
-    
+
     public void move_item (uint old_position, uint new_position) {
+        iter_link = null;
         if (old_position == new_position) {
             return;
         } else if (new_position > old_position) {
             new_position++;
         }
-        
+
         tasks.push_nth(tasks.pop_nth (old_position), (int) new_position);
     }
-    
-    public CompareDataFunc<DragListBoxRow>? get_sort_func () {
-        return null;
-    }
-    
+
     private void on_task_done (TodoTask task) {
         task_done_changed (task);
-    }
-    
-    class StoreIter : Object, Iterator<TodoTask> {
-        private unowned List<TodoTask> link;
-        private unowned TaskStore store;
-        private uint stamp;
-        private bool next_called;
-        
-        public bool valid {
-            get {
-                return link != null && stamp == store.stamp;
-            }
-        }
-        
-        public StoreIter (List<TodoTask> link, TaskStore store) {
-            this.link = link;
-            this.store = store;
-            stamp = store.stamp;
-            next_called = false;
-        }
-        
-        public bool next () {
-            if (GLib.unlikely (!next_called)) {
-                next_called = true;
-                return valid;
-            } else if (has_next ()) {
-                link = link.next;
-                return true;
-            }
-            return false;
-        }
-        
-        public bool has_next () {
-            return valid && link.next != null;
-        }
-        
-        public new TodoTask get () {
-            assert (valid);
-            return link.data;
-        }
     }
 }
