@@ -1,0 +1,39 @@
+GtkLabel.task_status {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+GtkLabel.task_break {
+    font-size: 120%;
+    color: @task_active_label_color;
+}
+
+GtkLabel.task_active {
+    font-size: 120%;
+}
+
+.timerview GtkSpinButton {
+    font-size: 400%;
+}
+
+.timerview GtkLabel {
+    font-size: 250%;
+}
+
+.list-row {
+  border-top: 1px solid @list_row_border_top;
+  border-bottom: 1px solid @list_row_border_bottom;
+}
+
+.list-row.drag-icon { 
+  background: @list_row_drag_icon_background;
+  border: 1px solid @list_row_drag_icon_border;
+}
+
+.list-row.drag-hover-top {
+  border-bottom: 1px solid @list_row_drag_highlight_bottom;
+}
+
+.list-row.drag-hover-bottom {
+  border-top: 1px solid @list_row_drag_highlight_top;
+}

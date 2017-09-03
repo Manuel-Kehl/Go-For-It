@@ -1,0 +1,8 @@
+@define-color task_active_label_color #ababab;
+
+@define-color list_row_drag_icon_background white;
+@define-color list_row_drag_icon_border black;
+@define-color list_row_border_top transparent;
+@define-color list_row_border_bottom transparent;
+@define-color list_row_drag_highlight_top black;
+@define-color list_row_drag_highlight_bottom black;

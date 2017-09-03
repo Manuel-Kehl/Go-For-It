@@ -83,6 +83,7 @@ class MainWindow : Gtk.ApplicationWindow {
         settings.use_dark_theme_changed.connect ( (use_dark_theme) => {
             unowned Gtk.Settings gtk_settings = Gtk.Settings.get_default();
             gtk_settings.gtk_application_prefer_dark_theme = use_dark_theme;
+            load_css ();
         });
         settings.use_header_bar_changed.connect (toggle_headerbar);
     }
@@ -386,15 +387,12 @@ class MainWindow : Gtk.ApplicationWindow {
     private void load_css () {
         var screen = this.get_screen();
         var css_provider = new Gtk.CssProvider();
-        var version = Gtk.get_minor_version ();
-        string stylesheet;
+
+        string color = settings.use_dark_theme ? "-dark" : "";
+        string version = (Gtk.get_minor_version () >= 19) ? "3.20" : "3.10";
 
         // Pick the stylesheet that is compatible with the user's Gtk version
-        if (version >= 19) {
-            stylesheet = "go-for-it-3.20.css";
-        } else {
-            stylesheet = "go-for-it-3.10.css";
-        }
+        string stylesheet = @"go-for-it-$version$color.css";
 
         // Scan potential data dirs for the corresponding css file
         foreach (var dir in Environment.get_system_data_dirs ()) {
