@@ -21,7 +21,7 @@
 class TaskList : Gtk.Grid {
     /* GTK Widgets */
     private Gtk.ScrolledWindow scroll_view;
-    private DragListBox task_view;
+    private DragList task_view;
     private Gtk.Grid add_new_grid;
     private Gtk.SearchBar search_bar;
     private Gtk.Entry add_new_txt;
@@ -77,9 +77,9 @@ class TaskList : Gtk.Grid {
      */
     private void setup_task_view () {
         this.scroll_view = new Gtk.ScrolledWindow (null, null);
-        this.task_view = new DragListBox ();
+        this.task_view = new DragList ();
 
-        task_view.bind_model ((DragListBoxModel)model, create_row);
+        task_view.bind_model ((DragListModel)model, create_row);
         task_view.vadjustment = scroll_view.vadjustment;
         task_view.row_selected.connect (on_task_view_row_selected);
         task_view.row_activated.connect (on_task_view_row_activated);
@@ -92,7 +92,7 @@ class TaskList : Gtk.Grid {
         this.add (scroll_view);
     }
 
-    private void on_task_view_row_selected (DragListBoxRow? selected_row) {
+    private void on_task_view_row_selected (DragListRow? selected_row) {
         TodoTask? task = null;
         if (selected_row != null) {
             task = ((TaskRow) selected_row).task;
@@ -100,7 +100,7 @@ class TaskList : Gtk.Grid {
         selection_changed (task);
     }
 
-    private void on_task_view_row_activated (DragListBoxRow? selected_row) {
+    private void on_task_view_row_activated (DragListRow? selected_row) {
        ((TaskRow) selected_row).edit ();
     }
 

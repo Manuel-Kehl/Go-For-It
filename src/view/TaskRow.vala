@@ -1,4 +1,4 @@
-class TaskRow: DragListBoxRow {
+class TaskRow: DragListRow {
     unowned Gtk.Box content_layout;
     private Gtk.CheckButton check_button;
     private TaskLabel title_label;

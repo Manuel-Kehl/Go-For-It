@@ -72,7 +72,7 @@ class Filter {
         return false;
     }
 
-    public bool filter (DragListBoxRow _row) {
+    public bool filter (DragListRow _row) {
         assert (this != null);
         var row = _row as TaskRow;
 
