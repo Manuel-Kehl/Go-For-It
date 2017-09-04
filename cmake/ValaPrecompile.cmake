@@ -1,6 +1,6 @@
 ##
 # Copyright 2009-2010 Jakob Westhoff. All rights reserved.
-# Copyright 2012 elementary.
+# Copyright 2012-2016 elementary LLC.
 # 
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -28,8 +28,8 @@
 # either expressed or implied, of Jakob Westhoff
 ##
 
-include(ParseArguments)
 find_package(Vala REQUIRED)
+include(CMakeParseArguments)
 
 ##
 # Compile vala files to their c equivalents for further processing. 
@@ -115,7 +115,7 @@ find_package(Vala REQUIRED)
 ##
 
 macro(vala_precompile output target_name)
-    parse_arguments(ARGS "TARGET;PACKAGES;OPTIONS;DIRECTORY;GENERATE_GIR;GENERATE_SYMBOLS;GENERATE_HEADER;GENERATE_VAPI;CUSTOM_VAPIS" "" ${ARGN})
+    cmake_parse_arguments (ARGS "" "GENERATE_GIR;GENERATE_SYMBOLS;GENERATE_HEADER;GENERATE_VAPI;DIRECTORY" "PACKAGES;OPTIONS;CUSTOM_VAPIS" ${ARGN})
 
     if(ARGS_DIRECTORY)
         set(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${ARGS_DIRECTORY})
@@ -132,7 +132,7 @@ macro(vala_precompile output target_name)
     set(out_files_display "")
     set(${output} "")
 
-    foreach(src ${ARGS_DEFAULT_ARGS})
+    foreach(src ${ARGS_UNPARSED_ARGUMENTS})
         string(REGEX MATCH "^/" IS_MATCHED ${src})
         if(${IS_MATCHED} MATCHES "/")
             set(src_file_path ${src})
@@ -156,12 +156,14 @@ macro(vala_precompile output target_name)
 
     set(custom_vapi_arguments "")
     if(ARGS_CUSTOM_VAPIS)
+        # Check for relative and absolute paths
         foreach(vapi ${ARGS_CUSTOM_VAPIS})
-            if(${vapi} MATCHES ${CMAKE_SOURCE_DIR} OR ${vapi} MATCHES ${CMAKE_BINARY_DIR})
+            string(REGEX MATCH "^/" IS_MATCHED ${vapi})
+            if(${IS_MATCHED} MATCHES "/")
                 list(APPEND custom_vapi_arguments ${vapi})
-            else (${vapi} MATCHES ${CMAKE_SOURCE_DIR} OR ${vapi} MATCHES ${CMAKE_BINARY_DIR})
+            else()
                 list(APPEND custom_vapi_arguments ${CMAKE_CURRENT_SOURCE_DIR}/${vapi})
-            endif(${vapi} MATCHES ${CMAKE_SOURCE_DIR} OR ${vapi} MATCHES ${CMAKE_BINARY_DIR})
+            endif()
         endforeach(vapi ${ARGS_CUSTOM_VAPIS})
     endif(ARGS_CUSTOM_VAPIS)
 
@@ -229,7 +231,6 @@ macro(vala_precompile output target_name)
         ${vala_pkg_opts} 
         ${ARGS_OPTIONS} 
         "-g"
-        "--save-temps"
         ${in_files} 
         ${custom_vapi_arguments}
     COMMAND
