@@ -5,7 +5,7 @@ label.task_status {
 
 label.task_break {
     font-size: 120%;
-    color: #ababab;
+    color: @task_active_label_color;
 }
 
 label.task_active {
@@ -26,14 +26,15 @@ label.task_active {
 }
 
 .row.drag-icon { 
-  background: @list_row_drag_icon_background;
-  border: 1px solid @list_row_drag_icon_border;
+    background: @list_row_drag_icon_background;
+    border: 1px solid @list_row_drag_icon_border;
+    color: @list_row_drag_icon_text;
 }
 
 .row.drag-hover-top {
-  border-bottom: 1px solid @list_row_drag_highlight_bottom;
+    border-bottom: 1px solid @list_row_drag_highlight_bottom;
 }
 
 .row.drag-hover-bottom {
-  border-top: 1px solid @list_row_drag_highlight_top;
+    border-top: 1px solid @list_row_drag_highlight_top;
 }

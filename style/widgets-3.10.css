@@ -21,19 +21,20 @@ GtkLabel.task_active {
 }
 
 .list-row {
-  border-top: 1px solid @list_row_border_top;
-  border-bottom: 1px solid @list_row_border_bottom;
+    border-top: 1px solid @list_row_border_top;
+    border-bottom: 1px solid @list_row_border_bottom;
 }
 
 .list-row.drag-icon { 
-  background: @list_row_drag_icon_background;
-  border: 1px solid @list_row_drag_icon_border;
+    background: @list_row_drag_icon_background;
+    border: 1px solid @list_row_drag_icon_border;
+    color: @list_row_drag_icon_text;
 }
 
 .list-row.drag-hover-top {
-  border-bottom: 1px solid @list_row_drag_highlight_bottom;
+    border-bottom: 1px solid @list_row_drag_highlight_bottom;
 }
 
 .list-row.drag-hover-bottom {
-  border-top: 1px solid @list_row_drag_highlight_top;
+    border-top: 1px solid @list_row_drag_highlight_top;
 }

@@ -2,6 +2,7 @@
 
 @define-color list_row_drag_icon_background white;
 @define-color list_row_drag_icon_border black;
+@define-color list_row_drag_icon_text black;
 @define-color list_row_border_top transparent;
 @define-color list_row_border_bottom transparent;
 @define-color list_row_drag_highlight_top black;
