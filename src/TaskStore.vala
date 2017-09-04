@@ -15,7 +15,7 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-class TaskStore : Object, ListModel, DragListModel {
+class TaskStore : Object, DragListModel {
     private Queue<TodoTask> tasks;
     private unowned List<TodoTask> iter_link;
     private unowned int iter_link_index;

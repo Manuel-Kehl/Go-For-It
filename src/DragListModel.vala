@@ -15,7 +15,14 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-public interface DragListModel : Object, GLib.ListModel {
+/**
+ * GLib.ListModel extended with support for moving items from a widget or other
+ * object.
+ * See documentation of GLib.ListModel for more detailed information.
+ * Because versions of GLib older than 2.44 are supported right now,
+ * GLib.ListModel can't be inherited from.
+ */
+public interface DragListModel : Object {
     /**
      * Called when a row is moved in the widget.
      * It should only be used to synchronize the model with the widget.
@@ -23,9 +30,25 @@ public interface DragListModel : Object, GLib.ListModel {
     public abstract void move_item (uint old_position, uint new_position);
 
     /**
-     * Causes the row to be moved in the widget.
+     * This signal is emitted whenever an item is moved when this wasn't caused
+     * by move_item.
      */
     public signal void item_moved (uint old_position, uint new_position);
-}
 
-public delegate Gtk.Widget DragListCreateWidgetFunc (Object item);
+    /**
+     * Get the item at position.
+     */
+    public abstract Object? get_item (uint position);
+    /**
+     * Gets the type of the items in this.
+     */
+    public abstract Type get_item_type ();
+    /**
+     * Gets the number of items in this.
+     */
+    public abstract uint get_n_items ();
+    /**
+     * This signal is emitted whenever items were added or removed to list.
+     */
+    public signal void items_changed (uint position, uint removed, uint added);
+}

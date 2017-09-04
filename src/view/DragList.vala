@@ -444,6 +444,7 @@ public class DragList : Gtk.Bin {
 }
 
 public delegate bool DragListFilterFunc (DragListRow row);
+public delegate Gtk.Widget DragListCreateWidgetFunc (Object item);
 
 private const Gtk.TargetEntry[] dlb_entries = {
     {"DRAG_LIST_ROW", Gtk.TargetFlags.SAME_APP, 0}
