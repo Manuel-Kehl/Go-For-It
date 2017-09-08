@@ -20,9 +20,15 @@
  */
 public class TodoTask : GLib.Object {
     public string title {
-        public get;
-        public set;
+        public get {
+            return _title;
+        }
+        public set {
+            _title = value;
+            data_changed ();
+        }
     }
+    string _title;
 
     public bool done {
         public get {
@@ -31,17 +37,18 @@ public class TodoTask : GLib.Object {
         public set {
             if (_done != value) {
                 _done = value;
-                status_changed ();
+                done_changed ();
             }
         }
     }
     private bool _done;
 
-    public signal void status_changed ();
+    public signal void done_changed ();
+    public signal void data_changed ();
 
     public TodoTask (string title, bool done) {
-        this.title = title;
-        this._done = done;
+        _title = title;
+        _done = done;
     }
 
     public string to_string () {

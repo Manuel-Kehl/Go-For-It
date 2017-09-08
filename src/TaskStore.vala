@@ -26,6 +26,7 @@ class TaskStore : Object, DragListModel {
     }
 
     /* Signals */
+    // Emitted when the properties of a task, excluding done, have changed
     public signal void task_data_changed ();
     public signal void task_done_changed (TodoTask task);
 
@@ -67,15 +68,11 @@ class TaskStore : Object, DragListModel {
         iter_link_index = index;
     }
 
-    public void add_new_task (TodoTask task) {
-        add_task (task);
-        task_data_changed ();
-    }
-
     public void add_task (TodoTask task) {
         iter_link = null;
         tasks.push_tail (task);
-        task.status_changed.connect (on_task_done);
+        task.done_changed.connect (on_task_done);
+        task.data_changed.connect (on_task_data_changed);
         items_changed (tasks.length - 1, 0, 1);
     }
 
@@ -83,14 +80,21 @@ class TaskStore : Object, DragListModel {
         iter_link = null;
         items_changed (0, tasks.length, 0);
         tasks.clear ();
-        task_data_changed ();
     }
 
     public void remove_task (TodoTask task) {
         iter_link = null;
-        task.status_changed.disconnect (on_task_done);
-        tasks.remove (task);
-        task_data_changed ();
+        uint i = 0;
+        unowned List<TodoTask> iter = tasks.head;
+        while (iter != null && iter.data != task) {
+            iter = iter.next;
+            i++;
+        }
+        assert (iter != null);
+        task.done_changed.disconnect (on_task_done);
+        task.data_changed.disconnect (on_task_data_changed);
+        tasks.delete_link (iter);
+        items_changed (i, 1, 0);
     }
 
     public Type get_item_type () {
@@ -98,6 +102,7 @@ class TaskStore : Object, DragListModel {
     }
 
     public Object? get_item (uint position) {
+        assert (((int)position) >= 0);
         if (position < tasks.length) {
             move_iter_link_to_index ((int)position);
             return iter_link.data;
@@ -110,17 +115,19 @@ class TaskStore : Object, DragListModel {
     }
 
     public void move_item (uint old_position, uint new_position) {
-        iter_link = null;
+        assert (((int)old_position) >= 0 && ((int)new_position) >= 0);
         if (old_position == new_position) {
             return;
-        } else if (new_position > old_position) {
-            new_position++;
         }
-
+        iter_link = null;
         tasks.push_nth(tasks.pop_nth (old_position), (int) new_position);
     }
 
     private void on_task_done (TodoTask task) {
         task_done_changed (task);
+    }
+    
+    private void on_task_data_changed () {
+        task_data_changed ();
     }
 }

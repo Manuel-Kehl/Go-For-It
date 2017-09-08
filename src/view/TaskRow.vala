@@ -52,7 +52,7 @@ class TaskRow: DragListRow {
         check_button.toggled.connect (() => {
             task.done = !task.done;
         });
-        task.status_changed.connect (() => {
+        task.done_changed.connect (() => {
             destroy ();
         });
         task.notify["title"].connect (update);

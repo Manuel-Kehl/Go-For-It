@@ -19,9 +19,7 @@
  * The main application class that is responsible for initiating all
  * necessary steps to create a running instance of "Go For It!".
  */
-public class Main : Gtk.Application {
-    const string GETTEXT_PACKAGE = "go-for-it";
-
+class Main : Gtk.Application {
     private SettingsManager settings;
     private TaskManager task_manager;
     private TaskTimer task_timer;
@@ -32,37 +30,8 @@ public class Main : Gtk.Application {
     /**
      * Constructor of the Application class.
      */
-    private Main () {
+    public Main () {
         Object (application_id: GOFI.APP_ID, flags: ApplicationFlags.HANDLES_COMMAND_LINE);
-    }
-
-    /**
-     * The entry point for running the application.
-     */
-    public static int main (string[] args) {
-        Intl.setlocale(LocaleCategory.MESSAGES, "");
-        Intl.textdomain(GETTEXT_PACKAGE);
-        Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8");
-        string locale_dir = Path.build_filename (GOFI.INSTALL_PREFIX, "share", "locale");
-        Intl.bindtextdomain(GETTEXT_PACKAGE, locale_dir);
-
-        apply_desktop_specific_tweaks ();
-        Main app = new Main ();
-        int status = app.run (args);
-        return status;
-    }
-
-    /**
-     * This function handles different tweaks that have to be applied to
-     * make Go For It! work properly on certain desktop environments.
-     */
-    public static void apply_desktop_specific_tweaks () {
-        string desktop = Environment.get_variable ("DESKTOP_SESSION");
-
-        if (desktop == "ubuntu") {
-            // Disable overlay scrollbars on unity, to avoid a strange Gtk bug
-            Environment.set_variable ("LIBOVERLAY_SCROLLBAR", "0", true);
-        }
     }
 
     public void new_window () {

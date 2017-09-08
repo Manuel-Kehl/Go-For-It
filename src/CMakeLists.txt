@@ -1,9 +1,11 @@
 # Create Constants.vala
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/Constants.vala.cmake ${CMAKE_CURRENT_SOURCE_DIR}/Constants.vala)
+configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${LIBNAME}.pc)
+configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.deps.cmake ${CMAKE_CURRENT_BINARY_DIR}/${LIBNAME}.deps)
 
 # files we want to compile
 include(ValaPrecompile)
-vala_precompile(VALA_C ${EXEC_NAME}
+vala_precompile(VALA_C ${LIBNAME}
     Constants.vala
     Utils.vala
     SettingsManager.vala
@@ -30,10 +32,36 @@ PACKAGES
 
 OPTIONS
     ${VALAC_OPTIONS}
+GENERATE_VAPI
+    ${LIBNAME}
+GENERATE_HEADER
+    ${LIBNAME}
+GENERATE_INTERNAL_VAPI
+    ${LIBNAME}_internal
+GENERATE_INTERNAL_HEADER
+    ${LIBNAME}_internal
 )
 
-# tell cmake what to call the executable we just made
-add_executable(${EXEC_NAME} ${VALA_C})
-target_link_libraries(${EXEC_NAME} ${DEPS_LIBRARIES})
-# install the binaries we just made
-install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
+set (LIBS ${DEPS_LIBRARIES} -lm)
+set (LIB_PATHS ${DEPS_LIBRARY_DIRS})
+link_directories (${LIB_PATHS})
+
+set (LIB_FILES ${C_SOURCES} ${VALA_C})
+
+add_library (${LIBNAME} SHARED
+    ${LIB_FILES}
+)
+
+target_link_libraries (${LIBNAME} ${LIBS})
+
+set_target_properties (${LIBNAME} PROPERTIES
+    VERSION ${LIBVERSION}.0
+    SOVERSION ${SOVERSION})
+
+install (TARGETS ${LIBNAME} DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
+
+# Install lib stuffs
+install (FILES ${CMAKE_BINARY_DIR}/src/${LIBNAME}.pc DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIBNAME}.vapi DESTINATION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/vala/vapi/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIBNAME}.deps DESTINATION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/vala/vapi/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIBNAME}.h DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR}/scratch/)

@@ -84,7 +84,8 @@ class TaskManager {
      * To be called when adding a new (undone) task.
      */
     public void add_new_task (string task) {
-        todo_store.add_new_task (new TodoTask (task, false));
+        todo_store.add_task (new TodoTask (task, false));
+        save_tasks ();
     }
 
     /**
@@ -94,7 +95,8 @@ class TaskManager {
         TodoTask task, TaskStore source, TaskStore destination
     ) {
         source.remove_task (task);
-        destination.add_new_task (task);
+        destination.add_task (task);
+        save_tasks ();
     }
 
     /**
