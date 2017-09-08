@@ -66,14 +66,23 @@ include(CMakeParseArguments)
 #   them in the system.
 #
 # GENERATE_VAPI
-#   Pass all the needed flags to the compiler to create an internal vapi for
+#   Pass all the needed flags to the compiler to create a vapi for
 #   the compiled library. The provided name will be used for this and a
 #   <provided_name>.vapi file will be created.
-# 
+#
+# GENERATE_INTERNAL_VAPI
+#   Pass all the needed flags to the compiler to create an internal vapi for
+#   the compiled library. The provided name will be used for this and a
+#   <provided_name>.vapi file will be created. GENERATE_VAPI needs to be used
+#   alongside this.
+#
 # GENERATE_HEADER
-#   Let the compiler generate a header file for the compiled code. There will
-#   be a header file as well as an internal header file being generated called
-#   <provided_name>.h and <provided_name>_internal.h
+#   Let the compiler generate a header file for the compiled code. A header file
+#   called <provided_name>.h will be generated.
+#
+# GENERATE_INTERNAL_HEADER
+#   Let the compiler generate an internal header file for the compiled code. 
+#   An internal header file called <provided_name>.h will be generated.
 #
 # GENERATE_GIR
 #   Have the compiler generate a GObject-Introspection repository file with
@@ -104,6 +113,10 @@ include(CMakeParseArguments)
 #       myvapi
 #   GENERATE_HEADER
 #       myheader
+#   GENERATE_INTERNAL_VAPI
+#       myvapi_internal
+#   GENERATE_INTERNAL_HEADER
+#       myheader_internal
 #   GENERATE_GIR
 #       mygir
 #   GENERATE_SYMBOLS
@@ -115,7 +128,7 @@ include(CMakeParseArguments)
 ##
 
 macro(vala_precompile output target_name)
-    cmake_parse_arguments (ARGS "" "GENERATE_GIR;GENERATE_SYMBOLS;GENERATE_HEADER;GENERATE_VAPI;DIRECTORY" "PACKAGES;OPTIONS;CUSTOM_VAPIS" ${ARGN})
+    cmake_parse_arguments (ARGS "" "GENERATE_GIR;GENERATE_SYMBOLS;GENERATE_HEADER;GENERATE_VAPI;GENERATE_INTERNAL_HEADER;GENERATE_INTERNAL_VAPI;DIRECTORY" "PACKAGES;OPTIONS;CUSTOM_VAPIS" ${ARGN})
 
     if(ARGS_DIRECTORY)
         set(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${ARGS_DIRECTORY})
@@ -171,7 +184,7 @@ macro(vala_precompile output target_name)
     if(ARGS_GENERATE_VAPI)
         list(APPEND out_files "${DIRECTORY}/${ARGS_GENERATE_VAPI}.vapi")
         list(APPEND out_files_display "${ARGS_GENERATE_VAPI}.vapi")
-        set(vapi_arguments "--library=${ARGS_GENERATE_VAPI}" "--vapi=${ARGS_GENERATE_VAPI}.vapi")
+        list(APPEND vapi_arguments "--library=${ARGS_GENERATE_VAPI}" "--vapi=${ARGS_GENERATE_VAPI}.vapi")
 
         # Header and internal header is needed to generate internal vapi
         if (NOT ARGS_GENERATE_HEADER)
@@ -179,12 +192,33 @@ macro(vala_precompile output target_name)
         endif(NOT ARGS_GENERATE_HEADER)
     endif(ARGS_GENERATE_VAPI)
 
+    if(ARGS_GENERATE_INTERNAL_VAPI)
+        if(ARGS_GENERATE_VAPI)
+            list(APPEND out_files "${DIRECTORY}/${ARGS_GENERATE_INTERNAL_VAPI}.vapi")
+            list(APPEND out_files_display "${ARGS_GENERATE_INTERNAL_VAPI}.vapi")
+            list(APPEND vapi_arguments "--internal-vapi=${ARGS_GENERATE_INTERNAL_VAPI}.vapi")
+
+            # Header and internal header is needed to generate internal vapi
+            if (NOT ARGS_GENERATE_INTERNAL_HEADER)
+                set(ARGS_GENERATE_INTERNAL_HEADER ${ARGS_GENERATE_INTERNAL_VAPI})
+            endif(NOT ARGS_GENERATE_INTERNAL_HEADER)
+        else ()
+            message( SEND_ERROR "vala_precompile: GENERATE_VAPI needs to be set to generate an internal vapi file" )
+        endif(ARGS_GENERATE_VAPI)
+    endif(ARGS_GENERATE_INTERNAL_VAPI)
+
     set(header_arguments "")
     if(ARGS_GENERATE_HEADER)
         list(APPEND out_files "${DIRECTORY}/${ARGS_GENERATE_HEADER}.h")
         list(APPEND out_files_display "${ARGS_GENERATE_HEADER}.h")
         list(APPEND header_arguments "--header=${ARGS_GENERATE_HEADER}.h")
     endif(ARGS_GENERATE_HEADER)
+
+    if(ARGS_GENERATE_INTERNAL_HEADER)
+        list(APPEND out_files "${DIRECTORY}/${ARGS_GENERATE_INTERNAL_HEADER}.h")
+        list(APPEND out_files_display "${ARGS_GENERATE_INTERNAL_HEADER}.h")
+        list(APPEND header_arguments "--internal-header=${ARGS_GENERATE_INTERNAL_HEADER}.h")
+    endif(ARGS_GENERATE_INTERNAL_HEADER)
 
     set(gir_arguments "")
     set(gircomp_command "")
