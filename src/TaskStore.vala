@@ -121,6 +121,7 @@ class TaskStore : Object, DragListModel {
         }
         iter_link = null;
         tasks.push_nth(tasks.pop_nth (old_position), (int) new_position);
+        task_data_changed ();
     }
 
     private void on_task_done (TodoTask task) {

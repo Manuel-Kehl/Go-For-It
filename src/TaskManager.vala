@@ -33,12 +33,10 @@ class TaskManager {
     private bool need_to_add_tasks;
     private bool io_failed;
 
-    // refreshing
-    private FileMonitor todo_monitor;
-    private FileMonitor done_monitor;
-    private bool prevent_refresh;
-    private string todo_etag = "";
-    private string done_etag = "";
+    //refreshing
+    private bool refresh_queued;
+    private FileWatcher todo_watcher;
+    private FileWatcher done_watcher;
 
     private TodoTask active_task;
     private bool active_task_found;
@@ -68,7 +66,7 @@ class TaskManager {
         todo_store = new TaskStore (false);
         done_store = new TaskStore (true);
 
-        prevent_refresh = false;
+        refresh_queued = false;
 
         load_task_stores ();
 
@@ -85,7 +83,7 @@ class TaskManager {
      */
     public void add_new_task (string task) {
         todo_store.add_task (new TodoTask (task, false));
-        save_tasks ();
+        save_todo_tasks ();
     }
 
     /**
@@ -96,18 +94,17 @@ class TaskManager {
     ) {
         source.remove_task (task);
         destination.add_task (task);
-        save_tasks ();
+        save_todo_tasks ();
+        save_done_tasks ();
     }
 
     /**
      * Deletes all task on the "Done" list
      */
     public void clear_done_store () {
-        read_only = true; // Don't save while clearing
         done_store.clear ();
-        read_only = false;
 
-        save_tasks ();
+        save_done_tasks ();
     }
 
     /**
@@ -121,34 +118,15 @@ class TaskManager {
     }
 
     private bool auto_refresh () {
-        if (!check_etags()) {
-            refresh ();
+        if (todo_watcher.being_updated || done_watcher.being_updated) {
+            return true;
         }
 
-        prevent_refresh = false;
+        refresh ();
+
+        refresh_queued = false;
 
         return false;
-    }
-
-    private void gen_etags () {
-        try {
-            FileInfo file_info;
-            file_info = todo_txt.query_info (GLib.FileAttribute.ETAG_VALUE, 0);
-            todo_etag = file_info.get_etag ();
-            file_info = done_txt.query_info (GLib.FileAttribute.ETAG_VALUE, 0);
-            done_etag = file_info.get_etag ();
-        } catch (Error e) {
-            warning (e.message);
-        }
-    }
-
-    private bool check_etags () {
-        string todo_etag_old = todo_etag;
-        string done_etag_old = done_etag;
-
-        gen_etags ();
-
-        return (todo_etag == todo_etag_old) && (done_etag == done_etag_old);
     }
 
     private void load_task_stores () {
@@ -169,8 +147,8 @@ class TaskManager {
         }
 
         // Save data, as soon as something has changed
-        todo_store.task_data_changed.connect (save_tasks);
-        done_store.task_data_changed.connect (save_tasks);
+        todo_store.task_data_changed.connect (save_todo_tasks);
+        done_store.task_data_changed.connect (save_done_tasks);
 
         // Move task from one list to another, if done or undone
         todo_store.task_done_changed.connect (task_done_handler);
@@ -184,25 +162,21 @@ class TaskManager {
     }
 
     private void watch_files () {
-        try {
-            todo_monitor = todo_txt.monitor_file (FileMonitorFlags.NONE, null);
-            done_monitor = done_txt.monitor_file (FileMonitorFlags.NONE, null);
-        } catch (IOError e) {
-            stderr.printf ("watch_files: %s\n", e.message);
-        }
+        todo_watcher = new FileWatcher (todo_txt);
+        done_watcher = new FileWatcher (done_txt);
 
-        todo_monitor.changed.connect (on_file_changed);
-        done_monitor.changed.connect (on_file_changed);
+        todo_watcher.changed.connect (on_file_changed);
+        done_watcher.changed.connect (on_file_changed);
     }
 
     private void on_file_changed () {
-        if (!prevent_refresh) {
-            prevent_refresh = true;
+        if (!refresh_queued) {
+            refresh_queued = true;
 
-            // Reload after 0.1 seconds so we can be relatively sure, that the
+            // Reload after 0.5 seconds so we can be relatively sure, that the
             // other application has finished, writing
             GLib.Timeout.add(
-                100, auto_refresh, GLib.Priority.DEFAULT_IDLE
+                500, auto_refresh, GLib.Priority.DEFAULT_IDLE
             );
         }
     }
@@ -246,11 +220,19 @@ class TaskManager {
         need_to_add_tasks = false;
     }
 
-    private void save_tasks () {
+    private void save_todo_tasks () {
         if (!read_only) {
+            todo_watcher.watching = false;
             write_task_file (this.todo_store, this.todo_txt);
+            todo_watcher.watching = true;
+        }
+    }
+
+    private void save_done_tasks () {
+        if (!read_only) {
+            done_watcher.watching = false;
             write_task_file (this.done_store, this.done_txt);
-            gen_etags ();
+            done_watcher.watching = true;
         }
     }
 
@@ -360,6 +342,7 @@ class TaskManager {
         stdout.printf ("Writing file: %s\n", file.get_path ());
 
         try {
+            ensure_file_exists (file);
             var file_io_stream =
                 file.replace_readwrite (null, true, FileCreateFlags.NONE);
             var stream_out =
