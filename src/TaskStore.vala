@@ -127,7 +127,7 @@ class TaskStore : Object, DragListModel {
     private void on_task_done (TodoTask task) {
         task_done_changed (task);
     }
-    
+
     private void on_task_data_changed () {
         task_data_changed ();
     }

@@ -46,8 +46,7 @@ class Main : Gtk.Application {
         task_manager = new TaskManager(settings);
         task_timer = new TaskTimer (settings);
         task_timer.active_task_done.connect ( (task) => {
-            warning ("stub!");
-            // task_manager.mark_task_done (task.reference);
+             task_manager.mark_task_done (task);
         });
 
         win = new MainWindow (this, task_manager, task_timer, settings);

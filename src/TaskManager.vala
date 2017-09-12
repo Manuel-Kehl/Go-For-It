@@ -33,7 +33,7 @@ class TaskManager {
     private bool need_to_add_tasks;
     private bool io_failed;
 
-    //refreshing
+    // refreshing
     private bool refresh_queued;
     private FileWatcher todo_watcher;
     private FileWatcher done_watcher;
@@ -84,6 +84,10 @@ class TaskManager {
     public void add_new_task (string task) {
         todo_store.add_task (new TodoTask (task, false));
         save_todo_tasks ();
+    }
+
+    public void mark_task_done (TodoTask task) {
+        task.done = true;
     }
 
     /**

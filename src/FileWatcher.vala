@@ -18,7 +18,7 @@
 /**
  * This class is used to monitor files, unlike FileMonitor it only emits changed
  * only a single time after a modification of a file, and it will only do so if
- * the etag has changed. 
+ * the etag has changed.
  */
 public class FileWatcher {
     private FileMonitor monitor;
@@ -35,7 +35,7 @@ public class FileWatcher {
         }
     }
     bool _watching;
-    
+
     public bool being_updated {
         get;
         private set;
@@ -64,7 +64,7 @@ public class FileWatcher {
         this.file = file;
         being_updated = false;
         watching = true;
-        
+
         monitor.changed.connect (on_file_changed);
     }
 
@@ -87,7 +87,7 @@ public class FileWatcher {
         }
         return false;
     }
-    
+
     private void on_file_changed () {
         if (!_watching) {
             return;
@@ -96,13 +96,13 @@ public class FileWatcher {
             changed_received = true;
         } else {
             being_updated = true;
-            
+
             GLib.Timeout.add(
                 100, emit_signal_if_changed, GLib.Priority.DEFAULT_IDLE
             );
         }
     }
-    
+
     private bool emit_signal_if_changed () {
         if (changed_received) {
             changed_received = false;
