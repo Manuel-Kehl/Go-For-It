@@ -40,12 +40,12 @@ If you like _Go For It!_ and want to support its development, I'd very much appr
 
 _Go For It!_ is free and open source software licensed under the GPLv3. It has been written in _Vala_ making heavy use of the _GTK_ framework.
 
-The user interface is inspired by the design philosophy of [elementary OS](http://elementaryos.org/) and [Gnome](http://www.gnome.org/) applications, striving for elegant simplicity.
+The user interface is inspired by the design philosophy of [elementary OS](http://elementary.io/) and [Gnome](http://www.gnome.org/) applications, striving for elegant simplicity.
 
 ## Roadmap
 
-- ability to filter the to-do list by projects & context
 - "to-do list only" mode
+- Plugin support
 
 ## Potential Future Features
 
@@ -58,9 +58,9 @@ The user interface is inspired by the design philosophy of [elementary OS](http:
 ## How To Build
 To build *Go For It!* you need to have the following software installed:
     
-    valac >= 0.16  (>= 0.26 is recommended if you have GLib > 2.40 installed.)
-    cmake >= 2.6
-    gtk+-3.0 (>= 3.10 recommended)
+    valac >= 0.26
+    cmake >= 2.8.9
+    gtk+-3.0 (>= 3.10)
     glib-2.0
     libnotify
 
@@ -68,7 +68,7 @@ Use the following commands in this order to build *Go For It!*:
 
     mkdir build
     cd build
-    cmake ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     make
     sudo make install
 
@@ -77,3 +77,4 @@ Use the following commands to update the translation files:
     mkdir build
     cd build
     make pot
+    make po
