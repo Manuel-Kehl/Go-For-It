@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-29 17:11+0200\n"
+"POT-Creation-Date: 2017-09-17 16:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/view/AboutDialog.vala:27 ../src/view/MainWindow.vala:443
+#: ../src/view/AboutDialog.vala:27 ../src/view/MainWindow.vala:296
 msgid "About"
 msgstr ""
 
@@ -45,11 +45,11 @@ msgid ""
 "features:"
 msgstr ""
 
-#: ../src/view/TaskList.vala:137
+#: ../src/view/TaskList.vala:116
 msgid "Add new task"
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:43 ../src/view/MainWindow.vala:440
+#: ../src/view/SettingsDialog.vala:43 ../src/view/MainWindow.vala:293
 msgid "Settings"
 msgstr ""
 
@@ -67,8 +67,7 @@ msgid ""
 "folder in your home directory."
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:152 ../src/view/MainWindow.vala:182
-#: ../src/view/MainWindow.vala:198 ../src/view/MainWindow.vala:203
+#: ../src/view/SettingsDialog.vala:152 ../src/view/MainWindow.vala:177
 msgid "Timer"
 msgstr ""
 
@@ -92,54 +91,52 @@ msgstr ""
 msgid "Dark theme"
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:219
+#: ../src/view/SettingsDialog.vala:216
 msgid "Use a header bar"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:181 ../src/view/MainWindow.vala:197
-#: ../src/view/MainWindow.vala:202
+#: ../src/view/MainWindow.vala:176
 msgid "To-Do"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:183 ../src/view/MainWindow.vala:199
-#: ../src/view/MainWindow.vala:204
+#: ../src/view/MainWindow.vala:178
 msgid "Done"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:286
+#: ../src/view/MainWindow.vala:198
 msgid "Menu"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:441
+#: ../src/view/MainWindow.vala:294
 msgid "Clear Done List"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:442
+#: ../src/view/MainWindow.vala:295
 msgid "Contribute / Donate"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:495 ../src/view/TimerView.vala:78
+#: ../src/view/MainWindow.vala:348 ../src/view/TimerView.vala:78
 msgid "Take a Break"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:496
+#: ../src/view/MainWindow.vala:349
 msgid "Relax and stop thinking about your current task for a while"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:501
+#: ../src/view/MainWindow.vala:354
 msgid "The Break is Over"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:502
+#: ../src/view/MainWindow.vala:355
 msgid "Your next task is"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:519
+#: ../src/view/MainWindow.vala:372
 msgid "Prepare for your break"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:520
-msgid "You have %i seconds left"
+#: ../src/view/MainWindow.vala:373
+msgid "You have %s seconds left"
 msgstr ""
 
 #: ../src/view/TimerView.vala:82
@@ -162,40 +159,47 @@ msgstr ""
 msgid "No task has been selected"
 msgstr ""
 
-#: ../src/view/TimerView.vala:220
+#: ../src/view/TimerView.vala:218
 msgid "S_kip"
 msgstr ""
 
-#: ../src/view/TimerView.vala:221
+#: ../src/view/TimerView.vala:219
 msgid "_Done"
 msgstr ""
 
-#: ../src/view/TimerView.vala:266
+#: ../src/view/TimerView.vala:264
 msgid "Relax"
 msgstr ""
 
-#: ../src/view/TimerView.vala:267
+#: ../src/view/TimerView.vala:265
 msgid "You have nothing to do."
 msgstr ""
 
-#: ../src/TaskManager.vala:50
+#: ../src/TaskManager.vala:51
 msgid ""
 "Go For It! won't save or load from the current todo.txt directory until it "
 "is either restarted or another location is chosen."
 msgstr ""
 
-#: ../src/TaskManager.vala:341
+#: ../src/TaskManager.vala:52
 msgid "Couldn't read the todo.txt file (%s):"
 msgstr ""
 
-#: ../src/TaskManager.vala:379
+#: ../src/TaskManager.vala:53
 msgid "Couldn't save the todo list (%s):"
 msgstr ""
 
-#: ../src/Main.vala:128
+#: ../src/TaskManager.vala:54
+msgid ""
+"The path to the todo.txt directory does not point to a directory, but to a "
+"file or mountable location. Please change the path in the settings to a "
+"suitable directory or remove this file."
+msgstr ""
+
+#: ../src/Main.vala:96
 msgid "Print version info and exit"
 msgstr ""
 
-#: ../src/Main.vala:129
+#: ../src/Main.vala:97
 msgid "Show about dialog"
 msgstr ""

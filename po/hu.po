@@ -2,113 +2,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-18 13:44+0100\n"
-"PO-Revision-Date: 2016-11-20 17:04+0000\n"
+"POT-Creation-Date: 2017-09-17 16:04+0200\n"
+"PO-Revision-Date: 2017-03-29 20:28+0000\n"
 "Last-Translator: Levente Szabó <s.levente89@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-11-23 06:51+0000\n"
-"X-Generator: Launchpad (build 18269)\n"
+"X-Launchpad-Export-Date: 2017-04-08 06:37+0000\n"
+"X-Generator: Launchpad (build 18343)\n"
 
-#: ../src/view/MainWindow.vala:181 ../src/view/MainWindow.vala:197
-#: ../src/view/MainWindow.vala:202
-msgid "To-Do"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:182 ../src/view/MainWindow.vala:198
-#: ../src/view/MainWindow.vala:203 ../src/view/SettingsDialog.vala:152
-msgid "Timer"
-msgstr "Időzítő"
-
-#: ../src/view/MainWindow.vala:183 ../src/view/MainWindow.vala:199
-#: ../src/view/MainWindow.vala:204
-msgid "Done"
-msgstr "Kész"
-
-#: ../src/view/MainWindow.vala:286
-msgid "Menu"
-msgstr "Menü"
-
-#: ../src/view/MainWindow.vala:440 ../src/view/SettingsDialog.vala:43
-msgid "Settings"
-msgstr "Beállítások"
-
-#: ../src/view/MainWindow.vala:441
-msgid "Clear Done List"
-msgstr "Kész lista törlése"
-
-#: ../src/view/MainWindow.vala:442
-msgid "Contribute / Donate"
-msgstr "Hozzájárulás / Adományozás"
-
-#: ../src/view/MainWindow.vala:443 ../src/view/AboutDialog.vala:27
+#: ../src/view/AboutDialog.vala:27 ../src/view/MainWindow.vala:296
 msgid "About"
 msgstr "Névjegy"
 
-#: ../src/view/MainWindow.vala:495 ../src/view/TimerView.vala:78
-msgid "Take a Break"
-msgstr "Tarts szünetet"
-
-#: ../src/view/MainWindow.vala:496
-msgid "Relax and stop thinking about your current task for a while"
-msgstr "Lazíts és ne gondolj a jelenlegi feladatodra egy ideig."
-
-#: ../src/view/MainWindow.vala:501
-msgid "The Break is Over"
-msgstr "A szünetnek vége"
-
-#: ../src/view/MainWindow.vala:502
-msgid "Your next task is"
-msgstr "A következő feladatod"
-
-#: ../src/view/MainWindow.vala:519
-msgid "Prepare for your break"
-msgstr "Készülj fel a szüneteltetésre"
-
-#: ../src/view/MainWindow.vala:520
-msgid "You have %i seconds left"
-msgstr "%i másodperced van hátra"
-
-#: ../src/view/TaskList.vala:137
-msgid "Add new task"
-msgstr "Új feladat felévtele"
-
-#: ../src/view/TimerView.vala:82
-msgid "Active Task"
-msgstr "Jelenlegi feladat"
-
-#: ../src/view/TimerView.vala:103
-msgid "Pau_se"
-msgstr "Szünet"
-
-#: ../src/view/TimerView.vala:106
-msgid "_Start"
-msgstr "In_dítás"
-
-#: ../src/view/TimerView.vala:133
-msgid "Inactive"
-msgstr "Használaton kívül"
-
-#: ../src/view/TimerView.vala:134
-msgid "No task has been selected"
-msgstr "Nincs feladat választva"
-
-#: ../src/view/TimerView.vala:220
-msgid "S_kip"
-msgstr ""
-
-#: ../src/view/TimerView.vala:221
-msgid "_Done"
-msgstr ""
-
-#: ../src/view/TimerView.vala:266
-msgid "Relax"
-msgstr ""
-
-#: ../src/view/TimerView.vala:267
-msgid "You have nothing to do."
+#: ../src/view/AboutDialog.vala:41
+msgid "A stylish to-do list with built-in productivity timer."
 msgstr ""
 
 #: ../src/view/ContributeDialog.vala:27
@@ -131,9 +41,13 @@ msgid ""
 "features:"
 msgstr ""
 
-#: ../src/view/AboutDialog.vala:41
-msgid "A stylish to-do list with built-in productivity timer."
-msgstr ""
+#: ../src/view/TaskList.vala:116
+msgid "Add new task"
+msgstr "Új feladat felévtele"
+
+#: ../src/view/SettingsDialog.vala:43 ../src/view/MainWindow.vala:293
+msgid "Settings"
+msgstr "Beállítások"
 
 #: ../src/view/SettingsDialog.vala:45
 msgid "Close"
@@ -148,6 +62,10 @@ msgid ""
 "If no appropriate folder was found, Go For It! defaults to creating a Todo "
 "folder in your home directory."
 msgstr ""
+
+#: ../src/view/SettingsDialog.vala:152 ../src/view/MainWindow.vala:177
+msgid "Timer"
+msgstr "Időzítő"
 
 #: ../src/view/SettingsDialog.vala:153
 msgid "Task duration (minutes)"
@@ -169,14 +87,116 @@ msgstr ""
 msgid "Dark theme"
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:219
+#: ../src/view/SettingsDialog.vala:216
 msgid "Use a header bar"
 msgstr ""
 
-#: ../src/Main.vala:127
+#: ../src/view/MainWindow.vala:176
+msgid "To-Do"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:178
+msgid "Done"
+msgstr "Kész"
+
+#: ../src/view/MainWindow.vala:198
+msgid "Menu"
+msgstr "Menü"
+
+#: ../src/view/MainWindow.vala:294
+msgid "Clear Done List"
+msgstr "Kész lista törlése"
+
+#: ../src/view/MainWindow.vala:295
+msgid "Contribute / Donate"
+msgstr "Hozzájárulás / Adományozás"
+
+#: ../src/view/MainWindow.vala:348 ../src/view/TimerView.vala:78
+msgid "Take a Break"
+msgstr "Tarts szünetet"
+
+#: ../src/view/MainWindow.vala:349
+msgid "Relax and stop thinking about your current task for a while"
+msgstr "Lazíts és ne gondolj a jelenlegi feladatodra egy ideig."
+
+#: ../src/view/MainWindow.vala:354
+msgid "The Break is Over"
+msgstr "A szünetnek vége"
+
+#: ../src/view/MainWindow.vala:355
+msgid "Your next task is"
+msgstr "A következő feladatod"
+
+#: ../src/view/MainWindow.vala:372
+msgid "Prepare for your break"
+msgstr "Készülj fel a szüneteltetésre"
+
+#: ../src/view/MainWindow.vala:373
+#, fuzzy
+msgid "You have %s seconds left"
+msgstr "%i másodperced van hátra"
+
+#: ../src/view/TimerView.vala:82
+msgid "Active Task"
+msgstr "Jelenlegi feladat"
+
+#: ../src/view/TimerView.vala:103
+msgid "Pau_se"
+msgstr "Szünet"
+
+#: ../src/view/TimerView.vala:106
+msgid "_Start"
+msgstr "In_dítás"
+
+#: ../src/view/TimerView.vala:133
+msgid "Inactive"
+msgstr "Használaton kívül"
+
+#: ../src/view/TimerView.vala:134
+msgid "No task has been selected"
+msgstr "Nincs feladat választva"
+
+#: ../src/view/TimerView.vala:218
+msgid "S_kip"
+msgstr ""
+
+#: ../src/view/TimerView.vala:219
+msgid "_Done"
+msgstr ""
+
+#: ../src/view/TimerView.vala:264
+msgid "Relax"
+msgstr ""
+
+#: ../src/view/TimerView.vala:265
+msgid "You have nothing to do."
+msgstr ""
+
+#: ../src/TaskManager.vala:51
+msgid ""
+"Go For It! won't save or load from the current todo.txt directory until it "
+"is either restarted or another location is chosen."
+msgstr ""
+
+#: ../src/TaskManager.vala:52
+msgid "Couldn't read the todo.txt file (%s):"
+msgstr ""
+
+#: ../src/TaskManager.vala:53
+msgid "Couldn't save the todo list (%s):"
+msgstr ""
+
+#: ../src/TaskManager.vala:54
+msgid ""
+"The path to the todo.txt directory does not point to a directory, but to a "
+"file or mountable location. Please change the path in the settings to a "
+"suitable directory or remove this file."
+msgstr ""
+
+#: ../src/Main.vala:96
 msgid "Print version info and exit"
 msgstr ""
 
-#: ../src/Main.vala:128
+#: ../src/Main.vala:97
 msgid "Show about dialog"
 msgstr ""
