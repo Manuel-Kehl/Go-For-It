@@ -82,8 +82,11 @@ class TaskManager {
      * To be called when adding a new (undone) task.
      */
     public void add_new_task (string task) {
-        todo_store.add_task (new TodoTask (task, false));
-        save_todo_tasks ();
+        string _task = task.strip ();
+        if (_task != "") {
+            todo_store.add_task (new TodoTask (_task, false));
+            save_todo_tasks ();
+        }
     }
 
     public void mark_task_done (TodoTask task) {
@@ -158,6 +161,10 @@ class TaskManager {
         todo_store.task_done_changed.connect (task_done_handler);
         done_store.task_done_changed.connect (task_done_handler);
 
+        // Remove tasks that are no longer valid (user has changed title to "")
+        todo_store.task_became_invalid.connect (remove_invalid);
+        done_store.task_became_invalid.connect (remove_invalid);
+
         load_tasks ();
 
         if (!io_failed) {
@@ -191,6 +198,12 @@ class TaskManager {
         } else if (source == done_store) {
             transfer_task (task, done_store, todo_store);
         }
+    }
+
+    private void remove_invalid (TaskStore store, TodoTask task) {
+        store.remove_task (task);
+        File todo_file = (store == todo_store) ? todo_txt : done_txt;
+        write_task_file (store, todo_file);
     }
 
     private void load_tasks () {

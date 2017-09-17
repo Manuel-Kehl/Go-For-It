@@ -184,7 +184,7 @@ class TaskRow: DragListRow {
         }
 
         private void stop_editing () {
-            txt_string = entry.text;
+            txt_string = entry.text.strip ();
             string_changed ();
             abort_editing ();
         }

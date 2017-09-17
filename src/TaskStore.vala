@@ -29,6 +29,7 @@ class TaskStore : Object, DragListModel {
     // Emitted when the properties of a task, excluding done, have changed
     public signal void task_data_changed ();
     public signal void task_done_changed (TodoTask task);
+    public signal void task_became_invalid (TodoTask task);
 
     /**
      * Constructor of the TaskStore class
@@ -128,7 +129,11 @@ class TaskStore : Object, DragListModel {
         task_done_changed (task);
     }
 
-    private void on_task_data_changed () {
-        task_data_changed ();
+    private void on_task_data_changed (TodoTask task) {
+        if (task.valid) {
+            task_data_changed ();
+        } else {
+            task_became_invalid (task);
+        }
     }
 }
