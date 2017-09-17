@@ -17,6 +17,9 @@ CUSTOM_VAPIS
 # tell cmake what to call the executable we just made
 add_executable(${EXEC_NAME} ${VALA_C})
 add_dependencies(${EXEC_NAME} ${LIBNAME})
-target_link_libraries(${EXEC_NAME} ${DEPS_LIBRARIES} ${LIBNAME})
+set_target_properties(${EXEC_NAME} PROPERTIES
+    INCLUDE_DIRECTORIES ${CMAKE_BINARY_DIR}/${LIBRARY_PATH}
+)
+target_link_libraries(${EXEC_NAME} ${LIBNAME} ${DEPS_LIBRARIES})
 # install the binaries we just made
 install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
