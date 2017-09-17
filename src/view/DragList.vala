@@ -414,7 +414,7 @@ public class DragList : Gtk.Bin {
         Gtk.Allocation alloc;
         drag_row.get_allocation (out alloc);
 
-        if (drag_row_index > 1) {
+        if (drag_row_index >= 1) {
             drag_row_range.min = get_widget_middle(
                 listbox.get_row_at_index(drag_row_index - 1)
             );
