@@ -4,14 +4,21 @@ class TaskStoreTest : TestCase {
     private TaskStore test_store;
 
     private bool task_done_changed_expected;
+    private TodoTask task_done_changed_expected_task;
+
     private bool task_data_changed_expected;
+
     private bool item_moved_expected;
     private uint item_moved_expected_old;
     private uint item_moved_expected_new;
+
     private bool items_changed_expected;
     private uint items_changed_expected_position;
     private uint items_changed_expected_removed;
     private uint items_changed_expected_added;
+
+    private bool task_invalid_expected;
+    private TodoTask task_invalid_expected_task;
 
     public TaskStoreTest () {
         base ("TaskStore");
@@ -28,35 +35,51 @@ class TaskStoreTest : TestCase {
         set_up_tasks ();
     }
 
-    private void init_signal_counters () {
+    private void init_signal_checkers () {
         task_done_changed_expected = false;
         task_data_changed_expected = false;
         item_moved_expected = false;
         items_changed_expected = false;
+        task_invalid_expected = false;
     }
 
     private void connect_signals () {
-        test_store.task_done_changed.connect (() => {
-            assert (task_done_changed_expected);
-            task_done_changed_expected = false;
-        });
-        test_store.task_data_changed.connect (() => {
-            assert (task_data_changed_expected);
-            task_data_changed_expected = false;
-        });
-        test_store.item_moved.connect ((old_pos, new_pos) => {
-            assert (item_moved_expected);
-            assert (old_pos == item_moved_expected_old);
-            assert (new_pos == item_moved_expected_new);
-            item_moved_expected = false;
-        });
-        test_store.items_changed.connect ((pos, removed, added) => {
-            assert (items_changed_expected);
-            assert (pos == items_changed_expected_position);
-            assert (removed == items_changed_expected_removed);
-            assert (added == items_changed_expected_added);
-            items_changed_expected = false;
-        });
+        test_store.task_done_changed.connect (on_task_done_changed);
+        test_store.task_data_changed.connect (on_task_data_changed);
+        test_store.item_moved.connect (on_item_moved);
+        test_store.items_changed.connect (on_items_changed);
+        test_store.task_became_invalid.connect (on_task_became_invalid);
+    }
+
+    private void on_task_done_changed () {
+        assert (task_done_changed_expected);
+        task_done_changed_expected = false;
+    }
+
+    private void on_task_data_changed () {
+        assert (task_data_changed_expected);
+        task_data_changed_expected = false;
+    }
+
+    private void on_item_moved (uint old_pos, uint new_pos) {
+        assert (item_moved_expected);
+        assert (old_pos == item_moved_expected_old);
+        assert (new_pos == item_moved_expected_new);
+        item_moved_expected = false;
+    }
+
+    private void on_items_changed (uint pos, uint removed, uint added) {
+        assert (items_changed_expected);
+        assert (pos == items_changed_expected_position);
+        assert (removed == items_changed_expected_removed);
+        assert (added == items_changed_expected_added);
+        items_changed_expected = false;
+    }
+
+    private void on_task_became_invalid (TodoTask task) {
+        assert (task_invalid_expected);
+        assert (task_invalid_expected_task == task);
+        task_invalid_expected = false;
     }
 
     private void set_up_tasks () {
@@ -64,7 +87,7 @@ class TaskStoreTest : TestCase {
         for (uint i = 0; i < TEST_TASKS_LENGTH; i++) {
             test_tasks[i] = new TodoTask ("Task %u".printf(i), false);
         }
-        init_signal_counters ();
+        init_signal_checkers ();
         connect_signals ();
     }
 
@@ -170,7 +193,7 @@ class TaskStoreTest : TestCase {
 
     private void test_move_item () {
         add_tasks ();
-        test_store.move_item (0, TEST_TASKS_LENGTH/2);
+        move_item (0, TEST_TASKS_LENGTH/2);
         for (int i = 0, j = 1; i < TEST_TASKS_LENGTH; i++, j++) {
             if (i == TEST_TASKS_LENGTH/2) {
                 assert (compare_tasks (i, 0));
@@ -180,12 +203,12 @@ class TaskStoreTest : TestCase {
             }
         }
 
-        test_store.move_item (TEST_TASKS_LENGTH/2, 0);
+        move_item (TEST_TASKS_LENGTH/2, 0);
         for (uint i = 0; i < TEST_TASKS_LENGTH; i++) {
             assert (compare_tasks (i, i));
         }
 
-        test_store.move_item (TEST_TASKS_LENGTH-1, TEST_TASKS_LENGTH/2);
+        move_item (TEST_TASKS_LENGTH-1, TEST_TASKS_LENGTH/2);
         for (int i = 0, j = 0; i < TEST_TASKS_LENGTH; i++, j++) {
             if (i == TEST_TASKS_LENGTH/2) {
                 assert (compare_tasks (i, TEST_TASKS_LENGTH - 1));
@@ -195,30 +218,40 @@ class TaskStoreTest : TestCase {
             }
         }
 
-        test_store.move_item (TEST_TASKS_LENGTH/2, TEST_TASKS_LENGTH - 1);
+        move_item (TEST_TASKS_LENGTH/2, TEST_TASKS_LENGTH - 1);
         for (uint i = 0; i < TEST_TASKS_LENGTH; i++) {
             assert (compare_tasks (i, i));
         }
 
-        test_store.move_item (1, TEST_TASKS_LENGTH - 2);
+        move_item (1, TEST_TASKS_LENGTH - 2);
         assert (compare_tasks (TEST_TASKS_LENGTH - 2, 1));
         assert (compare_tasks (TEST_TASKS_LENGTH - 1, TEST_TASKS_LENGTH - 1));
         assert (compare_tasks (1, 2));
-        test_store.move_item (TEST_TASKS_LENGTH - 2, 1);
+        move_item (TEST_TASKS_LENGTH - 2, 1);
         for (uint i = 0; i < TEST_TASKS_LENGTH; i++) {
             assert (compare_tasks (i, i));
         }
     }
 
     private void test_task_changes () {
+        int index;
         add_tasks ();
         task_data_changed_expected = true;
-        test_tasks[Test.rand_int_range (0, (int32)TEST_TASKS_LENGTH - 1)].title = "new task title";
+        index = Test.rand_int_range (0, (int32)TEST_TASKS_LENGTH - 1);
+        test_tasks[index].title = "new task title";
         assert (!task_data_changed_expected);
 
         task_done_changed_expected = true;
-        test_tasks[Test.rand_int_range (0, (int32)TEST_TASKS_LENGTH - 1)].done = true;
+        index = Test.rand_int_range (0, (int32)TEST_TASKS_LENGTH - 1);
+        task_done_changed_expected_task = test_tasks[index];
+        test_tasks[index].done = true;
         assert (!task_done_changed_expected);
+
+        task_invalid_expected = true;
+        index = Test.rand_int_range (0, (int32)TEST_TASKS_LENGTH - 1);
+        task_invalid_expected_task = test_tasks[index];
+        test_tasks[index].title = "";
+        assert (!task_invalid_expected);
     }
 
     private void remove_task (uint index, uint expected_pos) {
@@ -243,5 +276,11 @@ class TaskStoreTest : TestCase {
         for (uint i = 0; i < TEST_TASKS_LENGTH; i++) {
             add_task (i, i);
         }
+    }
+
+    private void move_item (uint old_position, uint new_position) {
+        task_data_changed_expected = true;
+        test_store.move_item (old_position, new_position);
+        assert (!task_data_changed_expected);
     }
 }
