@@ -20,21 +20,24 @@ label.task_active {
     font-size: 250%;
 }
 
-.row {
-  border-top: 1px solid @list_row_border_top;
-  border-bottom: 1px solid @list_row_border_bottom;
+row {
+    border-top: 1px solid @list_row_border_top;
+    border-bottom: 1px solid @list_row_border_bottom;
 }
 
-.row.drag-icon { 
+row.drag-icon {
     background: @list_row_drag_icon_background;
     border: 1px solid @list_row_drag_icon_border;
+}
+
+row.drag-icon label {
     color: @list_row_drag_icon_text;
 }
 
-.row.drag-hover-top {
+row.drag-hover-top {
     border-bottom: 1px solid @list_row_drag_highlight_bottom;
 }
 
-.row.drag-hover-bottom {
+row.drag-hover-bottom {
     border-top: 1px solid @list_row_drag_highlight_top;
 }

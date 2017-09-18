@@ -25,9 +25,13 @@ GtkLabel.task_active {
     border-bottom: 1px solid @list_row_border_bottom;
 }
 
-.list-row.drag-icon { 
+.list-row.drag-icon {
     background: @list_row_drag_icon_background;
     border: 1px solid @list_row_drag_icon_border;
+    color: @list_row_drag_icon_text;
+}
+
+.list-row.drag-icon label {
     color: @list_row_drag_icon_text;
 }
 
