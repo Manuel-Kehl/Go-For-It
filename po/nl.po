@@ -138,9 +138,8 @@ msgid "Prepare for your break"
 msgstr "Bereid u voor voor uw pauze"
 
 #: ../src/view/MainWindow.vala:373
-#, fuzzy
 msgid "You have %s seconds left"
-msgstr "U heeft nog %i seconden"
+msgstr "U heeft nog %s seconden"
 
 #: ../src/view/TimerView.vala:82
 msgid "Active Task"

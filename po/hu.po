@@ -132,9 +132,8 @@ msgid "Prepare for your break"
 msgstr "Készülj fel a szüneteltetésre"
 
 #: ../src/view/MainWindow.vala:373
-#, fuzzy
 msgid "You have %s seconds left"
-msgstr "%i másodperced van hátra"
+msgstr "%s másodperced van hátra"
 
 #: ../src/view/TimerView.vala:82
 msgid "Active Task"

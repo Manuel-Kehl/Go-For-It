@@ -136,9 +136,8 @@ msgid "Prepare for your break"
 msgstr "Förbered dig inför din rast"
 
 #: ../src/view/MainWindow.vala:373
-#, fuzzy
 msgid "You have %s seconds left"
-msgstr "Du har %i sekunder kvar"
+msgstr "Du har %s sekunder kvar"
 
 #: ../src/view/TimerView.vala:82
 msgid "Active Task"

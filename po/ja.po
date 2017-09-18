@@ -137,9 +137,8 @@ msgid "Prepare for your break"
 msgstr "休憩の準備をしましょう"
 
 #: ../src/view/MainWindow.vala:373
-#, fuzzy
 msgid "You have %s seconds left"
-msgstr "残りあと %i 秒"
+msgstr "残りあと %s 秒"
 
 #: ../src/view/TimerView.vala:82
 msgid "Active Task"

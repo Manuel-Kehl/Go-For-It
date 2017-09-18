@@ -142,9 +142,8 @@ msgid "Prepare for your break"
 msgstr "Siesie wo ho ma ahomegye bere"
 
 #: ../src/view/MainWindow.vala:373
-#, fuzzy
 msgid "You have %s seconds left"
-msgstr "Aka sima %i"
+msgstr "Aka sima %s"
 
 #: ../src/view/TimerView.vala:82
 msgid "Active Task"

@@ -42,7 +42,7 @@ public class TodoTask : GLib.Object {
         }
     }
     private bool _done;
-    
+
     public bool valid {
         get {
             return title != "";

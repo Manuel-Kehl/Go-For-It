@@ -132,7 +132,6 @@ msgid "Prepare for your break"
 msgstr "Приготовьтесь к перерыву"
 
 #: ../src/view/MainWindow.vala:373
-#, fuzzy
 msgid "You have %s seconds left"
 msgstr "У вас осталось"
 
