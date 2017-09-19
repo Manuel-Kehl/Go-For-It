@@ -16,7 +16,7 @@
 */
 
 /**
- * This class stores all task information that should be known to the timer.
+ * This class stores all task information.
  */
 public class TodoTask : GLib.Object {
     public string title {
@@ -55,9 +55,5 @@ public class TodoTask : GLib.Object {
     public TodoTask (string title, bool done) {
         _title = title;
         _done = done;
-    }
-
-    public string to_string () {
-        return (done ? "x " : "") + title;
     }
 }

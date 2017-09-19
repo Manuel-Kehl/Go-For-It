@@ -316,6 +316,10 @@ class TaskManager {
         return new TodoTask (line, done | done_by_default);
     }
 
+    private string task_to_string (TodoTask task) {
+        return (task.done ? "x " : "") + task.title;
+    }
+
     /**
      * Reads tasks from a Todo.txt formatted file.
      */
@@ -368,7 +372,7 @@ class TaskManager {
             uint n_items = store.get_n_items ();
             for (uint i = 0; i < n_items; i++) {
                 TodoTask task = (TodoTask)store.get_item (i);
-                stream_out.put_string (task.to_string () + "\n");
+                stream_out.put_string (task_to_string (task) + "\n");
             }
         } catch (Error e) {
             io_failed = true;

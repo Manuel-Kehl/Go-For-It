@@ -35,6 +35,11 @@ class TaskStoreTest : TestCase {
         set_up_tasks ();
     }
 
+    public override void tear_down () {
+        test_tasks = null;
+        test_store = null;
+    }
+
     private void init_signal_checkers () {
         task_done_changed_expected = false;
         task_data_changed_expected = false;
@@ -89,11 +94,6 @@ class TaskStoreTest : TestCase {
         }
         init_signal_checkers ();
         connect_signals ();
-    }
-
-    public override void tear_down () {
-        test_tasks = null;
-        test_store = null;
     }
 
     private string safe_store_get_string (uint position) {
