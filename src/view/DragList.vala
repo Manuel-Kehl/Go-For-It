@@ -183,23 +183,27 @@ public class DragList : Gtk.Bin {
     }
 
     private void on_model_items_changed (uint index, uint removed, uint added) {
-        bool selected_row_removed = false;
+        bool need_to_select_closest = false;
         block_row_selected = true;
         if (removed > 0) {
             DragListRow selected_row = get_selected_row ();
             assert (selected_row != null);
             uint selected_index = selected_row.get_index ();
-            selected_row_removed = (index <= selected_index && index + removed >= selected_index);
+            need_to_select_closest = (index <= selected_index && index + removed >= selected_index);
         }
         for (uint i = 0; i < removed ; i++) {
             listbox.remove (get_row_at_index((int)index));
         }
+        if (added > 0) {
+            need_to_select_closest = false;
+            block_row_selected = false;
+        }
         for (uint i = index; i < index + added; i++) {
             _insert (create_widget_func (model.get_item (i)), (int)i);
         }
-        block_row_selected = false;
-        if (selected_row_removed) {
+        if (need_to_select_closest) {
             select_closest_to ((int)index);
+            block_row_selected = false;
         }
     }
 
@@ -229,11 +233,13 @@ public class DragList : Gtk.Bin {
      * Used to select a row after the selected row was removed
      */
     private void select_closest_to (int index) {
+    	stdout.printf ("select_closest_to\n");
         DragListRow? next = get_row_at_index (index);
         if (next == null) {
             next = get_row_at_index (index - 1);
         }
         listbox.select_row (next);
+        row_selected (next);
     }
 
     public override void add (Gtk.Widget widget) {
@@ -280,8 +286,8 @@ public class DragList : Gtk.Bin {
                 block_row_selected = true;
                 int index = ((DragListRow)widget).get_index ();
                 listbox.remove (widget);
-                block_row_selected = false;
                 select_closest_to (index);
+                block_row_selected = false;
             } else {
                 listbox.remove (widget);
             }

@@ -136,8 +136,6 @@ class MainWindow : Gtk.ApplicationWindow {
         todo_list.add_new_task.connect (task_manager.add_new_task);
         todo_list.selection_changed.connect (on_selection_changed);
         task_manager.active_task_invalid.connect (on_active_task_invalid);
-//        task_manager.refreshing.connect (on_refreshing);
-//        task_manager.refreshed.connect (on_refreshed);
 
         // Call once to refresh view on startup
         on_active_task_invalid ();
