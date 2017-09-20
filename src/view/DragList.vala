@@ -185,7 +185,7 @@ public class DragList : Gtk.Bin {
     private void on_model_items_changed (uint index, uint removed, uint added) {
         bool need_to_select_closest = false;
         block_row_selected = true;
-        if (removed > 0) {
+        if (removed > 0 && added == 0) {
             DragListRow selected_row = get_selected_row ();
             assert (selected_row != null);
             uint selected_index = selected_row.get_index ();
@@ -195,7 +195,6 @@ public class DragList : Gtk.Bin {
             listbox.remove (get_row_at_index((int)index));
         }
         if (added > 0) {
-            need_to_select_closest = false;
             block_row_selected = false;
         }
         for (uint i = index; i < index + added; i++) {
