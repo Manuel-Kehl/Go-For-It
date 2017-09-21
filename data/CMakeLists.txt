@@ -12,10 +12,11 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/icons/hicolor/128x128/apps/go-for-it.s
 # install the fallback menu icon
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/icons/hicolor/24x24/actions/go-for-it-open-menu-fallback.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/24x24/actions)
 
+option (ICON_UPDATE "Run gtk-update-icon-cache after the install." ON)
 
+if (ICON_UPDATE)
 install(
-    CODE
-    "execute_process (COMMAND gtk-update-icon-cache -t -f ${SYSTEM_DEFAULT_THEME})"
-    CODE
-    "message (STATUS \"Updated icon cache in ${SYSTEM_DEFAULT_THEME}\")"
+    CODE "message (STATUS \"Updating icon cache in ${SYSTEM_DEFAULT_THEME}\")"
+    CODE "execute_process (COMMAND gtk-update-icon-cache -t -f ${SYSTEM_DEFAULT_THEME})"
     )
+endif (ICON_UPDATE)
