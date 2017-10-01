@@ -130,7 +130,7 @@ public class DragList : Gtk.Bin {
         internal_signal = false;
         block_row_selected = false;
 
-        base.add(listbox);
+        add (listbox);
         connect_signals ();
     }
 
@@ -154,18 +154,17 @@ public class DragList : Gtk.Bin {
      * If model is null, this is left empty.
      *
      * It is undefined to add, remove or move widgets directly
-     * (for example, with insert or add) while this is bound to a model.
+     * (for example, with insert_row or add_row) while this is bound to a model.
      *
      * @paran model the DragListModel to be bound to this
      * @param create_widget_func a function that creates Widgets for items or null in
      * case you also passed null as model
      */
     public void bind_model (
-        DragListModel? model,
-        owned DragListCreateWidgetFunc? create_widget_func
+        DragListModel? model, owned DragListCreateWidgetFunc? create_widget_func
     ) {
-        if (model != null && create_widget_func == null) {
-            return;
+        if (model == null) {
+            assert (create_widget_func == null);
         }
         listbox.@foreach((widget) => {
             remove(widget);
@@ -175,7 +174,7 @@ public class DragList : Gtk.Bin {
 
         for (uint i = 0; i < model.get_n_items (); i++) {
             var row = this.create_widget_func(model.get_item (i));
-            _add (row);
+            _add_row (row);
         }
 
         model.items_changed.connect (on_model_items_changed);
@@ -198,7 +197,7 @@ public class DragList : Gtk.Bin {
             block_row_selected = false;
         }
         for (uint i = index; i < index + added; i++) {
-            _insert (create_widget_func (model.get_item (i)), (int)i);
+            _insert_row (create_widget_func (model.get_item (i)), (int)i);
         }
         if (need_to_select_closest) {
             select_closest_to ((int)index);
@@ -232,7 +231,6 @@ public class DragList : Gtk.Bin {
      * Used to select a row after the selected row was removed
      */
     private void select_closest_to (int index) {
-    	stdout.printf ("select_closest_to\n");
         DragListRow? next = get_row_at_index (index);
         if (next == null) {
             next = get_row_at_index (index - 1);
@@ -241,12 +239,12 @@ public class DragList : Gtk.Bin {
         row_selected (next);
     }
 
-    public override void add (Gtk.Widget widget) {
-        insert (widget, -1);
+    public void add_row (Gtk.Widget widget) {
+        insert_row (widget, -1);
     }
 
-    private inline void _add (Gtk.Widget widget) {
-        _insert (widget, -1);
+    private inline void _add_row (Gtk.Widget widget) {
+        _insert_row (widget, -1);
     }
 
     /**
@@ -257,13 +255,13 @@ public class DragList : Gtk.Bin {
      * @param widget the Widget to add
      * @param position the position to insert child in
      */
-    public void insert (Gtk.Widget widget, int position) {
-        if (model != null) {
-            _insert (widget, position);
+    public void insert_row (Gtk.Widget widget, int position) {
+        if (model == null) {
+            _insert_row (widget, position);
         }
     }
 
-    private void _insert (Gtk.Widget widget, int position) {
+    private void _insert_row (Gtk.Widget widget, int position) {
         DragListRow row = widget as DragListRow;
 
         if (row == null) {
@@ -274,22 +272,29 @@ public class DragList : Gtk.Bin {
         listbox.insert (row, position);
         if (listbox.get_selected_row () == null) {
             listbox.select_row (row);
+            assert (listbox.get_selected_row () == row);
         }
     }
 
-    public override void remove (Gtk.Widget widget) {
-        if (widget.get_parent () == this) {
-            base.remove (widget);
-        } else if (model == null) {
-            if (widget == listbox.get_selected_row ()) {
-                block_row_selected = true;
-                int index = ((DragListRow)widget).get_index ();
-                listbox.remove (widget);
-                select_closest_to (index);
-                block_row_selected = false;
-            } else {
-                listbox.remove (widget);
+    public void remove_row (DragListRow row) {
+        assert (model == null);
+        if (row == listbox.get_selected_row ()) {
+            block_row_selected = true;
+            int index = row.get_index ();
+            listbox.remove (row);
+            select_closest_to (index);
+
+            // Make sure that the row isn't selected anymore.
+            // Gtk.ListBox doesn't do this, causing buggy behavior in certain 
+            // situations.
+            if (row.is_selected ()) {
+                row.selectable = false;
+                row.selectable = true;
             }
+
+            block_row_selected = false;
+        } else {
+            listbox.remove (row);
         }
     }
 

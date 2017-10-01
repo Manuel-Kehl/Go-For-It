@@ -6,6 +6,7 @@ vala_precompile(VALA_C ${TEST_EXEC_NAME}
     TestCase.vala
     TaskStoreTest.vala
     TodoTaskTest.vala
+    DragListTest.vala
     Tests.vala
 
 # tell what libraries to use when compiling
