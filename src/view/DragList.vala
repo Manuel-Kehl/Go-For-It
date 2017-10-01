@@ -207,7 +207,7 @@ public class DragList : Gtk.Bin {
 
     private void on_model_item_moved (uint old_index, uint new_index) {
         _move_row(
-            (DragListRow)get_row_at_index((int)old_index), (int)new_index
+            (DragListRow)get_row_at_index((int)old_index), (int)new_index, false
         );
     }
 
@@ -312,21 +312,18 @@ public class DragList : Gtk.Bin {
      * @param index the index to move the row to
      */
     public void move_row (DragListRow row, int index) {
-        if (model != null) {
-            return;
-        }
         Gtk.ListBox row_parent = row.get_parent () as Gtk.ListBox;
 
         if (row_parent == listbox) {
-            _move_row (row, index);
+            _move_row (row, index, false);
         }
     }
 
-    private void _move_row (DragListRow row, int index) {
+    private void _move_row (DragListRow row, int index, bool relative) {
         int _index = index;
         int old_index = row.get_index ();
         if (old_index != index) {
-            if (_index > old_index) {
+            if (relative && _index > old_index) {
                 _index--;
             }
             listbox.remove (row);
@@ -598,7 +595,7 @@ public class DragList : Gtk.Bin {
         DragList row_draglist = row.get_drag_list_box ();
 
         if (row_draglist == this) {
-            _move_row (row, index);
+            _move_row (row, index, true);
         } else {
             if (model == null && row_draglist.model == null) {
                 row.get_parent ().remove (row);

@@ -8,7 +8,9 @@ class DragListTest : TestCase {
 
     public DragListTest () {
         base ("DragList");
+        add_test ("get_row", test_get_row);
         add_test ("automatic_row_selection", test_automatic_row_selection);
+        add_test ("move_row", test_move_row);
     }
 
     public override void set_up () {
@@ -42,6 +44,56 @@ class DragListTest : TestCase {
     private void add_rows () {
         foreach (DragListRow row in rows) {
             list.add_row (row);
+        }
+    }
+
+    private void test_get_row () {
+        add_rows ();
+        
+        for (int i = 0; i < TEST_ROWS_LENGTH; i++) {
+            assert (list.get_row_at_index (i) == rows[i]);
+        }
+    }
+
+    private void test_move_row () {
+        add_rows ();
+        list.move_row (rows[0], TEST_ROWS_LENGTH/2);
+        for (int i = 0, j = 1; i < TEST_ROWS_LENGTH; i++, j++) {
+            if (i == TEST_ROWS_LENGTH/2) {
+                assert (list.get_row_at_index (i) == rows[0]);
+                j--;
+            } else {
+                assert (list.get_row_at_index (i) == rows[j]);
+            }
+        }
+
+        list.move_row (rows[0], 0);
+        for (int i = 0; i < TEST_ROWS_LENGTH; i++) {
+            assert (list.get_row_at_index (i) == rows[i]);
+        }
+
+        list.move_row (rows[TEST_ROWS_LENGTH-1], TEST_ROWS_LENGTH/2);
+        for (int i = 0, j = 0; i < TEST_ROWS_LENGTH; i++, j++) {
+            if (i == TEST_ROWS_LENGTH/2) {
+                assert (list.get_row_at_index (i) == rows[TEST_ROWS_LENGTH - 1]);
+                j--;
+            } else {
+                assert (list.get_row_at_index (i) == rows[j]);
+            }
+        }
+
+        list.move_row (rows[TEST_ROWS_LENGTH-1], TEST_ROWS_LENGTH - 1);
+        for (int i = 0; i < TEST_ROWS_LENGTH; i++) {
+            assert (list.get_row_at_index (i) == rows[i]);
+        }
+
+        list.move_row (rows[1], TEST_ROWS_LENGTH - 2);
+        assert (list.get_row_at_index (TEST_ROWS_LENGTH - 2) == rows[1]);
+        assert (list.get_row_at_index (TEST_ROWS_LENGTH - 1) == rows[TEST_ROWS_LENGTH - 1]);
+        assert (list.get_row_at_index (1) == rows[2]);
+        list.move_row (rows[1], 1);
+        for (int i = 0; i < TEST_ROWS_LENGTH; i++) {
+            assert (list.get_row_at_index (i) == rows[i]);
         }
     }
 
