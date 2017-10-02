@@ -12,9 +12,10 @@ vala_precompile(VALA_C ${TEST_EXEC_NAME}
 # tell what libraries to use when compiling
 PACKAGES
     gtk+-3.0
-
+    ${GRANITE_PACKAGES}
 OPTIONS
     ${VALAC_OPTIONS}
+    ${GRANITE_OPTIONS}
 CUSTOM_VAPIS
     ${CMAKE_BINARY_DIR}/${LIBRARY_PATH}/${LIBNAME}_internal.vapi
 )
@@ -22,7 +23,7 @@ CUSTOM_VAPIS
 # tell cmake what to call the executable we just made
 add_executable(${TEST_EXEC_NAME} ${VALA_C})
 add_dependencies(${TEST_EXEC_NAME} ${LIBNAME})
-target_link_libraries(${TEST_EXEC_NAME} ${DEPS_LIBRARIES} ${LIBNAME})
+target_link_libraries(${TEST_EXEC_NAME} ${DEPS_LIBRARIES} ${LIBNAME} ${GRANITE_LIBRARIES})
 
 set_target_properties(${TEST_EXECUTABLE_NAME} PROPERTIES
     INCLUDE_DIRECTORIES ${CMAKE_BINARY_DIR}/${LIBRARY_PATH}

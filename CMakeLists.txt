@@ -48,6 +48,15 @@ add_definitions(${DEPS_CFLAGS})
 link_directories(${DEPS_LIBRARY_DIRS})
 include_directories(${CMAKE_BINARY_DIR}/src)
 
+pkg_check_modules (GRANITE granite>=0.3.1)
+if (GRANITE_FOUND)
+    message ("--   Building with granite support!")
+    set (GRANITE_OPTIONS -D HAVE_GRANITE)
+    set (GRANITE_PACKAGES granite)
+    add_definitions(${GRANITE_CFLAGS})
+    link_directories(${GRANITE_LIBRARY_DIRS})
+endif ()
+
 # disable c compiler warnings
 add_definitions(-w)
 add_definitions(-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
