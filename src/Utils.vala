@@ -1,9 +1,9 @@
-/* Copyright 2014-2016 Go For It! developers
+/* Copyright 2014-2017 Go For It! developers
 *
 * This file is part of Go For It!.
 *
 * Go For It! is free software: you can redistribute it
-* and/or modify it under the terms of version 3 of the 
+* and/or modify it under the terms of version 3 of the
 * GNU General Public License as published by the Free Software Foundation.
 *
 * Go For It! is distributed in the hope that it will be
@@ -16,7 +16,7 @@
 */
 
 /**
- * The GOFI namespace is a central collection of static constants that are 
+ * The GOFI namespace is a central collection of static constants that are
  * realted to "Go For It!".
  */
 namespace GOFI {
@@ -33,32 +33,19 @@ namespace GOFI {
             private set {}
         }
 
-        public static string tree_row_ref_to_task (
-                Gtk.TreeRowReference reference) {
-            // Get Gtk.TreeIterator from reference
-            var path = reference.get_path ();
-            var model = reference.get_model ();
-            Gtk.TreeIter iter;
-            model.get_iter (out iter, path);
-            
-            string description;
-            model.get (iter, 1, out description, -1);
-            return description;
-        }
-        
         /**
-         * Loads the first icon in the list, which is contained in the 
+         * Loads the first icon in the list, which is contained in the
          * active icon theme. This way one can avoid the "broken image" icon
          * by offering a list of fallback icon names.
          */
-        public static Gtk.Image load_image_fallback (Gtk.IconSize size, 
+        public static Gtk.Image load_image_fallback (Gtk.IconSize size,
                 string icon_name, ...) {
             Gtk.Image result = new Gtk.Image.from_icon_name (icon_name, size);
             // If icon_name is present, simply return the related image
             if (Gtk.IconTheme.get_default ().has_icon (icon_name)) {
                 return result;
             }
-            
+
             // Iterate through the list of fallbacks, if icon_name was not found
             var fallbacks = va_list();
             while (true) {
@@ -66,9 +53,9 @@ namespace GOFI {
                 if (fallback_name == null) {
                     // end of the varargs list without a matching fallback
                     // in this case the "broken image" icon is returned
-                    return result; 
+                    return result;
                 }
-                
+
                 // If fallback is found, return the related image
                 if (Gtk.IconTheme.get_default ().has_icon (fallback_name)) {
                     return new Gtk.Image.from_icon_name (fallback_name, size);

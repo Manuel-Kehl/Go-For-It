@@ -1,0 +1,43 @@
+label.task_status {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+label.task_break {
+    font-size: 120%;
+    color: @task_active_label_color;
+}
+
+label.task_active {
+    font-size: 120%;
+}
+
+.timerview spinbutton {
+    font-size: 400%;
+}
+
+.timerview label {
+    font-size: 250%;
+}
+
+row {
+    border-top: 1px solid @list_row_border_top;
+    border-bottom: 1px solid @list_row_border_bottom;
+}
+
+row.drag-icon {
+    background: @list_row_drag_icon_background;
+    border: 1px solid @list_row_drag_icon_border;
+}
+
+row.drag-icon label {
+    color: @list_row_drag_icon_text;
+}
+
+row.drag-hover-top {
+    border-bottom: 1px solid @list_row_drag_highlight_bottom;
+}
+
+row.drag-hover-bottom {
+    border-top: 1px solid @list_row_drag_highlight_top;
+}

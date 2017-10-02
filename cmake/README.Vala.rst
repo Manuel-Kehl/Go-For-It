@@ -99,19 +99,28 @@ CUSTOM_VAPIS
     them in the system.
 
 GENERATE_VAPI
-    Pass all the needed flags to the compiler to create an internal vapi for
+    Pass all the needed flags to the compiler to create a vapi for
     the compiled library. The provided name will be used for this and a
     <provided_name>.vapi file will be created.
 
+GENERATE_INTERNAL_VAPI
+    Pass all the needed flags to the compiler to create an internal vapi for
+    the compiled library. The provided name will be used for this and a
+    <provided_name>.vapi file will be created. GENERATE_VAPI needs to be used
+    alongside this.
+
 GENERATE_HEADER
-    Let the compiler generate a header file for the compiled code. There will
-    be a header file as well as an internal header file being generated called
-    <provided_name>.h and <provided_name>_internal.h
+    Let the compiler generate a header file for the compiled code. A header file
+    called <provided_name>.h will be generated.
+
+GENERATE_INTERNAL_HEADER
+    Let the compiler generate an internal header file for the compiled code. 
+    An internal header file called <provided_name>.h will be generated.
 
 The following call is a simple example to the vala_precompile macro showing an
 example to every of the optional sections::
 
-    vala_precompile(VALA_C
+    vala_precompile(VALA_C mytargetname
         source1.vala
         source2.vala
         source3.vala
@@ -119,6 +128,8 @@ example to every of the optional sections::
         gtk+-2.0
         gio-1.0
         posix
+    DIRECTORY
+        gen
     OPTIONS
         --thread
     CUSTOM_VAPIS
@@ -127,6 +138,14 @@ example to every of the optional sections::
         myvapi
     GENERATE_HEADER
         myheader
+    GENERATE_INTERNAL_VAPI
+        myvapi_internal
+    GENERATE_INTERNAL_HEADER
+        myheader_internal
+    GENERATE_GIR
+        mygir
+    GENERATE_SYMBOLS
+        mysymbols
     )
 
 Most important is the variable VALA_C which will contain all the generated c

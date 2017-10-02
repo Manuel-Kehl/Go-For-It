@@ -27,8 +27,8 @@
 # either expressed or implied, of Jakob Westhoff
 ##
 
-include(ParseArguments)
 find_package(Vala REQUIRED)
+include(CMakeParseArguments)
 
 ##
 # Ensure a certain valac version is available
@@ -52,7 +52,7 @@ find_package(Vala REQUIRED)
 # If no option is specified the version will be treated as a minimal version.
 ##
 macro(ensure_vala_version version)
-    parse_arguments(ARGS "" "MINIMUM;MAXIMUM;EXACT" ${ARGN})
+    cmake_parse_arguments (ARGS "" "MINIMUM;MAXIMUM;EXACT" "" ${ARGN})
 	set(compare_message "")
 	set(error_message "")
 	if(ARGS_MINIMUM)

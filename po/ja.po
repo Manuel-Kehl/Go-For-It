@@ -2,115 +2,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-18 13:44+0100\n"
-"PO-Revision-Date: 2017-03-23 14:34+0000\n"
-"Last-Translator: Shinichirou YAMADA "
-"<yamada_strong_yamada_nice_64bit@yahoo.co.jp>\n"
+"POT-Creation-Date: 2017-09-17 16:04+0200\n"
+"PO-Revision-Date: 2017-03-31 11:15+0000\n"
+"Last-Translator: Shinichirou YAMADA <yamada_strong_yamada_nice_64bit@yahoo."
+"co.jp>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-03-24 06:35+0000\n"
-"X-Generator: Launchpad (build 18334)\n"
+"X-Launchpad-Export-Date: 2017-04-08 06:37+0000\n"
+"X-Generator: Launchpad (build 18343)\n"
 
-#: ../src/view/MainWindow.vala:181 ../src/view/MainWindow.vala:197
-#: ../src/view/MainWindow.vala:202
-msgid "To-Do"
-msgstr "To-Do"
-
-#: ../src/view/MainWindow.vala:182 ../src/view/MainWindow.vala:198
-#: ../src/view/MainWindow.vala:203 ../src/view/SettingsDialog.vala:152
-msgid "Timer"
-msgstr "タイマー"
-
-#: ../src/view/MainWindow.vala:183 ../src/view/MainWindow.vala:199
-#: ../src/view/MainWindow.vala:204
-msgid "Done"
-msgstr "完了"
-
-#: ../src/view/MainWindow.vala:286
-msgid "Menu"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:440 ../src/view/SettingsDialog.vala:43
-msgid "Settings"
-msgstr "設定"
-
-#: ../src/view/MainWindow.vala:441
-msgid "Clear Done List"
-msgstr "完了リストを消去"
-
-#: ../src/view/MainWindow.vala:442
-msgid "Contribute / Donate"
-msgstr "貢献／寄付"
-
-#: ../src/view/MainWindow.vala:443 ../src/view/AboutDialog.vala:27
+#: ../src/view/AboutDialog.vala:27 ../src/view/MainWindow.vala:296
 msgid "About"
 msgstr "Go For It! について"
 
-#: ../src/view/MainWindow.vala:495 ../src/view/TimerView.vala:78
-msgid "Take a Break"
-msgstr "休憩する"
-
-#: ../src/view/MainWindow.vala:496
-msgid "Relax and stop thinking about your current task for a while"
-msgstr "しばらくの間、現在のタスクについて考えるのをやめてリラックスしましょう"
-
-#: ../src/view/MainWindow.vala:501
-msgid "The Break is Over"
-msgstr "休憩終了"
-
-#: ../src/view/MainWindow.vala:502
-msgid "Your next task is"
-msgstr "次のタスク"
-
-#: ../src/view/MainWindow.vala:519
-msgid "Prepare for your break"
-msgstr "休憩の準備をしてください"
-
-#: ../src/view/MainWindow.vala:520
-msgid "You have %i seconds left"
-msgstr "残りあと %i 秒です"
-
-#: ../src/view/TaskList.vala:137
-msgid "Add new task"
-msgstr "新しいタスクを追加"
-
-#: ../src/view/TimerView.vala:82
-msgid "Active Task"
-msgstr "アクティブなタスク"
-
-#: ../src/view/TimerView.vala:103
-msgid "Pau_se"
-msgstr "一時停止(_S)"
-
-#: ../src/view/TimerView.vala:106
-msgid "_Start"
-msgstr "開始(_S)"
-
-#: ../src/view/TimerView.vala:133
-msgid "Inactive"
-msgstr ""
-
-#: ../src/view/TimerView.vala:134
-msgid "No task has been selected"
-msgstr "タスクが選択されていません"
-
-#: ../src/view/TimerView.vala:220
-msgid "S_kip"
-msgstr "スキップ(_K)"
-
-#: ../src/view/TimerView.vala:221
-msgid "_Done"
-msgstr "完了(_D)"
-
-#: ../src/view/TimerView.vala:266
-msgid "Relax"
-msgstr "リラックスしてください"
-
-#: ../src/view/TimerView.vala:267
-msgid "You have nothing to do."
-msgstr "する事がありません。"
+#: ../src/view/AboutDialog.vala:41
+msgid "A stylish to-do list with built-in productivity timer."
+msgstr "プロダクティビティータイマーを組み込んだスタイリッシュな ToDo リスト"
 
 #: ../src/view/ContributeDialog.vala:27
 msgid "Contributions and Donations"
@@ -124,7 +34,9 @@ msgstr "ご支援ありがとうございます"
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
-msgstr "コード、アートワーク、翻訳、ドキュメントの寄託はプロジェクトに貢献する素晴らしい方法です:"
+msgstr ""
+"コード、アートワーク、翻訳、ドキュメントの寄託はプロジェクトに貢献する素晴ら"
+"しい方法です:"
 
 #: ../src/view/ContributeDialog.vala:35
 msgid ""
@@ -132,9 +44,13 @@ msgid ""
 "features:"
 msgstr "寄付をしていただけると新機能の実装により時間をかける事ができます:"
 
-#: ../src/view/AboutDialog.vala:41
-msgid "A stylish to-do list with built-in productivity timer."
-msgstr "生産性タイマー内蔵でスタイリッシュな ToDo リスト"
+#: ../src/view/TaskList.vala:116
+msgid "Add new task"
+msgstr "新しいタスクを追加"
+
+#: ../src/view/SettingsDialog.vala:43 ../src/view/MainWindow.vala:293
+msgid "Settings"
+msgstr "設定"
 
 #: ../src/view/SettingsDialog.vala:45
 msgid "Close"
@@ -148,7 +64,13 @@ msgstr "フォルダー"
 msgid ""
 "If no appropriate folder was found, Go For It! defaults to creating a Todo "
 "folder in your home directory."
-msgstr "適切なフォルダーが見つからない場合、ホームフォルダーに Todo フォルダーを作成します。"
+msgstr ""
+"適切なフォルダーが見つからない場合、ホームフォルダーに Todo フォルダーを作成"
+"します。"
+
+#: ../src/view/SettingsDialog.vala:152 ../src/view/MainWindow.vala:177
+msgid "Timer"
+msgstr "タイマー"
 
 #: ../src/view/SettingsDialog.vala:153
 msgid "Task duration (minutes)"
@@ -170,14 +92,117 @@ msgstr "外観"
 msgid "Dark theme"
 msgstr "Dark テーマ"
 
-#: ../src/view/SettingsDialog.vala:219
+#: ../src/view/SettingsDialog.vala:216
 msgid "Use a header bar"
 msgstr "ヘッダーバーを使用"
 
-#: ../src/Main.vala:127
+#: ../src/view/MainWindow.vala:176
+msgid "To-Do"
+msgstr "ToDo"
+
+#: ../src/view/MainWindow.vala:178
+msgid "Done"
+msgstr "完了"
+
+#: ../src/view/MainWindow.vala:198
+msgid "Menu"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:294
+msgid "Clear Done List"
+msgstr "完了リストを消去"
+
+#: ../src/view/MainWindow.vala:295
+msgid "Contribute / Donate"
+msgstr "貢献／寄付"
+
+#: ../src/view/MainWindow.vala:348 ../src/view/TimerView.vala:78
+msgid "Take a Break"
+msgstr "休憩する"
+
+#: ../src/view/MainWindow.vala:349
+msgid "Relax and stop thinking about your current task for a while"
+msgstr "しばらくの間、現在のタスクについて考えるのをやめてリラックスしましょう"
+
+#: ../src/view/MainWindow.vala:354
+msgid "The Break is Over"
+msgstr "休憩終了"
+
+#: ../src/view/MainWindow.vala:355
+msgid "Your next task is"
+msgstr "次のタスク"
+
+#: ../src/view/MainWindow.vala:372
+msgid "Prepare for your break"
+msgstr "休憩の準備をしましょう"
+
+#: ../src/view/MainWindow.vala:373
+msgid "You have %s seconds left"
+msgstr "残りあと %s 秒"
+
+#: ../src/view/TimerView.vala:82
+msgid "Active Task"
+msgstr "アクティブなタスク"
+
+#: ../src/view/TimerView.vala:103
+msgid "Pau_se"
+msgstr "一時停止(_S)"
+
+#: ../src/view/TimerView.vala:106
+msgid "_Start"
+msgstr "開始(_S)"
+
+#: ../src/view/TimerView.vala:133
+msgid "Inactive"
+msgstr ""
+
+#: ../src/view/TimerView.vala:134
+msgid "No task has been selected"
+msgstr "タスクが選択されていません"
+
+#: ../src/view/TimerView.vala:218
+msgid "S_kip"
+msgstr "スキップ(_K)"
+
+#: ../src/view/TimerView.vala:219
+msgid "_Done"
+msgstr "完了(_D)"
+
+#: ../src/view/TimerView.vala:264
+msgid "Relax"
+msgstr "リラックスしましょう"
+
+#: ../src/view/TimerView.vala:265
+msgid "You have nothing to do."
+msgstr "する事がありません。"
+
+#: ../src/TaskManager.vala:51
+msgid ""
+"Go For It! won't save or load from the current todo.txt directory until it "
+"is either restarted or another location is chosen."
+msgstr ""
+"Go For It! は、再起動されるか他の場所が選択されるまで todo.txt の読み込みや保"
+"存を行いません。"
+
+#: ../src/TaskManager.vala:52
+msgid "Couldn't read the todo.txt file (%s):"
+msgstr "todo.txt ファイルを読み込めませんでした (%s):"
+
+#: ../src/TaskManager.vala:53
+msgid "Couldn't save the todo list (%s):"
+msgstr "ToDo リストを保存できませんでした (%s):"
+
+#: ../src/TaskManager.vala:54
+msgid ""
+"The path to the todo.txt directory does not point to a directory, but to a "
+"file or mountable location. Please change the path in the settings to a "
+"suitable directory or remove this file."
+msgstr ""
+
+#: ../src/Main.vala:96
 msgid "Print version info and exit"
 msgstr "バージョンを表示して終了する"
 
-#: ../src/Main.vala:128
+#: ../src/Main.vala:97
 msgid "Show about dialog"
 msgstr "アプリについてのダイアログを表示する"

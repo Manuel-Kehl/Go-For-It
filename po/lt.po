@@ -2,181 +2,208 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-18 13:44+0100\n"
-"PO-Revision-Date: 2017-02-27 15:50+0000\n"
+"POT-Creation-Date: 2017-09-17 16:04+0200\n"
+"PO-Revision-Date: 2017-04-25 18:45+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-02-28 05:32+0000\n"
-"X-Generator: Launchpad (build 18329)\n"
+"X-Launchpad-Export-Date: 2017-04-27 06:38+0000\n"
+"X-Generator: Launchpad (build 18364)\n"
 
-#: ../src/view/MainWindow.vala:181 ../src/view/MainWindow.vala:197
-#: ../src/view/MainWindow.vala:202
-msgid "To-Do"
-msgstr "Užduotys"
-
-#: ../src/view/MainWindow.vala:182 ../src/view/MainWindow.vala:198
-#: ../src/view/MainWindow.vala:203 ../src/view/SettingsDialog.vala:152
-msgid "Timer"
-msgstr "Laikmatis"
-
-#: ../src/view/MainWindow.vala:183 ../src/view/MainWindow.vala:199
-#: ../src/view/MainWindow.vala:204
-msgid "Done"
-msgstr "Atlikta"
-
-#: ../src/view/MainWindow.vala:286
-msgid "Menu"
-msgstr "Meniu"
-
-#: ../src/view/MainWindow.vala:440 ../src/view/SettingsDialog.vala:43
-msgid "Settings"
-msgstr "Nustatymai"
-
-#: ../src/view/MainWindow.vala:441
-msgid "Clear Done List"
-msgstr "Išvalyti atliktų užduočių sąrašą"
-
-#: ../src/view/MainWindow.vala:442
-msgid "Contribute / Donate"
-msgstr "Talkinti / Paremti"
-
-#: ../src/view/MainWindow.vala:443 ../src/view/AboutDialog.vala:27
+#: ../src/view/AboutDialog.vala:27 ../src/view/MainWindow.vala:296
 msgid "About"
 msgstr "Apie"
 
-#: ../src/view/MainWindow.vala:495 ../src/view/TimerView.vala:78
-msgid "Take a Break"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:496
-msgid "Relax and stop thinking about your current task for a while"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:501
-msgid "The Break is Over"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:502
-msgid "Your next task is"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:519
-msgid "Prepare for your break"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:520
-msgid "You have %i seconds left"
-msgstr ""
-
-#: ../src/view/TaskList.vala:137
-msgid "Add new task"
-msgstr ""
-
-#: ../src/view/TimerView.vala:82
-msgid "Active Task"
-msgstr ""
-
-#: ../src/view/TimerView.vala:103
-msgid "Pau_se"
-msgstr ""
-
-#: ../src/view/TimerView.vala:106
-msgid "_Start"
-msgstr ""
-
-#: ../src/view/TimerView.vala:133
-msgid "Inactive"
-msgstr ""
-
-#: ../src/view/TimerView.vala:134
-msgid "No task has been selected"
-msgstr ""
-
-#: ../src/view/TimerView.vala:220
-msgid "S_kip"
-msgstr ""
-
-#: ../src/view/TimerView.vala:221
-msgid "_Done"
-msgstr ""
-
-#: ../src/view/TimerView.vala:266
-msgid "Relax"
-msgstr ""
-
-#: ../src/view/TimerView.vala:267
-msgid "You have nothing to do."
-msgstr ""
+#: ../src/view/AboutDialog.vala:41
+msgid "A stylish to-do list with built-in productivity timer."
+msgstr "Stilingas užduočių sąrašas su įtaisytu laikmačiu."
 
 #: ../src/view/ContributeDialog.vala:27
 msgid "Contributions and Donations"
-msgstr ""
+msgstr "Talkinimai ir paaukojimai"
 
 #: ../src/view/ContributeDialog.vala:30
 msgid "Thank you for supporting"
-msgstr ""
+msgstr "Dėkojame, kad palaikote"
 
 #: ../src/view/ContributeDialog.vala:31
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
 msgstr ""
+"Kodo, iliustracijų, vertimų ar dokumentacijos pateikimas yra puikus būdas "
+"talkinti projektui:"
 
 #: ../src/view/ContributeDialog.vala:35
 msgid ""
 "Donations give me a chance to dedicate more time towards implementing new "
 "features:"
 msgstr ""
+"Paaukojimai suteikia man galimybę daugiau laiko skirti programos ypatybių "
+"įgyvendinimui."
 
-#: ../src/view/AboutDialog.vala:41
-msgid "A stylish to-do list with built-in productivity timer."
-msgstr ""
+#: ../src/view/TaskList.vala:116
+msgid "Add new task"
+msgstr "Pridėti naują užduotį"
+
+#: ../src/view/SettingsDialog.vala:43 ../src/view/MainWindow.vala:293
+msgid "Settings"
+msgstr "Nustatymai"
 
 #: ../src/view/SettingsDialog.vala:45
 msgid "Close"
-msgstr ""
+msgstr "Užverti"
 
 #: ../src/view/SettingsDialog.vala:110 ../src/view/SettingsDialog.vala:115
 msgid "directory"
-msgstr ""
+msgstr "katalogas"
 
 #: ../src/view/SettingsDialog.vala:119
 msgid ""
 "If no appropriate folder was found, Go For It! defaults to creating a Todo "
 "folder in your home directory."
 msgstr ""
+"Jeigu nebus rastas joks tinkamas aplankas, tuomet pagal numatymą, Go For It! "
+"jūsų namų kataloge sukurs aplanką  pavadinimu Todo."
+
+#: ../src/view/SettingsDialog.vala:152 ../src/view/MainWindow.vala:177
+msgid "Timer"
+msgstr "Laikmatis"
 
 #: ../src/view/SettingsDialog.vala:153
 msgid "Task duration (minutes)"
-msgstr ""
+msgstr "Užduoties trukmė (minučių)"
 
 #: ../src/view/SettingsDialog.vala:154
 msgid "Break duration (minutes)"
-msgstr ""
+msgstr "Pertraukos trukmė (minučių)"
 
 #: ../src/view/SettingsDialog.vala:155
 msgid "Reminder before task ends (seconds)"
-msgstr ""
+msgstr "Priminimas prieš pasibaigiant užduočiai (sekundžių)"
 
 #: ../src/view/SettingsDialog.vala:192
 msgid "Appearance"
-msgstr ""
+msgstr "Išvaizda"
 
 #: ../src/view/SettingsDialog.vala:193
 msgid "Dark theme"
-msgstr ""
+msgstr "Tamsi tema"
 
-#: ../src/view/SettingsDialog.vala:219
+#: ../src/view/SettingsDialog.vala:216
 msgid "Use a header bar"
+msgstr "Naudoti antraštės juostą"
+
+#: ../src/view/MainWindow.vala:176
+msgid "To-Do"
+msgstr "Užduotys"
+
+#: ../src/view/MainWindow.vala:178
+msgid "Done"
+msgstr "Atlikta"
+
+#: ../src/view/MainWindow.vala:198
+msgid "Menu"
+msgstr "Meniu"
+
+#: ../src/view/MainWindow.vala:294
+msgid "Clear Done List"
+msgstr "Išvalyti atliktų užduočių sąrašą"
+
+#: ../src/view/MainWindow.vala:295
+msgid "Contribute / Donate"
+msgstr "Talkinti / Paremti"
+
+#: ../src/view/MainWindow.vala:348 ../src/view/TimerView.vala:78
+msgid "Take a Break"
+msgstr "Padaryti pertrauką"
+
+#: ../src/view/MainWindow.vala:349
+msgid "Relax and stop thinking about your current task for a while"
+msgstr "Atsipalaiduokite ir kurį laiką nebegalvokite apie esamą užduotį"
+
+#: ../src/view/MainWindow.vala:354
+msgid "The Break is Over"
+msgstr "Pertrauka pasibaigė"
+
+#: ../src/view/MainWindow.vala:355
+msgid "Your next task is"
+msgstr "Jūsų kita užduotis yra"
+
+#: ../src/view/MainWindow.vala:372
+msgid "Prepare for your break"
+msgstr "Pasiruoškite pertraukai"
+
+#: ../src/view/MainWindow.vala:373
+msgid "You have %s seconds left"
+msgstr "Jums liko %s sekundžių"
+
+#: ../src/view/TimerView.vala:82
+msgid "Active Task"
+msgstr "Aktyvi užduotis"
+
+#: ../src/view/TimerView.vala:103
+msgid "Pau_se"
+msgstr "Pri_stabdyti"
+
+#: ../src/view/TimerView.vala:106
+msgid "_Start"
+msgstr "_Pradėti"
+
+#: ../src/view/TimerView.vala:133
+msgid "Inactive"
+msgstr "Neaktyvi"
+
+#: ../src/view/TimerView.vala:134
+msgid "No task has been selected"
+msgstr "Nebuvo pasirinkta jokia užduotis"
+
+#: ../src/view/TimerView.vala:218
+msgid "S_kip"
+msgstr "P_raleisti"
+
+#: ../src/view/TimerView.vala:219
+msgid "_Done"
+msgstr "_Atlikta"
+
+#: ../src/view/TimerView.vala:264
+msgid "Relax"
+msgstr "Atsipalaiduokite"
+
+#: ../src/view/TimerView.vala:265
+msgid "You have nothing to do."
+msgstr "Jums nėra ką atlikti."
+
+#: ../src/TaskManager.vala:51
+msgid ""
+"Go For It! won't save or load from the current todo.txt directory until it "
+"is either restarted or another location is chosen."
+msgstr ""
+"Programa Go For It! neįrašys ar neįkels iš esamo todo.txt katalogo tol, kol "
+"nebus paleista iš naujo arba nebus pasirinkta kita vieta."
+
+#: ../src/TaskManager.vala:52
+msgid "Couldn't read the todo.txt file (%s):"
+msgstr "Nepavyko perskaityti todo.txt failo (%s):"
+
+#: ../src/TaskManager.vala:53
+msgid "Couldn't save the todo list (%s):"
+msgstr "Nepavyko įrašyti užduočių sąrašo (%s):"
+
+#: ../src/TaskManager.vala:54
+msgid ""
+"The path to the todo.txt directory does not point to a directory, but to a "
+"file or mountable location. Please change the path in the settings to a "
+"suitable directory or remove this file."
 msgstr ""
 
-#: ../src/Main.vala:127
+#: ../src/Main.vala:96
 msgid "Print version info and exit"
-msgstr ""
+msgstr "Rodyti versijos informaciją ir išeiti"
 
-#: ../src/Main.vala:128
+#: ../src/Main.vala:97
 msgid "Show about dialog"
-msgstr ""
+msgstr "Rodyti dialogą apie programą"

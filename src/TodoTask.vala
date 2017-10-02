@@ -1,9 +1,9 @@
-/* Copyright 2016 Go For It! developers
+/* Copyright 2016-2017 Go For It! developers
 *
 * This file is part of Go For It!.
 *
 * Go For It! is free software: you can redistribute it
-* and/or modify it under the terms of version 3 of the 
+* and/or modify it under the terms of version 3 of the
 * GNU General Public License as published by the Free Software Foundation.
 *
 * Go For It! is distributed in the hope that it will be
@@ -16,27 +16,44 @@
 */
 
 /**
- * This class stores all task information that should be known to the timer.
+ * This class stores all task information.
  */
 public class TodoTask : GLib.Object {
-    public Gtk.TreeRowReference reference {
-        public get;
-        public set;
-    }
-    
     public string title {
-        public get;
-        public set;
-    }
-    
-    public bool valid {
         public get {
-            return reference.valid ();
+            return _title;
+        }
+        public set {
+            _title = value;
+            data_changed ();
         }
     }
-    
-    public TodoTask (Gtk.TreeRowReference reference) {
-        this.reference = reference;
-        this.title = GOFI.Utils.tree_row_ref_to_task (reference);
+    string _title;
+
+    public bool done {
+        public get {
+            return _done;
+        }
+        public set {
+            if (_done != value) {
+                _done = value;
+                done_changed ();
+            }
+        }
+    }
+    private bool _done;
+
+    public bool valid {
+        get {
+            return title != "";
+        }
+    }
+
+    public signal void done_changed ();
+    public signal void data_changed ();
+
+    public TodoTask (string title, bool done) {
+        _title = title;
+        _done = done;
     }
 }

@@ -1,9 +1,9 @@
-/* Copyright 2014-2016 Go For It! developers
+/* Copyright 2014-2017 Go For It! developers
 *
 * This file is part of Go For It!.
 *
 * Go For It! is free software: you can redistribute it
-* and/or modify it under the terms of version 3 of the 
+* and/or modify it under the terms of version 3 of the
 * GNU General Public License as published by the Free Software Foundation.
 *
 * Go For It! is distributed in the hope that it will be
@@ -17,33 +17,32 @@
 
 /**
  * A class that handles access to settings in a transparent manner.
- * Its main motivation is the option of easily replacing Glib.KeyFile with 
+ * Its main motivation is the option of easily replacing Glib.KeyFile with
  * another settings storage mechanism in the future.
  */
 public class SettingsManager {
     private KeyFile key_file;
-    
+
     /*
      * A list of constants that define settings group names
      */
-    
     private const string GROUP_TODO_TXT = "Todo.txt";
     private const string GROUP_TIMER = "Timer";
     private const string GROUP_UI = "Interface";
-    
+
     // Whether or not Go For It! has been started for the first time
     public bool first_start = false;
-    
+
     /*
      * A list of settings values with their corresponding access methods.
      * The "heart" of the SettingsManager class.
      */
-    
+
     /*---GROUP:Todo.txt------------------------------------------------------*/
     public string todo_txt_location {
         owned get { return get_value (GROUP_TODO_TXT, "location"); }
         set {
-            set_value (GROUP_TODO_TXT, "location", value); 
+            set_value (GROUP_TODO_TXT, "location", value);
             todo_txt_location_changed ();
         }
     }
@@ -143,13 +142,13 @@ public class SettingsManager {
             use_dark_theme_changed (value);
         }
     }
-    
+
     /* Signals */
     public signal void todo_txt_location_changed ();
     public signal void timer_duration_changed ();
     public signal void use_dark_theme_changed (bool use_dark);
     public signal void use_header_bar_changed ();
-    
+
     /**
      * Constructs a SettingsManager object from a configuration file.
      * Reads the corresponding file and creates it, if necessary.
@@ -157,7 +156,7 @@ public class SettingsManager {
     public SettingsManager.load_from_key_file () {
         // Instantiate the key_file object
         key_file = new KeyFile ();
-        
+
         if (!FileUtils.test (GOFI.Utils.config_file, FileTest.EXISTS)) {
             // Fill with default values, if it does not exist yet
             generate_configuration ();
@@ -173,10 +172,10 @@ public class SettingsManager {
             }
         }
     }
-    
+
     private string header_bar_default () {
         string desktop = Environment.get_variable ("DESKTOP_SESSION");
-        
+
         switch (desktop) {
             case "ubuntu":
                 return "false";
@@ -190,7 +189,7 @@ public class SettingsManager {
                 return "true";
         }
     }
-    
+
     /**
      * Provides read access to a setting, given a certain group and key.
      * Public access is granted via the SettingsManager's attributes, so this
@@ -211,7 +210,7 @@ public class SettingsManager {
                     +" %s.%s: %s", group, key, e.message);
         }
     }
-    
+
     /**
      * Provides write access to a setting, given a certain group key and value.
      * Public access is granted via the SettingsManager's attributes, so this
@@ -228,27 +227,27 @@ public class SettingsManager {
             }
         }
     }
-    
+
     /**
      * Function made for compability with older versions of GLib.
      */
     private void write_key_file () throws Error {
         GLib.FileUtils.set_contents (GOFI.Utils.config_file, key_file.to_data());
     }
-    
+
     /**
      * Generates the default configuration.
-     * It also tries to automatically determine the location of the user's 
-     * Todo.txt directory by checking a set of common potential 
+     * It also tries to automatically determine the location of the user's
+     * Todo.txt directory by checking a set of common potential
      * "standard locations", which are defined in GOFI.TEST_DIRS in Utils.vala.
      */
     private void generate_configuration () {
         string user_dir = Environment.get_home_dir ();
-        
+
         /* Determine the Todo.txt Directory */
         // Start by setting the default fallback directory
         var todo_dir = Path.build_filename (user_dir, GOFI.TEST_DIRS[0]);
-        
+
         // Try a set of possible "standard locations"
         foreach (var test_sub_dir in GOFI.TEST_DIRS) {
             var test_dir = Path.build_filename (user_dir, test_sub_dir);
@@ -257,7 +256,7 @@ public class SettingsManager {
                 break;
             }
         }
-        
+
         this.todo_txt_location = todo_dir;
     }
 }

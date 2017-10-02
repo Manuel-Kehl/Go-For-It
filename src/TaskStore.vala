@@ -1,9 +1,9 @@
-/* Copyright 2014-2016 Go For It! developers
+/* Copyright 2014-2017 Go For It! developers
 *
 * This file is part of Go For It!.
 *
 * Go For It! is free software: you can redistribute it
-* and/or modify it under the terms of version 3 of the 
+* and/or modify it under the terms of version 3 of the
 * GNU General Public License as published by the Free Software Foundation.
 *
 * Go For It! is distributed in the hope that it will be
@@ -15,143 +15,125 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-/**
- * An implementation of Gtk.ListStore that offers special functionality
- * targeted towards the storage of todo list entries
- */
+class TaskStore : Object, DragListModel {
+    private Queue<TodoTask> tasks;
+    private unowned List<TodoTask> iter_link;
+    private unowned int iter_link_index;
 
-/* Columns */
-public enum Columns {
-    TOGGLE,
-    TEXT,
-    DRAGHANDLE,
-    N_COLUMNS
-}
+    public bool done_by_default {
+        public get;
+        private set;
+    }
 
-class TaskStore : Gtk.ListStore {
-
-    /* Various Variables */
-    public bool active_task_invalid = false;
-    public bool done_by_default;
-    public TodoTask? active_task;
-    
     /* Signals */
+    // Emitted when the properties of a task, excluding done, have changed
     public signal void task_data_changed ();
-    public signal void task_done_changed (Gtk.TreeIter iter);
-    public signal void refresh_active_task ();
-    
+    public signal void task_done_changed (TodoTask task);
+    public signal void task_became_invalid (TodoTask task);
+
     /**
      * Constructor of the TaskStore class
      */
     public TaskStore (bool done_by_default) {
         this.done_by_default = done_by_default;
-        
-        // Setup the columns
-        base.set_column_types ({
-            typeof(bool),   /* toggle */
-            typeof(string), /* title */
-            typeof(string)  /* drag handle */
-        });
-        
-        /* Reroute underlying signals to task_data_changed */
-        this.rows_reordered.connect (trigger_task_data_changed);
-
-        this.row_deleted.connect (trigger_task_data_changed);
+        tasks = new Queue<TodoTask> ();
     }
 
-    private void trigger_task_data_changed () {
+    private void move_iter_link_to_index (int index) {
+        unowned List<TodoTask> closest_link;
+        int distance;
+        int distance_head = index;
+        int distance_tail = (int)tasks.length - 1;
+        int distance_iter;
+
+        if (distance_tail < distance_head) {
+            closest_link = tasks.tail;
+            distance = -distance_tail;
+        } else {
+            closest_link = tasks.head;
+            distance = distance_head;
+        }
+        if (iter_link != null) {
+            distance_iter = index - iter_link_index;
+            if (distance.abs () > distance_iter.abs ()) {
+                distance = distance_iter;
+                closest_link = iter_link;
+            }
+        }
+
+        if (distance > 0) {
+            iter_link = closest_link.nth (distance);
+        } else {
+            iter_link = closest_link.nth_prev (distance.abs ());
+        }
+        iter_link_index = index;
+    }
+
+    public void add_task (TodoTask task) {
+        iter_link = null;
+        tasks.push_tail (task);
+        task.done_changed.connect (on_task_done);
+        task.data_changed.connect (on_task_data_changed);
+        items_changed (tasks.length - 1, 0, 1);
+    }
+
+    public void clear () {
+        iter_link = null;
+        items_changed (0, tasks.length, 0);
+        tasks.clear ();
+    }
+
+    public void remove_task (TodoTask task) {
+        iter_link = null;
+        uint i = 0;
+        unowned List<TodoTask> iter = tasks.head;
+        while (iter != null && iter.data != task) {
+            iter = iter.next;
+            i++;
+        }
+        assert (iter != null);
+        task.done_changed.disconnect (on_task_done);
+        task.data_changed.disconnect (on_task_data_changed);
+        tasks.delete_link (iter);
+        items_changed (i, 1, 0);
+    }
+
+    public Type get_item_type () {
+        return typeof (TodoTask);
+    }
+
+    public Object? get_item (uint position) {
+        assert (((int)position) >= 0);
+        if (position < tasks.length) {
+            move_iter_link_to_index ((int)position);
+            return iter_link.data;
+        }
+        return null;
+    }
+
+    public uint get_n_items () {
+        return tasks.length;
+    }
+
+    public void move_item (uint old_position, uint new_position) {
+        assert (((int)old_position) >= 0 && ((int)new_position) >= 0);
+        if (old_position == new_position) {
+            return;
+        }
+        iter_link = null;
+        tasks.push_nth(tasks.pop_nth (old_position), (int) new_position);
         task_data_changed ();
     }
 
-    /** 
-     * To be called when an actually new task is to be added to the list.
-     * Therefore it does not need a "done" parameter, as one can determine
-     * that by observing the type of list to be added to.
-     */
-    public void add_task (string description, int position = -1) {
-        // Only add task, if description is not empty
-        if (description._strip () != "") {
-            bool was_empty = this.is_empty ();
-            add_initial_task (description, done_by_default, position);
+    private void on_task_done (TodoTask task) {
+        task_done_changed (task);
+    }
+
+    private void on_task_data_changed (TodoTask task) {
+        if (task.valid) {
             task_data_changed ();
-            if (was_empty) {
-                refresh_active_task ();
-            }
-        }
-    }
-    
-    /**
-     * Removes the given task from the list.
-     */
-    public void remove_task (Gtk.TreeIter iter) {
-        bool is_active_task = compare_tasks (iter);
-        var _active_task = active_task;
-        this.remove (iter);
-        if (is_active_task && _active_task == active_task) {
-            active_task = null;
-            refresh_active_task ();
-        }
-    }
-    
-    /**
-     * Function for adding a task on application startup.
-     * When tasks are added initially, the "task_data_changed" signal
-     * is not emmited.
-     */
-    public void add_initial_task (string description,
-            bool done = done_by_default, int position = -1) {
-        Gtk.TreeIter iter;
-        this.insert_with_values (out iter, position,
-                                 Columns.TOGGLE, done,
-                                 Columns.TEXT, description,
-                                 Columns.DRAGHANDLE, "view-list-symbolic",
-                                 -1);
-        if (active_task_invalid && active_task != null) {
-            if (description == active_task.title) {
-                var path = this.get_path (iter);
-                active_task.reference = new Gtk.TreeRowReference (this, path);
-                active_task_invalid = false;
-            }
-        }
-    }
-    
-    /**
-     * Function for modifying the text of a specific task.
-     */
-    public void edit_text (Gtk.TreeIter iter, string text) {
-        if (text._strip () != "") {
-            this.set (iter, 1, text);
-            task_data_changed ();
-            if (compare_tasks (iter)) {
-                active_task.title = text;
-            }
         } else {
-            remove_task (iter);
+            task_became_invalid (task);
         }
-    }
-    
-    /**
-     * Checks if iter corresponds to the active task.
-     */
-    private bool compare_tasks (Gtk.TreeIter iter) {
-        if (active_task != null) {
-            var active_path = active_task.reference.get_path ();
-            var iter_path = this.get_path (iter);
-            
-            if (iter_path != null && active_path != null) {
-                return (active_path.compare (iter_path) == 0);
-            }
-        }
-        
-        return false;
-    }
-    
-    /**
-     * Checks if the TaskStore is empty
-     */
-    public bool is_empty () {
-        // get_iter_first returns false, if tree is empty -> invert result
-        Gtk.TreeIter tmp;
-        return (!this.get_iter_first (out tmp));
     }
 }
