@@ -39,7 +39,7 @@ set (DOLLAR "$")
 find_package(PkgConfig)
 # check for the required dependencies
 pkg_check_modules(DEPS REQUIRED 
-    gtk+-3.0>=3.10.0
+    gtk+-3.0>=3.14.0
     glib-2.0
     libnotify
 )
