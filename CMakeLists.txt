@@ -59,9 +59,13 @@ include(ValaVersion)
 # make sure it's the desired version of vala
 ensure_vala_version("0.26" MINIMUM)
 
+option (BUILD_TESTS "Build a unit test executable." OFF)
+
 add_subdirectory (src)
 add_subdirectory (executable)
-add_subdirectory (tests)
+if (BUILD_TESTS)
+    add_subdirectory (tests)
+endif (BUILD_TESTS)
 add_subdirectory (data)
 add_subdirectory (style)
 add_subdirectory (po)
