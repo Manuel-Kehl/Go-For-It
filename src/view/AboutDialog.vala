@@ -42,7 +42,10 @@ public class AboutDialog : Gtk.AboutDialog {
         website = GOFI.PROJECT_WEBSITE;
         version = GOFI.APP_VERSION;
 
-        authors = { "<a href='http://manuel-kehl.de'>Manuel Kehl</a>" };
+        authors = {
+            "Jonathan Moerman",
+            "<a href='http://manuel-kehl.de'>Manuel Kehl</a>"
+        };
         artists = { "<a href='http://traumad91.deviantart.com'>Micah Ilbery</a>" };
     }
 
