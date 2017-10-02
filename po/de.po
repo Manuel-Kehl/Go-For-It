@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-17 16:04+0200\n"
+"POT-Creation-Date: 2017-10-02 15:25+0200\n"
 "PO-Revision-Date: 2017-05-27 14:03+0000\n"
 "Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,133 +13,94 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-05-28 05:44+0000\n"
 "X-Generator: Launchpad (build 18391)\n"
 
-#: ../src/view/AboutDialog.vala:27 ../src/view/MainWindow.vala:296
+#: ../src/TaskManager.vala:51
+msgid ""
+"Go For It! won't save or load from the current todo.txt directory until it "
+"is either restarted or another location is chosen."
+msgstr ""
+
+#: ../src/TaskManager.vala:52
+msgid "Couldn't read the todo.txt file (%s):"
+msgstr "Die todo.txt-Datei konnte nicht gelesen werden (%s):"
+
+#: ../src/TaskManager.vala:53
+msgid "Couldn't save the todo list (%s):"
+msgstr "Die Aufgabenliste konnte nicht gespeichert werden (%s):"
+
+#: ../src/TaskManager.vala:54
+msgid ""
+"The path to the todo.txt directory does not point to a directory, but to a "
+"file or mountable location. Please change the path in the settings to a "
+"suitable directory or remove this file."
+msgstr ""
+
+#: ../src/view/TaskRow.vala:201 ../src/Filter.vala:39
+msgid "project"
+msgstr ""
+
+#: ../src/view/TaskRow.vala:201 ../src/Filter.vala:45
+msgid "context"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:174
+msgid "To-Do"
+msgstr "Aufgaben"
+
+#: ../src/view/MainWindow.vala:175 ../src/view/SettingsDialog.vala:152
+msgid "Timer"
+msgstr "Stoppuhr"
+
+#: ../src/view/MainWindow.vala:176
+msgid "Done"
+msgstr "Erledigt"
+
+#: ../src/view/MainWindow.vala:196
+msgid "Menu"
+msgstr "Menü"
+
+#: ../src/view/MainWindow.vala:291 ../src/view/SettingsDialog.vala:43
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: ../src/view/MainWindow.vala:292
+msgid "Clear Done List"
+msgstr "Erledigtliste leeren"
+
+#: ../src/view/MainWindow.vala:293
+msgid "Contribute / Donate"
+msgstr "Mitwirken / Spenden"
+
+#: ../src/view/MainWindow.vala:294 ../src/view/AboutDialog.vala:27
 msgid "About"
 msgstr "Info"
 
-#: ../src/view/AboutDialog.vala:41
-msgid "A stylish to-do list with built-in productivity timer."
-msgstr "Eine stilvolle Aufgabenliste mit eingebautem Produktivitätsmesser."
+#: ../src/view/MainWindow.vala:346 ../src/view/TimerView.vala:78
+msgid "Take a Break"
+msgstr "Eine Pause machen"
 
-#: ../src/view/ContributeDialog.vala:27
-msgid "Contributions and Donations"
-msgstr "Mitwirkungen und Spenden"
+#: ../src/view/MainWindow.vala:347
+msgid "Relax and stop thinking about your current task for a while"
+msgstr "Entspannen und eine Weile nicht über die aktuelle Aufgabe nachdenken"
 
-#: ../src/view/ContributeDialog.vala:30
-msgid "Thank you for supporting"
-msgstr "Danke für deine Unterstützung"
+#: ../src/view/MainWindow.vala:352
+msgid "The Break is Over"
+msgstr "Die Pause ist vorbei"
 
-#: ../src/view/ContributeDialog.vala:31
-msgid ""
-"Submitting code, artwork, translations or documentation is a great way of "
-"contributing to the project:"
-msgstr ""
-"Beisteuern von Code, Grafiken, Übersetzungen oder Dokumentationen ist ein "
-"wunderbarer Weg dieses Projekt zu unterstützen:"
+#: ../src/view/MainWindow.vala:353
+msgid "Your next task is"
+msgstr "Deine nächste Aufgabe ist"
 
-#: ../src/view/ContributeDialog.vala:35
-msgid ""
-"Donations give me a chance to dedicate more time towards implementing new "
-"features:"
-msgstr ""
-"Spenden geben mir die Möglichkeit mehr Zeit für das implementieren von neuen "
-"Funktionen aufzubringen:"
+#: ../src/view/MainWindow.vala:370
+msgid "Prepare for your break"
+msgstr "Bereite dich auf deine Pause vor"
+
+#: ../src/view/MainWindow.vala:371
+msgid "You have %s seconds left"
+msgstr "Du hast noch %s Skunden"
 
 #: ../src/view/TaskList.vala:116
 msgid "Add new task"
 msgstr "Neue Aufgabe hinzufügen"
-
-#: ../src/view/SettingsDialog.vala:43 ../src/view/MainWindow.vala:293
-msgid "Settings"
-msgstr "Einstellungen"
-
-#: ../src/view/SettingsDialog.vala:45
-msgid "Close"
-msgstr "Schließen"
-
-#: ../src/view/SettingsDialog.vala:110 ../src/view/SettingsDialog.vala:115
-msgid "directory"
-msgstr "Verzeichnis"
-
-#: ../src/view/SettingsDialog.vala:119
-msgid ""
-"If no appropriate folder was found, Go For It! defaults to creating a Todo "
-"folder in your home directory."
-msgstr ""
-"Wird kein dazugehöriger Ordner gefunden, erstellt »Go For It!« einen "
-"Aufgabenordner im persönlichen Ordner."
-
-#: ../src/view/SettingsDialog.vala:152 ../src/view/MainWindow.vala:177
-msgid "Timer"
-msgstr "Stoppuhr"
-
-#: ../src/view/SettingsDialog.vala:153
-msgid "Task duration (minutes)"
-msgstr "Aufgabendauer (Minuten)"
-
-#: ../src/view/SettingsDialog.vala:154
-msgid "Break duration (minutes)"
-msgstr "Pausendauer (Minuten)"
-
-#: ../src/view/SettingsDialog.vala:155
-msgid "Reminder before task ends (seconds)"
-msgstr "Erinnerung bevor Aufgabe endet (Sekunden)"
-
-#: ../src/view/SettingsDialog.vala:192
-msgid "Appearance"
-msgstr "Erscheinungsbild"
-
-#: ../src/view/SettingsDialog.vala:193
-msgid "Dark theme"
-msgstr "Dunkles Thema"
-
-#: ../src/view/SettingsDialog.vala:216
-msgid "Use a header bar"
-msgstr "Eine Kopfzeile benutzen"
-
-#: ../src/view/MainWindow.vala:176
-msgid "To-Do"
-msgstr "Aufgaben"
-
-#: ../src/view/MainWindow.vala:178
-msgid "Done"
-msgstr "Erledigt"
-
-#: ../src/view/MainWindow.vala:198
-msgid "Menu"
-msgstr "Menü"
-
-#: ../src/view/MainWindow.vala:294
-msgid "Clear Done List"
-msgstr "Erledigtliste leeren"
-
-#: ../src/view/MainWindow.vala:295
-msgid "Contribute / Donate"
-msgstr "Mitwirken / Spenden"
-
-#: ../src/view/MainWindow.vala:348 ../src/view/TimerView.vala:78
-msgid "Take a Break"
-msgstr "Eine Pause machen"
-
-#: ../src/view/MainWindow.vala:349
-msgid "Relax and stop thinking about your current task for a while"
-msgstr "Entspannen und eine Weile nicht über die aktuelle Aufgabe nachdenken"
-
-#: ../src/view/MainWindow.vala:354
-msgid "The Break is Over"
-msgstr "Die Pause ist vorbei"
-
-#: ../src/view/MainWindow.vala:355
-msgid "Your next task is"
-msgstr "Deine nächste Aufgabe ist"
-
-#: ../src/view/MainWindow.vala:372
-msgid "Prepare for your break"
-msgstr "Bereite dich auf deine Pause vor"
-
-#: ../src/view/MainWindow.vala:373
-msgid "You have %s seconds left"
-msgstr "Du hast noch %s Skunden"
 
 #: ../src/view/TimerView.vala:82
 msgid "Active Task"
@@ -177,26 +138,73 @@ msgstr "Entspann dich"
 msgid "You have nothing to do."
 msgstr "Du hast nichts zutun"
 
-#: ../src/TaskManager.vala:51
+#: ../src/view/ContributeDialog.vala:27
+msgid "Contributions and Donations"
+msgstr "Mitwirkungen und Spenden"
+
+#: ../src/view/ContributeDialog.vala:30
+msgid "Thank you for supporting"
+msgstr "Danke für deine Unterstützung"
+
+#: ../src/view/ContributeDialog.vala:31
 msgid ""
-"Go For It! won't save or load from the current todo.txt directory until it "
-"is either restarted or another location is chosen."
+"Submitting code, artwork, translations or documentation is a great way of "
+"contributing to the project:"
 msgstr ""
+"Beisteuern von Code, Grafiken, Übersetzungen oder Dokumentationen ist ein "
+"wunderbarer Weg dieses Projekt zu unterstützen:"
 
-#: ../src/TaskManager.vala:52
-msgid "Couldn't read the todo.txt file (%s):"
-msgstr "Die todo.txt-Datei konnte nicht gelesen werden (%s):"
-
-#: ../src/TaskManager.vala:53
-msgid "Couldn't save the todo list (%s):"
-msgstr "Die Aufgabenliste konnte nicht gespeichert werden (%s):"
-
-#: ../src/TaskManager.vala:54
+#: ../src/view/ContributeDialog.vala:35
 msgid ""
-"The path to the todo.txt directory does not point to a directory, but to a "
-"file or mountable location. Please change the path in the settings to a "
-"suitable directory or remove this file."
+"Donations give me a chance to dedicate more time towards implementing new "
+"features:"
 msgstr ""
+"Spenden geben mir die Möglichkeit mehr Zeit für das implementieren von neuen "
+"Funktionen aufzubringen:"
+
+#: ../src/view/AboutDialog.vala:41
+msgid "A stylish to-do list with built-in productivity timer."
+msgstr "Eine stilvolle Aufgabenliste mit eingebautem Produktivitätsmesser."
+
+#: ../src/view/SettingsDialog.vala:45
+msgid "Close"
+msgstr "Schließen"
+
+#: ../src/view/SettingsDialog.vala:110 ../src/view/SettingsDialog.vala:115
+msgid "directory"
+msgstr "Verzeichnis"
+
+#: ../src/view/SettingsDialog.vala:119
+msgid ""
+"If no appropriate folder was found, Go For It! defaults to creating a Todo "
+"folder in your home directory."
+msgstr ""
+"Wird kein dazugehöriger Ordner gefunden, erstellt »Go For It!« einen "
+"Aufgabenordner im persönlichen Ordner."
+
+#: ../src/view/SettingsDialog.vala:153
+msgid "Task duration (minutes)"
+msgstr "Aufgabendauer (Minuten)"
+
+#: ../src/view/SettingsDialog.vala:154
+msgid "Break duration (minutes)"
+msgstr "Pausendauer (Minuten)"
+
+#: ../src/view/SettingsDialog.vala:155
+msgid "Reminder before task ends (seconds)"
+msgstr "Erinnerung bevor Aufgabe endet (Sekunden)"
+
+#: ../src/view/SettingsDialog.vala:192
+msgid "Appearance"
+msgstr "Erscheinungsbild"
+
+#: ../src/view/SettingsDialog.vala:193
+msgid "Dark theme"
+msgstr "Dunkles Thema"
+
+#: ../src/view/SettingsDialog.vala:216
+msgid "Use a header bar"
+msgstr "Eine Kopfzeile benutzen"
 
 #: ../src/Main.vala:96
 msgid "Print version info and exit"

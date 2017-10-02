@@ -36,13 +36,13 @@ class Filter {
             if (part == "") {
                 continue;
             }
-            if (part.has_prefix ("project:")) {
+            if (part.has_prefix (_("project") + ":")) {
                 string? project = part.split (":", 2)[1];
                 if (project != null && project != "") {
                     tags.prepend ("+" + project);
                     add_sentence_piece (sentence_piece);
                 }
-            } else if (part.has_prefix ("context:")) {
+            } else if (part.has_prefix (_("context") + ":")) {
                 string? context = part.split (":", 2)[1];
                 if (context != null && context != "") {
                     tags.prepend ("@" + context);

@@ -198,7 +198,7 @@ class TaskRow: DragListRow {
             markup_string = make_links (
                 GLib.Markup.escape_text (_txt_string),
                 {"+", "@"},
-                {"project:", "context:"}
+                {_("project") + ":", _("context") + ":"}
             );
             if (task_done) {
                 markup_string = "<s>" + markup_string + "</s>";
