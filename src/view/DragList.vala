@@ -329,14 +329,13 @@ public class DragList : Gtk.Bin {
     }
 
     private void _move_row (DragListRow row, int index, bool relative) {
-        int _index = index;
         int old_index = row.get_index ();
         if (old_index != index) {
-            if (relative && _index > old_index) {
-                _index--;
+            if (relative && index > old_index) {
+                index--;
             }
             listbox.remove (row);
-            listbox.insert (row, _index);
+            listbox.insert (row, index);
             if (model != null) {
                 if (index < 0) {
                     index = (int)model.get_n_items () - 1;
