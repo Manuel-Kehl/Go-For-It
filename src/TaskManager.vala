@@ -70,6 +70,11 @@ class TaskManager {
 
         load_task_stores ();
 
+        // Write default tasks
+        if (settings.first_start) {
+            save_todo_tasks ();
+        }
+
         /* Signal processing */
         settings.todo_txt_location_changed.connect (load_task_stores);
     }
