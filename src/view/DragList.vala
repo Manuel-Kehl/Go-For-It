@@ -188,10 +188,19 @@ public class DragList : Gtk.Bin {
             DragListRow selected_row = get_selected_row ();
             assert (selected_row != null);
             uint selected_index = selected_row.get_index ();
-            need_to_select_closest = (index <= selected_index && index + removed >= selected_index);
+            need_to_select_closest = (index <= selected_index && index + removed > selected_index);
         }
         for (uint i = 0; i < removed ; i++) {
-            listbox.remove (get_row_at_index((int)index));
+            var row = get_row_at_index((int)index);
+            listbox.remove (row);
+
+            // Make sure that the row isn't selected anymore.
+            // Gtk.ListBox doesn't do this, causing buggy behavior in certain
+            // situations.
+            if (row.is_selected ()) {
+                row.selectable = false;
+                row.selectable = true;
+            }
         }
         if (added > 0) {
             block_row_selected = false;
@@ -285,7 +294,7 @@ public class DragList : Gtk.Bin {
             select_closest_to (index);
 
             // Make sure that the row isn't selected anymore.
-            // Gtk.ListBox doesn't do this, causing buggy behavior in certain 
+            // Gtk.ListBox doesn't do this, causing buggy behavior in certain
             // situations.
             if (row.is_selected ()) {
                 row.selectable = false;
