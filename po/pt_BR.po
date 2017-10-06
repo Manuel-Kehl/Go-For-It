@@ -2,30 +2,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-02 15:25+0200\n"
-"PO-Revision-Date: 2016-11-23 02:16+0000\n"
-"Last-Translator: Saulo De Baco <saulodebaco@hotmail.com>\n"
+"POT-Creation-Date: 2017-10-06 14:56+0000\n"
+"PO-Revision-Date: 2017-10-06 14:56+0000\n"
+"Last-Translator: Gustavo H M Silva <gustavohmsilva@tuta.io>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-04-08 06:37+0000\n"
-"X-Generator: Launchpad (build 18343)\n"
+"X-Launchpad-Export-Date: 2017-10-06 14:56+0000\n"
+"X-Generator: Launchpad (build 18344)\n"
 
 #: ../src/TaskManager.vala:51
 msgid ""
 "Go For It! won't save or load from the current todo.txt directory until it "
 "is either restarted or another location is chosen."
 msgstr ""
+"Go For It! não salvará ou abrirá do atual diretório todo.txt enquanto não"
+"for reaberto ou outro local seja escolhido"
 
 #: ../src/TaskManager.vala:52
 msgid "Couldn't read the todo.txt file (%s):"
-msgstr ""
+msgstr "Impossível ler o arquivo todo.txt (%s)"
 
 #: ../src/TaskManager.vala:53
 msgid "Couldn't save the todo list (%s):"
-msgstr ""
+msgstr "Impossível salvar a lista dodo (%s)"
 
 #: ../src/TaskManager.vala:54
 msgid ""
@@ -33,18 +35,21 @@ msgid ""
 "file or mountable location. Please change the path in the settings to a "
 "suitable directory or remove this file."
 msgstr ""
+"O caminho para o diretório todo.txt não aponta para um diretório, mas para"
+"um arquivo ou local montável. Por favor mude o caminho nas configurações para"
+"o diretório correto ou remova este arquivo."
 
 #: ../src/view/TaskRow.vala:201 ../src/Filter.vala:39
 msgid "project"
-msgstr ""
+msgstr "projeto"
 
 #: ../src/view/TaskRow.vala:201 ../src/Filter.vala:45
 msgid "context"
-msgstr ""
+msgstr "contexto"
 
 #: ../src/view/MainWindow.vala:174
 msgid "To-Do"
-msgstr ""
+msgstr "A Fazer"
 
 #: ../src/view/MainWindow.vala:175 ../src/view/SettingsDialog.vala:152
 msgid "Timer"
@@ -64,11 +69,11 @@ msgstr "Configurações"
 
 #: ../src/view/MainWindow.vala:292
 msgid "Clear Done List"
-msgstr ""
+msgstr "Limpar concluídos"
 
 #: ../src/view/MainWindow.vala:293
 msgid "Contribute / Donate"
-msgstr ""
+msgstr "contribuir / Doar"
 
 #: ../src/view/MainWindow.vala:294 ../src/view/AboutDialog.vala:27
 msgid "About"
@@ -76,7 +81,7 @@ msgstr "Sobre"
 
 #: ../src/view/MainWindow.vala:346 ../src/view/TimerView.vala:78
 msgid "Take a Break"
-msgstr "Descanse"
+msgstr "Dê um tempo"
 
 #: ../src/view/MainWindow.vala:347
 msgid "Relax and stop thinking about your current task for a while"
@@ -84,31 +89,31 @@ msgstr "Relaxe e pare de pensar na sua tarefa atual por um tempo"
 
 #: ../src/view/MainWindow.vala:352
 msgid "The Break is Over"
-msgstr ""
+msgstr "Acabou o descanso"
 
 #: ../src/view/MainWindow.vala:353
 msgid "Your next task is"
-msgstr ""
+msgstr "Sua próxima tarefa é"
 
 #: ../src/view/MainWindow.vala:370
 msgid "Prepare for your break"
-msgstr ""
+msgstr "Prepare-se para sua pausa"
 
 #: ../src/view/MainWindow.vala:371
 msgid "You have %s seconds left"
-msgstr ""
+msgstr "Você tem %s segundos restantes"
 
 #: ../src/view/TaskList.vala:116
 msgid "Add new task"
-msgstr ""
+msgstr "Adicionar nova tarefa"
 
 #: ../src/view/TimerView.vala:82
 msgid "Active Task"
-msgstr ""
+msgstr "Tarefa ativa"
 
 #: ../src/view/TimerView.vala:103
 msgid "Pau_se"
-msgstr ""
+msgstr "Pau_sar"
 
 #: ../src/view/TimerView.vala:106
 msgid "_Start"
@@ -124,7 +129,7 @@ msgstr "Nenhuma tarefa foi selecionada"
 
 #: ../src/view/TimerView.vala:218
 msgid "S_kip"
-msgstr ""
+msgstr "S_altar"
 
 #: ../src/view/TimerView.vala:219
 msgid "_Done"
@@ -151,18 +156,19 @@ msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
 msgstr ""
+"submetendo código, artes, traduções ou documentação é um ótimo modo de "
+"contribuir com o projeto: "
 
 #: ../src/view/ContributeDialog.vala:35
 msgid ""
 "Donations give me a chance to dedicate more time towards implementing new "
 "features:"
 msgstr ""
-"Doações me ajudam a dedicar mais tempo à implementação de novos recursos:"
+"Doações nos ajudam a dedicar mais tempo à implementação de novos recursos:"
 
 #: ../src/view/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
-msgstr ""
-"Uma elegante lista de tarefas com temporizador de produtividade incorporado."
+msgstr "Uma elegante lista de tarefas com temporizador de produtividade incorporado."
 
 #: ../src/view/SettingsDialog.vala:45
 msgid "Close"
@@ -177,6 +183,8 @@ msgid ""
 "If no appropriate folder was found, Go For It! defaults to creating a Todo "
 "folder in your home directory."
 msgstr ""
+"Se uma pasta apropriada não for encontrada, Go For It! irá criar uma nova "
+"pasta Todo no seu diretório inicial"
 
 #: ../src/view/SettingsDialog.vala:153
 msgid "Task duration (minutes)"
@@ -200,12 +208,12 @@ msgstr "Tema escuro"
 
 #: ../src/view/SettingsDialog.vala:216
 msgid "Use a header bar"
-msgstr ""
+msgstr "Use a barra do cabeçalho"
 
 #: ../src/Main.vala:96
 msgid "Print version info and exit"
-msgstr ""
+msgstr "Imprimir versão e sair"
 
 #: ../src/Main.vala:97
 msgid "Show about dialog"
-msgstr ""
+msgstr "Mostrar janela Sobre"
