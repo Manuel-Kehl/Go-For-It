@@ -32,10 +32,6 @@ The Windows version is available for download [here](http://manuel-kehl.de/proje
 
 An OSX Version may follow in the future.
 
-## Donations
-
-If you like _Go For It!_ and want to support its development, I'd very much appreciate a little [tip](http://manuel-kehl.de/donations) :-)
-
 # Information For Nerds
 
 _Go For It!_ is free and open source software licensed under the GPLv3. It has been written in _Vala_ making heavy use of the _GTK_ framework.
