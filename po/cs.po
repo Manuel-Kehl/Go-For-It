@@ -3,21 +3,23 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-02 15:25+0200\n"
-"PO-Revision-Date: 2017-09-12 07:39+0000\n"
+"PO-Revision-Date: 2017-10-05 18:21+0000\n"
 "Last-Translator: Pavel Borecki <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-09-13 05:34+0000\n"
-"X-Generator: Launchpad (build 18449)\n"
+"X-Launchpad-Export-Date: 2017-10-06 05:35+0000\n"
+"X-Generator: Launchpad (build 18474)\n"
+"Language: \n"
 
 #: ../src/TaskManager.vala:51
 msgid ""
 "Go For It! won't save or load from the current todo.txt directory until it "
 "is either restarted or another location is chosen."
 msgstr ""
+"Go For It! neukládá nebo nenačítá ze stávajíc složky todo.txt pokud není buď "
+"restartováno nebo zvoleno jiné umístění."
 
 #: ../src/TaskManager.vala:52
 msgid "Couldn't read the todo.txt file (%s):"
@@ -33,14 +35,17 @@ msgid ""
 "file or mountable location. Please change the path in the settings to a "
 "suitable directory or remove this file."
 msgstr ""
+"Popis umístění složky s todo.txt neodkazuje na složku, ale na soubor nebo "
+"připojitelné umístění. Změňte umístění v nastavení na použitelnou složku "
+"nebo tento soubor odeberte."
 
 #: ../src/view/TaskRow.vala:201 ../src/Filter.vala:39
 msgid "project"
-msgstr ""
+msgstr "projekt"
 
 #: ../src/view/TaskRow.vala:201 ../src/Filter.vala:45
 msgid "context"
-msgstr ""
+msgstr "kontext"
 
 #: ../src/view/MainWindow.vala:174
 msgid "To-Do"
@@ -64,11 +69,11 @@ msgstr "Nastavení"
 
 #: ../src/view/MainWindow.vala:292
 msgid "Clear Done List"
-msgstr ""
+msgstr "Vyčistit seznam dokončených"
 
 #: ../src/view/MainWindow.vala:293
 msgid "Contribute / Donate"
-msgstr ""
+msgstr "Podílet se na / darovat"
 
 #: ../src/view/MainWindow.vala:294 ../src/view/AboutDialog.vala:27
 msgid "About"
@@ -140,7 +145,7 @@ msgstr "Nemáte co dělat."
 
 #: ../src/view/ContributeDialog.vala:27
 msgid "Contributions and Donations"
-msgstr ""
+msgstr "Příspěvky a dary"
 
 #: ../src/view/ContributeDialog.vala:30
 msgid "Thank you for supporting"
@@ -151,16 +156,18 @@ msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
 msgstr ""
+"Přispění programováním, uměním, překlady nebo dokumentací jsou skvělé "
+"způsoby přispívání do projektu:"
 
 #: ../src/view/ContributeDialog.vala:35
 msgid ""
 "Donations give me a chance to dedicate more time towards implementing new "
 "features:"
-msgstr ""
+msgstr "Dary vývojářům umožní věnovat více času implementaci nových funkcí:"
 
 #: ../src/view/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
-msgstr ""
+msgstr "Stylový seznam úkolů s vestavěným časovačem produktivity."
 
 #: ../src/view/SettingsDialog.vala:45
 msgid "Close"
@@ -175,6 +182,8 @@ msgid ""
 "If no appropriate folder was found, Go For It! defaults to creating a Todo "
 "folder in your home directory."
 msgstr ""
+"Pokud není nalezena příslušná složka, Go For It! náhradně vytvoří složku "
+"Todo ve vaší domovské složce."
 
 #: ../src/view/SettingsDialog.vala:153
 msgid "Task duration (minutes)"
@@ -198,7 +207,7 @@ msgstr "Tmavý vzhled"
 
 #: ../src/view/SettingsDialog.vala:216
 msgid "Use a header bar"
-msgstr ""
+msgstr "Použít pruh hlaviček"
 
 #: ../src/Main.vala:96
 msgid "Print version info and exit"
