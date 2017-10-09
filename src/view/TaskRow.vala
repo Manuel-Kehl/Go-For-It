@@ -16,7 +16,6 @@
 */
 
 class TaskRow: DragListRow {
-    unowned Gtk.Box content_layout;
     private Gtk.CheckButton check_button;
     private TaskLabel title_label;
 
@@ -29,7 +28,6 @@ class TaskRow: DragListRow {
 
     public TaskRow (TodoTask task) {
         this.task = task;
-        content_layout = get_content_area ();
 
         check_button = new Gtk.CheckButton ();
         check_button.active = task.done;
@@ -37,8 +35,8 @@ class TaskRow: DragListRow {
         title_label = new TaskLabel (task.title, task.done);
         title_label.hexpand = true;
 
-        content_layout.add (check_button);
-        content_layout.add (title_label);
+        set_start_widget (check_button);
+        set_center_widget (title_label);
 
         connect_signals ();
         show_all ();

@@ -37,7 +37,7 @@ class DragListTest : TestCase {
         for (uint i = 0; i < amount; i++) {
             var label = new Gtk.Label ("Task %u".printf(start+i));
             new_rows[i] = new DragListRow ();
-            new_rows[i].get_content_area ().add (label);
+            new_rows[i].set_center_widget (label);
         }
         return new_rows;
     }

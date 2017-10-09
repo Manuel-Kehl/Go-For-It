@@ -275,7 +275,7 @@ public class DragList : Gtk.Bin {
 
         if (row == null) {
             row = new DragListRow ();
-            row.get_content_area ().add(widget);
+            row.set_center_widget (widget);
         }
 
         listbox.insert (row, position);
@@ -632,25 +632,20 @@ private struct IntRange {
 public class DragListRow : Gtk.ListBoxRow {
     private Gtk.EventBox handle;
     private Gtk.Box layout;
-    private Gtk.Box content;
     private Gtk.Image image;
+    private Gtk.Widget start_widget;
+    private Gtk.Widget center_widget;
 
     public DragListRow () {
-        layout = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        layout = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
         layout.margin_start = 5;
         layout.margin_end = 5;
         add (layout);
 
-        content = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
-        content.margin_end = 5;
-        content.hexpand = true;
-
-        layout.add (content);
-
         handle = new Gtk.EventBox ();
         image = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.MENU);
         handle.add (image);
-        layout.add (handle);
+        layout.pack_end (handle, false);
 
         Gtk.drag_source_set (
             handle, Gdk.ModifierType.BUTTON1_MASK, dlb_entries, Gdk.DragAction.MOVE
@@ -659,11 +654,35 @@ public class DragListRow : Gtk.ListBoxRow {
         handle.drag_data_get.connect (handle_drag_data_get);
     }
 
-    /**
-     * Get the container to which child widgets can be added
-     */
-    public unowned Gtk.Box get_content_area () {
-        return content;
+    public void set_start_widget (Gtk.Widget? widget) {
+        if (start_widget != null) {
+            layout.remove (start_widget);
+        }
+        start_widget = widget;
+        if (start_widget != null) {
+            layout.pack_start (start_widget, false);
+        }
+    }
+
+    public unowned Gtk.Widget? get_start_widget () {
+        return start_widget;
+    }
+
+    public void set_center_widget (Gtk.Widget? widget) {
+        if (center_widget != null) {
+            layout.remove (start_widget);
+        }
+        center_widget = widget;
+        if (center_widget != null) {
+            layout.set_center_widget (center_widget);
+            layout.set_child_packing (
+                center_widget, true, true, 0, Gtk.PackType.START
+            );
+        }
+    }
+
+    public unowned Gtk.Widget? get_center_widget () {
+        return center_widget;
     }
 
     /**
