@@ -74,9 +74,9 @@ class Main : Gtk.Application {
         // Copy the pointers of the strings to a new array so references to the
         // strings in args are not lost when context.parse is called
         string*[] _args = new string*[args.length];
-		for (int i = 0; i < args.length; i++) {
-			_args[i] = args[i];
-		}
+        for (int i = 0; i < args.length; i++) {
+            _args[i] = args[i];
+        }
 
         try {
             unowned string[] tmp = _args;
