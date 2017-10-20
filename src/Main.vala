@@ -88,7 +88,7 @@ class Main : Gtk.Application {
 
         if (print_version) {
             stdout.printf ("%s %s\n", GOFI.APP_NAME, GOFI.APP_VERSION);
-            stdout.printf ("Copyright 2011-2017 'Go For it!' Developers.\n");
+            stdout.printf ("Copyright 2014-2017 'Go For it!' Developers.\n");
         } else if (show_about_dialog) {
             show_about ();
         } else {
