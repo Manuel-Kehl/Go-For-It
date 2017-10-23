@@ -19,18 +19,38 @@ If you already use Todo.txt, **beware** of the fact, that *Go For It!* automatic
 
 ## Download and Installation
 
+### GNU/Linux Packages
+
+#### Ubuntu
+
 I maintain a [Launchpad PPA](https://launchpad.net/~go-for-it-team/+archive/ubuntu/go-for-it-daily) which can be used to acquire .deb packages. On Ubuntu (+ derivates) it is recommended to add the PPA for automatic updates:
 
     sudo add-apt-repository ppa:go-for-it-team/go-for-it-daily && sudo apt-get update 
     sudo apt-get install go-for-it
-    
-Arch Linux:
 
-    yaourt -S go-for-it-git
+#### Arch Linux
+
+- [Arch Linux (Stable)](https://aur.archlinux.org/packages/go-for-it/)
+- [Arch Linux (Git)](https://aur.archlinux.org/packages/go-for-it-git/)
+
+Build it with `makepkg` or use your favorite [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers).
+
+#### Flatpak
+
+[Flatpak](https://flatpak.org) packages support multiple distributions and are sandboxed.
+
+Stable releases are hosted on [Flathub](https://flathub.org):
+
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    flatpak install flathub de.manuel_kehl.go-for-it
+
+### Windows
 
 The Windows version is available for download [here](http://manuel-kehl.de/projects/go-for-it/download-windows-version).
 
-An OSX Version may follow in the future.
+### Others
+
+A macOS Version may follow in the future.
 
 # Information For Nerds
 
