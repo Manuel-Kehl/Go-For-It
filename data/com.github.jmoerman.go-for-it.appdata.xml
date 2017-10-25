@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2017 Patrik Nilsson -->
+<!-- Copyright 2017 Patrik Nilsson, Jonathan Moerman -->
 <component type="desktop-application">
-  <id>de.manuel_kehl.go-for-it.desktop</id>
+  <id>com.github.jmoerman.go-for-it.desktop.desktop</id>
   <name>Go For It!</name>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0</project_license>
@@ -15,7 +15,7 @@
     <p>
       To-do lists are stored in the Todo.txt format. This simplifies
       synchronization with mobile devices and makes it possible to edit tasks
-      using other front-ends, like my Todo.txt Kupfer Plugin.
+      using other front-ends.
     </p>
     <p>
       If you already use Todo.txt, beware of the fact, that Go For It!
@@ -23,8 +23,8 @@
     </p>
   </description>
   <url type="homepage">http://manuel-kehl.de/projects/go-for-it/</url>
-  <url type="bugtracker">https://github.com/mank319/Go-For-It/issues</url>
-  <url type="help">https://github.com/mank319/Go-For-It/blob/master/README.md</url>
+  <url type="bugtracker">https://github.com/JMoerman/Go-For-It/issues</url>
+  <url type="help">https://github.com/JMoerman/Go-For-It/blob/master/README.md</url>
   <url type="translate">https://translations.launchpad.net/go-for-it</url>
   <update_contact>contact_AT_hembas.se</update_contact>
   <translation type="gettext">go-for-it</translation>

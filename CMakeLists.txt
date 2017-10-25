@@ -1,4 +1,4 @@
-project (go-for-it)
+project (com.github.jmoerman.go-for-it)
 
 cmake_minimum_required (VERSION 2.8.9)
 # tell cmake where its modules can be found in our project directory
@@ -12,7 +12,7 @@ set (PKGDATADIR ${DATADIR}/${PROJECT_NAME})
 set (FILE_CONF ${PROJECT_NAME}.conf)
 
 set (EXEC_NAME ${PROJECT_NAME})
-set (APP_ID "de.manuel-kehl.go-for-it")
+set (APP_ID "com.github.jmoerman.go-for-it")
 set (APP_NAME "Go For It!")
 set (RELEASE_NAME "A stylish to-do list with built-in productivity timer.")
 set (VERSION "1.6.1")
@@ -28,7 +28,7 @@ set (PACKAGE_NAME ${PROJECT_NAME})
 set (LIBRARY_PATH "src")
 
 set (PROJECT_WEBSITE "http://manuel-kehl.de/projects/go-for-it/")
-set (PROJECT_REPO "https://github.com/mank319/Go-For-It")
+set (PROJECT_REPO "https://github.com/JMoerman/Go-For-It")
 set (PROJECT_DONATIONS "http://manuel-kehl.de/donations/")
 
 #for go-for-it.pc.cmake

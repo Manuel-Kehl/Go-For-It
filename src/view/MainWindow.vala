@@ -189,7 +189,7 @@ class MainWindow : Gtk.ApplicationWindow {
         // ToolButons and their corresponding images
         var menu_img = GOFI.Utils.load_image_fallback (
             Gtk.IconSize.LARGE_TOOLBAR, "open-menu", "open-menu-symbolic",
-            "go-for-it-open-menu-fallback");
+            GOFI.APP_SYSTEM_NAME + "-open-menu-fallback");
         menu_btn = new Gtk.ToggleToolButton ();
         // Headerbar Items
         menu_btn.icon_widget = menu_img;

@@ -30,6 +30,7 @@ namespace GOFI {
     const string PROJECT_REPO = "@PROJECT_REPO@";
     const string PROJECT_DONATIONS = "@PROJECT_DONATIONS@";
     const string INSTALL_PREFIX = "@INSTALL_PREFIX@";
+    const string GETTEXT_PACKAGE = "@GETTEXT_PACKAGE@";
     const string[] TEST_DIRS = {
         "Todo", "todo", ".todo", 
         "Dropbox/Todo", "Dropbox/todo"

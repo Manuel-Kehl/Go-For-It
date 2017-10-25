@@ -40,7 +40,7 @@ public class AboutDialog : Gtk.AboutDialog {
      */
     private void setup_content () {
         program_name = "Go For It!";
-        logo_icon_name = "go-for-it";
+        logo_icon_name = GOFI.APP_SYSTEM_NAME;
 
         comments = _("A stylish to-do list with built-in productivity timer.");
         website = GOFI.PROJECT_WEBSITE;
@@ -55,8 +55,8 @@ public class AboutDialog : Gtk.AboutDialog {
         };
         artists = { "Micah Ilbery" };
         
-        bug = "https://github.com/mank319/Go-For-It/issues";
-        help = "https://github.com/mank319/Go-For-It";
+        bug = "https://github.com/JMoerman/Go-For-It/issues";
+        help = "https://github.com/JMoerman/Go-For-It";
         translate = "https://translations.launchpad.net/go-for-it";
 #else
         authors = {
