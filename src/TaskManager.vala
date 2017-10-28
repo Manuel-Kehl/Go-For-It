@@ -69,6 +69,7 @@ class TaskManager {
         refresh_queued = false;
 
         load_task_stores ();
+        connect_store_signals ();
 
         // Write default tasks
         if (settings.first_start) {
@@ -141,6 +142,20 @@ class TaskManager {
         return false;
     }
 
+    private void connect_store_signals () {
+        // Save data, as soon as something has changed
+        todo_store.task_data_changed.connect (save_todo_tasks);
+        done_store.task_data_changed.connect (save_done_tasks);
+
+        // Move task from one list to another, if done or undone
+        todo_store.task_done_changed.connect (task_done_handler);
+        done_store.task_done_changed.connect (task_done_handler);
+
+        // Remove tasks that are no longer valid (user has changed title to "")
+        todo_store.task_became_invalid.connect (remove_invalid);
+        done_store.task_became_invalid.connect (remove_invalid);
+    }
+
     private void load_task_stores () {
         stdout.printf("load_task_stores\n");
         todo_txt_dir = File.new_for_path(settings.todo_txt_location);
@@ -157,18 +172,6 @@ class TaskManager {
         } else {
             io_failed = false;
         }
-
-        // Save data, as soon as something has changed
-        todo_store.task_data_changed.connect (save_todo_tasks);
-        done_store.task_data_changed.connect (save_done_tasks);
-
-        // Move task from one list to another, if done or undone
-        todo_store.task_done_changed.connect (task_done_handler);
-        done_store.task_done_changed.connect (task_done_handler);
-
-        // Remove tasks that are no longer valid (user has changed title to "")
-        todo_store.task_became_invalid.connect (remove_invalid);
-        done_store.task_became_invalid.connect (remove_invalid);
 
         load_tasks ();
 
