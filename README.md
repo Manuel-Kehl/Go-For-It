@@ -2,7 +2,7 @@
 
 _Go For It!_ is a simple and stylish productivity app, featuring a to-do list, merged with a timer that keeps your focus on the current task. More information for end users can be found [here](http://manuel-kehl.de/projects/go-for-it).
 
-![Screenshot](screenshot.jpg)
+![Screenshot](screenshot.png)
 
 ## How To
 
