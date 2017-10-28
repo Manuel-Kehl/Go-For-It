@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-02 15:25+0200\n"
+"POT-Creation-Date: 2017-10-28 15:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,11 +38,11 @@ msgid ""
 "suitable directory or remove this file."
 msgstr ""
 
-#: ../src/view/TaskRow.vala:201 ../src/Filter.vala:39
+#: ../src/view/TaskRow.vala:199 ../src/Filter.vala:39
 msgid "project"
 msgstr ""
 
-#: ../src/view/TaskRow.vala:201 ../src/Filter.vala:45
+#: ../src/view/TaskRow.vala:199 ../src/Filter.vala:45
 msgid "context"
 msgstr ""
 
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Contribute / Donate"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:294 ../src/view/AboutDialog.vala:27
+#: ../src/view/MainWindow.vala:294 ../src/view/AboutDialog.vala:31
 msgid "About"
 msgstr ""
 
@@ -162,7 +162,7 @@ msgid ""
 "features:"
 msgstr ""
 
-#: ../src/view/AboutDialog.vala:41
+#: ../src/view/AboutDialog.vala:45
 msgid "A stylish to-do list with built-in productivity timer."
 msgstr ""
 
@@ -204,10 +204,18 @@ msgstr ""
 msgid "Use a header bar"
 msgstr ""
 
-#: ../src/Main.vala:96
+#: ../src/SettingsManager.vala:165
+msgid "Couldn't create directory: %s"
+msgstr ""
+
+#: ../src/SettingsManager.vala:307
+msgid "Couldn't properly import settings from %s: %s"
+msgstr ""
+
+#: ../src/Main.vala:102
 msgid "Print version info and exit"
 msgstr ""
 
-#: ../src/Main.vala:97
+#: ../src/Main.vala:103
 msgid "Show about dialog"
 msgstr ""

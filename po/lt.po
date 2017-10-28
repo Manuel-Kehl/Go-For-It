@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-02 15:25+0200\n"
-"PO-Revision-Date: 2017-04-25 18:45+0000\n"
+"POT-Creation-Date: 2017-10-28 15:15+0200\n"
+"PO-Revision-Date: 2017-10-21 08:54+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-04-27 06:38+0000\n"
-"X-Generator: Launchpad (build 18364)\n"
+"X-Launchpad-Export-Date: 2017-10-22 05:55+0000\n"
+"X-Generator: Launchpad (build 18484)\n"
 
 #: ../src/TaskManager.vala:51
 msgid ""
@@ -35,14 +35,17 @@ msgid ""
 "file or mountable location. Please change the path in the settings to a "
 "suitable directory or remove this file."
 msgstr ""
+"Kelias į todo.txt katalogą nenurodo į katalogą, o nurodo į failą ar "
+"prijungiamą vietą. Pakeiskite nustatymuose kelią į tinkamą katalogą arba "
+"pašalinkite šį failą."
 
-#: ../src/view/TaskRow.vala:201 ../src/Filter.vala:39
+#: ../src/view/TaskRow.vala:199 ../src/Filter.vala:39
 msgid "project"
-msgstr ""
+msgstr "projektas"
 
-#: ../src/view/TaskRow.vala:201 ../src/Filter.vala:45
+#: ../src/view/TaskRow.vala:199 ../src/Filter.vala:45
 msgid "context"
-msgstr ""
+msgstr "kontekstas"
 
 #: ../src/view/MainWindow.vala:174
 msgid "To-Do"
@@ -72,7 +75,7 @@ msgstr "Išvalyti atliktų užduočių sąrašą"
 msgid "Contribute / Donate"
 msgstr "Talkinti / Paremti"
 
-#: ../src/view/MainWindow.vala:294 ../src/view/AboutDialog.vala:27
+#: ../src/view/MainWindow.vala:294 ../src/view/AboutDialog.vala:31
 msgid "About"
 msgstr "Apie"
 
@@ -164,7 +167,7 @@ msgstr ""
 "Paaukojimai suteikia man galimybę daugiau laiko skirti programos ypatybių "
 "įgyvendinimui."
 
-#: ../src/view/AboutDialog.vala:41
+#: ../src/view/AboutDialog.vala:45
 msgid "A stylish to-do list with built-in productivity timer."
 msgstr "Stilingas užduočių sąrašas su įtaisytu laikmačiu."
 
@@ -208,10 +211,18 @@ msgstr "Tamsi tema"
 msgid "Use a header bar"
 msgstr "Naudoti antraštės juostą"
 
-#: ../src/Main.vala:96
+#: ../src/SettingsManager.vala:165
+msgid "Couldn't create directory: %s"
+msgstr ""
+
+#: ../src/SettingsManager.vala:307
+msgid "Couldn't properly import settings from %s: %s"
+msgstr ""
+
+#: ../src/Main.vala:102
 msgid "Print version info and exit"
 msgstr "Rodyti versijos informaciją ir išeiti"
 
-#: ../src/Main.vala:97
+#: ../src/Main.vala:103
 msgid "Show about dialog"
 msgstr "Rodyti dialogą apie programą"

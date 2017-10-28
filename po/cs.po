@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-02 15:25+0200\n"
+"POT-Creation-Date: 2017-10-28 15:15+0200\n"
 "PO-Revision-Date: 2017-10-05 18:21+0000\n"
 "Last-Translator: Pavel Borecki <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-10-06 05:35+0000\n"
 "X-Generator: Launchpad (build 18474)\n"
-"Language: \n"
 
 #: ../src/TaskManager.vala:51
 msgid ""
@@ -39,11 +39,11 @@ msgstr ""
 "připojitelné umístění. Změňte umístění v nastavení na použitelnou složku "
 "nebo tento soubor odeberte."
 
-#: ../src/view/TaskRow.vala:201 ../src/Filter.vala:39
+#: ../src/view/TaskRow.vala:199 ../src/Filter.vala:39
 msgid "project"
 msgstr "projekt"
 
-#: ../src/view/TaskRow.vala:201 ../src/Filter.vala:45
+#: ../src/view/TaskRow.vala:199 ../src/Filter.vala:45
 msgid "context"
 msgstr "kontext"
 
@@ -75,7 +75,7 @@ msgstr "Vyčistit seznam dokončených"
 msgid "Contribute / Donate"
 msgstr "Podílet se na / darovat"
 
-#: ../src/view/MainWindow.vala:294 ../src/view/AboutDialog.vala:27
+#: ../src/view/MainWindow.vala:294 ../src/view/AboutDialog.vala:31
 msgid "About"
 msgstr "O aplikaci"
 
@@ -165,7 +165,7 @@ msgid ""
 "features:"
 msgstr "Dary vývojářům umožní věnovat více času implementaci nových funkcí:"
 
-#: ../src/view/AboutDialog.vala:41
+#: ../src/view/AboutDialog.vala:45
 msgid "A stylish to-do list with built-in productivity timer."
 msgstr "Stylový seznam úkolů s vestavěným časovačem produktivity."
 
@@ -209,10 +209,18 @@ msgstr "Tmavý vzhled"
 msgid "Use a header bar"
 msgstr "Použít pruh hlaviček"
 
-#: ../src/Main.vala:96
+#: ../src/SettingsManager.vala:165
+msgid "Couldn't create directory: %s"
+msgstr ""
+
+#: ../src/SettingsManager.vala:307
+msgid "Couldn't properly import settings from %s: %s"
+msgstr ""
+
+#: ../src/Main.vala:102
 msgid "Print version info and exit"
 msgstr "Zobrazit informace o verzi a ukončit"
 
-#: ../src/Main.vala:97
+#: ../src/Main.vala:103
 msgid "Show about dialog"
 msgstr "Zobrazit dialog s informacemi o aplikaci"
