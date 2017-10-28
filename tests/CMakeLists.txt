@@ -1,4 +1,4 @@
-set(TEST_EXEC_NAME ${PROJECT_NAME}-tests)
+set(TEST_EXEC_NAME ${APP_ID}-tests)
 
 # files we want to compile
 include(ValaPrecompile)

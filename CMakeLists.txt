@@ -1,4 +1,4 @@
-project (com.github.jmoerman.go-for-it)
+project (go-for-it)
 
 cmake_minimum_required (VERSION 2.8.9)
 # tell cmake where its modules can be found in our project directory
@@ -8,21 +8,21 @@ include (GNUInstallDirs)
 set (INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 set (DATADIR "${INSTALL_PREFIX}/share")
 
-set (PKGDATADIR ${DATADIR}/${PROJECT_NAME})
+set (APP_ID "com.github.jmoerman.go-for-it")
+
+set (PKGDATADIR ${DATADIR}/${APP_ID})
 set (FILE_CONF ${PROJECT_NAME}.conf)
 
-set (EXEC_NAME ${PROJECT_NAME})
-set (APP_ID "com.github.jmoerman.go-for-it")
+set (EXEC_NAME ${APP_ID})
 set (APP_NAME "Go For It!")
 set (RELEASE_NAME "A stylish to-do list with built-in productivity timer.")
 set (VERSION "1.6.1")
 set (VERSION_INFO "Release")
-set (GETTEXT_PACKAGE ${PROJECT_NAME})
+set (GETTEXT_PACKAGE ${APP_ID})
 set (APIVERSION 0)
-set (LIBNAME ${PROJECT_NAME}-${APIVERSION})
+set (LIBNAME ${APP_ID}-${APIVERSION})
 set (LIBVERSION "0")
 set (SOVERSION 0)
-set (PACKAGE_NAME ${PROJECT_NAME})
 
 # The path where library files should be searched for
 set (LIBRARY_PATH "src")

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2017 Patrik Nilsson, Jonathan Moerman -->
 <component type="desktop-application">
-  <id>com.github.jmoerman.go-for-it.desktop.desktop</id>
-  <name>Go For It!</name>
+  <id>@APP_ID@.desktop</id>
+  <name>@APP_NAME@</name>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0</project_license>
   <summary>A stylish to-do list with built-in productivity timer</summary>
@@ -27,5 +27,5 @@
   <url type="help">https://github.com/JMoerman/Go-For-It/blob/master/README.md</url>
   <url type="translate">https://translations.launchpad.net/go-for-it</url>
   <update_contact>contact_AT_hembas.se</update_contact>
-  <translation type="gettext">go-for-it</translation>
+  <translation type="gettext">@APP_ID@</translation>
 </component>

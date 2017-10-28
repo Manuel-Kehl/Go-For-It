@@ -1,18 +1,18 @@
 [Desktop Entry]
-Name=Go For It!
-GenericName=Go For It!
+Name=@APP_NAME@
+GenericName=@APP_NAME@
 Comment=A stylish to-do list with built-in productivity timer.
 Categories=GTK;Utility;
-Exec=com.github.jmoerman.go-for-it
-Icon=com.github.jmoerman.go-for-it
+Exec=@EXEC_NAME@
+Icon=@APP_ID@
 Terminal=false
 Type=Application
-StartupWMClass=com.github.jmoerman.go-for-it
-X-GNOME-Gettext-Domain=com.github.jmoerman.go-for-it
+StartupWMClass=@EXEC_NAME@
+X-GNOME-Gettext-Domain=@GETTEXT_PACKAGE@
 Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
 X-GNOME-Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
 Actions=AboutDialog;
 
 [Desktop Action AboutDialog]
-Name=About Go For It!
-Exec=com.github.jmoerman.go-for-it --about
+Name=About @APP_NAME@
+Exec=@EXEC_NAME@ --about
