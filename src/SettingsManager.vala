@@ -158,9 +158,18 @@ public class SettingsManager {
         key_file = new KeyFile ();
 
         if (!FileUtils.test (GOFI.Utils.config_file, FileTest.EXISTS)) {
-            // Fill with default values, if it does not exist yet
-            generate_configuration ();
-            first_start = true;
+            int dir_exists = DirUtils.create_with_parents (
+                GOFI.Utils.config_dir, 0775
+            );
+            if (dir_exists != 0) {
+                error (_("Couldn't create directory: %s"), GOFI.Utils.config_dir);
+            }
+            if (!import_from_old_path ()) {
+                stdout.printf ("old file not imported\n");
+                // Fill with default values, if it does not exist yet
+                generate_configuration ();
+                first_start = true;
+            }
         } else {
             // If it does exist, read existing values
             try {
@@ -258,5 +267,59 @@ public class SettingsManager {
         }
 
         this.todo_txt_location = todo_dir;
+    }
+
+    /**
+     * Try to read the configuration from a keyfile from an older version.
+     */
+    private bool import_from_old_path () {
+        if (!FileUtils.test (GOFI.Utils.old_config_file, FileTest.EXISTS)) {
+            return false;
+        }
+
+        // Instantiate the key_file object
+        var old_file = new KeyFile ();
+
+        try {
+            old_file.load_from_file (GOFI.Utils.old_config_file,
+               KeyFileFlags.KEEP_COMMENTS | KeyFileFlags.KEEP_TRANSLATIONS);
+        } catch (Error e) {
+            stderr.printf("Reading %s failed", GOFI.Utils.old_config_file);
+            warning ("%s", e.message);
+            return false;
+        }
+
+        try {
+            import_group (
+                old_file, GROUP_TODO_TXT,
+                {"location"}
+            );
+            import_group (
+                old_file, GROUP_TIMER,
+                {"task_duration", "break_duration", "reminder_time"}
+            );
+            import_group (
+                old_file, GROUP_UI,
+                {"win_x", "win_y", "win_width", "win_height", "use_dark_theme"}
+            );
+       } catch (KeyFileError e) {
+            warning (
+                _("Couldn't properly import settings from %s: %s"),
+                GOFI.Utils.old_config_file, e.message
+            );
+            return false;
+        }
+        return true;
+    }
+
+    private void import_group (KeyFile old_file, string group, string[] keys) throws KeyFileError {
+        if (!old_file.has_group (group)) {
+            return;
+        }
+        foreach (string key in keys) {
+            if (old_file.has_key (group, key)) {
+                key_file.set_value (group, key, old_file.get_value(group, key));
+            }
+        }
     }
 }

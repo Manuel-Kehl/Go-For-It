@@ -17,20 +17,42 @@
 
 /**
  * The GOFI namespace is a central collection of static constants that are
- * realted to "Go For It!".
+ * related to "Go For It!".
  */
 namespace GOFI {
     /**
      * A collection of static utility functions.
      */
     class Utils {
-        // A convenient way to get the path of GOFI's configuration file
+        /**
+         * A convenient way to get the path of the directory where Go For It!
+         * stores it's configuration files.
+         */
+        public static string config_dir {
+            owned get {
+                string user_config_dir = Environment.get_user_config_dir ();
+                return Path.build_filename (user_config_dir, APP_ID);
+            }
+        }
+
+        /**
+         * A convenient way to get the path of Go For It!'s configuration file
+         */
         public static string config_file {
             owned get {
-                string config_dir = Environment.get_user_config_dir ();
                 return Path.build_filename (config_dir, FILE_CONF);
             }
-            private set {}
+        }
+
+        /**
+         * The path of the config file prior to being installed in its own 
+         * directory
+         */
+        public static string old_config_file {
+            owned get {
+                string user_config_dir = Environment.get_user_config_dir ();
+                return Path.build_filename (user_config_dir, FILE_CONF);
+            }
         }
 
         /**
