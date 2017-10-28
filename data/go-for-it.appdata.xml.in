@@ -4,28 +4,29 @@
   <id>@APP_ID@.desktop</id>
   <name>@APP_NAME@</name>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-3.0</project_license>
+  <project_license>GPL-3.0+</project_license>
   <summary>A stylish to-do list with built-in productivity timer</summary>
-  <developer_name>Jonathan Moerman</developer_name>
+  <developer_name>The Go For It! developers</developer_name>
   <description>
     <p>
-      Go For It! is a simple and stylish productivity app, featuring a to-do
-      list, merged with a timer that keeps your focus on the current task.
+Go For It! is a simple and stylish productivity app, featuring a to-do list, merged with a timer that keeps your focus on the current task.
     </p>
     <p>
-      To-do lists are stored in the Todo.txt format. This simplifies
-      synchronization with mobile devices and makes it possible to edit tasks
-      using other front-ends.
+To-do lists are stored in the Todo.txt format. This simplifies synchronization with mobile devices and makes it possible to edit tasks using other front-ends.
     </p>
     <p>
-      If you already use Todo.txt, beware of the fact, that Go For It!
-      automatically archives completed tasks to the done list!
+If you already use Todo.txt, beware of the fact, that Go For It! automatically archives completed tasks to the done list!
     </p>
   </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/JMoerman/Go-For-It/master/screenshot.jpg</image>
+    </screenshot>
+  </screenshots>
   <url type="homepage">http://manuel-kehl.de/projects/go-for-it/</url>
   <url type="bugtracker">https://github.com/JMoerman/Go-For-It/issues</url>
   <url type="help">https://github.com/JMoerman/Go-For-It/blob/master/README.md</url>
   <url type="translate">https://translations.launchpad.net/go-for-it</url>
-  <update_contact>contact_AT_hembas.se</update_contact>
+  <update_contact>jonathanmoerman_AT_gmail.com</update_contact>
   <translation type="gettext">@APP_ID@</translation>
 </component>
