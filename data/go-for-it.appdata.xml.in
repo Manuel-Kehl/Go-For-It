@@ -29,4 +29,8 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
   <url type="translate">https://translations.launchpad.net/go-for-it</url>
   <update_contact>jonathanmoerman_AT_gmail.com</update_contact>
   <translation type="gettext">@APP_ID@</translation>
+  <custom>
+    <value key="x-appcenter-color-primary">#3689e6</value>
+    <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
+  </custom>
 </component>
