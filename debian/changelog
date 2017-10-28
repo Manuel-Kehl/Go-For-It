@@ -1,0 +1,23 @@
+com.github.jmoerman.go-for-it (1.6.1) xenial; urgency=low
+
+  * Updates translations for Dutch, Brazillian Portuguese, German, Czech.
+  * Updates build requirements, the required version of Gtk+-3.0 is 3.14 since
+    1.6.0.
+
+ -- Jonathan Moerman <jonathanmoerman@gmal.com>  Sun, 15 Oct 2017 12:20:48 +0200
+
+com.github.jmoerman.go-for-it (1.6.0) xenial; urgency=medium
+
+  * Introduces basic filtering and task name wrapping. Gtk.TreeView is no longer
+    used for displaying tasks.
+
+ -- Jonathan Moerman <jonathanmoerman@gmal.com>  Mon, 02 Oct 2017 16:25:26 +0200
+
+com.github.jmoerman.go-for-it (1.5.0) trusty; urgency=low
+
+  * Introduces translation support and an option to use the dark variant of the
+    theme. 
+
+ -- Jonathan Moerman <jonathanmoerman@gmal.com>  Sun, 18 Dec 2016 15:06:00 +0100
+
+
