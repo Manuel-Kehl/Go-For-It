@@ -71,16 +71,9 @@ class Main : Gtk.Application {
         context.add_group (Gtk.get_option_group (true));
 
         string[] args = command_line.get_arguments ();
-        // Copy the pointers of the strings to a new array so references to the
-        // strings in args are not lost when context.parse is called
-        string*[] _args = new string*[args.length];
-        for (int i = 0; i < args.length; i++) {
-            _args[i] = args[i];
-        }
 
         try {
-            unowned string[] tmp = _args;
-            context.parse (ref tmp);
+            context.parse_strv (ref args);
         } catch (Error e) {
             stdout.printf ("%s: Error: %s \n", GOFI.APP_NAME, e.message);
             return 0;
