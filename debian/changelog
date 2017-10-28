@@ -1,3 +1,15 @@
+com.github.jmoerman.go-for-it (1.6.2) xenial; urgency=medium
+
+  * Reverse Domain Name Notation is now used for filenames (application data,
+    executables).
+  * An appstream appdata.xml metadata file has been added.
+  * The following translations are updated: Lithuanian.
+  * Fixed: Parsed command line strings would not get freed.
+  * Fixed: Changing the path to the stored todo.txt files would lead to a crash
+    when a task is marked as done.
+
+ -- Jonathan Moerman <jonathanmoerman@gmal.com>  Sat, 28 Oct 2017 15:36:00 +0200
+
 com.github.jmoerman.go-for-it (1.6.1) xenial; urgency=low
 
   * Updates translations for Dutch, Brazillian Portuguese, German, Czech.

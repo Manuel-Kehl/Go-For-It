@@ -1,5 +1,24 @@
 # Change Log
 
+## [1.6.2](https://github.com/JMoerman/Go-For-It/tree/1.6.2) (2017-10-28)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/release_v1.6.1...1.6.2)
+
+**Implemented enhancements:**
+
+- Reverse Domain Name Notation is now used for filenames (application data, executables).
+- An appstream appdata.xml metadata file has been added.
+- The following translations are updated: Lithuanian.
+
+**Fixed bugs:**
+
+- Parsed command line strings would not get freed.
+- Changing the path to the stored todo.txt files would lead to a crash when a task is marked as done.
+
+**Merged pull requests:**
+
+- Add appdata file [\#123](https://github.com/mank319/Go-For-It/pull/123) ([AsavarTzeth](https://github.com/AsavarTzeth))
+- Add flatpak instructions and fix archlinux [\#124](https://github.com/mank319/Go-For-It/pull/124) ([AsavarTzeth](https://github.com/AsavarTzeth))
+
 ## [1.6.1](https://github.com/mank319/Go-For-It/tree/release_v1.6.1) (2017-10-15)
 [Full Changelog](https://github.com/mank319/Go-For-It/compare/release_v1.6...release_v1.6.1)
 
