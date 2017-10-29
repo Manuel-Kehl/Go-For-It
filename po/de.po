@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-28 15:15+0200\n"
+"POT-Creation-Date: 2017-10-29 12:17+0100\n"
 "PO-Revision-Date: 2017-10-04 12:52+0000\n"
 "Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -214,10 +214,10 @@ msgstr ""
 msgid "Couldn't properly import settings from %s: %s"
 msgstr ""
 
-#: ../src/Main.vala:102
+#: ../src/Main.vala:95
 msgid "Print version info and exit"
 msgstr "Versionsinformationen anzeigen und beenden"
 
-#: ../src/Main.vala:103
+#: ../src/Main.vala:96
 msgid "Show about dialog"
 msgstr "Infodialog anzeigen"

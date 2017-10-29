@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=@APP_NAME@
 GenericName=@APP_NAME@
-Comment=A stylish to-do list with built-in productivity timer.
+_Comment=@RELEASE_NAME@
 Categories=GTK;Utility;
 Exec=@EXEC_NAME@
 Icon=@ICON_NAME@
@@ -9,8 +9,8 @@ Terminal=false
 Type=Application
 StartupWMClass=@EXEC_NAME@
 X-GNOME-Gettext-Domain=@GETTEXT_PACKAGE@
-Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
-X-GNOME-Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
+_Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
+_X-GNOME-Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
 Actions=AboutDialog;
 
 [Desktop Action AboutDialog]

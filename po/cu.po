@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-28 15:05+0200\n"
+"POT-Creation-Date: 2017-10-29 12:17+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -200,10 +200,10 @@ msgstr ""
 msgid "Couldn't properly import settings from %s: %s"
 msgstr ""
 
-#: ../src/Main.vala:102
+#: ../src/Main.vala:95
 msgid "Print version info and exit"
 msgstr ""
 
-#: ../src/Main.vala:103
+#: ../src/Main.vala:96
 msgid "Show about dialog"
 msgstr ""

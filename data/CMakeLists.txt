@@ -1,5 +1,8 @@
-configure_file(go-for-it.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.desktop)
-configure_file(go-for-it.appdata.xml.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.appdata.xml)
+include (Translations)
+configure_file(go-for-it.desktop.in.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.desktop.in)
+configure_file_translation(${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.desktop ${CMAKE_SOURCE_DIR}/po/)
+configure_file(go-for-it.appdata.xml.in.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.appdata.xml.in)
+configure_file_translation(${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.appdata.xml.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.appdata.xml ${CMAKE_SOURCE_DIR}/po/)
 
 # install .desktop file so the Applications menu will display it
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.desktop DESTINATION ${DATADIR}/applications/)
