@@ -189,7 +189,7 @@ class MainWindow : Gtk.ApplicationWindow {
         // ToolButons and their corresponding images
         var menu_img = GOFI.Utils.load_image_fallback (
             Gtk.IconSize.LARGE_TOOLBAR, "open-menu", "open-menu-symbolic",
-            GOFI.APP_SYSTEM_NAME + "-open-menu-fallback");
+            GOFI.ICON_NAME + "-open-menu-fallback");
         menu_btn = new Gtk.ToggleToolButton ();
         // Headerbar Items
         menu_btn.icon_widget = menu_img;
@@ -395,7 +395,7 @@ class MainWindow : Gtk.ApplicationWindow {
         // Scan potential data dirs for the corresponding css file
         foreach (var dir in Environment.get_system_data_dirs ()) {
             // The path where the file is to be located
-            var path = Path.build_filename (dir, GOFI.APP_SYSTEM_NAME,
+            var path = Path.build_filename (dir, GOFI.APP_ID,
                 "style", stylesheet);
             // Only proceed, if file has been found
             if (FileUtils.test (path, FileTest.EXISTS)) {

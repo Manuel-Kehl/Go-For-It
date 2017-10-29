@@ -40,7 +40,7 @@ public class AboutDialog : Gtk.AboutDialog {
      */
     private void setup_content () {
         program_name = "Go For It!";
-        logo_icon_name = GOFI.APP_SYSTEM_NAME;
+        logo_icon_name = GOFI.ICON_NAME;
 
         comments = _("A stylish to-do list with built-in productivity timer.");
         website = GOFI.PROJECT_WEBSITE;

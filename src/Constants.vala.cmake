@@ -25,6 +25,7 @@ namespace GOFI {
     const string APP_SYSTEM_NAME = "@EXEC_NAME@";
     const string APP_ID = "@APP_ID@";
     const string APP_VERSION = "@VERSION@";
+    const string ICON_NAME = "@ICON_NAME@";
     const string FILE_CONF = "@FILE_CONF@";
     const string PROJECT_WEBSITE = "@PROJECT_WEBSITE@";
     const string PROJECT_REPO = "@PROJECT_REPO@";
