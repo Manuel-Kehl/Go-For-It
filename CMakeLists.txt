@@ -15,7 +15,7 @@ set (FILE_CONF ${PROJECT_NAME}.conf)
 
 set (EXEC_NAME ${APP_ID})
 set (APP_NAME "Go For It!")
-set (RELEASE_NAME "A stylish to-do list with built-in productivity timer.")
+set (RELEASE_NAME "A stylish to-do list with built-in productivity timer")
 set (VERSION "1.6.2")
 set (VERSION_INFO "Release")
 set (ICON_NAME ${APP_ID})
