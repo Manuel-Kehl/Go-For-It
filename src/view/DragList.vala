@@ -166,11 +166,18 @@ public class DragList : Gtk.Bin {
         if (model == null) {
             assert (create_widget_func == null);
         }
+
+        remove_model ();
         listbox.@foreach((widget) => {
             remove(widget);
         });
+
         this.model = model;
         this.create_widget_func = (owned) create_widget_func;
+
+        if (this.model == null) {
+            return;
+        }
 
         for (uint i = 0; i < model.get_n_items (); i++) {
             var row = this.create_widget_func(model.get_item (i));
@@ -179,6 +186,13 @@ public class DragList : Gtk.Bin {
 
         model.items_changed.connect (on_model_items_changed);
         model.item_moved.connect (on_model_item_moved);
+    }
+
+    private void remove_model () {
+        if (this.model != null) {
+            this.model.items_changed.disconnect (on_model_items_changed);
+            this.model.item_moved.disconnect (on_model_item_moved);
+        }
     }
 
     private void on_model_items_changed (uint index, uint removed, uint added) {
