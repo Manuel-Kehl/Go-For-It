@@ -183,20 +183,10 @@ public class SettingsManager {
     }
 
     private string header_bar_default () {
-        string desktop = Environment.get_variable ("DESKTOP_SESSION");
-
-        switch (desktop) {
-            case "ubuntu":
-                return "false";
-            case "kde":
-                return "false";
-            case "plasma":
-                return "false";
-            case "": // probably a custom DE or MS Windows
-                return "false";
-            default:
-                return "true";
+        if (GOFI.Utils.desktop_hb_status.use_feature (true)) {
+            return "true";
         }
+        return "false";
     }
 
     /**

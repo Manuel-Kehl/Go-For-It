@@ -205,7 +205,9 @@ public class SettingsDialog : Gtk.Dialog {
         add_section (grid, appearance_sect_lbl, ref row);
         add_option (grid, dark_theme_lbl, dark_theme_switch, ref row);
 
-        setup_csd_settings_widgets (main_layout, ref row);
+        if (GOFI.Utils.desktop_hb_status.config_useful ()) {
+            setup_csd_settings_widgets (main_layout, ref row);
+        }
     }
 
     private void setup_csd_settings_widgets (Gtk.Grid grid, ref int row) {

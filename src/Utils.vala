@@ -20,6 +20,45 @@
  * related to "Go For It!".
  */
 namespace GOFI {
+
+    /**
+     * Used to pass information about if a feature is standard on the desktop 
+     * of the user.
+     */
+    public enum FeatureStatus {
+        UNKNOWN,
+        ALWAYS,
+        COMMON,
+        UNCOMMON,
+        NEVER;
+
+        public bool use_feature (bool _default) {
+            switch (this) {
+                case ALWAYS:
+                    return true;
+                case COMMON:
+                    return true;
+                case UNCOMMON:
+                    return false;
+                case NEVER:
+                    return false;
+                default:
+                    return _default;
+            }
+        }
+        
+        public bool config_useful () {
+            switch (this) {
+                case ALWAYS:
+                    return false;
+                case NEVER:
+                    return false;
+                default:
+                    return true;
+            }
+        }
+    }
+    
     /**
      * A collection of static utility functions.
      */
@@ -52,6 +91,41 @@ namespace GOFI {
             owned get {
                 string user_config_dir = Environment.get_user_config_dir ();
                 return Path.build_filename (user_config_dir, FILE_CONF);
+            }
+        }
+
+        /**
+         * Returns whether headerbars are used by native apps on the desktop 
+         * environment of the user.
+         */
+        public static FeatureStatus desktop_hb_status {
+            get {
+                string desktop = Environment.get_variable ("DESKTOP_SESSION");
+
+                switch (desktop) {
+                    case "pantheon":
+                        return FeatureStatus.ALWAYS;
+                    case "gnome":
+                        return FeatureStatus.ALWAYS;
+                    case "budgie":
+                        return FeatureStatus.ALWAYS;
+                    case "ubuntu":
+                        return FeatureStatus.UNCOMMON;
+                    case "kde":
+                        return FeatureStatus.UNCOMMON;
+                    case "plasma":
+                        return FeatureStatus.UNCOMMON;
+                    case "xfce4":
+                        return FeatureStatus.UNCOMMON;
+                    case "cinnamon":
+                        return FeatureStatus.UNCOMMON;
+                    case "mate":
+                        return FeatureStatus.UNCOMMON;
+                    case "": // probably a custom DE or MS Windows
+                        return FeatureStatus.UNCOMMON;
+                    default:
+                        return FeatureStatus.UNKNOWN;
+                }
             }
         }
 
