@@ -346,12 +346,12 @@ class MainWindow : Gtk.ApplicationWindow {
                     _("Take a Break"),
                     _("Relax and stop thinking about your current task for a while")
                     + " :-)",
-                    GOFI.APP_SYSTEM_NAME);
+                    GOFI.EXEC_NAME);
             } else {
                 notification = new Notify.Notification (
                     _("The Break is Over"),
                     _("Your next task is") + ": " + task.title,
-                    GOFI.APP_SYSTEM_NAME);
+                    GOFI.EXEC_NAME);
             }
 
             try {
@@ -368,7 +368,7 @@ class MainWindow : Gtk.ApplicationWindow {
         int64 secs = remaining_time.to_unix ();
         Notify.Notification notification = new Notify.Notification (
             _("Prepare for your break"),
-            _("You have %s seconds left").printf (secs.to_string ()), GOFI.APP_SYSTEM_NAME);
+            _("You have %s seconds left").printf (secs.to_string ()), GOFI.EXEC_NAME);
         try {
             notification.show ();
         } catch (GLib.Error err){
@@ -395,7 +395,7 @@ class MainWindow : Gtk.ApplicationWindow {
         // Scan potential data dirs for the corresponding css file
         foreach (var dir in Environment.get_system_data_dirs ()) {
             // The path where the file is to be located
-            var path = Path.build_filename (dir, GOFI.APP_ID,
+            var path = Path.build_filename (dir, GOFI.APP_SYSTEM_NAME,
                 "style", stylesheet);
             // Only proceed, if file has been found
             if (FileUtils.test (path, FileTest.EXISTS)) {

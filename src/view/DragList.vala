@@ -167,7 +167,7 @@ public class DragList : Gtk.Bin {
             assert (create_widget_func == null);
         }
 
-        remove_model ();
+        disconnect_model_signals ();
         listbox.@foreach((widget) => {
             remove(widget);
         });
@@ -188,7 +188,7 @@ public class DragList : Gtk.Bin {
         model.item_moved.connect (on_model_item_moved);
     }
 
-    private void remove_model () {
+    private void disconnect_model_signals () {
         if (this.model != null) {
             this.model.items_changed.disconnect (on_model_items_changed);
             this.model.item_moved.disconnect (on_model_item_moved);

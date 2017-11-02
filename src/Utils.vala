@@ -31,7 +31,7 @@ namespace GOFI {
         public static string config_dir {
             owned get {
                 string user_config_dir = Environment.get_user_config_dir ();
-                return Path.build_filename (user_config_dir, APP_ID);
+                return Path.build_filename (user_config_dir, APP_SYSTEM_NAME);
             }
         }
 

@@ -67,7 +67,7 @@ class Main : Gtk.Application {
 
     private int _command_line (ApplicationCommandLine command_line) {
         var context = new OptionContext (GOFI.APP_NAME);
-        context.add_main_entries (entries, GOFI.APP_SYSTEM_NAME);
+        context.add_main_entries (entries, GOFI.EXEC_NAME);
         context.add_group (Gtk.get_option_group (true));
 
         string[] args = command_line.get_arguments ();
