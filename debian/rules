@@ -13,4 +13,4 @@
 	dh $@ 
 
 override_dh_auto_configure:
-	dh_auto_configure -- -DCMAKE_INSTALL_PREFIX=/usr -DNO_CONTRIBUTE_DIALOG:BOOL="1" -DSHOW_ABOUT:BOOL="0"
+	dh_auto_configure -- -DNO_CONTRIBUTE_DIALOG:BOOL="1" -DSHOW_ABOUT:BOOL="0"
