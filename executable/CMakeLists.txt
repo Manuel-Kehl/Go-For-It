@@ -7,10 +7,8 @@ vala_precompile(VALA_C ${EXEC_NAME}
 PACKAGES
     gtk+-3.0
     libnotify
-    ${GRANITE_PACKAGES}
 OPTIONS
     ${VALAC_OPTIONS}
-    ${GRANITE_OPTIONS}
 CUSTOM_VAPIS
     ${CMAKE_BINARY_DIR}/${LIBRARY_PATH}/${LIBNAME}_internal.vapi
 )

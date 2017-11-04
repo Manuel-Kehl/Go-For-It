@@ -18,11 +18,7 @@
 /**
  * A dialog for displaying information about this application.
  */
-#if HAVE_GRANITE
-public class AboutDialog : Granite.Widgets.AboutDialog {
-#else
 public class AboutDialog : Gtk.AboutDialog {
-#endif
     public AboutDialog (Gtk.Window? parent = null) {
         this.set_transient_for (parent);
         /* Initalization */
@@ -48,23 +44,11 @@ public class AboutDialog : Gtk.AboutDialog {
 
         license_type = Gtk.License.GPL_3_0;
 
-#if HAVE_GRANITE
-        authors = {
-            "Jonathan Moerman",
-            "Manuel Kehl"
-        };
-        artists = { "Micah Ilbery" };
-        
-        bug = "https://github.com/JMoerman/Go-For-It/issues";
-        help = "https://github.com/JMoerman/Go-For-It";
-        translate = "https://translations.launchpad.net/go-for-it";
-#else
         authors = {
             "Jonathan Moerman",
             "<a href='http://manuel-kehl.de'>Manuel Kehl</a>"
         };
         artists = { "<a href='http://traumad91.deviantart.com'>Micah Ilbery</a>" };
-#endif
     }
 
     private void response_handler (int response) {

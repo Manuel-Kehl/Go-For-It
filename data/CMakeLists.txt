@@ -1,4 +1,17 @@
 include (Translations)
+
+if (SHOW_ABOUT)
+set (ABOUT_ACTION
+"Actions=AboutDialog;
+
+[Desktop Action AboutDialog]
+Name=About ${APP_NAME}
+Exec=${EXEC_NAME} --about"
+)
+else ()
+
+endif ()
+
 configure_file(go-for-it.desktop.in.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.desktop.in)
 configure_file_translation(${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.desktop ${CMAKE_SOURCE_DIR}/po/)
 configure_file(go-for-it.appdata.xml.in.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.appdata.xml.in)
@@ -28,5 +41,5 @@ if (ICON_UPDATE)
 install(
     CODE "message (STATUS \"Updating icon cache in ${SYSTEM_DEFAULT_THEME}\")"
     CODE "execute_process (COMMAND gtk-update-icon-cache -t -f ${SYSTEM_DEFAULT_THEME})"
-    )
+)
 endif (ICON_UPDATE)

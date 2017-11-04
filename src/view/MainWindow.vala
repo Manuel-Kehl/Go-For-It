@@ -40,8 +40,6 @@ class MainWindow : Gtk.ApplicationWindow {
     private Gtk.Menu app_menu;
     private Gtk.MenuItem config_item;
     private Gtk.MenuItem clear_done_item;
-    private Gtk.MenuItem contribute_item;
-    private Gtk.MenuItem about_item;
     /**
      * Used to determine if a notification should be sent.
      */
@@ -290,8 +288,6 @@ class MainWindow : Gtk.ApplicationWindow {
         app_menu = new Gtk.Menu ();
         config_item = new Gtk.MenuItem.with_label (_("Settings"));
         clear_done_item = new Gtk.MenuItem.with_label (_("Clear Done List"));
-        contribute_item = new Gtk.MenuItem.with_label (_("Contribute / Donate"));
-        about_item = new Gtk.MenuItem.with_label (_("About"));
 
         /* Signal and Action Handling */
         // Untoggle menu button, when menu is hidden
@@ -306,20 +302,26 @@ class MainWindow : Gtk.ApplicationWindow {
         clear_done_item.activate.connect ((e) => {
             task_manager.clear_done_store ();
         });
-        contribute_item.activate.connect ((e) => {
-            var dialog = new ContributeDialog (this);
-            dialog.show ();
-        });
-        about_item.activate.connect ((e) => {
-            var app = get_application () as Main;
-            app.show_about (this);
-        });
 
         /* Add Items to Menu */
         app_menu.add (config_item);
         app_menu.add (clear_done_item);
+#if !NO_CONTRIBUTE_DIALOG
+        var contribute_item = new Gtk.MenuItem.with_label (_("Contribute / Donate"));
+        contribute_item.activate.connect ((e) => {
+            var dialog = new ContributeDialog (this);
+            dialog.show ();
+        });
         app_menu.add (contribute_item);
+#endif
+#if SHOW_ABOUT
+        var about_item = new Gtk.MenuItem.with_label (_("About"));
+        about_item.activate.connect ((e) => {
+            var app = get_application () as Main;
+            app.show_about (this);
+        });
         app_menu.add (about_item);
+#endif
 
         /* And make all children visible */
         foreach (var child in app_menu.get_children ()) {

@@ -46,7 +46,7 @@ namespace GOFI {
                     return _default;
             }
         }
-        
+
         public bool config_useful () {
             switch (this) {
                 case ALWAYS:
@@ -58,7 +58,7 @@ namespace GOFI {
             }
         }
     }
-    
+
     /**
      * A collection of static utility functions.
      */
@@ -84,7 +84,7 @@ namespace GOFI {
         }
 
         /**
-         * The path of the config file prior to being installed in its own 
+         * The path of the config file prior to being installed in its own
          * directory
          */
         public static string old_config_file {

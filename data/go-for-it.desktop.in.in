@@ -11,8 +11,4 @@ StartupWMClass=@EXEC_NAME@
 X-GNOME-Gettext-Domain=@GETTEXT_PACKAGE@
 _Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
 _X-GNOME-Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
-Actions=AboutDialog;
-
-[Desktop Action AboutDialog]
-Name=About @APP_NAME@
-Exec=@EXEC_NAME@ --about
+@ABOUT_ACTION@

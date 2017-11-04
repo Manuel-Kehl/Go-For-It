@@ -50,15 +50,6 @@ add_definitions(${DEPS_CFLAGS})
 link_directories(${DEPS_LIBRARY_DIRS})
 include_directories(${CMAKE_BINARY_DIR}/src)
 
-pkg_check_modules (GRANITE granite>=0.3.1)
-if (GRANITE_FOUND)
-    message ("--   Building with granite support!")
-    set (GRANITE_OPTIONS -D HAVE_GRANITE)
-    set (GRANITE_PACKAGES granite)
-    add_definitions(${GRANITE_CFLAGS})
-    link_directories(${GRANITE_LIBRARY_DIRS})
-endif ()
-
 # disable c compiler warnings
 add_definitions(-w)
 add_definitions(-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
@@ -71,6 +62,10 @@ include(ValaVersion)
 ensure_vala_version("0.26" MINIMUM)
 
 option (BUILD_TESTS "Build a unit test executable." OFF)
+
+# Options for when information like this is best shown elsewere
+option (NO_CONTRIBUTE_DIALOG "Do not include the contribute dialog." OFF)
+option (SHOW_ABOUT "Show the about action in the .desktop and menu." ON)
 
 add_subdirectory (src)
 add_subdirectory (executable)
