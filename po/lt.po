@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-29 12:17+0100\n"
-"PO-Revision-Date: 2017-10-21 08:54+0000\n"
+"POT-Creation-Date: 2017-10-29 12:31+0100\n"
+"PO-Revision-Date: 2017-11-03 22:53+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-10-22 05:55+0000\n"
-"X-Generator: Launchpad (build 18484)\n"
+"X-Launchpad-Export-Date: 2017-11-04 05:39+0000\n"
+"X-Generator: Launchpad (build 18493)\n"
+"Language: \n"
 
 #: ../src/TaskManager.vala:51
 msgid ""
@@ -169,7 +169,7 @@ msgstr ""
 
 #: ../src/view/AboutDialog.vala:45
 msgid "A stylish to-do list with built-in productivity timer."
-msgstr "Stilingas užduočių sąrašas su įtaisytu laikmačiu."
+msgstr "Stilingas užduočių sąrašas su įtaisytu produktyvumo laikmačiu."
 
 #: ../src/view/SettingsDialog.vala:45
 msgid "Close"
@@ -213,11 +213,11 @@ msgstr "Naudoti antraštės juostą"
 
 #: ../src/SettingsManager.vala:165
 msgid "Couldn't create directory: %s"
-msgstr ""
+msgstr "Nepavyko sukurti katalogo: %s"
 
 #: ../src/SettingsManager.vala:307
 msgid "Couldn't properly import settings from %s: %s"
-msgstr ""
+msgstr "Nepavyko tinkamai importuoti nustatymus iš %s: %s"
 
 #: ../src/Main.vala:95
 msgid "Print version info and exit"
