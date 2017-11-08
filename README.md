@@ -76,6 +76,7 @@ To build *Go For It!* you need to have the following software installed:
     
     valac >= 0.26
     cmake >= 2.8.9
+    intltool
     gtk+-3.0 (>= 3.14)
     glib-2.0
     libnotify

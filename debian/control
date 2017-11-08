@@ -4,6 +4,7 @@ Priority: extra
 Maintainer: Jonathan Moerman <jonathanmoerman@gmail.com>
 Build-Depends: cmake (>= 2.8.9),
                debhelper (>= 9.0.0),
+               intltool,
                valac-0.26 | valac (>= 0.26),
                libgtk-3-dev (>= 3.14),
                libnotify-dev

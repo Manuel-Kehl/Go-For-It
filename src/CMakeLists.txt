@@ -9,8 +9,8 @@ if (${SHOW_ABOUT})
 endif ()
 
 # files we want to compile
-include(ValaPrecompile)
-vala_precompile(VALA_C ${LIBNAME}
+include (ValaPrecompile)
+vala_precompile (VALA_C ${LIBNAME}
     Constants.vala
     Utils.vala
     SettingsManager.vala

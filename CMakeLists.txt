@@ -38,9 +38,9 @@ set (PREFIX ${CMAKE_INSTALL_PREFIX})
 set (DOLLAR "$")
 
 # find pkgconfig to make sure dependencies are installed
-find_package(PkgConfig)
+find_package (PkgConfig)
 # check for the required dependencies
-pkg_check_modules(DEPS REQUIRED 
+pkg_check_modules (DEPS REQUIRED 
     gtk+-3.0>=3.14.0
     glib-2.0
     libnotify
@@ -50,14 +50,19 @@ add_definitions(${DEPS_CFLAGS})
 link_directories(${DEPS_LIBRARY_DIRS})
 include_directories(${CMAKE_BINARY_DIR}/src)
 
+find_program (INTLTOOL_MERGE_EXECUTABLE intltool-merge)
+if (NOT INTLTOOL_MERGE_EXECUTABLE)
+    message ( FATAL_ERROR "Couldn't find the intltool-merge executable. Please make sure intltool is installed and try again")
+endif ()
+
 # disable c compiler warnings
-add_definitions(-w)
-add_definitions(-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
+add_definitions (-w)
+add_definitions (-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
 
 # make sure we have vala
-find_package(Vala REQUIRED)
+find_package (Vala REQUIRED)
 # make sure we use vala
-include(ValaVersion)
+include (ValaVersion)
 # make sure it's the desired version of vala
 ensure_vala_version("0.26" MINIMUM)
 
