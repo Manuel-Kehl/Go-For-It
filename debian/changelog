@@ -1,3 +1,14 @@
+com.github.jmoerman.go-for-it (1.6.3) xenial; urgency=low
+
+  * The CMake script now checks if intltool-merge is present.
+  * The following translations are updated: Lithuanian, Dutch, French (new).
+  * The about dialog and contribute dialog can disabled at compile time. 
+    (Useful if that information is better shown in the appstream metadata.)
+  * The system name (name of data and executable) can now be specified at
+    compile time.
+
+ -- Jonathan Moerman <jonathanmoerman@gmal.com>  Fri, 10 Nov 2017 21:23:00 +0100
+
 com.github.jmoerman.go-for-it (1.6.2) xenial; urgency=medium
 
   * Reverse Domain Name Notation is now used for filenames (application data,

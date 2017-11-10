@@ -1,5 +1,25 @@
 # Change Log
 
+## [1.6.3](https://github.com/JMoerman/Go-For-It/tree/1.6.3) (2017-11-10)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.2...1.6.3)
+
+**Implemented enhancements:**
+
+- The CMake script now checks if intltool-merge is present.
+- The following translations are updated: Lithuanian, Dutch, French (new).
+- The about dialog and contribute dialog can disabled at compile time. (Useful if that information is better shown in the appstream metadata.)
+- The system name (name of data and executable) can now be specified at compile time.
+
+**Closed issues:**
+
+- Add an option to build a version without contribute/donation dialog [\#42](https://github.com/JMoerman/Go-For-It/issues/42)
+- Do not show about dialog in menu and .desktop when installed via store? [\#43](https://github.com/JMoerman/Go-For-It/issues/43)
+- Do not show header bar toggle when used on Pantheon/Gnome/... [\#41](https://github.com/JMoerman/Go-For-It/issues/41)
+
+**Merged pull requests:**
+
+- French translation [\#44](https://github.com/JMoerman/Go-For-It/pull/44) ([nvivant](https://github.com/nvivant))
+
 ## [1.6.2](https://github.com/JMoerman/Go-For-It/tree/1.6.2) (2017-10-28)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/release_v1.6.1...1.6.2)
 
@@ -16,8 +36,8 @@
 
 **Merged pull requests:**
 
-- Add appdata file [\#123](https://github.com/mank319/Go-For-It/pull/123) ([AsavarTzeth](https://github.com/AsavarTzeth))
-- Add flatpak instructions and fix archlinux [\#124](https://github.com/mank319/Go-For-It/pull/124) ([AsavarTzeth](https://github.com/AsavarTzeth))
+- Add appdata file [mank319/\#123](https://github.com/mank319/Go-For-It/pull/123) ([AsavarTzeth](https://github.com/AsavarTzeth))
+- Add flatpak instructions and fix archlinux [mank319/\#124](https://github.com/mank319/Go-For-It/pull/124) ([AsavarTzeth](https://github.com/AsavarTzeth))
 
 ## [1.6.1](https://github.com/mank319/Go-For-It/tree/release_v1.6.1) (2017-10-15)
 [Full Changelog](https://github.com/mank319/Go-For-It/compare/release_v1.6...release_v1.6.1)
@@ -33,7 +53,7 @@
 
 **Merged pull requests:**
 
-- Finished translation: Brazilian Portuguese [\#120](https://github.com/mank319/Go-For-It/pull/120) ([gustavohmsilva](https://github.com/gustavohmsilva))
+- Finished translation: Brazilian Portuguese [mank319/\#120](https://github.com/mank319/Go-For-It/pull/120) ([gustavohmsilva](https://github.com/gustavohmsilva))
 
 ## [1.6.0](https://github.com/mank319/Go-For-It/tree/release_v1.6) (2017-10-02)
 [Full Changelog](https://github.com/mank319/Go-For-It/compare/release_v1.5...release_v1.6)
@@ -44,17 +64,17 @@
 
 **Fixed bugs:**
 
-- Crashes on start if ~/.todo already exists and is a file [\#111](https://github.com/mank319/Go-For-It/issues/111)
-- Drag area disappears on all items if one item is too long [\#60](https://github.com/mank319/Go-For-It/issues/60)
-- _Go For It!_ doesn't build with more recent valac versions, caused part of the issues described in  [\#116](https://github.com/mank319/Go-For-It/issues/116)
+- Crashes on start if ~/.todo already exists and is a file [mank319/\#111](https://github.com/mank319/Go-For-It/issues/111)
+- Drag area disappears on all items if one item is too long [mank319/\#60](https://github.com/mank319/Go-For-It/issues/60)
+- _Go For It!_ doesn't build with more recent valac versions, caused part of the issues described in  [mank319/\#116](https://github.com/mank319/Go-For-It/issues/116)
 
 **Closed issues:**
 
-- Task name wrapping [\#65](https://github.com/mank319/Go-For-It/issues/65)
+- Task name wrapping [mank319/\#65](https://github.com/mank319/Go-For-It/issues/65)
 
 **Merged pull requests:**
 
-- Option to override icon cache update [\#117](https://github.com/mank319/Go-For-It/pull/117) ([nick87720z](https://github.com/nick87720z))
+- Option to override icon cache update [mank319/\#117](https://github.com/mank319/Go-For-It/pull/117) ([nick87720z](https://github.com/nick87720z))
 
 **Dependency changes:**
 
@@ -70,18 +90,18 @@
 
 **Fixed bugs:**
 
-- No icon on XFCE [\#67](https://github.com/mank319/Go-For-It/issues/67)
+- No icon on XFCE [mank319/\#67](https://github.com/mank319/Go-For-It/issues/67)
 
 **Closed issues:**
 
-- German Translation [\#96](https://github.com/mank319/Go-For-It/issues/96)
-- Dark theme [\#94](https://github.com/mank319/Go-For-It/issues/94)
-- Translation to Spanish [\#92](https://github.com/mank319/Go-For-It/issues/92)
-- Compiling problem [\#80](https://github.com/mank319/Go-For-It/issues/80)
+- German Translation [mank319/\#96](https://github.com/mank319/Go-For-It/issues/96)
+- Dark theme [mank319/\#94](https://github.com/mank319/Go-For-It/issues/94)
+- Translation to Spanish [mank319/\#92](https://github.com/mank319/Go-For-It/issues/92)
+- Compiling problem [mank319/\#80](https://github.com/mank319/Go-For-It/issues/80)
 
 **Merged pull requests:**
 
-- Fixes \#67 [\#97](https://github.com/mank319/Go-For-It/pull/97) ([bil-elmoussaoui](https://github.com/bil-elmoussaoui))
+- Fixes \#67 [mank319/\#97](https://github.com/mank319/Go-For-It/pull/97) ([bil-elmoussaoui](https://github.com/bil-elmoussaoui))
 
 ## [1.4.7 (re release)](https://github.com/mank319/Go-For-It/tree/release_v1.4.7) (2016-11-22)
 [Full Changelog](https://github.com/mank319/Go-For-It/compare/release_1.4.6...release_v1.4.7)
@@ -97,12 +117,12 @@ Re release of 1.4.7, the CMake install script did not install the .desktop file,
 
 **Fixed bugs:**
 
-- Active Task name is not updated with task renaming [\#88](https://github.com/mank319/Go-For-It/issues/88)
-- Bug on first run: endless loop of "support go for it" in list [\#83](https://github.com/mank319/Go-For-It/issues/83)
+- Active Task name is not updated with task renaming [mank319/\#88](https://github.com/mank319/Go-For-It/issues/88)
+- Bug on first run: endless loop of "support go for it" in list [mank319/\#83](https://github.com/mank319/Go-For-It/issues/83)
 
 **Closed issues:**
 
-- Add build dependencies to the readme [\#91](https://github.com/mank319/Go-For-It/issues/91)
-- UBUNTU 16.04 support [\#87](https://github.com/mank319/Go-For-It/issues/87)
-- PPA doesn't work in Ubuntu 16.04 [\#86](https://github.com/mank319/Go-For-It/issues/86)
-- Support Gtk \< 3.10 [\#30](https://github.com/mank319/Go-For-It/issues/30)
+- Add build dependencies to the readme [mank319/\#91](https://github.com/mank319/Go-For-It/issues/91)
+- UBUNTU 16.04 support [mank319/\#87](https://github.com/mank319/Go-For-It/issues/87)
+- PPA doesn't work in Ubuntu 16.04 [mank319/\#86](https://github.com/mank319/Go-For-It/issues/86)
+- Support Gtk \< 3.10 [mank319/\#30](https://github.com/mank319/Go-For-It/issues/30)
