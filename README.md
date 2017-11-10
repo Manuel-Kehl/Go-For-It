@@ -21,6 +21,10 @@ If you already use Todo.txt, **beware** of the fact, that *Go For It!* automatic
 
 ### GNU/Linux Packages
 
+### elementary OS
+
+[![Get it on AppCenter](https://appcenter.elementary.io/badge.svg)](https://appcenter.elementary.io/com.github.jmoerman.go-for-it)
+
 #### Ubuntu
 
 I maintain a [Launchpad PPA](https://launchpad.net/~go-for-it-team/+archive/ubuntu/go-for-it-daily) which can be used to acquire .deb packages. On Ubuntu (+ derivates) it is recommended to add the PPA for automatic updates:
