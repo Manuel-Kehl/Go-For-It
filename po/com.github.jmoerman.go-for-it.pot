@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-29 12:31+0100\n"
+"POT-Creation-Date: 2017-11-10 20:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,59 +46,59 @@ msgstr ""
 msgid "context"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:174
+#: ../src/view/MainWindow.vala:172
 msgid "To-Do"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:175 ../src/view/SettingsDialog.vala:152
+#: ../src/view/MainWindow.vala:173 ../src/view/SettingsDialog.vala:152
 msgid "Timer"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:176
+#: ../src/view/MainWindow.vala:174
 msgid "Done"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:196
+#: ../src/view/MainWindow.vala:194
 msgid "Menu"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:291 ../src/view/SettingsDialog.vala:43
+#: ../src/view/MainWindow.vala:289 ../src/view/SettingsDialog.vala:43
 msgid "Settings"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:292
+#: ../src/view/MainWindow.vala:290
 msgid "Clear Done List"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:293
+#: ../src/view/MainWindow.vala:310
 msgid "Contribute / Donate"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:294 ../src/view/AboutDialog.vala:31
+#: ../src/view/MainWindow.vala:318 ../src/view/AboutDialog.vala:27
 msgid "About"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:346 ../src/view/TimerView.vala:78
+#: ../src/view/MainWindow.vala:348 ../src/view/TimerView.vala:78
 msgid "Take a Break"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:347
+#: ../src/view/MainWindow.vala:349
 msgid "Relax and stop thinking about your current task for a while"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:352
+#: ../src/view/MainWindow.vala:354
 msgid "The Break is Over"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:353
+#: ../src/view/MainWindow.vala:355
 msgid "Your next task is"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:370
+#: ../src/view/MainWindow.vala:372
 msgid "Prepare for your break"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:371
+#: ../src/view/MainWindow.vala:373
 msgid "You have %s seconds left"
 msgstr ""
 
@@ -142,27 +142,25 @@ msgstr ""
 msgid "You have nothing to do."
 msgstr ""
 
-#: ../src/view/ContributeDialog.vala:27
+#: ../src/view/ContributeDialog.vala:28
 msgid "Contributions and Donations"
 msgstr ""
 
-#: ../src/view/ContributeDialog.vala:30
+#: ../src/view/ContributeDialog.vala:31
 msgid "Thank you for supporting"
 msgstr ""
 
-#: ../src/view/ContributeDialog.vala:31
+#: ../src/view/ContributeDialog.vala:32
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
 msgstr ""
 
-#: ../src/view/ContributeDialog.vala:35
-msgid ""
-"Donations give me a chance to dedicate more time towards implementing new "
-"features:"
+#: ../src/view/ContributeDialog.vala:36
+msgid "If you really like this app, you can buy me a drink:"
 msgstr ""
 
-#: ../src/view/AboutDialog.vala:45
+#: ../src/view/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
 msgstr ""
 
@@ -200,7 +198,7 @@ msgstr ""
 msgid "Dark theme"
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:216
+#: ../src/view/SettingsDialog.vala:218
 msgid "Use a header bar"
 msgstr ""
 
@@ -208,7 +206,7 @@ msgstr ""
 msgid "Couldn't create directory: %s"
 msgstr ""
 
-#: ../src/SettingsManager.vala:307
+#: ../src/SettingsManager.vala:297
 msgid "Couldn't properly import settings from %s: %s"
 msgstr ""
 

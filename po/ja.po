@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-29 12:17+0100\n"
+"POT-Creation-Date: 2017-11-10 20:48+0100\n"
 "PO-Revision-Date: 2017-10-02 17:28+0000\n"
 "Last-Translator: Shinichirou Yamada <yamada_strong_yamada_nice_64bit@yahoo."
 "co.jp>\n"
@@ -45,59 +45,59 @@ msgstr ""
 msgid "context"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:174
+#: ../src/view/MainWindow.vala:172
 msgid "To-Do"
 msgstr "ToDo"
 
-#: ../src/view/MainWindow.vala:175 ../src/view/SettingsDialog.vala:152
+#: ../src/view/MainWindow.vala:173 ../src/view/SettingsDialog.vala:152
 msgid "Timer"
 msgstr "タイマー"
 
-#: ../src/view/MainWindow.vala:176
+#: ../src/view/MainWindow.vala:174
 msgid "Done"
 msgstr "完了"
 
-#: ../src/view/MainWindow.vala:196
+#: ../src/view/MainWindow.vala:194
 msgid "Menu"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:291 ../src/view/SettingsDialog.vala:43
+#: ../src/view/MainWindow.vala:289 ../src/view/SettingsDialog.vala:43
 msgid "Settings"
 msgstr "設定"
 
-#: ../src/view/MainWindow.vala:292
+#: ../src/view/MainWindow.vala:290
 msgid "Clear Done List"
 msgstr "完了リストを消去"
 
-#: ../src/view/MainWindow.vala:293
+#: ../src/view/MainWindow.vala:310
 msgid "Contribute / Donate"
 msgstr "貢献／寄付"
 
-#: ../src/view/MainWindow.vala:294 ../src/view/AboutDialog.vala:31
+#: ../src/view/MainWindow.vala:318 ../src/view/AboutDialog.vala:27
 msgid "About"
 msgstr "Go For It! について"
 
-#: ../src/view/MainWindow.vala:346 ../src/view/TimerView.vala:78
+#: ../src/view/MainWindow.vala:348 ../src/view/TimerView.vala:78
 msgid "Take a Break"
 msgstr "休憩する"
 
-#: ../src/view/MainWindow.vala:347
+#: ../src/view/MainWindow.vala:349
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "しばらくの間、現在のタスクについて考えるのをやめてリラックスしましょう"
 
-#: ../src/view/MainWindow.vala:352
+#: ../src/view/MainWindow.vala:354
 msgid "The Break is Over"
 msgstr "休憩終了"
 
-#: ../src/view/MainWindow.vala:353
+#: ../src/view/MainWindow.vala:355
 msgid "Your next task is"
 msgstr "次のタスク"
 
-#: ../src/view/MainWindow.vala:370
+#: ../src/view/MainWindow.vala:372
 msgid "Prepare for your break"
 msgstr "休憩の準備をしましょう"
 
-#: ../src/view/MainWindow.vala:371
+#: ../src/view/MainWindow.vala:373
 msgid "You have %s seconds left"
 msgstr "残りあと %s 秒"
 
@@ -141,15 +141,15 @@ msgstr "リラックスしましょう"
 msgid "You have nothing to do."
 msgstr "する事がありません。"
 
-#: ../src/view/ContributeDialog.vala:27
+#: ../src/view/ContributeDialog.vala:28
 msgid "Contributions and Donations"
 msgstr "貢献と寄付"
 
-#: ../src/view/ContributeDialog.vala:30
+#: ../src/view/ContributeDialog.vala:31
 msgid "Thank you for supporting"
 msgstr "ご支援ありがとうございます"
 
-#: ../src/view/ContributeDialog.vala:31
+#: ../src/view/ContributeDialog.vala:32
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
@@ -157,13 +157,11 @@ msgstr ""
 "コード、アートワーク、翻訳、ドキュメントの寄託はプロジェクトに貢献する素晴ら"
 "しい方法です:"
 
-#: ../src/view/ContributeDialog.vala:35
-msgid ""
-"Donations give me a chance to dedicate more time towards implementing new "
-"features:"
-msgstr "寄付をしていただけると新機能の実装により時間をかける事ができます:"
+#: ../src/view/ContributeDialog.vala:36
+msgid "If you really like this app, you can buy me a drink:"
+msgstr ""
 
-#: ../src/view/AboutDialog.vala:45
+#: ../src/view/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
 msgstr "プロダクティビティータイマーを組み込んだスタイリッシュな ToDo リスト"
 
@@ -203,7 +201,7 @@ msgstr "外観"
 msgid "Dark theme"
 msgstr "Dark テーマ"
 
-#: ../src/view/SettingsDialog.vala:216
+#: ../src/view/SettingsDialog.vala:218
 msgid "Use a header bar"
 msgstr "ヘッダーバーを使用"
 
@@ -211,7 +209,7 @@ msgstr "ヘッダーバーを使用"
 msgid "Couldn't create directory: %s"
 msgstr ""
 
-#: ../src/SettingsManager.vala:307
+#: ../src/SettingsManager.vala:297
 msgid "Couldn't properly import settings from %s: %s"
 msgstr ""
 
@@ -222,3 +220,8 @@ msgstr "バージョンを表示して終了する"
 #: ../src/Main.vala:96
 msgid "Show about dialog"
 msgstr "アプリについてのダイアログを表示する"
+
+#~ msgid ""
+#~ "Donations give me a chance to dedicate more time towards implementing new "
+#~ "features:"
+#~ msgstr "寄付をしていただけると新機能の実装により時間をかける事ができます:"

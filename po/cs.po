@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-29 12:17+0100\n"
+"POT-Creation-Date: 2017-11-10 20:48+0100\n"
 "PO-Revision-Date: 2017-10-05 18:21+0000\n"
 "Last-Translator: Pavel Borecki <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,59 +47,59 @@ msgstr "projekt"
 msgid "context"
 msgstr "kontext"
 
-#: ../src/view/MainWindow.vala:174
+#: ../src/view/MainWindow.vala:172
 msgid "To-Do"
 msgstr "Udělat"
 
-#: ../src/view/MainWindow.vala:175 ../src/view/SettingsDialog.vala:152
+#: ../src/view/MainWindow.vala:173 ../src/view/SettingsDialog.vala:152
 msgid "Timer"
 msgstr "Časovač"
 
-#: ../src/view/MainWindow.vala:176
+#: ../src/view/MainWindow.vala:174
 msgid "Done"
 msgstr "Hotovo"
 
-#: ../src/view/MainWindow.vala:196
+#: ../src/view/MainWindow.vala:194
 msgid "Menu"
 msgstr "Nabídka"
 
-#: ../src/view/MainWindow.vala:291 ../src/view/SettingsDialog.vala:43
+#: ../src/view/MainWindow.vala:289 ../src/view/SettingsDialog.vala:43
 msgid "Settings"
 msgstr "Nastavení"
 
-#: ../src/view/MainWindow.vala:292
+#: ../src/view/MainWindow.vala:290
 msgid "Clear Done List"
 msgstr "Vyčistit seznam dokončených"
 
-#: ../src/view/MainWindow.vala:293
+#: ../src/view/MainWindow.vala:310
 msgid "Contribute / Donate"
 msgstr "Podílet se na / darovat"
 
-#: ../src/view/MainWindow.vala:294 ../src/view/AboutDialog.vala:31
+#: ../src/view/MainWindow.vala:318 ../src/view/AboutDialog.vala:27
 msgid "About"
 msgstr "O aplikaci"
 
-#: ../src/view/MainWindow.vala:346 ../src/view/TimerView.vala:78
+#: ../src/view/MainWindow.vala:348 ../src/view/TimerView.vala:78
 msgid "Take a Break"
 msgstr "Udělat si přestávku"
 
-#: ../src/view/MainWindow.vala:347
+#: ../src/view/MainWindow.vala:349
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "Odpočívejte a přestaňte na chvíli myslet na své úkoly"
 
-#: ../src/view/MainWindow.vala:352
+#: ../src/view/MainWindow.vala:354
 msgid "The Break is Over"
 msgstr "Přestávka skončila"
 
-#: ../src/view/MainWindow.vala:353
+#: ../src/view/MainWindow.vala:355
 msgid "Your next task is"
 msgstr "Váš další úkol je"
 
-#: ../src/view/MainWindow.vala:370
+#: ../src/view/MainWindow.vala:372
 msgid "Prepare for your break"
 msgstr "Připravte se na přestávku"
 
-#: ../src/view/MainWindow.vala:371
+#: ../src/view/MainWindow.vala:373
 msgid "You have %s seconds left"
 msgstr "Zbývá %s sekund"
 
@@ -143,15 +143,15 @@ msgstr "Odpočívání"
 msgid "You have nothing to do."
 msgstr "Nemáte co dělat."
 
-#: ../src/view/ContributeDialog.vala:27
+#: ../src/view/ContributeDialog.vala:28
 msgid "Contributions and Donations"
 msgstr "Příspěvky a dary"
 
-#: ../src/view/ContributeDialog.vala:30
+#: ../src/view/ContributeDialog.vala:31
 msgid "Thank you for supporting"
 msgstr "Děkujeme za podporu"
 
-#: ../src/view/ContributeDialog.vala:31
+#: ../src/view/ContributeDialog.vala:32
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
@@ -159,13 +159,11 @@ msgstr ""
 "Přispění programováním, uměním, překlady nebo dokumentací jsou skvělé "
 "způsoby přispívání do projektu:"
 
-#: ../src/view/ContributeDialog.vala:35
-msgid ""
-"Donations give me a chance to dedicate more time towards implementing new "
-"features:"
-msgstr "Dary vývojářům umožní věnovat více času implementaci nových funkcí:"
+#: ../src/view/ContributeDialog.vala:36
+msgid "If you really like this app, you can buy me a drink:"
+msgstr ""
 
-#: ../src/view/AboutDialog.vala:45
+#: ../src/view/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
 msgstr "Stylový seznam úkolů s vestavěným časovačem produktivity."
 
@@ -205,7 +203,7 @@ msgstr "Vzhled"
 msgid "Dark theme"
 msgstr "Tmavý vzhled"
 
-#: ../src/view/SettingsDialog.vala:216
+#: ../src/view/SettingsDialog.vala:218
 msgid "Use a header bar"
 msgstr "Použít pruh hlaviček"
 
@@ -213,7 +211,7 @@ msgstr "Použít pruh hlaviček"
 msgid "Couldn't create directory: %s"
 msgstr ""
 
-#: ../src/SettingsManager.vala:307
+#: ../src/SettingsManager.vala:297
 msgid "Couldn't properly import settings from %s: %s"
 msgstr ""
 
@@ -224,3 +222,8 @@ msgstr "Zobrazit informace o verzi a ukončit"
 #: ../src/Main.vala:96
 msgid "Show about dialog"
 msgstr "Zobrazit dialog s informacemi o aplikaci"
+
+#~ msgid ""
+#~ "Donations give me a chance to dedicate more time towards implementing new "
+#~ "features:"
+#~ msgstr "Dary vývojářům umožní věnovat více času implementaci nových funkcí:"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-29 12:17+0100\n"
+"POT-Creation-Date: 2017-11-10 20:48+0100\n"
 "PO-Revision-Date: 2017-10-04 12:52+0000\n"
 "Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,59 +42,59 @@ msgstr "Projekt"
 msgid "context"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:174
+#: ../src/view/MainWindow.vala:172
 msgid "To-Do"
 msgstr "Aufgaben"
 
-#: ../src/view/MainWindow.vala:175 ../src/view/SettingsDialog.vala:152
+#: ../src/view/MainWindow.vala:173 ../src/view/SettingsDialog.vala:152
 msgid "Timer"
 msgstr "Stoppuhr"
 
-#: ../src/view/MainWindow.vala:176
+#: ../src/view/MainWindow.vala:174
 msgid "Done"
 msgstr "Erledigt"
 
-#: ../src/view/MainWindow.vala:196
+#: ../src/view/MainWindow.vala:194
 msgid "Menu"
 msgstr "Menü"
 
-#: ../src/view/MainWindow.vala:291 ../src/view/SettingsDialog.vala:43
+#: ../src/view/MainWindow.vala:289 ../src/view/SettingsDialog.vala:43
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: ../src/view/MainWindow.vala:292
+#: ../src/view/MainWindow.vala:290
 msgid "Clear Done List"
 msgstr "Erledigtliste leeren"
 
-#: ../src/view/MainWindow.vala:293
+#: ../src/view/MainWindow.vala:310
 msgid "Contribute / Donate"
 msgstr "Mitwirken / Spenden"
 
-#: ../src/view/MainWindow.vala:294 ../src/view/AboutDialog.vala:31
+#: ../src/view/MainWindow.vala:318 ../src/view/AboutDialog.vala:27
 msgid "About"
 msgstr "Info"
 
-#: ../src/view/MainWindow.vala:346 ../src/view/TimerView.vala:78
+#: ../src/view/MainWindow.vala:348 ../src/view/TimerView.vala:78
 msgid "Take a Break"
 msgstr "Eine Pause machen"
 
-#: ../src/view/MainWindow.vala:347
+#: ../src/view/MainWindow.vala:349
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "Entspannen und eine Weile nicht über die aktuelle Aufgabe nachdenken"
 
-#: ../src/view/MainWindow.vala:352
+#: ../src/view/MainWindow.vala:354
 msgid "The Break is Over"
 msgstr "Die Pause ist vorbei"
 
-#: ../src/view/MainWindow.vala:353
+#: ../src/view/MainWindow.vala:355
 msgid "Your next task is"
 msgstr "Deine nächste Aufgabe ist"
 
-#: ../src/view/MainWindow.vala:370
+#: ../src/view/MainWindow.vala:372
 msgid "Prepare for your break"
 msgstr "Bereite dich auf deine Pause vor"
 
-#: ../src/view/MainWindow.vala:371
+#: ../src/view/MainWindow.vala:373
 msgid "You have %s seconds left"
 msgstr "Du hast noch %s Skunden"
 
@@ -138,15 +138,15 @@ msgstr "Entspann dich"
 msgid "You have nothing to do."
 msgstr "Du hast nichts zutun"
 
-#: ../src/view/ContributeDialog.vala:27
+#: ../src/view/ContributeDialog.vala:28
 msgid "Contributions and Donations"
 msgstr "Mitwirkungen und Spenden"
 
-#: ../src/view/ContributeDialog.vala:30
+#: ../src/view/ContributeDialog.vala:31
 msgid "Thank you for supporting"
 msgstr "Danke für deine Unterstützung"
 
-#: ../src/view/ContributeDialog.vala:31
+#: ../src/view/ContributeDialog.vala:32
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
@@ -154,15 +154,11 @@ msgstr ""
 "Beisteuern von Code, Grafiken, Übersetzungen oder Dokumentationen ist ein "
 "wunderbarer Weg dieses Projekt zu unterstützen:"
 
-#: ../src/view/ContributeDialog.vala:35
-msgid ""
-"Donations give me a chance to dedicate more time towards implementing new "
-"features:"
+#: ../src/view/ContributeDialog.vala:36
+msgid "If you really like this app, you can buy me a drink:"
 msgstr ""
-"Spenden geben mir die Möglichkeit mehr Zeit für das implementieren von neuen "
-"Funktionen aufzubringen:"
 
-#: ../src/view/AboutDialog.vala:45
+#: ../src/view/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
 msgstr "Eine stilvolle Aufgabenliste mit eingebautem Produktivitätsmesser."
 
@@ -202,7 +198,7 @@ msgstr "Erscheinungsbild"
 msgid "Dark theme"
 msgstr "Dunkles Thema"
 
-#: ../src/view/SettingsDialog.vala:216
+#: ../src/view/SettingsDialog.vala:218
 msgid "Use a header bar"
 msgstr "Eine Kopfzeile benutzen"
 
@@ -210,7 +206,7 @@ msgstr "Eine Kopfzeile benutzen"
 msgid "Couldn't create directory: %s"
 msgstr ""
 
-#: ../src/SettingsManager.vala:307
+#: ../src/SettingsManager.vala:297
 msgid "Couldn't properly import settings from %s: %s"
 msgstr ""
 
@@ -221,3 +217,10 @@ msgstr "Versionsinformationen anzeigen und beenden"
 #: ../src/Main.vala:96
 msgid "Show about dialog"
 msgstr "Infodialog anzeigen"
+
+#~ msgid ""
+#~ "Donations give me a chance to dedicate more time towards implementing new "
+#~ "features:"
+#~ msgstr ""
+#~ "Spenden geben mir die Möglichkeit mehr Zeit für das implementieren von "
+#~ "neuen Funktionen aufzubringen:"

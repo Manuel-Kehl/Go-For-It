@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: go-for-it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-29 12:17+0100\n"
+"POT-Creation-Date: 2017-11-10 20:48+0100\n"
 "PO-Revision-Date: 2017-10-02 17:28+0000\n"
 "Last-Translator: aberba <karabutaworld@gmail.com>\n"
 "Language-Team: Akan <ak@li.org>\n"
@@ -48,59 +48,59 @@ msgstr ""
 msgid "context"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:174
+#: ../src/view/MainWindow.vala:172
 msgid "To-Do"
 msgstr "To-Do"
 
-#: ../src/view/MainWindow.vala:175 ../src/view/SettingsDialog.vala:152
+#: ../src/view/MainWindow.vala:173 ../src/view/SettingsDialog.vala:152
 msgid "Timer"
 msgstr "Mmere Nkaee (Timer)"
 
-#: ../src/view/MainWindow.vala:176
+#: ../src/view/MainWindow.vala:174
 msgid "Done"
 msgstr "Wie"
 
-#: ../src/view/MainWindow.vala:196
+#: ../src/view/MainWindow.vala:194
 msgid "Menu"
 msgstr "Menu"
 
-#: ../src/view/MainWindow.vala:291 ../src/view/SettingsDialog.vala:43
+#: ../src/view/MainWindow.vala:289 ../src/view/SettingsDialog.vala:43
 msgid "Settings"
 msgstr "Nhyehyɛe"
 
-#: ../src/view/MainWindow.vala:292
+#: ../src/view/MainWindow.vala:290
 msgid "Clear Done List"
 msgstr "Yi nea woawie no fi mu"
 
-#: ../src/view/MainWindow.vala:293
+#: ../src/view/MainWindow.vala:310
 msgid "Contribute / Donate"
 msgstr "Boa Anaa Yi Ntoboa"
 
-#: ../src/view/MainWindow.vala:294 ../src/view/AboutDialog.vala:31
+#: ../src/view/MainWindow.vala:318 ../src/view/AboutDialog.vala:27
 msgid "About"
 msgstr "Ɛho Nsɛm"
 
-#: ../src/view/MainWindow.vala:346 ../src/view/TimerView.vala:78
+#: ../src/view/MainWindow.vala:348 ../src/view/TimerView.vala:78
 msgid "Take a Break"
 msgstr "Gye woahome"
 
-#: ../src/view/MainWindow.vala:347
+#: ../src/view/MainWindow.vala:349
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "Gye woahome na yi woadwen firi nea woreyɛ no so kakra"
 
-#: ../src/view/MainWindow.vala:352
+#: ../src/view/MainWindow.vala:354
 msgid "The Break is Over"
 msgstr "Ahomogye bere no aso"
 
-#: ../src/view/MainWindow.vala:353
+#: ../src/view/MainWindow.vala:355
 msgid "Your next task is"
 msgstr "Dwumadi a edi hɔ no ne"
 
-#: ../src/view/MainWindow.vala:370
+#: ../src/view/MainWindow.vala:372
 msgid "Prepare for your break"
 msgstr "Siesie wo ho ma ahomegye bere"
 
-#: ../src/view/MainWindow.vala:371
+#: ../src/view/MainWindow.vala:373
 msgid "You have %s seconds left"
 msgstr "Aka sima %s"
 
@@ -144,15 +144,15 @@ msgstr "Home"
 msgid "You have nothing to do."
 msgstr "Biribiara nni hɔ bio."
 
-#: ../src/view/ContributeDialog.vala:27
+#: ../src/view/ContributeDialog.vala:28
 msgid "Contributions and Donations"
 msgstr "Mmoa ne Ntoboa Ahoroɔ"
 
-#: ../src/view/ContributeDialog.vala:30
+#: ../src/view/ContributeDialog.vala:31
 msgid "Thank you for supporting"
 msgstr "Yɛda wo ase sɛ woboaee"
 
-#: ../src/view/ContributeDialog.vala:31
+#: ../src/view/ContributeDialog.vala:32
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
@@ -160,13 +160,11 @@ msgstr ""
 "Ɔkwan a wobɛtumi aboa no bi ne sɛ wo bɛ boa ama wɔayɛ dwumadi yi, wode Art "
 "bɛma, wobɛkyerɛ kasa ase anaa wobɛboa ama wɔatwerɔ dwumadi yi ho nsɛm."
 
-#: ../src/view/ContributeDialog.vala:35
-msgid ""
-"Donations give me a chance to dedicate more time towards implementing new "
-"features:"
-msgstr "Ntoboa boa ma menya bere pii yɛ dwumadi yi ho adwuma ma ɛnya nkɔanim:"
+#: ../src/view/ContributeDialog.vala:36
+msgid "If you really like this app, you can buy me a drink:"
+msgstr ""
 
-#: ../src/view/AboutDialog.vala:45
+#: ../src/view/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
 msgstr "Dwumadi a ɛboa ma woyɛ wo nnwuma ho nhyɛhyɛe de bere toto so."
 
@@ -206,7 +204,7 @@ msgstr "Anim Hwɛbea"
 msgid "Dark theme"
 msgstr "Anim tebea tuntum"
 
-#: ../src/view/SettingsDialog.vala:216
+#: ../src/view/SettingsDialog.vala:218
 msgid "Use a header bar"
 msgstr "Fa Header Bar di dwuma"
 
@@ -214,7 +212,7 @@ msgstr "Fa Header Bar di dwuma"
 msgid "Couldn't create directory: %s"
 msgstr ""
 
-#: ../src/SettingsManager.vala:307
+#: ../src/SettingsManager.vala:297
 msgid "Couldn't properly import settings from %s: %s"
 msgstr ""
 
@@ -225,3 +223,9 @@ msgstr "Printe Version nsɛm no na yi pono no fi hɔ"
 #: ../src/Main.vala:96
 msgid "Show about dialog"
 msgstr "Hwɛ ɛho nsɛm pono no"
+
+#~ msgid ""
+#~ "Donations give me a chance to dedicate more time towards implementing new "
+#~ "features:"
+#~ msgstr ""
+#~ "Ntoboa boa ma menya bere pii yɛ dwumadi yi ho adwuma ma ɛnya nkɔanim:"

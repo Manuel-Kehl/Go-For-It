@@ -33,7 +33,7 @@ public class ContributeDialog : Gtk.MessageDialog {
         + "\n\n"
         + "<a href=\"" + GOFI.PROJECT_REPO + "\">" + GOFI.PROJECT_REPO + "</a>"
         + "\n\n\n"
-        +_("Donations give me a chance to dedicate more time towards implementing new features:")
+        +_("If you really like this app, you can buy me a drink:")
         + "\n\n"
         + "<a href=\"" + GOFI.PROJECT_DONATIONS + "\">" + GOFI.PROJECT_DONATIONS
         + "</a>"
