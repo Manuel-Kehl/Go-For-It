@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-10 20:48+0100\n"
-"PO-Revision-Date: 2017-10-05 18:21+0000\n"
+"PO-Revision-Date: 2017-11-16 06:26+0000\n"
 "Last-Translator: Pavel Borecki <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-10-06 05:35+0000\n"
-"X-Generator: Launchpad (build 18474)\n"
+"X-Launchpad-Export-Date: 2017-11-17 05:54+0000\n"
+"X-Generator: Launchpad (build 18505)\n"
+"Language: \n"
 
 #: ../src/TaskManager.vala:51
 msgid ""
@@ -161,7 +161,7 @@ msgstr ""
 
 #: ../src/view/ContributeDialog.vala:36
 msgid "If you really like this app, you can buy me a drink:"
-msgstr ""
+msgstr "Pokud se vám tato aplikace opravdu líbí, můžete mi koupit pití:"
 
 #: ../src/view/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
@@ -209,11 +209,11 @@ msgstr "Použít pruh hlaviček"
 
 #: ../src/SettingsManager.vala:165
 msgid "Couldn't create directory: %s"
-msgstr ""
+msgstr "Nedaří se vytvořit složku: %s"
 
 #: ../src/SettingsManager.vala:297
 msgid "Couldn't properly import settings from %s: %s"
-msgstr ""
+msgstr "Nedaří se správně importovat nastavení z %s: %s"
 
 #: ../src/Main.vala:95
 msgid "Print version info and exit"
@@ -222,8 +222,3 @@ msgstr "Zobrazit informace o verzi a ukončit"
 #: ../src/Main.vala:96
 msgid "Show about dialog"
 msgstr "Zobrazit dialog s informacemi o aplikaci"
-
-#~ msgid ""
-#~ "Donations give me a chance to dedicate more time towards implementing new "
-#~ "features:"
-#~ msgstr "Dary vývojářům umožní věnovat více času implementaci nových funkcí:"
