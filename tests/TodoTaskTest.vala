@@ -79,7 +79,7 @@ class TodoTaskTest : TestCase {
             TodoTask test_task = new TodoTask (test_title, done);
 
             assert (test_task.title == test_title);
-            assert (test_task.done == done);
+            assert (compare_bool (test_task.done, done));
             assert (test_task.valid);
         }
     }
@@ -101,8 +101,8 @@ class TodoTaskTest : TestCase {
             task.title = new_title;
 
             assert (check_expected (1, 0, 0));
-            assert (task.title == new_title);
-            assert (task.done == done);
+            assert (compare_string (task.title, new_title));
+            assert (compare_bool (task.done, done));
             assert (task.valid);
             disconnect_task (task);
         }
@@ -119,8 +119,8 @@ class TodoTaskTest : TestCase {
             task.title = new_title;
 
             assert (check_expected (1, 0, 0));
-            assert (task.title == new_title);
-            assert (task.done == done);
+            assert (compare_string (task.title, new_title));
+            assert (compare_bool (task.done, done));
             assert (!task.valid);
             disconnect_task (task);
         }
@@ -142,8 +142,8 @@ class TodoTaskTest : TestCase {
             task.done = !done;
 
             assert (check_expected (0, 1, 1));
-            assert (task.title == test_title);
-            assert (task.done == !done);
+            assert (compare_string (task.title, test_title));
+            assert (compare_bool (task.done, !done));
             assert (task.valid);
             disconnect_task (task);
         }
@@ -159,8 +159,8 @@ class TodoTaskTest : TestCase {
             task.done = done;
 
             assert (check_expected (0, 0, 1));
-            assert (task.title == test_title);
-            assert (task.done == done);
+            assert (compare_string (task.title, test_title));
+            assert (compare_bool (task.done, done));
             assert (task.valid);
             disconnect_task (task);
         }

@@ -68,16 +68,16 @@ class TaskStoreTest : TestCase {
 
     private void on_item_moved (uint old_pos, uint new_pos) {
         assert (item_moved_expected);
-        assert (old_pos == item_moved_expected_old);
-        assert (new_pos == item_moved_expected_new);
+        assert (compare_uint (old_pos, item_moved_expected_old));
+        assert (compare_uint (new_pos, item_moved_expected_new));
         item_moved_expected = false;
     }
 
     private void on_items_changed (uint pos, uint removed, uint added) {
         assert (items_changed_expected);
-        assert (pos == items_changed_expected_position);
-        assert (removed == items_changed_expected_removed);
-        assert (added == items_changed_expected_added);
+        assert (compare_uint (pos, items_changed_expected_position));
+        assert (compare_uint (removed, items_changed_expected_removed));
+        assert (compare_uint (added, items_changed_expected_added));
         items_changed_expected = false;
     }
 
@@ -124,6 +124,10 @@ class TaskStoreTest : TestCase {
         for (uint i = 0; i < TEST_TASKS_LENGTH; i++) {
             assert (compare_tasks (i, i));
         }
+        for (uint i = TEST_TASKS_LENGTH - 1; i > 0; i--) {
+            assert (compare_tasks (i, i));
+        }
+        assert (compare_tasks (0, 0));
 
         // random-ish access
         assert (test_store.get_item (0) == test_tasks[0]);

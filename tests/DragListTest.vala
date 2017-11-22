@@ -110,7 +110,7 @@ class DragListTest : TestCase {
         row_selected_emitted = 0;
 
         add_rows ();
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         row_selected_emitted = 0;
 
         var selected_row = list.get_selected_row ();
@@ -121,10 +121,10 @@ class DragListTest : TestCase {
             list.remove_row (rows[i+1]);
         }
         assert (selected_row == list.get_selected_row ());
-        assert (row_selected_emitted == 0);
+        assert (compare_uint (row_selected_emitted, 0));
 
         list.remove_row (selected_row);
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         assert (signal_selected_row == null);
     }
 
@@ -132,7 +132,7 @@ class DragListTest : TestCase {
         row_selected_emitted = 0;
 
         add_rows ();
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         row_selected_emitted = 0;
 
         var first = list.get_row_at_index (0);
@@ -140,7 +140,7 @@ class DragListTest : TestCase {
         while (first != null) {
             DragListRow? next = list.get_row_at_index (1);
             list.remove_row (first);
-            assert (row_selected_emitted == 1);
+            assert (compare_uint (row_selected_emitted, 1));
             row_selected_emitted = 0;
             assert (signal_selected_row == next);
             assert (list.get_selected_row () == next);
@@ -152,7 +152,7 @@ class DragListTest : TestCase {
         row_selected_emitted = 0;
 
         add_rows ();
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         row_selected_emitted = 0;
 
         assert (list.get_row_at_index (0) == list.get_selected_row ());
@@ -160,14 +160,14 @@ class DragListTest : TestCase {
         assert (last != null);
         list.select_row (last);
         assert (list.get_selected_row () == last);
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         row_selected_emitted = 0;
         assert (signal_selected_row == last);
 
         for (int i = TEST_ROWS_LENGTH - 1; i >= 0; i--) {
             DragListRow? prev = list.get_row_at_index (i - 1);
             list.remove_row (last);
-            assert (row_selected_emitted == 1);
+            assert (compare_uint (row_selected_emitted, 1));
             row_selected_emitted = 0;
             assert (signal_selected_row == prev);
             last = prev;
@@ -178,19 +178,19 @@ class DragListTest : TestCase {
         row_selected_emitted = 0;
 
         add_rows ();
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         row_selected_emitted = 0;
 
         var last = list.get_row_at_index (TEST_ROWS_LENGTH - 1);
         list.select_row (last);
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         assert (signal_selected_row == last);
         row_selected_emitted = 0;
 
         for (int i = TEST_ROWS_LENGTH - 2; i >= 0; i--) {
             list.remove_row (list.get_row_at_index (i));
         }
-        assert (row_selected_emitted == 0);
+        assert (compare_uint (row_selected_emitted, 0));
     }
 
     private void test_automatic_row_selection () {
@@ -295,7 +295,7 @@ class DragListTest : TestCase {
         row_selected_emitted = 0;
 
         model.add_rows (rows, TEST_ROWS_LENGTH);
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         row_selected_emitted = 0;
 
         var selected_row = list.get_selected_row ();
@@ -306,17 +306,17 @@ class DragListTest : TestCase {
             model.remove_rows (1, 1);
         }
         assert (selected_row == list.get_selected_row ());
-        assert (row_selected_emitted == 0);
+        assert (compare_uint (row_selected_emitted, 0));
 
         model.remove_rows (0, 1);
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         assert (signal_selected_row == null);
 
         // multiple
         row_selected_emitted = 0;
 
         model.add_rows (rows, TEST_ROWS_LENGTH);
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         row_selected_emitted = 0;
 
         selected_row = list.get_selected_row ();
@@ -325,7 +325,7 @@ class DragListTest : TestCase {
 
         model.remove_rows (1, TEST_ROWS_LENGTH - 1);
         assert (selected_row == list.get_selected_row ());
-        assert (row_selected_emitted == 0);
+        assert (compare_uint (row_selected_emitted, 0));
         model.remove_rows (0, 1);
     }
 
@@ -333,7 +333,7 @@ class DragListTest : TestCase {
         row_selected_emitted = 0;
 
         model.add_rows (rows, TEST_ROWS_LENGTH);
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         row_selected_emitted = 0;
 
         var first = list.get_row_at_index (0);
@@ -341,7 +341,7 @@ class DragListTest : TestCase {
         while (first != null) {
             DragListRow? next = list.get_row_at_index (1);
             model.remove_rows (0, 1);
-            assert (row_selected_emitted == 1);
+            assert (compare_uint (row_selected_emitted, 1));
             row_selected_emitted = 0;
             assert (signal_selected_row == next);
             assert (list.get_selected_row () == next);
@@ -353,7 +353,7 @@ class DragListTest : TestCase {
         row_selected_emitted = 0;
 
         model.add_rows (rows, TEST_ROWS_LENGTH);
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         row_selected_emitted = 0;
 
         assert (list.get_row_at_index (0) == list.get_selected_row ());
@@ -361,7 +361,7 @@ class DragListTest : TestCase {
         assert (last != null);
         list.select_row (last);
         assert (list.get_selected_row () == last);
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         row_selected_emitted = 0;
         assert (signal_selected_row == last);
 
@@ -380,12 +380,12 @@ class DragListTest : TestCase {
         row_selected_emitted = 0;
 
         model.add_rows (rows, TEST_ROWS_LENGTH);
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         row_selected_emitted = 0;
 
         var last = list.get_row_at_index (TEST_ROWS_LENGTH - 1);
         list.select_row (last);
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         assert (signal_selected_row == last);
         row_selected_emitted = 0;
 
@@ -393,7 +393,7 @@ class DragListTest : TestCase {
             model.remove_rows (i, 1);
         }
         assert (list.get_selected_row () == last);
-        assert (row_selected_emitted == 0);
+        assert (compare_uint (row_selected_emitted, 0));
 
         //multiple
         model.add_rows (
@@ -403,7 +403,7 @@ class DragListTest : TestCase {
             TEST_ROWS_LENGTH - 1
         );
         model.remove_rows (0, TEST_ROWS_LENGTH - 1);
-        assert (row_selected_emitted == 0);
+        assert (compare_uint (row_selected_emitted, 0));
 
         model.remove_rows (0, 1);
     }
@@ -412,7 +412,7 @@ class DragListTest : TestCase {
         row_selected_emitted = 0;
 
         model.add_rows (rows, TEST_ROWS_LENGTH);
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         row_selected_emitted = 0;
 
         model.remove_rows (0, TEST_ROWS_LENGTH);
@@ -423,7 +423,7 @@ class DragListTest : TestCase {
         row_selected_emitted = 0;
 
         model.add_rows (rows, TEST_ROWS_LENGTH);
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         row_selected_emitted = 0;
 
         uint selected_index = TEST_ROWS_LENGTH/2;
@@ -432,13 +432,13 @@ class DragListTest : TestCase {
         row_selected_emitted = 0;
 
         model.replace (0, selected_index, generate_rows (0, selected_index));
-        assert (row_selected_emitted == 0);
+        assert (compare_uint (row_selected_emitted, 0));
         uint remove = selected_index + 1;
         model.replace (remove, TEST_ROWS_LENGTH - (remove), generate_rows (remove, remove));
-        assert (row_selected_emitted == 0);
+        assert (compare_uint (row_selected_emitted, 0));
         assert (signal_selected_row == rows[selected_index]);
         model.replace (selected_index, 1, generate_rows (selected_index, 1));
-        assert (row_selected_emitted == 1);
+        assert (compare_uint (row_selected_emitted, 1));
         assert (signal_selected_row == model.get_item (selected_index));
 
         model.remove_rows (0, TEST_ROWS_LENGTH);

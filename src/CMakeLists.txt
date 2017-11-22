@@ -15,6 +15,7 @@ vala_precompile (VALA_C ${LIBNAME}
     Utils.vala
     SettingsManager.vala
     TodoTask.vala
+    SequentialList.vala
     TaskStore.vala
     FileWatcher.vala
     TaskManager.vala
