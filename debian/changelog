@@ -1,3 +1,11 @@
+com.github.jmoerman.go-for-it (1.6.4) xenial; urgency=low
+
+  * The task list and the rest of the main application window now have the same 
+    background color.
+  * The following translations are updated: Czech, Japanese, Spanish.
+
+ -- Jonathan Moerman <jonathanmoerman@gmal.com>  Thu, 04 Jan 2018 16:50:00 +0100
+
 com.github.jmoerman.go-for-it (1.6.3) xenial; urgency=low
 
   * The CMake script now checks if intltool-merge is present.

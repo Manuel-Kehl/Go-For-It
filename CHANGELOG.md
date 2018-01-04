@@ -1,5 +1,17 @@
 # Change Log
 
+## [1.6.4](https://github.com/JMoerman/Go-For-It/tree/1.6.4) (2018-01-04)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.3...1.6.4)
+
+**Implemented enhancements:**
+
+- The task list and the rest of the main application window now have the same background color.
+- The following translations are updated: Czech, Japanese, Spanish.
+
+**Closed issues:**
+
+- Colors between listview and rest of the app window are not consistent [\#50](https://github.com/JMoerman/Go-For-It/issues/50)
+
 ## [1.6.3](https://github.com/JMoerman/Go-For-It/tree/1.6.3) (2017-11-10)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.2...1.6.3)
 

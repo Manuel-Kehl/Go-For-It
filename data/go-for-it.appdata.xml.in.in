@@ -34,4 +34,20 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
     <value key="x-appcenter-color-primary">#3689e6</value>
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
+  <releases>
+    <release version="1.6.4" date="2018-01-04">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>The task list and the rest of the main application window now have the same background color.</li>
+        </ul>
+        <p>Updated translations:</p>
+        <ul>
+          <li>Czech</li>
+          <li>Spanish</li>
+          <li>Japanese</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
 </component>
