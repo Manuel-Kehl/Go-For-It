@@ -237,7 +237,7 @@ public class DragList : Gtk.Bin {
     /**
      * Returns the currently selected row.
      */
-    public DragListRow? get_selected_row () {
+    public unowned DragListRow? get_selected_row () {
         return (DragListRow) listbox.get_selected_row ();
     }
 
@@ -702,7 +702,7 @@ public class DragListRow : Gtk.ListBoxRow {
     /**
      * Gets the DragList parent of this.
      */
-    public DragList? get_drag_list_box () {
+    public unowned DragList? get_drag_list_box () {
         Gtk.Widget? parent = this.get_parent ();
         if (parent != null) {
             return parent.get_parent () as DragList;
