@@ -126,6 +126,7 @@ class MainWindow : Gtk.ApplicationWindow {
         /* Widget Settings */
         // Main Layout
         main_layout.orientation = Gtk.Orientation.VERTICAL;
+        main_layout.get_style_context ().add_class ("main_layout");
 
         setup_stack ();
         setup_top_bar ();

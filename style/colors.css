@@ -1,5 +1,7 @@
 @define-color task_active_label_color #ababab;
 
+@define-color main_layout_background white;
+
 @define-color list_row_drag_icon_background white;
 @define-color list_row_drag_icon_border black;
 @define-color list_row_drag_icon_text black;

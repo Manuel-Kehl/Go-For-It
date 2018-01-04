@@ -20,6 +20,11 @@ label.task_active {
     font-size: 250%;
 }
 
+.main_layout,
+.main_layout list {
+    background: @main_layout_background;
+}
+
 row {
     border-top: 1px solid @list_row_border_top;
     border-bottom: 1px solid @list_row_border_bottom;
