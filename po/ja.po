@@ -3,24 +3,22 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-10 20:48+0100\n"
-"PO-Revision-Date: 2017-10-02 17:28+0000\n"
-"Last-Translator: Shinichirou Yamada <yamada_strong_yamada_nice_64bit@yahoo."
-"co.jp>\n"
+"PO-Revision-Date: 2017-12-26 13:43+0000\n"
+"Last-Translator: Shinichirou Yamada "
+"<yamada_strong_yamada_nice_64bit@yahoo.co.jp>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-10-03 05:12+0000\n"
-"X-Generator: Launchpad (build 18471)\n"
+"X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
+"X-Generator: Launchpad (build 18521)\n"
+"Language: \n"
 
 #: ../src/TaskManager.vala:51
 msgid ""
 "Go For It! won't save or load from the current todo.txt directory until it "
 "is either restarted or another location is chosen."
-msgstr ""
-"Go For It! は、再起動されるか他の場所が選択されるまで todo.txt の読み込みや保"
-"存を行いません。"
+msgstr "Go For It! は、再起動されるか他の場所が選択されるまで todo.txt の読み込みや保存を行いません。"
 
 #: ../src/TaskManager.vala:52
 msgid "Couldn't read the todo.txt file (%s):"
@@ -36,10 +34,12 @@ msgid ""
 "file or mountable location. Please change the path in the settings to a "
 "suitable directory or remove this file."
 msgstr ""
+"todo.txt "
+"ディレクトリへのパスが、ファイルなどのディレクトリ以外へのパスになっています。ファイルを削除するか、適切なディレクトリへのパスに変更してください。"
 
 #: ../src/view/TaskRow.vala:199 ../src/Filter.vala:39
 msgid "project"
-msgstr ""
+msgstr "プロジェクト"
 
 #: ../src/view/TaskRow.vala:199 ../src/Filter.vala:45
 msgid "context"
@@ -153,13 +153,11 @@ msgstr "ご支援ありがとうございます"
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
-msgstr ""
-"コード、アートワーク、翻訳、ドキュメントの寄託はプロジェクトに貢献する素晴ら"
-"しい方法です:"
+msgstr "コード、アートワーク、翻訳、ドキュメントの寄託はプロジェクトに貢献する素晴らしい方法です:"
 
 #: ../src/view/ContributeDialog.vala:36
 msgid "If you really like this app, you can buy me a drink:"
-msgstr ""
+msgstr "このアプリを気に入ったのでしたら、何か飲み物でも奢って頂けると嬉しいです:"
 
 #: ../src/view/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
@@ -171,15 +169,13 @@ msgstr "閉じる"
 
 #: ../src/view/SettingsDialog.vala:110 ../src/view/SettingsDialog.vala:115
 msgid "directory"
-msgstr "フォルダー"
+msgstr "ディレクトリ"
 
 #: ../src/view/SettingsDialog.vala:119
 msgid ""
 "If no appropriate folder was found, Go For It! defaults to creating a Todo "
 "folder in your home directory."
-msgstr ""
-"適切なフォルダーが見つからない場合、ホームフォルダーに Todo フォルダーを作成"
-"します。"
+msgstr "適切なフォルダーが見つからない場合、ホームディレクトリに Todo フォルダーを作成します。"
 
 #: ../src/view/SettingsDialog.vala:153
 msgid "Task duration (minutes)"
@@ -207,11 +203,11 @@ msgstr "ヘッダーバーを使用"
 
 #: ../src/SettingsManager.vala:165
 msgid "Couldn't create directory: %s"
-msgstr ""
+msgstr "ディレクトリを作成できませんでした: %s"
 
 #: ../src/SettingsManager.vala:297
 msgid "Couldn't properly import settings from %s: %s"
-msgstr ""
+msgstr "%s から設定を正しくインポートできませんでした: %s"
 
 #: ../src/Main.vala:95
 msgid "Print version info and exit"
@@ -220,8 +216,3 @@ msgstr "バージョンを表示して終了する"
 #: ../src/Main.vala:96
 msgid "Show about dialog"
 msgstr "アプリについてのダイアログを表示する"
-
-#~ msgid ""
-#~ "Donations give me a chance to dedicate more time towards implementing new "
-#~ "features:"
-#~ msgstr "寄付をしていただけると新機能の実装により時間をかける事ができます:"
