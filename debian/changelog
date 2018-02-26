@@ -1,3 +1,10 @@
+com.github.jmoerman.go-for-it (1.6.5) xenial; urgency=low
+
+  * Fixed: Strings containing whitespace consisting of multiple spaces were not 
+    parsed correctly, which could lead to crashes.
+
+ -- Jonathan Moerman <jonathanmoerman@gmal.com>  Mon, 26 Feb 2018 21:18:00 +0100
+
 com.github.jmoerman.go-for-it (1.6.4) xenial; urgency=low
 
   * The task list and the rest of the main application window now have the same 

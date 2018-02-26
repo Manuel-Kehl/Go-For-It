@@ -220,6 +220,10 @@ class TaskRow: DragListRow {
 
             foreach (string part in title.split (" ")) {
                 string? val = null;
+                if(part == "") {
+                    parsed += " ";
+                    continue;
+                }
 
                 for (int i = 0; val == null && i < n_delimiters; i++) {
                     val = part.split (delimiters[i], 2)[1];

@@ -1,5 +1,16 @@
 # Change Log
 
+## [1.6.5](https://github.com/JMoerman/Go-For-It/tree/1.6.5) (2018-02-26)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.4...1.6.5)
+
+**Fixed bugs:**
+
+- Strings containing whitespace consisting of multiple spaces were not parsed correctly, which could lead to crashes.
+
+**Closed issues:**
+
+- Crashes when there's a double space before project tag [mank319/\#127](https://github.com/mank319/Go-For-It/issues/127)
+
 ## [1.6.4](https://github.com/JMoerman/Go-For-It/tree/1.6.4) (2018-01-04)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.3...1.6.4)
 

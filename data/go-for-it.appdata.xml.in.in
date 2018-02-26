@@ -49,5 +49,13 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
         </ul>
       </description>
     </release>
+    <release version="1.6.5" date="2018-02-26">
+      <description>
+        <p>Bugfixes:</p>
+        <ul>
+          <li>Strings containing whitespace consisting of multiple spaces were not parsed correctly, which could lead to crashes.</li>
+        </ul>
+      </description>
+    </release>
   </releases>
 </component>
