@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.6.6](https://github.com/JMoerman/Go-For-It/tree/1.6.6) (2018-04-17)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.5...1.6.6)
+
+**Implemented enhancements:**
+
+- The following translation is updated: Lithuanian
+- Minor documentation improvements
+
 ## [1.6.5](https://github.com/JMoerman/Go-For-It/tree/1.6.5) (2018-02-26)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.4...1.6.5)
 
