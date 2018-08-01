@@ -25,6 +25,7 @@ class TaskManager {
     private SettingsManager settings;
     // The user's todo.txt related files
     public string? todo_txt_location = null;
+    public string? instance_str = null;
     private File todo_txt_dir;
     private File todo_txt;
     private File done_txt;
@@ -171,6 +172,10 @@ class TaskManager {
     private void load_task_stores (string location) {
         stdout.printf("load_task_stores\n");
         todo_txt_dir = File.new_for_commandline_arg(location);
+        if (this.todo_txt_location != null) {
+            FileInfo finfo = todo_txt_dir.query_info(FileAttribute.STANDARD_NAME, 0);
+            this.instance_str = finfo.get_name();
+        }
         todo_txt = todo_txt_dir.get_child ("todo.txt");
         done_txt = todo_txt_dir.get_child ("done.txt");
 
