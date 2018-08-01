@@ -24,6 +24,7 @@
 class TaskManager {
     private SettingsManager settings;
     // The user's todo.txt related files
+    public string? todo_txt_location = null;
     private File todo_txt_dir;
     private File todo_txt;
     private File done_txt;
@@ -57,8 +58,9 @@ class TaskManager {
     public signal void refreshing ();
     public signal void refreshed ();
 
-    public TaskManager (SettingsManager settings) {
+    public TaskManager (SettingsManager settings, string? todo_txt_location) {
         this.settings = settings;
+        this.todo_txt_location = todo_txt_location;
 
         need_to_add_tasks = settings.first_start;
 
@@ -68,7 +70,11 @@ class TaskManager {
 
         refresh_queued = false;
 
-        load_task_stores ();
+        if (this.todo_txt_location != null) {
+            load_task_stores (this.todo_txt_location);
+        } else {
+            load_task_stores (settings.todo_txt_location);
+        }
         connect_store_signals ();
 
         // Write default tasks
@@ -77,7 +83,9 @@ class TaskManager {
         }
 
         /* Signal processing */
-        settings.todo_txt_location_changed.connect (load_task_stores);
+        if (this.todo_txt_location == null) {
+            settings.todo_txt_location_changed.connect (on_todo_txt_location_changed);
+        }
     }
 
     public void set_active_task (TodoTask? task) {
@@ -156,9 +164,13 @@ class TaskManager {
         done_store.task_became_invalid.connect (remove_invalid);
     }
 
-    private void load_task_stores () {
+    private void on_todo_txt_location_changed () {
+        load_task_stores (settings.todo_txt_location);
+    }
+
+    private void load_task_stores (string location) {
         stdout.printf("load_task_stores\n");
-        todo_txt_dir = File.new_for_path(settings.todo_txt_location);
+        todo_txt_dir = File.new_for_commandline_arg(location);
         todo_txt = todo_txt_dir.get_child ("todo.txt");
         done_txt = todo_txt_dir.get_child ("done.txt");
 

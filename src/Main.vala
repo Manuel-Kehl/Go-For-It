@@ -25,6 +25,7 @@ class Main : Gtk.Application {
     private TaskTimer task_timer;
     private MainWindow win;
 
+    private static string? todo_txt_location = null;
     private static bool print_version = false;
     private static bool show_about_dialog = false;
     /**
@@ -43,7 +44,7 @@ class Main : Gtk.Application {
         }
 
         settings = new SettingsManager.load_from_key_file ();
-        task_manager = new TaskManager(settings);
+        task_manager = new TaskManager(settings, todo_txt_location);
         task_timer = new TaskTimer (settings);
         task_timer.active_task_done.connect ( (task) => {
              task_manager.mark_task_done (task);
@@ -92,6 +93,7 @@ class Main : Gtk.Application {
     }
 
     const OptionEntry[] entries = {
+        { "todotxt-dir", 'd', 0, OptionArg.FILENAME, out todo_txt_location, N_("Use different Todo.txt directory"), N_("path") },
         { "version", 'v', 0, OptionArg.NONE, out print_version, N_("Print version info and exit"), null },
         { "about", 'a', 0, OptionArg.NONE, out show_about_dialog, N_("Show about dialog"), null },
         { null }
