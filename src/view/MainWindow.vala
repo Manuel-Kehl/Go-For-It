@@ -107,7 +107,11 @@ class MainWindow : Gtk.ApplicationWindow {
      * Configures the window's properties.
      */
     private void setup_window () {
-        this.title = GOFI.APP_NAME;
+        if (this.task_manager.instance_str != null) {
+            this.title = this.task_manager.instance_str + " — " + GOFI.APP_NAME;
+        } else {
+            this.title = GOFI.APP_NAME;
+        }
         this.set_border_width (0);
         restore_win_geometry ();
     }
@@ -211,6 +215,12 @@ class MainWindow : Gtk.ApplicationWindow {
         // GTK Header Bar
         header_bar.set_show_close_button (true);
         header_bar.title = GOFI.APP_NAME;
+        if (this.task_manager.instance_str != null) {
+            header_bar.subtitle = this.task_manager.instance_str;
+            header_bar.has_subtitle = true;
+        } else {
+            header_bar.has_subtitle = false;
+        }
 
         // Add headerbar Buttons here
         header_bar.pack_end (menu_btn);
