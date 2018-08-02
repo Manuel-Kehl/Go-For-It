@@ -25,7 +25,6 @@ class MainWindow : Gtk.ApplicationWindow {
     private SettingsManager settings;
     private bool use_header_bar;
     private bool refreshing = false;
-    private string? instance_str = null;
 
     /* Various GTK Widgets */
     private Gtk.Grid main_layout;
@@ -58,12 +57,6 @@ class MainWindow : Gtk.ApplicationWindow {
         this.task_manager = task_manager;
         this.task_timer = task_timer;
         this.settings = settings;
-
-        if (this.task_manager.instance_str != null) {
-            this.instance_str = this.task_manager.instance_str + " — " + GOFI.APP_NAME;
-        } else {
-            this.instance_str = GOFI.APP_NAME;
-        }
 
         apply_settings ();
 
@@ -114,7 +107,11 @@ class MainWindow : Gtk.ApplicationWindow {
      * Configures the window's properties.
      */
     private void setup_window () {
-        this.title = this.instance_str;
+        if (this.task_manager.instance_str != null) {
+            this.title = this.task_manager.instance_str + " — " + GOFI.APP_NAME;
+        } else {
+            this.title = GOFI.APP_NAME;
+        }
         this.set_border_width (0);
         restore_win_geometry ();
     }
@@ -217,7 +214,13 @@ class MainWindow : Gtk.ApplicationWindow {
 
         // GTK Header Bar
         header_bar.set_show_close_button (true);
-        header_bar.title = this.instance_str;
+        header_bar.title = GOFI.APP_NAME;
+        if (this.task_manager.instance_str != null) {
+            header_bar.subtitle = this.task_manager.instance_str;
+            header_bar.has_subtitle = true;
+        } else {
+            header_bar.has_subtitle = false;
+        }
 
         // Add headerbar Buttons here
         header_bar.pack_end (menu_btn);
