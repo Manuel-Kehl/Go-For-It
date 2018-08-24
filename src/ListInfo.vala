@@ -1,4 +1,4 @@
-public interface ListInfo : Object{
+public interface TodoListInfo : Object{
     
     public string id {
         get;

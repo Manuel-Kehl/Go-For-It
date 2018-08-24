@@ -17,14 +17,14 @@
 
 class ListManager : Object, DragListModel {
     private SettingsManager settings;
-    private SequentialList list_infos;
+    private SequentialList todolist_infos;
 
     /* Signals */
     public signal void lists_changed () {
-        uint n_lists = list_infos.length;
+        uint n_lists = todolist_infos.length;
         var set_lists = new ListIdentifier[n_lists];
         for (uint i = 0; i < n_lists; i++) {
-            var info = (ListInfo) list_infos.get_item (i);
+            var info = (TodoListInfo) todolist_infos.get_item (i);
             set_lists[i] = {info.plugin, info.id};
         }
         settings.lists = set_lists;
@@ -35,58 +35,58 @@ class ListManager : Object, DragListModel {
      */
     public ListManager (SettingsManager settings) {
         this.settings = settings;
-        list_infos = new SequentialList (typeof(ListInfo));
+        todolist_infos = new SequentialList (typeof(TodoListInfo));
     }
     
-    private unowned ListInfo search_list_link (List<ListInfo> lists, string id) {
+    private unowned TodoListInfo search_list_link (List<TodoListInfo> lists, string id) {
         return txt_lists.search<string> (id, (info, _id) => {
             return strcmp(info.id, _id);
         });
     }
     
     private void populate_items () {
-        List<ListInfo> txt_lists;
-        var lists = settings.lists;
+        List<TodoListInfo> txt_lists;
+        var stored_lists = settings.lists;
         
-        foreach (ListIdentifier identifier in lists) {
+        foreach (ListIdentifier identifier in stored_lists) {
             var link = search_list_link (txt_lists, identifier.id);
             if(link != null) {
-                list_infos.append_item (link.data);
+                todolist_infos.append_item (link.data);
                 txt_lists.delete_link (link);
             }
         }
-        foreach (ListInfo info in txt_lists) {
-            list_infos.append_item (info.data);
+        foreach (TodoListInfo info in txt_lists) {
+            todolist_infos.append_item (info.data);
         }
-        items_changed (0, 0, list_infos.length);
+        items_changed (0, 0, todolist_infos.length);
     }
 
-    public void add_list_info (ListInfo list_info) {
-        list_infos.append_item (list_info);
-        items_changed (list_infos.length - 1, 0, 1);
+    public void add_list_info (TodoListInfo list_info) {
+        todolist_infos.append_item (list_info);
+        items_changed (todolist_infos.length - 1, 0, 1);
     }
 
-    public void remove_list_info (ListInfo list_info) {
-        items_changed (list_infos.remove_item (list_info), 1, 0);
+    public void remove_list_info (TodoListInfo list_info) {
+        items_changed (todolist_infos.remove_item (list_info), 1, 0);
     }
 
     public Type get_item_type () {
-        return list_infos.get_item_type ();
+        return todolist_infos.get_item_type ();
     }
 
     public Object? get_item (uint position) {
-        return list_infos.get_item (position);
+        return todolist_infos.get_item (position);
     }
 
     public uint get_n_items () {
-        return list_infos.length;
+        return todolist_infos.length;
     }
 
     public void move_item (uint old_position, uint new_position) {
         if (old_position == new_position) {
             return;
         }
-        list_infos.move_item (old_position, new_position);
+        todolist_infos.move_item (old_position, new_position);
         lists_changed ();
     }
 
