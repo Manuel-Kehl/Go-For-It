@@ -15,12 +15,17 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
+private struct ListIdentifier {
+    public string plugin;
+    public string id;
+}
+
 /**
  * A class that handles access to settings in a transparent manner.
  * Its main motivation is the option of easily replacing Glib.KeyFile with
  * another settings storage mechanism in the future.
  */
-public class SettingsManager {
+private class SettingsManager {
     private KeyFile key_file;
 
     /*
@@ -29,6 +34,7 @@ public class SettingsManager {
     private const string GROUP_TODO_TXT = "Todo.txt";
     private const string GROUP_TIMER = "Timer";
     private const string GROUP_UI = "Interface";
+    private const string GROUP_LISTS = "Lists";
 
     // Whether or not Go For It! has been started for the first time
     public bool first_start = false;
@@ -41,10 +47,6 @@ public class SettingsManager {
     /*---GROUP:Todo.txt------------------------------------------------------*/
     public string todo_txt_location {
         owned get { return get_value (GROUP_TODO_TXT, "location"); }
-        set {
-            set_value (GROUP_TODO_TXT, "location", value);
-            todo_txt_location_changed ();
-        }
     }
     /*---GROUP:Timer---------------------------------------------------------*/
     public int task_duration {
@@ -142,6 +144,46 @@ public class SettingsManager {
             use_dark_theme_changed (value);
         }
     }
+    /*---GROUP:LISTS----------------------------------------------------------*/
+    public ListIdentifier[] lists {
+        owned get {
+            string[] _lists = get_string_list(GROUP_LISTS, "lists", {});
+            int n_lists = _lists.length;
+            string[] concat_identifier;
+            
+            ListIdentifier[] identifiers = new ListIdentifier[n_lists];
+            for(int i = 0; i < n_lists; i++) {
+                concat_identifier = split_strings(_lists[i]);
+                identifiers[i] = {concat_identifier[0], concat_identifier[1]};
+            }
+            
+            return identifiers;
+        }
+        set {
+            int n_lists = value.length;
+            string[] _lists = new string[n_lists];
+            
+            for(int i = 0; i < n_lists; i++) {
+                _lists[i] = merge_strings (value[i].plugin, value[i].id);
+            }
+            
+            set_string_list(GROUP_LISTS, "lists", _lists);
+        }
+    }
+    
+    public string merge_strings (string str1, string str2) {
+        str1 = str1.replace(":\"", "\\:\"");
+        str2 = str2.replace(":\"", "\\:\"");
+        return "\"" + str1 + "\":\"" + str2 "\"";
+    }
+    
+    public string[] split_strings (string str) {
+        string[] temp = input.split("\":\"");
+        for(int i = 0; i < temp.length; i++) {
+            temp[i] = temp[i].replace("\\:\"", ":\"");
+        }
+        return temp;
+    }
 
     /* Signals */
     public signal void todo_txt_location_changed ();
@@ -221,8 +263,39 @@ public class SettingsManager {
                 key_file.set_value (group, key, value);
                 write_key_file ();
             } catch (Error e) {
-                error ("An error occured while setting the setting"
+                error ("An error occured while writing the setting"
                     +" %s.%s to %s: %s", group, key, value, e.message);
+            }
+        }
+    }
+
+    private string[] get_string_list (string group, string key, string[] default = {}) {
+        try {
+            // use key_file, if it has been assigned
+            if (key_file != null
+                && key_file.has_group (group)
+                && key_file.has_key (group, key)) {
+                    return key_file.get_string_list(group, key);
+            } else {
+                return default;
+            }
+        } catch (Error e) {
+                error ("An error occured while reading the setting"
+                    +" %s.%s: %s", group, key, e.message);
+        }
+    }
+
+    private void set_string_list(string[] string_list) {
+        if (key_file != null) {
+            try {
+                key_file.set_string_list (group, key, string_list);
+                write_key_file ();
+            } catch (Error e) {
+                error (
+                    "An error occured while writing the setting" +
+                    " %s.%s to {%s}: %s",
+                     group, key, string.joinv(", ", string_list), e.message
+                );
             }
         }
     }

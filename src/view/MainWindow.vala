@@ -32,8 +32,6 @@ class MainWindow : Gtk.ApplicationWindow {
     private Gtk.StackSwitcher activity_switcher;
     private Gtk.HeaderBar header_bar;
     private Gtk.Box switcher_box;
-    private TaskList todo_list;
-    private TaskList done_list;
     private TimerView timer_view;
     private Gtk.ToggleToolButton menu_btn;
     // Application Menu
@@ -119,8 +117,6 @@ class MainWindow : Gtk.ApplicationWindow {
         /* Instantiation of the Widgets */
         main_layout = new Gtk.Grid ();
 
-        todo_list = new TaskList (this.task_manager.todo_store, true);
-        done_list = new TaskList (this.task_manager.done_store, false);
         timer_view = new TimerView (task_timer);
 
         /* Widget Settings */
@@ -130,11 +126,6 @@ class MainWindow : Gtk.ApplicationWindow {
 
         setup_stack ();
         setup_top_bar ();
-
-        /* Action and Signal Handling */
-        todo_list.add_new_task.connect (task_manager.add_new_task);
-        todo_list.selection_changed.connect (on_selection_changed);
-        task_manager.active_task_invalid.connect (on_active_task_invalid);
 
         // Call once to refresh view on startup
         on_active_task_invalid ();
