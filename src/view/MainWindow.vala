@@ -28,13 +28,14 @@ class MainWindow : Gtk.ApplicationWindow {
 
     /* Various GTK Widgets */
     private Gtk.Grid main_layout;
-    private Gtk.Stack activity_stack;
-    private Gtk.StackSwitcher activity_switcher;
     private Gtk.HeaderBar header_bar;
-    private Gtk.Box switcher_box;
-    private TimerView timer_view;
-    private Gtk.ToggleToolButton menu_btn;
+    private Gtk.Box hb_replacement;
+    // Stack and pages
+    private Gtk.Stack top_stack;
+    private SelectionPage selection_page;
+    private TaskListPage task_page; 
     // Application Menu
+    private Gtk.ToggleToolButton menu_btn;
     private Gtk.Menu app_menu;
     private Gtk.MenuItem config_item;
     private Gtk.MenuItem clear_done_item;
@@ -117,12 +118,13 @@ class MainWindow : Gtk.ApplicationWindow {
         /* Instantiation of the Widgets */
         main_layout = new Gtk.Grid ();
 
-        timer_view = new TimerView (task_timer);
-
         /* Widget Settings */
         // Main Layout
         main_layout.orientation = Gtk.Orientation.VERTICAL;
         main_layout.get_style_context ().add_class ("main_layout");
+        
+        selection_page = new SelectionPage (list_manager);
+        task_page = new TaskListPage (task_timer);
 
         setup_stack ();
         setup_top_bar ();
@@ -130,8 +132,7 @@ class MainWindow : Gtk.ApplicationWindow {
         // Call once to refresh view on startup
         on_active_task_invalid ();
 
-        main_layout.add (switcher_box);
-        main_layout.add (activity_stack);
+        main_layout.add (top_stack);
 
         // Add main_layout to the window
         this.add (main_layout);
@@ -145,34 +146,16 @@ class MainWindow : Gtk.ApplicationWindow {
     }
 
     private void show_search () {
-        var list = activity_stack.visible_child as TaskList;
+        var list = activity_top_stack.visible_child as TaskList;
         if (list != null) {
             list.toggle_filter_bar ();
         }
     }
 
     private void setup_stack () {
-        activity_stack = new Gtk.Stack ();
-        activity_switcher = new Gtk.StackSwitcher ();
-
-        // Activity Stack + Switcher
-        activity_switcher.set_stack (activity_stack);
-        activity_switcher.halign = Gtk.Align.CENTER;
-        activity_stack.set_transition_type(
-            Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
-        // Add widgets to the activity stack
-        activity_stack.add_titled (todo_list, "todo", _("To-Do"));
-        activity_stack.add_titled (timer_view, "timer", _("Timer"));
-        activity_stack.add_titled (done_list, "done", _("Done"));
-
-        if (task_timer.running) {
-            // Otherwise no task will be displayed in the timer view
-            task_timer.update_active_task ();
-            // Otherwise it won't switch
-            timer_view.show ();
-            activity_stack.set_visible_child_name ("timer");
-        }
-        activity_switcher.margin = 5;
+        top_stack = new Gtk.Stack ();
+        top_stack.add (selection_page);
+        top_stack.add (task_page);
     }
 
     private void setup_top_bar () {
@@ -186,14 +169,24 @@ class MainWindow : Gtk.ApplicationWindow {
         menu_btn.label_widget = new Gtk.Label (_("Menu"));
         menu_btn.toggled.connect (menu_btn_toggled);
 
-        switcher_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        switcher_box.pack_start (activity_switcher, true, true);
-
         if(use_header_bar){
             add_headerbar ();
         } else {
-            switcher_box.pack_end (menu_btn, false, false);
+            add_hb_replacement ();
         }
+    }
+
+    public void add_hb_replacement () {
+//        header_bar = new Gtk.HeaderBar ();
+
+//        // GTK Header Bar
+//        header_bar.set_show_close_button (true);
+//        header_bar.title = GOFI.APP_NAME;
+
+//        // Add headerbar Buttons here
+//        header_bar.pack_end (menu_btn);
+
+//        this.set_titlebar (header_bar);
     }
 
     public void add_headerbar () {
@@ -216,9 +209,7 @@ class MainWindow : Gtk.ApplicationWindow {
             header_bar.remove (menu_btn);
             header_bar = null;
             set_titlebar (null);
-            switcher_box.pack_end (menu_btn, false, false);
         } else {
-            switcher_box.remove (menu_btn);
             add_headerbar ();
             header_bar.show ();
         }

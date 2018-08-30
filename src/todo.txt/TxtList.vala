@@ -1,4 +1,4 @@
-class TaskListSomething {
+class TxtList {
     private TaskManager task_manager;
     private TaskList todo_list;
     private TaskList done_list;
@@ -25,7 +25,7 @@ class TaskListSomething {
         public set;
     }
 
-    public TaskListSomething (string id, string path, string list_name) {
+    public TxtList (string id, string path, string list_name) {
         this.id = id;
         this.path = path;
         this.list_name = list_name;

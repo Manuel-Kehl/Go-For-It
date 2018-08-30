@@ -20,7 +20,7 @@
  * only a single time after a modification of a file, and it will only do so if
  * the etag has changed.
  */
-public class FileWatcher {
+class FileWatcher {
     private FileMonitor monitor;
     private string etag;
     private bool changed_received;

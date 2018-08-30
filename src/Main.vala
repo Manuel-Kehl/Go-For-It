@@ -23,6 +23,7 @@ class Main : Gtk.Application {
     private SettingsManager settings;
     private TaskManager task_manager;
     private TaskTimer task_timer;
+    private ListManager list_manager;
     private MainWindow win;
 
     private static bool print_version = false;

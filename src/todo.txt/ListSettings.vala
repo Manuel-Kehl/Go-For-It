@@ -1,4 +1,4 @@
-public class ListSettings {
+class ListSettings {
     
     public string id {
         get {

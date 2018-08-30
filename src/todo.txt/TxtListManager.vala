@@ -20,10 +20,10 @@
  * Its main motivation is the option of easily replacing Glib.KeyFile with
  * another settings storage mechanism in the future.
  */
-public class ListManager {
+class TxtListManager {
     private KeyFile key_file;
     private string list_id_file;
-    private List<TaskListSomething> lists;
+    private List<TxtList> lists;
     
     private string[] list_ids {
         owned get {
@@ -38,7 +38,7 @@ public class ListManager {
      * Constructs a SettingsManager object from a configuration file.
      * Reads the corresponding file and creates it, if necessary.
      */
-    public ListManager (string list_id_file) {
+    public TxtListManager (string list_id_file) {
         // Instantiate the key_file object
         key_file = new KeyFile ();
 
@@ -68,7 +68,7 @@ public class ListManager {
     }
     
     private void load_lists () {
-        lists = new List<TaskListSomething> ();
+        lists = new List<TxtList> ();
         
         foreach (string list_id in list_ids) {
             lists.append(create_settings_instance (list_id));
