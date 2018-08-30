@@ -35,22 +35,22 @@ class ListManager : Object, DragListModel {
      */
     public ListManager (SettingsManager settings) {
         this.settings = settings;
-        todolist_infos = new SequentialList (typeof(TodoListInfo));
+        todolist_infos = new SequentialList (typeof (TodoListInfo));
     }
-    
+
     private unowned TodoListInfo search_list_link (List<TodoListInfo> lists, string id) {
         return txt_lists.search<string> (id, (info, _id) => {
-            return strcmp(info.id, _id);
+            return strcmp (info.id, _id);
         });
     }
-    
+
     private void populate_items () {
         List<TodoListInfo> txt_lists;
         var stored_lists = settings.lists;
-        
+
         foreach (ListIdentifier identifier in stored_lists) {
             var link = search_list_link (txt_lists, identifier.id);
-            if(link != null) {
+            if (link != null) {
                 todolist_infos.append_item (link.data);
                 txt_lists.delete_link (link);
             }

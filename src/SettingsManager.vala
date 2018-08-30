@@ -147,40 +147,40 @@ private class SettingsManager {
     /*---GROUP:LISTS----------------------------------------------------------*/
     public ListIdentifier[] lists {
         owned get {
-            string[] _lists = get_string_list(GROUP_LISTS, "lists", {});
+            string[] _lists = get_string_list (GROUP_LISTS, "lists", {});
             int n_lists = _lists.length;
             string[] concat_identifier;
-            
+
             ListIdentifier[] identifiers = new ListIdentifier[n_lists];
-            for(int i = 0; i < n_lists; i++) {
-                concat_identifier = split_strings(_lists[i]);
+            for (int i = 0; i < n_lists; i++) {
+                concat_identifier = split_strings (_lists[i]);
                 identifiers[i] = {concat_identifier[0], concat_identifier[1]};
             }
-            
+
             return identifiers;
         }
         set {
             int n_lists = value.length;
             string[] _lists = new string[n_lists];
-            
-            for(int i = 0; i < n_lists; i++) {
+
+            for (int i = 0; i < n_lists; i++) {
                 _lists[i] = merge_strings (value[i].plugin, value[i].id);
             }
-            
-            set_string_list(GROUP_LISTS, "lists", _lists);
+
+            set_string_list (GROUP_LISTS, "lists", _lists);
         }
     }
-    
+
     public string merge_strings (string str1, string str2) {
-        str1 = str1.replace(":\"", "\\:\"");
-        str2 = str2.replace(":\"", "\\:\"");
+        str1 = str1.replace (":\"", "\\:\"");
+        str2 = str2.replace (":\"", "\\:\"");
         return "\"" + str1 + "\":\"" + str2 "\"";
     }
-    
+
     public string[] split_strings (string str) {
-        string[] temp = input.split("\":\"");
-        for(int i = 0; i < temp.length; i++) {
-            temp[i] = temp[i].replace("\\:\"", ":\"");
+        string[] temp = input.split ("\":\"");
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = temp[i].replace ("\\:\"", ":\"");
         }
         return temp;
     }
@@ -218,7 +218,7 @@ private class SettingsManager {
                 key_file.load_from_file (GOFI.Utils.config_file,
                    KeyFileFlags.KEEP_COMMENTS | KeyFileFlags.KEEP_TRANSLATIONS);
             } catch (Error e) {
-                stderr.printf("Reading %s failed", GOFI.Utils.config_file);
+                stderr.printf ("Reading %s failed", GOFI.Utils.config_file);
                 error ("%s", e.message);
             }
         }
@@ -242,7 +242,7 @@ private class SettingsManager {
             if (key_file != null
                 && key_file.has_group (group)
                 && key_file.has_key (group, key)) {
-                    return key_file.get_value(group, key);
+                    return key_file.get_value (group, key);
             } else {
                 return default;
             }
@@ -275,7 +275,7 @@ private class SettingsManager {
             if (key_file != null
                 && key_file.has_group (group)
                 && key_file.has_key (group, key)) {
-                    return key_file.get_string_list(group, key);
+                    return key_file.get_string_list (group, key);
             } else {
                 return default;
             }
@@ -285,7 +285,7 @@ private class SettingsManager {
         }
     }
 
-    private void set_string_list(string[] string_list) {
+    private void set_string_list (string[] string_list) {
         if (key_file != null) {
             try {
                 key_file.set_string_list (group, key, string_list);
@@ -294,7 +294,7 @@ private class SettingsManager {
                 error (
                     "An error occured while writing the setting" +
                     " %s.%s to {%s}: %s",
-                     group, key, string.joinv(", ", string_list), e.message
+                     group, key, string.joinv (", ", string_list), e.message
                 );
             }
         }
@@ -304,7 +304,7 @@ private class SettingsManager {
      * Function made for compability with older versions of GLib.
      */
     private void write_key_file () throws Error {
-        GLib.FileUtils.set_contents (GOFI.Utils.config_file, key_file.to_data());
+        GLib.FileUtils.set_contents (GOFI.Utils.config_file, key_file.to_data ());
     }
 
     /**
@@ -347,7 +347,7 @@ private class SettingsManager {
             old_file.load_from_file (GOFI.Utils.old_config_file,
                KeyFileFlags.KEEP_COMMENTS | KeyFileFlags.KEEP_TRANSLATIONS);
         } catch (Error e) {
-            stderr.printf("Reading %s failed", GOFI.Utils.old_config_file);
+            stderr.printf ("Reading %s failed", GOFI.Utils.old_config_file);
             warning ("%s", e.message);
             return false;
         }
@@ -381,7 +381,7 @@ private class SettingsManager {
         }
         foreach (string key in keys) {
             if (old_file.has_key (group, key)) {
-                key_file.set_value (group, key, old_file.get_value(group, key));
+                key_file.set_value (group, key, old_file.get_value (group, key));
             }
         }
     }

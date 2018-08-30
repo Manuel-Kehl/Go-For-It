@@ -22,7 +22,7 @@
 namespace GOFI {
 
     /**
-     * Used to pass information about if a feature is standard on the desktop 
+     * Used to pass information about if a feature is standard on the desktop
      * of the user.
      */
     public enum FeatureStatus {
@@ -95,7 +95,7 @@ namespace GOFI {
         }
 
         /**
-         * Returns whether headerbars are used by native apps on the desktop 
+         * Returns whether headerbars are used by native apps on the desktop
          * environment of the user.
          */
         public static FeatureStatus desktop_hb_status {
@@ -143,9 +143,9 @@ namespace GOFI {
             }
 
             // Iterate through the list of fallbacks, if icon_name was not found
-            var fallbacks = va_list();
+            var fallbacks = va_list ();
             while (true) {
-                string? fallback_name = fallbacks.arg();
+                string? fallback_name = fallbacks.arg ();
                 if (fallback_name == null) {
                     // end of the varargs list without a matching fallback
                     // in this case the "broken image" icon is returned

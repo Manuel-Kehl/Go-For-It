@@ -30,7 +30,7 @@ class Filter {
 
         string sentence_piece = "";
 
-        string[] parts = filter_string.split(" ");
+        string[] parts = filter_string.split (" ");
 
         foreach (string part in parts) {
             if (part == "") {
@@ -75,7 +75,7 @@ class Filter {
 
         if (index >= 0) {
             if (index > 0) {
-                if (title.get(index - 1) != ' ') {
+                if (title.get (index - 1) != ' ') {
                     return false;
                 }
             }

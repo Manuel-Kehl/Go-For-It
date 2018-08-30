@@ -124,7 +124,7 @@ class TaskManager {
      * Reloads all tasks.
      */
     public void refresh () {
-        stdout.printf("Refreshing\n");
+        stdout.printf ("Refreshing\n");
         refreshing ();
         load_tasks ();
         refreshed ();
@@ -157,8 +157,8 @@ class TaskManager {
     }
 
     private void load_task_stores () {
-        stdout.printf("load_task_stores\n");
-        todo_txt_dir = File.new_for_path(settings.todo_txt_location);
+        stdout.printf ("load_task_stores\n");
+        todo_txt_dir = File.new_for_path (settings.todo_txt_location);
         todo_txt = todo_txt_dir.get_child ("todo.txt");
         done_txt = todo_txt_dir.get_child ("done.txt");
 
@@ -194,7 +194,7 @@ class TaskManager {
 
             // Reload after 0.5 seconds so we can be relatively sure, that the
             // other application has finished, writing
-            GLib.Timeout.add(
+            GLib.Timeout.add (
                 500, auto_refresh, GLib.Priority.DEFAULT_IDLE
             );
         }
@@ -215,7 +215,7 @@ class TaskManager {
     }
 
     private void load_tasks () {
-        // read_only flag, so that "clear()" does not delete the files' content
+        // read_only flag, so that "clear ()" does not delete the files' content
         read_only = true;
         todo_store.clear ();
         done_store.clear ();
@@ -275,7 +275,7 @@ class TaskManager {
 
     private void ensure_file_exists (File file) throws Error {
         // Create file and return if it does not exist
-        if (!file.query_exists()) {
+        if (!file.query_exists ()) {
             DirUtils.create_with_parents (todo_txt_dir.get_path (), 0700);
             file.create (FileCreateFlags.NONE);
         }
@@ -296,7 +296,7 @@ class TaskManager {
     }
 
     private TodoTask? string_to_task (string _line, bool done_by_default) {
-        string line = _line.strip();
+        string line = _line.strip ();
 
         line = remove_carriage_return (line);
 
@@ -355,7 +355,7 @@ class TaskManager {
             }
         } catch (Error e) {
             io_failed = true;
-            var error_message = read_error_message.printf(file.get_path (), e.message) + error_implications;
+            var error_message = read_error_message.printf (file.get_path (), e.message) + error_implications;
             warning (error_message);
             show_error_dialog (error_message);
         }
@@ -384,7 +384,7 @@ class TaskManager {
             }
         } catch (Error e) {
             io_failed = true;
-            var error_message = write_error_message.printf(file.get_path (), e.message) + error_implications;
+            var error_message = write_error_message.printf (file.get_path (), e.message) + error_implications;
             warning (error_message);
             show_error_dialog (error_message);
         }

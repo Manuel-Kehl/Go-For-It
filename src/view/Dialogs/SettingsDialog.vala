@@ -62,7 +62,7 @@ class SettingsDialog : Gtk.Dialog {
     }
 
     private void add_section (Gtk.Grid grid, Gtk.Label label, ref int row) {
-        label.set_markup ("<b>%s</b>".printf (label.get_text()));
+        label.set_markup ("<b>%s</b>".printf (label.get_text ()));
         label.halign = Gtk.Align.START;
 
         grid.attach (label, 0, row, 2, 1);
@@ -177,7 +177,7 @@ class SettingsDialog : Gtk.Dialog {
         });
 
         /* Add widgets */
-        add_section(grid, timer_sect_lbl, ref row);
+        add_section (grid, timer_sect_lbl, ref row);
         add_option (grid, task_lbl, task_spin, ref row);
         add_option (grid, break_lbl, break_spin, ref row);
         add_option (grid, reminder_lbl, reminder_spin, ref row);

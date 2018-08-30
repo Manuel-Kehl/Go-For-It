@@ -17,8 +17,8 @@
 
 /**
  * Data structure used to implement DragListModel.
- * It keeps track of the last accessed link to provide sequential access in O(1).
- * This class doesn't use generics as valac (0.36.7) generated invalid c code 
+ * It keeps track of the last accessed link to provide sequential access in O (1).
+ * This class doesn't use generics as valac (0.36.7) generated invalid c code
  * for the code responsible for freeing the internal Queue.
  */
 class SequentialList {
@@ -90,7 +90,7 @@ class SequentialList {
     public void move_item (uint old_position, uint new_position) {
         assert (((int)old_position) >= 0 && ((int)new_position) >= 0);
         iter_link = null;
-        items.push_nth(items.pop_nth (old_position), (int) new_position);
+        items.push_nth (items.pop_nth (old_position), (int) new_position);
     }
 
     public Object? get_item (uint position) {

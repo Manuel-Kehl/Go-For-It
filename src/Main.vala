@@ -44,7 +44,7 @@ class Main : Gtk.Application {
         }
 
         settings = new SettingsManager.load_from_key_file ();
-        task_manager = new TaskManager(settings);
+        list_manager = new ListManager (settings);
         task_timer = new TaskTimer (settings);
         task_timer.active_task_done.connect ( (task) => {
              task_manager.mark_task_done (task);

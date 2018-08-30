@@ -34,7 +34,7 @@ class TaskStore : Object, DragListModel {
      */
     public TaskStore (bool done_by_default) {
         this.done_by_default = done_by_default;
-        tasks = new SequentialList (typeof(TodoTask));
+        tasks = new SequentialList (typeof (TodoTask));
     }
 
     public void add_task (TodoTask task) {

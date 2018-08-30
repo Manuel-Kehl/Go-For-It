@@ -97,7 +97,7 @@ class FileWatcher {
         } else {
             being_updated = true;
 
-            GLib.Timeout.add(
+            GLib.Timeout.add (
                 100, emit_signal_if_changed, GLib.Priority.DEFAULT_IDLE
             );
         }

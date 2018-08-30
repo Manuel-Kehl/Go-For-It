@@ -24,16 +24,16 @@ class TxtListManager {
     private KeyFile key_file;
     private string list_id_file;
     private List<TxtList> lists;
-    
+
     private string[] list_ids {
         owned get {
-            return get_string_list("Lists", "lists", {});
+            return get_string_list ("Lists", "lists", {});
         }
         set {
-            set_string_list("Lists", "lists", value);
+            set_string_list ("Lists", "lists", value);
         }
     }
-    
+
     /**
      * Constructs a SettingsManager object from a configuration file.
      * Reads the corresponding file and creates it, if necessary.
@@ -61,48 +61,48 @@ class TxtListManager {
                 key_file.load_from_file (list_file,
                    KeyFileFlags.KEEP_COMMENTS | KeyFileFlags.KEEP_TRANSLATIONS);
             } catch (Error e) {
-                stderr.printf("Reading %s failed", list_file);
+                stderr.printf ("Reading %s failed", list_file);
                 error ("%s", e.message);
             }
         }
     }
-    
+
     private void load_lists () {
         lists = new List<TxtList> ();
-        
+
         foreach (string list_id in list_ids) {
-            lists.append(create_settings_instance (list_id));
+            lists.append (create_settings_instance (list_id));
         }
     }
-    
-    private ListSettings create_settings_instance(string list_id) {
+
+    private ListSettings create_settings_instance (string list_id) {
         var list_settings = new ListSettings (
             list_id,
             get_name (list_id),
             get_todo_txt_location (list_id)
         );
-        
+
         list_settings.task_duration = get_task_duration (list_id);
         list_settings.break_duration = get_break_duration (list_id);
         list_settings.reminder_time = get_reminder_time (list_id);
-        
+
         return list_settings;
     }
-    
+
     public string get_todo_txt_location (string list_id) {
         return get_value (list_id, "location");
     }
     public void set_todo_txt_location (string list_id, string value) {
-        set_value(list, "location", value);
+        set_value (list, "location", value);
     }
-    
+
     public string get_name (string list_id) {
         return get_value (list_id, "name");
     }
     public void set_name (string list_id, string value) {
         set_value (list_id, "name", value);
     }
-    
+
     /*---Overrides------------------------------------------------------------*/
     public int get_task_duration (string list_id) {
         var duration = get_value (list_id, "task_duration", "1500");
@@ -111,7 +111,7 @@ class TxtListManager {
     public void set_task_duration (string list_id, int value) {
         set_value (list_id, "task_duration", value.to_string ());
     }
-    
+
     public int get_break_duration (string list_id) {
         var duration = get_value (list_id, "break_duration", "300");
         return int.parse (duration);
@@ -119,7 +119,7 @@ class TxtListManager {
     public void set_break_duration (string list_id, int value) {
         set_value (GROUP_TIMER, "break_duration", value.to_string ());
     }
-    
+
     public int get_reminder_time (string list_id) {
         var time = get_value (list_id, "reminder_time", "60");
         return int.parse (time);
@@ -155,7 +155,7 @@ class TxtListManager {
                 key_file.load_from_file (GOFI.Utils.config_file,
                    KeyFileFlags.KEEP_COMMENTS | KeyFileFlags.KEEP_TRANSLATIONS);
             } catch (Error e) {
-                stderr.printf("Reading %s failed", GOFI.Utils.config_file);
+                stderr.printf ("Reading %s failed", GOFI.Utils.config_file);
                 error ("%s", e.message);
             }
         }
@@ -179,7 +179,7 @@ class TxtListManager {
             if (key_file != null
                 && key_file.has_group (group)
                 && key_file.has_key (group, key)) {
-                    return key_file.get_value(group, key);
+                    return key_file.get_value (group, key);
             } else {
                 return default;
             }
@@ -212,7 +212,7 @@ class TxtListManager {
             if (key_file != null
                 && key_file.has_group (group)
                 && key_file.has_key (group, key)) {
-                    return key_file.get_string_list(group, key);
+                    return key_file.get_string_list (group, key);
             } else {
                 return default;
             }
@@ -222,7 +222,7 @@ class TxtListManager {
         }
     }
 
-    private void set_string_list(string group, string key, string[] string_list) {
+    private void set_string_list (string group, string key, string[] string_list) {
         if (key_file != null) {
             try {
                 key_file.set_string_list (group, key, string_list);
@@ -231,13 +231,13 @@ class TxtListManager {
                 error (
                     "An error occured while writing the setting" +
                     " %s.%s to {%s}: %s",
-                     group, key, string.joinv(", ", string_list), e.message
+                     group, key, string.joinv (", ", string_list), e.message
                 );
             }
         }
     }
 
     private void write_key_file () throws Error {
-        GLib.FileUtils.set_contents (list_file, key_file.to_data());
+        GLib.FileUtils.set_contents (list_file, key_file.to_data ());
     }
 }

@@ -33,7 +33,7 @@ class MainWindow : Gtk.ApplicationWindow {
     // Stack and pages
     private Gtk.Stack top_stack;
     private SelectionPage selection_page;
-    private TaskListPage task_page; 
+    private TaskListPage task_page;
     // Application Menu
     private Gtk.ToggleToolButton menu_btn;
     private Gtk.Menu app_menu;
@@ -73,12 +73,12 @@ class MainWindow : Gtk.ApplicationWindow {
         this.use_header_bar = settings.use_header_bar;
 
         if (settings.use_dark_theme) {
-            unowned Gtk.Settings gtk_settings = Gtk.Settings.get_default();
+            unowned Gtk.Settings gtk_settings = Gtk.Settings.get_default ();
             gtk_settings.gtk_application_prefer_dark_theme = true;
         }
 
         settings.use_dark_theme_changed.connect ( (use_dark_theme) => {
-            unowned Gtk.Settings gtk_settings = Gtk.Settings.get_default();
+            unowned Gtk.Settings gtk_settings = Gtk.Settings.get_default ();
             gtk_settings.gtk_application_prefer_dark_theme = use_dark_theme;
             load_css ();
         });
@@ -122,7 +122,7 @@ class MainWindow : Gtk.ApplicationWindow {
         // Main Layout
         main_layout.orientation = Gtk.Orientation.VERTICAL;
         main_layout.get_style_context ().add_class ("main_layout");
-        
+
         selection_page = new SelectionPage (list_manager);
         task_page = new TaskListPage (task_timer);
 
@@ -169,7 +169,7 @@ class MainWindow : Gtk.ApplicationWindow {
         menu_btn.label_widget = new Gtk.Label (_("Menu"));
         menu_btn.toggled.connect (menu_btn_toggled);
 
-        if(use_header_bar){
+        if (use_header_bar){
             add_headerbar ();
         } else {
             add_hb_replacement ();
@@ -342,7 +342,7 @@ class MainWindow : Gtk.ApplicationWindow {
             try {
                 notification.show ();
             } catch (GLib.Error err){
-                GLib.stderr.printf(
+                GLib.stderr.printf (
                     "Error in notify! (break_active notification)\n");
             }
         }
@@ -357,7 +357,7 @@ class MainWindow : Gtk.ApplicationWindow {
         try {
             notification.show ();
         } catch (GLib.Error err){
-            GLib.stderr.printf(
+            GLib.stderr.printf (
                 "Error in notify! (remaining_time notification)\n");
         }
     }
@@ -368,8 +368,8 @@ class MainWindow : Gtk.ApplicationWindow {
      * applied to the application.
      */
     private void load_css () {
-        var screen = this.get_screen();
-        var css_provider = new Gtk.CssProvider();
+        var screen = this.get_screen ();
+        var css_provider = new Gtk.CssProvider ();
 
         string color = settings.use_dark_theme ? "-dark" : "";
         string version = (Gtk.get_minor_version () >= 19) ? "3.20" : "3.10";
@@ -385,8 +385,8 @@ class MainWindow : Gtk.ApplicationWindow {
             // Only proceed, if file has been found
             if (FileUtils.test (path, FileTest.EXISTS)) {
                 try {
-                    css_provider.load_from_path(path);
-                    Gtk.StyleContext.add_provider_for_screen(
+                    css_provider.load_from_path (path);
+                    Gtk.StyleContext.add_provider_for_screen (
                         screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
                     break;
                 } catch (Error e) {

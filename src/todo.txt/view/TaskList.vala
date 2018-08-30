@@ -141,7 +141,7 @@ class TaskList : Gtk.Grid {
     }
 
     private void setup_filter () {
-        search_bar = new Gtk.SearchBar();
+        search_bar = new Gtk.SearchBar ();
         filter_entry = new Gtk.SearchEntry ();
         filter = new Filter ();
 

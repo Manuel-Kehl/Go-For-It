@@ -125,7 +125,7 @@ class TodoTaskTest : TestCase {
             disconnect_task (task);
         }
     }
-    
+
     private void test_modify_done () {
         string test_title;
         bool done;

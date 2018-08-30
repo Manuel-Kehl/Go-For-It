@@ -111,7 +111,7 @@ class TaskRow: DragListRow {
         }
 
         public void setup_widgets () {
-            label = new Gtk.Label(null);
+            label = new Gtk.Label (null);
 
             label.wrap = true;
             label.wrap_mode = Pango.WrapMode.WORD_CHAR;
@@ -161,7 +161,7 @@ class TaskRow: DragListRow {
             entry.show ();
             set_visible_child (entry);
             entry.grab_focus ();
-            entry.activate.connect(stop_editing);
+            entry.activate.connect (stop_editing);
             entry.focus_out_event.connect (on_entry_focus_out);
             entry_visible = true;
         }

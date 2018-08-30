@@ -2,11 +2,11 @@
  * The entry point for running the application.
  */
 public static int main (string[] args) {
-    Intl.setlocale(LocaleCategory.MESSAGES, "");
-    Intl.textdomain(GOFI.GETTEXT_PACKAGE);
-    Intl.bind_textdomain_codeset(GOFI.GETTEXT_PACKAGE, "utf-8");
+    Intl.setlocale (LocaleCategory.MESSAGES, "");
+    Intl.textdomain (GOFI.GETTEXT_PACKAGE);
+    Intl.bind_textdomain_codeset (GOFI.GETTEXT_PACKAGE, "utf-8");
     string locale_dir = Path.build_filename (GOFI.INSTALL_PREFIX, "share", "locale");
-    Intl.bindtextdomain(GOFI.GETTEXT_PACKAGE, locale_dir);
+    Intl.bindtextdomain (GOFI.GETTEXT_PACKAGE, locale_dir);
 
     apply_desktop_specific_tweaks ();
     Main app = new Main ();

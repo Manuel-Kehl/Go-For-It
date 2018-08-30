@@ -2,7 +2,7 @@ class TxtList {
     private TaskManager task_manager;
     private TaskList todo_list;
     private TaskList done_list;
-    
+
     private string path;
 
     public string list_name {
@@ -61,7 +61,7 @@ class TxtList {
         task_manager = new TaskManager
         todo_list = new TaskList (this.task_manager.todo_store, true);
         done_list = new TaskList (this.task_manager.done_store, false);
-        
+
         /* Action and Signal Handling */
         todo_list.add_new_task.connect (task_manager.add_new_task);
         todo_list.selection_changed.connect (on_selection_changed);
