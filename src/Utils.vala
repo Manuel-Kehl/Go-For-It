@@ -158,5 +158,41 @@ namespace GOFI {
                 }
             }
         }
+
+        /**
+         * Checks whether token is a date in the todo.txt format.
+         */
+        public static bool is_date (string token) {
+            MatchInfo info;
+            return /\d\d\d\d-\d\d-\d\d/.match(token, 0, out info);
+        }
+
+        /**
+         * Checks whether token is a priority in the todo.txt format.
+         */
+        public static bool is_priority (string token) {
+            MatchInfo info;
+            return /\([A-Z]\)/.match(token, 0, out info);
+        }
+
+        /**
+         * Adds the current date in the todo.txt format to the front of the title.
+         * Used for adding creation/completion date.
+         */
+        public static string prepend_today (string txt) {
+            return new GLib.DateTime.now_local ().format ("%Y-%m-%d") + " " + txt;
+        }
+
+
+        /**
+         * Removes todo item priority.
+         */
+        public static string remove_priority (string txt) {
+            string[] parts = txt.split(" ");
+            if (is_priority(parts[0])) {
+                return string.joinv(" ", parts[1:parts.length]);
+            }
+            return txt;
+        }
     }
 }

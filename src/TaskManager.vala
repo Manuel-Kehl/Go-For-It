@@ -90,6 +90,7 @@ class TaskManager {
     public void add_new_task (string task) {
         string _task = task.strip ();
         if (_task != "") {
+            _task = GOFI.Utils.prepend_today(_task);
             todo_store.add_task (new TodoTask (_task, false));
             save_todo_tasks ();
         }
