@@ -36,6 +36,14 @@ public class TodoTask : GLib.Object {
         }
         public set {
             if (_done != value) {
+                if (value) {
+                    _title = GOFI.Utils.prepend_today(GOFI.Utils.remove_priority(_title));
+                } else {
+                    string[] parts = _title.split(" ");
+                    if (GOFI.Utils.is_date(parts[0])) {
+                        _title = string.joinv(" ", parts[1:parts.length]);
+                    }
+                }
                 _done = value;
                 done_changed ();
             }

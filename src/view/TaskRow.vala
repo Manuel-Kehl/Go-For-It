@@ -78,7 +78,9 @@ class TaskRow: DragListRow {
      * An editable label that supports wrapping and markup
      */
     class TaskLabel : Gtk.Stack {
+        private Gtk.Box layout;
         private Gtk.Label label;
+        private Gtk.Label date_label;
         private Gtk.Entry entry;
 
         private bool task_done;
@@ -111,11 +113,15 @@ class TaskRow: DragListRow {
         }
 
         public void setup_widgets () {
+            layout = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
+            layout.homogeneous = false;
             label = new Gtk.Label(null);
+            date_label = new Gtk.Label(null);
 
             label.wrap = true;
             label.wrap_mode = Pango.WrapMode.WORD_CHAR;
-            label.width_request = 200;
+            label.width_request = 100;
+            label.hexpand = true;
             // Workaround for: "undefined symbol: gtk_label_set_xalign"
             ((Gtk.Misc) label).xalign = 0f;
 
@@ -146,7 +152,10 @@ class TaskRow: DragListRow {
                 return true;
             });
 
-            add (label);
+
+            layout.add (label);
+            layout.add (date_label);
+            add(layout);
         }
 
         public void edit () {
@@ -175,7 +184,7 @@ class TaskRow: DragListRow {
             if (entry != null) {
                 var _entry = entry;
                 entry = null;
-                set_visible_child (label);
+                set_visible_child (layout);
                 remove (_entry);
             }
             entry_visible = false;
@@ -188,19 +197,24 @@ class TaskRow: DragListRow {
         }
 
         private void update () {
-            gen_markup ();
+            string creation_or_complete_date = gen_markup ();
             label.set_markup (markup_string);
+            date_label.set_markup (creation_or_complete_date);
         }
 
-        private void gen_markup () {
+        private string gen_markup () {
+            string title = GLib.Markup.escape_text (_txt_string);
+            string creation_or_complete_date;
             markup_string = make_links (
-                GLib.Markup.escape_text (_txt_string),
+                title,
                 {"+", "@"},
-                {_("project") + ":", _("context") + ":"}
+                {_("project") + ":", _("context") + ":"},
+                out creation_or_complete_date
             );
             if (task_done) {
                 markup_string = "<s>" + markup_string + "</s>";
             }
+            return "<span font_style=\"italic\" color=\"#00000033\">" + creation_or_complete_date + "</span>";
         }
 
         /**
@@ -210,17 +224,31 @@ class TaskRow: DragListRow {
          * @param delimiters prefixes of the context or project (+/@)
          * @param prefixes prefixes of the new links
          */
-        private string make_links (string title, string[] delimiters,
-                                   string[] prefixes)
+        private string make_links (string title,
+                                   string[] delimiters, string[] prefixes,
+                                   out string creation_or_complete_date)
         {
             string parsed = "";
             string delimiter, prefix;
 
-            int n_delimiters = delimiters.length;
+            creation_or_complete_date = "";
 
-            foreach (string part in title.split (" ")) {
+            int n_delimiters = delimiters.length;
+            string[] tokens = title.split (" ");
+
+            for (int token_index = 0; token_index < tokens.length; ++token_index) {
+                string part = tokens[token_index];
                 string? val = null;
-                if(part == "") {
+                if (token_index == 0 && GOFI.Utils.is_date(part) ||
+                    token_index == 1 && GOFI.Utils.is_date(part) && GOFI.Utils.is_priority(tokens[0])) {
+                    creation_or_complete_date = part;
+                    continue;
+                }
+                if (token_index == 1 && task_done && GOFI.Utils.is_date(part)) {
+                    // skip showing creation date if there is both a completed and created date
+                    continue;
+                }
+                if (part == "") {
                     parsed += " ";
                     continue;
                 }
