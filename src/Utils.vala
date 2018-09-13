@@ -22,7 +22,7 @@
 namespace GOFI {
 
     /**
-     * Used to pass information about if a feature is standard on the desktop 
+     * Used to pass information about if a feature is standard on the desktop
      * of the user.
      */
     public enum FeatureStatus {
@@ -95,7 +95,7 @@ namespace GOFI {
         }
 
         /**
-         * Returns whether headerbars are used by native apps on the desktop 
+         * Returns whether headerbars are used by native apps on the desktop
          * environment of the user.
          */
         public static FeatureStatus desktop_hb_status {

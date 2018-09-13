@@ -94,12 +94,12 @@ class Filter {
         var row = _row as TaskRow;
 
         foreach (string tag in tags) {
-            if (!contains_tag (row.task.title, tag)) {
+            if (!contains_tag (row.task.description, tag)) {
                 return false;
             }
         }
 
-        string title = row.task.title.casefold ();
+        string title = row.task.description.casefold ();
 
         foreach (string sentence_piece in sentence_pieces) {
             if (!title.contains (sentence_piece)) {

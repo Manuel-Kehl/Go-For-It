@@ -58,7 +58,7 @@ public class TimerView : Gtk.Grid {
         timer.timer_updated_relative.connect ((s, p) => {
             progress.set_fraction (p);
         });
-        timer.active_task_title_changed.connect (update_title);
+        timer.active_task_description_changed.connect (update_description);
 
         // Update timer, to refresh the view
         timer.update ();
@@ -70,7 +70,7 @@ public class TimerView : Gtk.Grid {
             return;
         }
 
-        update_title (task);
+        update_description (task);
         var style = task_description_lbl.get_style_context ();
 
         // Append correct class according to break status
@@ -86,8 +86,8 @@ public class TimerView : Gtk.Grid {
         }
     }
 
-    private void update_title (TodoTask task) {
-        task_description_lbl.label = task.title;
+    private void update_description (TodoTask task) {
+        task_description_lbl.label = task.description;
     }
 
     public void set_time (DateTime time) {

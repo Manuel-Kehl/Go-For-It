@@ -353,7 +353,7 @@ class MainWindow : Gtk.ApplicationWindow {
             } else {
                 notification = new Notify.Notification (
                     _("The Break is Over"),
-                    _("Your next task is") + ": " + task.title,
+                    _("Your next task is") + ": " + task.description,
                     GOFI.EXEC_NAME);
             }
 

@@ -14,6 +14,7 @@ vala_precompile (VALA_C ${LIBNAME}
     Constants.vala
     Utils.vala
     SettingsManager.vala
+    TxtUtils.vala
     TodoTask.vala
     SequentialList.vala
     TaskStore.vala

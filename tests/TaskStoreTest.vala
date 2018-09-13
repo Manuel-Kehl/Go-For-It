@@ -98,14 +98,14 @@ class TaskStoreTest : TestCase {
 
     private string safe_store_get_string (uint position) {
         TodoTask task = (TodoTask)test_store.get_item (position);
-        return (task != null)? task.title : "<null>";
+        return (task != null)? task.description : "<null>";
     }
 
     private bool compare_tasks (uint store, uint test) {
         bool same = (test_store.get_item (store) == test_tasks[test]);
 
         if (!same) {
-            stdout.printf ("\n%s (%u) != %s (%u)\n", safe_store_get_string (store), store, test_tasks[test].title, test);
+            stdout.printf ("\n%s (%u) != %s (%u)\n", safe_store_get_string (store), store, test_tasks[test].description, test);
             stdout.printf ("TaskStore tasks:\n");
             for (uint i = 0; i < TEST_TASKS_LENGTH; i++) {
                 stdout.printf ("\t%u: %s\n", i, (safe_store_get_string (i)));
@@ -181,7 +181,7 @@ class TaskStoreTest : TestCase {
         // TaskStore shouln't listen to signals of removed tasks
         TodoTask to_remove = (TodoTask)test_store.get_item (0);
         remove_task (0, 0);
-        to_remove.title = "new task title";
+        to_remove.description = "new task title";
         to_remove.done = !to_remove.done;
     }
 
@@ -242,7 +242,7 @@ class TaskStoreTest : TestCase {
         add_tasks ();
         task_data_changed_expected = true;
         index = Test.rand_int_range (0, (int32)TEST_TASKS_LENGTH - 1);
-        test_tasks[index].title = "new task title";
+        test_tasks[index].description = "new task title";
         assert (!task_data_changed_expected);
 
         task_done_changed_expected = true;
@@ -254,7 +254,7 @@ class TaskStoreTest : TestCase {
         task_invalid_expected = true;
         index = Test.rand_int_range (0, (int32)TEST_TASKS_LENGTH - 1);
         task_invalid_expected_task = test_tasks[index];
-        test_tasks[index].title = "";
+        test_tasks[index].description = "";
         assert (!task_invalid_expected);
     }
 

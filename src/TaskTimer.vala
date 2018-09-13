@@ -55,11 +55,11 @@ public class TaskTimer {
             reset ();
 
             if (_active_task != null) {
-                _active_task.notify["title"].disconnect (on_task_notify_title);
+                _active_task.notify["description"].disconnect (on_task_notify_description);
             }
             _active_task = value;
             if (_active_task != null) {
-                _active_task.notify["title"].connect (on_task_notify_title);
+                _active_task.notify["description"].connect (on_task_notify_description);
             }
 
             // Emit the corresponding notifier signal
@@ -75,7 +75,7 @@ public class TaskTimer {
     public signal void timer_almost_over (DateTime remaining_duration);
     public signal void timer_finished (bool break_active);
     public signal void active_task_done (TodoTask task);
-    public signal void active_task_title_changed (TodoTask task);
+    public signal void active_task_description_changed (TodoTask task);
     public signal void active_task_changed (TodoTask? task, bool break_active);
 
     public TaskTimer (SettingsManager settings) {
@@ -169,8 +169,8 @@ public class TaskTimer {
         active_task_changed (_active_task, break_active);
     }
 
-    private void on_task_notify_title () {
-        active_task_title_changed (_active_task);
+    private void on_task_notify_description () {
+        active_task_description_changed (_active_task);
     }
 
     /**
