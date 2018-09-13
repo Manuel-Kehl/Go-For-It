@@ -254,7 +254,7 @@ class TaskRow: DragListRow {
                     val = part.split (delimiter, 2)[1];
                 }
                 if (val != null) {
-                    parsed += @" <a href=\"$prefix$val\" title=\"$val\">" +
+                    parsed += @" <a href=\"$prefix:$val\" title=\"$val\">" +
                               @"$delimiter$val</a>";
                 } else {
                     parsed += " " + part;
