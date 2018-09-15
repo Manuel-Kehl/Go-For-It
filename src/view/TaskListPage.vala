@@ -181,4 +181,3 @@ class TaskListPage : Gtk.Grid {
         }
     }
 }
-}

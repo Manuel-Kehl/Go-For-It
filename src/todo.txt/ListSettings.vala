@@ -1,4 +1,4 @@
-class ListSettings {
+class ListSettings : Object, TodoListInfo {
 
     public string id {
         get {
@@ -6,6 +6,12 @@ class ListSettings {
         }
     }
     string _id;
+
+    public string plugin_name {
+        get {
+            return "Todo.txt";
+        }
+    }
 
     public string name {
         get;
@@ -36,7 +42,7 @@ class ListSettings {
         this.todo_txt_location = location;
 
         this.task_duration = -1;
-        this.break_duration = -1
+        this.break_duration = -1;
         this.reminder_time = -1;
     }
 }

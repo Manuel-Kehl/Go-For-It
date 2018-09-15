@@ -64,6 +64,10 @@ class TaskStore : Object, DragListModel {
         return tasks.get_item (position);
     }
 
+    public uint get_task_position (TodoTask task) {
+        return tasks.get_item_position (task);
+    }
+
     public uint get_n_items () {
         return tasks.length;
     }

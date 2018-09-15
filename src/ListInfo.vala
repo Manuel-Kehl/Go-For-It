@@ -1,14 +1,14 @@
 public interface TodoListInfo : Object{
 
-    public string id {
+    public abstract string id {
         get;
     }
 
-    public string plugin_name {
+    public abstract string plugin_name {
         get;
     }
 
-    public string name {
+    public abstract string name {
         get;
         set;
     }

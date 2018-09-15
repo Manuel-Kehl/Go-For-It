@@ -102,6 +102,15 @@ class SequentialList {
         return null;
     }
 
+    public uint get_item_position (Object item) {
+        int index = items.index(item);
+        if (index >= 0) {
+            return index;
+        } else {
+            error ("Item not found");
+        }
+    }
+
     public Type get_item_type () {
         return item_type;
     }

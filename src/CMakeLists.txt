@@ -14,22 +14,30 @@ vala_precompile (VALA_C ${LIBNAME}
     Constants.vala
     Utils.vala
     SettingsManager.vala
+    ListInfo.vala
+    ListManager.vala
     TodoTask.vala
     SequentialList.vala
-    TaskStore.vala
     FileWatcher.vala
-    TaskManager.vala
     TaskTimer.vala
     DragListModel.vala
-    Filter.vala
-    view/TaskRow.vala
-    view/TaskList.vala
-    view/DragList.vala
+    view/Widgets/TodoListInfoRow.vala
+    view/Widgets/DragList.vala
+    view/Dialogs/SettingsDialog.vala
+    view/Dialogs/AboutDialog.vala
+    view/Dialogs/ContributeDialog.vala
     view/TimerView.vala
-    view/SettingsDialog.vala
-    view/AboutDialog.vala
-    view/ContributeDialog.vala
+    view/TaskListPage.vala
+    view/SelectionPage.vala
     view/MainWindow.vala
+    todo.txt/TaskStore.vala
+    todo.txt/TaskManager.vala
+    todo.txt/ListSettings.vala
+    todo.txt/Filter.vala
+    todo.txt/TxtList.vala
+    todo.txt/TxtListManager.vala
+    todo.txt/view/TaskList.vala
+    todo.txt/view/TaskRow.vala
     Main.vala
 
 # tell what libraries to use when compiling

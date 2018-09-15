@@ -94,6 +94,10 @@ namespace GOFI {
             }
         }
 
+        public static string get_module_config_dir (string module_name) {
+            return Path.build_filename (config_dir, module_name);
+        }
+
         /**
          * Returns whether headerbars are used by native apps on the desktop
          * environment of the user.

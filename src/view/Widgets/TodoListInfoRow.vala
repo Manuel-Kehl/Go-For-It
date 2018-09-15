@@ -26,9 +26,6 @@ class TodoListInfoRow: DragListRow {
     public TodoListInfoRow (TodoListInfo info) {
         this.info = info;
 
-        check_button = new Gtk.CheckButton ();
-        check_button.active = info.done;
-
         name_label = new Gtk.Label (info.name);
         name_label.hexpand = true;
         set_center_widget (name_label);

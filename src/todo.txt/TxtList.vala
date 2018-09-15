@@ -3,14 +3,7 @@ class TxtList {
     private TaskList todo_list;
     private TaskList done_list;
 
-    private string path;
-
-    public string list_name {
-        public get;
-        public set;
-    }
-
-    public string id {
+    public ListSettings list_settings {
         public get;
         private set;
     }
@@ -25,10 +18,8 @@ class TxtList {
         public set;
     }
 
-    public TxtList (string id, string path, string list_name) {
-        this.id = id;
-        this.path = path;
-        this.list_name = list_name;
+    public TxtList (ListSettings list_settings) {
+        this.list_settings = list_settings;
     }
 
     public TodoTask? get_next () {
@@ -57,8 +48,16 @@ class TxtList {
         return done_list;
     }
 
+    private void on_selection_changed (TodoTask task) {
+        selected_task = task;
+    }
+
+    private void on_active_task_invalid () {
+        active_task = selected_task;
+    }
+
     public void load () {
-        task_manager = new TaskManager
+        task_manager = new TaskManager (list_settings);
         todo_list = new TaskList (this.task_manager.todo_store, true);
         done_list = new TaskList (this.task_manager.done_store, false);
 
@@ -66,6 +65,8 @@ class TxtList {
         todo_list.add_new_task.connect (task_manager.add_new_task);
         todo_list.selection_changed.connect (on_selection_changed);
         task_manager.active_task_invalid.connect (on_active_task_invalid);
+
+        selected_task = todo_list.get_selected_task ();
     }
 
     public void unload () {

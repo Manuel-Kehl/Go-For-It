@@ -18,34 +18,37 @@
 class ListManager : Object, DragListModel {
     private SettingsManager settings;
     private SequentialList todolist_infos;
+    private TxtListManager txt_manager;
 
     /* Signals */
-    public signal void lists_changed () {
-        uint n_lists = todolist_infos.length;
-        var set_lists = new ListIdentifier[n_lists];
-        for (uint i = 0; i < n_lists; i++) {
-            var info = (TodoListInfo) todolist_infos.get_item (i);
-            set_lists[i] = {info.plugin, info.id};
-        }
-        settings.lists = set_lists;
-    }
+    public signal void lists_changed ();
 
     /**
      * Constructor of the ListManager class
      */
     public ListManager (SettingsManager settings) {
         this.settings = settings;
+
+        string txt_config_file = Path.build_filename (
+            GOFI.Utils.get_module_config_dir ("Todo.txt"), "list"
+        );
+
+        txt_manager = new TxtListManager (txt_config_file);
         todolist_infos = new SequentialList (typeof (TodoListInfo));
+
+        populate_items ();
     }
 
-    private unowned TodoListInfo search_list_link (List<TodoListInfo> lists, string id) {
-        return txt_lists.search<string> (id, (info, _id) => {
+    private unowned List<TodoListInfo> search_list_link (
+                                            List<TodoListInfo> lists, string id)
+    {
+        return lists.search<string> (id, (info, _id) => {
             return strcmp (info.id, _id);
         });
     }
 
     private void populate_items () {
-        List<TodoListInfo> txt_lists;
+        List<TodoListInfo> txt_lists = txt_manager.get_list_infos ();
         var stored_lists = settings.lists;
 
         foreach (ListIdentifier identifier in stored_lists) {
@@ -56,7 +59,7 @@ class ListManager : Object, DragListModel {
             }
         }
         foreach (TodoListInfo info in txt_lists) {
-            todolist_infos.append_item (info.data);
+            todolist_infos.append_item (info);
         }
         items_changed (0, 0, todolist_infos.length);
     }
@@ -87,7 +90,17 @@ class ListManager : Object, DragListModel {
             return;
         }
         todolist_infos.move_item (old_position, new_position);
-        lists_changed ();
+        on_list_change ();
     }
 
+    public void on_list_change () {
+        uint n_lists = todolist_infos.length;
+        var set_lists = new ListIdentifier[n_lists];
+        for (uint i = 0; i < n_lists; i++) {
+            var info = (TodoListInfo) todolist_infos.get_item (i);
+            set_lists[i] = {info.plugin_name, info.id};
+        }
+        settings.lists = set_lists;
+        lists_changed ();
+    }
 }

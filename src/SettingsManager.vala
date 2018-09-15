@@ -172,13 +172,13 @@ private class SettingsManager {
     }
 
     public string merge_strings (string str1, string str2) {
-        str1 = str1.replace (":\"", "\\:\"");
-        str2 = str2.replace (":\"", "\\:\"");
-        return "\"" + str1 + "\":\"" + str2 "\"";
+        var _str1 = str1.replace (":\"", "\\:\"");
+        var _str2 = str2.replace (":\"", "\\:\"");
+        return "\"" + _str1 + "\":\"" + _str2 + "\"";
     }
 
     public string[] split_strings (string str) {
-        string[] temp = input.split ("\":\"");
+        string[] temp = str.split ("\":\"");
         for (int i = 0; i < temp.length; i++) {
             temp[i] = temp[i].replace ("\\:\"", ":\"");
         }
@@ -285,7 +285,7 @@ private class SettingsManager {
         }
     }
 
-    private void set_string_list (string[] string_list) {
+    private void set_string_list (string group, string key, string[] string_list) {
         if (key_file != null) {
             try {
                 key_file.set_string_list (group, key, string_list);
@@ -328,8 +328,6 @@ private class SettingsManager {
                 break;
             }
         }
-
-        this.todo_txt_location = todo_dir;
     }
 
     /**

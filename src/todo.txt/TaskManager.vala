@@ -22,7 +22,7 @@
  * by addressing the corresponding TaskStore instance.
  */
 class TaskManager {
-    private SettingsManager settings;
+    private ListSettings settings;
     // The user's todo.txt related files
     private File todo_txt_dir;
     private File todo_txt;
@@ -57,10 +57,8 @@ class TaskManager {
     public signal void refreshing ();
     public signal void refreshed ();
 
-    public TaskManager (SettingsManager settings) {
+    public TaskManager (ListSettings settings) {
         this.settings = settings;
-
-        need_to_add_tasks = settings.first_start;
 
         // Initialize TaskStores
         todo_store = new TaskStore (false);
@@ -71,17 +69,28 @@ class TaskManager {
         load_task_stores ();
         connect_store_signals ();
 
-        // Write default tasks
-        if (settings.first_start) {
-            save_todo_tasks ();
-        }
-
         /* Signal processing */
-        settings.todo_txt_location_changed.connect (load_task_stores);
+        settings.notify["todo-txt-location"].connect (load_task_stores);
     }
 
     public void set_active_task (TodoTask? task) {
         active_task = task;
+    }
+
+    public TodoTask? get_next () {
+        return (TodoTask) todo_store.get_item (
+            todo_store.get_task_position (active_task) + 1
+        );
+    }
+
+    public TodoTask? get_prev () {
+        return (TodoTask) todo_store.get_item (
+            todo_store.get_task_position (active_task) - 1
+        );
+    }
+
+    public void mark_done (TodoTask task) {
+        task.done = true;
     }
 
     /**
