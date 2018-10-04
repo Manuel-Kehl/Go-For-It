@@ -332,11 +332,6 @@ class TaskManager {
             }
         }
 
-        foreach(string part in parts[index:last + 1]) {
-            stdout.printf ("(%s)", part );
-        }
-        stdout.printf ("\n");
-
         description = string.joinv (" ", parts[index:last + 1]);
 
         if (description == "") {
