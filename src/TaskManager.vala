@@ -87,7 +87,7 @@ class TaskManager {
     }
 
     /**
-     * To be called when adding a new (undone) task.
+     * To be called when adding a new (unfinished) task.
      */
     public void add_new_task (string task) {
         string _task = task.strip ();
