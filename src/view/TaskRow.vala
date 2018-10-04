@@ -47,21 +47,24 @@ class TaskRow: DragListRow {
     }
 
     public void update_tooltip () {
-        // see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
-        // formatting of DateTime
         DateTime completion_date = task.completion_date;
         DateTime creation_date = task.creation_date;
+
+        // see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
+        // formatting of DateTime
+        string date_format = _("%Y-%m-%d");
+
         if(task.done && completion_date != null) {
             description_label.set_label_tooltip (
                 _("Task completed at %s, created at %s").printf (
-                    completion_date.format (_("%Y, %B %e")),
-                    creation_date.format (_("%Y, %B %e"))
+                    completion_date.format (date_format),
+                    creation_date.format (date_format)
                 )
             );
         } else if (creation_date != null) {
             description_label.set_label_tooltip (
                 _("Task created at %s").printf (
-                    creation_date.format (_("%Y, %B %e"))
+                    creation_date.format (date_format)
                 )
             );
         }

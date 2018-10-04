@@ -36,6 +36,11 @@ public class TodoTask : GLib.Object {
         }
         public set {
             if (_done != value) {
+                if (value && creation_date != null) {
+                    completion_date = new GLib.DateTime.now_local ();
+                } else {
+                    completion_date = null;
+                }
                 _done = value;
                 done_changed ();
             }

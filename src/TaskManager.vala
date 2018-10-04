@@ -87,7 +87,7 @@ class TaskManager {
     }
 
     /**
-     * To be called when adding a new (undone) task.
+     * To be called when adding a new (unfinished) task.
      */
     public void add_new_task (string task) {
         string _task = task.strip ();
@@ -95,6 +95,7 @@ class TaskManager {
             string? priority = consume_priority (ref _task);
             var todo_task = new TodoTask (_task, false);
             todo_task.priority = priority;
+            todo_task.creation_date = new GLib.DateTime.now_local ();
             todo_store.add_task (todo_task);
             save_todo_tasks ();
         }
