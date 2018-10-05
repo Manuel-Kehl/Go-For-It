@@ -1,5 +1,26 @@
 # Change Log
 
+## [1.6.7](https://github.com/JMoerman/Go-For-It/tree/1.6.7) (2018-10-05)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.6...1.6.7)
+
+**Implemented enhancements:**
+
+- Added minimal support for creation and completion dates as well as the priority of a task.
+- The creation and completion dates are stored for new tasks.
+
+**Fixed bugs:**
+
+- Dragging a selected task could cause the timer to state that all tasks are finished.
+
+**Closed issues:**
+
+- Priority [\#12](https://github.com/JMoerman/Go-For-It/issues/12)
+- Dates [\#17](https://github.com/JMoerman/Go-For-It/issues/17)
+
+**Merged pull requests:**
+
+- Add dates to the written files #56 [\#56](https://github.com/JMoerman/Go-For-It/pull/56) ([daniellandau](https://github.com/daniellandau))
+
 ## [1.6.6](https://github.com/JMoerman/Go-For-It/tree/1.6.6) (2018-04-17)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.5...1.6.6)
 
