@@ -56,7 +56,6 @@ class SettingsDialog : Gtk.Dialog {
 
     private void setup_settings_widgets () {
         int row = 0;
-        setup_txt_settings_widgets (main_layout, ref row);
         setup_timer_settings_widgets (main_layout, ref row);
         setup_appearance_settings_widgets (main_layout, ref row);
     }
@@ -95,47 +94,6 @@ class SettingsDialog : Gtk.Dialog {
 
         grid.attach (label, 0, row, 2, 1);
         row++;
-    }
-
-    private void setup_txt_settings_widgets (Gtk.Grid grid, ref int row) {
-        /* Declaration */
-        Gtk.Label txt_sect_lbl;
-        Gtk.Label directory_lbl;
-        Gtk.Label directory_explanation_lbl;
-        Gtk.FileChooserButton directory_btn;
-
-        /* Instantiation */
-        txt_sect_lbl = new Gtk.Label ("Todo.txt");
-
-        directory_btn = new Gtk.FileChooserButton ("Todo.txt " + _("directory"),
-            Gtk.FileChooserAction.SELECT_FOLDER);
-
-        directory_lbl = new Gtk.Label (
-            "<a href=\"http://todotxt.com\">Todo.txt</a> "
-            + _("directory") + ":"
-        );
-
-        directory_explanation_lbl = new Gtk.Label (
-            _("If no appropriate folder was found, Go For It! defaults to creating a Todo folder in your home directory.")
-        );
-
-        /* Configuration */
-        directory_lbl.set_line_wrap (false);
-        directory_lbl.set_use_markup (true);
-        directory_explanation_lbl.set_line_wrap (true);
-        ((Gtk.Misc) directory_explanation_lbl).xalign = 0f;
-        directory_btn.create_folders = true;
-        directory_btn.set_current_folder (settings.todo_txt_location);
-
-        /* Signal Handling */
-        directory_btn.file_set.connect ((e) => {
-            var todo_dir = directory_btn.get_file ().get_path ();
-            settings.todo_txt_location = todo_dir;
-        });
-
-        add_section (main_layout, txt_sect_lbl, ref row);
-        add_explanation (main_layout, directory_explanation_lbl, ref row);
-        add_option (main_layout, directory_lbl, directory_btn, ref row);
     }
 
     private void setup_timer_settings_widgets (Gtk.Grid grid, ref int row) {

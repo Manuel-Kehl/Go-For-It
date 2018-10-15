@@ -58,7 +58,6 @@ class SelectionPage : Gtk.Grid {
         todolist_view.bind_model ((DragListModel)list_manager, create_row);
         todolist_view.vadjustment = scroll_view.vadjustment;
         todolist_view.row_activated.connect (on_todolist_view_row_activated);
-        todolist_view.set_filter_func (filter.filter);
 
         scroll_view.expand = true;
 

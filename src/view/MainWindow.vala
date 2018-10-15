@@ -20,11 +20,10 @@
  */
 class MainWindow : Gtk.ApplicationWindow {
     /* Various Variables */
-    private TaskManager task_manager;
+    private ListManager list_manager;
     private TaskTimer task_timer;
     private SettingsManager settings;
     private bool use_header_bar;
-    private bool refreshing = false;
 
     /* Various GTK Widgets */
     private Gtk.Grid main_layout;
@@ -38,7 +37,6 @@ class MainWindow : Gtk.ApplicationWindow {
     private Gtk.ToggleToolButton menu_btn;
     private Gtk.Menu app_menu;
     private Gtk.MenuItem config_item;
-    private Gtk.MenuItem clear_done_item;
     /**
      * Used to determine if a notification should be sent.
      */
@@ -47,13 +45,13 @@ class MainWindow : Gtk.ApplicationWindow {
     /**
      * The constructor of the MainWindow class.
      */
-    public MainWindow (Gtk.Application app_context, TaskManager task_manager,
+    public MainWindow (Gtk.Application app_context, ListManager list_manager,
                        TaskTimer task_timer, SettingsManager settings)
     {
         // Pass the applicaiton context via GObject-based construction, because
         // constructor chaining is not possible for Gtk.ApplicationWindow
         Object (application: app_context);
-        this.task_manager = task_manager;
+        this.list_manager = list_manager;
         this.task_timer = task_timer;
         this.settings = settings;
 
@@ -129,9 +127,6 @@ class MainWindow : Gtk.ApplicationWindow {
         setup_stack ();
         setup_top_bar ();
 
-        // Call once to refresh view on startup
-        on_active_task_invalid ();
-
         main_layout.add (top_stack);
 
         // Add main_layout to the window
@@ -146,9 +141,9 @@ class MainWindow : Gtk.ApplicationWindow {
     }
 
     private void show_search () {
-        var list = activity_top_stack.visible_child as TaskList;
-        if (list != null) {
-            list.toggle_filter_bar ();
+        var visible_page = top_stack.visible_child;
+        if (visible_page == task_page) {
+            task_page.toggle_filter_bar ();
         }
     }
 
@@ -219,25 +214,6 @@ class MainWindow : Gtk.ApplicationWindow {
         use_header_bar = !use_header_bar;
     }
 
-    public void on_selection_changed (TodoTask? selected_task) {
-        if (task_timer.running || refreshing) {
-            return;
-        }
-
-        set_active_task (selected_task);
-    }
-
-    private void on_active_task_invalid () {
-        var selected_task = todo_list.get_selected_task ();
-
-        set_active_task (selected_task);
-    }
-
-    private void set_active_task (TodoTask? active_task) {
-        task_manager.set_active_task (active_task);
-        task_timer.active_task = active_task;
-    }
-
     private void menu_btn_toggled (Gtk.ToggleToolButton source) {
         if (source.active) {
             app_menu.popup (null, null, calc_menu_position, 0,
@@ -270,7 +246,6 @@ class MainWindow : Gtk.ApplicationWindow {
         /* Initialization */
         app_menu = new Gtk.Menu ();
         config_item = new Gtk.MenuItem.with_label (_("Settings"));
-        clear_done_item = new Gtk.MenuItem.with_label (_("Clear Done List"));
 
         /* Signal and Action Handling */
         // Untoggle menu button, when menu is hidden
@@ -282,13 +257,9 @@ class MainWindow : Gtk.ApplicationWindow {
             var dialog = new SettingsDialog (this, settings);
             dialog.show ();
         });
-        clear_done_item.activate.connect ((e) => {
-            task_manager.clear_done_store ();
-        });
 
         /* Add Items to Menu */
         app_menu.add (config_item);
-        app_menu.add (clear_done_item);
 #if !NO_CONTRIBUTE_DIALOG
         var contribute_item = new Gtk.MenuItem.with_label (_("Contribute / Donate"));
         contribute_item.activate.connect ((e) => {

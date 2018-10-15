@@ -40,19 +40,19 @@ class ListManager : Object, DragListModel {
     }
 
     private unowned List<TodoListInfo> search_list_link (
-                                            List<TodoListInfo> lists, string id)
-    {
+        List<TodoListInfo> lists, string id
+    ) {
         return lists.search<string> (id, (info, _id) => {
             return strcmp (info.id, _id);
         });
     }
 
     private void populate_items () {
-        List<TodoListInfo> txt_lists = txt_manager.get_list_infos ();
+        unowned List<TodoListInfo> txt_lists = txt_manager.get_list_infos ();
         var stored_lists = settings.lists;
 
         foreach (ListIdentifier identifier in stored_lists) {
-            var link = search_list_link (txt_lists, identifier.id);
+            unowned List<TodoListInfo> link = search_list_link (txt_lists, identifier.id);
             if (link != null) {
                 todolist_infos.append_item (link.data);
                 txt_lists.delete_link (link);

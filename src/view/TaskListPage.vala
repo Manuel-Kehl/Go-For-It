@@ -5,7 +5,7 @@ class TaskListPage : Gtk.Grid {
     /* Various Variables */
     private bool use_header_bar;
 
-    private TaskList task_list = null;
+    private TxtList task_list = null;
     private TaskTimer task_timer;
 
     /* Various GTK Widgets */
@@ -15,8 +15,6 @@ class TaskListPage : Gtk.Grid {
     private Gtk.Widget first_page;
     private TimerView timer_view;
     private Gtk.Widget last_page;
-
-    private GLib.List<unowned Gtk.MenuItem> menu_items;
 
     public bool list_valid {
         public get;
@@ -55,8 +53,6 @@ class TaskListPage : Gtk.Grid {
         );
         activity_switcher.margin = 5;
 
-        menu_items = new GLib.List<Gtk.MenuItem> ();
-
         this.add (activity_switcher);
         this.add (activity_stack);
     }
@@ -69,8 +65,15 @@ class TaskListPage : Gtk.Grid {
         string second_page_name;
 
         /* Instantiation of the Widgets */
-        first_page = task_list.get_primary_widget (out first_page_name);
-        last_page = task_list.get_secondary_widget (out second_page_name);
+        first_page = task_list.get_primary_page (out first_page_name);
+        last_page = task_list.get_secondary_page (out second_page_name);
+
+        if(first_page_name == null) {
+           first_page_name = _("To-Do");
+        }
+        if(second_page_name == null) {
+           second_page_name = _("Done");
+        }
 
         // Add widgets to the activity stack
         activity_stack.add_titled (first_page, "primary", first_page_name);
@@ -92,19 +95,17 @@ class TaskListPage : Gtk.Grid {
     }
 
     /**
-     * Updates this to display the new TaskList.
+     * Updates this to display the new TxtList.
      */
-    public void set_task_list (TaskList task_list) {
+    public void set_task_list (TxtList task_list) {
         if (this.task_list == null) {
             this.task_list = task_list;
-            this.task_list.activate ();
-            task_list.cleared.connect (timer_view.show_no_task);
+            this.task_list.load ();
             task_list.notify["active-task"].connect (on_active_task_changed);
             task_list.notify["selected-task"].connect (on_selected_task_changed);
             add_widgets ();
             this.show_all ();
 
-            menu_items = task_list.get_menu_items ();
             list_valid = true;
         } else {
             warning ("Previous list was not removed!");
@@ -112,15 +113,7 @@ class TaskListPage : Gtk.Grid {
     }
 
     private void on_task_done () {
-        task_list.set_active_task_done ();
-        get_next_task ();
-    }
-
-    private void get_next_task () {
-        TodoTask? task = task_list.get_next ();
-
-        task_timer.active_task = task;
-        task_list.active_task = task;
+        task_list.mark_done (task_timer.active_task);
     }
 
     private void on_active_task_changed () {
@@ -141,35 +134,24 @@ class TaskListPage : Gtk.Grid {
     public void remove_task_list () {
         list_valid = false;
         if (task_list != null) {
-            task_list.deactivate ();
-            task_list.cleared.disconnect (timer_view.show_no_task);
+            task_list.unload ();
             task_list.notify["active-task"].disconnect (on_active_task_changed);
             task_list.notify["selected-task"].disconnect (on_selected_task_changed);
         }
         foreach (Gtk.Widget widget in activity_stack.get_children ()) {
             activity_stack.remove (widget);
         }
-        foreach (Gtk.MenuItem item in menu_items) {
-            item.destroy ();
-        }
 
         first_page = null;
         last_page = null;
 
         task_timer.reset ();
-        timer_view.reset ();
 
         task_list = null;
     }
 
-//    public void set_switcher (Gtk.StackSwitcher activity_switcher) {
-//        this.activity_switcher = activity_switcher;
-//        activity_switcher.set_stack (activity_stack);
-//    }
-
-    public unowned GLib.List<unowned Gtk.MenuItem> get_menu_items () {
-        assert (list_valid);
-        return menu_items;
+    public void toggle_filter_bar () {
+        warning("Stub!\n");
     }
 
     /**

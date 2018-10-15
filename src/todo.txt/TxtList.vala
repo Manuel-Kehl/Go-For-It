@@ -1,4 +1,4 @@
-class TxtList {
+class TxtList : Object {
     private TaskManager task_manager;
     private TaskList todo_list;
     private TaskList done_list;
@@ -37,14 +37,16 @@ class TxtList {
     /**
      * Tasks that the user should currently work on
      */
-    public unowned Gtk.Widget get_primary_page () {
+    public unowned Gtk.Widget get_primary_page (out string? page_name) {
+        page_name = null;
         return todo_list;
     }
 
     /**
      * Can be future recurring tasks or tasks that are already done
      */
-    public unowned Gtk.Widget get_secondary_page () {
+    public unowned Gtk.Widget get_secondary_page (out string? page_name) {
+        page_name = null;
         return done_list;
     }
 

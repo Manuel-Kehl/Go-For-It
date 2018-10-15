@@ -21,7 +21,6 @@
  */
 class Main : Gtk.Application {
     private SettingsManager settings;
-    private TaskManager task_manager;
     private TaskTimer task_timer;
     private ListManager list_manager;
     private MainWindow win;
@@ -46,11 +45,8 @@ class Main : Gtk.Application {
         settings = new SettingsManager.load_from_key_file ();
         list_manager = new ListManager (settings);
         task_timer = new TaskTimer (settings);
-        task_timer.active_task_done.connect ( (task) => {
-             task_manager.mark_task_done (task);
-        });
 
-        win = new MainWindow (this, task_manager, task_timer, settings);
+        win = new MainWindow (this, list_manager, task_timer, settings);
         win.show_all ();
     }
 
