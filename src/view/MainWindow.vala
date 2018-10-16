@@ -40,6 +40,9 @@ class MainWindow : Gtk.ApplicationWindow {
     private Gtk.Menu app_menu;
     private Gtk.MenuItem config_item;
     private Gtk.MenuItem clear_done_item;
+
+    private Gtk.Settings gtk_settings;
+
     /**
      * Used to determine if a notification should be sent.
      */
@@ -73,13 +76,11 @@ class MainWindow : Gtk.ApplicationWindow {
     private void apply_settings () {
         this.use_header_bar = settings.use_header_bar;
 
-        if (settings.use_dark_theme) {
-            unowned Gtk.Settings gtk_settings = Gtk.Settings.get_default();
-            gtk_settings.gtk_application_prefer_dark_theme = true;
-        }
+        gtk_settings = Gtk.Settings.get_default();
+
+        gtk_settings.gtk_application_prefer_dark_theme = settings.use_dark_theme;
 
         settings.use_dark_theme_changed.connect ( (use_dark_theme) => {
-            unowned Gtk.Settings gtk_settings = Gtk.Settings.get_default();
             gtk_settings.gtk_application_prefer_dark_theme = use_dark_theme;
             load_css ();
         });
