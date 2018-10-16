@@ -35,33 +35,12 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
-    <release version="1.6.4" date="2018-01-04">
-      <description>
-        <p>Improvements:</p>
-        <ul>
-          <li>The task list and the rest of the main application window now have the same background color.</li>
-        </ul>
-        <p>Updated translations:</p>
-        <ul>
-          <li>Czech</li>
-          <li>Spanish</li>
-          <li>Japanese</li>
-        </ul>
-      </description>
-    </release>
-    <release version="1.6.5" date="2018-02-26">
+    <release version="1.6.8" date="2018-10-16">
       <description>
         <p>Bugfixes:</p>
         <ul>
-          <li>Strings containing whitespace consisting of multiple spaces were not parsed correctly, which could lead to crashes.</li>
-        </ul>
-      </description>
-    </release>
-    <release version="1.6.6" date="2018-04-17">
-      <description>
-        <p>Updated translations:</p>
-        <ul>
-          <li>Lithuanian</li>
+          <li>The application menu was not alligned correctly on Loki and likely other modern distribution releases.</li>
+          <li>The use of a global dark theme no longer impacts the themeing of Go For It!, while it used to affect a part of the application. (Use the settings dialog if you want to use a dark theme.)</li>
         </ul>
       </description>
     </release>
@@ -78,12 +57,33 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
         </ul>
       </description>
     </release>
-    <release version="1.6.8" date="2018-10-16">
+    <release version="1.6.6" date="2018-04-17">
+      <description>
+        <p>Updated translations:</p>
+        <ul>
+          <li>Lithuanian</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.6.5" date="2018-02-26">
       <description>
         <p>Bugfixes:</p>
         <ul>
-          <li>The application menu was not alligned correctly on Loki and likely other modern distribution releases.</li>
-          <li>The use of a global dark theme no longer impacts the themeing of Go For It!, while it used to affect a part of the application. (Use the settings dialog if you want to use a dark theme.)</li>
+          <li>Strings containing whitespace consisting of multiple spaces were not parsed correctly, which could lead to crashes.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.6.4" date="2018-01-04">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>The task list and the rest of the main application window now have the same background color.</li>
+        </ul>
+        <p>Updated translations:</p>
+        <ul>
+          <li>Czech</li>
+          <li>Spanish</li>
+          <li>Japanese</li>
         </ul>
       </description>
     </release>
