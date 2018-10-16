@@ -34,6 +34,11 @@ class TxtListManager {
         }
     }
 
+    public bool first_run {
+        public get;
+        private set;
+    }
+
     /**
      * Constructs a SettingsManager object from a configuration file.
      * Reads the corresponding file and creates it, if necessary.
@@ -42,6 +47,7 @@ class TxtListManager {
         this.list_file = list_file;
         // Instantiate the key_file object
         key_file = new KeyFile ();
+        first_run = true;
 
         if (!FileUtils.test (list_file, FileTest.EXISTS)) {
             int dir_exists = DirUtils.create_with_parents (
@@ -52,6 +58,7 @@ class TxtListManager {
             }
         } else {
             // If it does exist, read existing values
+            first_run = false;
             try {
                 key_file.load_from_file (list_file,
                    KeyFileFlags.KEEP_COMMENTS | KeyFileFlags.KEEP_TRANSLATIONS);
@@ -60,6 +67,8 @@ class TxtListManager {
                 error ("%s", e.message);
             }
         }
+
+        create_settings_instances ();
     }
 
     public TxtList get_list (string id) {
@@ -94,6 +103,39 @@ class TxtListManager {
         list_settings.reminder_time = get_reminder_time (list_id);
 
         return list_settings;
+    }
+
+    public void add_settings_instance (string name, string txt_location) {
+        var list_settings = new ListSettings (
+            "test",
+            name,
+            txt_location
+        );
+        connect_settings_signals (list_settings);
+        settings_list.append (list_settings);
+    }
+
+    private void connect_settings_signals (ListSettings list_settings) {
+        list_settings.notify.connect ((object, pspec) => {
+            var list = (ListSettings) object;
+            switch (pspec.name) {
+                case "name":
+                    set_name (list.id, list.name);
+                    break;
+                case "todo-txt-location":
+                    set_todo_txt_location (list.id, list.todo_txt_location);
+                    break;
+                case "task-duration":
+                    set_task_duration (list.id, list.task_duration);
+                    break;
+                case "break-duration":
+                    set_task_duration (list.id, list.break_duration);
+                    break;
+                case "reminder-time":
+                    set_task_duration (list.id, list.reminder_time);
+                    break;
+            }
+        });
     }
 
     public string get_todo_txt_location (string list_id) {

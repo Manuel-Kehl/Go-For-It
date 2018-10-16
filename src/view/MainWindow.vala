@@ -124,6 +124,8 @@ class MainWindow : Gtk.ApplicationWindow {
         selection_page = new SelectionPage (list_manager);
         task_page = new TaskListPage (task_timer);
 
+        selection_page.list_chosen.connect (load_list);
+
         setup_stack ();
         setup_top_bar ();
 
@@ -131,6 +133,11 @@ class MainWindow : Gtk.ApplicationWindow {
 
         // Add main_layout to the window
         this.add (main_layout);
+    }
+
+    private void load_list (TodoListInfo selected_info) {
+        task_page.set_task_list (list_manager.get_list(selected_info.id));
+        top_stack.set_visible_child (task_page);
     }
 
     private void setup_actions (Gtk.Application app) {

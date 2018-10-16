@@ -36,6 +36,13 @@ class ListManager : Object, DragListModel {
         txt_manager = new TxtListManager (txt_config_file);
         todolist_infos = new SequentialList (typeof (TodoListInfo));
 
+        if (txt_manager.first_run) {
+            var old_txt_path = settings.todo_txt_location;
+            if (old_txt_path != "") {
+                txt_manager.add_settings_instance ("Todo.txt", old_txt_path);
+            }
+        }
+
         populate_items ();
     }
 
@@ -46,6 +53,10 @@ class ListManager : Object, DragListModel {
             return strcmp (info.id, _id);
         });
     }
+
+    public TxtList get_list (string id) {
+        return txt_manager.get_list (id);
+    } 
 
     private void populate_items () {
         unowned List<TodoListInfo> txt_lists = txt_manager.get_list_infos ();
