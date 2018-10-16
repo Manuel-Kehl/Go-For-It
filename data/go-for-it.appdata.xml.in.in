@@ -78,5 +78,14 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
         </ul>
       </description>
     </release>
+    <release version="1.6.8" date="2018-10-16">
+      <description>
+        <p>Bugfixes:</p>
+        <ul>
+          <li>The application menu was not alligned correctly on Loki and likely other modern distribution releases.</li>
+          <li>The use of a global dark theme no longer impacts the themeing of Go For It!, while it used to affect a part of the application. (Use the settings dialog if you want to use a dark theme.)</li>
+        </ul>
+      </description>
+    </release>
   </releases>
 </component>

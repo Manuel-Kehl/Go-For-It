@@ -1,5 +1,18 @@
 # Change Log
 
+## [1.6.8](https://github.com/JMoerman/Go-For-It/tree/1.6.8) (2018-10-16)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.7...1.6.8)
+
+**Fixed bugs:**
+
+- The application menu was not alligned correctly on Loki and likely other modern distribution releases.
+- The use of a global dark theme no longer impacts the themeing of _Go For It!_, while it used to affect a part of the application. (Use the settings dialog if you want to use a dark theme.)
+
+**Closed issues:**
+
+- Application does not support dark theme [\#57](https://github.com/JMoerman/Go-For-It/issues/57)
+- Popup menu may not align correctly on Gtk-3.22+ [\#58](https://github.com/JMoerman/Go-For-It/issues/58)
+
 ## [1.6.7](https://github.com/JMoerman/Go-For-It/tree/1.6.7) (2018-10-05)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.6...1.6.7)
 
