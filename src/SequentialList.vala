@@ -17,7 +17,7 @@
 
 /**
  * Data structure used to implement DragListModel.
- * It keeps track of the last accessed link to provide sequential access in O (1).
+ * It keeps track of the last accessed link to provide sequential access in O(1).
  * This class doesn't use generics as valac (0.36.7) generated invalid c code
  * for the code responsible for freeing the internal Queue.
  */

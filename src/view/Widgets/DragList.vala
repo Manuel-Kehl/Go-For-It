@@ -344,6 +344,8 @@ public class DragList : Gtk.Bin {
 
     private void _move_row (DragListRow row, int index, bool relative) {
         int old_index = row.get_index ();
+        bool row_was_selected = listbox.get_selected_row () == row;
+        block_row_selected = true;
         if (old_index != index) {
             if (relative && index > old_index) {
                 index--;
@@ -357,6 +359,10 @@ public class DragList : Gtk.Bin {
                 model.move_item (old_index, index);
             }
         }
+        if(row_was_selected) {
+            listbox.select_row (row);
+        }
+        block_row_selected = false;
     }
 
     /**

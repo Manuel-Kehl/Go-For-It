@@ -19,16 +19,16 @@
  * This class stores all task information.
  */
 public class TodoTask : GLib.Object {
-    public string title {
+    public string description {
         public get {
-            return _title;
+            return _description;
         }
         public set {
-            _title = value;
+            _description = value;
             data_changed ();
         }
     }
-    string _title;
+    string _description;
 
     public bool done {
         public get {
@@ -36,6 +36,11 @@ public class TodoTask : GLib.Object {
         }
         public set {
             if (_done != value) {
+                if (value && creation_date != null) {
+                    completion_date = new GLib.DateTime.now_local ();
+                } else {
+                    completion_date = null;
+                }
                 _done = value;
                 done_changed ();
             }
@@ -45,15 +50,32 @@ public class TodoTask : GLib.Object {
 
     public bool valid {
         get {
-            return title != "";
+            return description != "";
         }
+    }
+
+    public DateTime? creation_date {
+        public get;
+        public set;
+    }
+
+    public DateTime? completion_date {
+        public get;
+        public set;
+    }
+
+    public string? priority {
+        public get;
+        public set;
     }
 
     public signal void done_changed ();
     public signal void data_changed ();
 
-    public TodoTask (string title, bool done) {
-        _title = title;
+    public TodoTask (string line, bool done) {
+        creation_date = null;
+        completion_date = null;
         _done = done;
+        _description = line;
     }
 }

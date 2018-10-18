@@ -78,7 +78,7 @@ class TodoTaskTest : TestCase {
             test_title = "Task %i".printf (i);
             TodoTask test_task = new TodoTask (test_title, done);
 
-            assert (test_task.title == test_title);
+            assert (test_task.description == test_title);
             assert (compare_bool (test_task.done, done));
             assert (test_task.valid);
         }
@@ -98,10 +98,10 @@ class TodoTaskTest : TestCase {
             connect_task (task);
 
             string new_title = "new_title";
-            task.title = new_title;
+            task.description = new_title;
 
             assert (check_expected (1, 0, 0));
-            assert (compare_string (task.title, new_title));
+            assert (compare_string (task.description, new_title));
             assert (compare_bool (task.done, done));
             assert (task.valid);
             disconnect_task (task);
@@ -116,10 +116,10 @@ class TodoTaskTest : TestCase {
             connect_task (task);
 
             string new_title = "";
-            task.title = new_title;
+            task.description = new_title;
 
             assert (check_expected (1, 0, 0));
-            assert (compare_string (task.title, new_title));
+            assert (compare_string (task.description, new_title));
             assert (compare_bool (task.done, done));
             assert (!task.valid);
             disconnect_task (task);
@@ -142,7 +142,7 @@ class TodoTaskTest : TestCase {
             task.done = !done;
 
             assert (check_expected (0, 1, 1));
-            assert (compare_string (task.title, test_title));
+            assert (compare_string (task.description, test_title));
             assert (compare_bool (task.done, !done));
             assert (task.valid);
             disconnect_task (task);
@@ -159,7 +159,7 @@ class TodoTaskTest : TestCase {
             task.done = done;
 
             assert (check_expected (0, 0, 1));
-            assert (compare_string (task.title, test_title));
+            assert (compare_string (task.description, test_title));
             assert (compare_bool (task.done, done));
             assert (task.valid);
             disconnect_task (task);

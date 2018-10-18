@@ -33,10 +33,12 @@ class MainWindow : Gtk.ApplicationWindow {
     private Gtk.Stack top_stack;
     private SelectionPage selection_page;
     private TaskListPage task_page;
+    private Gtk.MenuButton menu_btn;
     // Application Menu
-    private Gtk.ToggleToolButton menu_btn;
     private Gtk.Menu app_menu;
     private Gtk.MenuItem config_item;
+
+    private Gtk.Settings gtk_settings;
     /**
      * Used to determine if a notification should be sent.
      */
@@ -70,13 +72,11 @@ class MainWindow : Gtk.ApplicationWindow {
     private void apply_settings () {
         this.use_header_bar = settings.use_header_bar;
 
-        if (settings.use_dark_theme) {
-            unowned Gtk.Settings gtk_settings = Gtk.Settings.get_default ();
-            gtk_settings.gtk_application_prefer_dark_theme = true;
-        }
+        gtk_settings = Gtk.Settings.get_default();
+
+        gtk_settings.gtk_application_prefer_dark_theme = settings.use_dark_theme;
 
         settings.use_dark_theme_changed.connect ( (use_dark_theme) => {
-            unowned Gtk.Settings gtk_settings = Gtk.Settings.get_default ();
             gtk_settings.gtk_application_prefer_dark_theme = use_dark_theme;
             load_css ();
         });
@@ -161,15 +161,15 @@ class MainWindow : Gtk.ApplicationWindow {
     }
 
     private void setup_top_bar () {
-        // ToolButons and their corresponding images
+        // Butons and their corresponding images
         var menu_img = GOFI.Utils.load_image_fallback (
             Gtk.IconSize.LARGE_TOOLBAR, "open-menu", "open-menu-symbolic",
             GOFI.ICON_NAME + "-open-menu-fallback");
-        menu_btn = new Gtk.ToggleToolButton ();
-        // Headerbar Items
-        menu_btn.icon_widget = menu_img;
-        menu_btn.label_widget = new Gtk.Label (_("Menu"));
-        menu_btn.toggled.connect (menu_btn_toggled);
+        menu_btn = new Gtk.MenuButton ();
+        menu_btn.set_popup (app_menu);
+        menu_btn.image = menu_img;
+        menu_btn.tooltip_text = _("Menu");
+        app_menu.halign = Gtk.Align.END;
 
         if (use_header_bar){
             add_headerbar ();
@@ -221,45 +221,12 @@ class MainWindow : Gtk.ApplicationWindow {
         use_header_bar = !use_header_bar;
     }
 
-    private void menu_btn_toggled (Gtk.ToggleToolButton source) {
-        if (source.active) {
-            app_menu.popup (null, null, calc_menu_position, 0,
-                            Gtk.get_current_event_time ());
-            app_menu.select_first (true);
-        } else {
-            app_menu.popdown ();
-        }
-    }
-
-    private void calc_menu_position (Gtk.Menu menu, out int x, out int y) {
-        /* Get relevant position values */
-        int win_x, win_y;
-        this.get_position (out win_x, out win_y);
-        Gtk.Allocation btn_alloc, menu_alloc;
-        menu_btn.get_allocation (out btn_alloc);
-        app_menu.get_allocation (out menu_alloc);
-
-        /*
-         * The menu located below the app menu button.
-         * Its right border is algined to the right side of the menu button,
-         * because the button is the rightmost element of the toolbar.
-         * This way the menu never overlaps the right side of the app's window.
-         */
-        x = win_x + btn_alloc.x - menu_alloc.width + btn_alloc.width;
-        y = win_y + btn_alloc.y + btn_alloc.height;
-    }
-
     private void setup_menu () {
         /* Initialization */
         app_menu = new Gtk.Menu ();
         config_item = new Gtk.MenuItem.with_label (_("Settings"));
 
         /* Signal and Action Handling */
-        // Untoggle menu button, when menu is hidden
-        app_menu.hide.connect ((e) => {
-            menu_btn.active = false;
-        });
-
         config_item.activate.connect ((e) => {
             var dialog = new SettingsDialog (this, settings);
             dialog.show ();
@@ -313,7 +280,7 @@ class MainWindow : Gtk.ApplicationWindow {
             } else {
                 notification = new Notify.Notification (
                     _("The Break is Over"),
-                    _("Your next task is") + ": " + task.title,
+                    _("Your next task is") + ": " + task.description,
                     GOFI.EXEC_NAME);
             }
 

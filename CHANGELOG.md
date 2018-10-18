@@ -1,5 +1,70 @@
 # Change Log
 
+## [1.6.8](https://github.com/JMoerman/Go-For-It/tree/1.6.8) (2018-10-16)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.7...1.6.8)
+
+**Fixed bugs:**
+
+- The application menu was not alligned correctly on Loki and likely other modern distribution releases.
+- The use of a global dark theme no longer impacts the themeing of _Go For It!_, while it used to affect a part of the application. (Use the settings dialog if you want to use a dark theme.)
+
+**Closed issues:**
+
+- Application does not support dark theme [\#57](https://github.com/JMoerman/Go-For-It/issues/57)
+- Popup menu may not align correctly on Gtk-3.22+ [\#58](https://github.com/JMoerman/Go-For-It/issues/58)
+
+## [1.6.7](https://github.com/JMoerman/Go-For-It/tree/1.6.7) (2018-10-05)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.6...1.6.7)
+
+**Implemented enhancements:**
+
+- Added minimal support for creation and completion dates as well as the priority of a task.
+- The creation and completion dates are stored for new tasks.
+
+**Fixed bugs:**
+
+- Dragging a selected task could cause the timer to state that all tasks are finished.
+
+**Closed issues:**
+
+- Priority [\#12](https://github.com/JMoerman/Go-For-It/issues/12)
+- Dates [\#17](https://github.com/JMoerman/Go-For-It/issues/17)
+
+**Merged pull requests:**
+
+- Add dates to the written files #56 [\#56](https://github.com/JMoerman/Go-For-It/pull/56) ([daniellandau](https://github.com/daniellandau))
+
+## [1.6.6](https://github.com/JMoerman/Go-For-It/tree/1.6.6) (2018-04-17)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.5...1.6.6)
+
+**Implemented enhancements:**
+
+- The following translation is updated: Lithuanian
+- Minor documentation improvements
+
+## [1.6.5](https://github.com/JMoerman/Go-For-It/tree/1.6.5) (2018-02-26)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.4...1.6.5)
+
+**Fixed bugs:**
+
+- Strings containing whitespace consisting of multiple spaces were not parsed correctly, which could lead to crashes.
+
+**Closed issues:**
+
+- Crashes when there's a double space before project tag [mank319/\#127](https://github.com/mank319/Go-For-It/issues/127)
+
+## [1.6.4](https://github.com/JMoerman/Go-For-It/tree/1.6.4) (2018-01-04)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.3...1.6.4)
+
+**Implemented enhancements:**
+
+- The task list and the rest of the main application window now have the same background color.
+- The following translations are updated: Czech, Japanese, Spanish.
+
+**Closed issues:**
+
+- Colors between listview and rest of the app window are not consistent [\#50](https://github.com/JMoerman/Go-For-It/issues/50)
+
 ## [1.6.3](https://github.com/JMoerman/Go-For-It/tree/1.6.3) (2017-11-10)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.2...1.6.3)
 

@@ -15,6 +15,8 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
+using GOFI.TxtUtils;
+
 /**
  * This class is responsible for loading, saving and managing the user's tasks.
  * Therefore it offers methods for interacting with the set of tasks in all
@@ -94,12 +96,16 @@ class TaskManager {
     }
 
     /**
-     * To be called when adding a new (undone) task.
+     * To be called when adding a new (unfinished) task.
      */
     public void add_new_task (string task) {
         string _task = task.strip ();
         if (_task != "") {
-            todo_store.add_task (new TodoTask (_task, false));
+            string? priority = consume_priority (ref _task);
+            var todo_task = new TodoTask (_task, false);
+            todo_task.priority = priority;
+            todo_task.creation_date = new GLib.DateTime.now_local ();
+            todo_store.add_task (todo_task);
             save_todo_tasks ();
         }
     }
@@ -160,7 +166,7 @@ class TaskManager {
         todo_store.task_done_changed.connect (task_done_handler);
         done_store.task_done_changed.connect (task_done_handler);
 
-        // Remove tasks that are no longer valid (user has changed title to "")
+        // Remove tasks that are no longer valid (user has changed description to "")
         todo_store.task_became_invalid.connect (remove_invalid);
         done_store.task_became_invalid.connect (remove_invalid);
     }
@@ -305,36 +311,74 @@ class TaskManager {
     }
 
     private TodoTask? string_to_task (string _line, bool done_by_default) {
-        string line = _line.strip ();
+        string line = remove_carriage_return (_line).strip ();
 
-        line = remove_carriage_return (line);
+        bool done = consume_status (ref line);
 
-        // Todo.txt notation: completed tasks start with an "x "
-        bool done = line.has_prefix ("x ");
+        string[] parts = line.split (" ", 5);
+        int last = parts.length - 1;
+        int index = 0;
+        DateTime creation_date = null;
+        DateTime completion_date = null;
+        string description;
+        string? priority = null;
+        TodoTask new_task;
 
-        if (done) {
-            // Remove "x " from displayed string
-            line = line.split ("x ", 2)[1];
+        if (index != last && is_priority (parts[index])) {
+            priority = parts[index];
+            index++;
         }
 
-        line = line.strip ();
+        // parsing dates
+        if (index != last && is_date (parts[index])) {
+            if (done && index + 1 != last && is_date (parts[index + 1])) {
+                completion_date = string_to_date (parts[index]);
+                creation_date = string_to_date (parts[index + 1]);
+                index += 2;
+            } else {
+                creation_date = string_to_date (parts[index]);
+                index++;
+            }
+        }
 
-        if (line == "") {
+        description = string.joinv (" ", parts[index:last + 1]);
+
+        if (description == "") {
             return null;
         }
 
         if (!active_task_found && !done) {
-            if (line == active_task.title) {
+            if (description == active_task.description) {
                 active_task_found = true;
                 return active_task;
             }
         }
 
-        return new TodoTask (line, done | done_by_default);
+        new_task = new TodoTask (description, done | done_by_default);
+
+        if (priority != null) {
+            new_task.priority = priority;
+        }
+        if (creation_date != null) {
+            new_task.creation_date = creation_date;
+        }
+        if (completion_date != null) {
+            new_task.completion_date = completion_date;
+        }
+
+        return new_task;
     }
 
     private string task_to_string (TodoTask task) {
-        return (task.done ? "x " : "") + task.title;
+        var task_comp_date = task.completion_date;
+        var task_crea_date = task.creation_date;
+        string? task_prio = task.priority;
+        string status_str = task.done ? "x " : "";
+        string prio_str = (task_prio != null) ?  task_prio + " " : "";
+        string comp_str = (task_comp_date != null) ? date_to_string (task_comp_date) + " " : "";
+        string crea_str = (task_crea_date != null) ? date_to_string (task_crea_date) + " " : "";
+
+        return status_str + prio_str + comp_str + crea_str + task.description;
     }
 
     /**
