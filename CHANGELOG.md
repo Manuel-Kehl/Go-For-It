@@ -1,11 +1,26 @@
 # Change Log
 
+## [1.6.9](https://github.com/JMoerman/Go-For-It/tree/1.6.9) (2018-12-02)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.8...1.6.9)
+
+**Fixed bugs:**
+
+- Editing tasks was a bit finicky for certain Gtk+ 3 versions. Editing should now never be aborted immediately.
+
+**Implemented enhancements:**
+
+- Tasks can now be removed by pressing the delete key or by clicking a new delete button while editing a task.
+
+**Closed issues:**
+
+- How to delete tasks in todo [\#59](https://github.com/JMoerman/Go-For-It/issues/59)
+
 ## [1.6.8](https://github.com/JMoerman/Go-For-It/tree/1.6.8) (2018-10-16)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.7...1.6.8)
 
 **Fixed bugs:**
 
-- The application menu was not alligned correctly on Loki and likely other modern distribution releases.
+- The application menu was not alligned correctly on Juno and likely other modern distribution releases.
 - The use of a global dark theme no longer impacts the themeing of _Go For It!_, while it used to affect a part of the application. (Use the settings dialog if you want to use a dark theme.)
 
 **Closed issues:**
