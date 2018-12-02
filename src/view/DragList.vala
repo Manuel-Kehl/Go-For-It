@@ -689,9 +689,6 @@ public class DragListRow : Gtk.ListBoxRow {
     }
 
     public void set_center_widget (Gtk.Widget? widget) {
-        if (center_widget != null) {
-            layout.remove (start_widget);
-        }
         center_widget = widget;
         if (center_widget != null) {
             layout.set_center_widget (center_widget);

@@ -42,18 +42,21 @@ class TaskStore : Object, DragListModel {
         task.done_changed.connect (on_task_done);
         task.data_changed.connect (on_task_data_changed);
         items_changed (tasks.length - 1, 0, 1);
+        task_data_changed ();
     }
 
     public void clear () {
         uint length = tasks.length;
         tasks.clear ();
         items_changed (0, length, 0);
+        task_data_changed ();
     }
 
     public void remove_task (TodoTask task) {
         task.done_changed.disconnect (on_task_done);
         task.data_changed.disconnect (on_task_data_changed);
         items_changed (tasks.remove_item (task), 1, 0);
+        task_data_changed ();
     }
 
     public Type get_item_type () {

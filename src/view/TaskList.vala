@@ -64,12 +64,27 @@ class TaskList : Gtk.Grid {
     private Gtk.Widget create_row (Object task) {
         TaskRow row = new TaskRow (((TodoTask) task));
         row.link_clicked.connect (on_row_link_clicked);
+        row.key_release_event.connect (on_row_key_release);
+        row.delete_clicked.connect (on_delete_clicked);
         return row;
+    }
+
+    private bool on_row_key_release (Object _row, Gdk.EventKey event) {
+        var row = (TaskRow) _row;
+        if (event.keyval == Gdk.Key.Delete) {
+            model.remove_task (row.task);
+            return true;
+        }
+        return false;
     }
 
     private void on_row_link_clicked (string uri) {
         search_bar.set_search_mode (true);
         filter_entry.set_text (uri);
+    }
+
+    private void on_delete_clicked (TaskRow row) {
+        model.remove_task (row.task);
     }
 
     /**

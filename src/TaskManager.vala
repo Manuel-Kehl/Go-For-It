@@ -113,8 +113,6 @@ class TaskManager {
     ) {
         source.remove_task (task);
         destination.add_task (task);
-        save_todo_tasks ();
-        save_done_tasks ();
     }
 
     /**
