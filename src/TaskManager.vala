@@ -97,7 +97,6 @@ class TaskManager {
             todo_task.priority = priority;
             todo_task.creation_date = new GLib.DateTime.now_local ();
             todo_store.add_task (todo_task);
-            save_todo_tasks ();
         }
     }
 
@@ -120,8 +119,6 @@ class TaskManager {
      */
     public void clear_done_store () {
         done_store.clear ();
-
-        save_done_tasks ();
     }
 
     /**
