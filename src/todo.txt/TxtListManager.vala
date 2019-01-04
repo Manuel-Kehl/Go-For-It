@@ -71,6 +71,30 @@ class TxtListManager {
         create_settings_instances ();
     }
 
+    public ListCreateDialog get_creation_dialog (Gtk.Window? parent) {
+        return new ListCreateDialog (parent, this);
+    }
+
+    /**
+     * Checks if the path is used by another TxtList
+     * The path must be absolute
+     */
+    public bool location_available (string path) {
+        foreach (string id in list_ids) {
+            if (get_todo_txt_location (id) == path) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Availability of the location must have been checked in advance
+     */
+    public void add_list (string location, string name, int task_duration = -1, int break_duration = -1, int reminder_time = -1) {
+
+    }
+
     public TxtList get_list (string id) {
         var list_settings = settings_list.search<string> (id, (settings, _id) => {
             return strcmp (settings.id, _id);

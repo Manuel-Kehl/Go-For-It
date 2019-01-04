@@ -22,6 +22,8 @@ class SelectionPage : Gtk.Grid {
     /* GTK Widgets */
     private Gtk.ScrolledWindow scroll_view;
     private DragList todolist_view;
+    private Gtk.Button add_button;
+    private ListCreateDialog create_dialog;
 
     /* Data Model */
     private ListManager list_manager;
@@ -38,6 +40,7 @@ class SelectionPage : Gtk.Grid {
         this.orientation = Gtk.Orientation.VERTICAL;
         this.expand = true;
         this.list_manager = list_manager;
+        create_dialog = null;
 
         /* Setup the widget's children */
         setup_todolist_view ();
@@ -59,11 +62,26 @@ class SelectionPage : Gtk.Grid {
         todolist_view.vadjustment = scroll_view.vadjustment;
         todolist_view.row_activated.connect (on_todolist_view_row_activated);
 
+        todolist_view.set_placeholder (new Gtk.Label ("No lists configured, add one below"));
+
         scroll_view.expand = true;
 
         // Add to the main widget
         scroll_view.add (todolist_view);
         this.add (scroll_view);
+
+        add_button = new Gtk.Button.with_label ("Add list");
+        this.add (add_button);
+
+        add_button.clicked.connect (() => {
+            if (create_dialog == null) {
+                create_dialog = list_manager.get_txt_manager ().get_creation_dialog (null);
+                create_dialog.destroy.connect (() => {
+                    create_dialog = null;
+                });
+            }
+            create_dialog.show_all ();
+        });
     }
 
     private void on_todolist_view_row_activated (DragListRow? selected_row) {

@@ -262,6 +262,14 @@ public class DragList : Gtk.Bin {
         row_selected (next);
     }
 
+    /**
+     * Sets the placeholder widget that is shown in the list when it doesn't
+     * display any visible children.
+     */
+    public void set_placeholder (Gtk.Widget? placeholder) {
+        listbox.set_placeholder (placeholder);
+    }
+
     public void add_row (Gtk.Widget widget) {
         insert_row (widget, -1);
     }
@@ -273,7 +281,8 @@ public class DragList : Gtk.Bin {
     /**
      * Insert the widget into the this at position.
      *
-     * If position is -1, or larger than the total number of items in the this, then the child will be appended to the end.
+     * If position is -1, or larger than the total number of items in the this,
+     * then the child will be appended to the end.
      *
      * @param widget the Widget to add
      * @param position the position to insert child in

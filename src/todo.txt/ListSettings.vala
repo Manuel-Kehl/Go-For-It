@@ -45,4 +45,10 @@ class ListSettings : Object, TodoListInfo {
         this.break_duration = -1;
         this.reminder_time = -1;
     }
+
+    public ListSettings.empty () {
+        this.task_duration = -1;
+        this.break_duration = -1;
+        this.reminder_time = -1;
+    }
 }

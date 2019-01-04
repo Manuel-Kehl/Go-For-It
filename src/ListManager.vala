@@ -46,6 +46,10 @@ class ListManager : Object, DragListModel {
         populate_items ();
     }
 
+    public TxtListManager get_txt_manager () {
+        return txt_manager;
+    }
+
     private unowned List<TodoListInfo> search_list_link (
         List<TodoListInfo> lists, string id
     ) {
@@ -56,7 +60,7 @@ class ListManager : Object, DragListModel {
 
     public TxtList get_list (string id) {
         return txt_manager.get_list (id);
-    } 
+    }
 
     private void populate_items () {
         unowned List<TodoListInfo> txt_lists = txt_manager.get_list_infos ();
