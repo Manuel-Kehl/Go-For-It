@@ -23,12 +23,11 @@
 class TxtListManager {
     private KeyFile key_file;
     private string list_file;
-    private List<ListSettings> settings_list;
+    private string config_dir;
+
+    private HashTable<string, ListSettings> list_table;
 
     private string[] list_ids {
-        owned get {
-            return get_string_list ("Lists", "lists", {});
-        }
         set {
             set_string_list ("Lists", "lists", value);
         }
@@ -39,22 +38,28 @@ class TxtListManager {
         private set;
     }
 
+    public signal void lists_added (List<TodoListInfo> new_lists);
+    public signal void lists_removed (List<string> removed);
+
     /**
      * Constructs a SettingsManager object from a configuration file.
      * Reads the corresponding file and creates it, if necessary.
      */
-    public TxtListManager (string list_file) {
-        this.list_file = list_file;
+    public TxtListManager (string config_dir) {
+        this.config_dir = config_dir;
+        this.list_file= Path.build_filename (
+            config_dir, "lists"
+        );
         // Instantiate the key_file object
         key_file = new KeyFile ();
         first_run = true;
 
         if (!FileUtils.test (list_file, FileTest.EXISTS)) {
             int dir_exists = DirUtils.create_with_parents (
-                GOFI.Utils.config_dir, 0775
+                config_dir, 0775
             );
             if (dir_exists != 0) {
-                error (_("Couldn't create directory: %s"), GOFI.Utils.config_dir);
+                error (_("Couldn't create directory: %s"), config_dir);
             }
         } else {
             // If it does exist, read existing values
@@ -72,7 +77,12 @@ class TxtListManager {
     }
 
     public ListCreateDialog get_creation_dialog (Gtk.Window? parent) {
-        return new ListCreateDialog (parent, this);
+        var dialog = new ListCreateDialog (parent, this);
+        dialog.add_list_clicked.connect ( (settings) => {
+            add_new_from_settings (settings);
+            dialog.destroy ();
+        });
+        return dialog;
     }
 
     /**
@@ -80,38 +90,31 @@ class TxtListManager {
      * The path must be absolute
      */
     public bool location_available (string path) {
-        foreach (string id in list_ids) {
-            if (get_todo_txt_location (id) == path) {
+        foreach (ListSettings list in list_table.get_values ()) {
+            if (list.todo_txt_location == path) {
                 return false;
             }
         }
         return true;
     }
 
-    /**
-     * Availability of the location must have been checked in advance
-     */
-    public void add_list (string location, string name, int task_duration = -1, int break_duration = -1, int reminder_time = -1) {
-
-    }
-
     public TxtList get_list (string id) {
-        var list_settings = settings_list.search<string> (id, (settings, _id) => {
-            return strcmp (settings.id, _id);
-        }).data;
+        assert (list_table.contains (id));
 
-        return new TxtList (list_settings);
+        return new TxtList (list_table[id]);
     }
 
-    public unowned List<TodoListInfo> get_list_infos () {
-        return settings_list;
+    public List<TodoListInfo> get_list_infos () {
+        return list_table.get_values ();
     }
 
     private void create_settings_instances () {
-        settings_list = new List<ListSettings> ();
+        list_table = new HashTable<string, ListSettings> (
+            ((key) => {return (uint) long.parse (key);}), null
+        );
 
-        foreach (string list_id in list_ids) {
-            settings_list.append (create_settings_instance (list_id));
+        foreach (string list_id in get_string_list ("Lists", "lists", {})) {
+            list_table[list_id] = create_settings_instance (list_id);
         }
     }
 
@@ -129,14 +132,66 @@ class TxtListManager {
         return list_settings;
     }
 
-    public void add_settings_instance (string name, string txt_location) {
+    public bool has_id (string id) {
+        return list_table.contains (id);
+    }
+
+    public string get_new_id (string name) {
+        uint id = str_hash (name);
+        string id_str = id.to_string ();//uint_to_base64 (id);
+        while (has_id (id_str)) {
+            if (id < uint.MAX) {
+                id++;
+            } else {
+                id = 0;
+            }
+            id_str = id.to_string (); //uint_to_base64 (id);
+        }
+        return id_str;
+    }
+
+    /**
+     * Availability of the location must have been checked in advance
+     */
+    public void add_new (string name, string txt_location) {
+        string id = get_new_id (name);
         var list_settings = new ListSettings (
-            "test",
+            id,
             name,
             txt_location
         );
-        connect_settings_signals (list_settings);
-        settings_list.append (list_settings);
+        add_listsettings (list_settings);
+    }
+
+    public void add_new_from_settings (ListSettings settings) {
+        string id = get_new_id (settings.name);
+        var list_settings = new ListSettings (
+            id,
+            settings.name,
+            settings.todo_txt_location
+        );
+        add_listsettings (list_settings);
+    }
+
+    private void add_listsettings (ListSettings settings) {
+        stdout.printf ("added: %s (%s)\n", settings.name, settings.id);
+        connect_settings_signals (settings);
+        list_table[settings.id] = settings;
+        set_string_list ("Lists", "lists", list_table.get_keys_as_array ());
+
+        var added = new List<TodoListInfo> ();
+        added.prepend (settings);
+
+        lists_added (added);
+        save_listsettings (settings);
+    }
+
+    private void save_listsettings (ListSettings list) {
+        set_name (list.id, list.name);
+        set_todo_txt_location (list.id, list.todo_txt_location);
+        set_task_duration (list.id, list.task_duration);
+        set_break_duration (list.id, list.break_duration);
+        set_reminder_time (list.id, list.reminder_time);
     }
 
     private void connect_settings_signals (ListSettings list_settings) {
@@ -153,10 +208,10 @@ class TxtListManager {
                     set_task_duration (list.id, list.task_duration);
                     break;
                 case "break-duration":
-                    set_task_duration (list.id, list.break_duration);
+                    set_break_duration (list.id, list.break_duration);
                     break;
                 case "reminder-time":
-                    set_task_duration (list.id, list.reminder_time);
+                    set_reminder_time (list.id, list.reminder_time);
                     break;
             }
         });
@@ -271,6 +326,10 @@ class TxtListManager {
     }
 
     private void write_key_file () throws Error {
+        int dir_exists = DirUtils.create_with_parents (config_dir, 0775);
+        if (dir_exists != 0) {
+            error (_("Couldn't create directory: %s"), config_dir);
+        }
         GLib.FileUtils.set_contents (list_file, key_file.to_data ());
     }
 }

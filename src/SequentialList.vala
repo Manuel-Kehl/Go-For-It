@@ -74,6 +74,11 @@ class SequentialList {
         items.push_tail (item);
     }
 
+    public void prepend_item (Object item) {
+        iter_link = null;
+        items.push_head (item);
+    }
+
     public uint remove_item (Object item) {
         iter_link = null;
         uint i = 0;

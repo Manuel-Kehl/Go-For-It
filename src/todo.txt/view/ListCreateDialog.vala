@@ -22,6 +22,8 @@ class ListCreateDialog : Gtk.Dialog {
     /* GTK Widgets */
     private Gtk.Grid main_layout;
 
+    public signal void add_list_clicked (ListSettings settings);
+
     public ListCreateDialog (Gtk.Window? parent, TxtListManager list_manager) {
         this.set_transient_for (parent);
         this.list_manager = list_manager;
@@ -42,14 +44,37 @@ class ListCreateDialog : Gtk.Dialog {
 
         this.title = _("New todo list");
         setup_settings_widgets ();
-        this.add_button (_("Close"), Gtk.ResponseType.CLOSE);
+        this.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+        this.add_button (_("Add list"), Gtk.ResponseType.ACCEPT);
 
         /* Action Handling */
         this.response.connect ((s, response) => {
-            if (response == Gtk.ResponseType.CLOSE) {
-                this.destroy ();
+            switch (response) {
+                case Gtk.ResponseType.ACCEPT:
+                    add_list_clicked (settings);
+                    break;
+                default:
+                    this.destroy ();
+                    break;
             }
         });
+
+        set_add_sensitive ();
+    }
+
+    private bool check_valid () {
+        string? location = settings.todo_txt_location;
+        if (location == null || !list_manager.location_available (location)) {
+            return false;
+        }
+        if (settings.name == null || settings.name == "") {
+            return false;
+        }
+        return true;
+    }
+
+    private void set_add_sensitive () {
+        set_response_sensitive (Gtk.ResponseType.ACCEPT, check_valid ());
     }
 
     private void setup_settings_widgets () {
@@ -90,6 +115,9 @@ class ListCreateDialog : Gtk.Dialog {
         Gtk.Label txt_sect_lbl;
         Gtk.Label directory_lbl;
         Gtk.FileChooserButton directory_btn;
+        string directory_lbl_text =
+            "<a href=\"http://todotxt.com\">Todo.txt</a> "
+            + _("directory");
 
         /* Instantiation */
         txt_sect_lbl = new Gtk.Label ("Todo.txt");
@@ -98,8 +126,7 @@ class ListCreateDialog : Gtk.Dialog {
             Gtk.FileChooserAction.SELECT_FOLDER);
 
         directory_lbl = new Gtk.Label (
-            "<a href=\"http://todotxt.com\">Todo.txt</a> "
-            + _("directory") + ":"
+            directory_lbl_text + ":"
         );
 
         /* Configuration */
@@ -114,10 +141,26 @@ class ListCreateDialog : Gtk.Dialog {
         directory_btn.file_set.connect ((e) => {
             var todo_dir = directory_btn.get_file ().get_path ();
             settings.todo_txt_location = todo_dir;
+            if (!list_manager.location_available (todo_dir)) {
+                directory_lbl.label = @"<span foreground=red>*$directory_lbl_text:</span>";
+            } else {
+                directory_lbl.label = directory_lbl_text + ":";
+            }
+            set_add_sensitive ();
         });
 
         add_section (main_layout, txt_sect_lbl, ref row);
         add_option (main_layout, directory_lbl, directory_btn, ref row);
+
+        Gtk.Label name_lbl = new Gtk.Label (_("Name"));
+        Gtk.Entry name_entry = new Gtk.Entry ();
+
+        name_entry.notify["text"].connect ( () => {
+            settings.name = name_entry.text;
+            set_add_sensitive ();
+        });
+
+        add_option (main_layout, name_lbl, name_entry, ref row);
     }
 
     private void setup_timer_settings_widgets (Gtk.Grid grid, ref int row) {

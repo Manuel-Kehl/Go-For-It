@@ -29,9 +29,7 @@ class ListManager : Object, DragListModel {
     public ListManager (SettingsManager settings) {
         this.settings = settings;
 
-        string txt_config_file = Path.build_filename (
-            GOFI.Utils.get_module_config_dir ("Todo.txt"), "list"
-        );
+        string txt_config_file = GOFI.Utils.get_module_config_dir ("Todo.txt");
 
         txt_manager = new TxtListManager (txt_config_file);
         todolist_infos = new SequentialList (typeof (TodoListInfo));
@@ -39,11 +37,22 @@ class ListManager : Object, DragListModel {
         if (txt_manager.first_run) {
             var old_txt_path = settings.todo_txt_location;
             if (old_txt_path != "") {
-                txt_manager.add_settings_instance ("Todo.txt", old_txt_path);
+                txt_manager.add_new ("Todo.txt", old_txt_path);
             }
         }
 
         populate_items ();
+
+        txt_manager.lists_added.connect (add_new_lists);
+    }
+
+    private void add_new_lists (List<TodoListInfo> to_add) {
+        uint n = 0;
+        foreach (TodoListInfo info in to_add) {
+            todolist_infos.prepend_item (info);
+            n++;
+        }
+        items_changed (0, 0, n);
     }
 
     public TxtListManager get_txt_manager () {
@@ -63,7 +72,7 @@ class ListManager : Object, DragListModel {
     }
 
     private void populate_items () {
-        unowned List<TodoListInfo> txt_lists = txt_manager.get_list_infos ();
+        List<TodoListInfo> txt_lists = txt_manager.get_list_infos ();
         var stored_lists = settings.lists;
 
         foreach (ListIdentifier identifier in stored_lists) {

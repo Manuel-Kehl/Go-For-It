@@ -75,7 +75,8 @@ class SelectionPage : Gtk.Grid {
 
         add_button.clicked.connect (() => {
             if (create_dialog == null) {
-                create_dialog = list_manager.get_txt_manager ().get_creation_dialog (null);
+                Gtk.Window? window = this.get_toplevel () as Gtk.Window;
+                create_dialog = list_manager.get_txt_manager ().get_creation_dialog (window);
                 create_dialog.destroy.connect (() => {
                     create_dialog = null;
                 });
