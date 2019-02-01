@@ -34,6 +34,8 @@ class MainWindow : Gtk.ApplicationWindow {
     private SelectionPage selection_page;
     private TaskListPage task_page;
     private Gtk.MenuButton menu_btn;
+    private Gtk.ToolButton switch_btn;
+    private Gtk.Image switch_img;
     // Application Menu
     private Gtk.Menu app_menu;
     private Gtk.MenuItem config_item;
@@ -136,8 +138,14 @@ class MainWindow : Gtk.ApplicationWindow {
     }
 
     private void load_list (TodoListInfo selected_info) {
-        task_page.set_task_list (list_manager.get_list(selected_info.id));
+        if (task_page.ready) {
+            task_page.remove_task_list ();
+        }
+
+        task_page.set_task_list (list_manager.get_list (selected_info.id));
         top_stack.set_visible_child (task_page);
+        switch_btn.sensitive = true;
+        switch_img.set_from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
     }
 
     private void setup_actions (Gtk.Application app) {
@@ -171,10 +179,25 @@ class MainWindow : Gtk.ApplicationWindow {
         menu_btn.tooltip_text = _("Menu");
         app_menu.halign = Gtk.Align.END;
 
+        switch_img = new Gtk.Image.from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
+        switch_btn = new Gtk.ToolButton (switch_img, _("_Back"));
+        switch_btn.sensitive = false;
+        switch_btn.clicked.connect (switch_top_stack);
+
         if (use_header_bar){
             add_headerbar ();
         } else {
             add_hb_replacement ();
+        }
+    }
+
+    private void switch_top_stack () {
+        if (top_stack.visible_child == task_page) {
+            top_stack.set_visible_child (selection_page);
+            switch_img.set_from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
+        } else if (task_page.ready) {
+            top_stack.set_visible_child (task_page);
+            switch_img.set_from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
         }
     }
 
@@ -199,6 +222,7 @@ class MainWindow : Gtk.ApplicationWindow {
         header_bar.title = GOFI.APP_NAME;
 
         // Add headerbar Buttons here
+        header_bar.pack_start (switch_btn);
         header_bar.pack_end (menu_btn);
 
         this.set_titlebar (header_bar);

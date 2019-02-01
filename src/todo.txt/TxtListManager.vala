@@ -110,7 +110,7 @@ class TxtListManager {
 
     private void create_settings_instances () {
         list_table = new HashTable<string, ListSettings> (
-            ((key) => {return (uint) long.parse (key);}), null
+            ((key) => {return (uint) long.parse (key);}), str_equal
         );
 
         foreach (string list_id in get_string_list ("Lists", "lists", {})) {
@@ -138,14 +138,14 @@ class TxtListManager {
 
     public string get_new_id (string name) {
         uint id = str_hash (name);
-        string id_str = id.to_string ();//uint_to_base64 (id);
+        string id_str = id.to_string ();
         while (has_id (id_str)) {
             if (id < uint.MAX) {
                 id++;
             } else {
                 id = 0;
             }
-            id_str = id.to_string (); //uint_to_base64 (id);
+            id_str = id.to_string ();
         }
         return id_str;
     }
