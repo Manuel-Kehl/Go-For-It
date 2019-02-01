@@ -105,6 +105,7 @@ class TaskListPage : Gtk.Grid {
             task_list.notify["selected-task"].connect (on_selected_task_changed);
             add_widgets ();
             this.show_all ();
+            on_selected_task_changed ();
 
             list_valid = true;
         } else {
