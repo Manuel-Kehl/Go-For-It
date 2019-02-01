@@ -356,7 +356,7 @@ class MainWindow : Gtk.ApplicationWindow {
                 try {
                     css_provider.load_from_path (path);
                     Gtk.StyleContext.add_provider_for_screen (
-                        screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
+                        screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
                     break;
                 } catch (Error e) {
                     warning ("Cannot load CSS stylesheet: %s", e.message);
