@@ -102,11 +102,11 @@ class TxtListManager {
         assert (list_table.contains (id));
 
         list_table.remove (id);
-        key_file.remove_group (id);
         try {
+            key_file.remove_group (id);
             write_key_file ();
         } catch (Error e) {
-            warning ("List could not be fully removed: Failed to write to %s: %s.", list_file, e.message);
+            warning ("List could not be fully removed: %s", e.message);
         }
 
         var removed = new List<string> ();
