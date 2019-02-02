@@ -46,3 +46,9 @@ row.drag-hover-top {
 row.drag-hover-bottom {
     border-top: 1px solid @list_row_drag_highlight_top;
 }
+
+.no_margin {
+    margin: 0;
+    padding: 0;
+    border: 0px;
+}

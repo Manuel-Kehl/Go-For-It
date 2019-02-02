@@ -27,12 +27,6 @@ class TxtListManager {
 
     private HashTable<string, ListSettings> list_table;
 
-    private string[] list_ids {
-        set {
-            set_string_list ("Lists", "lists", value);
-        }
-    }
-
     public bool first_run {
         public get;
         private set;
@@ -102,6 +96,23 @@ class TxtListManager {
         assert (list_table.contains (id));
 
         return new TxtList (list_table[id]);
+    }
+
+    public void delete_list (string id, Gtk.Window? window) {
+        assert (list_table.contains (id));
+
+        list_table.remove (id);
+        key_file.remove_group (id);
+        try {
+            write_key_file ();
+        } catch (Error e) {
+            warning ("List could not be fully removed: Failed to write to %s: %s.", list_file, e.message);
+        }
+
+        var removed = new List<string> ();
+        removed.prepend (id);
+
+        lists_removed (removed);
     }
 
     public List<TodoListInfo> get_list_infos () {

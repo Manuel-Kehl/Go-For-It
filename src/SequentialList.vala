@@ -92,6 +92,19 @@ class SequentialList {
         return i;
     }
 
+    public uint search_remove_item<T> (T data, GLib.SearchFunc<Object, T> func) {
+        iter_link = null;
+        uint i = 0;
+        unowned List<Object> iter = items.head;
+        while (iter != null && func(iter.data, data) != 0) {
+            iter = iter.next;
+            i++;
+        }
+        assert (iter != null);
+        items.delete_link (iter);
+        return i;
+    }
+
     public void move_item (uint old_position, uint new_position) {
         assert (((int)old_position) >= 0 && ((int)new_position) >= 0);
         iter_link = null;

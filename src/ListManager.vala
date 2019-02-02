@@ -44,6 +44,7 @@ class ListManager : Object, DragListModel {
         populate_items ();
 
         txt_manager.lists_added.connect (add_new_lists);
+        txt_manager.lists_removed.connect (remove_lists);
     }
 
     private void add_new_lists (List<TodoListInfo> to_add) {
@@ -53,6 +54,16 @@ class ListManager : Object, DragListModel {
             n++;
         }
         items_changed (0, 0, n);
+    }
+
+    private void remove_lists (List<string> to_remove) {
+        foreach (string id in to_remove) {
+            uint index = todolist_infos.search_remove_item<string> (id, ((info_obj, search_id) => {
+                var info_id = ((TodoListInfo) info_obj).id;
+                return strcmp (info_id, search_id);
+            }));
+            items_changed (index, 1, 0);
+        }
     }
 
     public TxtListManager get_txt_manager () {
@@ -69,6 +80,10 @@ class ListManager : Object, DragListModel {
 
     public TxtList get_list (string id) {
         return txt_manager.get_list (id);
+    }
+
+    public void delete_list (TodoListInfo list_info, Gtk.Window? window) {
+        txt_manager.delete_list (list_info.id, window);
     }
 
     private void populate_items () {

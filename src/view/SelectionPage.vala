@@ -48,6 +48,9 @@ class SelectionPage : Gtk.Grid {
 
     private Gtk.Widget create_row (Object info) {
         TodoListInfoRow row = new TodoListInfoRow (((TodoListInfo) info));
+        row.delete_clicked.connect ((info) => {
+            list_manager.delete_list (info, this.get_toplevel () as Gtk.Window);
+        });
         return row;
     }
 
