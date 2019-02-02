@@ -78,19 +78,28 @@ class TodoListInfoRow: DragListRow {
 
             preferences_menuitem.clicked.connect (() => {
                 delete_clicked (this.info);
+#if HAS_GTK322
                 popover.popdown ();
+#else
+                popover.hide ();
+#endif
             });
 
             popover.add (preferences_menuitem);
+#if HAS_GTK322
             popover.forall ((child) => {
                 child.show_all ();
             });
             popover.popup ();
+#else
+            popover.show_all ();
+#endif
 
             popover.closed.connect ( () => {
                 option_revealer.reveal_child = false;
                 options_button.active = false;
                 showing_menu = false;
+
                 popover.destroy ();
             });
         });

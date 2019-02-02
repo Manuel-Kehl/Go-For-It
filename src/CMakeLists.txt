@@ -8,6 +8,14 @@ if (${SHOW_ABOUT})
     set (VALAC_OPTIONS ${VALAC_OPTIONS} -D SHOW_ABOUT)
 endif ()
 
+# checking if have a recent version of Gtk+-3.0
+pkg_check_modules( GTK3 gtk+-3.0 )
+if (${GTK3_VERSION} VERSION_GREATER 3.21)
+    set (VALAC_OPTIONS ${VALAC_OPTIONS} -D HAS_GTK322)
+else ()
+    message ("-- No recent Gtk+-3.0 found... Using pre 3.22 features.")
+endif ()
+
 # files we want to compile
 include (ValaPrecompile)
 vala_precompile (VALA_C ${LIBNAME}
