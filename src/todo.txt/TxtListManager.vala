@@ -104,7 +104,7 @@ class TxtListManager {
         list_table.remove (id);
         try {
             key_file.remove_group (id);
-            write_key_file ();
+            set_string_list ("Lists", "lists", list_table.get_keys_as_array ());
         } catch (Error e) {
             warning ("List could not be fully removed: %s", e.message);
         }
