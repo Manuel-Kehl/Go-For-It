@@ -41,6 +41,9 @@ class MainWindow : Gtk.ApplicationWindow {
     private Gtk.MenuItem config_item;
 
     private Gtk.Settings gtk_settings;
+
+    private TodoListInfo? current_list_info;
+
     /**
      * Used to determine if a notification should be sent.
      */
@@ -69,6 +72,16 @@ class MainWindow : Gtk.ApplicationWindow {
         setup_notifications ();
         // Enable Notifications for the App
         Notify.init (GOFI.APP_NAME);
+
+        load_last ();
+    }
+
+    private void load_last () {
+        var last_loaded = settings.list_last_loaded;
+        if (last_loaded != null) {
+            load_list (list_manager.get_list (last_loaded.id));
+        }
+        current_list_info = null;
     }
 
     private void apply_settings () {
@@ -126,7 +139,7 @@ class MainWindow : Gtk.ApplicationWindow {
         selection_page = new SelectionPage (list_manager);
         task_page = new TaskListPage (task_timer);
 
-        selection_page.list_chosen.connect (load_list);
+        selection_page.list_chosen.connect (on_list_chosen);
 
         setup_stack ();
         setup_top_bar ();
@@ -137,12 +150,18 @@ class MainWindow : Gtk.ApplicationWindow {
         this.add (main_layout);
     }
 
-    private void load_list (TodoListInfo selected_info) {
+    private void on_list_chosen (TodoListInfo selected_info) {
+        load_list (list_manager.get_list (selected_info.id));
+        settings.list_last_loaded = {selected_info.plugin_name, selected_info.id};
+        current_list_info = selected_info;
+    }
+
+    private void load_list (TxtList list) {
         if (task_page.ready) {
             task_page.remove_task_list ();
         }
 
-        task_page.set_task_list (list_manager.get_list (selected_info.id));
+        task_page.set_task_list (list);
         top_stack.set_visible_child (task_page);
         switch_btn.sensitive = true;
         switch_img.set_from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
@@ -195,9 +214,11 @@ class MainWindow : Gtk.ApplicationWindow {
         if (top_stack.visible_child == task_page) {
             top_stack.set_visible_child (selection_page);
             switch_img.set_from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
+            settings.list_last_loaded = null;
         } else if (task_page.ready) {
             top_stack.set_visible_child (task_page);
             switch_img.set_from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
+            settings.list_last_loaded = null;
         }
     }
 

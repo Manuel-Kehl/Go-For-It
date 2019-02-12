@@ -79,6 +79,7 @@ class ListManager : Object, DragListModel {
     }
 
     public TxtList get_list (string id) {
+        stdout.printf ("get_list '%s'\n", id);
         return txt_manager.get_list (id);
     }
 

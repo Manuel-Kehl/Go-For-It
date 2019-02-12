@@ -18,6 +18,32 @@
 private struct ListIdentifier {
     public string plugin;
     public string id;
+
+    public static ListIdentifier? from_string (string encoded) {
+        var concat_identifier = split_strings (encoded);
+        if (concat_identifier[1] != null) {
+            return {concat_identifier[0], concat_identifier[1]};
+        }
+        return null;
+    }
+
+    public string to_string () {
+        return merge_strings (this.plugin, this.id);
+    }
+
+    private static string merge_strings (string str1, string str2) {
+        var _str1 = str1.replace (":\"", "\\:\"");
+        var _str2 = str2.replace (":\"", "\\:\"");
+        return "\"" + _str1 + "\":\"" + _str2 + "\"";
+    }
+
+    private static string[] split_strings (string str) {
+        string[] temp = str.slice(1,-1).split ("\":\"");
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = temp[i].replace ("\\:\"", ":\"");
+        }
+        return temp;
+    }
 }
 
 /**
@@ -149,40 +175,51 @@ private class SettingsManager {
         owned get {
             string[] _lists = get_string_list (GROUP_LISTS, "lists", {});
             int n_lists = _lists.length;
-            string[] concat_identifier;
 
-            ListIdentifier[] identifiers = new ListIdentifier[n_lists];
+            ListIdentifier?[] identifiers = new ListIdentifier?[n_lists];
+            int j = 0;
             for (int i = 0; i < n_lists; i++) {
-                concat_identifier = split_strings (_lists[i]);
-                identifiers[i] = {concat_identifier[0], concat_identifier[1]};
+                var identifier = ListIdentifier.from_string (_lists[i]);
+                if (identifier != null) {
+                    identifiers[j] = identifier;
+                    j++;
+                } else {
+                    warning ("Can't decode list information! (%s)", _lists[i]);
+                }
+            }
+            if (j != n_lists) {
+                identifiers[j] = null; // Null terminate the array
+                identifiers.resize(j); // Set .length value
             }
 
-            return identifiers;
+            return (ListIdentifier[]) identifiers;
         }
         set {
             int n_lists = value.length;
             string[] _lists = new string[n_lists];
 
             for (int i = 0; i < n_lists; i++) {
-                _lists[i] = merge_strings (value[i].plugin, value[i].id);
+                _lists[i] = value[i].to_string ();
             }
 
             set_string_list (GROUP_LISTS, "lists", _lists);
         }
     }
-
-    public string merge_strings (string str1, string str2) {
-        var _str1 = str1.replace (":\"", "\\:\"");
-        var _str2 = str2.replace (":\"", "\\:\"");
-        return "\"" + _str1 + "\":\"" + _str2 + "\"";
-    }
-
-    public string[] split_strings (string str) {
-        string[] temp = str.split ("\":\"");
-        for (int i = 0; i < temp.length; i++) {
-            temp[i] = temp[i].replace ("\\:\"", ":\"");
+    public ListIdentifier? list_last_loaded {
+        owned get {
+            var encoded_id = get_value (GROUP_LISTS, "last", "");
+            if (encoded_id != "") {
+                return ListIdentifier.from_string (encoded_id);
+            }
+            return null;
         }
-        return temp;
+        set {
+            if (value == null) {
+                set_value (GROUP_LISTS, "last", "");
+            } else {
+                set_value (GROUP_LISTS, "last", value.to_string ());
+            }
+        }
     }
 
     /* Signals */
