@@ -103,8 +103,7 @@ class TxtListManager {
 
         list_table.remove (id);
         try {
-            key_file.remove_group (id);
-            set_string_list ("Lists", "lists", list_table.get_keys_as_array ());
+            key_file.remove_group ("list" + id);
         } catch (Error e) {
             warning ("List could not be fully removed: %s", e.message);
         }
@@ -124,8 +123,15 @@ class TxtListManager {
             ((key) => {return (uint) long.parse (key);}), str_equal
         );
 
-        foreach (string list_id in get_string_list ("Lists", "lists", {})) {
-            list_table[list_id] = create_settings_instance (list_id);
+        foreach (string group in key_file.get_groups ()) {
+            if (group.has_prefix ("list")) {
+                var list_id = group.offset (4);
+                if (list_id == "") {
+                    warning ("Invalid list id stored in %s: '%s'", list_file, group);
+                    continue;
+                }
+                list_table[list_id] = create_settings_instance (list_id);
+            }
         }
     }
 
@@ -188,7 +194,6 @@ class TxtListManager {
         stdout.printf ("added: %s (%s)\n", settings.name, settings.id);
         connect_settings_signals (settings);
         list_table[settings.id] = settings;
-        set_string_list ("Lists", "lists", list_table.get_keys_as_array ());
 
         var added = new List<TodoListInfo> ();
         added.prepend (settings);
@@ -272,7 +277,8 @@ class TxtListManager {
      * Public access is granted via the SettingsManager's attributes, so this
      * function has been declared private
      */
-    private string get_value (string group, string key, string default = "") {
+    private string get_value (string list_id, string key, string default = "") {
+        var group = "list" + list_id;
         try {
             // use key_file, if it has been assigned
             if (key_file != null
@@ -293,7 +299,8 @@ class TxtListManager {
      * Public access is granted via the SettingsManager's attributes, so this
      * function has been declared private
      */
-    private void set_value (string group, string key, string value) {
+    private void set_value (string list_id, string key, string value) {
+        var group = "list" + list_id;
         if (key_file != null) {
             try {
                 key_file.set_value (group, key, value);
@@ -301,37 +308,6 @@ class TxtListManager {
             } catch (Error e) {
                 error ("An error occured while writing the setting"
                     +" %s.%s to %s: %s", group, key, value, e.message);
-            }
-        }
-    }
-
-    private string[] get_string_list (string group, string key, string[] default = {}) {
-        try {
-            // use key_file, if it has been assigned
-            if (key_file != null
-                && key_file.has_group (group)
-                && key_file.has_key (group, key)) {
-                    return key_file.get_string_list (group, key);
-            } else {
-                return default;
-            }
-        } catch (Error e) {
-                error ("An error occured while reading the setting"
-                    +" %s.%s: %s", group, key, e.message);
-        }
-    }
-
-    private void set_string_list (string group, string key, string[] string_list) {
-        if (key_file != null) {
-            try {
-                key_file.set_string_list (group, key, string_list);
-                write_key_file ();
-            } catch (Error e) {
-                error (
-                    "An error occured while writing the setting" +
-                    " %s.%s to {%s}: %s",
-                     group, key, string.joinv (", ", string_list), e.message
-                );
             }
         }
     }
