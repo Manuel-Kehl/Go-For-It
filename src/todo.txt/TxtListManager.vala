@@ -120,7 +120,7 @@ class TxtListManager {
 
     private void create_settings_instances () {
         list_table = new HashTable<string, ListSettings> (
-            ((key) => {stdout.printf ("key: %s\n", key); return (uint) long.parse (key);}), str_equal
+            ((key) => {return (uint) long.parse (key);}), str_equal
         );
 
         foreach (string group in key_file.get_groups ()) {

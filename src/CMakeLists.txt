@@ -21,6 +21,7 @@ include (ValaPrecompile)
 vala_precompile (VALA_C ${LIBNAME}
     Constants.vala
     Utils.vala
+    ListIdentifier.vala
     SettingsManager.vala
     ListInfo.vala
     ListManager.vala

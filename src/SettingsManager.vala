@@ -15,37 +15,6 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-private struct ListIdentifier {
-    public string plugin;
-    public string id;
-
-    public static ListIdentifier? from_string (string encoded) {
-        var concat_identifier = split_strings (encoded);
-        if (concat_identifier[1] != null) {
-            return {concat_identifier[0], concat_identifier[1]};
-        }
-        return null;
-    }
-
-    public string to_string () {
-        return merge_strings (this.plugin, this.id);
-    }
-
-    private static string merge_strings (string str1, string str2) {
-        var _str1 = str1.replace (":\"", "\\:\"");
-        var _str2 = str2.replace (":\"", "\\:\"");
-        return "\"" + _str1 + "\":\"" + _str2 + "\"";
-    }
-
-    private static string[] split_strings (string str) {
-        string[] temp = str.slice(1,-1).split ("\":\"");
-        for (int i = 0; i < temp.length; i++) {
-            temp[i] = temp[i].replace ("\\:\"", ":\"");
-        }
-        return temp;
-    }
-}
-
 /**
  * A class that handles access to settings in a transparent manner.
  * Its main motivation is the option of easily replacing Glib.KeyFile with
