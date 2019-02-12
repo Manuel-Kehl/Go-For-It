@@ -50,7 +50,7 @@ class TxtList : Object {
         return done_list;
     }
 
-    private void on_selection_changed (TodoTask task) {
+    private void on_selection_changed (TodoTask? task) {
         selected_task = task;
     }
 
