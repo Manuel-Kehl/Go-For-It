@@ -25,6 +25,7 @@ class TaskListPage : Gtk.Grid {
         this.orientation = Gtk.Orientation.VERTICAL;
         initial_setup ();
         task_timer.active_task_done.connect (on_task_done);
+        get_style_context ().add_class ("task_layout");
     }
 
     /**
@@ -88,7 +89,6 @@ class TaskListPage : Gtk.Grid {
             first_page.show ();
             activity_stack.set_visible_child (first_page);
         }
-        activity_switcher.margin = 5;
     }
 
     /**

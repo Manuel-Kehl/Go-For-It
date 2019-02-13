@@ -155,7 +155,7 @@ class MainWindow : Gtk.ApplicationWindow {
 
     private void on_list_chosen (TodoListInfo selected_info) {
         if (selected_info == current_list_info) {
-            switch_top_stack ();
+            switch_top_stack (false);
             return;
         }
         var list = list_manager.get_list (selected_info.id);
@@ -167,9 +167,8 @@ class MainWindow : Gtk.ApplicationWindow {
 
     private void load_list (TxtList list) {
         task_page.set_task_list (list);
-        top_stack.set_visible_child (task_page);
         switch_btn.sensitive = true;
-        switch_img.set_from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
+        switch_top_stack (false);
     }
 
     private void setup_actions (Gtk.Application app) {
@@ -190,6 +189,7 @@ class MainWindow : Gtk.ApplicationWindow {
         top_stack = new Gtk.Stack ();
         top_stack.add (selection_page);
         top_stack.add (task_page);
+        top_stack.set_visible_child (selection_page);
     }
 
     private void setup_top_bar () {
@@ -208,7 +208,7 @@ class MainWindow : Gtk.ApplicationWindow {
         switch_btn = new Gtk.ToolButton (switch_img, _("_Back"));
         switch_btn.hexpand = false;
         switch_btn.sensitive = false;
-        switch_btn.clicked.connect (switch_top_stack);
+        switch_btn.clicked.connect (toggle_top_stack);
 
         if (use_header_bar){
             add_headerbar ();
@@ -217,8 +217,12 @@ class MainWindow : Gtk.ApplicationWindow {
         }
     }
 
-    private void switch_top_stack () {
-        if (top_stack.visible_child == task_page) {
+    private void toggle_top_stack () {
+        switch_top_stack (top_stack.visible_child == task_page);
+    }
+
+    private void switch_top_stack (bool show_select) {
+        if (show_select) {
             top_stack.set_visible_child (selection_page);
             switch_img.set_from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
             settings.list_last_loaded = null;
@@ -236,7 +240,7 @@ class MainWindow : Gtk.ApplicationWindow {
     }
 
     public void add_hb_replacement () {
-        hb_replacement = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 2);
+        hb_replacement = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
 
         switch_btn.set_halign (Gtk.Align.START);
         menu_btn.set_halign (Gtk.Align.END);
