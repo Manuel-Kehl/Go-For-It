@@ -64,18 +64,8 @@ class TaskList : Gtk.Grid {
     private Gtk.Widget create_row (Object task) {
         TaskRow row = new TaskRow (((TodoTask) task));
         row.link_clicked.connect (on_row_link_clicked);
-        row.key_release_event.connect (on_row_key_release);
-        row.delete_clicked.connect (on_delete_clicked);
+        row.deletion_requested.connect (on_deletion_requested);
         return row;
-    }
-
-    private bool on_row_key_release (Object _row, Gdk.EventKey event) {
-        var row = (TaskRow) _row;
-        if (event.keyval == Gdk.Key.Delete) {
-            model.remove_task (row.task);
-            return true;
-        }
-        return false;
     }
 
     private void on_row_link_clicked (string uri) {
@@ -83,7 +73,7 @@ class TaskList : Gtk.Grid {
         filter_entry.set_text (uri);
     }
 
-    private void on_delete_clicked (TaskRow row) {
+    private void on_deletion_requested (TaskRow row) {
         model.remove_task (row.task);
     }
 

@@ -31,7 +31,7 @@ class TaskRow: DragListRow {
     }
 
     public signal void link_clicked (string uri);
-    public signal void delete_clicked ();
+    public signal void deletion_requested ();
 
     public TaskRow (TodoTask task) {
         this.task = task;
@@ -59,7 +59,7 @@ class TaskRow: DragListRow {
         delete_button.relief = Gtk.ReliefStyle.NONE;
         delete_button.show_all ();
         delete_button.clicked.connect ( () => {
-            delete_clicked ();
+            deletion_requested ();
         });
         set_start_widget (delete_button);
 
@@ -118,6 +118,14 @@ class TaskRow: DragListRow {
         editing = false;
     }
 
+    private bool on_row_key_release (Gdk.EventKey event) {
+        if (event.keyval == Gdk.Key.Delete && (!editing || !edit_entry.has_focus)) {
+            deletion_requested ();
+            return true;
+        }
+        return false;
+    }
+
     private void connect_signals () {
         check_button.toggled.connect (() => {
             task.done = !task.done;
@@ -135,6 +143,7 @@ class TaskRow: DragListRow {
             }
         });
         focus_out_event.connect (on_focus_out);
+        key_release_event.connect (on_row_key_release);
     }
 
     class TaskEditEntry : Gtk.Entry {
