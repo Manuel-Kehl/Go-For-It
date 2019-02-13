@@ -95,7 +95,7 @@ class ListCreateDialog : Gtk.Dialog {
                              Gtk.Widget switcher, ref int row)
     {
         label.hexpand = true;
-        label.margin_left = 20; // indentation relative to the section label
+        label.margin_start = 20; // indentation relative to the section label
         label.halign = Gtk.Align.START;
 
         switcher.hexpand = true;

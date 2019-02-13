@@ -27,6 +27,10 @@ private struct ListIdentifier {
         return null;
     }
 
+    public static ListIdentifier? from_info (TodoListInfo info) {
+        return {info.plugin_name, info.id};
+    }
+
     public string to_string () {
         return merge_strings (this.plugin, this.id);
     }

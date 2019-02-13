@@ -92,10 +92,12 @@ class TxtListManager {
         return true;
     }
 
-    public TxtList get_list (string id) {
-        assert (list_table.contains (id));
-
+    public TxtList? get_list (string id) {
         return new TxtList (list_table[id]);
+    }
+
+    public TodoListInfo? get_list_info (string id) {
+        return list_table[id];
     }
 
     public void delete_list (string id, Gtk.Window? window) {

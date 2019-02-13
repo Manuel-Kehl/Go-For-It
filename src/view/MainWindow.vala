@@ -79,9 +79,12 @@ class MainWindow : Gtk.ApplicationWindow {
     private void load_last () {
         var last_loaded = settings.list_last_loaded;
         if (last_loaded != null) {
-            load_list (list_manager.get_list (last_loaded.id));
+            var list = list_manager.get_list (last_loaded.id);
+            load_list (list);
+            current_list_info = list.list_info;
+        } else {
+            current_list_info = null;
         }
-        current_list_info = null;
     }
 
     private void apply_settings () {
@@ -151,16 +154,18 @@ class MainWindow : Gtk.ApplicationWindow {
     }
 
     private void on_list_chosen (TodoListInfo selected_info) {
-        load_list (list_manager.get_list (selected_info.id));
+        if (selected_info == current_list_info) {
+            switch_top_stack ();
+            return;
+        }
+        var list = list_manager.get_list (selected_info.id);
+        assert (list != null);
+        load_list (list);
         settings.list_last_loaded = {selected_info.plugin_name, selected_info.id};
         current_list_info = selected_info;
     }
 
     private void load_list (TxtList list) {
-        if (task_page.ready) {
-            task_page.remove_task_list ();
-        }
-
         task_page.set_task_list (list);
         top_stack.set_visible_child (task_page);
         switch_btn.sensitive = true;
@@ -218,7 +223,11 @@ class MainWindow : Gtk.ApplicationWindow {
         } else if (task_page.ready) {
             top_stack.set_visible_child (task_page);
             switch_img.set_from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
-            settings.list_last_loaded = null;
+            if (current_list_info != null) {
+                settings.list_last_loaded = ListIdentifier.from_info (current_list_info);
+            } else {
+                settings.list_last_loaded = null;
+            }
         }
     }
 

@@ -16,12 +16,6 @@ class TaskListPage : Gtk.Grid {
     private TimerView timer_view;
     private Gtk.Widget last_page;
 
-    public bool list_valid {
-        public get;
-        private set;
-        default = false;
-    }
-
     public signal void removing_list ();
 
     /**
@@ -98,19 +92,16 @@ class TaskListPage : Gtk.Grid {
      * Updates this to display the new TxtList.
      */
     public void set_task_list (TxtList task_list) {
-        if (this.task_list == null) {
-            this.task_list = task_list;
-            this.task_list.load ();
-            task_list.notify["active-task"].connect (on_active_task_changed);
-            task_list.notify["selected-task"].connect (on_selected_task_changed);
-            add_widgets ();
-            this.show_all ();
-            on_selected_task_changed ();
-
-            list_valid = true;
-        } else {
-            warning ("Previous list was not removed!");
+        if (this.task_list != null) {
+            remove_task_list ();
         }
+        this.task_list = task_list;
+        this.task_list.load ();
+        task_list.notify["active-task"].connect (on_active_task_changed);
+        task_list.notify["selected-task"].connect (on_selected_task_changed);
+        add_widgets ();
+        this.show_all ();
+        on_selected_task_changed ();
     }
 
     private void on_task_done () {
@@ -133,7 +124,7 @@ class TaskListPage : Gtk.Grid {
      * Restores this to its state from before set_task_list was called.
      */
     public void remove_task_list () {
-        list_valid = false;
+        task_timer.stop ();
         if (task_list != null) {
             task_list.unload ();
             task_list.notify["active-task"].disconnect (on_active_task_changed);

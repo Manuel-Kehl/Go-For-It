@@ -78,9 +78,12 @@ class ListManager : Object, DragListModel {
         });
     }
 
-    public TxtList get_list (string id) {
-        stdout.printf ("get_list '%s'\n", id);
+    public TxtList? get_list (string id) {
         return txt_manager.get_list (id);
+    }
+
+    public TodoListInfo? get_list_info (string id) {
+        return txt_manager.get_list_info (id);
     }
 
     public void delete_list (TodoListInfo list_info, Gtk.Window? window) {

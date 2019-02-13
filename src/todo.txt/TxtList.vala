@@ -18,6 +18,12 @@ class TxtList : Object {
         public set;
     }
 
+    public TodoListInfo list_info {
+        public get {
+            return list_settings;
+        }
+    }
+
     public TxtList (ListSettings list_settings) {
         this.list_settings = list_settings;
     }
