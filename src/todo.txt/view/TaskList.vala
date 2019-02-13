@@ -27,6 +27,7 @@ class TaskList : Gtk.Grid {
     private Gtk.Entry add_new_txt;
     private Gtk.SearchEntry filter_entry;
     private Filter filter;
+    private Gtk.Label placeholder;
 
     /* Data Model */
     private TaskStore model;
@@ -138,21 +139,30 @@ class TaskList : Gtk.Grid {
         // Handle clicks on the icon
         add_new_txt.icon_press.connect ((pos, event) => {
             if (pos == Gtk.EntryIconPosition.SECONDARY) {
-                // Emit the corresponding signal, if button has been pressed
-                add_new_task (add_new_txt.text);
-                add_new_txt.text = "";
+                on_entry_activate ();
             }
         });
         // Handle "activate" signals (Enter Key presses)
-        add_new_txt.activate.connect ((source) => {
-            add_new_task (add_new_txt.text);
-            add_new_txt.text = "";
-        });
+        add_new_txt.activate.connect (on_entry_activate);
+
+        placeholder = new Gtk.Label (_("You currently don't have any tasks.\n Add some!"));
+        placeholder.wrap = true;
+        placeholder.justify = Gtk.Justification.CENTER;
+        placeholder.wrap_mode = Pango.WrapMode.WORD_CHAR;
+        placeholder.width_request = 200;
+        task_view.set_placeholder (placeholder);
+        placeholder.show ();
 
         add_new_grid.add (add_new_txt);
 
         // Add to the main widget
         this.add (add_new_grid);
+    }
+
+    private void on_entry_activate () {
+        add_new_task (add_new_txt.text);
+        add_new_txt.text = "";
+        placeholder.label = _("You finished all tasks, good job!");
     }
 
     private void setup_filter () {
