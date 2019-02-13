@@ -191,7 +191,9 @@ class TaskStoreTest : TestCase {
         items_changed_expected_position = 0;
         items_changed_expected_added = 0;
         items_changed_expected_removed = TEST_TASKS_LENGTH;
+        task_data_changed_expected = true;
         test_store.clear ();
+        assert (!task_data_changed_expected);
         assert (!items_changed_expected);
     }
 
@@ -263,17 +265,21 @@ class TaskStoreTest : TestCase {
         items_changed_expected_added = 0;
         items_changed_expected = true;
         items_changed_expected_position = expected_pos;
+        task_data_changed_expected = true;
         test_store.remove_task (test_tasks[index]);
         assert (!items_changed_expected);
+        assert (!task_data_changed_expected);
     }
 
     private void add_task (uint index, uint expected_pos) {
+        task_data_changed_expected = true;
         items_changed_expected_removed = 0;
         items_changed_expected_added = 1;
         items_changed_expected = true;
         items_changed_expected_position = expected_pos;
         test_store.add_task (test_tasks[index]);
         assert (!items_changed_expected);
+        assert (!task_data_changed_expected);
     }
 
     private void add_tasks () {

@@ -24,7 +24,7 @@ class TaskStore : Object, DragListModel {
     }
 
     /* Signals */
-    // Emitted when the properties of a task, excluding done, have changed
+    // Emitted when the properties of a task (including position), excluding done, have changed
     public signal void task_data_changed ();
     public signal void task_done_changed (TodoTask task);
     public signal void task_became_invalid (TodoTask task);
