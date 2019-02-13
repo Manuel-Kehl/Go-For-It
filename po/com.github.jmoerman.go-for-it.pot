@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-10 20:48+0100\n"
+"POT-Creation-Date: 2019-02-13 13:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,129 +17,57 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/TaskManager.vala:51
+#: ../src/Filter.vala:39 ../src/view/TaskRow.vala:287
+msgid "project"
+msgstr ""
+
+#: ../src/Filter.vala:45 ../src/view/TaskRow.vala:282
+msgid "context"
+msgstr ""
+
+#: ../src/Main.vala:95
+msgid "Print version info and exit"
+msgstr ""
+
+#: ../src/Main.vala:96
+msgid "Show about dialog"
+msgstr ""
+
+#: ../src/SettingsManager.vala:165
+msgid "Couldn't create directory: %s"
+msgstr ""
+
+#: ../src/SettingsManager.vala:297
+msgid "Couldn't properly import settings from %s: %s"
+msgstr ""
+
+#: ../src/TaskManager.vala:53
 msgid ""
 "Go For It! won't save or load from the current todo.txt directory until it "
 "is either restarted or another location is chosen."
 msgstr ""
 
-#: ../src/TaskManager.vala:52
+#: ../src/TaskManager.vala:54
 msgid "Couldn't read the todo.txt file (%s):"
 msgstr ""
 
-#: ../src/TaskManager.vala:53
+#: ../src/TaskManager.vala:55
 msgid "Couldn't save the todo list (%s):"
 msgstr ""
 
-#: ../src/TaskManager.vala:54
+#: ../src/TaskManager.vala:56
 msgid ""
 "The path to the todo.txt directory does not point to a directory, but to a "
 "file or mountable location. Please change the path in the settings to a "
 "suitable directory or remove this file."
 msgstr ""
 
-#: ../src/view/TaskRow.vala:199 ../src/Filter.vala:39
-msgid "project"
-msgstr ""
-
-#: ../src/view/TaskRow.vala:199 ../src/Filter.vala:45
-msgid "context"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:172
-msgid "To-Do"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:173 ../src/view/SettingsDialog.vala:152
-msgid "Timer"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:174
-msgid "Done"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:194
-msgid "Menu"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:289 ../src/view/SettingsDialog.vala:43
-msgid "Settings"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:290
-msgid "Clear Done List"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:310
-msgid "Contribute / Donate"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:318 ../src/view/AboutDialog.vala:27
+#: ../src/view/AboutDialog.vala:27 ../src/view/MainWindow.vala:287
 msgid "About"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:348 ../src/view/TimerView.vala:78
-msgid "Take a Break"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:349
-msgid "Relax and stop thinking about your current task for a while"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:354
-msgid "The Break is Over"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:355
-msgid "Your next task is"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:372
-msgid "Prepare for your break"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:373
-msgid "You have %s seconds left"
-msgstr ""
-
-#: ../src/view/TaskList.vala:116
-msgid "Add new task"
-msgstr ""
-
-#: ../src/view/TimerView.vala:82
-msgid "Active Task"
-msgstr ""
-
-#: ../src/view/TimerView.vala:103
-msgid "Pau_se"
-msgstr ""
-
-#: ../src/view/TimerView.vala:106
-msgid "_Start"
-msgstr ""
-
-#: ../src/view/TimerView.vala:133
-msgid "Inactive"
-msgstr ""
-
-#: ../src/view/TimerView.vala:134
-msgid "No task has been selected"
-msgstr ""
-
-#: ../src/view/TimerView.vala:218
-msgid "S_kip"
-msgstr ""
-
-#: ../src/view/TimerView.vala:219
-msgid "_Done"
-msgstr ""
-
-#: ../src/view/TimerView.vala:264
-msgid "Relax"
-msgstr ""
-
-#: ../src/view/TimerView.vala:265
-msgid "You have nothing to do."
+#: ../src/view/AboutDialog.vala:41
+msgid "A stylish to-do list with built-in productivity timer."
 msgstr ""
 
 #: ../src/view/ContributeDialog.vala:28
@@ -160,8 +88,56 @@ msgstr ""
 msgid "If you really like this app, you can buy me a drink:"
 msgstr ""
 
-#: ../src/view/AboutDialog.vala:41
-msgid "A stylish to-do list with built-in productivity timer."
+#: ../src/view/MainWindow.vala:174
+msgid "To-Do"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:175 ../src/view/SettingsDialog.vala:152
+msgid "Timer"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:176
+msgid "Done"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:196
+msgid "Menu"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:263 ../src/view/SettingsDialog.vala:43
+msgid "Settings"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:264
+msgid "Clear Done List"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:279
+msgid "Contribute / Donate"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:317 ../src/view/TimerView.vala:78
+msgid "Take a Break"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:318
+msgid "Relax and stop thinking about your current task for a while"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:323
+msgid "The Break is Over"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:324
+msgid "Your next task is"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:341
+msgid "Prepare for your break"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:342
+msgid "You have %s seconds left"
 msgstr ""
 
 #: ../src/view/SettingsDialog.vala:45
@@ -202,18 +178,56 @@ msgstr ""
 msgid "Use a header bar"
 msgstr ""
 
-#: ../src/SettingsManager.vala:165
-msgid "Couldn't create directory: %s"
+#: ../src/view/TaskList.vala:121
+msgid "Add new task"
 msgstr ""
 
-#: ../src/SettingsManager.vala:297
-msgid "Couldn't properly import settings from %s: %s"
+#. //valadoc.org/glib-2.0/GLib.DateTime.format.html for
+#. formatting of DateTime
+#: ../src/view/TaskRow.vala:237
+msgid "%Y-%m-%d"
 msgstr ""
 
-#: ../src/Main.vala:95
-msgid "Print version info and exit"
+#: ../src/view/TaskRow.vala:241
+msgid "Task completed at %s, created at %s"
 msgstr ""
 
-#: ../src/Main.vala:96
-msgid "Show about dialog"
+#: ../src/view/TaskRow.vala:248
+msgid "Task created at %s"
+msgstr ""
+
+#: ../src/view/TimerView.vala:82
+msgid "Active Task"
+msgstr ""
+
+#: ../src/view/TimerView.vala:103
+msgid "Pau_se"
+msgstr ""
+
+#: ../src/view/TimerView.vala:106
+msgid "_Start"
+msgstr ""
+
+#: ../src/view/TimerView.vala:133
+msgid "Inactive"
+msgstr ""
+
+#: ../src/view/TimerView.vala:134
+msgid "No task has been selected"
+msgstr ""
+
+#: ../src/view/TimerView.vala:218
+msgid "S_kip"
+msgstr ""
+
+#: ../src/view/TimerView.vala:219
+msgid "_Done"
+msgstr ""
+
+#: ../src/view/TimerView.vala:264
+msgid "Relax"
+msgstr ""
+
+#: ../src/view/TimerView.vala:265
+msgid "You have nothing to do."
 msgstr ""

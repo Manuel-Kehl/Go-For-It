@@ -35,6 +35,18 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
+  	<release version="1.6.10" date="2019-02-13">
+      <description>
+        <p>Bugfixes:</p>
+        <ul>
+          <li>Pressing delete while editing a task description would remove the task instead of removing a character.</li>
+        </ul>
+        <p>Improvements:</p>
+        <ul>
+          <li>Updated french translations.</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.6.9" date="2018-12-02">
       <description>
         <p>Bugfixes:</p>

@@ -1,5 +1,24 @@
 # Change Log
 
+## [1.6.10](https://github.com/JMoerman/Go-For-It/tree/1.6.10) (2019-02-13)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.9...1.6.10)
+
+**Fixed bugs:**
+
+- Pressing delete while editing a task description would remove the task instead of removing a character.
+
+**Implemented enhancements:**
+
+- Updated french translations.
+
+**Closed issues:**
+
+- Hitting Delete button in edit mode removes the task from the list [\#67](https://github.com/JMoerman/Go-For-It/issues/67)
+
+**Merged pull requests:**
+
+- Add French translations [\#62](https://github.com/JMoerman/Go-For-It/pull/62) ([NathanBnm](https://github.com/NathanBnm))
+
 ## [1.6.9](https://github.com/JMoerman/Go-For-It/tree/1.6.9) (2018-12-02)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.8...1.6.9)
 
