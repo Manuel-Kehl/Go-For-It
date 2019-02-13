@@ -2,9 +2,6 @@
  * A widget containing a TaskList and its widgets and the TimerView.
  */
 class TaskListPage : Gtk.Grid {
-    /* Various Variables */
-    private bool use_header_bar;
-
     private TxtList task_list = null;
     private TaskTimer task_timer;
 
@@ -45,10 +42,16 @@ class TaskListPage : Gtk.Grid {
         activity_stack.set_transition_type (
             Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
         );
-        activity_switcher.margin = 5;
 
-        this.add (activity_switcher);
         this.add (activity_stack);
+    }
+
+    public Gtk.StackSwitcher get_switcher () {
+        return activity_switcher;
+    }
+
+    public void show_switcher (bool show) {
+        activity_switcher.set_visible (show);
     }
 
     /**

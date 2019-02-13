@@ -84,6 +84,7 @@ class MainWindow : Gtk.ApplicationWindow {
             current_list_info = list.list_info;
         } else {
             current_list_info = null;
+            task_page.show_switcher (false);
         }
     }
 
@@ -98,7 +99,6 @@ class MainWindow : Gtk.ApplicationWindow {
             gtk_settings.gtk_application_prefer_dark_theme = use_dark_theme;
             load_css ();
         });
-        settings.use_header_bar_changed.connect (toggle_headerbar);
     }
 
     public override bool delete_event (Gdk.EventAny event) {
@@ -198,6 +198,7 @@ class MainWindow : Gtk.ApplicationWindow {
             Gtk.IconSize.LARGE_TOOLBAR, "open-menu", "open-menu-symbolic",
             GOFI.ICON_NAME + "-open-menu-fallback");
         menu_btn = new Gtk.MenuButton ();
+        menu_btn.hexpand = false;
         menu_btn.set_popup (app_menu);
         menu_btn.image = menu_img;
         menu_btn.tooltip_text = _("Menu");
@@ -205,6 +206,7 @@ class MainWindow : Gtk.ApplicationWindow {
 
         switch_img = new Gtk.Image.from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
         switch_btn = new Gtk.ToolButton (switch_img, _("_Back"));
+        switch_btn.hexpand = false;
         switch_btn.sensitive = false;
         switch_btn.clicked.connect (switch_top_stack);
 
@@ -220,6 +222,7 @@ class MainWindow : Gtk.ApplicationWindow {
             top_stack.set_visible_child (selection_page);
             switch_img.set_from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
             settings.list_last_loaded = null;
+            task_page.show_switcher (false);
         } else if (task_page.ready) {
             top_stack.set_visible_child (task_page);
             switch_img.set_from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
@@ -228,20 +231,21 @@ class MainWindow : Gtk.ApplicationWindow {
             } else {
                 settings.list_last_loaded = null;
             }
+            task_page.show_switcher (true);
         }
     }
 
     public void add_hb_replacement () {
-//        header_bar = new Gtk.HeaderBar ();
+        hb_replacement = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 2);
 
-//        // GTK Header Bar
-//        header_bar.set_show_close_button (true);
-//        header_bar.title = GOFI.APP_NAME;
+        switch_btn.set_halign (Gtk.Align.START);
+        menu_btn.set_halign (Gtk.Align.END);
 
-//        // Add headerbar Buttons here
-//        header_bar.pack_end (menu_btn);
-
-//        this.set_titlebar (header_bar);
+        // Add headerbar Buttons here
+        hb_replacement.pack_start (switch_btn);
+        hb_replacement.set_center_widget (task_page.get_switcher ());
+        hb_replacement.pack_end (menu_btn);
+        main_layout.add (hb_replacement);
     }
 
     public void add_headerbar () {
@@ -253,26 +257,10 @@ class MainWindow : Gtk.ApplicationWindow {
 
         // Add headerbar Buttons here
         header_bar.pack_start (switch_btn);
+        header_bar.set_custom_title (task_page.get_switcher ());
         header_bar.pack_end (menu_btn);
 
         this.set_titlebar (header_bar);
-    }
-
-    private void toggle_headerbar () {
-        hide ();
-        unrealize ();
-        if (use_header_bar) {
-            header_bar.remove (menu_btn);
-            header_bar = null;
-            set_titlebar (null);
-        } else {
-            add_headerbar ();
-            header_bar.show ();
-        }
-        realize ();
-        show ();
-
-        use_header_bar = !use_header_bar;
     }
 
     private void setup_menu () {
