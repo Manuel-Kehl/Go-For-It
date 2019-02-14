@@ -1,4 +1,4 @@
 build*
 *~
-Constants.vala
+src/Constants.vala
 .*
