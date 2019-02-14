@@ -22,6 +22,7 @@ class ListManager : Object, DragListModel {
 
     /* Signals */
     public signal void lists_changed ();
+    public signal void list_removed (string plugin, string id);
 
     /**
      * Constructor of the ListManager class
@@ -63,6 +64,7 @@ class ListManager : Object, DragListModel {
                 return strcmp (info_id, search_id);
             }));
             items_changed (index, 1, 0);
+            list_removed (GOFI.TXT.PLUGIN_NAME, id);
         }
     }
 

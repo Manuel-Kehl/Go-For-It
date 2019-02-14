@@ -9,7 +9,7 @@ class ListSettings : Object, TodoListInfo {
 
     public string plugin_name {
         get {
-            return "Todo.txt";
+            return GOFI.TXT.PLUGIN_NAME;
         }
     }
 

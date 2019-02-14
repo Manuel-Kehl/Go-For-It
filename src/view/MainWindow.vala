@@ -74,6 +74,16 @@ class MainWindow : Gtk.ApplicationWindow {
         Notify.init (GOFI.APP_NAME);
 
         load_last ();
+
+        list_manager.list_removed.connect ( (plugin, id) => {
+            if (current_list_info != null &&
+                current_list_info.plugin_name == plugin &&
+                current_list_info.id == id
+            ) {
+                switch_top_stack (true);
+                switch_btn.sensitive = false;
+            }
+        });
     }
 
     private void load_last () {

@@ -39,6 +39,7 @@ vala_precompile (VALA_C ${LIBNAME}
     view/TaskListPage.vala
     view/SelectionPage.vala
     view/MainWindow.vala
+    todo.txt/Constants.vala
     todo.txt/TxtUtils.vala
     todo.txt/TaskStore.vala
     todo.txt/TaskManager.vala
