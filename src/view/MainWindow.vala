@@ -86,6 +86,13 @@ class MainWindow : Gtk.ApplicationWindow {
         });
     }
 
+    public override void show_all () {
+        base.show_all ();
+        if (top_stack.visible_child != task_page) {
+            task_page.show_switcher (false);
+        }
+    }
+
     private void load_last () {
         var last_loaded = settings.list_last_loaded;
         if (last_loaded != null) {
@@ -94,7 +101,6 @@ class MainWindow : Gtk.ApplicationWindow {
             current_list_info = list.list_info;
         } else {
             current_list_info = null;
-            task_page.show_switcher (false);
         }
     }
 

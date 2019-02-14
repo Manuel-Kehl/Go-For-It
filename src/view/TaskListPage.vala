@@ -7,7 +7,7 @@ class TaskListPage : Gtk.Grid {
 
     /* Various GTK Widgets */
     private Gtk.Stack activity_stack;
-    private Gtk.StackSwitcher activity_switcher;
+    private ViewSwitcher activity_switcher;
 
     private Gtk.Widget first_page;
     private TimerView timer_view;
@@ -34,20 +34,27 @@ class TaskListPage : Gtk.Grid {
     private void initial_setup () {
         /* Instantiation of available widgets */
         activity_stack = new Gtk.Stack ();
-        activity_switcher = new Gtk.StackSwitcher ();
+        activity_switcher = new ViewSwitcher ();
         timer_view = new TimerView (task_timer);
 
         // Activity Stack + Switcher
-        activity_switcher.set_stack (activity_stack);
         activity_switcher.halign = Gtk.Align.CENTER;
+        activity_switcher.icon_size = Gtk.IconSize.LARGE_TOOLBAR;
+        activity_switcher.append ("primary", _("To-Do"), null);
+        activity_switcher.append ("timer", _("Timer"), GOFI.ICON_NAME);
+        activity_switcher.append ("secondary", _("Done"), null);
         activity_stack.set_transition_type (
             Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
         );
 
+        activity_switcher.notify["selected-item"].connect (() => {
+            activity_stack.set_visible_child_name (activity_switcher.selected_item);
+        });
+
         this.add (activity_stack);
     }
 
-    public Gtk.StackSwitcher get_switcher () {
+    public Gtk.Widget get_switcher () {
         return activity_switcher;
     }
 

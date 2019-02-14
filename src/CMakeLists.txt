@@ -32,6 +32,7 @@ vala_precompile (VALA_C ${LIBNAME}
     DragListModel.vala
     view/Widgets/TodoListInfoRow.vala
     view/Widgets/DragList.vala
+    view/Widgets/ViewSwitcher.vala
     view/Dialogs/SettingsDialog.vala
     view/Dialogs/AboutDialog.vala
     view/Dialogs/ContributeDialog.vala
