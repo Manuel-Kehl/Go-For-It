@@ -44,9 +44,9 @@ class TodoListInfoRow: DragListRow {
         name_label.hexpand = true;
 
         options_button = new Gtk.ToggleButton ();
-        options_button.add (
-            new Gtk.Image.from_icon_name ("view-more-symbolic", Gtk.IconSize.MENU)
-        );
+        options_button.add (GOFI.Utils.load_image_fallback (
+            Gtk.IconSize.MENU, "edit-symbolic", "edit", "view-more-symbolic"
+        ));
         options_button.relief = Gtk.ReliefStyle.NONE;
         var style = options_button.get_style_context ();
         style.add_class ("no_margin");
