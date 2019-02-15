@@ -40,9 +40,9 @@ class TaskListPage : Gtk.Grid {
         // Activity Stack + Switcher
         activity_switcher.halign = Gtk.Align.CENTER;
         activity_switcher.icon_size = Gtk.IconSize.LARGE_TOOLBAR;
-        activity_switcher.append ("primary", _("To-Do"), null);
+        activity_switcher.append ("primary", _("To-Do"), GOFI.ICON_NAME + "-go-to-list-symbolic");
         activity_switcher.append ("timer", _("Timer"), GOFI.ICON_NAME);
-        activity_switcher.append ("secondary", _("Done"), null);
+        activity_switcher.append ("secondary", _("Done"), GOFI.ICON_NAME + "-go-to-done");
         activity_stack.set_transition_type (
             Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
         );
