@@ -87,15 +87,6 @@ class SettingsDialog : Gtk.Dialog {
         row++;
     }
 
-    private void add_explanation (Gtk.Grid grid, Gtk.Label label, ref int row) {
-        label.hexpand = true;
-        label.margin_left = 20; // indentation relative to the section label
-        label.halign = Gtk.Align.START;
-
-        grid.attach (label, 0, row, 2, 1);
-        row++;
-    }
-
     private void setup_timer_settings_widgets (Gtk.Grid grid, ref int row) {
         /* Declaration */
         Gtk.Label timer_sect_lbl;

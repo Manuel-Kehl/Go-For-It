@@ -30,6 +30,7 @@ class TodoListInfoRow: DragListRow {
     }
 
     public signal void delete_clicked (TodoListInfo info);
+    public signal void edit_clicked (TodoListInfo info);
 
     public TodoListInfoRow (TodoListInfo info) {
         this.info = info;
@@ -62,30 +63,21 @@ class TodoListInfoRow: DragListRow {
         show_all ();
     }
 
-    private void connect_signals () {
-        info.notify["name"].connect (update);
+    private Gtk.Button create_menu_button (string label) {
+        var button = new Gtk.Button.with_label (label);
+        button.get_style_context ().add_class ("menuitem");
+        return button;
+    }
 
-        options_button.toggled.connect ( () => {
-            if (showing_menu) {
-                return;
-            }
-            showing_menu = true;
-            var popover = new Gtk.Popover (options_button);
-            popover.position = Gtk.PositionType.BOTTOM;
-
-            var preferences_menuitem = new Gtk.Button.with_label (_("Delete"));
-            preferences_menuitem.get_style_context ().add_class ("menuitem");
-
-            preferences_menuitem.clicked.connect (() => {
-                delete_clicked (this.info);
+    private void popover_hide (Gtk.Popover popover) {
 #if HAS_GTK322
-                popover.popdown ();
+        popover.popdown ();
 #else
-                popover.hide ();
+        popover.hide ();
 #endif
-            });
+    }
 
-            popover.add (preferences_menuitem);
+    private void popover_show (Gtk.Popover popover) {
 #if HAS_GTK322
             popover.forall ((child) => {
                 child.show_all ();
@@ -94,15 +86,12 @@ class TodoListInfoRow: DragListRow {
 #else
             popover.show_all ();
 #endif
+    }
 
-            popover.closed.connect ( () => {
-                option_revealer.reveal_child = false;
-                options_button.active = false;
-                showing_menu = false;
+    private void connect_signals () {
+        info.notify["name"].connect (update);
 
-                popover.destroy ();
-            });
-        });
+        options_button.toggled.connect (on_options_button_toggled);
 
         event_box.enter_notify_event.connect ( (event) => {
             option_revealer.reveal_child = true;
@@ -113,6 +102,42 @@ class TodoListInfoRow: DragListRow {
                 option_revealer.reveal_child = false;
             }
             return false;
+        });
+    }
+
+    private void on_options_button_toggled () {
+        if (showing_menu) {
+            return;
+        }
+        showing_menu = true;
+        var popover = new Gtk.Popover (options_button);
+        popover.position = Gtk.PositionType.BOTTOM;
+
+        var popover_cont = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+
+        var menuitem_delete = create_menu_button (_("Delete"));
+        var menuitem_edit = create_menu_button (_("Edit"));
+
+        menuitem_delete.clicked.connect ( () => {
+            delete_clicked (this.info);
+            popover_hide (popover);
+        });
+        menuitem_edit.clicked.connect ( () => {
+            edit_clicked (this.info);
+            popover_hide (popover);
+        });
+
+        popover_cont.add (menuitem_edit);
+        popover_cont.add (menuitem_delete);
+        popover.add (popover_cont);
+        popover_show (popover);
+
+        popover.closed.connect ( () => {
+            option_revealer.reveal_child = false;
+            options_button.active = false;
+            showing_menu = false;
+
+            popover.destroy ();
         });
     }
 

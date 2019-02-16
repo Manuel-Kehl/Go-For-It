@@ -23,7 +23,7 @@ class SelectionPage : Gtk.Grid {
     private Gtk.ScrolledWindow scroll_view;
     private DragList todolist_view;
     private Gtk.Button add_button;
-    private ListCreateDialog create_dialog;
+    private TxtListEditDialog create_dialog;
 
     /* Data Model */
     private ListManager list_manager;
@@ -50,6 +50,9 @@ class SelectionPage : Gtk.Grid {
         TodoListInfoRow row = new TodoListInfoRow (((TodoListInfo) info));
         row.delete_clicked.connect ((info) => {
             list_manager.delete_list (info, this.get_toplevel () as Gtk.Window);
+        });
+        row.edit_clicked.connect ((info) => {
+            list_manager.edit_list (info, this.get_toplevel () as Gtk.Window);
         });
         return row;
     }

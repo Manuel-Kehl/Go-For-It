@@ -94,6 +94,10 @@ class ListManager : Object, DragListModel {
         txt_manager.delete_list (list_info.id, window);
     }
 
+    public void edit_list (TodoListInfo list_info, Gtk.Window? window) {
+        txt_manager.edit_list (list_info.id, window);
+    }
+
     private void populate_items () {
         List<TodoListInfo> txt_lists = txt_manager.get_list_infos ();
         var stored_lists = settings.lists;

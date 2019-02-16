@@ -88,7 +88,7 @@ class TaskTimer {
         });
 
         /*
-         * The TaskTimer's update loop. Actual time tracking is implemnted
+         * The TaskTimer's update loop. Actual time tracking is implemented
          * by comparing timestamps, so the update interval has no influence
          * on that.
          */

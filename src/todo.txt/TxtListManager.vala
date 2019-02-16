@@ -70,8 +70,8 @@ class TxtListManager {
         create_settings_instances ();
     }
 
-    public ListCreateDialog get_creation_dialog (Gtk.Window? parent) {
-        var dialog = new ListCreateDialog (parent, this);
+    public TxtListEditDialog get_creation_dialog (Gtk.Window? parent) {
+        var dialog = new TxtListEditDialog (parent, this);
         dialog.add_list_clicked.connect ( (settings) => {
             add_new_from_settings (settings);
             dialog.destroy ();
@@ -117,6 +117,104 @@ class TxtListManager {
         lists_removed (removed);
     }
 
+    public void edit_list (string id, Gtk.Window? window) {
+        var info = list_table[id];
+        assert (info != null);
+
+        var dialog = new TxtListEditDialog (window, this, info.copy ());
+        dialog.add_list_clicked.connect ( (settings) => {
+            if (settings.todo_txt_location != info.todo_txt_location) {
+                var dir = File.new_for_path (settings.todo_txt_location);
+                if (!dir.query_exists ()) {
+                    DirUtils.create_with_parents (dir.get_path (), 0700);
+                }
+                var todo_txt = dir.get_child ("todo.txt");
+                var done_txt = dir.get_child ("done.txt");
+                if (todo_txt.query_exists () || done_txt.query_exists ()) {
+                    var confirm_dialog = create_conflict_dialog (dialog);
+                    confirm_dialog.response.connect ((s, response) => {
+                        switch (response) {
+                            case Gtk.ResponseType.ACCEPT:
+                                stdout.printf ("Moving files to %s\n", settings.todo_txt_location);
+                                move_files (todo_txt, done_txt, info.todo_txt_location);
+                                info.apply (settings);
+                                confirm_dialog.destroy ();
+                                dialog.destroy ();
+                                break;
+                            case Gtk.ResponseType.REJECT:
+                                info.apply (settings);
+                                confirm_dialog.destroy ();
+                                dialog.destroy ();
+                                break;
+                            default:
+                                confirm_dialog.destroy ();
+                                break;
+                        }
+                    });
+                    confirm_dialog.show ();
+                    return;
+                }
+                move_files (todo_txt, done_txt, info.todo_txt_location);
+            }
+            info.apply (settings);
+            dialog.destroy ();
+        });
+        dialog.show_all ();
+    }
+
+    private void move_files (File todo_txt, File done_txt, string orig) {
+        var dir = File.new_for_path (orig);
+        var orig_todo_txt = dir.get_child ("todo.txt");
+        var orig_done_txt = dir.get_child ("done.txt");
+
+        try {
+            if (orig_todo_txt.query_exists ()) {
+                orig_todo_txt.move (todo_txt, FileCopyFlags.OVERWRITE | FileCopyFlags.BACKUP);
+            }
+            if (orig_done_txt.query_exists ()) {
+                orig_done_txt.move (done_txt, FileCopyFlags.OVERWRITE | FileCopyFlags.BACKUP);
+            }
+        } catch (Error e) {
+            show_error_dialog (
+                _("An error was encountered while moving a file!")
+                +
+                "\n" + _("Error information: ") + @"\"$(e.message)\""
+            );
+        }
+    }
+
+    private void show_error_dialog (string msg) {
+        var error_dialog = new Gtk.MessageDialog (
+            null,
+            Gtk.DialogFlags.MODAL,
+            Gtk.MessageType.ERROR,
+            Gtk.ButtonsType.CLOSE,
+            msg
+        );
+        error_dialog.show ();
+    }
+
+    private Gtk.Dialog create_conflict_dialog (Gtk.Window? window) {
+        var confirm_dialog = new Gtk.MessageDialog (
+            window,
+            Gtk.DialogFlags.MODAL,
+            Gtk.MessageType.QUESTION,
+            Gtk.ButtonsType.NONE,
+            _("Todo.txt files were found in the destination directory.")
+            +
+            "\n"
+            +
+            _("What should be done with these files?")
+        );
+        confirm_dialog.add_button (_("Keep old"), Gtk.ResponseType.REJECT);
+        var overwrite_but = confirm_dialog.add_button (
+            _("Overwrite"), Gtk.ResponseType.ACCEPT
+        );
+        confirm_dialog.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+        overwrite_but.get_style_context ().add_class ("destructive-action");
+        return confirm_dialog;
+    }
+
     public List<TodoListInfo> get_list_infos () {
         return list_table.get_values ();
     }
@@ -148,6 +246,7 @@ class TxtListManager {
         list_settings.task_duration = get_task_duration (list_id);
         list_settings.break_duration = get_break_duration (list_id);
         list_settings.reminder_time = get_reminder_time (list_id);
+        connect_settings_signals (list_settings);
 
         return list_settings;
     }

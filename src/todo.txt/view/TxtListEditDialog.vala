@@ -15,7 +15,7 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-class ListCreateDialog : Gtk.Dialog {
+class TxtListEditDialog : Gtk.Dialog {
     private TxtListManager list_manager;
     private ListSettings settings;
 
@@ -36,10 +36,24 @@ class ListCreateDialog : Gtk.Dialog {
 
     public signal void add_list_clicked (ListSettings settings);
 
-    public ListCreateDialog (Gtk.Window? parent, TxtListManager list_manager) {
+    public TxtListEditDialog (
+        Gtk.Window? parent, TxtListManager list_manager,
+        ListSettings? settings = null
+    ) {
         this.set_transient_for (parent);
         this.list_manager = list_manager;
-        settings = new ListSettings.empty ();
+        if (settings == null) {
+            this.settings = new ListSettings.empty ();
+            this.title = _("New todo list");
+            this.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+            this.add_button (_("Add list"), Gtk.ResponseType.ACCEPT);
+        } else {
+            this.settings = settings;
+            this.title = _("Edit todo list properties");
+            this.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+            this.add_button (_("Apply"), Gtk.ResponseType.ACCEPT);
+        }
+
         /* Initalization */
         main_layout = new Gtk.Grid ();
 
@@ -54,10 +68,7 @@ class ListCreateDialog : Gtk.Dialog {
         main_layout.row_spacing = 10;
         main_layout.column_spacing = 10;
 
-        this.title = _("New todo list");
         setup_settings_widgets ();
-        this.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
-        this.add_button (_("Add list"), Gtk.ResponseType.ACCEPT);
 
         /* Action Handling */
         this.response.connect ((s, response) => {
@@ -222,6 +233,11 @@ class ListCreateDialog : Gtk.Dialog {
         name_lbl = new Gtk.Label (name_lbl_text);
         name_lbl.use_markup = true;
         Gtk.Entry name_entry = new Gtk.Entry ();
+        if (settings.name == null) {
+            name_entry.text = "";
+        } else {
+            name_entry.text = settings.name;
+        }
 
         name_entry.notify["text"].connect ( () => {
             var name = name_entry.text;
@@ -266,11 +282,19 @@ class ListCreateDialog : Gtk.Dialog {
         reminder_spin = new Gtk.SpinButton.with_range (0, 600, 1);
 
         /* Configuration */
-        task_spin.value = 25;
-        break_spin.value = 5;
-        reminder_spin.value = 60;
-        timer_default_switch.active = true;
-        timer_revealer.set_reveal_child (false);
+        if (settings.task_duration <= 0) {
+            task_spin.value = 25;
+            break_spin.value = 5;
+            reminder_spin.value = 60;
+            timer_default_switch.active = true;
+            timer_revealer.set_reveal_child (false);
+        } else {
+            task_spin.value = settings.task_duration / 60;
+            break_spin.value = settings.break_duration / 60;
+            reminder_spin.value = settings.reminder_time;
+            timer_default_switch.active = false;
+            timer_revealer.set_reveal_child (true);
+        }
 
         timer_grid.orientation = Gtk.Orientation.VERTICAL;
         timer_grid.row_spacing = 10;

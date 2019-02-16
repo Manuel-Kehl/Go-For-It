@@ -51,7 +51,7 @@ vala_precompile (VALA_C ${LIBNAME}
     todo.txt/TxtListManager.vala
     todo.txt/view/TaskList.vala
     todo.txt/view/TaskRow.vala
-    todo.txt/view/ListCreateDialog.vala
+    todo.txt/view/TxtListEditDialog.vala
     Main.vala
 
 # tell what libraries to use when compiling
