@@ -74,6 +74,11 @@ class SequentialList {
         items.push_tail (item);
     }
 
+    public void prepend_item (Object item) {
+        iter_link = null;
+        items.push_head (item);
+    }
+
     public uint remove_item (Object item) {
         iter_link = null;
         uint i = 0;
@@ -87,10 +92,23 @@ class SequentialList {
         return i;
     }
 
+    public uint search_remove_item<T> (T data, GLib.SearchFunc<Object, T> func) {
+        iter_link = null;
+        uint i = 0;
+        unowned List<Object> iter = items.head;
+        while (iter != null && func(iter.data, data) != 0) {
+            iter = iter.next;
+            i++;
+        }
+        assert (iter != null);
+        items.delete_link (iter);
+        return i;
+    }
+
     public void move_item (uint old_position, uint new_position) {
         assert (((int)old_position) >= 0 && ((int)new_position) >= 0);
         iter_link = null;
-        items.push_nth(items.pop_nth (old_position), (int) new_position);
+        items.push_nth (items.pop_nth (old_position), (int) new_position);
     }
 
     public Object? get_item (uint position) {
@@ -100,6 +118,15 @@ class SequentialList {
             return iter_link.data;
         }
         return null;
+    }
+
+    public uint get_item_position (Object item) {
+        int index = items.index(item);
+        if (index >= 0) {
+            return index;
+        } else {
+            error ("Item not found");
+        }
     }
 
     public Type get_item_type () {

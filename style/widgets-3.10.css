@@ -20,7 +20,7 @@ GtkLabel.task_active {
     font-size: 250%;
 }
 
-.main_layout,
+.task_layout,
 .main_layout .list {
     background: @main_layout_background;
 }
@@ -46,4 +46,10 @@ GtkLabel.task_active {
 
 .list-row.drag-hover-bottom {
     border-top: 1px solid @list_row_drag_highlight_top;
+}
+
+.no_margin {
+    margin: 0;
+    padding: 0;
+    border: 0px;
 }

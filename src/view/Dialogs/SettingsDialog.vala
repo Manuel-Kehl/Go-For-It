@@ -18,7 +18,7 @@
 /**
  * A dialog for changing the application's settings.
  */
-public class SettingsDialog : Gtk.Dialog {
+class SettingsDialog : Gtk.Dialog {
     private SettingsManager settings;
     /* GTK Widgets */
     private Gtk.Grid main_layout;
@@ -56,13 +56,12 @@ public class SettingsDialog : Gtk.Dialog {
 
     private void setup_settings_widgets () {
         int row = 0;
-        setup_txt_settings_widgets (main_layout, ref row);
         setup_timer_settings_widgets (main_layout, ref row);
         setup_appearance_settings_widgets (main_layout, ref row);
     }
 
     private void add_section (Gtk.Grid grid, Gtk.Label label, ref int row) {
-        label.set_markup ("<b>%s</b>".printf (label.get_text()));
+        label.set_markup ("<b>%s</b>".printf (label.get_text ()));
         label.halign = Gtk.Align.START;
 
         grid.attach (label, 0, row, 2, 1);
@@ -86,56 +85,6 @@ public class SettingsDialog : Gtk.Dialog {
         grid.attach (label, 0, row, 1, 1);
         grid.attach (switcher, 1, row, 1, 1);
         row++;
-    }
-
-    private void add_explanation (Gtk.Grid grid, Gtk.Label label, ref int row) {
-        label.hexpand = true;
-        label.margin_start = 20; // indentation relative to the section label
-        label.halign = Gtk.Align.START;
-
-        grid.attach (label, 0, row, 2, 1);
-        row++;
-    }
-
-    private void setup_txt_settings_widgets (Gtk.Grid grid, ref int row) {
-        /* Declaration */
-        Gtk.Label txt_sect_lbl;
-        Gtk.Label directory_lbl;
-        Gtk.Label directory_explanation_lbl;
-        Gtk.FileChooserButton directory_btn;
-
-        /* Instantiation */
-        txt_sect_lbl = new Gtk.Label ("Todo.txt");
-
-        directory_btn = new Gtk.FileChooserButton ("Todo.txt " + _("directory"),
-            Gtk.FileChooserAction.SELECT_FOLDER);
-
-        directory_lbl = new Gtk.Label (
-            "<a href=\"http://todotxt.com\">Todo.txt</a> "
-            + _("directory") + ":"
-        );
-
-        directory_explanation_lbl = new Gtk.Label (
-            _("If no appropriate folder was found, Go For It! defaults to creating a Todo folder in your home directory.")
-        );
-
-        /* Configuration */
-        directory_lbl.set_line_wrap (false);
-        directory_lbl.set_use_markup (true);
-        directory_explanation_lbl.set_line_wrap (true);
-        ((Gtk.Misc) directory_explanation_lbl).xalign = 0f;
-        directory_btn.create_folders = true;
-        directory_btn.set_current_folder (settings.todo_txt_location);
-
-        /* Signal Handling */
-        directory_btn.file_set.connect ((e) => {
-            var todo_dir = directory_btn.get_file ().get_path ();
-            settings.todo_txt_location = todo_dir;
-        });
-
-        add_section (main_layout, txt_sect_lbl, ref row);
-        add_explanation (main_layout, directory_explanation_lbl, ref row);
-        add_option (main_layout, directory_lbl, directory_btn, ref row);
     }
 
     private void setup_timer_settings_widgets (Gtk.Grid grid, ref int row) {
@@ -177,7 +126,7 @@ public class SettingsDialog : Gtk.Dialog {
         });
 
         /* Add widgets */
-        add_section(grid, timer_sect_lbl, ref row);
+        add_section (grid, timer_sect_lbl, ref row);
         add_option (grid, task_lbl, task_spin, ref row);
         add_option (grid, break_lbl, break_spin, ref row);
         add_option (grid, reminder_lbl, reminder_spin, ref row);

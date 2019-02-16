@@ -1,4 +1,4 @@
 build*
 *~
-Constants.vala
-.bzr
+src/Constants.vala
+.*

@@ -1,4 +1,4 @@
-/* Copyright 2014-2017 Go For It! developers
+/* Copyright 2014-2019 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -34,7 +34,7 @@ class TaskStore : Object, DragListModel {
      */
     public TaskStore (bool done_by_default) {
         this.done_by_default = done_by_default;
-        tasks = new SequentialList (typeof(TodoTask));
+        tasks = new SequentialList (typeof (TodoTask));
     }
 
     public void add_task (TodoTask task) {
@@ -65,6 +65,10 @@ class TaskStore : Object, DragListModel {
 
     public Object? get_item (uint position) {
         return tasks.get_item (position);
+    }
+
+    public uint get_task_position (TodoTask task) {
+        return tasks.get_item_position (task);
     }
 
     public uint get_n_items () {

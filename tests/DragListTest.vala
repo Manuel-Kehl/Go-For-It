@@ -35,7 +35,7 @@ class DragListTest : TestCase {
     private DragListRow[] generate_rows (uint start, uint amount) {
         var new_rows = new DragListRow[amount];
         for (uint i = 0; i < amount; i++) {
-            var label = new Gtk.Label ("Task %u".printf(start+i));
+            var label = new Gtk.Label ("Task %u".printf (start+i));
             new_rows[i] = new DragListRow ();
             new_rows[i].set_center_widget (label);
         }
@@ -476,7 +476,7 @@ class DragListTest : TestCase {
 
         public void remove_rows (uint position, uint amount) {
             for (uint i = amount; i > 0; i--) {
-                row_list.delete_link (row_list.nth(position));
+                row_list.delete_link (row_list.nth (position));
             }
             items_changed (position, amount, 0);
         }
@@ -484,10 +484,10 @@ class DragListTest : TestCase {
         public void replace (uint position, uint remove, DragListRow[] new_rows) {
             uint added = 0;
             for (uint i = remove; i > 0; i--) {
-                row_list.delete_link (row_list.nth(position));
+                row_list.delete_link (row_list.nth (position));
             }
             foreach (DragListRow row in new_rows) {
-                row_list.insert (row, (int)(position + added));
+                row_list.insert (row, (int) (position + added));
                 added++;
             }
             items_changed (position, remove, added);

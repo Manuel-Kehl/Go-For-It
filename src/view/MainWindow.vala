@@ -1,4 +1,4 @@
-/* Copyright 2014-2017 Go For It! developers
+/* Copyright 2014-2019 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -20,28 +20,28 @@
  */
 class MainWindow : Gtk.ApplicationWindow {
     /* Various Variables */
-    private TaskManager task_manager;
+    private ListManager list_manager;
     private TaskTimer task_timer;
     private SettingsManager settings;
     private bool use_header_bar;
-    private bool refreshing = false;
 
     /* Various GTK Widgets */
     private Gtk.Grid main_layout;
-    private Gtk.Stack activity_stack;
-    private Gtk.StackSwitcher activity_switcher;
     private Gtk.HeaderBar header_bar;
-    private Gtk.Box switcher_box;
-    private TaskList todo_list;
-    private TaskList done_list;
-    private TimerView timer_view;
+    // Stack and pages
+    private Gtk.Stack top_stack;
+    private SelectionPage selection_page;
+    private TaskListPage task_page;
     private Gtk.MenuButton menu_btn;
+    private Gtk.ToolButton switch_btn;
+    private Gtk.Image switch_img;
     // Application Menu
     private Gtk.Menu app_menu;
     private Gtk.MenuItem config_item;
-    private Gtk.MenuItem clear_done_item;
 
     private Gtk.Settings gtk_settings;
+
+    private TodoListInfo? current_list_info;
 
     /**
      * Used to determine if a notification should be sent.
@@ -51,13 +51,13 @@ class MainWindow : Gtk.ApplicationWindow {
     /**
      * The constructor of the MainWindow class.
      */
-    public MainWindow (Gtk.Application app_context, TaskManager task_manager,
+    public MainWindow (Gtk.Application app_context, ListManager list_manager,
                        TaskTimer task_timer, SettingsManager settings)
     {
         // Pass the applicaiton context via GObject-based construction, because
         // constructor chaining is not possible for Gtk.ApplicationWindow
         Object (application: app_context);
-        this.task_manager = task_manager;
+        this.list_manager = list_manager;
         this.task_timer = task_timer;
         this.settings = settings;
 
@@ -71,6 +71,36 @@ class MainWindow : Gtk.ApplicationWindow {
         setup_notifications ();
         // Enable Notifications for the App
         Notify.init (GOFI.APP_NAME);
+
+        load_last ();
+
+        list_manager.list_removed.connect ( (plugin, id) => {
+            if (current_list_info != null &&
+                current_list_info.plugin_name == plugin &&
+                current_list_info.id == id
+            ) {
+                switch_top_stack (true);
+                switch_btn.sensitive = false;
+            }
+        });
+    }
+
+    public override void show_all () {
+        base.show_all ();
+        if (top_stack.visible_child != task_page) {
+            task_page.show_switcher (false);
+        }
+    }
+
+    private void load_last () {
+        var last_loaded = settings.list_last_loaded;
+        if (last_loaded != null) {
+            var list = list_manager.get_list (last_loaded.id);
+            load_list (list);
+            current_list_info = list.list_info;
+        } else {
+            current_list_info = null;
+        }
     }
 
     private void apply_settings () {
@@ -84,7 +114,6 @@ class MainWindow : Gtk.ApplicationWindow {
             gtk_settings.gtk_application_prefer_dark_theme = use_dark_theme;
             load_css ();
         });
-        settings.use_header_bar_changed.connect (toggle_headerbar);
     }
 
     public override bool delete_event (Gdk.EventAny event) {
@@ -120,69 +149,62 @@ class MainWindow : Gtk.ApplicationWindow {
         /* Instantiation of the Widgets */
         main_layout = new Gtk.Grid ();
 
-        todo_list = new TaskList (this.task_manager.todo_store, true);
-        done_list = new TaskList (this.task_manager.done_store, false);
-        timer_view = new TimerView (task_timer);
-
         /* Widget Settings */
         // Main Layout
         main_layout.orientation = Gtk.Orientation.VERTICAL;
         main_layout.get_style_context ().add_class ("main_layout");
 
+        selection_page = new SelectionPage (list_manager);
+        task_page = new TaskListPage (task_timer);
+
+        selection_page.list_chosen.connect (on_list_chosen);
+
         setup_stack ();
         setup_top_bar ();
 
-        /* Action and Signal Handling */
-        todo_list.add_new_task.connect (task_manager.add_new_task);
-        todo_list.selection_changed.connect (on_selection_changed);
-        task_manager.active_task_invalid.connect (on_active_task_invalid);
-
-        // Call once to refresh view on startup
-        on_active_task_invalid ();
-
-        main_layout.add (switcher_box);
-        main_layout.add (activity_stack);
+        main_layout.add (top_stack);
 
         // Add main_layout to the window
         this.add (main_layout);
     }
 
+    private void on_list_chosen (TodoListInfo selected_info) {
+        if (selected_info == current_list_info) {
+            switch_top_stack (false);
+            return;
+        }
+        var list = list_manager.get_list (selected_info.id);
+        assert (list != null);
+        load_list (list);
+        settings.list_last_loaded = {selected_info.plugin_name, selected_info.id};
+        current_list_info = selected_info;
+    }
+
+    private void load_list (TxtList list) {
+        task_page.set_task_list (list);
+        switch_btn.sensitive = true;
+        switch_top_stack (false);
+    }
+
     private void setup_actions (Gtk.Application app) {
         var filter_action = new SimpleAction ("filter", null);
-        filter_action.activate.connect (() => show_search ());
+        filter_action.activate.connect (() => toggle_search ());
         app.add_action (filter_action);
         app.set_accels_for_action ("app.filter", {"<Control>f"});
     }
 
-    private void show_search () {
-        var list = activity_stack.visible_child as TaskList;
-        if (list != null) {
-            list.toggle_filter_bar ();
+    private void toggle_search () {
+        var visible_page = top_stack.visible_child;
+        if (visible_page == task_page) {
+            task_page.toggle_filtering ();
         }
     }
 
     private void setup_stack () {
-        activity_stack = new Gtk.Stack ();
-        activity_switcher = new Gtk.StackSwitcher ();
-
-        // Activity Stack + Switcher
-        activity_switcher.set_stack (activity_stack);
-        activity_switcher.halign = Gtk.Align.CENTER;
-        activity_stack.set_transition_type(
-            Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
-        // Add widgets to the activity stack
-        activity_stack.add_titled (todo_list, "todo", _("To-Do"));
-        activity_stack.add_titled (timer_view, "timer", _("Timer"));
-        activity_stack.add_titled (done_list, "done", _("Done"));
-
-        if (task_timer.running) {
-            // Otherwise no task will be displayed in the timer view
-            task_timer.update_active_task ();
-            // Otherwise it won't switch
-            timer_view.show ();
-            activity_stack.set_visible_child_name ("timer");
-        }
-        activity_switcher.margin = 5;
+        top_stack = new Gtk.Stack ();
+        top_stack.add (selection_page);
+        top_stack.add (task_page);
+        top_stack.set_visible_child (selection_page);
     }
 
     private void setup_top_bar () {
@@ -191,90 +213,99 @@ class MainWindow : Gtk.ApplicationWindow {
             Gtk.IconSize.LARGE_TOOLBAR, "open-menu", "open-menu-symbolic",
             GOFI.ICON_NAME + "-open-menu-fallback");
         menu_btn = new Gtk.MenuButton ();
+        menu_btn.hexpand = false;
         menu_btn.set_popup (app_menu);
         menu_btn.image = menu_img;
         menu_btn.tooltip_text = _("Menu");
         app_menu.halign = Gtk.Align.END;
 
-        switcher_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        switcher_box.pack_start (activity_switcher, true, true);
+        switch_img = new Gtk.Image.from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
+        switch_btn = new Gtk.ToolButton (switch_img, _("_Back"));
+        switch_btn.hexpand = false;
+        switch_btn.sensitive = false;
+        switch_btn.clicked.connect (toggle_top_stack);
 
-        if(use_header_bar){
+        if (use_header_bar){
             add_headerbar ();
         } else {
-            switcher_box.pack_end (menu_btn, false, false);
+            add_headerbar_as_toolbar ();
         }
+    }
+
+    private void toggle_top_stack () {
+        switch_top_stack (top_stack.visible_child == task_page);
+    }
+
+    private void switch_top_stack (bool show_select) {
+        if (show_select) {
+            top_stack.set_visible_child (selection_page);
+
+            var next_icon = GOFI.Utils.get_image_fallback ("go-next-symbolic", "go-next");
+            switch_img.set_from_icon_name (next_icon, Gtk.IconSize.LARGE_TOOLBAR);
+            settings.list_last_loaded = null;
+            task_page.show_switcher (false);
+        } else if (task_page.ready) {
+            top_stack.set_visible_child (task_page);
+            var prev_icon = GOFI.Utils.get_image_fallback ("go-previous-symbolic", "go-previous");
+            switch_img.set_from_icon_name (prev_icon, Gtk.IconSize.LARGE_TOOLBAR);
+            if (current_list_info != null) {
+                settings.list_last_loaded = ListIdentifier.from_info (current_list_info);
+            } else {
+                settings.list_last_loaded = null;
+            }
+            task_page.show_switcher (true);
+        }
+    }
+
+    /**
+     * No other suitable toolbar like widget seems to exist.
+     * ToolBar is not suitable due to alignment issues and the "toolbar"
+     * styleclass isn't universally supported.
+     */
+    public void add_headerbar_as_toolbar () {
+        header_bar = new Gtk.HeaderBar ();
+        header_bar.has_subtitle = false;
+        header_bar.get_style_context ().add_class ("toolbar");
+
+        // GTK Header Bar
+        header_bar.set_show_close_button (false);
+
+        // Add headerbar Buttons here
+        header_bar.pack_start (switch_btn);
+        header_bar.set_custom_title (task_page.get_switcher ());
+        header_bar.pack_end (menu_btn);
+
+        main_layout.add (header_bar);
     }
 
     public void add_headerbar () {
         header_bar = new Gtk.HeaderBar ();
+        header_bar.has_subtitle = false;
 
         // GTK Header Bar
         header_bar.set_show_close_button (true);
-        header_bar.title = GOFI.APP_NAME;
 
         // Add headerbar Buttons here
+        header_bar.pack_start (switch_btn);
+        header_bar.set_custom_title (task_page.get_switcher ());
         header_bar.pack_end (menu_btn);
 
         this.set_titlebar (header_bar);
-    }
-
-    private void toggle_headerbar () {
-        hide ();
-        unrealize ();
-        if (use_header_bar) {
-            header_bar.remove (menu_btn);
-            header_bar = null;
-            set_titlebar (null);
-            switcher_box.pack_end (menu_btn, false, false);
-        } else {
-            switcher_box.remove (menu_btn);
-            add_headerbar ();
-            header_bar.show ();
-        }
-        realize ();
-        show ();
-
-        use_header_bar = !use_header_bar;
-    }
-
-    public void on_selection_changed (TodoTask? selected_task) {
-        if (task_timer.running || refreshing) {
-            return;
-        }
-
-        set_active_task (selected_task);
-    }
-
-    private void on_active_task_invalid () {
-        var selected_task = todo_list.get_selected_task ();
-
-        set_active_task (selected_task);
-    }
-
-    private void set_active_task (TodoTask? active_task) {
-        task_manager.set_active_task (active_task);
-        task_timer.active_task = active_task;
     }
 
     private void setup_menu () {
         /* Initialization */
         app_menu = new Gtk.Menu ();
         config_item = new Gtk.MenuItem.with_label (_("Settings"));
-        clear_done_item = new Gtk.MenuItem.with_label (_("Clear Done List"));
 
         /* Signal and Action Handling */
         config_item.activate.connect ((e) => {
             var dialog = new SettingsDialog (this, settings);
             dialog.show ();
         });
-        clear_done_item.activate.connect ((e) => {
-            task_manager.clear_done_store ();
-        });
 
         /* Add Items to Menu */
         app_menu.add (config_item);
-        app_menu.add (clear_done_item);
 #if !NO_CONTRIBUTE_DIALOG
         var contribute_item = new Gtk.MenuItem.with_label (_("Contribute / Donate"));
         contribute_item.activate.connect ((e) => {
@@ -328,7 +359,7 @@ class MainWindow : Gtk.ApplicationWindow {
             try {
                 notification.show ();
             } catch (GLib.Error err){
-                GLib.stderr.printf(
+                GLib.stderr.printf (
                     "Error in notify! (break_active notification)\n");
             }
         }
@@ -343,7 +374,7 @@ class MainWindow : Gtk.ApplicationWindow {
         try {
             notification.show ();
         } catch (GLib.Error err){
-            GLib.stderr.printf(
+            GLib.stderr.printf (
                 "Error in notify! (remaining_time notification)\n");
         }
     }
@@ -354,8 +385,8 @@ class MainWindow : Gtk.ApplicationWindow {
      * applied to the application.
      */
     private void load_css () {
-        var screen = this.get_screen();
-        var css_provider = new Gtk.CssProvider();
+        var screen = this.get_screen ();
+        var css_provider = new Gtk.CssProvider ();
 
         string color = settings.use_dark_theme ? "-dark" : "";
         string version = (Gtk.get_minor_version () >= 19) ? "3.20" : "3.10";
@@ -371,9 +402,9 @@ class MainWindow : Gtk.ApplicationWindow {
             // Only proceed, if file has been found
             if (FileUtils.test (path, FileTest.EXISTS)) {
                 try {
-                    css_provider.load_from_path(path);
-                    Gtk.StyleContext.add_provider_for_screen(
-                        screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
+                    css_provider.load_from_path (path);
+                    Gtk.StyleContext.add_provider_for_screen (
+                        screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
                     break;
                 } catch (Error e) {
                     warning ("Cannot load CSS stylesheet: %s", e.message);

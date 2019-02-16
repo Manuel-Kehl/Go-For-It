@@ -168,8 +168,8 @@ public class DragList : Gtk.Bin {
         }
 
         disconnect_model_signals ();
-        listbox.@foreach((widget) => {
-            remove(widget);
+        listbox.@foreach ((widget) => {
+            remove (widget);
         });
 
         this.model = model;
@@ -180,7 +180,7 @@ public class DragList : Gtk.Bin {
         }
 
         for (uint i = 0; i < model.get_n_items (); i++) {
-            var row = this.create_widget_func(model.get_item (i));
+            var row = this.create_widget_func (model.get_item (i));
             _add_row (row);
         }
 
@@ -205,7 +205,7 @@ public class DragList : Gtk.Bin {
             need_to_select_closest = (index <= selected_index && index + removed > selected_index);
         }
         for (uint i = 0; i < removed ; i++) {
-            var row = get_row_at_index((int)index);
+            var row = get_row_at_index ((int)index);
             listbox.remove (row);
 
             // Make sure that the row isn't selected anymore.
@@ -229,8 +229,8 @@ public class DragList : Gtk.Bin {
     }
 
     private void on_model_item_moved (uint old_index, uint new_index) {
-        _move_row(
-            (DragListRow)get_row_at_index((int)old_index), (int)new_index, false
+        _move_row (
+            (DragListRow)get_row_at_index ((int)old_index), (int)new_index, false
         );
     }
 
@@ -262,6 +262,14 @@ public class DragList : Gtk.Bin {
         row_selected (next);
     }
 
+    /**
+     * Sets the placeholder widget that is shown in the list when it doesn't
+     * display any visible children.
+     */
+    public void set_placeholder (Gtk.Widget? placeholder) {
+        listbox.set_placeholder (placeholder);
+    }
+
     public void add_row (Gtk.Widget widget) {
         insert_row (widget, -1);
     }
@@ -273,7 +281,8 @@ public class DragList : Gtk.Bin {
     /**
      * Insert the widget into the this at position.
      *
-     * If position is -1, or larger than the total number of items in the this, then the child will be appended to the end.
+     * If position is -1, or larger than the total number of items in the this,
+     * then the child will be appended to the end.
      *
      * @param widget the Widget to add
      * @param position the position to insert child in
@@ -450,8 +459,8 @@ public class DragList : Gtk.Bin {
         drag_row.get_allocation (out alloc);
 
         if (drag_row_index >= 1) {
-            drag_row_range.min = get_widget_middle(
-                listbox.get_row_at_index(drag_row_index - 1)
+            drag_row_range.min = get_widget_middle (
+                listbox.get_row_at_index (drag_row_index - 1)
             );
         } else {
             drag_row_range.min = alloc.y;
@@ -483,7 +492,7 @@ public class DragList : Gtk.Bin {
         }
 
         check_scroll (y);
-        if(should_scroll && !scrolling) {
+        if (should_scroll && !scrolling) {
             scrolling = true;
             Timeout.add (SCROLL_DELAY, scroll);
         }
@@ -567,9 +576,9 @@ public class DragList : Gtk.Bin {
         }
         double adjustment_min = adjustment.value;
         double adjustment_max = adjustment.page_size + adjustment_min;
-        double show_min = double.max(0, y - SCROLL_DISTANCE);
-        double show_max = double.min(adjustment.upper, y + SCROLL_DISTANCE);
-        if(adjustment_min > show_min) {
+        double show_min = double.max (0, y - SCROLL_DISTANCE);
+        double show_max = double.min (adjustment.upper, y + SCROLL_DISTANCE);
+        if (adjustment_min > show_min) {
             should_scroll = true;
             scroll_up = true;
         } else if (adjustment_max < show_max){
@@ -583,7 +592,7 @@ public class DragList : Gtk.Bin {
     private bool scroll () {
         Gtk.Adjustment adjustment = listbox.get_adjustment ();
         if (should_scroll) {
-            if(scroll_up) {
+            if (scroll_up) {
                 adjustment.value -= SCROLL_STEP_SIZE;
             } else {
                 adjustment.value += SCROLL_STEP_SIZE;
@@ -609,7 +618,7 @@ public class DragList : Gtk.Bin {
         } else if (listbox.get_row_at_index (0) == null) {
             index = 0;
         }
-        if (index >= 0 && selection_data.get_data_type().name () == "DRAG_LIST_ROW") {
+        if (index >= 0 && selection_data.get_data_type ().name () == "DRAG_LIST_ROW") {
             row = ((DragListRow[])selection_data.get_data ())[0];
             drag_insert_row (row, index);
         }
@@ -743,7 +752,7 @@ public class DragListRow : Gtk.ListBoxRow {
         Gdk.DragContext context, Gtk.SelectionData selection_data,
         uint info, uint time_
     ) {
-        uchar[] data = new uchar[(sizeof (Gtk.Widget))];
+        uchar[] data = new uchar[ (sizeof (Gtk.Widget))];
         ((Gtk.Widget[])data)[0] = this;
         selection_data.set (
             Gdk.Atom.intern_static_string ("DRAG_LIST_ROW"), 32, data

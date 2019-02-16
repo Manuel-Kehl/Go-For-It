@@ -18,7 +18,7 @@
 /**
  * The central class for handling and coordinating timer functionality
  */
-public class TaskTimer {
+class TaskTimer {
     private SettingsManager settings;
     public bool running { get; private set; default = false; }
     public bool break_active {get; private set; default = false; }
@@ -88,7 +88,7 @@ public class TaskTimer {
         });
 
         /*
-         * The TaskTimer's update loop. Actual time tracking is implemnted
+         * The TaskTimer's update loop. Actual time tracking is implemented
          * by comparing timestamps, so the update interval has no influence
          * on that.
          */

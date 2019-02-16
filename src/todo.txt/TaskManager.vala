@@ -1,4 +1,4 @@
-/* Copyright 2014-2017 Go For It! developers
+/* Copyright 2014-2019 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -24,7 +24,7 @@ using GOFI.TxtUtils;
  * by addressing the corresponding TaskStore instance.
  */
 class TaskManager {
-    private SettingsManager settings;
+    private ListSettings settings;
     // The user's todo.txt related files
     private File todo_txt_dir;
     private File todo_txt;
@@ -59,10 +59,8 @@ class TaskManager {
     public signal void refreshing ();
     public signal void refreshed ();
 
-    public TaskManager (SettingsManager settings) {
+    public TaskManager (ListSettings settings) {
         this.settings = settings;
-
-        need_to_add_tasks = settings.first_start;
 
         // Initialize TaskStores
         todo_store = new TaskStore (false);
@@ -73,17 +71,28 @@ class TaskManager {
         load_task_stores ();
         connect_store_signals ();
 
-        // Write default tasks
-        if (settings.first_start) {
-            save_todo_tasks ();
-        }
-
         /* Signal processing */
-        settings.todo_txt_location_changed.connect (load_task_stores);
+        settings.notify["todo-txt-location"].connect (load_task_stores);
     }
 
     public void set_active_task (TodoTask? task) {
         active_task = task;
+    }
+
+    public TodoTask? get_next () {
+        return (TodoTask) todo_store.get_item (
+            todo_store.get_task_position (active_task) + 1
+        );
+    }
+
+    public TodoTask? get_prev () {
+        return (TodoTask) todo_store.get_item (
+            todo_store.get_task_position (active_task) - 1
+        );
+    }
+
+    public void mark_done (TodoTask task) {
+        task.done = true;
     }
 
     /**
@@ -125,7 +134,7 @@ class TaskManager {
      * Reloads all tasks.
      */
     public void refresh () {
-        stdout.printf("Refreshing\n");
+        stdout.printf ("Refreshing\n");
         refreshing ();
         load_tasks ();
         refreshed ();
@@ -158,8 +167,8 @@ class TaskManager {
     }
 
     private void load_task_stores () {
-        stdout.printf("load_task_stores\n");
-        todo_txt_dir = File.new_for_path(settings.todo_txt_location);
+        stdout.printf ("load_task_stores\n");
+        todo_txt_dir = File.new_for_path (settings.todo_txt_location);
         todo_txt = todo_txt_dir.get_child ("todo.txt");
         done_txt = todo_txt_dir.get_child ("done.txt");
 
@@ -195,7 +204,7 @@ class TaskManager {
 
             // Reload after 0.5 seconds so we can be relatively sure, that the
             // other application has finished, writing
-            GLib.Timeout.add(
+            GLib.Timeout.add (
                 500, auto_refresh, GLib.Priority.DEFAULT_IDLE
             );
         }
@@ -216,7 +225,7 @@ class TaskManager {
     }
 
     private void load_tasks () {
-        // read_only flag, so that "clear()" does not delete the files' content
+        // read_only flag, so that "clear ()" does not delete the files' content
         read_only = true;
         todo_store.clear ();
         done_store.clear ();
@@ -276,7 +285,7 @@ class TaskManager {
 
     private void ensure_file_exists (File file) throws Error {
         // Create file and return if it does not exist
-        if (!file.query_exists()) {
+        if (!file.query_exists ()) {
             DirUtils.create_with_parents (todo_txt_dir.get_path (), 0700);
             file.create (FileCreateFlags.NONE);
         }
@@ -394,7 +403,7 @@ class TaskManager {
             }
         } catch (Error e) {
             io_failed = true;
-            var error_message = read_error_message.printf(file.get_path (), e.message) + error_implications;
+            var error_message = read_error_message.printf (file.get_path (), e.message) + error_implications;
             warning (error_message);
             show_error_dialog (error_message);
         }
@@ -423,7 +432,7 @@ class TaskManager {
             }
         } catch (Error e) {
             io_failed = true;
-            var error_message = write_error_message.printf(file.get_path (), e.message) + error_implications;
+            var error_message = write_error_message.printf (file.get_path (), e.message) + error_implications;
             warning (error_message);
             show_error_dialog (error_message);
         }

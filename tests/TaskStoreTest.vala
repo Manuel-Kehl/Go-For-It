@@ -90,7 +90,7 @@ class TaskStoreTest : TestCase {
     private void set_up_tasks () {
         test_tasks = new TodoTask[TEST_TASKS_LENGTH];
         for (uint i = 0; i < TEST_TASKS_LENGTH; i++) {
-            test_tasks[i] = new TodoTask ("Task %u".printf(i), false);
+            test_tasks[i] = new TodoTask ("Task %u".printf (i), false);
         }
         init_signal_checkers ();
         connect_signals ();

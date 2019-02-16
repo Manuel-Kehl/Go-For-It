@@ -20,7 +20,7 @@
  * Its main motivation is the option of easily replacing Glib.KeyFile with
  * another settings storage mechanism in the future.
  */
-public class SettingsManager {
+private class SettingsManager {
     private KeyFile key_file;
 
     /*
@@ -29,6 +29,7 @@ public class SettingsManager {
     private const string GROUP_TODO_TXT = "Todo.txt";
     private const string GROUP_TIMER = "Timer";
     private const string GROUP_UI = "Interface";
+    private const string GROUP_LISTS = "Lists";
 
     // Whether or not Go For It! has been started for the first time
     public bool first_start = false;
@@ -41,10 +42,6 @@ public class SettingsManager {
     /*---GROUP:Todo.txt------------------------------------------------------*/
     public string todo_txt_location {
         owned get { return get_value (GROUP_TODO_TXT, "location"); }
-        set {
-            set_value (GROUP_TODO_TXT, "location", value);
-            todo_txt_location_changed ();
-        }
     }
     /*---GROUP:Timer---------------------------------------------------------*/
     public int task_duration {
@@ -142,6 +139,47 @@ public class SettingsManager {
             use_dark_theme_changed (value);
         }
     }
+    /*---GROUP:LISTS----------------------------------------------------------*/
+    public List<ListIdentifier?> lists {
+        owned get {
+            List<ListIdentifier?> identifiers = new List<ListIdentifier?> ();
+            var strs = get_string_list (GROUP_LISTS, "lists", {});
+
+            foreach (string id_str in strs) {
+                var identifier = ListIdentifier.from_string (id_str);
+                if (identifier != null) {
+                    identifiers.prepend (identifier);
+                } else {
+                    warning ("Can't decode list information! (%s)", id_str);
+                }
+            }
+            return identifiers;
+        }
+        set {
+            string[] _lists = {};
+            foreach (var identifier in value) {
+                _lists += identifier.to_string ();
+            }
+
+            set_string_list (GROUP_LISTS, "lists", _lists);
+        }
+    }
+    public ListIdentifier? list_last_loaded {
+        owned get {
+            var encoded_id = get_value (GROUP_LISTS, "last", "");
+            if (encoded_id != "") {
+                return ListIdentifier.from_string (encoded_id);
+            }
+            return null;
+        }
+        set {
+            if (value == null) {
+                set_value (GROUP_LISTS, "last", "");
+            } else {
+                set_value (GROUP_LISTS, "last", value.to_string ());
+            }
+        }
+    }
 
     /* Signals */
     public signal void todo_txt_location_changed ();
@@ -176,7 +214,7 @@ public class SettingsManager {
                 key_file.load_from_file (GOFI.Utils.config_file,
                    KeyFileFlags.KEEP_COMMENTS | KeyFileFlags.KEEP_TRANSLATIONS);
             } catch (Error e) {
-                stderr.printf("Reading %s failed", GOFI.Utils.config_file);
+                stderr.printf ("Reading %s failed", GOFI.Utils.config_file);
                 error ("%s", e.message);
             }
         }
@@ -200,7 +238,7 @@ public class SettingsManager {
             if (key_file != null
                 && key_file.has_group (group)
                 && key_file.has_key (group, key)) {
-                    return key_file.get_value(group, key);
+                    return key_file.get_value (group, key);
             } else {
                 return default;
             }
@@ -221,8 +259,39 @@ public class SettingsManager {
                 key_file.set_value (group, key, value);
                 write_key_file ();
             } catch (Error e) {
-                error ("An error occured while setting the setting"
+                error ("An error occured while writing the setting"
                     +" %s.%s to %s: %s", group, key, value, e.message);
+            }
+        }
+    }
+
+    private string[] get_string_list (string group, string key, string[] default = {}) {
+        try {
+            // use key_file, if it has been assigned
+            if (key_file != null
+                && key_file.has_group (group)
+                && key_file.has_key (group, key)) {
+                    return key_file.get_string_list (group, key);
+            } else {
+                return default;
+            }
+        } catch (Error e) {
+                error ("An error occured while reading the setting"
+                    +" %s.%s: %s", group, key, e.message);
+        }
+    }
+
+    private void set_string_list (string group, string key, string[] string_list) {
+        if (key_file != null) {
+            try {
+                key_file.set_string_list (group, key, string_list);
+                write_key_file ();
+            } catch (Error e) {
+                error (
+                    "An error occured while writing the setting" +
+                    " %s.%s to {%s}: %s",
+                     group, key, string.joinv (", ", string_list), e.message
+                );
             }
         }
     }
@@ -231,7 +300,7 @@ public class SettingsManager {
      * Function made for compability with older versions of GLib.
      */
     private void write_key_file () throws Error {
-        GLib.FileUtils.set_contents (GOFI.Utils.config_file, key_file.to_data());
+        GLib.FileUtils.set_contents (GOFI.Utils.config_file, key_file.to_data ());
     }
 
     /**
@@ -255,8 +324,6 @@ public class SettingsManager {
                 break;
             }
         }
-
-        this.todo_txt_location = todo_dir;
     }
 
     /**
@@ -274,7 +341,7 @@ public class SettingsManager {
             old_file.load_from_file (GOFI.Utils.old_config_file,
                KeyFileFlags.KEEP_COMMENTS | KeyFileFlags.KEEP_TRANSLATIONS);
         } catch (Error e) {
-            stderr.printf("Reading %s failed", GOFI.Utils.old_config_file);
+            stderr.printf ("Reading %s failed", GOFI.Utils.old_config_file);
             warning ("%s", e.message);
             return false;
         }
@@ -308,7 +375,7 @@ public class SettingsManager {
         }
         foreach (string key in keys) {
             if (old_file.has_key (group, key)) {
-                key_file.set_value (group, key, old_file.get_value(group, key));
+                key_file.set_value (group, key, old_file.get_value (group, key));
             }
         }
     }

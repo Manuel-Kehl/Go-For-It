@@ -19,7 +19,7 @@
  * A dialog that displays information about how to support the project.
  */
  #if !NO_CONTRIBUTE_DIALOG
-public class ContributeDialog : Gtk.MessageDialog {
+class ContributeDialog : Gtk.MessageDialog {
     /* GTK Widgets */
     public ContributeDialog (Gtk.Window? parent) {
         Object (buttons: Gtk.ButtonsType.OK);
