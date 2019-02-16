@@ -83,9 +83,10 @@ class TxtListManager {
      * Checks if the path is used by another TxtList
      * The path must be absolute
      */
-    public bool location_available (string path) {
+    public bool location_available (ListSettings changed) {
+        var path = changed.todo_txt_location;
         foreach (ListSettings list in list_table.get_values ()) {
-            if (list.todo_txt_location == path) {
+            if (list.todo_txt_location == path && list.id != changed.id) {
                 return false;
             }
         }

@@ -21,6 +21,18 @@ class ListCreateDialog : Gtk.Dialog {
 
     /* GTK Widgets */
     private Gtk.Grid main_layout;
+    private Gtk.Label error_label;
+    private Gtk.Revealer error_revealer;
+
+    private Gtk.Label name_lbl;
+    private Gtk.Label directory_lbl;
+    private bool txt_showing_error;
+    private bool dir_showing_error;
+
+    private string directory_lbl_text =
+            "<a href=\"http://todotxt.com\">Todo.txt</a> "
+            + _("directory") + ":";
+    private string name_lbl_text = _("List name") + ":";
 
     public signal void add_list_clicked (ListSettings settings);
 
@@ -63,14 +75,53 @@ class ListCreateDialog : Gtk.Dialog {
     }
 
     private bool check_valid () {
-        string? location = settings.todo_txt_location;
-        if (location == null || !list_manager.location_available (location)) {
-            return false;
+        bool is_valid = true;
+        string error_msg = "";
+        if (settings.todo_txt_location == null) {
+            // This setting hasn't been changed by the user
+            is_valid = false;
+        } else if (!list_manager.location_available (settings)) {
+            // The user has selected an invalid directory, so we show an error.
+            if (error_msg != "") {error_msg += "\n";}
+            error_msg += gen_error_markup (
+                _("The configured directory is already in use by another list.")
+            );
+            is_valid = false;
+            if (!dir_showing_error) {
+                directory_lbl.label = gen_error_markup (directory_lbl_text);
+                dir_showing_error = true;
+            }
+        } else if (dir_showing_error) {
+            // Restore the label text
+            directory_lbl.label = directory_lbl_text;
+            dir_showing_error = false;
         }
-        if (settings.name == null || settings.name == "") {
-            return false;
+
+        if (settings.name == null) {
+            // This setting hasn't been changed by the user
+            is_valid = false;
+        } else if (settings.name == "") {
+            // The user entered an empty string (or just whitespace)
+            if (error_msg != "") {error_msg += "\n";}
+            error_msg += gen_error_markup (
+                _("Please assign a name to the list.")
+            );
+            is_valid = false;
+            if (!txt_showing_error) {
+                name_lbl.label = gen_error_markup (name_lbl_text);
+                txt_showing_error = true;
+            }
+        } else if (txt_showing_error) {
+            // Restore the label text
+            name_lbl.label = name_lbl_text;
+            txt_showing_error = false;
         }
-        return true;
+        error_revealer.set_reveal_child (!is_valid);
+        if (is_valid) {
+            return true;
+        }
+        error_label.label = error_msg;
+        return false;
     }
 
     private void set_add_sensitive () {
@@ -79,8 +130,12 @@ class ListCreateDialog : Gtk.Dialog {
 
     private void setup_settings_widgets () {
         int row = 0;
+        dir_showing_error = false;
+        txt_showing_error = false;
+        error_label = new Gtk.Label ("");
         setup_txt_settings_widgets (main_layout, ref row);
         setup_timer_settings_widgets (main_layout, ref row);
+        setup_error_widgets (main_layout, ref row);
     }
 
     private void add_section (Gtk.Grid grid, Gtk.Label label, ref int row) {
@@ -110,14 +165,34 @@ class ListCreateDialog : Gtk.Dialog {
         row++;
     }
 
+    /**
+     * Generates a red error message
+     */
+    private string gen_error_markup (string error) {
+        return @"<span foreground=\"red\">$error*</span>";
+    }
+
+    private void setup_error_widgets (Gtk.Grid grid, ref int row) {
+        error_revealer = new Gtk.Revealer ();
+
+        error_label.hexpand = true;
+        error_label.wrap = true;
+        error_label.wrap_mode = Pango.WrapMode.WORD_CHAR;
+        error_label.width_request = 200;
+        error_label.use_markup = true;
+        error_label.halign = Gtk.Align.START;
+
+        error_revealer.add (error_label);
+        error_revealer.set_reveal_child (false);
+
+        grid.attach (error_revealer, 0, row, 2, 1);
+        row++;
+    }
+
     private void setup_txt_settings_widgets (Gtk.Grid grid, ref int row) {
         /* Declaration */
-        Gtk.Label txt_sect_lbl;
-        Gtk.Label directory_lbl;
         Gtk.FileChooserButton directory_btn;
-        string directory_lbl_text =
-            "<a href=\"http://todotxt.com\">Todo.txt</a> "
-            + _("directory");
+        Gtk.Label txt_sect_lbl;
 
         /* Instantiation */
         txt_sect_lbl = new Gtk.Label ("Todo.txt");
@@ -125,9 +200,7 @@ class ListCreateDialog : Gtk.Dialog {
         directory_btn = new Gtk.FileChooserButton ("Todo.txt " + _("directory"),
             Gtk.FileChooserAction.SELECT_FOLDER);
 
-        directory_lbl = new Gtk.Label (
-            directory_lbl_text + ":"
-        );
+        directory_lbl = new Gtk.Label (directory_lbl_text);
 
         /* Configuration */
         directory_lbl.set_line_wrap (false);
@@ -139,25 +212,23 @@ class ListCreateDialog : Gtk.Dialog {
 
         /* Signal Handling */
         directory_btn.file_set.connect ((e) => {
-            var todo_dir = directory_btn.get_file ().get_path ();
-            settings.todo_txt_location = todo_dir;
-            if (!list_manager.location_available (todo_dir)) {
-                directory_lbl.label = @"<span foreground=red>*$directory_lbl_text:</span>";
-            } else {
-                directory_lbl.label = directory_lbl_text + ":";
-            }
+            settings.todo_txt_location = directory_btn.get_file ().get_path ();
             set_add_sensitive ();
         });
 
         add_section (main_layout, txt_sect_lbl, ref row);
         add_option (main_layout, directory_lbl, directory_btn, ref row);
 
-        Gtk.Label name_lbl = new Gtk.Label (_("List name"));
+        name_lbl = new Gtk.Label (name_lbl_text);
+        name_lbl.use_markup = true;
         Gtk.Entry name_entry = new Gtk.Entry ();
 
         name_entry.notify["text"].connect ( () => {
-            settings.name = name_entry.text;
-            set_add_sensitive ();
+            var name = name_entry.text;
+            if (name != "" || settings.name != null) {
+                settings.name = name.strip ();
+                set_add_sensitive ();
+            }
         });
 
         add_option (main_layout, name_lbl, name_entry, ref row);
@@ -176,8 +247,6 @@ class ListCreateDialog : Gtk.Dialog {
         Gtk.Switch timer_default_switch;
         Gtk.Revealer timer_revealer;
         Gtk.Grid timer_grid;
-
-        int row2 = 0;
 
         /* Instantiation */
         timer_sect_lbl = new Gtk.Label (_("Timer"));
@@ -238,6 +307,8 @@ class ListCreateDialog : Gtk.Dialog {
         add_option (grid, timer_default_lbl, timer_default_switch, ref row);
         grid.attach (timer_revealer, 0, row, 2, 1);
         row++;
+
+        int row2 = 0;
         add_option (timer_grid, task_lbl, task_spin, ref row2);
         add_option (timer_grid, break_lbl, break_spin, ref row2);
         add_option (timer_grid, reminder_lbl, reminder_spin, ref row2);

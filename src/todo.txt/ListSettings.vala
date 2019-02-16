@@ -63,8 +63,29 @@ class ListSettings : Object, TodoListInfo {
     }
 
     public ListSettings.empty () {
+        this._id = null;
+        this._name = null;
+        this.todo_txt_location = null;
+
         this.task_duration = -1;
         this.break_duration = -1;
         this.reminder_time = -1;
+    }
+
+    public ListSettings copy () {
+        var copied = new ListSettings (_id, _name, todo_txt_location);
+        copied.task_duration = task_duration;
+        copied.break_duration = break_duration;
+        copied.reminder_time = reminder_time;
+        return copied;
+    }
+
+    public void apply (ListSettings settings) {
+        this.name = settings.name;
+        this.todo_txt_location = settings.todo_txt_location;
+
+        this.task_duration = settings.task_duration;
+        this.break_duration = settings.break_duration;
+        this.reminder_time = settings.reminder_time;
     }
 }
