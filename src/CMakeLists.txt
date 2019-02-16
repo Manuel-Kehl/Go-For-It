@@ -30,6 +30,7 @@ vala_precompile (VALA_C ${LIBNAME}
     FileWatcher.vala
     TaskTimer.vala
     DragListModel.vala
+    view/Widgets/FilterableWidget.vala
     view/Widgets/TodoListInfoRow.vala
     view/Widgets/DragList.vala
     view/Widgets/ViewSwitcher.vala

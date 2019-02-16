@@ -1,4 +1,4 @@
-/* Copyright 2014-2017 Go For It! developers
+/* Copyright 2014-2019 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -18,7 +18,7 @@
 /**
  * A widget for displaying and manipulating task lists.
  */
-class TaskList : Gtk.Grid {
+class TaskList : Gtk.Grid, FilterableWidget {
     /* GTK Widgets */
     private Gtk.ScrolledWindow scroll_view;
     private DragList task_view;
@@ -35,6 +35,15 @@ class TaskList : Gtk.Grid {
     /* Signals */
     public signal void add_new_task (string task);
     public signal void selection_changed (TodoTask selected_task);
+
+    public bool is_filtering {
+        public get {
+            return search_bar.search_mode_enabled;
+        }
+        public set {
+            search_bar.set_search_mode (value);
+        }
+    }
 
     /**
      * Constructor of the TaskList class.
@@ -179,9 +188,5 @@ class TaskList : Gtk.Grid {
         search_bar.set_show_close_button (true);
 
         this.add (search_bar);
-    }
-
-    public void toggle_filter_bar () {
-        search_bar.set_search_mode (!search_bar.search_mode_enabled);
     }
 }

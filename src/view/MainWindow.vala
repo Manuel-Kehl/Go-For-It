@@ -1,4 +1,4 @@
-/* Copyright 2014-2017 Go For It! developers
+/* Copyright 2014-2019 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -188,15 +188,15 @@ class MainWindow : Gtk.ApplicationWindow {
 
     private void setup_actions (Gtk.Application app) {
         var filter_action = new SimpleAction ("filter", null);
-        filter_action.activate.connect (() => show_search ());
+        filter_action.activate.connect (() => toggle_search ());
         app.add_action (filter_action);
         app.set_accels_for_action ("app.filter", {"<Control>f"});
     }
 
-    private void show_search () {
+    private void toggle_search () {
         var visible_page = top_stack.visible_child;
         if (visible_page == task_page) {
-            task_page.toggle_filter_bar ();
+            task_page.toggle_filtering ();
         }
     }
 

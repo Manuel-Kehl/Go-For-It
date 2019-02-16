@@ -1,7 +1,24 @@
+/* Copyright 2018-2019 Go For It! developers
+*
+* This file is part of Go For It!.
+*
+* Go For It! is free software: you can redistribute it
+* and/or modify it under the terms of version 3 of the
+* GNU General Public License as published by the Free Software Foundation.
+*
+* Go For It! is distributed in the hope that it will be
+* useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+* Public License for more details.
+*
+* You should have received a copy of the GNU General Public License along
+* with Go For It!. If not, see http://www.gnu.org/licenses/.
+*/
+
 /**
  * A widget containing a TaskList and its widgets and the TimerView.
  */
-class TaskListPage : Gtk.Grid {
+class TaskListPage : Gtk.Grid, FilterableWidget {
     private TxtList task_list = null;
     private TaskTimer task_timer;
 
@@ -12,6 +29,24 @@ class TaskListPage : Gtk.Grid {
     private Gtk.Widget first_page;
     private TimerView timer_view;
     private Gtk.Widget last_page;
+
+    public bool is_filtering {
+        public get {
+            var current_page =
+                activity_stack.get_visible_child () as FilterableWidget;
+            if (current_page != null) {
+                return current_page.is_filtering;
+            }
+            return false;
+        }
+        public set {
+            var current_page =
+                activity_stack.get_visible_child () as FilterableWidget;
+            if (current_page != null) {
+                current_page.is_filtering = value;
+            }
+        }
+    }
 
     public signal void removing_list ();
 
@@ -150,10 +185,6 @@ class TaskListPage : Gtk.Grid {
         task_timer.reset ();
 
         task_list = null;
-    }
-
-    public void toggle_filter_bar () {
-        warning("Stub!\n");
     }
 
     /**
