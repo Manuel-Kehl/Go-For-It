@@ -25,6 +25,7 @@ class TaskListPage : Gtk.Grid, FilterableWidget {
     /* Various GTK Widgets */
     private Gtk.Stack activity_stack;
     private ViewSwitcher activity_switcher;
+    private Gtk.Stack switcher_stack;
 
     private Gtk.Widget first_page;
     private TimerView timer_view;
@@ -69,8 +70,11 @@ class TaskListPage : Gtk.Grid, FilterableWidget {
     private void initial_setup () {
         /* Instantiation of available widgets */
         activity_stack = new Gtk.Stack ();
+        switcher_stack = new Gtk.Stack ();
         activity_switcher = new ViewSwitcher ();
         timer_view = new TimerView (task_timer);
+        var activity_label = new Gtk.Label (_("Lists"));
+        activity_label.get_style_context ().add_class ("title");
 
         // Activity Stack + Switcher
         activity_switcher.halign = Gtk.Align.CENTER;
@@ -81,20 +85,29 @@ class TaskListPage : Gtk.Grid, FilterableWidget {
         activity_stack.set_transition_type (
             Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
         );
+        switcher_stack.set_transition_type (
+            Gtk.StackTransitionType.SLIDE_UP_DOWN
+        );
 
         activity_switcher.notify["selected-item"].connect (() => {
             activity_stack.set_visible_child_name (activity_switcher.selected_item);
         });
 
+        switcher_stack.add_named (activity_switcher, "switcher");
+        switcher_stack.add_named (activity_label, "label");
         this.add (activity_stack);
     }
 
     public Gtk.Widget get_switcher () {
-        return activity_switcher;
+        return switcher_stack;
     }
 
     public void show_switcher (bool show) {
-        activity_switcher.set_visible (show);
+        if (show) {
+            switcher_stack.set_visible_child_name ("switcher");
+        } else {
+            switcher_stack.set_visible_child_name ("label");
+        }
     }
 
     /**

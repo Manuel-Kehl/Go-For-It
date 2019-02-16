@@ -195,6 +195,7 @@ class ViewSwitcher : Gtk.Box {
 
             if (icon_name != null && show_icon) {
                 label_widget = new Gtk.Image.from_icon_name (icon_name, icon_size);
+                label_widget.tooltip_text = _title;
             } else {
                 label_widget = new Gtk.Label (_title);
             }
@@ -204,13 +205,16 @@ class ViewSwitcher : Gtk.Box {
         private void use_icon () {
             remove (label_widget);
             label_widget = new Gtk.Image.from_icon_name (_icon_name, _icon_size);
+            label_widget.tooltip_text = _title;
             add (label_widget);
+            label_widget.show ();
         }
 
         private void use_label () {
             remove (label_widget);
             label_widget = new Gtk.Label (_title);
             add (label_widget);
+            label_widget.show ();
         }
     }
 }
