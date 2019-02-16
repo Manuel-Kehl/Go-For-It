@@ -239,12 +239,15 @@ class MainWindow : Gtk.ApplicationWindow {
     private void switch_top_stack (bool show_select) {
         if (show_select) {
             top_stack.set_visible_child (selection_page);
-            switch_img.set_from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
+
+            var next_icon = GOFI.Utils.get_image_fallback ("go-next-symbolic", "go-next");
+            switch_img.set_from_icon_name (next_icon, Gtk.IconSize.LARGE_TOOLBAR);
             settings.list_last_loaded = null;
             task_page.show_switcher (false);
         } else if (task_page.ready) {
             top_stack.set_visible_child (task_page);
-            switch_img.set_from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
+            var prev_icon = GOFI.Utils.get_image_fallback ("go-previous-symbolic", "go-previous");
+            switch_img.set_from_icon_name (prev_icon, Gtk.IconSize.LARGE_TOOLBAR);
             if (current_list_info != null) {
                 settings.list_last_loaded = ListIdentifier.from_info (current_list_info);
             } else {

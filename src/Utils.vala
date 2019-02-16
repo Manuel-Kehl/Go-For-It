@@ -140,10 +140,18 @@ namespace GOFI {
          */
         public static Gtk.Image load_image_fallback (Gtk.IconSize size,
                 string icon_name, ...) {
-            Gtk.Image result = new Gtk.Image.from_icon_name (icon_name, size);
-            // If icon_name is present, simply return the related image
-            if (Gtk.IconTheme.get_default ().has_icon (icon_name)) {
-                return result;
+            var available = get_image_fallback (icon_name, va_list ());
+            return new Gtk.Image.from_icon_name (available, size);
+        }
+
+        /**
+         * Returns the name of the first icon available in the current icon
+         * theme.
+         */
+        public static string get_image_fallback (string icon_name, ...) {
+            var icon_theme = Gtk.IconTheme.get_default ();
+            if (icon_theme.has_icon (icon_name)) {
+                return icon_name;
             }
 
             // Iterate through the list of fallbacks, if icon_name was not found
@@ -152,13 +160,13 @@ namespace GOFI {
                 string? fallback_name = fallbacks.arg ();
                 if (fallback_name == null) {
                     // end of the varargs list without a matching fallback
-                    // in this case the "broken image" icon is returned
-                    return result;
+                    // in this case icon_name is returned
+                    return icon_name;
                 }
 
-                // If fallback is found, return the related image
-                if (Gtk.IconTheme.get_default ().has_icon (fallback_name)) {
-                    return new Gtk.Image.from_icon_name (fallback_name, size);
+                // If fallback is found, return its name
+                if (icon_theme.has_icon (fallback_name)) {
+                    return fallback_name;
                 }
             }
         }
