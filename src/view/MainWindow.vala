@@ -28,7 +28,6 @@ class MainWindow : Gtk.ApplicationWindow {
     /* Various GTK Widgets */
     private Gtk.Grid main_layout;
     private Gtk.HeaderBar header_bar;
-    private Gtk.Box hb_replacement;
     // Stack and pages
     private Gtk.Stack top_stack;
     private SelectionPage selection_page;
@@ -229,7 +228,7 @@ class MainWindow : Gtk.ApplicationWindow {
         if (use_header_bar){
             add_headerbar ();
         } else {
-            add_hb_replacement ();
+            add_headerbar_as_toolbar ();
         }
     }
 
@@ -255,25 +254,33 @@ class MainWindow : Gtk.ApplicationWindow {
         }
     }
 
-    public void add_hb_replacement () {
-        hb_replacement = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
+    /**
+     * No other suitable toolbar like widget seems to exist.
+     * ToolBar is not suitable due to alignment issues and the "toolbar"
+     * styleclass isn't universally supported.
+     */
+    public void add_headerbar_as_toolbar () {
+        header_bar = new Gtk.HeaderBar ();
+        header_bar.has_subtitle = false;
+        header_bar.get_style_context ().add_class ("toolbar");
 
-        switch_btn.set_halign (Gtk.Align.START);
-        menu_btn.set_halign (Gtk.Align.END);
+        // GTK Header Bar
+        header_bar.set_show_close_button (false);
 
         // Add headerbar Buttons here
-        hb_replacement.pack_start (switch_btn);
-        hb_replacement.set_center_widget (task_page.get_switcher ());
-        hb_replacement.pack_end (menu_btn);
-        main_layout.add (hb_replacement);
+        header_bar.pack_start (switch_btn);
+        header_bar.set_custom_title (task_page.get_switcher ());
+        header_bar.pack_end (menu_btn);
+
+        main_layout.add (header_bar);
     }
 
     public void add_headerbar () {
         header_bar = new Gtk.HeaderBar ();
+        header_bar.has_subtitle = false;
 
         // GTK Header Bar
         header_bar.set_show_close_button (true);
-        header_bar.title = GOFI.APP_NAME;
 
         // Add headerbar Buttons here
         header_bar.pack_start (switch_btn);
