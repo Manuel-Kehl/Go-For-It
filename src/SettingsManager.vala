@@ -140,35 +140,25 @@ private class SettingsManager {
         }
     }
     /*---GROUP:LISTS----------------------------------------------------------*/
-    public ListIdentifier[] lists {
+    public List<ListIdentifier?> lists {
         owned get {
-            string[] _lists = get_string_list (GROUP_LISTS, "lists", {});
-            int n_lists = _lists.length;
+            List<ListIdentifier?> identifiers = new List<ListIdentifier?> ();
+            var strs = get_string_list (GROUP_LISTS, "lists", {});
 
-            ListIdentifier?[] identifiers = new ListIdentifier?[n_lists];
-            int j = 0;
-            for (int i = 0; i < n_lists; i++) {
-                var identifier = ListIdentifier.from_string (_lists[i]);
+            foreach (string id_str in strs) {
+                var identifier = ListIdentifier.from_string (id_str);
                 if (identifier != null) {
-                    identifiers[j] = identifier;
-                    j++;
+                    identifiers.prepend (identifier);
                 } else {
-                    warning ("Can't decode list information! (%s)", _lists[i]);
+                    warning ("Can't decode list information! (%s)", id_str);
                 }
             }
-            if (j != n_lists) {
-                identifiers[j] = null; // Null terminate the array
-                identifiers.resize(j); // Set .length value
-            }
-
-            return (ListIdentifier[]) identifiers;
+            return identifiers;
         }
         set {
-            int n_lists = value.length;
-            string[] _lists = new string[n_lists];
-
-            for (int i = 0; i < n_lists; i++) {
-                _lists[i] = value[i].to_string ();
+            string[] _lists = {};
+            foreach (var identifier in value) {
+                _lists += identifier.to_string ();
             }
 
             set_string_list (GROUP_LISTS, "lists", _lists);

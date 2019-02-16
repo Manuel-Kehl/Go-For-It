@@ -59,10 +59,12 @@ class ListManager : Object, DragListModel {
 
     private void remove_lists (List<string> to_remove) {
         foreach (string id in to_remove) {
-            uint index = todolist_infos.search_remove_item<string> (id, ((info_obj, search_id) => {
-                var info_id = ((TodoListInfo) info_obj).id;
-                return strcmp (info_id, search_id);
-            }));
+            uint index = todolist_infos.search_remove_item<string> (id, (
+                (info_obj, search_id) => {
+                    var info_id = ((TodoListInfo) info_obj).id;
+                    return strcmp (info_id, search_id);
+                })
+            );
             items_changed (index, 1, 0);
             list_removed (GOFI.TXT.PLUGIN_NAME, id);
         }
@@ -101,6 +103,8 @@ class ListManager : Object, DragListModel {
             if (link != null) {
                 todolist_infos.append_item (link.data);
                 txt_lists.delete_link (link);
+            } else {
+                warning ("Couldn't find list '%s:%s'\n", identifier.plugin, identifier.id);
             }
         }
         foreach (TodoListInfo info in txt_lists) {
@@ -139,11 +143,11 @@ class ListManager : Object, DragListModel {
     }
 
     public void on_list_change () {
+        var set_lists = new List<ListIdentifier?> ();
         uint n_lists = todolist_infos.length;
-        var set_lists = new ListIdentifier[n_lists];
         for (uint i = 0; i < n_lists; i++) {
             var info = (TodoListInfo) todolist_infos.get_item (i);
-            set_lists[i] = {info.plugin_name, info.id};
+            set_lists.prepend ({info.plugin_name, info.id});
         }
         settings.lists = set_lists;
         lists_changed ();
