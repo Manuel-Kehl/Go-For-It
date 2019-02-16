@@ -1,4 +1,4 @@
-/* Copyright 2014-2017 Go For It! developers
+/* Copyright 2014-2019 Go For It! developers
 *
 * This file is part of Go For It!.
 *
