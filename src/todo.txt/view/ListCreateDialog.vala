@@ -152,7 +152,7 @@ class ListCreateDialog : Gtk.Dialog {
         add_section (main_layout, txt_sect_lbl, ref row);
         add_option (main_layout, directory_lbl, directory_btn, ref row);
 
-        Gtk.Label name_lbl = new Gtk.Label (_("Name"));
+        Gtk.Label name_lbl = new Gtk.Label (_("List name"));
         Gtk.Entry name_entry = new Gtk.Entry ();
 
         name_entry.notify["text"].connect ( () => {
@@ -172,12 +172,23 @@ class ListCreateDialog : Gtk.Dialog {
         Gtk.SpinButton break_spin;
         Gtk.Label reminder_lbl;
         Gtk.SpinButton reminder_spin;
+        Gtk.Label timer_default_lbl;
+        Gtk.Switch timer_default_switch;
+        Gtk.Revealer timer_revealer;
+        Gtk.Grid timer_grid;
+
+        int row2 = 0;
 
         /* Instantiation */
         timer_sect_lbl = new Gtk.Label (_("Timer"));
+        timer_default_lbl = new Gtk.Label (_("Use default settings") + (":"));
         task_lbl = new Gtk.Label (_("Task duration (minutes)") + ":");
         break_lbl = new Gtk.Label (_("Break duration (minutes)") + ":");
         reminder_lbl = new Gtk.Label (_("Reminder before task ends (seconds)") +":");
+
+        timer_default_switch = new Gtk.Switch ();
+        timer_revealer = new Gtk.Revealer ();
+        timer_grid = new Gtk.Grid ();
 
         // No more than one day: 60 * 24 -1 = 1439
         task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
@@ -189,6 +200,12 @@ class ListCreateDialog : Gtk.Dialog {
         task_spin.value = 25;
         break_spin.value = 5;
         reminder_spin.value = 60;
+        timer_default_switch.active = true;
+        timer_revealer.set_reveal_child (false);
+
+        timer_grid.orientation = Gtk.Orientation.VERTICAL;
+        timer_grid.row_spacing = 10;
+        timer_grid.column_spacing = 10;
 
         /* Signal Handling */
         task_spin.value_changed.connect ((e) => {
@@ -200,11 +217,29 @@ class ListCreateDialog : Gtk.Dialog {
         reminder_spin.value_changed.connect ((e) => {
             settings.reminder_time = reminder_spin.get_value_as_int ();
         });
+        timer_default_switch.notify["active"].connect ( () => {
+            if (timer_default_switch.active) {
+                settings.task_duration = -1;
+                settings.break_duration = -1;
+                settings.reminder_time = -1;
+                timer_revealer.set_reveal_child (false);
+            } else {
+                settings.task_duration = task_spin.get_value_as_int () * 60;
+                settings.break_duration = break_spin.get_value_as_int () * 60;
+                settings.reminder_time = reminder_spin.get_value_as_int ();
+                timer_revealer.set_reveal_child (true);
+            }
+        });
 
         /* Add widgets */
+        timer_revealer.add (timer_grid);
+
         add_section (grid, timer_sect_lbl, ref row);
-        add_option (grid, task_lbl, task_spin, ref row);
-        add_option (grid, break_lbl, break_spin, ref row);
-        add_option (grid, reminder_lbl, reminder_spin, ref row);
+        add_option (grid, timer_default_lbl, timer_default_switch, ref row);
+        grid.attach (timer_revealer, 0, row, 2, 1);
+        row++;
+        add_option (timer_grid, task_lbl, task_spin, ref row2);
+        add_option (timer_grid, break_lbl, break_spin, ref row2);
+        add_option (timer_grid, reminder_lbl, reminder_spin, ref row2);
     }
 }
