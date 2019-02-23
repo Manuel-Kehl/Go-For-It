@@ -281,12 +281,12 @@ class TaskRow: DragListRow {
                 if (is_context_tag (part)) {
                     prefix = _("context");
                     delimiter = "@";
-                    val = part.split (delimiter, 2)[1];
+                    val = part.offset(1);
                 }
                 if (is_project_tag (part)) {
                     prefix = _("project");
                     delimiter = "+";
-                    val = part.split (delimiter, 2)[1];
+                    val = part.offset(1);
                 }
                 if (val != null) {
                     parsed += @" <a href=\"$prefix:$val\" title=\"$val\">" +

@@ -35,14 +35,14 @@ namespace GOFI.TxtUtils {
      * Checks whether token is a project tag in the todo.txt format.
      */
     public static bool is_project_tag (string token) {
-        return token.get (0) == '+' && token.get (1) > 33;
+        return token.get (0) == '+' && token.get_char (1).isgraph ();
     }
 
     /**
      * Checks whether token is a context tag in the todo.txt format.
      */
     public static bool is_context_tag (string token) {
-        return token.get (0) == '@' && token.get (1) > 33;
+        return token.get (0) == '@' && token.get_char (1).isgraph ();
     }
 
     /**
@@ -53,7 +53,7 @@ namespace GOFI.TxtUtils {
 
         if (done) {
             // Remove "x " from displayed string
-            txt_line = txt_line.split ("x ", 2)[1];
+            txt_line = txt_line.substring (2);
         }
 
         return done;
