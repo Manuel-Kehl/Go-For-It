@@ -441,23 +441,18 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         // Pick the stylesheet that is compatible with the user's Gtk version
         string stylesheet = @"go-for-it-$version$color.css";
 
-        // Scan potential data dirs for the corresponding css file
-        foreach (var dir in Environment.get_system_data_dirs ()) {
-            // The path where the file is to be located
-            var path = Path.build_filename (dir, GOFI.APP_SYSTEM_NAME,
-                "style", stylesheet);
-            // Only proceed, if file has been found
-            if (FileUtils.test (path, FileTest.EXISTS)) {
-                try {
-                    css_provider.load_from_path (path);
-                    Gtk.StyleContext.add_provider_for_screen (
-                        screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-                    break;
-                } catch (Error e) {
-                    warning ("Cannot load CSS stylesheet: %s", e.message);
-                }
+        var path = Path.build_filename (DATADIR, "style", stylesheet);
+        if (FileUtils.test (path, FileTest.EXISTS)) {
+            try {
+                css_provider.load_from_path (path);
+                Gtk.StyleContext.add_provider_for_screen (
+                    screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+                return;
+            } catch (Error e) {
+                warning ("Cannot load CSS stylesheet: %s", e.message);
             }
         }
+        warning ("Could not find application stylesheet in %s", path);
     }
 
     /**

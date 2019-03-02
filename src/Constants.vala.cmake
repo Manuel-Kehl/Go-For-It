@@ -3,7 +3,7 @@
 * This file is part of Go For It!.
 *
 * Go For It! is free software: you can redistribute it
-* and/or modify it under the terms of version 3 of the 
+* and/or modify it under the terms of version 3 of the
 * GNU General Public License as published by the Free Software Foundation.
 *
 * Go For It! is distributed in the hope that it will be
@@ -16,7 +16,7 @@
 */
 
 /**
- * The GOFI namespace is a central collection of static constants that are 
+ * The GOFI namespace is a central collection of static constants that are
  * realted to "Go For It!".
  */
 namespace GOFI {
@@ -32,9 +32,10 @@ namespace GOFI {
     const string PROJECT_REPO = "@PROJECT_REPO@";
     const string PROJECT_DONATIONS = "@PROJECT_DONATIONS@";
     const string INSTALL_PREFIX = "@INSTALL_PREFIX@";
+    const string DATADIR = "@PKGDATADIR@";
     const string GETTEXT_PACKAGE = "@GETTEXT_PACKAGE@";
     const string[] TEST_DIRS = {
-        "Todo", "todo", ".todo", 
+        "Todo", "todo", ".todo",
         "Dropbox/Todo", "Dropbox/todo"
     };
 }
