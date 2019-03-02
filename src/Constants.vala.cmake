@@ -17,7 +17,7 @@
 
 /**
  * The GOFI namespace is a central collection of static constants that are
- * realted to "Go For It!".
+ * related to "Go For It!".
  */
 namespace GOFI {
     /* Strings */

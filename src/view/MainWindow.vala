@@ -447,12 +447,12 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
                 css_provider.load_from_path (path);
                 Gtk.StyleContext.add_provider_for_screen (
                     screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-                return;
             } catch (Error e) {
                 warning ("Cannot load CSS stylesheet: %s", e.message);
             }
+        } else {
+            warning ("Could not find application stylesheet in %s", path);
         }
-        warning ("Could not find application stylesheet in %s", path);
     }
 
     /**
