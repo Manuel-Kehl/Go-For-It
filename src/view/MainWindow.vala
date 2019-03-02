@@ -118,7 +118,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         if (last_loaded != null) {
             var list = list_manager.get_list (last_loaded.id);
             load_list (list);
-            current_list_info = list.list_info;
         } else {
             current_list_info = null;
             list_menu_container.hide ();
@@ -203,6 +202,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     }
 
     private void load_list (TxtList list) {
+        current_list_info = list.list_info;
         task_page.set_task_list (list);
         switch_btn.sensitive = true;
         switch_top_stack (false);
