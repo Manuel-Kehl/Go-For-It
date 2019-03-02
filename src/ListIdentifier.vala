@@ -15,20 +15,29 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-private struct ListIdentifier {
+[Compact]
+private class ListIdentifier {
     public string plugin;
     public string id;
+
+    public ListIdentifier (string plugin, string id) {
+        this.plugin = plugin;
+        this.id = id;
+    }
 
     public static ListIdentifier? from_string (string encoded) {
         var concat_identifier = split_strings (encoded);
         if (concat_identifier[1] != null) {
-            return {concat_identifier[0], concat_identifier[1]};
+            return new ListIdentifier (
+                concat_identifier[0],
+                concat_identifier[1]
+            );
         }
         return null;
     }
 
     public static ListIdentifier? from_info (TodoListInfo info) {
-        return {info.plugin_name, info.id};
+        return new ListIdentifier (info.plugin_name, info.id);
     }
 
     public string to_string () {

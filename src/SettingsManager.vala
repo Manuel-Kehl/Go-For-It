@@ -148,7 +148,7 @@ private class SettingsManager {
             foreach (string id_str in strs) {
                 var identifier = ListIdentifier.from_string (id_str);
                 if (identifier != null) {
-                    identifiers.prepend (identifier);
+                    identifiers.prepend ((owned) identifier);
                 } else {
                     warning ("Can't decode list information! (%s)", id_str);
                 }
@@ -157,7 +157,7 @@ private class SettingsManager {
         }
         set {
             string[] _lists = {};
-            foreach (var identifier in value) {
+            foreach (unowned ListIdentifier identifier in value) {
                 _lists += identifier.to_string ();
             }
 

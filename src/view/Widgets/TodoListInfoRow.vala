@@ -15,6 +15,8 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
+using GOFI;
+
 class TodoListInfoRow: DragListRow {
     private Gtk.Label name_label;
     private bool showing_menu;
@@ -63,31 +65,6 @@ class TodoListInfoRow: DragListRow {
         show_all ();
     }
 
-    private Gtk.Button create_menu_button (string label) {
-        var button = new Gtk.Button.with_label (label);
-        button.get_style_context ().add_class ("menuitem");
-        return button;
-    }
-
-    private void popover_hide (Gtk.Popover popover) {
-#if HAS_GTK322
-        popover.popdown ();
-#else
-        popover.hide ();
-#endif
-    }
-
-    private void popover_show (Gtk.Popover popover) {
-#if HAS_GTK322
-            popover.forall ((child) => {
-                child.show_all ();
-            });
-            popover.popup ();
-#else
-            popover.show_all ();
-#endif
-    }
-
     private void connect_signals () {
         info.notify["name"].connect (update);
 
@@ -115,22 +92,22 @@ class TodoListInfoRow: DragListRow {
 
         var popover_cont = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
 
-        var menuitem_delete = create_menu_button (_("Delete"));
-        var menuitem_edit = create_menu_button (_("Edit"));
+        var menuitem_delete = Utils.create_menu_button (_("Delete"));
+        var menuitem_edit = Utils.create_menu_button (_("Edit"));
 
         menuitem_delete.clicked.connect ( () => {
             delete_clicked (this.info);
-            popover_hide (popover);
+            Utils.popover_hide (popover);
         });
         menuitem_edit.clicked.connect ( () => {
             edit_clicked (this.info);
-            popover_hide (popover);
+            Utils.popover_hide (popover);
         });
 
         popover_cont.add (menuitem_edit);
         popover_cont.add (menuitem_delete);
         popover.add (popover_cont);
-        popover_show (popover);
+        Utils.popover_show (popover);
 
         popover.closed.connect ( () => {
             option_revealer.reveal_child = false;

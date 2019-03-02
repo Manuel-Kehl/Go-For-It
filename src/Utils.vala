@@ -170,5 +170,30 @@ namespace GOFI {
                 }
             }
         }
+
+        public static Gtk.Button create_menu_button (string label) {
+            var button = new Gtk.Button.with_label (label);
+            button.get_style_context ().add_class ("menuitem");
+            return button;
+        }
+
+        public static void popover_hide (Gtk.Popover popover) {
+#if HAS_GTK322
+            popover.popdown ();
+#else
+            popover.hide ();
+#endif
+        }
+
+        public static void popover_show (Gtk.Popover popover) {
+#if HAS_GTK322
+            popover.forall ((child) => {
+                child.show_all ();
+            });
+            popover.popup ();
+#else
+            popover.show_all ();
+#endif
+        }
     }
 }

@@ -102,7 +102,7 @@ class ListManager : Object, DragListModel {
         List<TodoListInfo> txt_lists = txt_manager.get_list_infos ();
         var stored_lists = settings.lists;
 
-        foreach (ListIdentifier identifier in stored_lists) {
+        foreach (unowned ListIdentifier identifier in stored_lists) {
             unowned List<TodoListInfo> link = search_list_link (txt_lists, identifier.id);
             if (link != null) {
                 todolist_infos.append_item (link.data);
@@ -151,7 +151,7 @@ class ListManager : Object, DragListModel {
         uint n_lists = todolist_infos.length;
         for (uint i = 0; i < n_lists; i++) {
             var info = (TodoListInfo) todolist_infos.get_item (i);
-            set_lists.prepend ({info.plugin_name, info.id});
+            set_lists.prepend (new ListIdentifier (info.plugin_name, info.id));
         }
         settings.lists = set_lists;
         lists_changed ();

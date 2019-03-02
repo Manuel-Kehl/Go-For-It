@@ -28,6 +28,7 @@ class MainWindow : Gtk.ApplicationWindow {
     /* Various GTK Widgets */
     private Gtk.Grid main_layout;
     private Gtk.HeaderBar header_bar;
+
     // Stack and pages
     private Gtk.Stack top_stack;
     private SelectionPage selection_page;
@@ -35,13 +36,31 @@ class MainWindow : Gtk.ApplicationWindow {
     private Gtk.MenuButton menu_btn;
     private Gtk.ToolButton switch_btn;
     private Gtk.Image switch_img;
+
     // Application Menu
-    private Gtk.Menu app_menu;
-    private Gtk.MenuItem config_item;
+    private Gtk.Popover menu_popover;
+    private Gtk.Box menu_container;
+    private Gtk.Box list_menu_container;
 
     private Gtk.Settings gtk_settings;
 
     private TodoListInfo? current_list_info;
+    private Gtk.Widget? list_menu;
+
+    public const string ACTION_PREFIX = "win";
+    public const string ACTION_ABOUT = "about";
+    public const string ACTION_CONTRIBUTE = "contribute";
+    public const string ACTION_FILTER = "filter";
+    public const string ACTION_SETTINGS = "settings";
+
+    private const ActionEntry[] action_entries = {
+        { ACTION_ABOUT, show_about_dialog },
+#if !NO_CONTRIBUTE_DIALOG
+        { ACTION_CONTRIBUTE, show_contribute_dialog },
+#endif
+        { ACTION_FILTER, toggle_search },
+        { ACTION_SETTINGS, show_settings }
+    };
 
     /**
      * Used to determine if a notification should be sent.
@@ -64,9 +83,9 @@ class MainWindow : Gtk.ApplicationWindow {
         apply_settings ();
 
         setup_window ();
+        setup_actions (app_context);
         setup_menu ();
         setup_widgets ();
-        setup_actions (app_context);
         load_css ();
         setup_notifications ();
         // Enable Notifications for the App
@@ -100,6 +119,7 @@ class MainWindow : Gtk.ApplicationWindow {
             current_list_info = list.list_info;
         } else {
             current_list_info = null;
+            list_menu_container.hide ();
         }
     }
 
@@ -176,7 +196,7 @@ class MainWindow : Gtk.ApplicationWindow {
         var list = list_manager.get_list (selected_info.id);
         assert (list != null);
         load_list (list);
-        settings.list_last_loaded = {selected_info.plugin_name, selected_info.id};
+        settings.list_last_loaded = ListIdentifier.from_info (selected_info);
         current_list_info = selected_info;
     }
 
@@ -184,13 +204,18 @@ class MainWindow : Gtk.ApplicationWindow {
         task_page.set_task_list (list);
         switch_btn.sensitive = true;
         switch_top_stack (false);
+        if (list_menu != null) {
+            list_menu_container.remove (list_menu);
+        }
+        list_menu = list.get_menu ();
+        list_menu_container.pack_start (list_menu);
     }
 
     private void setup_actions (Gtk.Application app) {
-        var filter_action = new SimpleAction ("filter", null);
-        filter_action.activate.connect (() => toggle_search ());
-        app.add_action (filter_action);
-        app.set_accels_for_action ("app.filter", {"<Control>f"});
+        var actions = new SimpleActionGroup ();
+        actions.add_action_entries (action_entries, this);
+        insert_action_group (ACTION_PREFIX, actions);
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_FILTER, {"<Control>f"});
     }
 
     private void toggle_search () {
@@ -214,10 +239,14 @@ class MainWindow : Gtk.ApplicationWindow {
             GOFI.ICON_NAME + "-open-menu-fallback");
         menu_btn = new Gtk.MenuButton ();
         menu_btn.hexpand = false;
-        menu_btn.set_popup (app_menu);
+        //menu_btn.set_popup (app_menu);
         menu_btn.image = menu_img;
         menu_btn.tooltip_text = _("Menu");
-        app_menu.halign = Gtk.Align.END;
+        // app_menu.halign = Gtk.Align.END;
+
+        menu_popover = new Gtk.Popover (menu_btn);
+        menu_popover.add (menu_container);
+        menu_btn.popover = menu_popover;
 
         switch_img = new Gtk.Image.from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
         switch_btn = new Gtk.ToolButton (switch_img, _("_Back"));
@@ -244,6 +273,7 @@ class MainWindow : Gtk.ApplicationWindow {
             switch_img.set_from_icon_name (next_icon, Gtk.IconSize.LARGE_TOOLBAR);
             settings.list_last_loaded = null;
             task_page.show_switcher (false);
+            list_menu_container.hide ();
         } else if (task_page.ready) {
             top_stack.set_visible_child (task_page);
             var prev_icon = GOFI.Utils.get_image_fallback ("go-previous-symbolic", "go-previous");
@@ -254,6 +284,7 @@ class MainWindow : Gtk.ApplicationWindow {
                 settings.list_last_loaded = null;
             }
             task_page.show_switcher (true);
+            list_menu_container.show ();
         }
     }
 
@@ -295,38 +326,52 @@ class MainWindow : Gtk.ApplicationWindow {
 
     private void setup_menu () {
         /* Initialization */
-        app_menu = new Gtk.Menu ();
-        config_item = new Gtk.MenuItem.with_label (_("Settings"));
+        menu_container = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        list_menu_container = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        var config_item = new Gtk.ModelButton ();
 
-        /* Signal and Action Handling */
-        config_item.activate.connect ((e) => {
-            var dialog = new SettingsDialog (this, settings);
-            dialog.show ();
-        });
+        list_menu_container.pack_end (
+            new Gtk.Separator (Gtk.Orientation.HORIZONTAL)
+        );
 
-        /* Add Items to Menu */
-        app_menu.add (config_item);
+        menu_container.add (list_menu_container);
+
+        config_item.text = _("Settings");
+        config_item.action_name = ACTION_PREFIX + "." + ACTION_SETTINGS;
+        menu_container.add (config_item);
+
 #if !NO_CONTRIBUTE_DIALOG
-        var contribute_item = new Gtk.MenuItem.with_label (_("Contribute / Donate"));
-        contribute_item.activate.connect ((e) => {
-            var dialog = new ContributeDialog (this);
-            dialog.show ();
-        });
-        app_menu.add (contribute_item);
-#endif
-#if SHOW_ABOUT
-        var about_item = new Gtk.MenuItem.with_label (_("About"));
-        about_item.activate.connect ((e) => {
-            var app = get_application () as Main;
-            app.show_about (this);
-        });
-        app_menu.add (about_item);
+        var contribute_item = new Gtk.ModelButton ();
+        contribute_item.text = _("Contribute / Donate");
+        contribute_item.action_name = ACTION_PREFIX + "." + ACTION_CONTRIBUTE;
+        menu_container.add (contribute_item);
 #endif
 
-        /* And make all children visible */
-        foreach (var child in app_menu.get_children ()) {
-            child.visible = true;
-        }
+#if SHOW_ABOUT
+        var about_item = new Gtk.ModelButton ();
+        about_item.text = _("About");
+        about_item.action_name = ACTION_PREFIX + "." + ACTION_ABOUT;
+        menu_container.add (about_item);
+#endif
+
+        menu_container.show_all ();
+    }
+
+    private void show_about_dialog () {
+        var app = get_application () as Main;
+        app.show_about (this);
+    }
+
+#if !NO_CONTRIBUTE_DIALOG
+    private void show_contribute_dialog () {
+        var dialog = new ContributeDialog (this);
+        dialog.show ();
+    }
+#endif
+
+    private void show_settings () {
+        var dialog = new SettingsDialog (this, settings);
+        dialog.show ();
     }
 
     /**

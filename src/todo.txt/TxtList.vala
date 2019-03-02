@@ -19,6 +19,8 @@ class TxtList : Object {
     private TaskList todo_list;
     private TaskList done_list;
 
+    private Gtk.Button clear_done_button;
+
     public ListSettings list_settings {
         public get;
         private set;
@@ -72,6 +74,14 @@ class TxtList : Object {
         return done_list;
     }
 
+    public unowned Gtk.Widget? get_menu () {
+        return clear_done_button;
+    }
+
+    public void clear_done_list () {
+        task_manager.clear_done_store ();
+    }
+
     private void on_selection_changed (TodoTask? task) {
         selected_task = task;
     }
@@ -84,6 +94,9 @@ class TxtList : Object {
         task_manager = new TaskManager (list_settings);
         todo_list = new TaskList (this.task_manager.todo_store, true);
         done_list = new TaskList (this.task_manager.done_store, false);
+        clear_done_button = GOFI.Utils.create_menu_button (_("Clear Done List"));
+        clear_done_button.clicked.connect (clear_done_list);
+        clear_done_button.show_all ();
 
         /* Action and Signal Handling */
         todo_list.add_new_task.connect (task_manager.add_new_task);
@@ -97,5 +110,6 @@ class TxtList : Object {
         todo_list = null;
         done_list = null;
         task_manager = null;
+        clear_done_button = null;
     }
 }
