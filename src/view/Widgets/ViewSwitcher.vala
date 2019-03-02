@@ -14,7 +14,7 @@
 * You should have received a copy of the GNU General Public License along
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
-class ViewSwitcher : Gtk.Box {
+class GOFI.ViewSwitcher : Gtk.Box {
     HashTable<string, SButton> buttons;
 
     public Gtk.IconSize icon_size {

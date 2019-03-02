@@ -18,7 +18,7 @@
 /**
  * The widget for selecting, displaying and controlling the active task.
  */
-class TimerView : Gtk.Grid {
+class GOFI.TimerView : Gtk.Grid {
     /* Various Variables */
     private TaskTimer timer;
 

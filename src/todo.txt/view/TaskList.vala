@@ -18,7 +18,7 @@
 /**
  * A widget for displaying and manipulating task lists.
  */
-class TaskList : Gtk.Grid, FilterableWidget {
+class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
     /* GTK Widgets */
     private Gtk.ScrolledWindow scroll_view;
     private DragList task_view;

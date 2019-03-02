@@ -14,7 +14,7 @@
 * You should have received a copy of the GNU General Public License along
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
-namespace GOFI.TxtUtils {
+namespace GOFI.TXT.TxtUtils {
     /**
      * Checks whether token is a date in the todo.txt format.
      */

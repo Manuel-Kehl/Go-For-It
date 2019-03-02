@@ -15,9 +15,7 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-using GOFI;
-
-class TodoListInfoRow: DragListRow {
+class GOFI.TodoListInfoRow: DragListRow {
     private Gtk.Label name_label;
     private bool showing_menu;
 

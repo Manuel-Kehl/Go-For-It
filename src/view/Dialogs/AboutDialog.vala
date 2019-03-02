@@ -18,7 +18,7 @@
 /**
  * A dialog for displaying information about this application.
  */
-class AboutDialog : Gtk.AboutDialog {
+class GOFI.AboutDialog : Gtk.AboutDialog {
     public AboutDialog (Gtk.Window? parent = null) {
         this.set_transient_for (parent);
         /* Initalization */

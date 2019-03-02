@@ -15,10 +15,12 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
+using GOFI.TXT;
+
 /**
  * The main window of Go For It!.
  */
-class MainWindow : Gtk.ApplicationWindow {
+class GOFI.MainWindow : Gtk.ApplicationWindow {
     /* Various Variables */
     private ListManager list_manager;
     private TaskTimer task_timer;

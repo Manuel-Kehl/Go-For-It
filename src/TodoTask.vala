@@ -18,7 +18,7 @@
 /**
  * This class stores all task information.
  */
-public class TodoTask : GLib.Object {
+public class GOFI.TodoTask : GLib.Object {
     public string description {
         public get {
             return _description;

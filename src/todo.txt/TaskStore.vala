@@ -15,7 +15,9 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-class TaskStore : Object, DragListModel {
+using GOFI;
+
+class GOFI.TXT.TaskStore : Object, DragListModel {
     private SequentialList tasks;
 
     public bool done_by_default {

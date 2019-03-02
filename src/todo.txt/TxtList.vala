@@ -14,7 +14,7 @@
 * You should have received a copy of the GNU General Public License along
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
-class TxtList : Object {
+class GOFI.TXT.TxtList : Object {
     private TaskManager task_manager;
     private TaskList todo_list;
     private TaskList done_list;

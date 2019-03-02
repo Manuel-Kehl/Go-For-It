@@ -16,7 +16,7 @@
 */
 
 [Compact]
-private class ListIdentifier {
+private class GOFI.ListIdentifier {
     public string plugin;
     public string id;
 

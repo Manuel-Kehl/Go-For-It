@@ -15,7 +15,7 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-using GOFI.TxtUtils;
+using GOFI.TXT.TxtUtils;
 
 /**
  * This class is responsible for loading, saving and managing the user's tasks.
@@ -23,7 +23,7 @@ using GOFI.TxtUtils;
  * lists. Editing specific tasks (e.g. removing, renaming) is to be done
  * by addressing the corresponding TaskStore instance.
  */
-class TaskManager {
+class GOFI.TXT.TaskManager {
     private ListSettings settings;
     // The user's todo.txt related files
     private File todo_txt_dir;

@@ -20,7 +20,7 @@
  * Its main motivation is the option of easily replacing Glib.KeyFile with
  * another settings storage mechanism in the future.
  */
-class TxtListManager {
+class GOFI.TXT.TxtListManager {
     private KeyFile key_file;
     private string list_file;
     private string config_dir;

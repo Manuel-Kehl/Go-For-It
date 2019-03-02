@@ -1,3 +1,5 @@
+using GOFI;
+
 class DragListTest : TestCase {
     private const int TEST_ROWS_LENGTH = 5;
     private DragListRow[] rows;

@@ -15,9 +15,9 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-using GOFI.TxtUtils;
+using GOFI.TXT.TxtUtils;
 
-class TaskRow: DragListRow {
+class GOFI.TaskRow: DragListRow {
     private Gtk.CheckButton check_button;
     private Gtk.Button delete_button;
     private TaskMarkupLabel markup_label;

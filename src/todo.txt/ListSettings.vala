@@ -14,7 +14,7 @@
 * You should have received a copy of the GNU General Public License along
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
-class ListSettings : Object, TodoListInfo {
+class GOFI.TXT.ListSettings : Object, TodoListInfo {
 
     public string id {
         get {

@@ -22,7 +22,7 @@
  *
  * Row headers are not supported.
  */
-public class DragList : Gtk.Bin {
+public class GOFI.DragList : Gtk.Bin {
     private Gtk.ListBox listbox;
 
     internal DragListModel? model;
@@ -644,21 +644,23 @@ public class DragList : Gtk.Bin {
     }
 }
 
-public delegate bool DragListFilterFunc (DragListRow row);
-public delegate Gtk.Widget DragListCreateWidgetFunc (Object item);
+namespace GOFI {
+    public delegate bool DragListFilterFunc (DragListRow row);
+    public delegate Gtk.Widget DragListCreateWidgetFunc (Object item);
 
-private const Gtk.TargetEntry[] dlb_entries = {
-    {"DRAG_LIST_ROW", Gtk.TargetFlags.SAME_APP, 0}
-};
+    private const Gtk.TargetEntry[] dlb_entries = {
+        {"DRAG_LIST_ROW", Gtk.TargetFlags.SAME_APP, 0}
+    };
 
-private struct IntRange {
-    public int min;
-    public int max;
-    public inline bool contains (int val) {return val >= min && val <= max;}
-    public inline int clamp (int val) {return val.clamp (min, max);}
+    private struct IntRange {
+        public int min;
+        public int max;
+        public inline bool contains (int val) {return val >= min && val <= max;}
+        public inline int clamp (int val) {return val.clamp (min, max);}
+    }
 }
 
-public class DragListRow : Gtk.ListBoxRow {
+public class GOFI.DragListRow : Gtk.ListBoxRow {
     private Gtk.EventBox handle;
     private Gtk.Box layout;
     private Gtk.Image image;

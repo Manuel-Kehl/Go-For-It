@@ -14,7 +14,7 @@
 * You should have received a copy of the GNU General Public License along
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
-public interface FilterableWidget : Gtk.Widget {
+public interface GOFI.FilterableWidget : Gtk.Widget {
     public abstract bool is_filtering {
         public get;
         public set;

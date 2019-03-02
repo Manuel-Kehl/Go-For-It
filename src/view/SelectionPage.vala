@@ -15,10 +15,12 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
+using GOFI.TXT;
+
 /**
  * A widget for displaying and manipulating info lists.
  */
-class SelectionPage : Gtk.Grid {
+class GOFI.SelectionPage : Gtk.Grid {
     /* GTK Widgets */
     private Gtk.ScrolledWindow scroll_view;
     private DragList todolist_view;

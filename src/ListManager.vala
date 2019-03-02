@@ -15,7 +15,9 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-class ListManager : Object, DragListModel {
+using GOFI.TXT;
+
+class GOFI.ListManager : Object, DragListModel {
     private SettingsManager settings;
     private SequentialList todolist_infos;
     private TxtListManager txt_manager;

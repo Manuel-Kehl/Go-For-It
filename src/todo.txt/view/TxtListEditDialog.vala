@@ -15,7 +15,7 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-class TxtListEditDialog : Gtk.Dialog {
+class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private TxtListManager list_manager;
     private ListSettings settings;
 

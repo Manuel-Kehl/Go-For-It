@@ -15,10 +15,12 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
+using GOFI.TXT;
+
 /**
  * A widget containing a TaskList and its widgets and the TimerView.
  */
-class TaskListPage : Gtk.Grid, FilterableWidget {
+class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
     private TxtList task_list = null;
     private TaskTimer task_timer;
 

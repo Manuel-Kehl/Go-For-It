@@ -1,3 +1,5 @@
+using GOFI;
+
 class TodoTaskTest : TestCase {
     private uint data_changed_emitted;
     private uint done_changed_emitted;

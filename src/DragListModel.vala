@@ -22,7 +22,7 @@
  * Because versions of GLib older than 2.44 are supported right now,
  * GLib.ListModel can't be inherited from.
  */
-public interface DragListModel : Object {
+public interface GOFI.DragListModel : Object {
     /**
      * Called when a row is moved in the widget.
      * It should only be used to synchronize the model with the widget.

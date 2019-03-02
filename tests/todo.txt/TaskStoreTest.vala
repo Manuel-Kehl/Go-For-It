@@ -1,3 +1,6 @@
+using GOFI.TXT;
+using GOFI;
+
 class TaskStoreTest : TestCase {
     private TodoTask[] test_tasks;
     private const uint TEST_TASKS_LENGTH = 5;

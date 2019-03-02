@@ -15,7 +15,7 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-class Filter {
+class GOFI.TXT.Filter {
     private List<string> tags;
     private List<string> sentence_pieces;
 

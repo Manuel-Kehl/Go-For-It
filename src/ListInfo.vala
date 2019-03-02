@@ -1,4 +1,4 @@
-public interface TodoListInfo : Object{
+public interface GOFI.TodoListInfo : Object{
 
     public abstract string id {
         get;

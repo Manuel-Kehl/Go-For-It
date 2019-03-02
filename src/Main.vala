@@ -19,7 +19,7 @@
  * The main application class that is responsible for initiating all
  * necessary steps to create a running instance of "Go For It!".
  */
-class Main : Gtk.Application {
+class GOFI.Main : Gtk.Application {
     private SettingsManager settings;
     private TaskTimer task_timer;
     private ListManager list_manager;

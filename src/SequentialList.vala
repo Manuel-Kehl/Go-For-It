@@ -21,7 +21,7 @@
  * This class doesn't use generics as valac (0.36.7) generated invalid c code
  * for the code responsible for freeing the internal Queue.
  */
-class SequentialList {
+class GOFI.SequentialList {
     private Queue<Object> items;
     private unowned List<Object> iter_link;
     private int iter_link_index;
