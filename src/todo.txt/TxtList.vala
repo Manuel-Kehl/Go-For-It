@@ -19,7 +19,7 @@ class GOFI.TXT.TxtList : Object {
     private TaskList todo_list;
     private TaskList done_list;
 
-    private Gtk.Button clear_done_button;
+    private Gtk.ModelButton clear_done_button;
 
     public ListSettings list_settings {
         public get;
@@ -94,7 +94,8 @@ class GOFI.TXT.TxtList : Object {
         task_manager = new TaskManager (list_settings);
         todo_list = new TaskList (this.task_manager.todo_store, true);
         done_list = new TaskList (this.task_manager.done_store, false);
-        clear_done_button = GOFI.Utils.create_menu_button (_("Clear Done List"));
+        clear_done_button = new Gtk.ModelButton ();
+        clear_done_button.text = _("Clear Done List");
         clear_done_button.clicked.connect (clear_done_list);
         clear_done_button.show_all ();
 

@@ -241,10 +241,8 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             GOFI.ICON_NAME + "-open-menu-fallback");
         menu_btn = new Gtk.MenuButton ();
         menu_btn.hexpand = false;
-        //menu_btn.set_popup (app_menu);
         menu_btn.image = menu_img;
         menu_btn.tooltip_text = _("Menu");
-        // app_menu.halign = Gtk.Align.END;
 
         menu_popover = new Gtk.Popover (menu_btn);
         menu_popover.add (menu_container);
