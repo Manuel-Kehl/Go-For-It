@@ -72,11 +72,13 @@ class GOFI.TXT.TxtListManager {
 
     public TxtListEditDialog get_creation_dialog (Gtk.Window? parent) {
         var dialog = new TxtListEditDialog (parent, this);
-        dialog.add_list_clicked.connect ( (settings) => {
-            add_new_from_settings (settings);
-            dialog.destroy ();
-        });
+        dialog.add_list_clicked.connect (on_dialog_list_add);
         return dialog;
+    }
+
+    private void on_dialog_list_add (TxtListEditDialog dialog, ListSettings settings) {
+        add_new_from_settings (settings);
+        dialog.destroy ();
     }
 
     /**
@@ -122,44 +124,60 @@ class GOFI.TXT.TxtListManager {
         assert (info != null);
 
         var dialog = new TxtListEditDialog (window, this, info.copy ());
-        dialog.add_list_clicked.connect ( (settings) => {
-            if (settings.todo_txt_location != info.todo_txt_location) {
-                var dir = File.new_for_path (settings.todo_txt_location);
-                if (!dir.query_exists ()) {
-                    DirUtils.create_with_parents (dir.get_path (), 0700);
-                }
-                var todo_txt = dir.get_child ("todo.txt");
-                var done_txt = dir.get_child ("done.txt");
-                if (todo_txt.query_exists () || done_txt.query_exists ()) {
-                    var confirm_dialog = create_conflict_dialog (dialog);
-                    confirm_dialog.response.connect ((s, response) => {
-                        switch (response) {
-                            case Gtk.ResponseType.ACCEPT:
-                                stdout.printf ("Moving files to %s\n", settings.todo_txt_location);
-                                move_files (todo_txt, done_txt, info.todo_txt_location);
-                                info.apply (settings);
-                                confirm_dialog.destroy ();
-                                dialog.destroy ();
-                                break;
-                            case Gtk.ResponseType.REJECT:
-                                info.apply (settings);
-                                confirm_dialog.destroy ();
-                                dialog.destroy ();
-                                break;
-                            default:
-                                confirm_dialog.destroy ();
-                                break;
-                        }
-                    });
-                    confirm_dialog.show ();
-                    return;
-                }
-                move_files (todo_txt, done_txt, info.todo_txt_location);
-            }
-            info.apply (settings);
-            dialog.destroy ();
-        });
+        dialog.add_list_clicked.connect (on_dialog_list_edit);
         dialog.show_all ();
+    }
+
+    private void on_dialog_list_edit (TxtListEditDialog dialog, ListSettings settings) {
+        var info = list_table[settings.id];
+        assert (info != null);
+
+        if (settings.todo_txt_location != info.todo_txt_location) {
+            var dir = File.new_for_path (settings.todo_txt_location);
+            if (!dir.query_exists ()) {
+                DirUtils.create_with_parents (dir.get_path (), 0700);
+            }
+            var todo_txt = dir.get_child ("todo.txt");
+            var done_txt = dir.get_child ("done.txt");
+            if (todo_txt.query_exists () || done_txt.query_exists ()) {
+                var confirm_dialog = create_conflict_dialog (dialog);
+                confirm_dialog.response.connect ( (response_id) => {
+                    handle_confirm_dialog_response (
+                        dialog, confirm_dialog, todo_txt, done_txt,
+                        settings, info, response_id
+                    );
+                });
+                confirm_dialog.show ();
+                return;
+            }
+            move_files (todo_txt, done_txt, info.todo_txt_location);
+        }
+        info.apply (settings);
+        dialog.destroy ();
+    }
+
+    private void handle_confirm_dialog_response (
+        Gtk.Dialog dialog, Gtk.Dialog confirm_dialog,
+        File todo_txt, File done_txt,
+        ListSettings new_settings, ListSettings old_settings, int response_id
+    ) {
+        switch (response_id) {
+            case Gtk.ResponseType.ACCEPT:
+                stdout.printf ("Moving files to %s\n", new_settings.todo_txt_location);
+                move_files (todo_txt, done_txt, old_settings.todo_txt_location);
+                old_settings.apply (new_settings);
+                confirm_dialog.destroy ();
+                dialog.destroy ();
+                break;
+            case Gtk.ResponseType.REJECT:
+                old_settings.apply (new_settings);
+                confirm_dialog.destroy ();
+                dialog.destroy ();
+                break;
+            default:
+                confirm_dialog.destroy ();
+                break;
+        }
     }
 
     private void move_files (File todo_txt, File done_txt, string orig) {
@@ -313,26 +331,28 @@ class GOFI.TXT.TxtListManager {
     }
 
     private void connect_settings_signals (ListSettings list_settings) {
-        list_settings.notify.connect ((object, pspec) => {
-            var list = (ListSettings) object;
-            switch (pspec.name) {
-                case "name":
-                    set_name (list.id, list.name);
-                    break;
-                case "todo-txt-location":
-                    set_todo_txt_location (list.id, list.todo_txt_location);
-                    break;
-                case "task-duration":
-                    set_task_duration (list.id, list.task_duration);
-                    break;
-                case "break-duration":
-                    set_break_duration (list.id, list.break_duration);
-                    break;
-                case "reminder-time":
-                    set_reminder_time (list.id, list.reminder_time);
-                    break;
-            }
-        });
+        list_settings.notify.connect (on_list_settings_notify);
+    }
+
+    private void on_list_settings_notify (Object object, ParamSpec pspec) {
+        var list = (ListSettings) object;
+        switch (pspec.name) {
+            case "name":
+                set_name (list.id, list.name);
+                break;
+            case "todo-txt-location":
+                set_todo_txt_location (list.id, list.todo_txt_location);
+                break;
+            case "task-duration":
+                set_task_duration (list.id, list.task_duration);
+                break;
+            case "break-duration":
+                set_break_duration (list.id, list.break_duration);
+                break;
+            case "reminder-time":
+                set_reminder_time (list.id, list.reminder_time);
+                break;
+        }
     }
 
     public string get_todo_txt_location (string list_id) {

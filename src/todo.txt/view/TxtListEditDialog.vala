@@ -24,8 +24,16 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private Gtk.Label error_label;
     private Gtk.Revealer error_revealer;
 
+    private Gtk.Switch timer_default_switch;
+    private Gtk.SpinButton task_spin;
+    private Gtk.SpinButton break_spin;
+    private Gtk.SpinButton reminder_spin;
+    private Gtk.Revealer timer_revealer;
+
     private Gtk.Label name_lbl;
+    private Gtk.Entry name_entry;
     private Gtk.Label directory_lbl;
+    private Gtk.FileChooserButton directory_btn;
     private bool txt_showing_error;
     private bool dir_showing_error;
 
@@ -71,18 +79,20 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         setup_settings_widgets ();
 
         /* Action Handling */
-        this.response.connect ((s, response) => {
-            switch (response) {
-                case Gtk.ResponseType.ACCEPT:
-                    add_list_clicked (settings);
-                    break;
-                default:
-                    this.destroy ();
-                    break;
-            }
-        });
+        this.response.connect (on_response);
 
         set_add_sensitive ();
+    }
+
+    private void on_response (int response_id) {
+        switch (response_id) {
+            case Gtk.ResponseType.ACCEPT:
+                add_list_clicked (settings);
+                break;
+            default:
+                this.destroy ();
+                break;
+        }
     }
 
     private bool check_valid () {
@@ -202,16 +212,19 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
 
     private void setup_txt_settings_widgets (Gtk.Grid grid, ref int row) {
         /* Declaration */
-        Gtk.FileChooserButton directory_btn;
         Gtk.Label txt_sect_lbl;
 
         /* Instantiation */
         txt_sect_lbl = new Gtk.Label ("Todo.txt");
 
-        directory_btn = new Gtk.FileChooserButton ("Todo.txt " + _("directory"),
-            Gtk.FileChooserAction.SELECT_FOLDER);
+        directory_btn = new Gtk.FileChooserButton (
+            "Todo.txt " + _("directory"), Gtk.FileChooserAction.SELECT_FOLDER
+        );
 
         directory_lbl = new Gtk.Label (directory_lbl_text);
+
+        name_lbl = new Gtk.Label (name_lbl_text);
+        name_entry = new Gtk.Entry ();
 
         /* Configuration */
         directory_lbl.set_line_wrap (false);
@@ -221,47 +234,42 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             directory_btn.set_current_folder (settings.todo_txt_location);
         }
 
-        /* Signal Handling */
-        directory_btn.file_set.connect ((e) => {
-            settings.todo_txt_location = directory_btn.get_file ().get_path ();
-            set_add_sensitive ();
-        });
-
-        add_section (main_layout, txt_sect_lbl, ref row);
-        add_option (main_layout, directory_lbl, directory_btn, ref row);
-
-        name_lbl = new Gtk.Label (name_lbl_text);
         name_lbl.use_markup = true;
-        Gtk.Entry name_entry = new Gtk.Entry ();
         if (settings.name == null) {
             name_entry.text = "";
         } else {
             name_entry.text = settings.name;
         }
 
-        name_entry.notify["text"].connect ( () => {
-            var name = name_entry.text;
-            if (name != "" || settings.name != null) {
-                settings.name = name.strip ();
-                set_add_sensitive ();
-            }
-        });
+        /* Signal Handling */
+        directory_btn.file_set.connect (on_directory_changed);
+        name_entry.notify["text"].connect (on_name_entry_update);
 
+        add_section (main_layout, txt_sect_lbl, ref row);
+        add_option (main_layout, directory_lbl, directory_btn, ref row);
         add_option (main_layout, name_lbl, name_entry, ref row);
+    }
+
+    private void on_directory_changed () {
+        settings.todo_txt_location = directory_btn.get_file ().get_path ();
+        set_add_sensitive ();
+    }
+
+    private void on_name_entry_update () {
+        var name = name_entry.text;
+        if (name != "" || settings.name != null) {
+            settings.name = name.strip ();
+            set_add_sensitive ();
+        }
     }
 
     private void setup_timer_settings_widgets (Gtk.Grid grid, ref int row) {
         /* Declaration */
         Gtk.Label timer_sect_lbl;
         Gtk.Label task_lbl;
-        Gtk.SpinButton task_spin;
         Gtk.Label break_lbl;
-        Gtk.SpinButton break_spin;
         Gtk.Label reminder_lbl;
-        Gtk.SpinButton reminder_spin;
         Gtk.Label timer_default_lbl;
-        Gtk.Switch timer_default_switch;
-        Gtk.Revealer timer_revealer;
         Gtk.Grid timer_grid;
 
         /* Instantiation */
@@ -301,28 +309,10 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         timer_grid.column_spacing = 10;
 
         /* Signal Handling */
-        task_spin.value_changed.connect ((e) => {
-            settings.task_duration = task_spin.get_value_as_int () * 60;
-        });
-        break_spin.value_changed.connect ((e) => {
-            settings.break_duration = break_spin.get_value_as_int () * 60;
-        });
-        reminder_spin.value_changed.connect ((e) => {
-            settings.reminder_time = reminder_spin.get_value_as_int ();
-        });
-        timer_default_switch.notify["active"].connect ( () => {
-            if (timer_default_switch.active) {
-                settings.task_duration = -1;
-                settings.break_duration = -1;
-                settings.reminder_time = -1;
-                timer_revealer.set_reveal_child (false);
-            } else {
-                settings.task_duration = task_spin.get_value_as_int () * 60;
-                settings.break_duration = break_spin.get_value_as_int () * 60;
-                settings.reminder_time = reminder_spin.get_value_as_int ();
-                timer_revealer.set_reveal_child (true);
-            }
-        });
+        task_spin.value_changed.connect (on_task_value_changed);
+        break_spin.value_changed.connect (on_break_value_changed);
+        reminder_spin.value_changed.connect (on_reminder_value_changed);
+        timer_default_switch.notify["active"].connect (toggle_timer_settings);
 
         /* Add widgets */
         timer_revealer.add (timer_grid);
@@ -336,5 +326,31 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         add_option (timer_grid, task_lbl, task_spin, ref row2);
         add_option (timer_grid, break_lbl, break_spin, ref row2);
         add_option (timer_grid, reminder_lbl, reminder_spin, ref row2);
+    }
+
+    private void on_task_value_changed () {
+        settings.task_duration = task_spin.get_value_as_int () * 60;
+    }
+
+    private void on_break_value_changed () {
+        settings.break_duration = break_spin.get_value_as_int () * 60;
+    }
+
+    private void on_reminder_value_changed () {
+        settings.reminder_time = reminder_spin.get_value_as_int ();
+    }
+
+    private void toggle_timer_settings () {
+        if (timer_default_switch.active) {
+            settings.task_duration = -1;
+            settings.break_duration = -1;
+            settings.reminder_time = -1;
+            timer_revealer.set_reveal_child (false);
+        } else {
+            settings.task_duration = task_spin.get_value_as_int () * 60;
+            settings.break_duration = break_spin.get_value_as_int () * 60;
+            settings.reminder_time = reminder_spin.get_value_as_int ();
+            timer_revealer.set_reveal_child (true);
+        }
     }
 }

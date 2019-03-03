@@ -58,23 +58,29 @@ class GOFI.TaskRow: DragListRow {
         delete_button = new Gtk.Button.from_icon_name ("edit-delete", Gtk.IconSize.MENU);
         delete_button.relief = Gtk.ReliefStyle.NONE;
         delete_button.show_all ();
-        delete_button.clicked.connect ( () => {
-            deletion_requested ();
-        });
+        delete_button.clicked.connect (on_delete_button_clicked);
         set_start_widget (delete_button);
 
         edit_entry = new TaskEditEntry (task.description, task.priority);
         set_center_widget (edit_entry);
 
         edit_entry.edit ();
-        edit_entry.strings_changed.connect (() => {
-            task.description = edit_entry.description;
-            task.priority = edit_entry.priority;
-        });
-        edit_entry.editing_finished.connect (() => {
-            stop_editing ();
-        });
+        edit_entry.strings_changed.connect (on_edit_entry_strings_changed);
+        edit_entry.editing_finished.connect (on_edit_entry_finished);
         editing = true;
+    }
+
+    private void on_delete_button_clicked () {
+        deletion_requested ();
+    }
+
+    private void on_edit_entry_strings_changed () {
+        task.description = edit_entry.description;
+        task.priority = edit_entry.priority;
+    }
+
+    private void on_edit_entry_finished () {
+        stop_editing ();
     }
 
     /**
@@ -127,23 +133,31 @@ class GOFI.TaskRow: DragListRow {
     }
 
     private void connect_signals () {
-        check_button.toggled.connect (() => {
-            task.done = !task.done;
-        });
-        task.done_changed.connect (() => {
-            destroy ();
-        });
-        markup_label.activate_link.connect ((uri) => {
-            link_clicked (uri);
-            return true;
-        });
-        set_focus_child.connect ((widget) => {
-            if(widget == null && !has_focus) {
-                on_focus_out ();
-            }
-        });
+        check_button.toggled.connect (on_check_toggled);
+        task.done_changed.connect (on_task_done_changed);
+        markup_label.activate_link.connect (on_activate_link);
+        set_focus_child.connect (on_set_focus_child);
         focus_out_event.connect (on_focus_out);
         key_release_event.connect (on_row_key_release);
+    }
+
+    private void on_check_toggled () {
+        task.done = !task.done;
+    }
+
+    private void on_task_done_changed () {
+        destroy ();
+    }
+
+    private bool on_activate_link (string uri) {
+        link_clicked (uri);
+        return true;
+    }
+
+    private void on_set_focus_child (Gtk.Widget? widget) {
+        if(widget == null && !has_focus) {
+            on_focus_out ();
+        }
     }
 
     class TaskEditEntry : Gtk.Entry {

@@ -26,6 +26,7 @@ class GOFI.SelectionPage : Gtk.Grid {
     private DragList todolist_view;
     private Gtk.Button add_button;
     private TxtListEditDialog create_dialog;
+    private Gtk.Widget placeholder;
 
     /* Data Model */
     private ListManager list_manager;
@@ -50,13 +51,17 @@ class GOFI.SelectionPage : Gtk.Grid {
 
     private Gtk.Widget create_row (Object info) {
         TodoListInfoRow row = new TodoListInfoRow (((TodoListInfo) info));
-        row.delete_clicked.connect ((info) => {
-            list_manager.delete_list (info, this.get_toplevel () as Gtk.Window);
-        });
-        row.edit_clicked.connect ((info) => {
-            list_manager.edit_list (info, this.get_toplevel () as Gtk.Window);
-        });
+        row.delete_clicked.connect (on_row_delete_clicked);
+        row.edit_clicked.connect (on_row_edit_clicked);
         return row;
+    }
+
+    private void on_row_delete_clicked (TodoListInfo info) {
+        list_manager.delete_list (info, this.get_toplevel () as Gtk.Window);
+    }
+
+    private void on_row_edit_clicked (TodoListInfo info) {
+        list_manager.edit_list (info, this.get_toplevel () as Gtk.Window);
     }
 
     /**
@@ -70,7 +75,9 @@ class GOFI.SelectionPage : Gtk.Grid {
         todolist_view.vadjustment = scroll_view.vadjustment;
         todolist_view.row_activated.connect (on_todolist_view_row_activated);
 
-        todolist_view.set_placeholder (new Gtk.Label ("No lists configured, add one below"));
+        placeholder = new Gtk.Label (_("No lists configured, add one below"));
+        placeholder.show ();
+        todolist_view.set_placeholder (placeholder);
 
         scroll_view.expand = true;
 
@@ -81,16 +88,18 @@ class GOFI.SelectionPage : Gtk.Grid {
         add_button = new Gtk.Button.with_label ("Add list");
         this.add (add_button);
 
-        add_button.clicked.connect (() => {
-            if (create_dialog == null) {
-                Gtk.Window? window = this.get_toplevel () as Gtk.Window;
-                create_dialog = list_manager.get_txt_manager ().get_creation_dialog (window);
-                create_dialog.destroy.connect (() => {
-                    create_dialog = null;
-                });
-            }
-            create_dialog.show_all ();
-        });
+        add_button.clicked.connect (on_add_button_clicked);
+    }
+
+    private void on_add_button_clicked () {
+        if (create_dialog == null) {
+            Gtk.Window? window = this.get_toplevel () as Gtk.Window;
+            create_dialog = list_manager.get_txt_manager ().get_creation_dialog (window);
+            create_dialog.destroy.connect (() => {
+                create_dialog = null;
+            });
+        }
+        create_dialog.show_all ();
     }
 
     private void on_todolist_view_row_activated (DragListRow? selected_row) {

@@ -95,15 +95,17 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
         load_last ();
 
-        list_manager.list_removed.connect ( (plugin, id) => {
-            if (current_list_info != null &&
-                current_list_info.plugin_name == plugin &&
-                current_list_info.id == id
-            ) {
-                switch_top_stack (true);
-                switch_btn.sensitive = false;
-            }
-        });
+        list_manager.list_removed.connect (on_list_removed);
+    }
+
+    private void on_list_removed (string plugin, string id) {
+        if (current_list_info != null &&
+            current_list_info.plugin_name == plugin &&
+            current_list_info.id == id
+        ) {
+            switch_top_stack (true);
+            switch_btn.sensitive = false;
+        }
     }
 
     public override void show_all () {

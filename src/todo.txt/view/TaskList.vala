@@ -136,11 +136,7 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
 
         /* Action and Signal Handling */
         // Handle clicks on the icon
-        add_new_txt.icon_press.connect ((pos, event) => {
-            if (pos == Gtk.EntryIconPosition.SECONDARY) {
-                on_entry_activate ();
-            }
-        });
+        add_new_txt.icon_press.connect (on_add_new_txt_pressed);
         // Handle "activate" signals (Enter Key presses)
         add_new_txt.activate.connect (on_entry_activate);
 
@@ -156,6 +152,12 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
 
         // Add to the main widget
         this.add (add_new_grid);
+    }
+
+    private void on_add_new_txt_pressed (Gtk.EntryIconPosition pos, Gdk.EventButton event) {
+        if (pos == Gtk.EntryIconPosition.SECONDARY) {
+            on_entry_activate ();
+        }
     }
 
     private void on_entry_activate () {
