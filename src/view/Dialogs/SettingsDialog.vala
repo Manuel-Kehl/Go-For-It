@@ -136,23 +136,56 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         Gtk.Label appearance_sect_lbl;
         Gtk.Label dark_theme_lbl;
         Gtk.Switch dark_theme_switch;
+        Gtk.Label small_icons_lbl;
+        Gtk.Switch small_icons_switch;
+        Gtk.Label use_text_lbl;
+        Gtk.Switch use_text_switch;
 
         /* Instantiation */
         appearance_sect_lbl = new Gtk.Label (_("Appearance"));
         dark_theme_lbl = new Gtk.Label (_("Dark theme"));
         dark_theme_switch = new Gtk.Switch ();
 
+        small_icons_lbl = new Gtk.Label (_("Use small toolbar icons"));
+        small_icons_switch = new Gtk.Switch ();
+
+        use_text_lbl = new Gtk.Label (_("Use text for the activity switcher"));
+        use_text_switch = new Gtk.Switch ();
+
         /* Configuration */
         dark_theme_switch.active = settings.use_dark_theme;
+        small_icons_switch.active =
+            settings.toolbar_icon_size == Gtk.IconSize.SMALL_TOOLBAR;
+        use_text_switch.active = !settings.switcher_use_icons;
 
         /* Signal Handling */
         dark_theme_switch.notify["active"].connect ( () => {
             settings.use_dark_theme = dark_theme_switch.active;
         });
+        small_icons_switch.notify["active"].connect ( () => {
+            if (small_icons_switch.active) {
+                settings.toolbar_icon_size = Gtk.IconSize.SMALL_TOOLBAR;
+            } else {
+                settings.toolbar_icon_size = Gtk.IconSize.LARGE_TOOLBAR;
+            }
+        });
+        use_text_switch.notify["active"].connect ( () => {
+            settings.switcher_use_icons = !use_text_switch.active;
+        });
+
+        small_icons_switch.notify["active"].connect ( () => {
+            if (small_icons_switch.active) {
+                settings.toolbar_icon_size = Gtk.IconSize.SMALL_TOOLBAR;
+            } else {
+                settings.toolbar_icon_size = Gtk.IconSize.LARGE_TOOLBAR;
+            }
+        });
 
         /* Add widgets */
         add_section (grid, appearance_sect_lbl, ref row);
         add_option (grid, dark_theme_lbl, dark_theme_switch, ref row);
+        add_option (grid, small_icons_lbl, small_icons_switch, ref row);
+        add_option (grid, use_text_lbl, use_text_switch, ref row);
 
         if (GOFI.Utils.desktop_hb_status.config_useful ()) {
             setup_csd_settings_widgets (main_layout, ref row);

@@ -139,6 +139,52 @@ private class GOFI.SettingsManager {
             use_dark_theme_changed (value);
         }
     }
+    public Gtk.IconSize toolbar_icon_size {
+        owned get {
+            var icon_size = get_value (
+                GROUP_UI, "icon_size", "large"
+            );
+            switch (icon_size) {
+                case "small":
+                    return Gtk.IconSize.SMALL_TOOLBAR;
+                case "large":
+                    return Gtk.IconSize.LARGE_TOOLBAR;
+                default:
+                    warning ("Unknown toolbar icon size");
+                    return Gtk.IconSize.LARGE_TOOLBAR;
+            }
+        }
+        set {
+            string size_str;
+            if (value == Gtk.IconSize.SMALL_TOOLBAR) {
+                size_str = "small";
+            } else {
+                size_str = "large";
+            }
+            set_value (GROUP_UI, "icon_size", size_str);
+            toolbar_icon_size_changed (value);
+        }
+    }
+    public bool switcher_use_icons {
+        owned get {
+            var label_type = get_value (
+                GROUP_UI, "switcher_label_type", "icons"
+            );
+            switch (label_type) {
+                case "icons":
+                    return true;
+                case "text":
+                    return false;
+                default:
+                    warning ("Unknown switcher setting: %s, expected icons/text", label_type);
+                    return true;
+            }
+        }
+        set {
+            set_value (GROUP_UI, "switcher_label_type", value ? "icons" : "text");
+            switcher_use_icons_changed (value);
+        }
+    }
     /*---GROUP:LISTS----------------------------------------------------------*/
     public List<ListIdentifier?> lists {
         owned get {
@@ -186,6 +232,8 @@ private class GOFI.SettingsManager {
     public signal void timer_duration_changed ();
     public signal void use_dark_theme_changed (bool use_dark);
     public signal void use_header_bar_changed ();
+    public signal void toolbar_icon_size_changed (Gtk.IconSize size);
+    public signal void switcher_use_icons_changed (bool use_icons);
 
     /**
      * Constructs a SettingsManager object from a configuration file.

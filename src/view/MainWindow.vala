@@ -137,6 +137,12 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             gtk_settings.gtk_application_prefer_dark_theme = use_dark_theme;
             load_css ();
         });
+        settings.toolbar_icon_size_changed.connect (on_icon_size_changed);
+    }
+
+    private void on_icon_size_changed (Gtk.IconSize size) {
+        ((Gtk.Image) menu_btn.image).icon_size = size;
+        switch_img.icon_size = size;
     }
 
     public override bool delete_event (Gdk.EventAny event) {
@@ -178,7 +184,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         main_layout.get_style_context ().add_class ("main_layout");
 
         selection_page = new SelectionPage (list_manager);
-        task_page = new TaskListPage (task_timer);
+        task_page = new TaskListPage (settings, task_timer);
 
         selection_page.list_chosen.connect (on_list_chosen);
 
@@ -239,7 +245,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     private void setup_top_bar () {
         // Butons and their corresponding images
         var menu_img = GOFI.Utils.load_image_fallback (
-            Gtk.IconSize.LARGE_TOOLBAR, "open-menu", "open-menu-symbolic",
+            settings.toolbar_icon_size, "open-menu", "open-menu-symbolic",
             GOFI.ICON_NAME + "-open-menu-fallback");
         menu_btn = new Gtk.MenuButton ();
         menu_btn.hexpand = false;
@@ -250,7 +256,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         menu_popover.add (menu_container);
         menu_btn.popover = menu_popover;
 
-        switch_img = new Gtk.Image.from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
+        switch_img = new Gtk.Image.from_icon_name ("go-next", settings.toolbar_icon_size);
         switch_btn = new Gtk.ToolButton (switch_img, _("_Back"));
         switch_btn.hexpand = false;
         switch_btn.sensitive = false;
@@ -272,14 +278,14 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             top_stack.set_visible_child (selection_page);
 
             var next_icon = GOFI.Utils.get_image_fallback ("go-next-symbolic", "go-next");
-            switch_img.set_from_icon_name (next_icon, Gtk.IconSize.LARGE_TOOLBAR);
+            switch_img.set_from_icon_name (next_icon, settings.toolbar_icon_size);
             settings.list_last_loaded = null;
             task_page.show_switcher (false);
             list_menu_container.hide ();
         } else if (task_page.ready) {
             top_stack.set_visible_child (task_page);
             var prev_icon = GOFI.Utils.get_image_fallback ("go-previous-symbolic", "go-previous");
-            switch_img.set_from_icon_name (prev_icon, Gtk.IconSize.LARGE_TOOLBAR);
+            switch_img.set_from_icon_name (prev_icon, settings.toolbar_icon_size);
             if (current_list_info != null) {
                 settings.list_last_loaded = ListIdentifier.from_info (current_list_info);
             } else {

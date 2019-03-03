@@ -22,6 +22,7 @@ using GOFI.TXT;
  */
 class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
     private TxtList task_list = null;
+    private SettingsManager settings;
     private TaskTimer task_timer;
 
     /* Various GTK Widgets */
@@ -56,9 +57,10 @@ class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
     /**
      * The constructor of the MainWindow class.
      */
-    public TaskListPage (TaskTimer task_timer)
+    public TaskListPage (SettingsManager settings, TaskTimer task_timer)
     {
         this.task_timer = task_timer;
+        this.settings = settings;
 
         this.orientation = Gtk.Orientation.VERTICAL;
         initial_setup ();
@@ -90,10 +92,13 @@ class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
         switcher_stack.set_transition_type (
             Gtk.StackTransitionType.SLIDE_UP_DOWN
         );
+        activity_switcher.icon_size = settings.toolbar_icon_size;
 
         activity_switcher.notify["selected-item"].connect (() => {
             activity_stack.set_visible_child_name (activity_switcher.selected_item);
         });
+        settings.toolbar_icon_size_changed.connect (on_icon_size_changed);
+        settings.switcher_use_icons_changed.connect (on_switcher_use_icons);
 
         switcher_stack.add_named (activity_switcher, "switcher");
         switcher_stack.add_named (activity_label, "label");
@@ -178,6 +183,14 @@ class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
             task_timer.active_task = task_list.selected_task;
             task_list.active_task = task_list.selected_task;
         }
+    }
+
+    private void on_icon_size_changed (Gtk.IconSize size) {
+        activity_switcher.icon_size = size;
+    }
+
+    private void on_switcher_use_icons (bool show_icons) {
+        activity_switcher.show_icons = show_icons;
     }
 
     /**
