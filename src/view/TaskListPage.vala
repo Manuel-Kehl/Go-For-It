@@ -93,6 +93,7 @@ class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
             Gtk.StackTransitionType.SLIDE_UP_DOWN
         );
         activity_switcher.icon_size = settings.toolbar_icon_size;
+        activity_switcher.show_icons = settings.switcher_use_icons;
 
         activity_switcher.notify["selected-item"].connect (() => {
             activity_stack.set_visible_child_name (activity_switcher.selected_item);
