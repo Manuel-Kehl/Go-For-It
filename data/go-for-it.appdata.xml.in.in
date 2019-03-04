@@ -35,7 +35,20 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
-  	<release version="1.6.10" date="2019-02-13">
+    <release version="1.6.11" date="2019-03-04">
+      <description>
+        <p>Bugfixes:</p>
+        <ul>
+          <li>The location from which the stylesheet is loaded is now primarily determined by the installation directory.</li>
+          <li>Improved handeling of invalid settings files.</li>
+        </ul>
+        <p>Improvements:</p>
+        <ul>
+          <li>The .desktop file now exposes that this application can show desktop notifications.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.6.10" date="2019-02-13">
       <description>
         <p>Bugfixes:</p>
         <ul>

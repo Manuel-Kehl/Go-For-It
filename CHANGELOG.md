@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.6.11 (2019-03-04)
+
+**Fixed bugs:**
+
+- The location from which the stylesheet is loaded is now primarily determined by the installation directory.
+- Improved handeling of invalid settings files.
+
+**Implemented enhancements:**
+
+- The .desktop file now exposes that this application can show desktop notifications.
+
 ## [1.6.10](https://github.com/JMoerman/Go-For-It/tree/1.6.10) (2019-02-13)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.9...1.6.10)
 
