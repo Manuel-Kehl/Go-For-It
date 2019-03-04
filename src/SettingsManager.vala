@@ -44,7 +44,15 @@ public class SettingsManager {
 
     /*---GROUP:Todo.txt------------------------------------------------------*/
     public string todo_txt_location {
-        owned get { return get_value (GROUP_TODO_TXT, "location"); }
+        owned get {
+            var todo_dir = get_value (GROUP_TODO_TXT, "location");
+            if (todo_dir == "") {
+                warning ("No todo.txt location set, resetting value!");
+                todo_dir = find_todo_dir ();
+                set_value (GROUP_TODO_TXT, "location", todo_dir);
+            }
+            return todo_dir;
+        }
         set {
             set_value (GROUP_TODO_TXT, "location", value);
             todo_txt_location_changed ();
@@ -258,11 +266,17 @@ public class SettingsManager {
 
     /**
      * Generates the default configuration.
-     * It also tries to automatically determine the location of the user's
+     */
+    private void generate_configuration () {
+        this.todo_txt_location = find_todo_dir ();
+    }
+
+    /**
+     * Tries to automatically determine the location of the user's
      * Todo.txt directory by checking a set of common potential
      * "standard locations", which are defined in GOFI.TEST_DIRS in Utils.vala.
      */
-    private void generate_configuration () {
+    private string find_todo_dir () {
         string user_dir = Environment.get_home_dir ();
 
         /* Determine the Todo.txt Directory */
@@ -278,7 +292,7 @@ public class SettingsManager {
             }
         }
 
-        this.todo_txt_location = todo_dir;
+        return todo_dir;
     }
 
     /**
