@@ -349,13 +349,12 @@ class MainWindow : Gtk.ApplicationWindow {
     }
 
     /**
-     * Searches the system for a css stylesheet, that corresponds to go-for-it.
-     * If it has been found in one of the potential data directories, it gets
-     * applied to the application.
+     * Load the css style information from the data directory specified at build
+     * time.
      */
     private void load_css () {
-        var screen = this.get_screen();
-        var css_provider = new Gtk.CssProvider();
+        var screen = this.get_screen ();
+        var css_provider = new Gtk.CssProvider ();
 
         string color = settings.use_dark_theme ? "-dark" : "";
         string version = (Gtk.get_minor_version () >= 19) ? "3.20" : "3.10";
@@ -363,20 +362,32 @@ class MainWindow : Gtk.ApplicationWindow {
         // Pick the stylesheet that is compatible with the user's Gtk version
         string stylesheet = @"go-for-it-$version$color.css";
 
-        // Scan potential data dirs for the corresponding css file
-        foreach (var dir in Environment.get_system_data_dirs ()) {
-            // The path where the file is to be located
-            var path = Path.build_filename (dir, GOFI.APP_SYSTEM_NAME,
-                "style", stylesheet);
-            // Only proceed, if file has been found
-            if (FileUtils.test (path, FileTest.EXISTS)) {
-                try {
-                    css_provider.load_from_path(path);
-                    Gtk.StyleContext.add_provider_for_screen(
-                        screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
-                    break;
-                } catch (Error e) {
-                    warning ("Cannot load CSS stylesheet: %s", e.message);
+        var path = Path.build_filename (GOFI.DATADIR, "style", stylesheet);
+        if (FileUtils.test (path, FileTest.EXISTS)) {
+            try {
+                css_provider.load_from_path (path);
+                Gtk.StyleContext.add_provider_for_screen (
+                    screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            } catch (Error e) {
+                warning ("Cannot load CSS stylesheet: %s", e.message);
+            }
+        } else {
+            warning ("Could not find application stylesheet in %s, trying XDG_DATA_DIRS next", path);
+            // Scan potential data dirs for the corresponding css file
+            foreach (var dir in Environment.get_system_data_dirs ()) {
+                // The path where the file is to be located
+                path = Path.build_filename (dir, GOFI.APP_SYSTEM_NAME,
+                    "style", stylesheet);
+                // Only proceed, if file has been found
+                if (FileUtils.test (path, FileTest.EXISTS)) {
+                    try {
+                        css_provider.load_from_path(path);
+                        Gtk.StyleContext.add_provider_for_screen(
+                            screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
+                        break;
+                    } catch (Error e) {
+                        warning ("Cannot load CSS stylesheet: %s", e.message);
+                    }
                 }
             }
         }
