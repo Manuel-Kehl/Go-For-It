@@ -31,6 +31,10 @@ private class GOFI.SettingsManager {
     private const string GROUP_UI = "Interface";
     private const string GROUP_LISTS = "Lists";
 
+    private const int DEFAULT_TASK_DURATION = 1500;
+    private const int DEFAULT_BREAK_DURATION = 300;
+    private const int DEFAULT_REMINDER_TIME = 60;
+
     // Whether or not Go For It! has been started for the first time
     public bool first_start = false;
 
@@ -46,8 +50,14 @@ private class GOFI.SettingsManager {
     /*---GROUP:Timer---------------------------------------------------------*/
     public int task_duration {
         owned get {
-            var duration = get_value (GROUP_TIMER, "task_duration", "1500");
-            return int.parse (duration);
+            var default_str = DEFAULT_TASK_DURATION.to_string ();
+            var duration = get_value (GROUP_TIMER, "task_duration", default_str);
+            var parsed_duration = int.parse (duration);
+            if (parsed_duration <= 0) {
+                warning ("Invalid task duration: %s", duration);
+                return DEFAULT_TASK_DURATION;
+            }
+            return parsed_duration;
         }
         set {
             set_value (GROUP_TIMER, "task_duration", value.to_string ());
@@ -56,8 +66,14 @@ private class GOFI.SettingsManager {
      }
     public int break_duration {
         owned get {
-            var duration = get_value (GROUP_TIMER, "break_duration", "300");
-            return int.parse (duration);
+            var default_str = DEFAULT_BREAK_DURATION.to_string ();
+            var duration = get_value (GROUP_TIMER, "break_duration", default_str);
+            var parsed_duration = int.parse (duration);
+            if (parsed_duration <= 0) {
+                warning ("Invalid break duration: %s", duration);
+                return DEFAULT_BREAK_DURATION;
+            }
+            return parsed_duration;
         }
         set {
             set_value (GROUP_TIMER, "break_duration", value.to_string ());
@@ -66,8 +82,14 @@ private class GOFI.SettingsManager {
     }
     public int reminder_time {
         owned get {
-            var time = get_value (GROUP_TIMER, "reminder_time", "60");
-            return int.parse (time);
+            var default_str = DEFAULT_REMINDER_TIME.to_string ();
+            var time = get_value (GROUP_TIMER, "reminder_time", default_str);
+            var parsed_time = int.parse (time);
+            if (parsed_time < 0) {
+                warning ("Invalid reminder time: %s", time);
+                return 0;
+            }
+            return parsed_time;
         }
         set {
             set_value (GROUP_TIMER, "reminder_time", value.to_string ());

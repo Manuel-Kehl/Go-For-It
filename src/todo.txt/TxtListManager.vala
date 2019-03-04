@@ -16,9 +16,8 @@
 */
 
 /**
- * A class that handles access to settings in a transparent manner.
- * Its main motivation is the option of easily replacing Glib.KeyFile with
- * another settings storage mechanism in the future.
+ * A class that currently uses a GLib.KeyFile to store and access the settings
+ * of each todo list.
  */
 class GOFI.TXT.TxtListManager {
     private KeyFile key_file;
