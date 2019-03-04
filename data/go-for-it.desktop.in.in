@@ -8,6 +8,7 @@ Icon=@ICON_NAME@
 Terminal=false
 Type=Application
 StartupWMClass=@EXEC_NAME@
+X-GNOME-UsesNotifications=true
 X-GNOME-Gettext-Domain=@GETTEXT_PACKAGE@
 _Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
 _X-GNOME-Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
