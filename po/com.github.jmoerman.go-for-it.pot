@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-13 13:03+0100\n"
+"POT-Creation-Date: 2019-03-04 20:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,183 +17,276 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/Filter.vala:39 ../src/view/TaskRow.vala:287
-msgid "project"
-msgstr ""
-
-#: ../src/Filter.vala:45 ../src/view/TaskRow.vala:282
-msgid "context"
-msgstr ""
-
-#: ../src/Main.vala:95
+#: ../src/Main.vala:92
 msgid "Print version info and exit"
 msgstr ""
 
-#: ../src/Main.vala:96
+#: ../src/Main.vala:93
 msgid "Show about dialog"
 msgstr ""
 
-#: ../src/SettingsManager.vala:165
+#: ../src/SettingsManager.vala:273 ../src/todo.txt/TxtListManager.vala:55
+#: ../src/todo.txt/TxtListManager.vala:439
 msgid "Couldn't create directory: %s"
 msgstr ""
 
-#: ../src/SettingsManager.vala:297
+#: ../src/SettingsManager.vala:434
 msgid "Couldn't properly import settings from %s: %s"
 msgstr ""
 
-#: ../src/TaskManager.vala:53
+#: ../src/todo.txt/Filter.vala:39 ../src/todo.txt/view/TaskRow.vala:301
+msgid "project"
+msgstr ""
+
+#: ../src/todo.txt/Filter.vala:45 ../src/todo.txt/view/TaskRow.vala:296
+msgid "context"
+msgstr ""
+
+#: ../src/todo.txt/TaskManager.vala:53
 msgid ""
 "Go For It! won't save or load from the current todo.txt directory until it "
 "is either restarted or another location is chosen."
 msgstr ""
 
-#: ../src/TaskManager.vala:54
+#: ../src/todo.txt/TaskManager.vala:54
 msgid "Couldn't read the todo.txt file (%s):"
 msgstr ""
 
-#: ../src/TaskManager.vala:55
+#: ../src/todo.txt/TaskManager.vala:55
 msgid "Couldn't save the todo list (%s):"
 msgstr ""
 
-#: ../src/TaskManager.vala:56
+#: ../src/todo.txt/TaskManager.vala:56
 msgid ""
 "The path to the todo.txt directory does not point to a directory, but to a "
 "file or mountable location. Please change the path in the settings to a "
 "suitable directory or remove this file."
 msgstr ""
 
-#: ../src/view/AboutDialog.vala:27 ../src/view/MainWindow.vala:287
+#: ../src/todo.txt/TxtList.vala:98
+msgid "Clear Done List"
+msgstr ""
+
+#: ../src/todo.txt/TxtListManager.vala:196
+msgid "An error was encountered while moving a file!"
+msgstr ""
+
+#: ../src/todo.txt/TxtListManager.vala:198
+msgid "Error information: "
+msgstr ""
+
+#: ../src/todo.txt/TxtListManager.vala:220
+msgid "Todo.txt files were found in the destination directory."
+msgstr ""
+
+#: ../src/todo.txt/TxtListManager.vala:224
+msgid "What should be done with these files?"
+msgstr ""
+
+#: ../src/todo.txt/TxtListManager.vala:226
+msgid "Keep old"
+msgstr ""
+
+#: ../src/todo.txt/TxtListManager.vala:228
+msgid "Overwrite"
+msgstr ""
+
+#: ../src/todo.txt/TxtListManager.vala:230
+#: ../src/todo.txt/view/TxtListEditDialog.vala:56
+#: ../src/todo.txt/view/TxtListEditDialog.vala:61
+msgid "Cancel"
+msgstr ""
+
+#: ../src/todo.txt/view/TaskList.vala:131
+msgid "Add new task"
+msgstr ""
+
+#: ../src/todo.txt/view/TaskList.vala:147
+msgid ""
+"You currently don't have any tasks.\n"
+" Add some!"
+msgstr ""
+
+#: ../src/todo.txt/view/TaskList.vala:164
+msgid "You finished all tasks, good job!"
+msgstr ""
+
+#. //valadoc.org/glib-2.0/GLib.DateTime.format.html for
+#. formatting of DateTime
+#: ../src/todo.txt/view/TaskRow.vala:251
+msgid "%Y-%m-%d"
+msgstr ""
+
+#: ../src/todo.txt/view/TaskRow.vala:255
+msgid "Task completed at %s, created at %s"
+msgstr ""
+
+#: ../src/todo.txt/view/TaskRow.vala:262
+msgid "Task created at %s"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:42
+#: ../src/todo.txt/view/TxtListEditDialog.vala:221
+msgid "directory"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:43
+msgid "List name"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:55
+msgid "New todo list"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:57
+msgid "Add list"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:60
+msgid "Edit todo list properties"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:62
+msgid "Apply"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:108
+msgid "The configured directory is already in use by another list."
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:128
+msgid "Please assign a name to the list."
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:276
+#: ../src/view/Dialogs/SettingsDialog.vala:101 ../src/view/TaskListPage.vala:87
+#: ../src/view/TaskListPage.vala:141
+msgid "Timer"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:277
+msgid "Use default settings"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:278
+#: ../src/view/Dialogs/SettingsDialog.vala:102
+msgid "Task duration (minutes)"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:279
+#: ../src/view/Dialogs/SettingsDialog.vala:103
+msgid "Break duration (minutes)"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:280
+#: ../src/view/Dialogs/SettingsDialog.vala:104
+msgid "Reminder before task ends (seconds)"
+msgstr ""
+
+#: ../src/view/Dialogs/AboutDialog.vala:27 ../src/view/MainWindow.vala:360
 msgid "About"
 msgstr ""
 
-#: ../src/view/AboutDialog.vala:41
+#: ../src/view/Dialogs/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
 msgstr ""
 
-#: ../src/view/ContributeDialog.vala:28
+#: ../src/view/Dialogs/ContributeDialog.vala:28
 msgid "Contributions and Donations"
 msgstr ""
 
-#: ../src/view/ContributeDialog.vala:31
+#: ../src/view/Dialogs/ContributeDialog.vala:31
 msgid "Thank you for supporting"
 msgstr ""
 
-#: ../src/view/ContributeDialog.vala:32
+#: ../src/view/Dialogs/ContributeDialog.vala:32
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
 msgstr ""
 
-#: ../src/view/ContributeDialog.vala:36
+#: ../src/view/Dialogs/ContributeDialog.vala:36
 msgid "If you really like this app, you can buy me a drink:"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:174
-msgid "To-Do"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:175 ../src/view/SettingsDialog.vala:152
-msgid "Timer"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:176
-msgid "Done"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:196
-msgid "Menu"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:263 ../src/view/SettingsDialog.vala:43
+#: ../src/view/Dialogs/SettingsDialog.vala:43 ../src/view/MainWindow.vala:347
 msgid "Settings"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:264
-msgid "Clear Done List"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:279
-msgid "Contribute / Donate"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:317 ../src/view/TimerView.vala:78
-msgid "Take a Break"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:318
-msgid "Relax and stop thinking about your current task for a while"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:323
-msgid "The Break is Over"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:324
-msgid "Your next task is"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:341
-msgid "Prepare for your break"
-msgstr ""
-
-#: ../src/view/MainWindow.vala:342
-msgid "You have %s seconds left"
-msgstr ""
-
-#: ../src/view/SettingsDialog.vala:45
+#: ../src/view/Dialogs/SettingsDialog.vala:45
 msgid "Close"
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:110 ../src/view/SettingsDialog.vala:115
-msgid "directory"
-msgstr ""
-
-#: ../src/view/SettingsDialog.vala:119
-msgid ""
-"If no appropriate folder was found, Go For It! defaults to creating a Todo "
-"folder in your home directory."
-msgstr ""
-
-#: ../src/view/SettingsDialog.vala:153
-msgid "Task duration (minutes)"
-msgstr ""
-
-#: ../src/view/SettingsDialog.vala:154
-msgid "Break duration (minutes)"
-msgstr ""
-
-#: ../src/view/SettingsDialog.vala:155
-msgid "Reminder before task ends (seconds)"
-msgstr ""
-
-#: ../src/view/SettingsDialog.vala:192
+#: ../src/view/Dialogs/SettingsDialog.vala:145
 msgid "Appearance"
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:193
+#: ../src/view/Dialogs/SettingsDialog.vala:146
 msgid "Dark theme"
 msgstr ""
 
-#: ../src/view/SettingsDialog.vala:218
+#: ../src/view/Dialogs/SettingsDialog.vala:149
+msgid "Use small toolbar icons"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsDialog.vala:152
+msgid "Use text for the activity switcher"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsDialog.vala:200
 msgid "Use a header bar"
 msgstr ""
 
-#: ../src/view/TaskList.vala:121
-msgid "Add new task"
+#: ../src/view/MainWindow.vala:253
+msgid "Menu"
 msgstr ""
 
-#. //valadoc.org/glib-2.0/GLib.DateTime.format.html for
-#. formatting of DateTime
-#: ../src/view/TaskRow.vala:237
-msgid "%Y-%m-%d"
+#: ../src/view/MainWindow.vala:260
+msgid "_Back"
 msgstr ""
 
-#: ../src/view/TaskRow.vala:241
-msgid "Task completed at %s, created at %s"
+#: ../src/view/MainWindow.vala:353
+msgid "Contribute / Donate"
 msgstr ""
 
-#: ../src/view/TaskRow.vala:248
-msgid "Task created at %s"
+#: ../src/view/MainWindow.vala:401 ../src/view/TimerView.vala:78
+msgid "Take a Break"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:402
+msgid "Relax and stop thinking about your current task for a while"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:407
+msgid "The Break is Over"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:408
+msgid "Your next task is"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:425
+msgid "Prepare for your break"
+msgstr ""
+
+#: ../src/view/MainWindow.vala:426
+msgid "You have %s seconds left"
+msgstr ""
+
+#: ../src/view/SelectionPage.vala:78
+msgid "No lists configured, add one below"
+msgstr ""
+
+#: ../src/view/TaskListPage.vala:80
+msgid "Lists"
+msgstr ""
+
+#: ../src/view/TaskListPage.vala:86 ../src/view/TaskListPage.vala:133
+msgid "To-Do"
+msgstr ""
+
+#: ../src/view/TaskListPage.vala:88 ../src/view/TaskListPage.vala:136
+msgid "Done"
 msgstr ""
 
 #: ../src/view/TimerView.vala:82
@@ -230,4 +323,12 @@ msgstr ""
 
 #: ../src/view/TimerView.vala:265
 msgid "You have nothing to do."
+msgstr ""
+
+#: ../src/view/Widgets/TodoListInfoRow.vala:93
+msgid "Delete"
+msgstr ""
+
+#: ../src/view/Widgets/TodoListInfoRow.vala:94
+msgid "Edit"
 msgstr ""
