@@ -30,7 +30,7 @@ msgid ""
 "synchronization with mobile devices and makes it possible to edit tasks "
 "using other front-ends."
 msgstr ""
-"Les listes de tâches sont stockées au format Todo.txt. Cela simplifie
+"Les listes de tâches sont stockées au format Todo.txt. Cela simplifie "
 "la synchronisation avec les appareils mobiles et permet d'éditer les tâches "
 "en utilisant d'autres interfaces."
 
