@@ -396,6 +396,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         }
         if (break_previously_active != break_active) {
             Notify.Notification notification;
+
             if (break_active) {
                 notification = new Notify.Notification (
                     _("Take a Break"),
@@ -408,6 +409,9 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
                     _("Your next task is") + ": " + task.description,
                     GOFI.EXEC_NAME);
             }
+            notification.set_hint (
+                "desktop-entry", new Variant.string (GOFI.APP_SYSTEM_NAME)
+            );
 
             try {
                 notification.show ();
@@ -433,9 +437,8 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     }
 
     /**
-     * Searches the system for a css stylesheet, that corresponds to go-for-it.
-     * If it has been found in one of the potential data directories, it gets
-     * applied to the application.
+     * Load the css style information from the data directory specified at build
+     * time.
      */
     private void load_css () {
         var screen = this.get_screen ();
