@@ -324,6 +324,9 @@ class MainWindow : Gtk.ApplicationWindow {
                     _("Your next task is") + ": " + task.description,
                     GOFI.EXEC_NAME);
             }
+            notification.set_hint (
+                "desktop-entry", new Variant.string (GOFI.APP_SYSTEM_NAME)
+            );
 
             try {
                 notification.show ();
