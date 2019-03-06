@@ -18,3 +18,6 @@ A clear and concise description of any alternative solutions or features you've 
 
 **Additional context**
 Add any other context or screenshots about the feature request here.
+
+**Note**
+Reporting issues at https://github.com/JMoerman/Go-For-It/issues is preferred over https://github.com/mank319/Go-For-It/issues as https://github.com/JMoerman/Go-For-It/ is where most development happens.

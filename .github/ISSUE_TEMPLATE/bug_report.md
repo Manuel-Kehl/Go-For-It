@@ -33,3 +33,6 @@ Starting _Go For It!_ from the command line may yield valuable information.
 
 **Additional context**
 Add any other context about the problem here.
+
+**Note**
+Reporting bugs at https://github.com/JMoerman/Go-For-It/issues is preferred over https://github.com/mank319/Go-For-It/issues as https://github.com/JMoerman/Go-For-It/ is where most development happens.
