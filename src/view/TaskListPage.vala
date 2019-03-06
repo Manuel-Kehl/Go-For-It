@@ -165,9 +165,21 @@ class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
         this.task_list.load ();
         task_list.notify["active-task"].connect (on_active_task_changed);
         task_list.notify["selected-task"].connect (on_selected_task_changed);
+        task_list.timer_values_changed.connect (update_timer_values);
+        update_timer_values (
+            task_list.get_active_task_duration (),
+            task_list.get_active_break_duration (),
+            task_list.get_reminder_time ()
+        );
         add_widgets ();
         this.show_all ();
         on_selected_task_changed ();
+    }
+
+    private void update_timer_values (int task_d, int break_d, int reminder_t) {
+        task_timer.task_duration = task_d;
+        task_timer.break_duration = break_d;
+        task_timer.reminder_time = reminder_t;
     }
 
     private void on_task_done () {
@@ -203,6 +215,7 @@ class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
             task_list.unload ();
             task_list.notify["active-task"].disconnect (on_active_task_changed);
             task_list.notify["selected-task"].disconnect (on_selected_task_changed);
+            task_list.timer_values_changed.disconnect (update_timer_values);
         }
         foreach (Gtk.Widget widget in activity_stack.get_children ()) {
             activity_stack.remove (widget);

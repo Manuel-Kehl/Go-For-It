@@ -1,4 +1,4 @@
-/* Copyright 2014-2017 Go For It! developers
+/* Copyright 2014-2019 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -49,7 +49,7 @@ private class GOFI.SettingsManager {
     }
     /*---GROUP:Timer---------------------------------------------------------*/
     public int task_duration {
-        owned get {
+        get {
             var default_str = DEFAULT_TASK_DURATION.to_string ();
             var duration = get_value (GROUP_TIMER, "task_duration", default_str);
             var parsed_duration = int.parse (duration);
@@ -65,7 +65,7 @@ private class GOFI.SettingsManager {
         }
      }
     public int break_duration {
-        owned get {
+        get {
             var default_str = DEFAULT_BREAK_DURATION.to_string ();
             var duration = get_value (GROUP_TIMER, "break_duration", default_str);
             var parsed_duration = int.parse (duration);
@@ -81,7 +81,7 @@ private class GOFI.SettingsManager {
         }
     }
     public int reminder_time {
-        owned get {
+        get {
             var default_str = DEFAULT_REMINDER_TIME.to_string ();
             var time = get_value (GROUP_TIMER, "reminder_time", default_str);
             var parsed_time = int.parse (time);
@@ -96,13 +96,13 @@ private class GOFI.SettingsManager {
         }
     }
     public bool reminder_active {
-        owned get {
+        get {
             return (reminder_time > 0);
         }
     }
     /*---GROUP:UI-------------------------------------------------------------*/
     public int win_x {
-        owned get {
+        get {
             var x = get_value (GROUP_UI, "win_x", "-1");
             return int.parse (x);
         }
@@ -111,7 +111,7 @@ private class GOFI.SettingsManager {
         }
     }
     public int win_y {
-        owned get {
+        get {
             var y = get_value (GROUP_UI, "win_y", "-1");
             return int.parse (y);
         }
@@ -120,7 +120,7 @@ private class GOFI.SettingsManager {
         }
     }
     public int win_width {
-        owned get {
+        get {
             var width = get_value (GROUP_UI, "win_width", "350");
             return int.parse (width);
         }
@@ -129,7 +129,7 @@ private class GOFI.SettingsManager {
         }
     }
     public int win_height {
-        owned get {
+        get {
             var height = get_value (GROUP_UI, "win_height", "650");
             return int.parse (height);
         }
@@ -138,7 +138,7 @@ private class GOFI.SettingsManager {
         }
     }
     public bool use_header_bar {
-        owned get {
+        get {
             var use_header_bar = get_value (
                 GROUP_UI, "use_header_bar", header_bar_default ()
             );
@@ -150,7 +150,7 @@ private class GOFI.SettingsManager {
         }
     }
     public bool use_dark_theme {
-        owned get {
+        get {
             var use_dark = get_value (
                 GROUP_UI, "use_dark_theme", "false"
             );
@@ -188,7 +188,7 @@ private class GOFI.SettingsManager {
         }
     }
     public bool switcher_use_icons {
-        owned get {
+        get {
             var label_type = get_value (
                 GROUP_UI, "switcher_label_type", "icons"
             );

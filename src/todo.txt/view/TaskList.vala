@@ -144,7 +144,7 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
         // Handle "activate" signals (Enter Key presses)
         add_new_txt.activate.connect (on_entry_activate);
 
-        placeholder = new Gtk.Label (_("You currently don't have any tasks.\n Add some!"));
+        placeholder = new Gtk.Label (_("You currently don't have any tasks.\nAdd some!"));
         placeholder.wrap = true;
         placeholder.justify = Gtk.Justification.CENTER;
         placeholder.wrap_mode = Pango.WrapMode.WORD_CHAR;

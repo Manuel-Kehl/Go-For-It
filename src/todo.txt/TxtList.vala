@@ -21,16 +21,32 @@ class GOFI.TXT.TxtList : Object {
 
     private Gtk.ModelButton clear_done_button;
 
+    /**
+     * @param task_d duration untill the break in seconds
+     * @param break_d duration off the break in seconds
+     * @param reminder_t when to show the reminder before the task ends in seconds
+     */
+    public signal void timer_values_changed (int task_d, int break_d, int reminder_t);
+
     public ListSettings list_settings {
         public get;
         private set;
     }
 
+    /**
+     * Returns the task that is currently selected in the widget returned by
+     * get_primary_page.
+     */
     public TodoTask? selected_task {
         public get;
         private set;
     }
 
+    /**
+     * Returns the task the user is currently working on.
+     * This property will generally be set externally and should only be set
+     * from this class when the current value is no longer valid.
+     */
     public TodoTask? active_task {
         public get;
         public set;
@@ -44,16 +60,51 @@ class GOFI.TXT.TxtList : Object {
 
     public TxtList (ListSettings list_settings) {
         this.list_settings = list_settings;
+
+        list_settings.notify.connect (on_list_settings_notify);
     }
 
+    private void on_list_settings_notify (ParamSpec pspec) {
+        switch (pspec.get_name ()) {
+            case "task-duration":
+                signal_timer_values ();
+                break;
+            case "break-duration":
+                signal_timer_values ();
+                break;
+            case "reminder_time":
+                signal_timer_values ();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void signal_timer_values () {
+        timer_values_changed (
+            list_settings.task_duration,
+            list_settings.break_duration,
+            list_settings.reminder_time
+        );
+    }
+
+    /**
+     * Returns the next task relative to active_task.
+     */
     public TodoTask? get_next () {
         return task_manager.get_next ();
     }
 
+    /**
+     * Returns the previous task relative to active_task.
+     */
     public TodoTask? get_prev () {
         return task_manager.get_prev ();
     }
 
+    /**
+     * Called when the user has finished working on this task.
+     */
     public void mark_done (TodoTask task) {
         task_manager.mark_done (task);
     }
@@ -90,6 +141,37 @@ class GOFI.TXT.TxtList : Object {
         active_task = selected_task;
     }
 
+    /**
+     * Returns the duration (in seconds) the user should spend working on the
+     * currently active task untill taking a break.
+     * If no value is configured -1 should be returned.
+     */
+    public int get_active_task_duration () {
+        return list_settings.task_duration;
+    }
+
+    /**
+     * Returns the duration (in seconds) of the break the user should take
+     * before resuming work on the task.
+     * If no value is configured -1 should be returned.
+     */
+    public int get_active_break_duration () {
+        return list_settings.break_duration;
+    }
+
+    /**
+     * Returns the duration (in seconds) of the break the user should take
+     * before resuming work on the task.
+     * If no value is configured -1 should be returned.
+     */
+    public int get_reminder_time () {
+        return list_settings.reminder_time;
+    }
+
+    /**
+     * Called when this todo.txt list has been selected by the user.
+     * This function should be used to initialize the widgets and other objects.
+     */
     public void load () {
         task_manager = new TaskManager (list_settings);
         todo_list = new TaskList (this.task_manager.todo_store, true);
@@ -107,6 +189,11 @@ class GOFI.TXT.TxtList : Object {
         selected_task = todo_list.get_selected_task ();
     }
 
+    /**
+     * This function is called when this list is no longer in use but may be
+     * loaded again in the future.
+     * Widgets and other objects should be freed to preserver resources.
+     */
     public void unload () {
         todo_list = null;
         done_list = null;

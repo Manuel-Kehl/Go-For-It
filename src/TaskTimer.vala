@@ -1,4 +1,4 @@
-/* Copyright 2014-2017 Go For It! developers
+/* Copyright 2014-2019 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -68,6 +68,51 @@ class GOFI.TaskTimer {
     }
     private bool almost_over_sent_already { get; set; default = false; }
 
+    /**
+     * These properies provide access to the timer values that should be used.
+     * These properies will generally just return the value set in settings, but
+     * can be used to set different timer values for specific lists or tasks.
+     * Setting a property to -1 will reset the value to the global settings
+     * value.
+     */
+    public int task_duration {
+        public get {
+            if (_task_duration < 0) {
+                return settings.task_duration;
+            }
+            return _task_duration;
+        }
+        public set {
+            _task_duration = value;
+        }
+    }
+    public int break_duration {
+        public get {
+            if (_break_duration < 0) {
+                return settings.break_duration;
+            }
+            return _break_duration;
+        }
+        public set {
+            _break_duration = value;
+        }
+    }
+    public int reminder_time {
+        public get {
+            if (_reminder_time < 0) {
+                return settings.reminder_time;
+            }
+            return _reminder_time;
+        }
+        public set {
+            _reminder_time = value;
+            update ();
+        }
+    }
+    private int _break_duration;
+    private int _task_duration;
+    private int _reminder_time;
+
     /* Signals */
     public signal void timer_updated (DateTime remaining_duration);
     public signal void timer_updated_relative (double progress);
@@ -80,6 +125,11 @@ class GOFI.TaskTimer {
 
     public TaskTimer (SettingsManager settings) {
         this.settings = settings;
+
+        _task_duration = -1;
+        _break_duration = -1;
+        _reminder_time = -1;
+
         /* Signal Handling*/
         settings.timer_duration_changed.connect ((e) => {
             if (!running) {
@@ -125,9 +175,9 @@ class GOFI.TaskTimer {
     public void reset () {
         int64 default_duration;
         if (break_active) {
-            default_duration = settings.break_duration;
+            default_duration = break_duration;
         } else {
-            default_duration = settings.task_duration;
+            default_duration = task_duration;
         }
         duration_till_end = new DateTime.from_unix_utc (default_duration);
         previous_runtime = 0;
@@ -148,7 +198,7 @@ class GOFI.TaskTimer {
         timer_updated_relative (progress);
 
         // Check if "almost over" signal is to be send
-        if (remaining_duration.to_unix () <= settings.reminder_time) {
+        if (remaining_duration.to_unix () <= reminder_time) {
             if (settings.reminder_active
                     && !almost_over_sent_already
                     && running
@@ -169,6 +219,9 @@ class GOFI.TaskTimer {
         active_task_changed (_active_task, break_active);
     }
 
+    /**
+     * Used to signal that the task description has changed.
+     */
     private void on_task_notify_description () {
         active_task_description_changed (_active_task);
     }
