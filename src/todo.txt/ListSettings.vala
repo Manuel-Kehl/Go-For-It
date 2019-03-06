@@ -23,9 +23,9 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
     }
     string _id;
 
-    public string plugin_name {
+    public string provider_name {
         get {
-            return GOFI.TXT.PLUGIN_NAME;
+            return GOFI.TXT.PROVIDER_NAME;
         }
     }
 

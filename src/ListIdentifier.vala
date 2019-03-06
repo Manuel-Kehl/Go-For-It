@@ -17,11 +17,11 @@
 
 [Compact]
 private class GOFI.ListIdentifier {
-    public string plugin;
+    public string provider;
     public string id;
 
-    public ListIdentifier (string plugin, string id) {
-        this.plugin = plugin;
+    public ListIdentifier (string provider, string id) {
+        this.provider = provider;
         this.id = id;
     }
 
@@ -37,11 +37,11 @@ private class GOFI.ListIdentifier {
     }
 
     public static ListIdentifier from_info (TodoListInfo info) {
-        return new ListIdentifier (info.plugin_name, info.id);
+        return new ListIdentifier (info.provider_name, info.id);
     }
 
     public string to_string () {
-        return merge_strings (this.plugin, this.id);
+        return merge_strings (this.provider, this.id);
     }
 
     private static string merge_strings (string str1, string str2) {

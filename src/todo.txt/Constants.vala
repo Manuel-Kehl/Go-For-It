@@ -15,5 +15,5 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 namespace GOFI.TXT {
-    const string PLUGIN_NAME = "Todo.txt";
+    const string PROVIDER_NAME = "Todo.txt";
 }

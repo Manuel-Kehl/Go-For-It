@@ -98,9 +98,9 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         list_manager.list_removed.connect (on_list_removed);
     }
 
-    private void on_list_removed (string plugin, string id) {
+    private void on_list_removed (string provider, string id) {
         if (current_list_info != null &&
-            current_list_info.plugin_name == plugin &&
+            current_list_info.provider_name == provider &&
             current_list_info.id == id
         ) {
             switch_top_stack (true);

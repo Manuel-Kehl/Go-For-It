@@ -24,7 +24,7 @@ class GOFI.ListManager : Object, DragListModel {
 
     /* Signals */
     public signal void lists_changed ();
-    public signal void list_removed (string plugin, string id);
+    public signal void list_removed (string provider, string id);
 
     /**
      * Constructor of the ListManager class
@@ -68,7 +68,7 @@ class GOFI.ListManager : Object, DragListModel {
                 })
             );
             items_changed (index, 1, 0);
-            list_removed (GOFI.TXT.PLUGIN_NAME, id);
+            list_removed (GOFI.TXT.PROVIDER_NAME, id);
         }
     }
 
@@ -110,7 +110,7 @@ class GOFI.ListManager : Object, DragListModel {
                 todolist_infos.append_item (link.data);
                 txt_lists.delete_link (link);
             } else {
-                warning ("Couldn't find list '%s:%s'\n", identifier.plugin, identifier.id);
+                warning ("Couldn't find list '%s:%s'\n", identifier.provider, identifier.id);
             }
         }
         foreach (TodoListInfo info in txt_lists) {
@@ -153,7 +153,7 @@ class GOFI.ListManager : Object, DragListModel {
         uint n_lists = todolist_infos.length;
         for (uint i = 0; i < n_lists; i++) {
             var info = (TodoListInfo) todolist_infos.get_item (i);
-            set_lists.prepend (new ListIdentifier (info.plugin_name, info.id));
+            set_lists.prepend (new ListIdentifier (info.provider_name, info.id));
         }
         settings.lists = set_lists;
         lists_changed ();

@@ -26,7 +26,7 @@ public interface GOFI.TodoListInfo : Object{
         get;
     }
 
-    public abstract string plugin_name {
+    public abstract string provider_name {
         get;
     }
 
