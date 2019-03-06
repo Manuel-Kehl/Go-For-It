@@ -70,6 +70,9 @@ class GOFI.TimerView : Gtk.Grid {
             return;
         }
 
+        skip_btn.visible = true;
+        run_btn.visible = true;
+
         update_description (task);
         var style = task_description_lbl.get_style_context ();
 
@@ -263,12 +266,18 @@ class GOFI.TimerView : Gtk.Grid {
     public void show_no_task () {
         task_status_lbl.label = _("Relax") + "." ;
         task_description_lbl.label = _("You have nothing to do.");
+        skip_btn.visible = false;
+        run_btn.visible = false;
         done_btn.visible = false;
     }
 
     public override void show_all () {
         base.show_all ();
-        if (timer.break_active) {
+        if (timer.active_task == null) {
+            skip_btn.visible = false;
+            run_btn.visible = false;
+            done_btn.visible = false;
+        } else if (timer.break_active) {
             done_btn.visible = false;
         }
     }
