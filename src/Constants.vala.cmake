@@ -16,8 +16,10 @@
 */
 
 /**
- * The GOFI namespace is a central collection of static constants that are
+ * This file contains a central collection of static constants that are
  * related to "Go For It!".
+ * Constants.vala should not be editted as it will be overwritten by the build
+ * system.
  */
 namespace GOFI {
     /* Strings */

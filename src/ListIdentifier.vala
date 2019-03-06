@@ -36,7 +36,7 @@ private class GOFI.ListIdentifier {
         return null;
     }
 
-    public static ListIdentifier? from_info (TodoListInfo info) {
+    public static ListIdentifier from_info (TodoListInfo info) {
         return new ListIdentifier (info.plugin_name, info.id);
     }
 

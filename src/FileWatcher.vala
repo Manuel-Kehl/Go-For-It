@@ -88,6 +88,13 @@ class GOFI.FileWatcher {
         return false;
     }
 
+    /**
+     * Calls emit_signal_if_changed after a delay so the application or service
+     * that is writing to the file has a chance to finish.
+     * If we are already going to call emit_signal_if_changed we set
+     * changed_received to true which will cause the next call to this function
+     * to abort and repeat with a delay.
+     */
     private void on_file_changed () {
         if (!_watching) {
             return;
