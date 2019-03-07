@@ -44,6 +44,16 @@ row:selected:focus {
     color: @gofi_row_fg_selected_focus;
 }
 
+row link {
+    color: @gofi_row_fg;
+}
+row:selected link {
+    color: @gofi_row_fg_selected;
+}
+row:selected:focus link {
+    color: @gofi_row_fg_selected_focus;
+}
+
 row.drag-icon,
 row.drag-icon:selected,
 row.drag-icon:selected:focus {
@@ -52,7 +62,8 @@ row.drag-icon:selected:focus {
     color: @gofi_row_fg;
 }
 
-row.drag-icon label {
+row.drag-icon label,
+row.drag-icon link {
     color: @gofi_row_fg;
 }
 
