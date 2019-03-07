@@ -28,20 +28,6 @@ label.task_active {
 row {
     border-top: 1px solid @gofi_row_border_top;
     border-bottom: 1px solid @gofi_row_border_bottom;
-    background-color: @gofi_row_bg;
-    color: @gofi_row_fg;
-}
-row:selected {
-    border-top: 1px solid @gofi_row_border_top_selected;
-    border-bottom: 1px solid @gofi_row_border_bottom_selected;
-    background-color: @gofi_row_bg_selected;
-    color: @gofi_row_fg_selected;
-}
-row:selected:focus {
-    border-top: 1px solid @gofi_row_border_top_selected_focus;
-    border-bottom: 1px solid @gofi_row_border_bottom_selected_focus;
-    background-color: @gofi_row_bg_selected_focus;
-    color: @gofi_row_fg_selected_focus;
 }
 
 row.drag-icon,

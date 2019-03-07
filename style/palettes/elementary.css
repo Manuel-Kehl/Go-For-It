@@ -1,0 +1,24 @@
+@define-color gofi_task_active_label_color #ababab;
+
+@define-color gofi_main_layout_background white;
+
+@define-color gofi_row_bg white;
+@define-color gofi_row_bg_selected #cccccc;
+@define-color gofi_row_bg_selected_focus #3ea1f0;
+@define-color gofi_row_fg #424242;
+@define-color gofi_row_fg_selected @gofi_row_fg;
+@define-color gofi_row_fg_selected_focus white;
+
+@define-color gofi_row_border_top @gofi_row_bg;
+@define-color gofi_row_border_top_selected @gofi_row_bg_selected;
+@define-color gofi_row_border_top_selected_focus @gofi_row_bg_selected_focus;
+
+@define-color gofi_row_border_bottom @gofi_row_bg;
+@define-color gofi_row_border_bottom_selected @gofi_row_bg_selected;
+@define-color gofi_row_border_bottom_selected_focus @gofi_row_bg_selected_focus;
+
+@define-color gofi_row_drag_icon_border black;
+@define-color gofi_row_drag_icon_background @gofi_row_bg;
+
+@define-color gofi_row_drag_highlight_bottom black;
+@define-color gofi_row_drag_highlight_top black;

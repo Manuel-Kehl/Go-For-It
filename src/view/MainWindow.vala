@@ -27,6 +27,9 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     private SettingsManager settings;
     private bool use_header_bar;
 
+    private Gtk.CssProvider palette_css;
+    private Gtk.CssProvider stylesheet_css;
+
     /* Various GTK Widgets */
     private Gtk.Grid main_layout;
     private Gtk.HeaderBar header_bar;
@@ -88,7 +91,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         setup_actions (app_context);
         setup_menu ();
         setup_widgets ();
-        load_css ();
+        init_css ();
         setup_notifications ();
         // Enable Notifications for the App
         Notify.init (GOFI.APP_NAME);
@@ -436,26 +439,50 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         }
     }
 
+    private void init_css () {
+        var screen = this.get_screen ();
+        palette_css = new Gtk.CssProvider ();
+        stylesheet_css = new Gtk.CssProvider ();
+
+        load_css ();
+
+        Gtk.StyleContext.add_provider_for_screen (
+            screen, palette_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        );
+        Gtk.StyleContext.add_provider_for_screen (
+            screen, stylesheet_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        );
+    }
+
     /**
      * Load the css style information from the data directory specified at build
      * time.
      */
     private void load_css () {
-        var screen = this.get_screen ();
-        var css_provider = new Gtk.CssProvider ();
+        var palette = settings.use_dark_theme ? "elementary-dark" : "elementary";
 
-        string color = settings.use_dark_theme ? "-dark" : "";
         string version = (Gtk.get_minor_version () >= 19) ? "3.20" : "3.10";
 
         // Pick the stylesheet that is compatible with the user's Gtk version
-        string stylesheet = @"go-for-it-$version$color.css";
+        string stylesheet = @"widgets-$version.css";
 
-        var path = Path.build_filename (DATADIR, "style", stylesheet);
+        var path = Path.build_filename (DATADIR, "style", "palettes", palette + ".css");
         if (FileUtils.test (path, FileTest.EXISTS)) {
             try {
-                css_provider.load_from_path (path);
-                Gtk.StyleContext.add_provider_for_screen (
-                    screen,css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+                palette_css.load_from_path (path);
+            } catch (Error e) {
+                warning ("Cannot load CSS stylesheet: %s", e.message);
+                return;
+            }
+        } else {
+            warning ("Could not find application stylesheet in %s", path);
+            return;
+        }
+
+        path = Path.build_filename (DATADIR, "style", stylesheet);
+        if (FileUtils.test (path, FileTest.EXISTS)) {
+            try {
+                stylesheet_css.load_from_path (path);
             } catch (Error e) {
                 warning ("Cannot load CSS stylesheet: %s", e.message);
             }
