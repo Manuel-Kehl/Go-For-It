@@ -22,6 +22,10 @@ class GOFI.SettingsDialog : Gtk.Dialog {
     private SettingsManager settings;
     /* GTK Widgets */
     private Gtk.Grid main_layout;
+    private Gtk.Grid timer_page;
+    private Gtk.Grid appearance_page;
+    private Gtk.StackSwitcher stack_switcher;
+    private Gtk.Stack settings_stack;
 
     public SettingsDialog (Gtk.Window? parent, SettingsManager settings) {
         this.set_transient_for (parent);
@@ -35,10 +39,8 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         this.get_content_area ().margin = 10;
         this.get_content_area ().pack_start (main_layout);
         this.set_modal (true);
-        main_layout.visible = true;
         main_layout.orientation = Gtk.Orientation.VERTICAL;
         main_layout.row_spacing = 10;
-        main_layout.column_spacing = 10;
 
         this.title = _("Settings");
         setup_settings_widgets ();
@@ -55,9 +57,20 @@ class GOFI.SettingsDialog : Gtk.Dialog {
     }
 
     private void setup_settings_widgets () {
-        int row = 0;
-        setup_timer_settings_widgets (main_layout, ref row);
-        setup_appearance_settings_widgets (main_layout, ref row);
+        settings_stack = new Gtk.Stack ();
+        stack_switcher = new Gtk.StackSwitcher ();
+
+        stack_switcher.stack = settings_stack;
+        stack_switcher.halign = Gtk.Align.CENTER;
+
+        setup_timer_settings_widgets ();
+        setup_appearance_settings_widgets ();
+
+        settings_stack.add_titled (timer_page, "timer_page", _("Timer"));
+        settings_stack.add_titled (appearance_page, "appearance_page", _("Appearance"));
+
+        main_layout.add(stack_switcher);
+        main_layout.add(settings_stack);
     }
 
     private void add_section (Gtk.Grid grid, Gtk.Label label, ref int row) {
@@ -69,10 +82,10 @@ class GOFI.SettingsDialog : Gtk.Dialog {
     }
 
     private void add_option (Gtk.Grid grid, Gtk.Widget label,
-                             Gtk.Widget switcher, ref int row)
+                             Gtk.Widget switcher, ref int row, int indent=1)
     {
         label.hexpand = true;
-        label.margin_start = 20; // indentation relative to the section label
+        label.margin_start = indent * 20; // indentation relative to the section label
         label.halign = Gtk.Align.START;
 
         switcher.hexpand = true;
@@ -87,9 +100,15 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         row++;
     }
 
-    private void setup_timer_settings_widgets (Gtk.Grid grid, ref int row) {
+    private Gtk.Grid create_page_grid () {
+        var grid = new Gtk.Grid ();
+        grid.row_spacing = 6;
+        grid.column_spacing = 10;
+        return grid;
+    }
+
+    private void setup_timer_settings_widgets () {
         /* Declaration */
-        Gtk.Label timer_sect_lbl;
         Gtk.Label task_lbl;
         Gtk.SpinButton task_spin;
         Gtk.Label break_lbl;
@@ -98,7 +117,8 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         Gtk.SpinButton reminder_spin;
 
         /* Instantiation */
-        timer_sect_lbl = new Gtk.Label (_("Timer"));
+        timer_page = create_page_grid ();
+
         task_lbl = new Gtk.Label (_("Task duration (minutes)") + ":");
         break_lbl = new Gtk.Label (_("Break duration (minutes)") + ":");
         reminder_lbl = new Gtk.Label (_("Reminder before task ends (seconds)") +":");
@@ -126,14 +146,15 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         });
 
         /* Add widgets */
-        add_section (grid, timer_sect_lbl, ref row);
-        add_option (grid, task_lbl, task_spin, ref row);
-        add_option (grid, break_lbl, break_spin, ref row);
-        add_option (grid, reminder_lbl, reminder_spin, ref row);
+        int row = 0;
+        add_option (timer_page, task_lbl, task_spin, ref row, 0);
+        add_option (timer_page, break_lbl, break_spin, ref row, 0);
+        add_option (timer_page, reminder_lbl, reminder_spin, ref row, 0);
     }
 
-    private void setup_appearance_settings_widgets (Gtk.Grid grid, ref int row) {
-        Gtk.Label appearance_sect_lbl;
+    private void setup_appearance_settings_widgets () {
+        Gtk.Label general_sect_lbl;
+        Gtk.Label theme_sect_lbl;
         Gtk.Label dark_theme_lbl;
         Gtk.Switch dark_theme_switch;
         Gtk.Label small_icons_lbl;
@@ -142,15 +163,19 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         Gtk.Switch use_text_switch;
 
         /* Instantiation */
-        appearance_sect_lbl = new Gtk.Label (_("Appearance"));
-        dark_theme_lbl = new Gtk.Label (_("Dark theme"));
-        dark_theme_switch = new Gtk.Switch ();
+        appearance_page = create_page_grid ();
 
-        small_icons_lbl = new Gtk.Label (_("Use small toolbar icons"));
+        general_sect_lbl = new Gtk.Label (_("General"));
+        theme_sect_lbl = new Gtk.Label (_("Theme"));
+
+        small_icons_lbl = new Gtk.Label (_("Use small toolbar icons") + ":");
         small_icons_switch = new Gtk.Switch ();
 
-        use_text_lbl = new Gtk.Label (_("Use text for the activity switcher"));
+        use_text_lbl = new Gtk.Label (_("Use text for the activity switcher") + ":");
         use_text_switch = new Gtk.Switch ();
+
+        dark_theme_lbl = new Gtk.Label (_("Dark theme") + ":");
+        dark_theme_switch = new Gtk.Switch ();
 
         /* Configuration */
         dark_theme_switch.active = settings.use_dark_theme;
@@ -182,14 +207,16 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         });
 
         /* Add widgets */
-        add_section (grid, appearance_sect_lbl, ref row);
-        add_option (grid, dark_theme_lbl, dark_theme_switch, ref row);
-        add_option (grid, small_icons_lbl, small_icons_switch, ref row);
-        add_option (grid, use_text_lbl, use_text_switch, ref row);
-
+        int row = 0;
+        add_section (appearance_page, general_sect_lbl, ref row);
+        add_option (appearance_page, small_icons_lbl, small_icons_switch, ref row);
+        add_option (appearance_page, use_text_lbl, use_text_switch, ref row);
         if (GOFI.Utils.desktop_hb_status.config_useful ()) {
-            setup_csd_settings_widgets (main_layout, ref row);
+            setup_csd_settings_widgets (appearance_page, ref row);
         }
+
+        add_section (appearance_page, theme_sect_lbl, ref row);
+        add_option (appearance_page, dark_theme_lbl, dark_theme_switch, ref row);
     }
 
     private void setup_csd_settings_widgets (Gtk.Grid grid, ref int row) {
