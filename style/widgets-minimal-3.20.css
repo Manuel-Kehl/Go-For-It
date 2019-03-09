@@ -25,14 +25,14 @@ label.task_active {
     background: @gofi_main_layout_background;
 }
 
-row {
+.main_layout row {
     border-top: 1px solid @gofi_row_border_top;
     border-bottom: 1px solid @gofi_row_border_bottom;
 }
 
-row.drag-icon,
-row.drag-icon:selected,
-row.drag-icon:selected:focus {
+.main_layout row.drag-icon,
+.main_layout row.drag-icon:selected,
+.main_layout row.drag-icon:selected:focus {
     background: @gofi_row_drag_icon_background;
     border: 1px solid @gofi_row_drag_icon_border;
     color: @gofi_row_fg;

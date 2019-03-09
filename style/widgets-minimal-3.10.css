@@ -25,14 +25,14 @@ GtkLabel.task_active {
     background: @gofi_main_layout_background;
 }
 
-.list-row {
+.main_layout .list-row {
     border-top: 1px solid @gofi_row_border_top;
     border-bottom: 1px solid @gofi_row_border_bottom;
 }
 
-.list-row.drag-icon,
-.list-row.drag-icon:selected,
-.list-row.drag-icon:selected:focus {
+.main_layout .list-row.drag-icon,
+.main_layout .list-row.drag-icon:selected,
+.main_layout .list-row.drag-icon:selected:focus {
     background: @gofi_row_drag_icon_background;
     border: 1px solid @gofi_row_drag_icon_border;
     color: @gofi_row_fg;

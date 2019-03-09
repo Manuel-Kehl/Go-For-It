@@ -25,19 +25,19 @@ GtkLabel.task_active {
     background: @gofi_main_layout_background;
 }
 
-.list-row {
+.main_layout .list-row {
     border-top: 1px solid @gofi_row_border_top;
     border-bottom: 1px solid @gofi_row_border_bottom;
     background-color: @gofi_row_bg;
     color: @gofi_row_fg;
 }
-.list-row:selected {
+.main_layout .list-row:selected {
     border-top: 1px solid @gofi_row_border_top_selected;
     border-bottom: 1px solid @gofi_row_border_bottom_selected;
     background-color: @gofi_row_bg_selected;
     color: @gofi_row_fg_selected;
 }
-.list-row:selected:focus {
+.main_layout .list-row:selected:focus {
     border-top: 1px solid @gofi_row_border_top_selected_focus;
     border-bottom: 1px solid @gofi_row_border_bottom_selected_focus;
     background-color: @gofi_row_bg_selected_focus;
