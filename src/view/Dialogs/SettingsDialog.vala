@@ -1,4 +1,4 @@
-/* Copyright 2014-2017 Go For It! developers
+/* Copyright 2014-2019 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -229,7 +229,7 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         /* Instantiation */
         theme_sect_lbl = new Gtk.Label (_("Theme"));
         dark_theme_lbl = new Gtk.Label (_("Dark theme") + ":");
-        theme_lbl = new Gtk.Label (_("Theme" + ":"));
+        theme_lbl = new Gtk.Label (_("Theme") + ":");
         dark_theme_switch = new Gtk.Switch ();
         theme_selector = new Gtk.ComboBoxText ();
 

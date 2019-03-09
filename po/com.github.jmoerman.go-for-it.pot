@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-09 17:23+0100\n"
+"POT-Creation-Date: 2019-03-09 21:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -238,15 +238,12 @@ msgid "Use text for the activity switcher"
 msgstr ""
 
 #: ../src/view/Dialogs/SettingsDialog.vala:230
+#: ../src/view/Dialogs/SettingsDialog.vala:232
 msgid "Theme"
 msgstr ""
 
 #: ../src/view/Dialogs/SettingsDialog.vala:231
 msgid "Dark theme"
-msgstr ""
-
-#: ../src/view/Dialogs/SettingsDialog.vala:232
-msgid "Theme:"
 msgstr ""
 
 #: ../src/view/Dialogs/SettingsDialog.vala:261
