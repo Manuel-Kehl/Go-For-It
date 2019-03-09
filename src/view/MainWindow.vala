@@ -140,6 +140,9 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             gtk_settings.gtk_application_prefer_dark_theme = use_dark_theme;
             load_css ();
         });
+        settings.theme_changed.connect ( (use_dark_theme) => {
+            load_css ();
+        });
         settings.toolbar_icon_size_changed.connect (on_icon_size_changed);
     }
 
@@ -459,12 +462,13 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
      * time.
      */
     private void load_css () {
-        var palette = settings.use_dark_theme ? "elementary-dark" : "elementary";
+        var theme = settings.theme;
+        var palette = theme.get_palette (settings.use_dark_theme);
 
         string version = (Gtk.get_minor_version () >= 19) ? "3.20" : "3.10";
 
         // Pick the stylesheet that is compatible with the user's Gtk version
-        string stylesheet = @"widgets-$version.css";
+        string stylesheet = @"$(theme.get_stylesheet ())-$version.css";
 
         var path = Path.build_filename (DATADIR, "style", "palettes", palette + ".css");
         if (FileUtils.test (path, FileTest.EXISTS)) {

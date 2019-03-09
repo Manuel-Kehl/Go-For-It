@@ -161,6 +161,24 @@ private class GOFI.SettingsManager {
             use_dark_theme_changed (value);
         }
     }
+    public Theme theme {
+        get {
+            var theme_str = get_value (
+                GROUP_UI, "theme", "elementary"
+            );
+            var theme_val = Theme.from_string (theme_str);
+
+            if (theme_val != Theme.INVALID) {
+                return theme_val;
+            }
+            warning ("Unknown theme setting: %s", theme_str);
+            return Theme.ELEMENTARY;
+        }
+        set {
+            set_value (GROUP_UI, "theme", value.to_string ());
+            theme_changed (value);
+        }
+    }
     public Gtk.IconSize toolbar_icon_size {
         owned get {
             var icon_size = get_value (
@@ -252,6 +270,7 @@ private class GOFI.SettingsManager {
     /* Signals */
     public signal void todo_txt_location_changed ();
     public signal void timer_duration_changed ();
+    public signal void theme_changed (Theme theme);
     public signal void use_dark_theme_changed (bool use_dark);
     public signal void use_header_bar_changed ();
     public signal void toolbar_icon_size_changed (Gtk.IconSize size);
