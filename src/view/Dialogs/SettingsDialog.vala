@@ -100,6 +100,15 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         row++;
     }
 
+    private void add_explanation (Gtk.Grid grid, Gtk.Label label, ref int row) {
+        label.hexpand = true;
+        label.margin_start = 20; // indentation relative to the section label
+        label.halign = Gtk.Align.START;
+
+        grid.attach (label, 0, row, 2, 1);
+        row++;
+    }
+
     private Gtk.Grid create_page_grid () {
         var grid = new Gtk.Grid ();
         grid.row_spacing = 6;
@@ -221,14 +230,19 @@ class GOFI.SettingsDialog : Gtk.Dialog {
 
     private void setup_csd_settings_widgets (Gtk.Grid grid, ref int row) {
         Gtk.Label headerbar_lbl;
+        Gtk.Label restart_info_lbl;
         Gtk.Switch headerbar_switch;
 
+        string restart_info = _("Go For It! needs to be restarted for this setting to take effect");
+
         /* Instantiation */
-        headerbar_lbl = new Gtk.Label (_("Use a header bar") + (":"));
+        headerbar_lbl = new Gtk.Label (_("Use a header bar") + ":");
+        restart_info_lbl = new Gtk.Label (@"<i>$restart_info</i>:");
         headerbar_switch = new Gtk.Switch ();
 
         /* Configuration */
         headerbar_switch.active = settings.use_header_bar;
+        restart_info_lbl.use_markup = true;
 
         /* Signal Handling */
         headerbar_switch.notify["active"].connect ( () => {
@@ -236,6 +250,7 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         });
 
         /* Add widgets */
-        add_option (grid, headerbar_lbl, headerbar_switch, ref row);
+        add_explanation (grid, restart_info_lbl, ref row);
+        add_option (grid, headerbar_lbl, headerbar_switch, ref row, 2);
     }
 }
