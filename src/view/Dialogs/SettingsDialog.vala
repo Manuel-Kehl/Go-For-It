@@ -173,8 +173,8 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         Gtk.Label general_sect_lbl;
         Gtk.Label small_icons_lbl;
         Gtk.Switch small_icons_switch;
-        Gtk.Label use_text_lbl;
-        Gtk.Switch use_text_switch;
+        Gtk.Label switch_app_lbl;
+        Gtk.ComboBoxText switch_app_selector;
 
         /* Instantiation */
         general_sect_lbl = new Gtk.Label (_("General"));
@@ -182,13 +182,17 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         small_icons_lbl = new Gtk.Label (_("Use small toolbar icons") + ":");
         small_icons_switch = new Gtk.Switch ();
 
-        use_text_lbl = new Gtk.Label (_("Use text for the activity switcher") + ":");
-        use_text_switch = new Gtk.Switch ();
+        switch_app_lbl = new Gtk.Label (_("Appearance of the activity switcher") + ":");
+        switch_app_selector = new Gtk.ComboBoxText ();
 
         /* Configuration */
         small_icons_switch.active =
             settings.toolbar_icon_size == Gtk.IconSize.SMALL_TOOLBAR;
-        use_text_switch.active = !settings.switcher_use_icons;
+
+        switch_app_selector.append ("icons", _("Icons"));
+        switch_app_selector.append ("text", _("Text"));
+        switch_app_selector.active_id =
+            settings.switcher_use_icons ? "icons" : "text";
 
         /* Signal Handling */
         small_icons_switch.notify["active"].connect ( () => {
@@ -198,8 +202,9 @@ class GOFI.SettingsDialog : Gtk.Dialog {
                 settings.toolbar_icon_size = Gtk.IconSize.LARGE_TOOLBAR;
             }
         });
-        use_text_switch.notify["active"].connect ( () => {
-            settings.switcher_use_icons = !use_text_switch.active;
+        switch_app_selector.changed.connect ( () => {
+            settings.switcher_use_icons =
+                switch_app_selector.active_id == "icons";
         });
 
         small_icons_switch.notify["active"].connect ( () => {
@@ -213,7 +218,7 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         /* Add widgets */
         add_section (appearance_page, general_sect_lbl, ref row);
         add_option (appearance_page, small_icons_lbl, small_icons_switch, ref row);
-        add_option (appearance_page, use_text_lbl, use_text_switch, ref row);
+        add_option (appearance_page, switch_app_lbl, switch_app_selector, ref row);
         if (GOFI.Utils.desktop_hb_status.config_useful ()) {
             add_csd_settings_widgets (appearance_page, ref row);
         }

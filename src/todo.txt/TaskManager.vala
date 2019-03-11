@@ -52,7 +52,7 @@ class GOFI.TXT.TaskManager {
 
     string error_implications = _("Go For It! won't save or load from the current todo.txt directory until it is either restarted or another location is chosen.");
     string read_error_message = _("Couldn't read the todo.txt file (%s):") + "\n\n%s\n\n";
-    string write_error_message = _("Couldn't save the todo list (%s):") + "\n\n%s\n\n";
+    string write_error_message = _("Couldn't save the to-do list (%s):") + "\n\n%s\n\n";
     string txt_dir_error = _("The path to the todo.txt directory does not point to a directory, but to a file or mountable location. Please change the path in the settings to a suitable directory or remove this file.");
 
     public signal void active_task_invalid ();

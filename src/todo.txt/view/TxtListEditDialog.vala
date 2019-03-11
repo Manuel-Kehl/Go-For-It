@@ -52,12 +52,12 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         this.list_manager = list_manager;
         if (settings == null) {
             this.settings = new ListSettings.empty ();
-            this.title = _("New todo list");
+            this.title = _("New to-do list");
             this.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
             this.add_button (_("Add list"), Gtk.ResponseType.ACCEPT);
         } else {
             this.settings = settings;
-            this.title = _("Edit todo list properties");
+            this.title = _("Edit to-do list properties");
             this.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
             this.add_button (_("Apply"), Gtk.ResponseType.ACCEPT);
         }

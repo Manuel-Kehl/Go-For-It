@@ -58,6 +58,9 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     public const string ACTION_FILTER = "filter";
     public const string ACTION_SETTINGS = "settings";
 
+    private const string switch_btn_overview_text = _("Go to overview");
+    private const string switch_btn_list_text = _("Go back to the to-do list");
+
     private const ActionEntry[] action_entries = {
         { ACTION_ABOUT, show_about_dialog },
 #if !NO_CONTRIBUTE_DIALOG
@@ -263,10 +266,11 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         menu_btn.popover = menu_popover;
 
         switch_img = new Gtk.Image.from_icon_name ("go-next", settings.toolbar_icon_size);
-        switch_btn = new Gtk.ToolButton (switch_img, _("_Back"));
+        switch_btn = new Gtk.ToolButton (switch_img, null);
         switch_btn.hexpand = false;
         switch_btn.sensitive = false;
         switch_btn.clicked.connect (toggle_top_stack);
+        switch_btn.tooltip_text = switch_btn_list_text;
 
         if (use_header_bar){
             add_headerbar ();
@@ -285,6 +289,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
             var next_icon = GOFI.Utils.get_image_fallback ("go-next-symbolic", "go-next");
             switch_img.set_from_icon_name (next_icon, settings.toolbar_icon_size);
+            switch_btn.tooltip_text = switch_btn_list_text;
             settings.list_last_loaded = null;
             task_page.show_switcher (false);
             list_menu_container.hide ();
@@ -292,6 +297,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             top_stack.set_visible_child (task_page);
             var prev_icon = GOFI.Utils.get_image_fallback ("go-previous-symbolic", "go-previous");
             switch_img.set_from_icon_name (prev_icon, settings.toolbar_icon_size);
+            switch_btn.tooltip_text = switch_btn_overview_text;
             if (current_list_info != null) {
                 settings.list_last_loaded = ListIdentifier.from_info (current_list_info);
             } else {

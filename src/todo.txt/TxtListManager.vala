@@ -17,7 +17,7 @@
 
 /**
  * A class that currently uses a GLib.KeyFile to store and access the settings
- * of each todo list.
+ * of each to-do list.
  */
 class GOFI.TXT.TxtListManager {
     private KeyFile key_file;
