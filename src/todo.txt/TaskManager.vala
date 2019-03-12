@@ -32,7 +32,6 @@ class GOFI.TXT.TaskManager {
     public TaskStore todo_store;
     public TaskStore done_store;
     private bool read_only;
-    private bool need_to_add_tasks;
     private bool io_failed;
 
     // refreshing
@@ -44,16 +43,15 @@ class GOFI.TXT.TaskManager {
     private bool active_task_found;
 
     string[] default_todos = {
-        "Choose Todo.txt folder via \"Settings\"",
-        "Spread the word about \"Go For It!\"",
-        "Consider a donation to help the project",
-        "Consider contributing to the project"
+        _("Spread the word about \"Go For It!\""),
+        _("Consider a donation to help the project"),
+        _("Consider contributing to the project")
     };
 
-    string error_implications = _("Go For It! won't save or load from the current todo.txt directory until it is either restarted or another location is chosen.");
+    const string error_implications = _("Go For It! won't save or load from the current todo.txt directory until it is either restarted or another location is chosen.");
     string read_error_message = _("Couldn't read the todo.txt file (%s):") + "\n\n%s\n\n";
     string write_error_message = _("Couldn't save the to-do list (%s):") + "\n\n%s\n\n";
-    string txt_dir_error = _("The path to the todo.txt directory does not point to a directory, but to a file or mountable location. Please change the path in the settings to a suitable directory or remove this file.");
+    const string txt_dir_error = _("The path to the todo.txt directory does not point to a directory, but to a file or mountable location. Please change the path in the settings to a suitable directory or remove this file.");
 
     public signal void active_task_invalid ();
     public signal void refreshing ();
@@ -183,6 +181,10 @@ class GOFI.TXT.TaskManager {
             io_failed = false;
         }
 
+        if (todo_txt.query_exists ()) {
+            settings.add_default_todos = false;
+        }
+
         load_tasks ();
 
         if (!io_failed) {
@@ -233,7 +235,7 @@ class GOFI.TXT.TaskManager {
         read_task_file (this.todo_txt, false);
         read_task_file (this.done_txt, true);
 
-        if (need_to_add_tasks) {
+        if (settings.add_default_todos) {
             add_default_todos ();
         }
 
@@ -245,14 +247,10 @@ class GOFI.TXT.TaskManager {
     }
 
     private void add_default_todos () {
-        // Iterate in reverse order because todos are added to position 0
-        for (int i = default_todos.length - 1;
-             i >= 0;
-             i--)
-        {
+        for (int i = 0; i < default_todos.length; i++) {
             todo_store.add_task (new TodoTask (default_todos[i], false));
         }
-        need_to_add_tasks = false;
+        settings.add_default_todos = false;
     }
 
     private void save_todo_tasks () {

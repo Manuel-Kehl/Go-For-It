@@ -85,7 +85,7 @@ class GOFI.SelectionPage : Gtk.Grid {
         scroll_view.add (todolist_view);
         this.add (scroll_view);
 
-        add_button = new Gtk.Button.with_label ("Add list");
+        add_button = new Gtk.Button.with_label (_("Add list"));
         this.add (add_button);
 
         add_button.clicked.connect (on_add_button_clicked);

@@ -23,6 +23,7 @@ class GOFI.TXT.TxtListManager {
     private KeyFile key_file;
     private string list_file;
     private string config_dir;
+    private bool add_default_todos;
 
     private HashTable<string, ListSettings> list_table;
 
@@ -65,6 +66,7 @@ class GOFI.TXT.TxtListManager {
                 error ("%s", e.message);
             }
         }
+        add_default_todos = first_run;
 
         create_settings_instances ();
     }
@@ -95,7 +97,8 @@ class GOFI.TXT.TxtListManager {
     }
 
     public TxtList? get_list (string id) {
-        return new TxtList (list_table[id]);
+        var list = new TxtList (list_table[id]);
+        return list;
     }
 
     public TodoListInfo? get_list_info (string id) {
@@ -289,28 +292,30 @@ class GOFI.TXT.TxtListManager {
     /**
      * Availability of the location must have been checked in advance
      */
-    public void add_new (string name, string txt_location) {
+    public void add_new (string name, string txt_location, bool imported = true) {
         string id = get_new_id (name);
         var list_settings = new ListSettings (
             id,
             name,
             txt_location
         );
+
+        // Do not add default tasks if the user already has an old list.
+        list_settings.add_default_todos = add_default_todos && !imported;
+        add_default_todos = false;
+
         add_listsettings (list_settings);
     }
 
     public void add_new_from_settings (ListSettings settings) {
-        string id = get_new_id (settings.name);
-        var list_settings = new ListSettings (
-            id,
-            settings.name,
-            settings.todo_txt_location
-        );
-        add_listsettings (list_settings);
+        var to_add = settings.copy (get_new_id (settings.name));
+        to_add.add_default_todos = add_default_todos;
+        add_default_todos = false;
+        add_listsettings (to_add);
     }
 
     private void add_listsettings (ListSettings settings) {
-        stdout.printf ("added: %s (%s)\n", settings.name, settings.id);
+        stdout.printf ("Added new list: %s (%s)\n", settings.name, settings.id);
         connect_settings_signals (settings);
         list_table[settings.id] = settings;
 
