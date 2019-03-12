@@ -22,7 +22,7 @@
 class GOFI.ContributeDialog : Gtk.MessageDialog {
     /* GTK Widgets */
     public ContributeDialog (Gtk.Window? parent) {
-        Object (buttons: Gtk.ButtonsType.OK);
+        Object (buttons: Gtk.ButtonsType.CLOSE);
         this.message_type = Gtk.MessageType.INFO;
         this.set_modal (true);
         this.title = _("Contributions and Donations");

@@ -22,14 +22,26 @@
  */
 public interface GOFI.TodoListInfo : Object{
 
+    /**
+     * The id of a to-do list must stay constant over the entire lifetime of
+     * this list. On restarting the application the id must remain the same.
+     */
     public abstract string id {
         get;
     }
 
+    /**
+     * Field that currently is not in use.
+     * This field will be used when the application supports formats other than
+     * Todo.txt.
+     */
     public abstract string provider_name {
         get;
     }
 
+    /**
+     * The name the user assigned to the list corresponding with this object.
+     */
     public abstract string name {
         get;
         set;

@@ -14,6 +14,10 @@
 * You should have received a copy of the GNU General Public License along
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
+
+/**
+ * Object used to keep track of the settings of a single todo.txt list
+ */
 class GOFI.TXT.ListSettings : Object, TodoListInfo {
 
     public string id {
@@ -42,40 +46,34 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
     public int task_duration {
         get;
         set;
+        default = -1;
     }
     public int break_duration {
         get;
         set;
+        default = -1;
     }
     public int reminder_time {
         get;
         set;
+        default = -1;
     }
     public bool add_default_todos {
         get;
         set;
+        default = false;
     }
 
     public ListSettings (string id, string name, string location) {
         this._id = id;
         this.name = name;
         this.todo_txt_location = location;
-
-        this.task_duration = -1;
-        this.break_duration = -1;
-        this.reminder_time = -1;
-        this.add_default_todos = false;
     }
 
     public ListSettings.empty () {
         this._id = null;
         this._name = null;
         this.todo_txt_location = null;
-
-        this.task_duration = -1;
-        this.break_duration = -1;
-        this.reminder_time = -1;
-        this.add_default_todos = false;
     }
 
     public ListSettings copy (string? new_id = null) {
@@ -86,6 +84,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         copied.task_duration = task_duration;
         copied.break_duration = break_duration;
         copied.reminder_time = reminder_time;
+        copied.add_default_todos = add_default_todos;
         return copied;
     }
 

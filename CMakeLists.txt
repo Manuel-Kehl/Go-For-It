@@ -17,8 +17,8 @@ set (FILE_CONF ${PROJECT_NAME}.conf)
 set (EXEC_NAME ${APP_SYSTEM_NAME})
 set (APP_NAME "Go For It!")
 set (RELEASE_NAME "A stylish to-do list with built-in productivity timer")
-set (VERSION "1.7.0-git")
-set (VERSION_INFO "Release")
+set (VERSION "1.7.0")
+set (VERSION_INFO "Release Candidate 1")
 set (ICON_NAME ${APP_SYSTEM_NAME})
 set (GETTEXT_PACKAGE ${APP_SYSTEM_NAME})
 set (APIVERSION 0)
@@ -42,7 +42,7 @@ find_package (PkgConfig)
 # check for the required dependencies
 pkg_check_modules (DEPS REQUIRED
     gtk+-3.0>=3.14.0
-    glib-2.0
+    glib-2.0>=2.40
     libnotify
 )
 

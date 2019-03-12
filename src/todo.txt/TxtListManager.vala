@@ -25,6 +25,8 @@ class GOFI.TXT.TxtListManager {
     private string config_dir;
     private bool add_default_todos;
 
+    // The keys are string representations of uints, uints are not used directly
+    // as elsewhere strings are used for ids.
     private HashTable<string, ListSettings> list_table;
 
     public bool first_run {
@@ -256,6 +258,10 @@ class GOFI.TXT.TxtListManager {
         }
     }
 
+    /**
+     * Constructs a settings instance from the information stored in the key
+     * file.
+     */
     private ListSettings create_settings_instance (string list_id) {
         var list_settings = new ListSettings (
             list_id,
@@ -275,6 +281,10 @@ class GOFI.TXT.TxtListManager {
         return list_table.contains (id);
     }
 
+    /**
+     * Generates a new unique id.
+     * The resulting id is the string representation of an unsigned integer.
+     */
     public string get_new_id (string name) {
         uint id = str_hash (name);
         string id_str = id.to_string ();
