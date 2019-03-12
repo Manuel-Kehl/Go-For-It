@@ -83,7 +83,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     {
         // Pass the applicaiton context via GObject-based construction, because
         // constructor chaining is not possible for Gtk.ApplicationWindow
-        Object (application: app_context);
+        Object (application: app_context, title: APP_NAME);
         this.list_manager = list_manager;
         this.task_timer = task_timer;
         this.settings = settings;
@@ -338,6 +338,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
         // Add headerbar Buttons here
         header_bar.pack_start (switch_btn);
+        header_bar.title = APP_NAME;
         header_bar.set_custom_title (task_page.get_switcher ());
         header_bar.pack_end (menu_btn);
 
