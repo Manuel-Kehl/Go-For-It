@@ -237,7 +237,7 @@ class GOFI.TXT.TxtListManager {
         return confirm_dialog;
     }
 
-    public List<TodoListInfo> get_list_infos () {
+    public List<unowned TodoListInfo> get_list_infos () {
         return list_table.get_values ();
     }
 

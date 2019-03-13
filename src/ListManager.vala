@@ -101,7 +101,7 @@ class GOFI.ListManager : Object, DragListModel {
     }
 
     private void populate_items () {
-        List<TodoListInfo> txt_lists = txt_manager.get_list_infos ();
+        List<unowned TodoListInfo> txt_lists = txt_manager.get_list_infos ();
         var stored_lists = settings.lists;
 
         foreach (unowned ListIdentifier identifier in stored_lists) {
