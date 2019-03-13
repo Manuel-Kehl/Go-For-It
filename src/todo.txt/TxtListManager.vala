@@ -237,8 +237,12 @@ class GOFI.TXT.TxtListManager {
         return confirm_dialog;
     }
 
-    public List<unowned TodoListInfo> get_list_infos () {
-        return list_table.get_values ();
+    public List<TodoListInfo> get_list_infos () {
+        var infos = new List<TodoListInfo> ();
+        foreach (var info in list_table.get_values ()) {
+            infos.prepend(info);
+        };
+        return infos;
     }
 
     private void create_settings_instances () {
