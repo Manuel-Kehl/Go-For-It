@@ -23,7 +23,7 @@ vala_precompile (VALA_C ${LIBNAME}
     Utils.vala
     ListIdentifier.vala
     SettingsManager.vala
-    ListInfo.vala
+    TodoListInfo.vala
     ListManager.vala
     TodoTask.vala
     SequentialList.vala
