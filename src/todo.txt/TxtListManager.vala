@@ -113,6 +113,7 @@ class GOFI.TXT.TxtListManager {
         list_table.remove (id);
         try {
             key_file.remove_group ("list" + id);
+            write_key_file ();
         } catch (Error e) {
             warning ("List could not be fully removed: %s", e.message);
         }
