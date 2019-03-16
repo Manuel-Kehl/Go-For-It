@@ -1,5 +1,28 @@
 # Change Log
 
+## [1.7.0](https://github.com/JMoerman/Go-For-It/tree/1.6.10) (2019-03-16)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.10...1.7.0)
+
+**Implemented enhancements:**
+
+- You can now have more than one to-do list.
+- The application design has been updated. The application now uses less vertical space if a headerbar is used.
+- The default stylesheet has been improved, resulting in improved looks when the application is used on elementary OS.
+- Not using the elementary or Adwaita theme, or a theme with a similar color scheme? You can now select a different stylesheet in the settings window.
+- The location from which the stylesheet is loaded is now determined by the installation directory.
+
+**Fixed bugs:**
+
+- _Go For It!_ now properly exports that it uses notifications.
+- Non ascii character were not properly parsed when parsing contexts and projects.
+
+**Closed issues:**
+
+- Place tabs in same place as menu button [\#5](https://github.com/JMoerman/Go-For-It/issues/5), [\#49](https://github.com/JMoerman/Go-For-It/issues/49)
+- context with wide characters not highlighted [\#68](https://github.com/JMoerman/Go-For-It/issues/68)
+- Custom CSS is not working well outside of default Elementary OS gtk theme [\#66](https://github.com/JMoerman/Go-For-It/issues/66)
+- Feature suggestion [\#54](https://github.com/JMoerman/Go-For-It/issues/54)
+
 ## [1.6.10](https://github.com/JMoerman/Go-For-It/tree/1.6.10) (2019-02-13)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.9...1.6.10)
 
