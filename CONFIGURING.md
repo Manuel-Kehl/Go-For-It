@@ -50,3 +50,16 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr -DSHOW_ABOUT:BOOL="0" ..
 make
 sudo make install
 ```
+
+### gtk-update-icon-cache
+By default `gtk-update-icon-cache` will run after installing the icons, .desktop file and appdata metadata.
+This may not be desirable if `make install` is used to generate an installation package like a .deb file.
+
+gtk-update-icon-cache will not run if `-DICON_UPDATE:BOOL="0"` is appended to the cmake build command.
+
+### Building unit tests
+For some of the classes used in *Go For It!* unit tests can be build and run.
+
+Unit tests can be enabled by appending `-DBUILD_TESTS:BOOL="1"` to the cmake build command.
+
+This will result in a testing binary located in `<build directory>/tests/`.
