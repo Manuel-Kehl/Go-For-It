@@ -1,5 +1,16 @@
 # Change Log
 
+## [1.7.1](https://github.com/JMoerman/Go-For-It/tree/1.7.1) (2019-03-18)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.7.0...1.7.1)
+
+**Implemented enhancements:**
+
+- The application id can now be set with -DAPP\_ID=some\_id
+
+**Fixed bugs:**
+
+- For some widgets _Go For It!_ did not properly load a fallback icon.
+
 ## [1.7.0](https://github.com/JMoerman/Go-For-It/tree/1.7.0) (2019-03-16)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.10...1.7.0)
 

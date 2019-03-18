@@ -35,6 +35,14 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
+      <release version="1.7.1" date="2019-03-18">
+      <description>
+        <p>Bugfixes:</p>
+        <ul>
+          <li>For some widgets <i>Go For It!</i> did not properly load a fallback icon.</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.7.0" date="2019-03-16">
       <description>
         <p>Improvements:</p>
