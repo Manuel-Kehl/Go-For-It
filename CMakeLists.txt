@@ -32,6 +32,7 @@ set (LIBRARY_PATH "src")
 set (PROJECT_WEBSITE "http://manuel-kehl.de/projects/go-for-it/")
 set (PROJECT_REPO "https://github.com/JMoerman/Go-For-It")
 set (PROJECT_DONATIONS "https://jmoerman.github.io/donate/")
+set (DEFAULT_THEME "elementary")
 
 #for go-for-it.pc.cmake
 set (PREFIX ${CMAKE_INSTALL_PREFIX})

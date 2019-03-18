@@ -36,4 +36,5 @@ namespace GOFI {
     const string INSTALL_PREFIX = "@INSTALL_PREFIX@";
     const string DATADIR = "@PKGDATADIR@";
     const string GETTEXT_PACKAGE = "@GETTEXT_PACKAGE@";
+    const string DEFAULT_THEME = "@DEFAULT_THEME@";
 }

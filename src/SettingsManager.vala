@@ -164,7 +164,7 @@ private class GOFI.SettingsManager {
     public Theme theme {
         get {
             var theme_str = get_value (
-                GROUP_UI, "theme", "elementary"
+                GROUP_UI, "theme", DEFAULT_THEME
             );
             var theme_val = Theme.from_string (theme_str);
 
@@ -172,7 +172,7 @@ private class GOFI.SettingsManager {
                 return theme_val;
             }
             warning ("Unknown theme setting: %s", theme_str);
-            return Theme.ELEMENTARY;
+            return Theme.from_string (DEFAULT_THEME);
         }
         set {
             set_value (GROUP_UI, "theme", value.to_string ());
