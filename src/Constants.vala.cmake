@@ -36,8 +36,4 @@ namespace GOFI {
     const string INSTALL_PREFIX = "@INSTALL_PREFIX@";
     const string DATADIR = "@PKGDATADIR@";
     const string GETTEXT_PACKAGE = "@GETTEXT_PACKAGE@";
-    const string[] TEST_DIRS = {
-        "Todo", "todo", ".todo",
-        "Dropbox/Todo", "Dropbox/todo"
-    };
 }

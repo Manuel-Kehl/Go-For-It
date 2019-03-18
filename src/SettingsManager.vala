@@ -293,8 +293,6 @@ private class GOFI.SettingsManager {
             }
             if (!import_from_old_path ()) {
                 stdout.printf ("old file not imported\n");
-                // Fill with default values, if it does not exist yet
-                generate_configuration ();
                 first_start = true;
             }
         } else {
@@ -390,29 +388,6 @@ private class GOFI.SettingsManager {
      */
     private void write_key_file () throws Error {
         GLib.FileUtils.set_contents (GOFI.Utils.config_file, key_file.to_data ());
-    }
-
-    /**
-     * Generates the default configuration.
-     * It also tries to automatically determine the location of the user's
-     * Todo.txt directory by checking a set of common potential
-     * "standard locations", which are defined in GOFI.TEST_DIRS in Utils.vala.
-     */
-    private void generate_configuration () {
-        string user_dir = Environment.get_home_dir ();
-
-        /* Determine the Todo.txt Directory */
-        // Start by setting the default fallback directory
-        var todo_dir = Path.build_filename (user_dir, GOFI.TEST_DIRS[0]);
-
-        // Try a set of possible "standard locations"
-        foreach (var test_sub_dir in GOFI.TEST_DIRS) {
-            var test_dir = Path.build_filename (user_dir, test_sub_dir);
-            if (FileUtils.test (test_dir, FileTest.EXISTS)) {
-                todo_dir = test_dir;
-                break;
-            }
-        }
     }
 
     /**
