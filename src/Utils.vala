@@ -139,8 +139,9 @@ namespace GOFI {
          * by offering a list of fallback icon names.
          */
         public static Gtk.Image load_image_fallback (Gtk.IconSize size,
-                string icon_name, ...) {
-            var available = get_image_fallback (icon_name, va_list ());
+                string icon_name, ...
+        ) {
+            var available = get_image_fallback2 (icon_name, va_list ());
             return new Gtk.Image.from_icon_name (available, size);
         }
 
@@ -149,13 +150,16 @@ namespace GOFI {
          * theme.
          */
         public static string get_image_fallback (string icon_name, ...) {
+            return get_image_fallback2 (icon_name, va_list ());
+        }
+
+        private static string get_image_fallback2 (string icon_name, va_list fallbacks) {
             var icon_theme = Gtk.IconTheme.get_default ();
             if (icon_theme.has_icon (icon_name)) {
                 return icon_name;
             }
 
             // Iterate through the list of fallbacks, if icon_name was not found
-            var fallbacks = va_list ();
             while (true) {
                 string? fallback_name = fallbacks.arg ();
                 if (fallback_name == null) {

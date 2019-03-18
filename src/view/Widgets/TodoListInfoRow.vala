@@ -1,4 +1,4 @@
-/* Copyright 2018 Go For It! developers
+/* Copyright 2018-2019 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -46,7 +46,8 @@ class GOFI.TodoListInfoRow: DragListRow {
 
         options_button = new Gtk.ToggleButton ();
         options_button.add (GOFI.Utils.load_image_fallback (
-            Gtk.IconSize.MENU, "edit-symbolic", "edit", "view-more-symbolic"
+            Gtk.IconSize.MENU, "edit-symbolic", "edit",
+            "document-edit-symbolic", "view-more-symbolic"
         ));
         options_button.relief = Gtk.ReliefStyle.NONE;
         var style = options_button.get_style_context ();

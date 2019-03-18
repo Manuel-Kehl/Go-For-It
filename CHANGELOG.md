@@ -1,6 +1,6 @@
 # Change Log
 
-## [1.7.0](https://github.com/JMoerman/Go-For-It/tree/1.6.10) (2019-03-16)
+## [1.7.0](https://github.com/JMoerman/Go-For-It/tree/1.7.0) (2019-03-16)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.6.10...1.7.0)
 
 **Implemented enhancements:**
