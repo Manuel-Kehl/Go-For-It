@@ -23,7 +23,19 @@ sudo make install
 
 In this case *Go For It!* would be installed as `/usr/bin/go-for-it`, `/usr/share/applications/go-for-it.desktop`, etc...
 
-### Leaving out the contribute dialog
+### Setting the application id
+The application id can be set by appending `-DAPP_ID:STRING=new-id` to the cmake build command.
+The default value of `APP_SYSTEM_NAME` is based on `APP_ID` meaning that, asuming a clean build, setting the application id will have a similar effect to changing the system name.
+
+For example:
+
+```
+cmake -DCMAKE_INSTALL_PREFIX=/usr -DAPP_ID=test.go-for-it ..
+make
+sudo make install
+```
+
+### Removing the contribute dialog
 By default *Go For It!* includes a contribute dialog.
 In cases where the information present in this dialog is also provided by other sources such as the elementary OS AppCenter results for *Go For It!* it may be desirable to leave out this dialog.
 

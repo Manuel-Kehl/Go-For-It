@@ -29,7 +29,7 @@ If you already use Todo.txt, **beware** of the fact, that *Go For It!* automatic
 
 I maintain a [Launchpad PPA](https://launchpad.net/~go-for-it-team/+archive/ubuntu/go-for-it-daily) which can be used to acquire .deb packages. On Ubuntu (+ derivates) it is recommended to add the PPA for automatic updates:
 
-    sudo add-apt-repository ppa:go-for-it-team/go-for-it-daily && sudo apt-get update 
+    sudo add-apt-repository ppa:go-for-it-team/go-for-it-daily && sudo apt-get update
     sudo apt-get install go-for-it
 
 #### Arch Linux
@@ -50,11 +50,12 @@ Stable releases are hosted on [Flathub](https://flathub.org):
 
 ### Windows
 
-The Windows version is available for download [here](http://manuel-kehl.de/projects/go-for-it/download-windows-version).
+Unfortunately, a recent Windows version isn't available. The https://github.com/mank319/Go-For-It/commits/windows-cmake branch may be a good starting point for porting the current version of _Go For It!_ to Windows.
 
 ### Others
 
-A macOS Version may follow in the future.
+It should be fairly straightforward to compile _Go For It!_ on Unix-like platforms as long as Gtk+3, libnotify and cmake are available.
+Should you run into any difficulties feel free to add an [issue](https://github.com/JMoerman/Go-For-It/issues).
 
 # Information For Nerds
 
@@ -77,7 +78,7 @@ The user interface is inspired by the design philosophy of [elementary OS](http:
 
 ## How To Build
 To build *Go For It!* you need to have the following software installed:
-    
+
     valac >= 0.26
     cmake >= 2.8.9
     intltool
@@ -99,3 +100,7 @@ Use the following commands to update the translation files:
     cd build
     make pot
     make po
+
+## Information for maintainers
+
+CONFIGURING.md contains some information about the configuration flags specific to _Go For it!_.
