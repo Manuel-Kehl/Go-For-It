@@ -40,8 +40,6 @@ install (FILES ${CMAKE_CURRENT_SOURCE_DIR}${ICON_FOLDER}/24x24/actions/go-to-lis
 # install the fallback menu icon
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}${ICON_FOLDER}/24x24/actions/go-for-it-open-menu-fallback.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/24x24/actions RENAME ${ICON_NAME}-open-menu-fallback.svg)
 
-option (ICON_UPDATE "Run gtk-update-icon-cache after the install." ON)
-
 if (ICON_UPDATE)
 install (
     CODE "message (STATUS \"Updating icon cache in ${SYSTEM_DEFAULT_THEME}\")"

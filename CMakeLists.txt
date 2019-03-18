@@ -69,6 +69,8 @@ ensure_vala_version("0.26" MINIMUM)
 
 option (BUILD_TESTS "Build a unit test executable." OFF)
 
+option (ICON_UPDATE "Run gtk-update-icon-cache after the install." ON)
+
 # Options for when information like this is best shown elsewere
 option (NO_CONTRIBUTE_DIALOG "Do not include the contribute dialog." OFF)
 option (SHOW_ABOUT "Show the about action in the .desktop and menu." ON)
