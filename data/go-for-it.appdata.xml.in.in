@@ -26,7 +26,7 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
   <url type="homepage">http://manuel-kehl.de/projects/go-for-it/</url>
   <url type="bugtracker">https://github.com/JMoerman/Go-For-It/issues</url>
   <url type="help">https://github.com/JMoerman/Go-For-It/blob/master/README.md</url>
-  <url type="translate">https://translations.launchpad.net/go-for-it</url>
+  <url type="translate">https://hosted.weblate.org/projects/go-for-it/</url>
   <url type="donation">https://jmoerman.github.io/donate/</url>
   <update_contact>jonathanmoerman_AT_gmail.com</update_contact>
   <translation type="gettext">@GETTEXT_PACKAGE@</translation>
