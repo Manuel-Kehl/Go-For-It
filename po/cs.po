@@ -270,9 +270,8 @@ msgid "Go to overview"
 msgstr ""
 
 #: ../src/view/MainWindow.vala:62
-#, fuzzy
 msgid "Go back to the to-do list"
-msgstr "Nedaří se uložit seznam úkolů (%s):"
+msgstr ""
 
 #: ../src/view/MainWindow.vala:262
 msgid "Menu"
