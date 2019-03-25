@@ -1,4 +1,4 @@
-/* Copyright 2017 Go For It! developers
+/* Copyright 2017-2019 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -18,17 +18,45 @@
 class GOFI.TXT.Filter {
     private List<string> tags;
     private List<string> sentence_pieces;
-    private List<string> priority_constraints;
+    private PrioConstraint? priority_constraint;
 
     public Filter () {
         tags = new List<string> ();
         sentence_pieces = new List<string> ();
     }
 
+    private enum prio_constr_type {
+        LESS,
+        GREATER,
+        LESS_OR_EQUAL,
+        GREATER_OR_EQUAL,
+        EQUAL,
+        BETWEEN
+    }
+
+    [Compact]
+    private class PrioConstraint {
+        public char p1;
+        public char p2;
+        public prio_constr_type pc_type;
+
+        public PrioConstraint (prio_constr_type pc_type, char p1, char p2=0) {
+            if (p1 > p2) {
+                this.p1 = p1;
+                this.p2 = p2;
+            } else {
+                this.p1 = p2;
+                this.p2 = p1;
+            }
+
+            this.pc_type = pc_type;
+        }
+    }
+
     public void parse (string filter_string) {
         tags = new List<string> ();
         sentence_pieces = new List<string> ();
-        priority_constraints = new List<string> ();
+        priority_constraint = null;
 
         string sentence_piece = "";
 
@@ -53,18 +81,42 @@ class GOFI.TXT.Filter {
             } else if (part.has_prefix (_("priority") + ":")) {
                 string? priority = part.split (":", 2)[1];
                 if (priority != null && priority[0] != '\0') {
-                    if (priority[0] >= 'A' && priority[0] <= 'Z') {
-                        if (priority[1] == '\0') {
-                            priority_constraints.prepend(priority);
-                        } else if (priority.offset(1) == "+" || priority.offset(1) == "-") {
-                            priority_constraints.prepend(priority);
+                    var offset = 0;
+                    var pc_type = prio_constr_type.EQUAL;
+                    if (priority[0] == '>') {
+                        if (priority[1] == '=') {
+                            pc_type = prio_constr_type.GREATER_OR_EQUAL;
+                            offset = 2;
+                        } else {
+                            pc_type = prio_constr_type.GREATER;
+                            offset = 1;
+                        }
+                    } else if (priority[0] == '<') {
+                        if (priority[1] == '=') {
+                            pc_type = prio_constr_type.LESS_OR_EQUAL;
+                            offset = 2;
+                        } else {
+                            pc_type = prio_constr_type.LESS;
+                            offset = 1;
+                        }
+                    }
+                    var offset_prio = priority.offset(offset);
+                    if (offset_prio[0] < 'A' || offset_prio[0] > 'Z') {
+                        //TODO: highlight mistake?
+                        continue;
+                    }
+                    if (offset_prio[1] == '\0') {
+                        priority_constraint = new PrioConstraint (pc_type, offset_prio[0]);
+                    } else if (pc_type == prio_constr_type.EQUAL && offset_prio[1] == '-') {
+                        if (offset_prio[2] >= 'A' && offset_prio[2] <= 'Z' && offset_prio[3] == '\0') {
+                            pc_type = prio_constr_type.BETWEEN;
+                            priority_constraint = new PrioConstraint (pc_type, offset_prio[0], offset_prio[2]);
                         }
                     } else {
                         //TODO: highlight mistake?
                         continue;
                     }
                 }
-
             } else {
                 sentence_piece += " " + part.casefold ();
             }
@@ -125,17 +177,20 @@ class GOFI.TXT.Filter {
             }
         }
 
-        foreach (string prio_constraint in priority_constraints) {
-            if (prio_constraint[1] == '+') {
-                if (task.priority < prio_constraint[0]) {
-                    return false;
-                }
-            } else if (prio_constraint[1] == '-') {
-                if (task.priority > prio_constraint[0]) {
-                    return false;
-                }
-            } else if (task.priority != prio_constraint[0]) {
-                return false;
+        if (priority_constraint != null) {
+            switch (priority_constraint.pc_type) {
+                case LESS:
+                    return task.priority < priority_constraint.p1;
+                case GREATER:
+                    return task.priority > priority_constraint.p1;
+                case LESS_OR_EQUAL:
+                    return task.priority <= priority_constraint.p1;
+                case GREATER_OR_EQUAL:
+                    return task.priority >= priority_constraint.p1;
+                case BETWEEN:
+                    return task.priority <= priority_constraint.p1 && task.priority >= priority_constraint.p2;
+                default:
+                    return task.priority == priority_constraint.p1;
             }
         }
 

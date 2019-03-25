@@ -44,12 +44,6 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
             return search_bar.search_mode_enabled;
         }
         public set {
-            if (value) {
-                placeholder.label = filter_text;
-            } else {
-                placeholder.label = placeholder_text;
-            }
-
             search_bar.set_search_mode (value);
         }
     }
@@ -173,6 +167,14 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
         placeholder.label = _("You finished all tasks, good job!");
     }
 
+    private void on_search_bar_toggle () {
+        if (search_bar.search_mode_enabled) {
+            placeholder.label = filter_text;
+        } else {
+            placeholder.label = placeholder_text;
+        }
+    }
+
     private void setup_filter () {
         search_bar = new Gtk.SearchBar ();
         filter_entry = new Gtk.SearchEntry ();
@@ -182,6 +184,7 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
             filter.parse (filter_entry.text);
             task_view.invalidate_filter ();
         });
+        search_bar.notify["search-mode-enabled"].connect (on_search_bar_toggle);
 
         search_bar.add (filter_entry);
         search_bar.set_show_close_button (true);
