@@ -314,7 +314,7 @@ class GOFI.TXT.TaskManager {
         DateTime creation_date = null;
         DateTime completion_date = null;
         string description;
-        char priority = 0;
+        char priority = TodoTask.NO_PRIO;
         TodoTask new_task;
 
         if (index != last && is_priority (parts[index])) {
@@ -349,7 +349,7 @@ class GOFI.TXT.TaskManager {
 
         new_task = new TodoTask (description, done | done_by_default);
 
-        if (priority != 0) {
+        if (priority != TodoTask.NO_PRIO) {
             new_task.priority = priority;
         }
         if (creation_date != null) {
@@ -367,7 +367,7 @@ class GOFI.TXT.TaskManager {
         var task_crea_date = task.creation_date;
         char task_prio = task.priority;
         string status_str = task.done ? "x " : "";
-        string prio_str = (task_prio != 0) ?  @"($task_prio) " : "";
+        string prio_str = (task_prio != TodoTask.NO_PRIO) ?  @"($task_prio) " : "";
         string comp_str = (task_comp_date != null) ? date_to_string (task_comp_date) + " " : "";
         string crea_str = (task_crea_date != null) ? date_to_string (task_crea_date) + " " : "";
 

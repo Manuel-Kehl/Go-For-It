@@ -68,6 +68,7 @@ public class GOFI.TodoTask : GLib.Object {
         public get;
         public set;
     }
+    public const char NO_PRIO=127;
 
     public signal void done_changed ();
     public signal void data_changed ();
@@ -77,5 +78,6 @@ public class GOFI.TodoTask : GLib.Object {
         completion_date = null;
         _done = done;
         _description = line;
+        priority = NO_PRIO;
     }
 }

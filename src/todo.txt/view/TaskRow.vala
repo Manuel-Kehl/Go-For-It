@@ -184,12 +184,12 @@ class GOFI.TaskRow: DragListRow {
         public signal void editing_finished ();
         public signal void strings_changed ();
 
-        public TaskEditEntry (string description, char priority = 0) {
+        public TaskEditEntry (string description, char priority = TodoTask.NO_PRIO) {
             this.description = description;
             this.priority = priority;
 
             can_focus = true;
-            if(priority == 0) {
+            if(priority == TodoTask.NO_PRIO) {
                 text = _description;
             } else {
                 text = @"($_priority) $_description";
@@ -268,7 +268,7 @@ class GOFI.TaskRow: DragListRow {
 
         private void gen_markup () {
             markup_string = make_links (GLib.Markup.escape_text (task.description));
-            if(task.priority != 0) {
+            if(task.priority != TodoTask.NO_PRIO) {
                 var prefix = _("priority");
                 var priority = task.priority;
                 markup_string = @"<b><a href=\"$prefix:$priority\">($priority)</a></b> $markup_string";
