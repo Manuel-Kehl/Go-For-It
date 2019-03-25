@@ -32,6 +32,9 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
     /* Data Model */
     private TaskStore model;
 
+    private const string placeholder_text = _("You currently don't have any tasks.\nAdd some!");
+    private const string filter_text = _("The search operation did not return any tasks");
+
     /* Signals */
     public signal void add_new_task (string task);
     public signal void selection_changed (TodoTask selected_task);
@@ -41,6 +44,12 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
             return search_bar.search_mode_enabled;
         }
         public set {
+            if (value) {
+                placeholder.label = filter_text;
+            } else {
+                placeholder.label = placeholder_text;
+            }
+
             search_bar.set_search_mode (value);
         }
     }
@@ -79,7 +88,7 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
     }
 
     private void on_row_link_clicked (string uri) {
-        search_bar.set_search_mode (true);
+        is_filtering = true;
         filter_entry.set_text (uri);
     }
 
@@ -144,7 +153,7 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
         // Handle "activate" signals (Enter Key presses)
         add_new_txt.activate.connect (on_entry_activate);
 
-        placeholder = new Gtk.Label (_("You currently don't have any tasks.\nAdd some!"));
+        placeholder = new Gtk.Label (placeholder_text);
         placeholder.wrap = true;
         placeholder.justify = Gtk.Justification.CENTER;
         placeholder.wrap_mode = Pango.WrapMode.WORD_CHAR;
