@@ -179,15 +179,15 @@ class GOFI.TXT.Filter {
 
         if (priority_constraint != null) {
             switch (priority_constraint.pc_type) {
-                case LESS:
+                case prio_constr_type.LESS:
                     return task.priority > priority_constraint.p1;
-                case GREATER:
+                case prio_constr_type.GREATER:
                     return task.priority < priority_constraint.p1;
-                case LESS_OR_EQUAL:
+                case prio_constr_type.LESS_OR_EQUAL:
                     return task.priority >= priority_constraint.p1;
-                case GREATER_OR_EQUAL:
+                case prio_constr_type.GREATER_OR_EQUAL:
                     return task.priority <= priority_constraint.p1;
-                case BETWEEN:
+                case prio_constr_type.BETWEEN:
                     return task.priority <= priority_constraint.p1 && task.priority >= priority_constraint.p2;
                 default:
                     return task.priority == priority_constraint.p1;
