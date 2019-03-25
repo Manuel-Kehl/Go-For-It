@@ -63,13 +63,13 @@ namespace GOFI.TXT.TxtUtils {
      * Removes and returns the priority from pseudo descriptions (task lines
      * consisting of at most a priority and a description)
      */
-    public static string? consume_priority (ref string pseudo_description) {
+    public static char consume_priority (ref string pseudo_description) {
         string[] parts = pseudo_description.split(" ", 2);
         if (parts[1] != null && is_priority(parts[0])) {
             pseudo_description = parts[1];
-            return parts[0];
+            return parts[0][1];
         } else {
-            return null;
+            return 0;
         }
     }
 

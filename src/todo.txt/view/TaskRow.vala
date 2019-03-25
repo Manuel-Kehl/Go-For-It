@@ -171,8 +171,8 @@ class GOFI.TaskRow: DragListRow {
             }
         }
 
-        private string? _priority;
-        public string? priority {
+        private char _priority;
+        public char priority {
             public get {
                 return _priority;
             }
@@ -184,15 +184,15 @@ class GOFI.TaskRow: DragListRow {
         public signal void editing_finished ();
         public signal void strings_changed ();
 
-        public TaskEditEntry (string description, string? priority = null) {
+        public TaskEditEntry (string description, char priority = 0) {
             this.description = description;
             this.priority = priority;
 
             can_focus = true;
-            if(priority == null) {
+            if(priority == 0) {
                 text = _description;
             } else {
-                text = _priority + " " + _description;
+                text = @"($_priority) $_description";
             }
         }
 
@@ -268,8 +268,10 @@ class GOFI.TaskRow: DragListRow {
 
         private void gen_markup () {
             markup_string = make_links (GLib.Markup.escape_text (task.description));
-            if(task.priority != null) {
-                markup_string = "<b>" + task.priority + "</b> " + markup_string;
+            if(task.priority != 0) {
+                var prefix = _("priority");
+                var priority = task.priority;
+                markup_string = @"<b><a href=\"$prefix:$priority\">($priority)</a></b> $markup_string";
             }
             if (task.done) {
                 markup_string = "<s>" + markup_string + "</s>";

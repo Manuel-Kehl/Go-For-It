@@ -99,7 +99,7 @@ class GOFI.TXT.TaskManager {
     public void add_new_task (string task) {
         string _task = task.strip ();
         if (_task != "") {
-            string? priority = consume_priority (ref _task);
+            char priority = consume_priority (ref _task);
             var todo_task = new TodoTask (_task, false);
             todo_task.priority = priority;
             todo_task.creation_date = new GLib.DateTime.now_local ();
@@ -314,11 +314,11 @@ class GOFI.TXT.TaskManager {
         DateTime creation_date = null;
         DateTime completion_date = null;
         string description;
-        string? priority = null;
+        char priority = 0;
         TodoTask new_task;
 
         if (index != last && is_priority (parts[index])) {
-            priority = parts[index];
+            priority = parts[index][1];
             index++;
         }
 
@@ -349,7 +349,7 @@ class GOFI.TXT.TaskManager {
 
         new_task = new TodoTask (description, done | done_by_default);
 
-        if (priority != null) {
+        if (priority != 0) {
             new_task.priority = priority;
         }
         if (creation_date != null) {
@@ -365,9 +365,9 @@ class GOFI.TXT.TaskManager {
     private string task_to_string (TodoTask task) {
         var task_comp_date = task.completion_date;
         var task_crea_date = task.creation_date;
-        string? task_prio = task.priority;
+        char task_prio = task.priority;
         string status_str = task.done ? "x " : "";
-        string prio_str = (task_prio != null) ?  task_prio + " " : "";
+        string prio_str = (task_prio != 0) ?  @"($task_prio) " : "";
         string comp_str = (task_comp_date != null) ? date_to_string (task_comp_date) + " " : "";
         string crea_str = (task_crea_date != null) ? date_to_string (task_crea_date) + " " : "";
 

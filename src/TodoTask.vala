@@ -64,7 +64,7 @@ public class GOFI.TodoTask : GLib.Object {
         public set;
     }
 
-    public string? priority {
+    public char priority {
         public get;
         public set;
     }
