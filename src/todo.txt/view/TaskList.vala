@@ -33,7 +33,7 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
     private TaskStore model;
 
     private const string placeholder_text_todo = _("You currently don't have any tasks.\nAdd some!");
-    private const string filter_text = _("The search operation did not return any tasks");
+    private const string filter_text = _("The search operation did not return any tasks.");
     private const string placeholder_text_done = _("You don't have any completed tasks stored.");
     private const string placeholder_text_finished = _("You finished all tasks, good job!");
     private string placeholder_text;
