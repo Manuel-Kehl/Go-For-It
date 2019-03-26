@@ -177,6 +177,10 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
         placeholder.label = placeholder_text_finished;
     }
 
+    public void entry_focus () {
+        add_new_txt.grab_focus ();
+    }
+
     private void on_search_bar_toggle () {
         if (search_bar.search_mode_enabled) {
             placeholder.label = filter_text;

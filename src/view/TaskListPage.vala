@@ -118,6 +118,11 @@ class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
         }
     }
 
+    public void action_add_task () {
+        activity_switcher.selected_item = "primary";
+        task_list.task_entry_focus ();
+    }
+
     /**
      * Adds the widgets from task_list as well as timer_view to the stack.
      */

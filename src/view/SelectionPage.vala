@@ -91,7 +91,7 @@ class GOFI.SelectionPage : Gtk.Grid {
         add_button.clicked.connect (on_add_button_clicked);
     }
 
-    private void on_add_button_clicked () {
+    public void show_list_creation_dialog () {
         if (create_dialog == null) {
             Gtk.Window? window = this.get_toplevel () as Gtk.Window;
             create_dialog = list_manager.get_txt_manager ().get_creation_dialog (window);
@@ -100,6 +100,10 @@ class GOFI.SelectionPage : Gtk.Grid {
             });
         }
         create_dialog.show_all ();
+    }
+
+    private void on_add_button_clicked () {
+        show_list_creation_dialog ();
     }
 
     private void on_todolist_view_row_activated (DragListRow? selected_row) {

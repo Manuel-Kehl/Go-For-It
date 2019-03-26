@@ -168,6 +168,10 @@ class GOFI.TXT.TxtList : Object {
         return list_settings.reminder_time;
     }
 
+    public void task_entry_focus () {
+        todo_list.entry_focus ();
+    }
+
     /**
      * Called when this todo.txt list has been selected by the user.
      * This function should be used to initialize the widgets and other objects.

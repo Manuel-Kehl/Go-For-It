@@ -57,6 +57,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     public const string ACTION_CONTRIBUTE = "contribute";
     public const string ACTION_FILTER = "filter";
     public const string ACTION_SETTINGS = "settings";
+    public const string ACTION_NEW = "new_todo";
 
     private const string switch_btn_overview_text = _("Go to overview");
     private const string switch_btn_list_text = _("Go back to the to-do list");
@@ -67,7 +68,8 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         { ACTION_CONTRIBUTE, show_contribute_dialog },
 #endif
         { ACTION_FILTER, toggle_search },
-        { ACTION_SETTINGS, show_settings }
+        { ACTION_SETTINGS, show_settings },
+        { ACTION_NEW, action_create_new }
     };
 
     /**
@@ -235,12 +237,22 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         actions.add_action_entries (action_entries, this);
         insert_action_group (ACTION_PREFIX, actions);
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_FILTER, {"<Control>f"});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_NEW, {"<Control>n"});
     }
 
     private void toggle_search () {
         var visible_page = top_stack.visible_child;
         if (visible_page == task_page) {
             task_page.toggle_filtering ();
+        }
+    }
+
+    private void action_create_new () {
+        var visible_page = top_stack.visible_child;
+        if (visible_page == task_page) {
+            task_page.action_add_task ();
+        } else {
+            selection_page.show_list_creation_dialog ();
         }
     }
 
