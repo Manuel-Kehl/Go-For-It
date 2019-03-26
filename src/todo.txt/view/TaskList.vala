@@ -32,8 +32,11 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
     /* Data Model */
     private TaskStore model;
 
-    private const string placeholder_text = _("You currently don't have any tasks.\nAdd some!");
+    private const string placeholder_text_todo = _("You currently don't have any tasks.\nAdd some!");
     private const string filter_text = _("The search operation did not return any tasks");
+    private const string placeholder_text_done = _("You don't have any completed tasks stored.");
+    private const string placeholder_text_finished = _("You finished all tasks, good job!");
+    private string placeholder_text;
 
     /* Signals */
     public signal void add_new_task (string task);
@@ -63,7 +66,11 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
         setup_task_view ();
         if (add_new) {
             setup_add_new ();
+            placeholder_text = placeholder_text_todo;
+        } else {
+            placeholder_text = placeholder_text_done;
         }
+        add_placeholder ();
     }
 
     public TodoTask? get_selected_task () {
@@ -88,6 +95,16 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
 
     private void on_deletion_requested (TaskRow row) {
         model.remove_task (row.task);
+    }
+
+    private void add_placeholder () {
+        placeholder = new Gtk.Label (placeholder_text);
+        placeholder.wrap = true;
+        placeholder.justify = Gtk.Justification.CENTER;
+        placeholder.wrap_mode = Pango.WrapMode.WORD_CHAR;
+        placeholder.width_request = 200;
+        task_view.set_placeholder (placeholder);
+        placeholder.show ();
     }
 
     /**
@@ -147,14 +164,6 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
         // Handle "activate" signals (Enter Key presses)
         add_new_txt.activate.connect (on_entry_activate);
 
-        placeholder = new Gtk.Label (placeholder_text);
-        placeholder.wrap = true;
-        placeholder.justify = Gtk.Justification.CENTER;
-        placeholder.wrap_mode = Pango.WrapMode.WORD_CHAR;
-        placeholder.width_request = 200;
-        task_view.set_placeholder (placeholder);
-        placeholder.show ();
-
         add_new_grid.add (add_new_txt);
 
         // Add to the main widget
@@ -164,7 +173,8 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
     private void on_entry_activate () {
         add_new_task (add_new_txt.text);
         add_new_txt.text = "";
-        placeholder.label = _("You finished all tasks, good job!");
+        placeholder_text = placeholder_text_finished;
+        placeholder.label = placeholder_text_finished;
     }
 
     private void on_search_bar_toggle () {
