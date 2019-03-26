@@ -69,7 +69,7 @@ namespace GOFI.TXT.TxtUtils {
             pseudo_description = parts[1];
             return parts[0][1];
         } else {
-            return 0;
+            return TodoTask.NO_PRIO;
         }
     }
 
