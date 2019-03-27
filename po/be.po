@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-11 12:52+0100\n"
+"POT-Creation-Date: 2019-03-26 11:45+0100\n"
 "PO-Revision-Date: 2016-11-18 19:57+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,12 +21,12 @@ msgstr ""
 msgid "Show about dialog"
 msgstr ""
 
-#: ../src/SettingsManager.vala:292 ../src/todo.txt/TxtListManager.vala:55
-#: ../src/todo.txt/TxtListManager.vala:439
+#: ../src/SettingsManager.vala:292 ../src/todo.txt/TxtListManager.vala:58
+#: ../src/todo.txt/TxtListManager.vala:459
 msgid "Couldn't create directory: %s"
 msgstr ""
 
-#: ../src/SettingsManager.vala:453
+#: ../src/SettingsManager.vala:428
 msgid "Couldn't properly import settings from %s: %s"
 msgstr ""
 
@@ -34,81 +34,105 @@ msgstr ""
 msgid "Inherit from Gtk theme"
 msgstr ""
 
-#: ../src/todo.txt/Filter.vala:39 ../src/todo.txt/view/TaskRow.vala:301
+#: ../src/todo.txt/Filter.vala:69 ../src/todo.txt/view/TaskRow.vala:303
 msgid "project"
 msgstr ""
 
-#: ../src/todo.txt/Filter.vala:45 ../src/todo.txt/view/TaskRow.vala:296
+#: ../src/todo.txt/Filter.vala:75 ../src/todo.txt/view/TaskRow.vala:298
 msgid "context"
 msgstr ""
 
-#: ../src/todo.txt/TaskManager.vala:53
+#: ../src/todo.txt/Filter.vala:81 ../src/todo.txt/view/TaskRow.vala:272
+msgid "priority"
+msgstr ""
+
+#: ../src/todo.txt/TaskManager.vala:46
+msgid "Spread the word about \"Go For It!\""
+msgstr ""
+
+#: ../src/todo.txt/TaskManager.vala:47
+msgid "Consider a donation to help the project"
+msgstr ""
+
+#: ../src/todo.txt/TaskManager.vala:48
+msgid "Consider contributing to the project"
+msgstr ""
+
+#: ../src/todo.txt/TaskManager.vala:51
 msgid ""
 "Go For It! won't save or load from the current todo.txt directory until it "
 "is either restarted or another location is chosen."
 msgstr ""
 
-#: ../src/todo.txt/TaskManager.vala:54
+#: ../src/todo.txt/TaskManager.vala:52
 msgid "Couldn't read the todo.txt file (%s):"
 msgstr ""
 
-#: ../src/todo.txt/TaskManager.vala:55
+#: ../src/todo.txt/TaskManager.vala:53
 msgid "Couldn't save the to-do list (%s):"
 msgstr ""
 
-#: ../src/todo.txt/TaskManager.vala:56
+#: ../src/todo.txt/TaskManager.vala:54
 msgid ""
 "The path to the todo.txt directory does not point to a directory, but to a "
 "file or mountable location. Please change the path in the settings to a "
 "suitable directory or remove this file."
 msgstr ""
 
-#: ../src/todo.txt/TxtList.vala:180
+#: ../src/todo.txt/TxtList.vala:184
 msgid "Clear Done List"
 msgstr ""
 
-#: ../src/todo.txt/TxtListManager.vala:196
+#: ../src/todo.txt/TxtListManager.vala:202
 msgid "An error was encountered while moving a file!"
 msgstr ""
 
-#: ../src/todo.txt/TxtListManager.vala:198
+#: ../src/todo.txt/TxtListManager.vala:204
 msgid "Error information: "
 msgstr ""
 
-#: ../src/todo.txt/TxtListManager.vala:220
+#: ../src/todo.txt/TxtListManager.vala:226
 msgid "Todo.txt files were found in the destination directory."
 msgstr ""
 
-#: ../src/todo.txt/TxtListManager.vala:224
+#: ../src/todo.txt/TxtListManager.vala:230
 msgid "What should be done with these files?"
 msgstr ""
 
-#: ../src/todo.txt/TxtListManager.vala:226
+#: ../src/todo.txt/TxtListManager.vala:232
 msgid "Keep old"
 msgstr ""
 
-#: ../src/todo.txt/TxtListManager.vala:228
+#: ../src/todo.txt/TxtListManager.vala:234
 msgid "Overwrite"
 msgstr ""
 
-#: ../src/todo.txt/TxtListManager.vala:230
+#: ../src/todo.txt/TxtListManager.vala:236
 #: ../src/todo.txt/view/TxtListEditDialog.vala:56
 #: ../src/todo.txt/view/TxtListEditDialog.vala:61
 msgid "Cancel"
 msgstr ""
 
-#: ../src/todo.txt/view/TaskList.vala:131
-msgid "Add new task"
-msgstr ""
-
-#: ../src/todo.txt/view/TaskList.vala:147
+#: ../src/todo.txt/view/TaskList.vala:35
 msgid ""
 "You currently don't have any tasks.\n"
 "Add some!"
 msgstr ""
 
-#: ../src/todo.txt/view/TaskList.vala:164
+#: ../src/todo.txt/view/TaskList.vala:36
+msgid "The search operation did not return any tasks."
+msgstr ""
+
+#: ../src/todo.txt/view/TaskList.vala:37
+msgid "You don't have any completed tasks stored."
+msgstr ""
+
+#: ../src/todo.txt/view/TaskList.vala:38
 msgid "You finished all tasks, good job!"
+msgstr ""
+
+#: ../src/todo.txt/view/TaskList.vala:151
+msgid "Add new task"
 msgstr ""
 
 #. //valadoc.org/glib-2.0/GLib.DateTime.format.html for
@@ -139,6 +163,7 @@ msgid "New to-do list"
 msgstr ""
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:57
+#: ../src/view/SelectionPage.vala:88
 msgid "Add list"
 msgstr ""
 
@@ -160,7 +185,7 @@ msgstr ""
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:276
 #: ../src/view/Dialogs/SettingsDialog.vala:69 ../src/view/TaskListPage.vala:87
-#: ../src/view/TaskListPage.vala:141
+#: ../src/view/TaskListPage.vala:146
 msgid "Timer"
 msgstr ""
 
@@ -183,7 +208,7 @@ msgstr ""
 msgid "Reminder before task ends (seconds)"
 msgstr ""
 
-#: ../src/view/Dialogs/AboutDialog.vala:27 ../src/view/MainWindow.vala:372
+#: ../src/view/Dialogs/AboutDialog.vala:27 ../src/view/MainWindow.vala:385
 msgid "About"
 msgstr ""
 
@@ -209,7 +234,7 @@ msgstr ""
 msgid "If you really like this app, you can buy me a drink:"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsDialog.vala:45 ../src/view/MainWindow.vala:359
+#: ../src/view/Dialogs/SettingsDialog.vala:45 ../src/view/MainWindow.vala:372
 msgid "Settings"
 msgstr ""
 
@@ -258,43 +283,43 @@ msgstr ""
 msgid "Use a header bar"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:61
+#: ../src/view/MainWindow.vala:62
 msgid "Go to overview"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:62
+#: ../src/view/MainWindow.vala:63
 msgid "Go back to the to-do list"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:262
+#: ../src/view/MainWindow.vala:274
 msgid "Menu"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:365
+#: ../src/view/MainWindow.vala:378
 msgid "Contribute / Donate"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:414 ../src/view/TimerView.vala:81
+#: ../src/view/MainWindow.vala:427 ../src/view/TimerView.vala:81
 msgid "Take a Break"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:415
+#: ../src/view/MainWindow.vala:428
 msgid "Relax and stop thinking about your current task for a while"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:420
+#: ../src/view/MainWindow.vala:433
 msgid "The Break is Over"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:421
+#: ../src/view/MainWindow.vala:434
 msgid "Your next task is"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:441
+#: ../src/view/MainWindow.vala:454
 msgid "Prepare for your break"
 msgstr ""
 
-#: ../src/view/MainWindow.vala:442
+#: ../src/view/MainWindow.vala:455
 msgid "You have %s seconds left"
 msgstr ""
 
@@ -308,11 +333,11 @@ msgstr ""
 msgid "Lists"
 msgstr ""
 
-#: ../src/view/TaskListPage.vala:86 ../src/view/TaskListPage.vala:133
+#: ../src/view/TaskListPage.vala:86 ../src/view/TaskListPage.vala:138
 msgid "To-Do"
 msgstr ""
 
-#: ../src/view/TaskListPage.vala:88 ../src/view/TaskListPage.vala:136
+#: ../src/view/TaskListPage.vala:88 ../src/view/TaskListPage.vala:141
 msgid "Done"
 msgstr ""
 
@@ -352,10 +377,10 @@ msgstr ""
 msgid "You have nothing to do."
 msgstr ""
 
-#: ../src/view/Widgets/TodoListInfoRow.vala:93
+#: ../src/view/Widgets/TodoListInfoRow.vala:94
 msgid "Delete"
 msgstr ""
 
-#: ../src/view/Widgets/TodoListInfoRow.vala:94
+#: ../src/view/Widgets/TodoListInfoRow.vala:95
 msgid "Edit"
 msgstr ""
