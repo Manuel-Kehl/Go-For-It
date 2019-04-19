@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-26 11:45+0100\n"
-"PO-Revision-Date: 2017-12-26 15:25+0000\n"
-"Last-Translator: Adolfo Jayme <Unknown>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-04-20 16:33+0000\n"
+"Last-Translator: Rui Mendes <xz9@protonmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.6\n"
 "X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
-"X-Generator: Launchpad (build 18521)\n"
 
 #: ../src/Main.vala:92
 msgid "Print version info and exit"
@@ -379,7 +381,7 @@ msgstr "Relajarse"
 
 #: ../src/view/TimerView.vala:268
 msgid "You have nothing to do."
-msgstr "Nada por hacer"
+msgstr "Nada por hacer."
 
 #: ../src/view/Widgets/TodoListInfoRow.vala:94
 msgid "Delete"
