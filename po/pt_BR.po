@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-26 11:45+0100\n"
-"PO-Revision-Date: 2017-10-06 22:00+0000\n"
-"Last-Translator: Gustavo H M Silva <Unknown>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-04-20 16:33+0000\n"
+"Last-Translator: Rui Mendes <xz9@protonmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
+"go-for-it/go-for-it/pt_BR/>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.6\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
-"X-Generator: Launchpad (build 18505)\n"
 
 #: ../src/Main.vala:92
 msgid "Print version info and exit"
@@ -63,16 +65,16 @@ msgid ""
 "Go For It! won't save or load from the current todo.txt directory until it "
 "is either restarted or another location is chosen."
 msgstr ""
-"Go For It! não salvará ou abrirá do atual diretório todo.txt enquanto nãofor "
-"reaberto ou outro local seja escolhido"
+"Go For It! não salvará ou abrirá do atual diretório todo.txt enquanto não "
+"for reiniciado ou outro local seja escolhido."
 
 #: ../src/todo.txt/TaskManager.vala:52
 msgid "Couldn't read the todo.txt file (%s):"
-msgstr "Impossível ler o arquivo todo.txt (%s)"
+msgstr "Impossível ler o arquivo todo.txt (%s):"
 
 #: ../src/todo.txt/TaskManager.vala:53
 msgid "Couldn't save the to-do list (%s):"
-msgstr "Impossível salvar a lista dodo (%s)"
+msgstr "Impossível salvar a lista afazeres (%s):"
 
 #: ../src/todo.txt/TaskManager.vala:54
 msgid ""
@@ -80,9 +82,9 @@ msgid ""
 "file or mountable location. Please change the path in the settings to a "
 "suitable directory or remove this file."
 msgstr ""
-"O caminho para o diretório todo.txt não aponta para um diretório, mas paraum "
-"arquivo ou local montável. Por favor mude o caminho nas configurações parao "
-"diretório correto ou remova este arquivo."
+"O caminho para o diretório todo.txt não aponta para um diretório, mas para "
+"um arquivo ou local montável. Por favor mude o caminho nas configurações "
+"para o diretório correto ou remova este arquivo."
 
 #: ../src/todo.txt/TxtList.vala:184
 msgid "Clear Done List"
@@ -94,7 +96,7 @@ msgstr ""
 
 #: ../src/todo.txt/TxtListManager.vala:204
 msgid "Error information: "
-msgstr ""
+msgstr "Informação do erro: "
 
 #: ../src/todo.txt/TxtListManager.vala:226
 msgid "Todo.txt files were found in the destination directory."
@@ -106,7 +108,7 @@ msgstr ""
 
 #: ../src/todo.txt/TxtListManager.vala:232
 msgid "Keep old"
-msgstr ""
+msgstr "Manter antigos"
 
 #: ../src/todo.txt/TxtListManager.vala:234
 msgid "Overwrite"
@@ -116,7 +118,7 @@ msgstr ""
 #: ../src/todo.txt/view/TxtListEditDialog.vala:56
 #: ../src/todo.txt/view/TxtListEditDialog.vala:61
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: ../src/todo.txt/view/TaskList.vala:35
 msgid ""
@@ -144,7 +146,7 @@ msgstr "Adicionar nova tarefa"
 #. formatting of DateTime
 #: ../src/todo.txt/view/TaskRow.vala:251
 msgid "%Y-%m-%d"
-msgstr ""
+msgstr "%Y-%m-%d"
 
 #: ../src/todo.txt/view/TaskRow.vala:255
 msgid "Task completed at %s, created at %s"
@@ -152,7 +154,7 @@ msgstr ""
 
 #: ../src/todo.txt/view/TaskRow.vala:262
 msgid "Task created at %s"
-msgstr ""
+msgstr "Tarefa criada em %s"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:42
 #: ../src/todo.txt/view/TxtListEditDialog.vala:221
@@ -161,16 +163,16 @@ msgstr "pasta"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:43
 msgid "List name"
-msgstr ""
+msgstr "Nome da lista"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:55
 msgid "New to-do list"
-msgstr ""
+msgstr "Nova lista de tarefas"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:57
 #: ../src/view/SelectionPage.vala:88
 msgid "Add list"
-msgstr ""
+msgstr "Adicionar lista"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:60
 msgid "Edit to-do list properties"
@@ -178,7 +180,7 @@ msgstr ""
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:62
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:108
 msgid "The configured directory is already in use by another list."
@@ -256,7 +258,7 @@ msgstr "Aspecto"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:180
 msgid "General"
-msgstr ""
+msgstr "Geral"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:182
 msgid "Use small toolbar icons"
@@ -268,16 +270,16 @@ msgstr ""
 
 #: ../src/view/Dialogs/SettingsDialog.vala:192
 msgid "Icons"
-msgstr ""
+msgstr "Ícones"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:193
 msgid "Text"
-msgstr ""
+msgstr "Texto"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:235
 #: ../src/view/Dialogs/SettingsDialog.vala:237
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:236
 msgid "Dark theme"
@@ -339,7 +341,7 @@ msgstr ""
 
 #: ../src/view/TaskListPage.vala:80
 msgid "Lists"
-msgstr ""
+msgstr "Listas"
 
 #: ../src/view/TaskListPage.vala:86 ../src/view/TaskListPage.vala:138
 msgid "To-Do"
@@ -383,15 +385,15 @@ msgstr "Relaxe"
 
 #: ../src/view/TimerView.vala:268
 msgid "You have nothing to do."
-msgstr "Você não tem tarefas"
+msgstr "Você não tem tarefas."
 
 #: ../src/view/Widgets/TodoListInfoRow.vala:94
 msgid "Delete"
-msgstr ""
+msgstr "Deletar"
 
 #: ../src/view/Widgets/TodoListInfoRow.vala:95
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #~ msgid ""
 #~ "If no appropriate folder was found, Go For It! defaults to creating a "
