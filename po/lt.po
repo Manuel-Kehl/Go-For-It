@@ -3,15 +3,19 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-26 11:45+0100\n"
-"PO-Revision-Date: 2018-04-04 21:02+0000\n"
+"PO-Revision-Date: 2019-04-22 20:34+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: Lithuanian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/lt/>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && (n % 100 < 11 || n % 100 > "
+"19)) ? 0 : ((n % 10 >= 2 && n % 10 <= 9 && (n % 100 < 11 || n % 100 > 19)) ? "
+"1 : 2);\n"
+"X-Generator: Weblate 3.7-dev\n"
 "X-Launchpad-Export-Date: 2018-04-05 05:31+0000\n"
-"X-Generator: Launchpad (build 18599)\n"
 
 #: ../src/Main.vala:92
 msgid "Print version info and exit"
@@ -32,7 +36,7 @@ msgstr "Nepavyko tinkamai importuoti nustatymus iš %s: %s"
 
 #: ../src/Theme.vala:54
 msgid "Inherit from Gtk theme"
-msgstr ""
+msgstr "Paveldėti iš Gtk temos"
 
 #: ../src/todo.txt/Filter.vala:69 ../src/todo.txt/view/TaskRow.vala:303
 msgid "project"
@@ -90,39 +94,41 @@ msgstr "Išvalyti atliktų užduočių sąrašą"
 
 #: ../src/todo.txt/TxtListManager.vala:202
 msgid "An error was encountered while moving a file!"
-msgstr ""
+msgstr "Perkeliant failą, susidurta su klaida!"
 
 #: ../src/todo.txt/TxtListManager.vala:204
 msgid "Error information: "
-msgstr ""
+msgstr "Klaidos informacija: "
 
 #: ../src/todo.txt/TxtListManager.vala:226
 msgid "Todo.txt files were found in the destination directory."
-msgstr ""
+msgstr "Paskirties kataloge buvo rasti Todo.txt failai."
 
 #: ../src/todo.txt/TxtListManager.vala:230
 msgid "What should be done with these files?"
-msgstr ""
+msgstr "Kas turėtų būti padaryta su šiais failais?"
 
 #: ../src/todo.txt/TxtListManager.vala:232
 msgid "Keep old"
-msgstr ""
+msgstr "Palikti senus"
 
 #: ../src/todo.txt/TxtListManager.vala:234
 msgid "Overwrite"
-msgstr ""
+msgstr "Perrašyti"
 
 #: ../src/todo.txt/TxtListManager.vala:236
 #: ../src/todo.txt/view/TxtListEditDialog.vala:56
 #: ../src/todo.txt/view/TxtListEditDialog.vala:61
 msgid "Cancel"
-msgstr ""
+msgstr "Atsisakyti"
 
 #: ../src/todo.txt/view/TaskList.vala:35
 msgid ""
 "You currently don't have any tasks.\n"
 "Add some!"
 msgstr ""
+"Šiuo metu neturite jokių užduočių.\n"
+"Pridėkite jas!"
 
 #: ../src/todo.txt/view/TaskList.vala:36
 msgid "The search operation did not return any tasks."
@@ -134,7 +140,7 @@ msgstr ""
 
 #: ../src/todo.txt/view/TaskList.vala:38
 msgid "You finished all tasks, good job!"
-msgstr ""
+msgstr "Jūs užbaigėte visas užduotis, gerai padirbėta!"
 
 #: ../src/todo.txt/view/TaskList.vala:151
 msgid "Add new task"
@@ -144,15 +150,15 @@ msgstr "Pridėti naują užduotį"
 #. formatting of DateTime
 #: ../src/todo.txt/view/TaskRow.vala:251
 msgid "%Y-%m-%d"
-msgstr ""
+msgstr "%Y %m %d"
 
 #: ../src/todo.txt/view/TaskRow.vala:255
 msgid "Task completed at %s, created at %s"
-msgstr ""
+msgstr "Užduotis užbaigta ties %s, sukurta ties %s"
 
 #: ../src/todo.txt/view/TaskRow.vala:262
 msgid "Task created at %s"
-msgstr ""
+msgstr "Užduotis sukurta ties %s"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:42
 #: ../src/todo.txt/view/TxtListEditDialog.vala:221
@@ -161,32 +167,32 @@ msgstr "katalogas"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:43
 msgid "List name"
-msgstr ""
+msgstr "Sąrašo pavadinimas"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:55
 msgid "New to-do list"
-msgstr ""
+msgstr "Naujas užduočių sąrašas"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:57
 #: ../src/view/SelectionPage.vala:88
 msgid "Add list"
-msgstr ""
+msgstr "Pridėti sąrašą"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:60
 msgid "Edit to-do list properties"
-msgstr ""
+msgstr "Taisyti užduočių sąrašo savybes"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:62
 msgid "Apply"
-msgstr ""
+msgstr "Taikyti"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:108
 msgid "The configured directory is already in use by another list."
-msgstr ""
+msgstr "Sukonfigūruotą katalogą jau naudoja kitas sąrašas."
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:128
 msgid "Please assign a name to the list."
-msgstr ""
+msgstr "Priskirkite sąrašui pavadinimą."
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:276
 #: ../src/view/Dialogs/SettingsDialog.vala:69 ../src/view/TaskListPage.vala:87
@@ -196,7 +202,7 @@ msgstr "Laikmatis"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:277
 msgid "Use default settings"
-msgstr ""
+msgstr "Naudoti numatytuosius nustatymus"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:278
 #: ../src/view/Dialogs/SettingsDialog.vala:131
@@ -255,28 +261,28 @@ msgstr "Išvaizda"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:180
 msgid "General"
-msgstr ""
+msgstr "Bendra"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:182
 msgid "Use small toolbar icons"
-msgstr ""
+msgstr "Naudoti mažas įrankių juostos piktogramas"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:185
 msgid "Appearance of the activity switcher"
-msgstr ""
+msgstr "Veiklų perjungiklio išvaizda"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:192
 msgid "Icons"
-msgstr ""
+msgstr "Piktogramos"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:193
 msgid "Text"
-msgstr ""
+msgstr "Tekstas"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:235
 #: ../src/view/Dialogs/SettingsDialog.vala:237
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:236
 msgid "Dark theme"
@@ -285,6 +291,7 @@ msgstr "Tamsi tema"
 #: ../src/view/Dialogs/SettingsDialog.vala:266
 msgid "Go For It! needs to be restarted for this setting to take effect"
 msgstr ""
+"Tam, kad šis nustatymas įsigaliotų, Go For It! turi būti paleista iš naujo"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:269
 msgid "Use a header bar"
@@ -292,11 +299,11 @@ msgstr "Naudoti antraštės juostą"
 
 #: ../src/view/MainWindow.vala:62
 msgid "Go to overview"
-msgstr ""
+msgstr "Pereiti į apžvalgą"
 
 #: ../src/view/MainWindow.vala:63
 msgid "Go back to the to-do list"
-msgstr ""
+msgstr "Grįžti į užduočių sąrašą"
 
 #: ../src/view/MainWindow.vala:274
 msgid "Menu"
@@ -335,10 +342,12 @@ msgid ""
 "Currently, no lists are configured.\n"
 "Add one below!"
 msgstr ""
+"Šiuo metu nėra sukonfigūruotų sąrašų.\n"
+"Pridėkite kurį nors žemiau!"
 
 #: ../src/view/TaskListPage.vala:80
 msgid "Lists"
-msgstr ""
+msgstr "Sąrašai"
 
 #: ../src/view/TaskListPage.vala:86 ../src/view/TaskListPage.vala:138
 msgid "To-Do"
@@ -386,11 +395,11 @@ msgstr "Jums nėra ką atlikti."
 
 #: ../src/view/Widgets/TodoListInfoRow.vala:94
 msgid "Delete"
-msgstr ""
+msgstr "Ištrinti"
 
 #: ../src/view/Widgets/TodoListInfoRow.vala:95
 msgid "Edit"
-msgstr ""
+msgstr "Taisyti"
 
 #~ msgid ""
 #~ "If no appropriate folder was found, Go For It! defaults to creating a "
