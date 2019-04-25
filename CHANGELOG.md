@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.7.2](https://github.com/JMoerman/Go-For-It/tree/1.7.2) (2019-04-25)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.7.1...1.7.2)
+
+**Implemented enhancements:**
+
+- Switched to weblate for translations.
+- Introduced sorting by priority.
+- The following translations were updated: Portuguese, Spanish, Lithuanian, Korean, Norwegian Bokmål.
+- The ctrl+n shortcut was added to quickly create new tasks or lists.
+
 ## [1.7.1](https://github.com/JMoerman/Go-For-It/tree/1.7.1) (2019-03-18)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.7.0...1.7.1)
 

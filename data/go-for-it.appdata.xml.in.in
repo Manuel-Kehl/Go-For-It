@@ -35,6 +35,17 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
+    <release version="1.7.2" date="2019-04-25">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Switched to weblate for translations.</li>
+          <li>Allow sorting by priority.</li>
+          <li>The following translations were updated: Portuguese, Spanish, Lithuanian, Korean, Norwegian Bokmål.</li>
+          <li>The ctrl+n shortcut was added to quickly create new tasks or lists.</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.7.1" date="2019-03-18">
       <description>
         <p>Bugfixes:</p>
