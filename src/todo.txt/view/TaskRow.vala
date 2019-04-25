@@ -117,11 +117,15 @@ class GOFI.TaskRow: DragListRow {
         if (!editing) {
             return;
         }
+        var had_focus = edit_entry.has_focus;
         set_center_widget (markup_label);
         set_start_widget (check_button);
         delete_button = null;
         edit_entry = null;
         editing = false;
+        if (had_focus) {
+            grab_focus();
+        }
     }
 
     private bool on_row_key_release (Gdk.EventKey event) {
