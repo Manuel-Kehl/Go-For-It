@@ -30,6 +30,7 @@ public class GOFI.DragList : Gtk.Bin {
 
     private DragListRow? hover_row_top;
     private DragListRow? hover_row_bottom;
+    private DragListRow? selected_row;
     internal DragListRow? drag_row;
     private bool should_scroll = false;
     private bool scrolling = false;
@@ -99,6 +100,7 @@ public class GOFI.DragList : Gtk.Bin {
      * when the last row is removed.
      */
     public virtual signal void row_selected (DragListRow? row) {
+        selected_row = row;
         return;
     }
 
@@ -123,6 +125,7 @@ public class GOFI.DragList : Gtk.Bin {
         listbox = new Gtk.ListBox ();
         listbox.set_selection_mode (Gtk.SelectionMode.BROWSE);
         listbox.set_activate_on_single_click (false);
+        selected_row = null;
         Gtk.drag_dest_set (
             listbox, Gtk.DestDefaults.ALL, dlb_entries, Gdk.DragAction.MOVE
         );
@@ -238,7 +241,7 @@ public class GOFI.DragList : Gtk.Bin {
      * Returns the currently selected row.
      */
     public unowned DragListRow? get_selected_row () {
-        return (DragListRow) listbox.get_selected_row ();
+        return selected_row;
     }
 
     /**
@@ -354,6 +357,7 @@ public class GOFI.DragList : Gtk.Bin {
     private void _move_row (DragListRow row, int index, bool relative) {
         int old_index = row.get_index ();
         bool row_was_selected = listbox.get_selected_row () == row;
+        bool row_had_focus = row.has_focus;
         block_row_selected = true;
         if (old_index != index) {
             if (relative && index > old_index) {
@@ -368,8 +372,12 @@ public class GOFI.DragList : Gtk.Bin {
                 model.move_item (old_index, index);
             }
         }
-        if(row_was_selected) {
+        if (row_was_selected) {
             listbox.select_row (row);
+            selected_row = row;
+        }
+        if (row_had_focus) {
+            row.grab_focus ();
         }
         block_row_selected = false;
     }
