@@ -125,9 +125,21 @@ class GOFI.TaskRow: DragListRow {
     }
 
     private bool on_row_key_release (Gdk.EventKey event) {
-        if (event.keyval == Gdk.Key.Delete && (!editing || !edit_entry.has_focus)) {
-            deletion_requested ();
-            return true;
+        switch (event.keyval) {
+            case Gdk.Key.Delete:
+                if (!editing || !edit_entry.has_focus) {
+                    deletion_requested ();
+                    return true;
+                }
+                break;
+            case Gdk.Key.Escape:
+                if (editing) {
+                    stop_editing ();
+                    return true;
+                }
+                break;
+            default:
+                return false;
         }
         return false;
     }
