@@ -165,7 +165,6 @@ class GOFI.TXT.TaskManager {
     }
 
     private void load_task_stores () {
-        stdout.printf ("load_task_stores\n");
         todo_txt_dir = File.new_for_path (settings.todo_txt_location);
         todo_txt = todo_txt_dir.get_child ("todo.txt");
         done_txt = todo_txt_dir.get_child ("done.txt");

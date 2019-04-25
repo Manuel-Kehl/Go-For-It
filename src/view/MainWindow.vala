@@ -58,6 +58,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     public const string ACTION_FILTER = "filter";
     public const string ACTION_SETTINGS = "settings";
     public const string ACTION_NEW = "new_todo";
+    public const string ACTION_TIMER = "toggle_timer";
 
     private const string switch_btn_overview_text = _("Go to overview");
     private const string switch_btn_list_text = _("Go back to the to-do list");
@@ -69,7 +70,8 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 #endif
         { ACTION_FILTER, toggle_search },
         { ACTION_SETTINGS, show_settings },
-        { ACTION_NEW, action_create_new }
+        { ACTION_NEW, action_create_new },
+        { ACTION_TIMER, action_toggle_timer }
     };
 
     /**
@@ -238,6 +240,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         insert_action_group (ACTION_PREFIX, actions);
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_FILTER, {"<Control>f"});
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_NEW, {"<Control>n"});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TIMER, {"<Control>p"});
     }
 
     private void toggle_search () {
@@ -253,6 +256,12 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             task_page.action_add_task ();
         } else {
             selection_page.show_list_creation_dialog ();
+        }
+    }
+
+    private void action_toggle_timer () {
+        if (task_page.ready && task_timer.active_task != null) {
+            task_timer.toggle_running ();
         }
     }
 

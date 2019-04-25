@@ -155,6 +155,14 @@ class GOFI.TaskTimer {
         reset ();
     }
 
+    public void toggle_running () {
+        if (running) {
+            stop ();
+        } else {
+            start ();
+        }
+    }
+
     public void start () {
         if (!running && active_task != null) {
             start_time = new DateTime.now_utc ();

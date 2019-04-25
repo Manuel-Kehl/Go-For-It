@@ -112,12 +112,7 @@ class GOFI.TimerView : Gtk.Grid {
     }
 
     private void on_run_btn_clicked () {
-        if (timer.running) {
-            timer.stop ();
-        }
-        else {
-            timer.start ();
-        }
+        timer.toggle_running ();
     }
 
     public DateTime get_timer_values ()  {
