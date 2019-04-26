@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-26 11:45+0100\n"
-"PO-Revision-Date: 2019-03-23 18:31+0000\n"
+"PO-Revision-Date: 2019-04-26 19:20+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/go-for-"
-"it/go-for-it/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"go-for-it/go-for-it/nb_NO/>\n"
 "Language: no\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.6-dev\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Main.vala:92
@@ -48,19 +48,19 @@ msgstr "kontekst"
 
 #: ../src/todo.txt/Filter.vala:81 ../src/todo.txt/view/TaskRow.vala:272
 msgid "priority"
-msgstr ""
+msgstr "prioritet"
 
 #: ../src/todo.txt/TaskManager.vala:46
 msgid "Spread the word about \"Go For It!\""
-msgstr ""
+msgstr "Fyr opp jungeltelegrafen om \"Go For It!\""
 
 #: ../src/todo.txt/TaskManager.vala:47
 msgid "Consider a donation to help the project"
-msgstr ""
+msgstr "Overvei å donere for å hjelpe prosjektet"
 
 #: ../src/todo.txt/TaskManager.vala:48
 msgid "Consider contributing to the project"
-msgstr ""
+msgstr "Overvei å bidra til prosjektet"
 
 #: ../src/todo.txt/TaskManager.vala:51
 msgid ""
@@ -132,17 +132,11 @@ msgstr ""
 
 #: ../src/todo.txt/view/TaskList.vala:36
 msgid "The search operation did not return any tasks."
-msgstr ""
+msgstr "Fant ingen gjøremål."
 
 #: ../src/todo.txt/view/TaskList.vala:37
-#, fuzzy
-#| msgid ""
-#| "You currently don't have any tasks.\n"
-#| "Add some!"
 msgid "You don't have any completed tasks stored."
-msgstr ""
-"Du har ikke noen gjøremål.\n"
-"Legg til noen."
+msgstr "Du har ingen fullførte gjøremål lagret."
 
 #: ../src/todo.txt/view/TaskList.vala:38
 msgid "You finished all tasks, good job!"
