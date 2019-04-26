@@ -59,6 +59,13 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     public const string ACTION_SETTINGS = "settings";
     public const string ACTION_NEW = "new_todo";
     public const string ACTION_TIMER = "toggle_timer";
+    public const string ACTION_TASK_DONE = "task_mark_done";
+    public const string ACTION_TASK_NEXT = "task_next";
+    public const string ACTION_TASK_PREV = "task_prev";
+    public const string ACTION_ROW_MOVE_UP = "row_move_up";
+    public const string ACTION_ROW_MOVE_DOWN = "row_move_down";
+    public const string ACTION_SWITCH_PAGE_LEFT = "switch_page_left";
+    public const string ACTION_SWITCH_PAGE_RIGHT = "switch_page_right";
 
     private const string switch_btn_overview_text = _("Go to overview");
     private const string switch_btn_list_text = _("Go back to the to-do list");
@@ -71,7 +78,14 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         { ACTION_FILTER, toggle_search },
         { ACTION_SETTINGS, show_settings },
         { ACTION_NEW, action_create_new },
-        { ACTION_TIMER, action_toggle_timer }
+        { ACTION_TIMER, action_toggle_timer },
+        { ACTION_TASK_DONE, action_mark_task_done },
+        { ACTION_TASK_NEXT, action_task_switch_next },
+        { ACTION_TASK_PREV, action_task_switch_prev },
+        { ACTION_ROW_MOVE_UP, action_row_move_up },
+        { ACTION_ROW_MOVE_DOWN, action_row_move_down },
+        { ACTION_SWITCH_PAGE_LEFT, action_switch_page_left },
+        { ACTION_SWITCH_PAGE_RIGHT, action_switch_page_right }
     };
 
     /**
@@ -238,21 +252,26 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         var actions = new SimpleActionGroup ();
         actions.add_action_entries (action_entries, this);
         insert_action_group (ACTION_PREFIX, actions);
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_FILTER, {"<Control>f"});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_NEW, {"<Control>n"});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TIMER, {"<Control>p"});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_FILTER, {"<Control>F"});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_NEW, {"<Control>N"});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TIMER, {"<Control>P"});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TASK_DONE, {"<Control>Return"});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TASK_NEXT, {"K"});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TASK_PREV, {"J"});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_ROW_MOVE_UP, {"<Control>K"});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_ROW_MOVE_DOWN, {"<Control>J"});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_SWITCH_PAGE_LEFT, {"<Shift>J"});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_SWITCH_PAGE_RIGHT, {"<Shift>K"});
     }
 
     private void toggle_search () {
-        var visible_page = top_stack.visible_child;
-        if (visible_page == task_page) {
+        if (top_stack.visible_child == task_page) {
             task_page.toggle_filtering ();
         }
     }
 
     private void action_create_new () {
-        var visible_page = top_stack.visible_child;
-        if (visible_page == task_page) {
+        if (top_stack.visible_child == task_page) {
             task_page.action_add_task ();
         } else {
             selection_page.show_list_creation_dialog ();
@@ -262,6 +281,64 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     private void action_toggle_timer () {
         if (task_page.ready && task_timer.active_task != null) {
             task_timer.toggle_running ();
+        }
+    }
+
+    private void action_mark_task_done () {
+        if (top_stack.visible_child == task_page) {
+            task_page.action_mark_task_done ();
+        }
+    }
+
+    private void action_task_switch_next () {
+        if (top_stack.visible_child == task_page) {
+            task_page.action_task_switch_next ();
+        } else {
+            selection_page.move_cursor (1);
+        }
+    }
+
+    private void action_task_switch_prev () {
+        if (top_stack.visible_child == task_page) {
+            task_page.action_task_switch_prev ();
+        } else {
+            selection_page.move_cursor (-1);
+        }
+    }
+
+    private void action_row_move_up () {
+        if (top_stack.visible_child == task_page) {
+            task_page.action_row_move_up ();
+        } else {
+            selection_page.move_selected_row (1);
+        }
+    }
+
+    private void action_row_move_down () {
+        if (top_stack.visible_child == task_page) {
+            task_page.action_row_move_down ();
+        } else {
+            selection_page.move_selected_row (-1);
+        }
+    }
+
+    private void action_switch_page_left () {
+        if (top_stack.visible_child != task_page || !task_page.ready) {
+            return;
+        }
+        if (task_page.switch_page_left ()) {
+            switch_top_stack (true);
+        }
+    }
+
+    private void action_switch_page_right () {
+        if (!task_page.ready) {
+            return;
+        }
+        if (top_stack.visible_child != task_page) {
+            switch_top_stack (false);
+        } else {
+            task_page.switch_page_right ();
         }
     }
 

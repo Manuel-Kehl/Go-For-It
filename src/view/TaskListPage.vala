@@ -30,9 +30,9 @@ class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
     private ViewSwitcher activity_switcher;
     private Gtk.Stack switcher_stack;
 
-    private Gtk.Widget first_page;
+    private TaskListWidget first_page;
     private TimerView timer_view;
-    private Gtk.Widget last_page;
+    private TaskListWidget last_page;
 
     public bool is_filtering {
         public get {
@@ -121,6 +121,85 @@ class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
     public void action_add_task () {
         activity_switcher.selected_item = "primary";
         task_list.task_entry_focus ();
+    }
+
+    public void action_mark_task_done () {
+        var visible_child = activity_stack.get_visible_child ();
+        if (visible_child == first_page) {
+            var selected_task = task_list.selected_task;
+            if (selected_task != null) {
+                task_list.mark_done (selected_task);
+            }
+        } else if (visible_child == timer_view) {
+            task_timer.set_active_task_done ();
+        }
+    }
+
+    public void action_task_switch_next () {
+        var visible_child = activity_stack.get_visible_child ();
+        if (visible_child == first_page) {
+            first_page.move_cursor (1);
+        } else if (visible_child == timer_view) {
+            var next = task_list.get_next ();
+            if (next != null) {
+                task_timer.stop ();
+                task_list.active_task = next;
+            }
+        }
+    }
+
+    public void action_task_switch_prev () {
+        var visible_child = activity_stack.get_visible_child ();
+        if (visible_child == first_page) {
+            first_page.move_cursor (-1);
+        } else if (visible_child == timer_view) {
+            var prev = task_list.get_prev ();
+
+            if (prev != null) {
+                task_timer.stop ();
+                task_list.active_task = prev;
+            }
+        }
+    }
+
+    public void action_row_move_up () {
+        var visible_child = activity_stack.get_visible_child ();
+        if (visible_child == first_page) {
+            first_page.move_selected_task (1);
+        }
+    }
+
+    public void action_row_move_down () {
+        var visible_child = activity_stack.get_visible_child ();
+        if (visible_child == first_page) {
+            first_page.move_selected_task (-1);
+        }
+    }
+
+    public bool switch_page_left () {
+        switch (activity_switcher.selected_item) {
+            case "timer":
+                activity_switcher.selected_item = "primary";
+                return false;
+            case "secondary":
+                activity_switcher.selected_item = "timer";
+                return false;
+            default:
+                return true;
+        }
+    }
+
+    public bool switch_page_right () {
+        switch (activity_switcher.selected_item) {
+            case "primary":
+                activity_switcher.selected_item = "timer";
+                return false;
+            case "timer":
+                activity_switcher.selected_item = "secondary";
+                return false;
+            default:
+                return true;
+        }
     }
 
     /**

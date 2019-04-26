@@ -64,6 +64,24 @@ class GOFI.SelectionPage : Gtk.Grid {
         list_manager.edit_list (info, this.get_toplevel () as Gtk.Window);
     }
 
+    public void move_cursor (int amount) {
+        todolist_view.move_cursor(Gtk.MovementStep.DISPLAY_LINES, amount);
+    }
+
+    public void move_selected_row (int amount) {
+        var row = todolist_view.get_selected_row ();
+        if (row == null) {
+            return;
+        }
+        var new_index = row.get_index ();
+        if (new_index < -amount) {
+            new_index = 0;
+        } else {
+            new_index += amount;
+        }
+        todolist_view.move_row(row, new_index);
+    }
+
     /**
      * Configures the list to display the info entries.
      */

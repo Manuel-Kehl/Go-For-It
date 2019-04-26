@@ -78,14 +78,24 @@ class GOFI.TXT.TaskManager {
     }
 
     public TodoTask? get_next () {
+        if (active_task == null) {
+            return null;
+        }
         return (TodoTask) todo_store.get_item (
             todo_store.get_task_position (active_task) + 1
         );
     }
 
     public TodoTask? get_prev () {
+        if (active_task == null) {
+            return null;
+        }
+        var active_pos = todo_store.get_task_position (active_task);
+        if (active_pos == 0) {
+            return active_task;
+        }
         return (TodoTask) todo_store.get_item (
-            todo_store.get_task_position (active_task) - 1
+            active_pos - 1
         );
     }
 

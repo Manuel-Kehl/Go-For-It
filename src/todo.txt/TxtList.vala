@@ -48,9 +48,18 @@ class GOFI.TXT.TxtList : Object {
      * from this class when the current value is no longer valid.
      */
     public TodoTask? active_task {
-        public get;
-        public set;
+        public get {
+            return _active_task;
+        }
+        public set {
+            _active_task = value;
+            task_manager.set_active_task (_active_task);
+            if (_active_task != null) {
+                todo_list.select_task (_active_task);
+            }
+        }
     }
+    private TodoTask? _active_task;
 
     public TodoListInfo list_info {
         public get {
@@ -112,7 +121,7 @@ class GOFI.TXT.TxtList : Object {
     /**
      * Tasks that the user should currently work on
      */
-    public unowned Gtk.Widget get_primary_page (out string? page_name) {
+    public unowned TaskListWidget get_primary_page (out string? page_name) {
         page_name = null;
         return todo_list;
     }
@@ -120,7 +129,7 @@ class GOFI.TXT.TxtList : Object {
     /**
      * Can be future recurring tasks or tasks that are already done
      */
-    public unowned Gtk.Widget get_secondary_page (out string? page_name) {
+    public unowned TaskListWidget get_secondary_page (out string? page_name) {
         page_name = null;
         return done_list;
     }
@@ -191,6 +200,7 @@ class GOFI.TXT.TxtList : Object {
         task_manager.active_task_invalid.connect (on_active_task_invalid);
 
         selected_task = todo_list.get_selected_task ();
+        active_task = selected_task;
     }
 
     /**

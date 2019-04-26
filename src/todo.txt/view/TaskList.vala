@@ -18,7 +18,7 @@
 /**
  * A widget for displaying and manipulating task lists.
  */
-class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
+class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget, TaskListWidget {
     /* GTK Widgets */
     private Gtk.ScrolledWindow scroll_view;
     private DragList task_view;
@@ -79,6 +79,30 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget {
             return selected_row.task;
         }
         return null;
+    }
+
+    public void select_task (TodoTask task) {
+        var pos = model.get_task_position(task);
+        var row = task_view.get_row_at_index ((int)pos);
+        task_view.select_row (row);
+    }
+
+    public void move_cursor (int amount) {
+        task_view.move_cursor(Gtk.MovementStep.DISPLAY_LINES, amount);
+    }
+
+    public void move_selected_task (int amount) {
+        var row = task_view.get_selected_row ();
+        if (row == null) {
+            return;
+        }
+        var new_index = row.get_index ();
+        if (new_index < -amount) {
+            new_index = 0;
+        } else {
+            new_index += amount;
+        }
+        task_view.move_row(row, new_index);
     }
 
     private Gtk.Widget create_row (Object task) {
