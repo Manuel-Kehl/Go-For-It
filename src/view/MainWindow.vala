@@ -256,8 +256,8 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_NEW, {"<Control>N"});
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TIMER, {"<Control>P"});
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TASK_DONE, {"<Control>Return"});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TASK_NEXT, {"K"});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TASK_PREV, {"J"});
+//        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TASK_NEXT, {"K"});
+//        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TASK_PREV, {"J"});
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_ROW_MOVE_UP, {"<Control>K"});
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_ROW_MOVE_DOWN, {"<Control>J"});
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_SWITCH_PAGE_LEFT, {"<Shift>J"});
