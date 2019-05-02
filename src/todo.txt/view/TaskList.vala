@@ -68,6 +68,7 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget, TaskListWidget {
             setup_add_new ();
             placeholder_text = placeholder_text_todo;
         } else {
+            add_new_txt = null;
             placeholder_text = placeholder_text_done;
         }
         add_placeholder ();

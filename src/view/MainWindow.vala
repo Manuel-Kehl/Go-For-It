@@ -276,6 +276,14 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             return false;
         }
 
+        var focussed_widget = get_focus ();
+
+        if (focussed_widget as Gtk.CellEditable != null ||
+            focussed_widget as Gtk.TextView != null)
+        {
+            return false;
+        }
+
         switch (event.keyval) {
             case Gdk.Key.k:
             case Gdk.Key.K:
