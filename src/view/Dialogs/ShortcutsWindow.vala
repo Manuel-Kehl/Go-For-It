@@ -45,8 +45,8 @@ namespace GOFI {
             add_shortcut_descr (layout, ref y, _("Mark the task as complete"), Shortcuts.TASK_DONE);
             add_shortcut_descr (layout, ref y, _("Move selected row up"), Shortcuts.ROW_MOVE_UP);
             add_shortcut_descr (layout, ref y, _("Move selected row down"), Shortcuts.ROW_MOVE_DOWN);
-            add_shortcut_descr (layout, ref y, _("Move to left screen"), Shortcuts.SWITCH_PAGE_LEFT);
             add_shortcut_descr (layout, ref y, _("Move to right screen"), Shortcuts.SWITCH_PAGE_RIGHT);
+            add_shortcut_descr (layout, ref y, _("Move to left screen"), Shortcuts.SWITCH_PAGE_LEFT);
             add_shortcut_descr (layout, ref y, _("Move to next task/row"), Shortcuts.NEXT_TASK);
             add_shortcut_descr (layout, ref y, _("Move to previous task/row"), Shortcuts.PREV_TASK);
 

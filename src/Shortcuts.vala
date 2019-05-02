@@ -23,8 +23,8 @@ namespace GOFI {
         const int[] TASK_DONE = {Gdk.Key.Control_L, Gdk.Key.Return};
         const int[] ROW_MOVE_UP = {Gdk.Key.Control_L, Gdk.Key.K};
         const int[] ROW_MOVE_DOWN = {Gdk.Key.Control_L, Gdk.Key.J};
-        const int[] SWITCH_PAGE_LEFT = {Gdk.Key.Shift_L, Gdk.Key.K};
-        const int[] SWITCH_PAGE_RIGHT = {Gdk.Key.Shift_L, Gdk.Key.J};
+        const int[] SWITCH_PAGE_LEFT = {Gdk.Key.Shift_L, Gdk.Key.J};
+        const int[] SWITCH_PAGE_RIGHT = {Gdk.Key.Shift_L, Gdk.Key.K};
         const int[] NEXT_TASK = {Gdk.Key.K};
         const int[] PREV_TASK = {Gdk.Key.J};
 
