@@ -31,6 +31,7 @@ vala_precompile (VALA_C ${LIBNAME}
     TaskTimer.vala
     DragListModel.vala
     Theme.vala
+    Shortcuts.vala
     view/Widgets/FilterableWidget.vala
     view/Widgets/TaskListWidget.vala
     view/Widgets/TodoListInfoRow.vala
@@ -39,6 +40,7 @@ vala_precompile (VALA_C ${LIBNAME}
     view/Dialogs/SettingsDialog.vala
     view/Dialogs/AboutDialog.vala
     view/Dialogs/ContributeDialog.vala
+    view/Dialogs/ShortcutsWindow.vala
     view/TimerView.vala
     view/TaskListPage.vala
     view/SelectionPage.vala

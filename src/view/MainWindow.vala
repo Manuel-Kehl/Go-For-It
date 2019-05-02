@@ -57,6 +57,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     public const string ACTION_CONTRIBUTE = "contribute";
     public const string ACTION_FILTER = "filter";
     public const string ACTION_SETTINGS = "settings";
+    public const string ACTION_SHORTCUTS = "shortcuts";
     public const string ACTION_NEW = "new_todo";
     public const string ACTION_TIMER = "toggle_timer";
     public const string ACTION_TASK_DONE = "task_mark_done";
@@ -77,6 +78,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 #endif
         { ACTION_FILTER, toggle_search },
         { ACTION_SETTINGS, show_settings },
+        { ACTION_SHORTCUTS, show_shortcuts },
         { ACTION_NEW, action_create_new },
         { ACTION_TIMER, action_toggle_timer },
         { ACTION_TASK_DONE, action_mark_task_done },
@@ -252,14 +254,14 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         var actions = new SimpleActionGroup ();
         actions.add_action_entries (action_entries, this);
         insert_action_group (ACTION_PREFIX, actions);
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_FILTER, {"<Control>F"});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_NEW, {"<Control>N"});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TIMER, {"<Control>P"});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TASK_DONE, {"<Control>Return"});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_ROW_MOVE_UP, {"<Control>K"});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_ROW_MOVE_DOWN, {"<Control>J"});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_SWITCH_PAGE_LEFT, {"<Shift>J"});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_SWITCH_PAGE_RIGHT, {"<Shift>K"});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_FILTER, {Shortcuts.to_accel (Shortcuts.FILTER)});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_NEW, {Shortcuts.to_accel (Shortcuts.NEW)});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TIMER, {Shortcuts.to_accel (Shortcuts.TIMER)});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TASK_DONE, {Shortcuts.to_accel (Shortcuts.TASK_DONE)});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_ROW_MOVE_UP, {Shortcuts.to_accel (Shortcuts.ROW_MOVE_UP)});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_ROW_MOVE_DOWN, {Shortcuts.to_accel (Shortcuts.ROW_MOVE_DOWN)});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_SWITCH_PAGE_LEFT, {Shortcuts.to_accel (Shortcuts.SWITCH_PAGE_LEFT)});
+        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_SWITCH_PAGE_RIGHT, {Shortcuts.to_accel (Shortcuts.SWITCH_PAGE_RIGHT)});
 
         key_release_event.connect (on_key_release);
     }
@@ -284,18 +286,16 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             return false;
         }
 
-        switch (event.keyval) {
-            case Gdk.Key.k:
-            case Gdk.Key.K:
-                action_task_switch_next ();
-                return false;
-            case Gdk.Key.j:
-            case Gdk.Key.J:
-                action_task_switch_prev ();
-                return false;
-            default:
-                return false;
+        var keyval = Gdk.keyval_to_upper(event.keyval);
+
+        if (keyval == Shortcuts.NEXT_TASK[0]) {
+            action_task_switch_next ();
+            return false;
+        } else if (keyval == Shortcuts.PREV_TASK[0]) {
+            action_task_switch_prev ();
+            return false;
         }
+        return false;
     }
 
     private void toggle_search () {
@@ -493,6 +493,11 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         config_item.action_name = ACTION_PREFIX + "." + ACTION_SETTINGS;
         menu_container.add (config_item);
 
+        var shortcuts_item = new Gtk.ModelButton ();
+        shortcuts_item.text = _("Shortcuts");
+        shortcuts_item.action_name = ACTION_PREFIX + "." + ACTION_SHORTCUTS;
+        menu_container.add (shortcuts_item);
+
 #if !NO_CONTRIBUTE_DIALOG
         var contribute_item = new Gtk.ModelButton ();
         contribute_item.text = _("Contribute / Donate");
@@ -525,6 +530,11 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     private void show_settings () {
         var dialog = new SettingsDialog (this, settings);
         dialog.show ();
+    }
+
+    private void show_shortcuts () {
+        var shortcuts_window = new ShortcutsWindow (this);
+        shortcuts_window.show ();
     }
 
     /**
