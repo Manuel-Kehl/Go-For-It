@@ -88,6 +88,16 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget, TaskListWidget {
     }
 
     public void move_cursor (int amount) {
+        TaskRow selected_row = (TaskRow) task_view.get_selected_row ();
+        if (selected_row == null) {
+            return;
+        }
+
+        // move_cursor was likely called because of a shortcut key, in this case
+        // this key was meant for input for this row so we should ignore it.
+        if (selected_row.is_editing) {
+            return;
+        }
         task_view.move_cursor(Gtk.MovementStep.DISPLAY_LINES, amount);
     }
 

@@ -256,12 +256,38 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_NEW, {"<Control>N"});
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TIMER, {"<Control>P"});
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TASK_DONE, {"<Control>Return"});
-//        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TASK_NEXT, {"K"});
-//        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TASK_PREV, {"J"});
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_ROW_MOVE_UP, {"<Control>K"});
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_ROW_MOVE_DOWN, {"<Control>J"});
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_SWITCH_PAGE_LEFT, {"<Shift>J"});
         app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_SWITCH_PAGE_RIGHT, {"<Shift>K"});
+
+        key_release_event.connect (on_key_release);
+    }
+
+    /**
+     * Check for keys that should be interpreted as shortcuts depending on the
+     * context, but also could be input for widgets.
+     */
+    private bool on_key_release (Gdk.EventKey event) {
+        var mask = Gtk.accelerator_get_default_mod_mask ();
+
+        // no modifier buttons are pressed
+        if ((event.state & mask) != 0) {
+            return false;
+        }
+
+        switch (event.keyval) {
+            case Gdk.Key.k:
+            case Gdk.Key.K:
+                action_task_switch_next ();
+                return false;
+            case Gdk.Key.j:
+            case Gdk.Key.J:
+                action_task_switch_prev ();
+                return false;
+            default:
+                return false;
+        }
     }
 
     private void toggle_search () {

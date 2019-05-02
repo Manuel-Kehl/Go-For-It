@@ -25,6 +25,12 @@ class GOFI.TaskRow: DragListRow {
     private bool editing;
     private bool focus_cooldown_active;
 
+    public bool is_editing {
+        get {
+            return editing;
+        }
+    }
+
     public TodoTask task {
         get;
         private set;
