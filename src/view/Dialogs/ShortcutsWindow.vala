@@ -54,11 +54,11 @@ namespace GOFI {
             layout.show_all ();
         }
 
-        private void add_shortcut_descr (Gtk.Grid grid, ref int y, string descr, int[] shortcut) {
+        private void add_shortcut_descr (Gtk.Grid grid, ref int y, string descr, uint[] shortcut) {
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 4);
             var first = true;
 
-            foreach (int key in shortcut) {
+            foreach (var key in shortcut) {
                 if (first) {
                     first = false;
                 } else {

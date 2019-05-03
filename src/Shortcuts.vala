@@ -17,18 +17,18 @@
 
 namespace GOFI {
     namespace Shortcuts {
-        const int[] FILTER = {Gdk.Key.Control_L, Gdk.Key.F};
-        const int[] NEW = {Gdk.Key.Control_L, Gdk.Key.N};
-        const int[] TIMER = {Gdk.Key.Control_L, Gdk.Key.P};
-        const int[] TASK_DONE = {Gdk.Key.Control_L, Gdk.Key.Return};
-        const int[] ROW_MOVE_UP = {Gdk.Key.Control_L, Gdk.Key.K};
-        const int[] ROW_MOVE_DOWN = {Gdk.Key.Control_L, Gdk.Key.J};
-        const int[] SWITCH_PAGE_LEFT = {Gdk.Key.Shift_L, Gdk.Key.J};
-        const int[] SWITCH_PAGE_RIGHT = {Gdk.Key.Shift_L, Gdk.Key.K};
-        const int[] NEXT_TASK = {Gdk.Key.K};
-        const int[] PREV_TASK = {Gdk.Key.J};
+        const uint[] FILTER = {Gdk.Key.Control_L, Gdk.Key.F};
+        const uint[] NEW = {Gdk.Key.Control_L, Gdk.Key.N};
+        const uint[] TIMER = {Gdk.Key.Control_L, Gdk.Key.P};
+        const uint[] TASK_DONE = {Gdk.Key.Control_L, Gdk.Key.Return};
+        const uint[] ROW_MOVE_UP = {Gdk.Key.Control_L, Gdk.Key.K};
+        const uint[] ROW_MOVE_DOWN = {Gdk.Key.Control_L, Gdk.Key.J};
+        const uint[] SWITCH_PAGE_LEFT = {Gdk.Key.Shift_L, Gdk.Key.J};
+        const uint[] SWITCH_PAGE_RIGHT = {Gdk.Key.Shift_L, Gdk.Key.K};
+        const uint[] NEXT_TASK = {Gdk.Key.K};
+        const uint[] PREV_TASK = {Gdk.Key.J};
 
-        public static string? key_to_accel (int key) {
+        public static string? key_to_accel (uint key) {
             switch (key) {
                 case Gdk.Key.Control_L:
                     return "<Control>";
@@ -41,7 +41,7 @@ namespace GOFI {
             }
         }
 
-        public static string? key_to_label_str (int key) {
+        public static string? key_to_label_str (uint key) {
             switch (key) {
                 case Gdk.Key.Control_L:
                     return "Ctrl";
@@ -56,9 +56,9 @@ namespace GOFI {
             }
         }
 
-        public static string to_accel (int[] keys) {
+        public static string to_accel (uint[] keys) {
             var result = "";
-            foreach (int key in keys) {
+            foreach (var key in keys) {
                 result += key_to_accel (key);
             }
             return result;
