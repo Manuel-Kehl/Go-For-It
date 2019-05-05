@@ -13,8 +13,21 @@ CUSTOM_VAPIS
     ${CMAKE_BINARY_DIR}/${LIBRARY_PATH}/${LIBNAME}_internal.vapi
 )
 
+include(GResource)
+
+configure_file (${CMAKE_SOURCE_DIR}/data/resources.gresource.xml.in ${CMAKE_CURRENT_BINARY_DIR}/resources.gresource.xml)
+
+glib_compile_resources("${CMAKE_CURRENT_BINARY_DIR}/resources.gresource.xml"
+  SOURCE_DIR "${CMAKE_SOURCE_DIR}/data"
+  SOURCE "${CMAKE_CURRENT_BINARY_DIR}/gui-resources.c"
+  C_NAME "gofi_gui_resources"
+  INTERNAL)
+
 # tell cmake what to call the executable we just made
-add_executable (${EXEC_NAME} ${VALA_C})
+add_executable (${EXEC_NAME}
+    "${CMAKE_CURRENT_BINARY_DIR}/gui-resources.c"
+    ${VALA_C}
+    )
 add_dependencies (${EXEC_NAME} ${LIBNAME})
 set_target_properties (${EXEC_NAME} PROPERTIES
     INCLUDE_DIRECTORIES ${CMAKE_BINARY_DIR}/${LIBRARY_PATH}

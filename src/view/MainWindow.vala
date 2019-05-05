@@ -118,6 +118,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         setup_notifications ();
         // Enable Notifications for the App
         Notify.init (GOFI.APP_NAME);
+        Gtk.IconTheme.get_default ().add_resource_path (GOFI.RESOURCE_PATH + "/icons");
 
         load_last ();
 
@@ -387,7 +388,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         // Butons and their corresponding images
         var menu_img = GOFI.Utils.load_image_fallback (
             settings.toolbar_icon_size, "open-menu", "open-menu-symbolic",
-            GOFI.ICON_NAME + "-open-menu-fallback");
+            "open-menu-fallback");
         menu_btn = new Gtk.MenuButton ();
         menu_btn.hexpand = false;
         menu_btn.image = menu_img;
@@ -619,29 +620,8 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         // Pick the stylesheet that is compatible with the user's Gtk version
         string stylesheet = @"$(theme.get_stylesheet ())-$version.css";
 
-        var path = Path.build_filename (DATADIR, "style", "palettes", palette + ".css");
-        if (FileUtils.test (path, FileTest.EXISTS)) {
-            try {
-                palette_css.load_from_path (path);
-            } catch (Error e) {
-                warning ("Cannot load CSS stylesheet: %s", e.message);
-                return;
-            }
-        } else {
-            warning ("Could not find application stylesheet in %s", path);
-            return;
-        }
-
-        path = Path.build_filename (DATADIR, "style", stylesheet);
-        if (FileUtils.test (path, FileTest.EXISTS)) {
-            try {
-                stylesheet_css.load_from_path (path);
-            } catch (Error e) {
-                warning ("Cannot load CSS stylesheet: %s", e.message);
-            }
-        } else {
-            warning ("Could not find application stylesheet in %s", path);
-        }
+        palette_css.load_from_resource (@"$(GOFI.RESOURCE_PATH)/style/palettes/$(palette).css");
+        stylesheet_css.load_from_resource (@"$(GOFI.RESOURCE_PATH)/style/$(stylesheet)");
     }
 
     /**

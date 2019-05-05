@@ -682,7 +682,7 @@ public class GOFI.DragListRow : Gtk.ListBoxRow {
         add (layout);
 
         handle = new Gtk.EventBox ();
-        image = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.MENU);
+        image = new Gtk.Image.from_icon_name ("drag-handle-symbolic", Gtk.IconSize.MENU);
         handle.add (image);
         layout.pack_end (handle, false);
 

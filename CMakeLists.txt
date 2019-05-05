@@ -8,6 +8,7 @@ include (GNUInstallDirs)
 set (INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 set (DATADIR "${INSTALL_PREFIX}/share")
 
+set (RESOURCE_PATH "/go-for-it")
 set (APP_ID "com.github.jmoerman.go-for-it" CACHE STRING "The application id")
 set (APP_SYSTEM_NAME ${APP_ID} CACHE STRING "Name to used for file names. For example the file name of the .desktop file.")
 
@@ -81,5 +82,4 @@ if (BUILD_TESTS)
     add_subdirectory (tests)
 endif (BUILD_TESTS)
 add_subdirectory (data)
-add_subdirectory (style)
 add_subdirectory (po)

@@ -1,67 +1,107 @@
+# Taken from FindGLib.cmake with dependency output fix applied
 #
-#    Copyright (C) 2013 Venom authors and contributors
+# FindGLib.cmake
+# <https://github.com/nemequ/gnome-cmake>
 #
-#    This file is part of Venom.
+# CMake support for GLib/GObject/GIO.
 #
-#    Venom is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
+# License:
 #
-#    Venom is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
+#   Copyright (c) 2016 Evan Nemerson <evan@nemerson.com>
 #
-#    You should have received a copy of the GNU General Public License
-#    along with Venom.  If not, see <http://www.gnu.org/licenses/>.
+#   Permission is hereby granted, free of charge, to any person
+#   obtaining a copy of this software and associated documentation
+#   files (the "Software"), to deal in the Software without
+#   restriction, including without limitation the rights to use, copy,
+#   modify, merge, publish, distribute, sublicense, and/or sell copies
+#   of the Software, and to permit persons to whom the Software is
+#   furnished to do so, subject to the following conditions:
 #
+#   The above copyright notice and this permission notice shall be
+#   included in all copies or substantial portions of the Software.
+#
+#   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+#   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+#   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+#   NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+#   HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+#   WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+#   DEALINGS IN THE SOFTWARE.
 
-FIND_PROGRAM(GLIB_COMPILE_RESOURCES_EXECUTABLE NAMES glib-compile-resources)
-MARK_AS_ADVANCED(GLIB_COMPILE_RESOURCES_EXECUTABLE)
+find_program(GLIB_COMPILE_RESOURCES glib-compile-resources)
+if(GLIB_COMPILE_RESOURCES)
+  add_executable(glib-compile-resources IMPORTED)
+  set_property(TARGET glib-compile-resources PROPERTY IMPORTED_LOCATION "${GLIB_COMPILE_RESOURCES}")
+endif()
 
-INCLUDE(CMakeParseArguments)
+function(glib_compile_resources SPEC_FILE)
+  set (options INTERNAL)
+  set (oneValueArgs TARGET SOURCE_DIR HEADER SOURCE C_NAME)
+  set (multiValueArgs)
+  cmake_parse_arguments(GLIB_COMPILE_RESOURCES "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
+  unset (options)
+  unset (oneValueArgs)
+  unset (multiValueArgs)
 
-FUNCTION(GLIB_COMPILE_RESOURCES output)
-  CMAKE_PARSE_ARGUMENTS(ARGS "" "SOURCE" "" ${ARGN})
-  SET(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
-  SET(out_files "")
+  if(NOT GLIB_COMPILE_RESOURCES_SOURCE_DIR)
+    set(GLIB_COMPILE_RESOURCES_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+  endif()
 
-  FOREACH(src ${ARGS_SOURCE} ${ARGS_UNPARSED_ARGUMENTS})
-    SET(in_file "${CMAKE_CURRENT_SOURCE_DIR}/${src}")
-    GET_FILENAME_COMPONENT(WORKING_DIR ${in_file} PATH)
-    STRING(REPLACE ".xml" ".c" src ${src})
-    SET(out_file "${DIRECTORY}/${src}")
-    GET_FILENAME_COMPONENT(OUPUT_DIR ${out_file} PATH)
-    FILE(MAKE_DIRECTORY ${OUPUT_DIR})
-    LIST(APPEND out_files "${DIRECTORY}/${src}")
+  set(FLAGS)
 
-    #FIXME implicit depends currently not working
-    EXECUTE_PROCESS(
-      COMMAND
-        ${GLIB_COMPILE_RESOURCES_EXECUTABLE}
-          "--generate-dependencies"
-          ${in_file}
-      WORKING_DIRECTORY ${WORKING_DIR}
-      OUTPUT_VARIABLE in_file_dep
-    )
-    STRING(REGEX REPLACE "(\r?\n)" ";" in_file_dep "${in_file_dep}")
-    SET(in_file_dep_path "")
-    FOREACH(dep ${in_file_dep})
-      LIST(APPEND in_file_dep_path "${WORKING_DIR}/${dep}")
-    ENDFOREACH(dep ${in_file_dep})
-    ADD_CUSTOM_COMMAND(
-      OUTPUT ${out_file}
-      WORKING_DIRECTORY ${WORKING_DIR}
-      COMMAND
-        ${GLIB_COMPILE_RESOURCES_EXECUTABLE}
-      ARGS
-        "--generate-source"
-        "--target=${out_file}"
-        ${in_file}
-      DEPENDS
-        ${in_file};${in_file_dep_path}
-    )
-  ENDFOREACH(src ${ARGS_SOURCES} ${ARGS_UNPARSED_ARGUMENTS})
-  SET(${output} ${out_files} PARENT_SCOPE)
-ENDFUNCTION(GLIB_COMPILE_RESOURCES)
+  if(GLIB_COMPILE_RESOURCES_INTERNAL)
+    list(APPEND FLAGS "--internal")
+  endif()
+
+  if(GLIB_COMPILE_RESOURCES_C_NAME)
+    list(APPEND FLAGS "--c-name" "${GLIB_COMPILE_RESOURCES_C_NAME}")
+  endif()
+
+  get_filename_component(SPEC_FILE "${SPEC_FILE}" ABSOLUTE BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+
+  execute_process(
+    COMMAND glib-compile-resources
+      --generate-dependencies
+      --sourcedir "${GLIB_COMPILE_RESOURCES_SOURCE_DIR}"
+      "${SPEC_FILE}"
+    OUTPUT_VARIABLE in_file_dep
+    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+  string(REGEX REPLACE "(\r?\n)" ";" in_file_dep "${in_file_dep}")
+  set(deps "${SPEC_FILE}")
+  foreach(dep ${in_file_dep})
+    list(APPEND deps "${dep}")
+  endforeach(dep ${in_file_dep})
+
+  if(GLIB_COMPILE_RESOURCES_HEADER)
+    get_filename_component(GLIB_COMPILE_RESOURCES_HEADER "${GLIB_COMPILE_RESOURCES_HEADER}" ABSOLUTE BASE_DIR "${CMAKE_CURRENT_BINARY_DIR}")
+
+    add_custom_command(
+      OUTPUT "${GLIB_COMPILE_RESOURCES_HEADER}"
+      COMMAND glib-compile-resources
+        --sourcedir "${GLIB_COMPILE_RESOURCES_SOURCE_DIR}"
+        --generate-header
+        --target "${GLIB_COMPILE_RESOURCES_HEADER}"
+        ${FLAGS}
+        "${SPEC_FILE}"
+      DEPENDS ${deps}
+      WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+  endif()
+
+  if(GLIB_COMPILE_RESOURCES_SOURCE)
+    get_filename_component(GLIB_COMPILE_RESOURCES_SOURCE "${GLIB_COMPILE_RESOURCES_SOURCE}" ABSOLUTE BASE_DIR "${CMAKE_CURRENT_BINARY_DIR}")
+
+    add_custom_command(
+      OUTPUT "${GLIB_COMPILE_RESOURCES_SOURCE}"
+      COMMAND glib-compile-resources
+        --sourcedir "${GLIB_COMPILE_RESOURCES_SOURCE_DIR}"
+        --generate-source
+        --target "${GLIB_COMPILE_RESOURCES_SOURCE}"
+        ${FLAGS}
+        "${SPEC_FILE}"
+      DEPENDS "${SPEC_FILE}" ${deps}
+      WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+  endif()
+endfunction()

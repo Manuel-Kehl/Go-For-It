@@ -11,7 +11,6 @@ Exec=${EXEC_NAME} --about"
 else ()
 
 endif ()
-
 configure_file (go-for-it.desktop.in.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.desktop.in)
 configure_file_translation (${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.desktop ${CMAKE_SOURCE_DIR}/po/)
 configure_file (go-for-it.appdata.xml.in.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.appdata.xml.in)
@@ -25,20 +24,13 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.appdata.xml DESTIN
 
 # install the application's icons
 set (SYSTEM_DEFAULT_THEME ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor)
-set (ICON_FOLDER /icons/hicolor)
+set (ICON_FOLDER /icons)
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}${ICON_FOLDER}/16x16/apps/go-for-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/16x16/apps RENAME ${ICON_NAME}.svg)
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}${ICON_FOLDER}/24x24/apps/go-for-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/24x24/apps RENAME ${ICON_NAME}.svg)
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}${ICON_FOLDER}/32x32/apps/go-for-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/32x32/apps RENAME ${ICON_NAME}.svg)
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}${ICON_FOLDER}/48x48/apps/go-for-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/48x48/apps RENAME ${ICON_NAME}.svg)
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}${ICON_FOLDER}/64x64/apps/go-for-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/64x64/apps RENAME ${ICON_NAME}.svg)
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}${ICON_FOLDER}/128x128/apps/go-for-it.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/128x128/apps RENAME ${ICON_NAME}.svg)
-# install icons for the to-do and done lists
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}${ICON_FOLDER}/16x16/actions/go-to-done.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/16x16/actions RENAME ${ICON_NAME}-go-to-done.svg)
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}${ICON_FOLDER}/24x24/actions/go-to-done.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/24x24/actions RENAME ${ICON_NAME}-go-to-done.svg)
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}${ICON_FOLDER}/16x16/actions/go-to-list-symbolic.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/16x16/actions RENAME ${ICON_NAME}-go-to-list-symbolic.svg)
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}${ICON_FOLDER}/24x24/actions/go-to-list-symbolic.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/24x24/actions RENAME ${ICON_NAME}-go-to-list-symbolic.svg)
-# install the fallback menu icon
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}${ICON_FOLDER}/24x24/actions/go-for-it-open-menu-fallback.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/24x24/actions RENAME ${ICON_NAME}-open-menu-fallback.svg)
 
 if (ICON_UPDATE)
 install (
