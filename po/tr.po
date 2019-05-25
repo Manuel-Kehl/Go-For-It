@@ -3,74 +3,78 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-26 11:45+0100\n"
-"PO-Revision-Date: 2016-11-18 22:38+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-06-01 18:52+0000\n"
+"Last-Translator: Oğuz Vatansever <ogzvatansever@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/tr/>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.7-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
-"X-Generator: Launchpad (build 18505)\n"
 
 #: ../src/Main.vala:92
 msgid "Print version info and exit"
-msgstr ""
+msgstr "Sürüm bilgisini yazdır ve çık"
 
 #: ../src/Main.vala:93
 msgid "Show about dialog"
-msgstr ""
+msgstr "Dialog hakkında bilgi göster"
 
 #: ../src/SettingsManager.vala:292 ../src/todo.txt/TxtListManager.vala:58
 #: ../src/todo.txt/TxtListManager.vala:459
 msgid "Couldn't create directory: %s"
-msgstr ""
+msgstr "Belirtilen dizin oluşturulamadı: %s"
 
 #: ../src/SettingsManager.vala:428
 msgid "Couldn't properly import settings from %s: %s"
-msgstr ""
+msgstr "%s 'den ayarlar içe aktarılamadı: %s"
 
 #: ../src/Theme.vala:54
 msgid "Inherit from Gtk theme"
-msgstr ""
+msgstr "Gtk temasının varisi"
 
 #: ../src/todo.txt/Filter.vala:69 ../src/todo.txt/view/TaskRow.vala:303
 msgid "project"
-msgstr ""
+msgstr "proje"
 
 #: ../src/todo.txt/Filter.vala:75 ../src/todo.txt/view/TaskRow.vala:298
 msgid "context"
-msgstr ""
+msgstr "içerik"
 
 #: ../src/todo.txt/Filter.vala:81 ../src/todo.txt/view/TaskRow.vala:272
 msgid "priority"
-msgstr ""
+msgstr "öncelik"
 
 #: ../src/todo.txt/TaskManager.vala:46
 msgid "Spread the word about \"Go For It!\""
-msgstr ""
+msgstr "\"Go For It!\" 'i arkadaşlarınla da paylaş"
 
 #: ../src/todo.txt/TaskManager.vala:47
 msgid "Consider a donation to help the project"
-msgstr ""
+msgstr "Projeye yardımda bulunmak için bir bağış düşünebilirsiniz"
 
 #: ../src/todo.txt/TaskManager.vala:48
 msgid "Consider contributing to the project"
-msgstr ""
+msgstr "Projeye katkıda bulunmayı düşünebilirsiniz"
 
 #: ../src/todo.txt/TaskManager.vala:51
 msgid ""
 "Go For It! won't save or load from the current todo.txt directory until it "
 "is either restarted or another location is chosen."
 msgstr ""
+"Go For It! yeni bir yer seçilinceye kadar yada resetleninceye kadar şu anki "
+"todo.txt dizine kaydedemez yada yükleme yapamaz."
 
 #: ../src/todo.txt/TaskManager.vala:52
 msgid "Couldn't read the todo.txt file (%s):"
-msgstr ""
+msgstr "Seçili todo.txt dosyası okunamadı (%s):"
 
 #: ../src/todo.txt/TaskManager.vala:53
 msgid "Couldn't save the to-do list (%s):"
-msgstr ""
+msgstr "Seçili yapılacaklar listesi kaydedilemedi (%s):"
 
 #: ../src/todo.txt/TaskManager.vala:54
 msgid ""
@@ -81,43 +85,45 @@ msgstr ""
 
 #: ../src/todo.txt/TxtList.vala:184
 msgid "Clear Done List"
-msgstr ""
+msgstr "Tamamlananları Temizle"
 
 #: ../src/todo.txt/TxtListManager.vala:202
 msgid "An error was encountered while moving a file!"
-msgstr ""
+msgstr "Bir dosyayı taşırken bir hata ile karşılaşıldı!"
 
 #: ../src/todo.txt/TxtListManager.vala:204
 msgid "Error information: "
-msgstr ""
+msgstr "Hata bilgisi: "
 
 #: ../src/todo.txt/TxtListManager.vala:226
 msgid "Todo.txt files were found in the destination directory."
-msgstr ""
+msgstr "Todo.txt dosyaları hedef dizinde bulundu."
 
 #: ../src/todo.txt/TxtListManager.vala:230
 msgid "What should be done with these files?"
-msgstr ""
+msgstr "Bu dosyalarla neler yapılmalı?"
 
 #: ../src/todo.txt/TxtListManager.vala:232
 msgid "Keep old"
-msgstr ""
+msgstr "Eskileri sakla"
 
 #: ../src/todo.txt/TxtListManager.vala:234
 msgid "Overwrite"
-msgstr ""
+msgstr "Üzerine yaz"
 
 #: ../src/todo.txt/TxtListManager.vala:236
 #: ../src/todo.txt/view/TxtListEditDialog.vala:56
 #: ../src/todo.txt/view/TxtListEditDialog.vala:61
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: ../src/todo.txt/view/TaskList.vala:35
 msgid ""
 "You currently don't have any tasks.\n"
 "Add some!"
 msgstr ""
+"Henüz yapılacak hiçbir şeyiniz yok.\n"
+"Ekleyin biraz!"
 
 #: ../src/todo.txt/view/TaskList.vala:36
 msgid "The search operation did not return any tasks."
@@ -125,21 +131,21 @@ msgstr ""
 
 #: ../src/todo.txt/view/TaskList.vala:37
 msgid "You don't have any completed tasks stored."
-msgstr ""
+msgstr "Kaydedilmiş hiçbir göreviniz yok."
 
 #: ../src/todo.txt/view/TaskList.vala:38
 msgid "You finished all tasks, good job!"
-msgstr ""
+msgstr "Bütün yapılacaklarınızı tamamladınız, tebrikler!"
 
 #: ../src/todo.txt/view/TaskList.vala:151
 msgid "Add new task"
-msgstr ""
+msgstr "Yeni bir yapılacak ekle"
 
 #. //valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
 #: ../src/todo.txt/view/TaskRow.vala:251
 msgid "%Y-%m-%d"
-msgstr ""
+msgstr "%d-%m-%Y"
 
 #: ../src/todo.txt/view/TaskRow.vala:255
 msgid "Task completed at %s, created at %s"
@@ -152,28 +158,28 @@ msgstr ""
 #: ../src/todo.txt/view/TxtListEditDialog.vala:42
 #: ../src/todo.txt/view/TxtListEditDialog.vala:221
 msgid "directory"
-msgstr ""
+msgstr "dizin"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:43
 msgid "List name"
-msgstr ""
+msgstr "Liste adı"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:55
 msgid "New to-do list"
-msgstr ""
+msgstr "Yeni yapılacak listesi"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:57
 #: ../src/view/SelectionPage.vala:88
 msgid "Add list"
-msgstr ""
+msgstr "Liste ekle"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:60
 msgid "Edit to-do list properties"
-msgstr ""
+msgstr "Yapılacaklar listesi özelliklerini düzenle"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:62
 msgid "Apply"
-msgstr ""
+msgstr "Uygula"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:108
 msgid "The configured directory is already in use by another list."
