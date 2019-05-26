@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-26 11:45+0100\n"
-"PO-Revision-Date: 2017-10-04 12:52+0000\n"
-"Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-06-01 18:52+0000\n"
+"Last-Translator: ssantos <ssantos@web.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.7-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
-"X-Generator: Launchpad (build 18505)\n"
 
 #: ../src/Main.vala:92
 msgid "Print version info and exit"
@@ -24,15 +26,15 @@ msgstr "Infodialog anzeigen"
 #: ../src/SettingsManager.vala:292 ../src/todo.txt/TxtListManager.vala:58
 #: ../src/todo.txt/TxtListManager.vala:459
 msgid "Couldn't create directory: %s"
-msgstr ""
+msgstr "Verzeichnis konnte nicht erstellt werden: %s"
 
 #: ../src/SettingsManager.vala:428
 msgid "Couldn't properly import settings from %s: %s"
-msgstr ""
+msgstr "Einstellungen konnten nicht korrekt aus %s importiert werden: %s"
 
 #: ../src/Theme.vala:54
 msgid "Inherit from Gtk theme"
-msgstr ""
+msgstr "Vom Gtk-Thema erben"
 
 #: ../src/todo.txt/Filter.vala:69 ../src/todo.txt/view/TaskRow.vala:303
 msgid "project"
@@ -40,29 +42,31 @@ msgstr "Projekt"
 
 #: ../src/todo.txt/Filter.vala:75 ../src/todo.txt/view/TaskRow.vala:298
 msgid "context"
-msgstr ""
+msgstr "Kontext"
 
 #: ../src/todo.txt/Filter.vala:81 ../src/todo.txt/view/TaskRow.vala:272
 msgid "priority"
-msgstr ""
+msgstr "Priorität"
 
 #: ../src/todo.txt/TaskManager.vala:46
 msgid "Spread the word about \"Go For It!\""
-msgstr ""
+msgstr "Sprechen Sie mit anderen über \"Go For It!\""
 
 #: ../src/todo.txt/TaskManager.vala:47
 msgid "Consider a donation to help the project"
-msgstr ""
+msgstr "Erwägen Sie eine Spende, um das Projekt zu unterstützen"
 
 #: ../src/todo.txt/TaskManager.vala:48
 msgid "Consider contributing to the project"
-msgstr ""
+msgstr "Erwägen Sie, einen Beitrag zum Projekt zu leisten"
 
 #: ../src/todo.txt/TaskManager.vala:51
 msgid ""
 "Go For It! won't save or load from the current todo.txt directory until it "
 "is either restarted or another location is chosen."
 msgstr ""
+"Go For It! speichert oder lädt nichts aus dem aktuellen todo.txt-Verzeichnis "
+"bis es entweder neu gestartet oder ein anderer Speicherort ausgewählt wird."
 
 #: ../src/todo.txt/TaskManager.vala:52
 msgid "Couldn't read the todo.txt file (%s):"
@@ -78,6 +82,10 @@ msgid ""
 "file or mountable location. Please change the path in the settings to a "
 "suitable directory or remove this file."
 msgstr ""
+"Der Pfad zum todo.txt-Verzeichnis zeigt nicht auf ein Verzeichnis, sondern "
+"auf eine Datei oder einen mountbaren Speicherort. Bitte ändern Sie den Pfad "
+"in den Einstellungen in ein geeignetes Verzeichnis oder entfernen Sie diese "
+"Datei."
 
 #: ../src/todo.txt/TxtList.vala:184
 msgid "Clear Done List"
@@ -85,51 +93,53 @@ msgstr "Erledigtliste leeren"
 
 #: ../src/todo.txt/TxtListManager.vala:202
 msgid "An error was encountered while moving a file!"
-msgstr ""
+msgstr "Beim Verschieben einer Datei ist ein Fehler aufgetreten!"
 
 #: ../src/todo.txt/TxtListManager.vala:204
 msgid "Error information: "
-msgstr ""
+msgstr "Fehlerinformation: "
 
 #: ../src/todo.txt/TxtListManager.vala:226
 msgid "Todo.txt files were found in the destination directory."
-msgstr ""
+msgstr "Todo.txt-Dateien wurden im Zielverzeichnis gefunden."
 
 #: ../src/todo.txt/TxtListManager.vala:230
 msgid "What should be done with these files?"
-msgstr ""
+msgstr "Was ist mit diesen Dateien zu tun?"
 
 #: ../src/todo.txt/TxtListManager.vala:232
 msgid "Keep old"
-msgstr ""
+msgstr "Alte behalten"
 
 #: ../src/todo.txt/TxtListManager.vala:234
 msgid "Overwrite"
-msgstr ""
+msgstr "Überschreiben"
 
 #: ../src/todo.txt/TxtListManager.vala:236
 #: ../src/todo.txt/view/TxtListEditDialog.vala:56
 #: ../src/todo.txt/view/TxtListEditDialog.vala:61
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: ../src/todo.txt/view/TaskList.vala:35
 msgid ""
 "You currently don't have any tasks.\n"
 "Add some!"
 msgstr ""
+"Sie haben derzeit keine Aufgaben.\n"
+"Fügen Sie einige hinzu!"
 
 #: ../src/todo.txt/view/TaskList.vala:36
 msgid "The search operation did not return any tasks."
-msgstr ""
+msgstr "Der Suchvorgang lieferte keine Aufgaben zurück."
 
 #: ../src/todo.txt/view/TaskList.vala:37
 msgid "You don't have any completed tasks stored."
-msgstr ""
+msgstr "Sie haben keine erledigten Aufgaben gespeichert."
 
 #: ../src/todo.txt/view/TaskList.vala:38
 msgid "You finished all tasks, good job!"
-msgstr ""
+msgstr "Sie haben alle Aufgaben erledigt, gut gemacht!"
 
 #: ../src/todo.txt/view/TaskList.vala:151
 msgid "Add new task"
@@ -139,15 +149,15 @@ msgstr "Neue Aufgabe hinzufügen"
 #. formatting of DateTime
 #: ../src/todo.txt/view/TaskRow.vala:251
 msgid "%Y-%m-%d"
-msgstr ""
+msgstr "%Y-%m-%d"
 
 #: ../src/todo.txt/view/TaskRow.vala:255
 msgid "Task completed at %s, created at %s"
-msgstr ""
+msgstr "Aufgabe abgeschlossen um %s, angelegt um %s"
 
 #: ../src/todo.txt/view/TaskRow.vala:262
 msgid "Task created at %s"
-msgstr ""
+msgstr "Aufgabe erstellt um %s"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:42
 #: ../src/todo.txt/view/TxtListEditDialog.vala:221
@@ -156,32 +166,33 @@ msgstr "Verzeichnis"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:43
 msgid "List name"
-msgstr ""
+msgstr "Listenname"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:55
 msgid "New to-do list"
-msgstr ""
+msgstr "Neue Aufgabenliste"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:57
 #: ../src/view/SelectionPage.vala:88
 msgid "Add list"
-msgstr ""
+msgstr "Liste hinzufügen"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:60
 msgid "Edit to-do list properties"
-msgstr ""
+msgstr "Eigenschaften der Aufgabenliste bearbeiten"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:62
 msgid "Apply"
-msgstr ""
+msgstr "Anwenden"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:108
 msgid "The configured directory is already in use by another list."
 msgstr ""
+"Das konfigurierte Verzeichnis wird bereits von einer anderen Liste verwendet."
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:128
 msgid "Please assign a name to the list."
-msgstr ""
+msgstr "Bitte geben Sie der Liste einen Namen."
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:276
 #: ../src/view/Dialogs/SettingsDialog.vala:69 ../src/view/TaskListPage.vala:87
@@ -191,7 +202,7 @@ msgstr "Stoppuhr"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:277
 msgid "Use default settings"
-msgstr ""
+msgstr "Standardeinstellungen verwenden"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:278
 #: ../src/view/Dialogs/SettingsDialog.vala:131
@@ -235,6 +246,7 @@ msgstr ""
 #: ../src/view/Dialogs/ContributeDialog.vala:36
 msgid "If you really like this app, you can buy me a drink:"
 msgstr ""
+"Wenn Ihnen diese App wirklich gefällt, können Sie mir ein Getränk ausgeben:"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:45 ../src/view/MainWindow.vala:372
 msgid "Settings"
@@ -250,28 +262,28 @@ msgstr "Erscheinungsbild"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:180
 msgid "General"
-msgstr ""
+msgstr "Allgemeines"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:182
 msgid "Use small toolbar icons"
-msgstr ""
+msgstr "Kleine Symbolleistensymbole verwenden"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:185
 msgid "Appearance of the activity switcher"
-msgstr ""
+msgstr "Aussehen des Aktivitätsumschalters"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:192
 msgid "Icons"
-msgstr ""
+msgstr "Symbole"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:193
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:235
 #: ../src/view/Dialogs/SettingsDialog.vala:237
 msgid "Theme"
-msgstr ""
+msgstr "Thema"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:236
 msgid "Dark theme"
@@ -280,6 +292,7 @@ msgstr "Dunkles Thema"
 #: ../src/view/Dialogs/SettingsDialog.vala:266
 msgid "Go For It! needs to be restarted for this setting to take effect"
 msgstr ""
+"Go For It! muss neu gestartet werden, damit diese Einstellung wirksam wird"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:269
 msgid "Use a header bar"
@@ -287,11 +300,11 @@ msgstr "Eine Kopfzeile benutzen"
 
 #: ../src/view/MainWindow.vala:62
 msgid "Go to overview"
-msgstr ""
+msgstr "Zur Übersicht gehen"
 
 #: ../src/view/MainWindow.vala:63
 msgid "Go back to the to-do list"
-msgstr ""
+msgstr "Zurück zur Aufgabenliste"
 
 #: ../src/view/MainWindow.vala:274
 msgid "Menu"
@@ -323,17 +336,19 @@ msgstr "Bereite dich auf deine Pause vor"
 
 #: ../src/view/MainWindow.vala:455
 msgid "You have %s seconds left"
-msgstr "Du hast noch %s Skunden"
+msgstr "Sie haben noch %s Skunden"
 
 #: ../src/view/SelectionPage.vala:78
 msgid ""
 "Currently, no lists are configured.\n"
 "Add one below!"
 msgstr ""
+"Derzeit sind keine Listen konfiguriert.\n"
+"Fügen Sie unten eine hinzu!"
 
 #: ../src/view/TaskListPage.vala:80
 msgid "Lists"
-msgstr ""
+msgstr "Listen"
 
 #: ../src/view/TaskListPage.vala:86 ../src/view/TaskListPage.vala:138
 msgid "To-Do"
@@ -377,15 +392,15 @@ msgstr "Entspann dich"
 
 #: ../src/view/TimerView.vala:268
 msgid "You have nothing to do."
-msgstr "Du hast nichts zutun"
+msgstr "Sie haben nichts zu tun."
 
 #: ../src/view/Widgets/TodoListInfoRow.vala:94
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: ../src/view/Widgets/TodoListInfoRow.vala:95
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #~ msgid ""
 #~ "If no appropriate folder was found, Go For It! defaults to creating a "
