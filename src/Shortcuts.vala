@@ -21,12 +21,12 @@ namespace GOFI {
         const uint[] NEW = {Gdk.Key.Control_L, Gdk.Key.N};
         const uint[] TIMER = {Gdk.Key.Control_L, Gdk.Key.P};
         const uint[] TASK_DONE = {Gdk.Key.Control_L, Gdk.Key.Return};
-        const uint[] ROW_MOVE_UP = {Gdk.Key.Control_L, Gdk.Key.K};
-        const uint[] ROW_MOVE_DOWN = {Gdk.Key.Control_L, Gdk.Key.J};
-        const uint[] SWITCH_PAGE_LEFT = {Gdk.Key.Shift_L, Gdk.Key.J};
-        const uint[] SWITCH_PAGE_RIGHT = {Gdk.Key.Shift_L, Gdk.Key.K};
-        const uint[] NEXT_TASK = {Gdk.Key.K};
-        const uint[] PREV_TASK = {Gdk.Key.J};
+        const uint[] ROW_MOVE_UP = {Gdk.Key.Control_L, Gdk.Key.J};
+        const uint[] ROW_MOVE_DOWN = {Gdk.Key.Control_L, Gdk.Key.K};
+        const uint[] SWITCH_PAGE_LEFT = {Gdk.Key.Shift_L, Gdk.Key.K};
+        const uint[] SWITCH_PAGE_RIGHT = {Gdk.Key.Shift_L, Gdk.Key.J};
+        const uint[] NEXT_TASK = {Gdk.Key.J};
+        const uint[] PREV_TASK = {Gdk.Key.K};
 
         public static string? key_to_accel (uint key) {
             switch (key) {
