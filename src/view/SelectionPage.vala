@@ -109,7 +109,8 @@ class GOFI.SelectionPage : Gtk.Grid {
         add_button.clicked.connect (on_add_button_clicked);
     }
 
-    public void show_list_creation_dialog () {
+    [Signal (action = true)]
+    public virtual signal void show_list_creation_dialog () {
         if (create_dialog == null) {
             Gtk.Window? window = this.get_toplevel () as Gtk.Window;
             create_dialog = list_manager.get_txt_manager ().get_creation_dialog (window);

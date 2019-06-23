@@ -39,36 +39,51 @@ namespace GOFI {
             layout.margin = 12;
 
             int y = 0;
-            add_shortcut_descr (layout, ref y, _("Filter tasks"), Shortcuts.FILTER);
-            add_shortcut_descr (layout, ref y, _("Add new task/list"), Shortcuts.NEW);
-            add_shortcut_descr (layout, ref y, _("Start/Stop the timer"), Shortcuts.TIMER);
-            add_shortcut_descr (layout, ref y, _("Mark the task as complete"), Shortcuts.TASK_DONE);
-            add_shortcut_descr (layout, ref y, _("Move selected row up"), Shortcuts.ROW_MOVE_UP);
-            add_shortcut_descr (layout, ref y, _("Move selected row down"), Shortcuts.ROW_MOVE_DOWN);
-            add_shortcut_descr (layout, ref y, _("Move to right screen"), Shortcuts.SWITCH_PAGE_RIGHT);
-            add_shortcut_descr (layout, ref y, _("Move to left screen"), Shortcuts.SWITCH_PAGE_LEFT);
-            add_shortcut_descr (layout, ref y, _("Move to next task/row"), Shortcuts.NEXT_TASK);
-            add_shortcut_descr (layout, ref y, _("Move to previous task/row"), Shortcuts.PREV_TASK);
+            add_shortcut_descr (layout, ref y, _("Filter tasks"), kbsettings.get_shortcut ("filter"));
+            add_shortcut_descr (layout, ref y, _("Add new task/list"), kbsettings.get_shortcut ("add-new"));
+            add_shortcut_descr (layout, ref y, _("Start/Stop the timer"), kbsettings.get_shortcut ("toggle-timer"));
+            add_shortcut_descr (layout, ref y, _("Mark the task as complete"), kbsettings.get_shortcut ("mark-task-done"));
+            add_shortcut_descr (layout, ref y, _("Move selected row up"), kbsettings.get_shortcut ("move-row-up"));
+            add_shortcut_descr (layout, ref y, _("Move selected row down"), kbsettings.get_shortcut ("move-row-down"));
+            add_shortcut_descr (layout, ref y, _("Move to right screen"), kbsettings.get_shortcut ("cycle-page"));
+            add_shortcut_descr (layout, ref y, _("Move to left screen"), kbsettings.get_shortcut ("cycle-page-reverse"));
+            add_shortcut_descr (layout, ref y, _("Move to next task/row"), kbsettings.get_shortcut ("next-task"));
+            add_shortcut_descr (layout, ref y, _("Move to previous task/row"), kbsettings.get_shortcut ("prev-task"));
 
             add (layout);
             layout.show_all ();
         }
 
-        private void add_shortcut_descr (Gtk.Grid grid, ref int y, string descr, uint[] shortcut) {
+        private Gtk.Label create_key_label (string text) {
+            Gtk.Label key_label = new Gtk.Label (text);
+            key_label.get_style_context ().add_class ("keycap");
+            return key_label;
+        }
+
+        private void add_shortcut_descr (Gtk.Grid grid, ref int y, string descr, Shortcut sc) {
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 4);
-            var first = true;
 
-            foreach (var key in shortcut) {
-                if (first) {
-                    first = false;
-                } else {
-                    box.add (new Gtk.Label ("+"));
-                }
-                var key_label = new Gtk.Label (Shortcuts.key_to_label_str (key));
-                key_label.get_style_context ().add_class ("keycap");
-
-                box.add (key_label);
+            if ((sc.modifier & Gdk.ModifierType.CONTROL_MASK) != 0) {
+                box.add (create_key_label ("Ctrl"));
+                box.add (new Gtk.Label ("+"));
             }
+            if ((sc.modifier & Gdk.ModifierType.SHIFT_MASK) != 0) {
+                box.add (create_key_label ("Shift"));
+                box.add (new Gtk.Label ("+"));
+            }
+            if ((sc.modifier & Gdk.ModifierType.MOD1_MASK) != 0) {
+                box.add (create_key_label ("Alt"));
+                box.add (new Gtk.Label ("+"));
+            }
+            switch (sc.key) {
+                case Gdk.Key.Return:
+                    box.add (create_key_label ("Enter")); // Most keyboards have Enter printed on the key
+                    break;
+                default:
+                    box.add (create_key_label (Gdk.keyval_name (sc.key)));
+                    break;
+            }
+
             var descr_label = new Gtk.Label (descr + ":");
             descr_label.halign = Gtk.Align.END;
             descr_label.xalign = 1;

@@ -60,11 +60,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     public const string ACTION_SHORTCUTS = "shortcuts";
     public const string ACTION_NEW = "new_todo";
     public const string ACTION_TIMER = "toggle_timer";
-    public const string ACTION_TASK_DONE = "task_mark_done";
-    public const string ACTION_TASK_NEXT = "task_next";
-    public const string ACTION_TASK_PREV = "task_prev";
-    public const string ACTION_ROW_MOVE_UP = "row_move_up";
-    public const string ACTION_ROW_MOVE_DOWN = "row_move_down";
     public const string ACTION_SWITCH_PAGE_LEFT = "switch_page_left";
     public const string ACTION_SWITCH_PAGE_RIGHT = "switch_page_right";
 
@@ -76,16 +71,10 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 #if !NO_CONTRIBUTE_DIALOG
         { ACTION_CONTRIBUTE, show_contribute_dialog },
 #endif
-        { ACTION_FILTER, toggle_search },
         { ACTION_SETTINGS, show_settings },
         { ACTION_SHORTCUTS, show_shortcuts },
         { ACTION_NEW, action_create_new },
         { ACTION_TIMER, action_toggle_timer },
-        { ACTION_TASK_DONE, action_mark_task_done },
-        { ACTION_TASK_NEXT, action_task_switch_next },
-        { ACTION_TASK_PREV, action_task_switch_prev },
-        { ACTION_ROW_MOVE_UP, action_row_move_up },
-        { ACTION_ROW_MOVE_DOWN, action_row_move_down },
         { ACTION_SWITCH_PAGE_LEFT, action_switch_page_left },
         { ACTION_SWITCH_PAGE_RIGHT, action_switch_page_right }
     };
@@ -255,54 +244,22 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         var actions = new SimpleActionGroup ();
         actions.add_action_entries (action_entries, this);
         insert_action_group (ACTION_PREFIX, actions);
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_FILTER, {Shortcuts.to_accel (Shortcuts.FILTER)});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_NEW, {Shortcuts.to_accel (Shortcuts.NEW)});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TIMER, {Shortcuts.to_accel (Shortcuts.TIMER)});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_TASK_DONE, {Shortcuts.to_accel (Shortcuts.TASK_DONE)});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_ROW_MOVE_UP, {Shortcuts.to_accel (Shortcuts.ROW_MOVE_UP)});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_ROW_MOVE_DOWN, {Shortcuts.to_accel (Shortcuts.ROW_MOVE_DOWN)});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_SWITCH_PAGE_LEFT, {Shortcuts.to_accel (Shortcuts.SWITCH_PAGE_LEFT)});
-        app.set_accels_for_action (ACTION_PREFIX + "." + ACTION_SWITCH_PAGE_RIGHT, {Shortcuts.to_accel (Shortcuts.SWITCH_PAGE_RIGHT)});
-
-        key_release_event.connect (on_key_release);
-    }
-
-    /**
-     * Check for keys that should be interpreted as shortcuts depending on the
-     * context, but also could be input for widgets.
-     */
-    private bool on_key_release (Gdk.EventKey event) {
-        var mask = Gtk.accelerator_get_default_mod_mask ();
-
-        // no modifier buttons are pressed
-        if ((event.state & mask) != 0) {
-            return false;
-        }
-
-        var focussed_widget = get_focus ();
-
-        if (focussed_widget as Gtk.CellEditable != null ||
-            focussed_widget as Gtk.TextView != null)
-        {
-            return false;
-        }
-
-        var keyval = Gdk.keyval_to_upper(event.keyval);
-
-        if (keyval == Shortcuts.NEXT_TASK[0]) {
-            action_task_switch_next ();
-            return false;
-        } else if (keyval == Shortcuts.PREV_TASK[0]) {
-            action_task_switch_prev ();
-            return false;
-        }
-        return false;
-    }
-
-    private void toggle_search () {
-        if (top_stack.visible_child == task_page) {
-            task_page.toggle_filtering ();
-        }
+        app.set_accels_for_action (
+            ACTION_PREFIX + "." + ACTION_TIMER,
+            {kbsettings.get_shortcut ("toggle-timer").to_string ()}
+        );
+        app.set_accels_for_action (
+            ACTION_PREFIX + "." + ACTION_NEW,
+            {kbsettings.get_shortcut ("add-new").to_string ()}
+        );
+        app.set_accels_for_action (
+            ACTION_PREFIX + "." + ACTION_SWITCH_PAGE_LEFT,
+            {kbsettings.get_shortcut ("cycle-page-reverse").to_string ()}
+        );
+        app.set_accels_for_action (
+            ACTION_PREFIX + "." + ACTION_SWITCH_PAGE_RIGHT,
+            {kbsettings.get_shortcut ("cycle-page").to_string ()}
+        );
     }
 
     private void action_create_new () {
@@ -316,44 +273,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     private void action_toggle_timer () {
         if (task_page.ready && task_timer.active_task != null) {
             task_timer.toggle_running ();
-        }
-    }
-
-    private void action_mark_task_done () {
-        if (top_stack.visible_child == task_page) {
-            task_page.action_mark_task_done ();
-        }
-    }
-
-    private void action_task_switch_next () {
-        if (top_stack.visible_child == task_page) {
-            task_page.action_task_switch_next ();
-        } else {
-            selection_page.move_cursor (1);
-        }
-    }
-
-    private void action_task_switch_prev () {
-        if (top_stack.visible_child == task_page) {
-            task_page.action_task_switch_prev ();
-        } else {
-            selection_page.move_cursor (-1);
-        }
-    }
-
-    private void action_row_move_up () {
-        if (top_stack.visible_child == task_page) {
-            task_page.action_row_move_up ();
-        } else {
-            selection_page.move_selected_row (1);
-        }
-    }
-
-    private void action_row_move_down () {
-        if (top_stack.visible_child == task_page) {
-            task_page.action_row_move_down ();
-        } else {
-            selection_page.move_selected_row (-1);
         }
     }
 

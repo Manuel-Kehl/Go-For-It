@@ -38,3 +38,7 @@ install (
     CODE "execute_process (COMMAND gtk-update-icon-cache -t -f ${SYSTEM_DEFAULT_THEME})"
 )
 endif (ICON_UPDATE)
+
+configure_file (go-for-it.gschema.xml.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.gschema.xml)
+include(GSettings)
+add_schema("${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.gschema.xml")

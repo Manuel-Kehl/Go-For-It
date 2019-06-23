@@ -15,6 +15,10 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
+namespace GOFI {
+    public KeyBindingSettings kbsettings;
+}
+
 /**
  * The main application class that is responsible for initiating all
  * necessary steps to create a running instance of "Go For It!".
@@ -42,6 +46,7 @@ class GOFI.Main : Gtk.Application {
             return;
         }
 
+        kbsettings = new KeyBindingSettings ();
         settings = new SettingsManager.load_from_key_file ();
         list_manager = new ListManager (settings);
         task_timer = new TaskTimer (settings);

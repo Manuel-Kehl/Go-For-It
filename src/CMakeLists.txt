@@ -32,8 +32,6 @@ vala_precompile (VALA_C ${LIBNAME}
     DragListModel.vala
     Theme.vala
     Shortcuts.vala
-    view/Widgets/FilterableWidget.vala
-    view/Widgets/TaskListWidget.vala
     view/Widgets/TodoListInfoRow.vala
     view/Widgets/DragList.vala
     view/Widgets/ViewSwitcher.vala

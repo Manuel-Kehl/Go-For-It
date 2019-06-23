@@ -121,7 +121,7 @@ class GOFI.TXT.TxtList : Object {
     /**
      * Tasks that the user should currently work on
      */
-    public unowned TaskListWidget get_primary_page (out string? page_name) {
+    public unowned Gtk.Widget get_primary_page (out string? page_name) {
         page_name = null;
         return todo_list;
     }
@@ -129,7 +129,7 @@ class GOFI.TXT.TxtList : Object {
     /**
      * Can be future recurring tasks or tasks that are already done
      */
-    public unowned TaskListWidget get_secondary_page (out string? page_name) {
+    public unowned Gtk.Widget get_secondary_page (out string? page_name) {
         page_name = null;
         return done_list;
     }

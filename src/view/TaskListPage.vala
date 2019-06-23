@@ -20,7 +20,7 @@ using GOFI.TXT;
 /**
  * A widget containing a TaskList and its widgets and the TimerView.
  */
-class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
+class GOFI.TaskListPage : Gtk.Grid {
     private TxtList task_list = null;
     private SettingsManager settings;
     private TaskTimer task_timer;
@@ -30,32 +30,53 @@ class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
     private ViewSwitcher activity_switcher;
     private Gtk.Stack switcher_stack;
 
-    private TaskListWidget first_page;
+    private Gtk.Widget first_page;
     private TimerView timer_view;
-    private TaskListWidget last_page;
-
-    public bool is_filtering {
-        public get {
-            var current_page =
-                activity_stack.get_visible_child () as FilterableWidget;
-            if (current_page != null) {
-                return current_page.is_filtering;
-            }
-            return false;
-        }
-        public set {
-            var current_page =
-                activity_stack.get_visible_child () as FilterableWidget;
-            if (current_page != null) {
-                current_page.is_filtering = value;
-            }
-        }
-    }
+    private Gtk.Widget last_page;
 
     public signal void removing_list ();
 
+    [Signal (action = true)]
+    public virtual signal void switch_to_next () {
+        if (task_list == null) {
+            return;
+        }
+        var next = task_list.get_next ();
+
+        if (next != null) {
+            task_timer.stop ();
+            task_list.active_task = next;
+        }
+    }
+
+    [Signal (action = true)]
+    public virtual signal void switch_to_prev () {
+        if (task_list == null) {
+            return;
+        }
+        var prev = task_list.get_prev ();
+
+        if (prev != null) {
+            task_timer.stop ();
+            task_list.active_task = prev;
+        }
+    }
+
+    [Signal (action = true)]
+    public virtual signal void mark_task_done () {
+        var visible_child = activity_stack.get_visible_child ();
+        if (visible_child == first_page) {
+            var selected_task = task_list.selected_task;
+            if (selected_task != null) {
+                task_list.mark_done (selected_task);
+            }
+        } else if (visible_child == timer_view) {
+            task_timer.set_active_task_done ();
+        }
+    }
+
     /**
-     * The constructor of the MainWindow class.
+     * The constructor of the TaskListPage class.
      */
     public TaskListPage (SettingsManager settings, TaskTimer task_timer)
     {
@@ -96,7 +117,11 @@ class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
         activity_switcher.show_icons = settings.switcher_use_icons;
 
         activity_switcher.notify["selected-item"].connect (() => {
-            activity_stack.set_visible_child_name (activity_switcher.selected_item);
+            var selected = activity_switcher.selected_item;
+            activity_stack.set_visible_child_name (selected);
+            if (selected == "timer") {
+                timer_view.set_focus ();
+            }
         });
         settings.toolbar_icon_size_changed.connect (on_icon_size_changed);
         settings.switcher_use_icons_changed.connect (on_switcher_use_icons);
@@ -121,59 +146,6 @@ class GOFI.TaskListPage : Gtk.Grid, FilterableWidget {
     public void action_add_task () {
         activity_switcher.selected_item = "primary";
         task_list.task_entry_focus ();
-    }
-
-    public void action_mark_task_done () {
-        var visible_child = activity_stack.get_visible_child ();
-        if (visible_child == first_page) {
-            var selected_task = task_list.selected_task;
-            if (selected_task != null) {
-                task_list.mark_done (selected_task);
-            }
-        } else if (visible_child == timer_view) {
-            task_timer.set_active_task_done ();
-        }
-    }
-
-    public void action_task_switch_next () {
-        var visible_child = activity_stack.get_visible_child ();
-        if (visible_child == first_page) {
-            first_page.move_cursor (1);
-        } else if (visible_child == timer_view) {
-            var next = task_list.get_next ();
-            if (next != null) {
-                task_timer.stop ();
-                task_list.active_task = next;
-            }
-        }
-    }
-
-    public void action_task_switch_prev () {
-        var visible_child = activity_stack.get_visible_child ();
-        if (visible_child == first_page) {
-            first_page.move_cursor (-1);
-        } else if (visible_child == timer_view) {
-            var prev = task_list.get_prev ();
-
-            if (prev != null) {
-                task_timer.stop ();
-                task_list.active_task = prev;
-            }
-        }
-    }
-
-    public void action_row_move_up () {
-        var visible_child = activity_stack.get_visible_child ();
-        if (visible_child == first_page) {
-            first_page.move_selected_task (1);
-        }
-    }
-
-    public void action_row_move_down () {
-        var visible_child = activity_stack.get_visible_child ();
-        if (visible_child == first_page) {
-            first_page.move_selected_task (-1);
-        }
     }
 
     public bool switch_page_left () {

@@ -18,7 +18,7 @@
 /**
  * A widget for displaying and manipulating task lists.
  */
-class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget, TaskListWidget {
+class GOFI.TXT.TaskList : Gtk.Grid {
     /* GTK Widgets */
     private Gtk.ScrolledWindow scroll_view;
     private DragList task_view;
@@ -41,6 +41,11 @@ class GOFI.TXT.TaskList : Gtk.Grid, FilterableWidget, TaskListWidget {
     /* Signals */
     public signal void add_new_task (string task);
     public signal void selection_changed (TodoTask selected_task);
+
+    [Signal (action = true)]
+    public virtual signal void toggle_filtering () {
+        is_filtering = !is_filtering;
+    }
 
     public bool is_filtering {
         public get {

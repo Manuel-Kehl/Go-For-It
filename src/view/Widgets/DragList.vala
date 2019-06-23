@@ -84,9 +84,18 @@ public class GOFI.DragList : Gtk.Bin {
     /**
      * Selects the row count*step positions away from the currently selected row.
      */
+    [Signal (action = true)]
     public virtual signal void move_cursor (Gtk.MovementStep step, int count) {
         internal_signal = true;
         listbox.move_cursor (step, count);
+    }
+
+    [Signal (action = true)]
+    public virtual signal void move_selected_row (int offset) {
+        if (selected_row == null) {
+            return;
+        }
+        _move_row (selected_row, offset, false);
     }
 
     private void on_list_move_cursor (Gtk.MovementStep step, int count) {
@@ -200,12 +209,23 @@ public class GOFI.DragList : Gtk.Bin {
 
     private void on_model_items_changed (uint index, uint removed, uint added) {
         bool need_to_select_closest = false;
+        bool need_to_set_focus = false;
         block_row_selected = true;
         if (removed > 0 && added == 0) {
             DragListRow selected_row = get_selected_row ();
             assert (selected_row != null);
             uint selected_index = selected_row.get_index ();
-            need_to_select_closest = (index <= selected_index && index + removed > selected_index);
+            if (index <= selected_index && index + removed > selected_index) {
+                need_to_select_closest = true;
+                if (selected_row.has_focus) {
+                    need_to_set_focus = true;
+                } else {
+                    var row_child = selected_row.get_focus_child ();
+                    if (row_child != null && row_child.has_focus) {
+                        need_to_set_focus = true;
+                    }
+                }
+            }
         }
         for (uint i = 0; i < removed ; i++) {
             var row = get_row_at_index ((int)index);
@@ -228,6 +248,9 @@ public class GOFI.DragList : Gtk.Bin {
         if (need_to_select_closest) {
             select_closest_to ((int)index);
             block_row_selected = false;
+        }
+        if (need_to_set_focus && selected_row != null) {
+            selected_row.grab_focus ();
         }
     }
 

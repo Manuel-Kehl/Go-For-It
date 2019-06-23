@@ -276,4 +276,12 @@ class GOFI.TimerView : Gtk.Grid {
             done_btn.visible = false;
         }
     }
+
+    /**
+     * We want to have something to focus on so keybindings of parent widgets
+     * can work.
+     */
+    public void set_focus () {
+        run_btn.has_focus = true;
+    }
 }
