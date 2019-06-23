@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema path="@SCHEMA_PATH@/keybindings/" id="@APP_ID@.keybindings">
+    <key name="move-row-up" type="s">
+      <default><![CDATA['<Control>j']]></default>
+      <summary>Move the selected row up.</summary>
+      <description></description>
+    </key>
+    <key name="move-row-down" type="s">
+      <default><![CDATA['<Control>k']]></default>
+      <summary>Move the selected row down.</summary>
+      <description></description>
+    </key>
+    <key name="next-task" type="s">
+      <default><![CDATA['j']]></default>
+      <summary>Switch to the next task or list.</summary>
+      <description></description>
+    </key>
+    <key name="prev-task" type="s">
+      <default><![CDATA['k']]></default>
+      <summary>Switch to the previous task or list.</summary>
+      <description></description>
+    </key>
+    <key name="cycle-page-reverse" type="s">
+      <default><![CDATA['<Control><Shift>Tab']]></default>
+      <summary>Cycle through the pages in reverse order.</summary>
+      <description></description>
+    </key>
+    <key name="cycle-page" type="s">
+      <default><![CDATA['<Control>Tab']]></default>
+      <summary>Cycle through the pages.</summary>
+      <description></description>
+    </key>
+    <key name="filter" type="s">
+      <default><![CDATA['<Control>f']]></default>
+      <summary>Filter/search shortcut.</summary>
+      <description></description>
+    </key>
+    <key name="add-new" type="s">
+      <default><![CDATA['<Control>n']]></default>
+      <summary>Add a new task or list.</summary>
+      <description></description>
+    </key>
+    <key name="toggle-timer" type="s">
+      <default><![CDATA['<Control>p']]></default>
+      <summary>Stop or start the timer.</summary>
+      <description></description>
+    </key>
+    <key name="mark-task-done" type="s">
+      <default><![CDATA['<Control>Return']]></default>
+      <summary>Mark the current task as completed.</summary>
+      <description></description>
+    </key>
+  </schema>
+</schemalist>
+
