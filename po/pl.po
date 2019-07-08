@@ -3,15 +3,18 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-26 11:45+0100\n"
-"PO-Revision-Date: 2016-11-18 22:38+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-07-09 09:02+0000\n"
+"Last-Translator: DamN <damiannadolski@wp.pl>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/pl/>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.8-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
-"X-Generator: Launchpad (build 18505)\n"
 
 #: ../src/Main.vala:92
 msgid "Print version info and exit"
@@ -24,11 +27,11 @@ msgstr ""
 #: ../src/SettingsManager.vala:292 ../src/todo.txt/TxtListManager.vala:58
 #: ../src/todo.txt/TxtListManager.vala:459
 msgid "Couldn't create directory: %s"
-msgstr ""
+msgstr "Nie można utworzyć katalogu: %s"
 
 #: ../src/SettingsManager.vala:428
 msgid "Couldn't properly import settings from %s: %s"
-msgstr ""
+msgstr "Nie można poprawnie zaimportować ustawień z %s: %s"
 
 #: ../src/Theme.vala:54
 msgid "Inherit from Gtk theme"
@@ -36,15 +39,15 @@ msgstr ""
 
 #: ../src/todo.txt/Filter.vala:69 ../src/todo.txt/view/TaskRow.vala:303
 msgid "project"
-msgstr ""
+msgstr "projekt"
 
 #: ../src/todo.txt/Filter.vala:75 ../src/todo.txt/view/TaskRow.vala:298
 msgid "context"
-msgstr ""
+msgstr "kontekst"
 
 #: ../src/todo.txt/Filter.vala:81 ../src/todo.txt/view/TaskRow.vala:272
 msgid "priority"
-msgstr ""
+msgstr "priorytet"
 
 #: ../src/todo.txt/TaskManager.vala:46
 msgid "Spread the word about \"Go For It!\""
@@ -52,11 +55,11 @@ msgstr ""
 
 #: ../src/todo.txt/TaskManager.vala:47
 msgid "Consider a donation to help the project"
-msgstr ""
+msgstr "Rozważ darowiznę by wesprzeć projekt"
 
 #: ../src/todo.txt/TaskManager.vala:48
 msgid "Consider contributing to the project"
-msgstr ""
+msgstr "Rozważ udział w projekcie"
 
 #: ../src/todo.txt/TaskManager.vala:51
 msgid ""
