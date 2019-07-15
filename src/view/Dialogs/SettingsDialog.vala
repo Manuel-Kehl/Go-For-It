@@ -15,6 +15,8 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
+using GOFI.DialogUtils;
+
 /**
  * A dialog for changing the application's settings.
  */
@@ -22,8 +24,9 @@ class GOFI.SettingsDialog : Gtk.Dialog {
     private SettingsManager settings;
     /* GTK Widgets */
     private Gtk.Grid main_layout;
-    private Gtk.Grid timer_page;
-    private Gtk.Grid appearance_page;
+    private TimerPage timer_page;
+    private AppearancePage appearance_page;
+    private ShortcutsPage shortcuts_page;
     private Gtk.StackSwitcher stack_switcher;
     private Gtk.Stack settings_stack;
 
@@ -63,224 +66,15 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         stack_switcher.stack = settings_stack;
         stack_switcher.halign = Gtk.Align.CENTER;
 
-        setup_timer_settings_widgets ();
-        setup_appearance_settings_widgets ();
+        timer_page = new TimerPage (settings);
+        appearance_page = new AppearancePage (settings);
+        shortcuts_page = new ShortcutsPage ();
 
         settings_stack.add_titled (timer_page, "timer_page", _("Timer"));
         settings_stack.add_titled (appearance_page, "appearance_page", _("Appearance"));
+        settings_stack.add_titled (shortcuts_page, "shortcuts_page", _("Shortcuts"));
 
         main_layout.add(stack_switcher);
         main_layout.add(settings_stack);
-    }
-
-    private void add_section (Gtk.Grid grid, Gtk.Label label, ref int row) {
-        label.set_markup ("<b>%s</b>".printf (label.get_text ()));
-        label.halign = Gtk.Align.START;
-
-        grid.attach (label, 0, row, 2, 1);
-        row++;
-    }
-
-    private void add_option (Gtk.Grid grid, Gtk.Widget label,
-                             Gtk.Widget switcher, ref int row, int indent=1)
-    {
-        label.hexpand = true;
-        label.margin_start = indent * 20; // indentation relative to the section label
-        label.halign = Gtk.Align.START;
-
-        switcher.hexpand = true;
-        switcher.halign = Gtk.Align.FILL;
-
-        if (switcher is Gtk.Switch || switcher is Gtk.Entry) {
-            switcher.halign = Gtk.Align.START;
-        }
-
-        grid.attach (label, 0, row, 1, 1);
-        grid.attach (switcher, 1, row, 1, 1);
-        row++;
-    }
-
-    private void add_explanation (Gtk.Grid grid, Gtk.Label label, ref int row) {
-        label.hexpand = true;
-        label.margin_start = 20; // indentation relative to the section label
-        label.halign = Gtk.Align.START;
-
-        grid.attach (label, 0, row, 2, 1);
-        row++;
-    }
-
-    private Gtk.Grid create_page_grid () {
-        var grid = new Gtk.Grid ();
-        grid.row_spacing = 6;
-        grid.column_spacing = 10;
-        return grid;
-    }
-
-    private void setup_timer_settings_widgets () {
-        /* Declaration */
-        Gtk.Label task_lbl;
-        Gtk.SpinButton task_spin;
-        Gtk.Label break_lbl;
-        Gtk.SpinButton break_spin;
-        Gtk.Label reminder_lbl;
-        Gtk.SpinButton reminder_spin;
-
-        /* Instantiation */
-        timer_page = create_page_grid ();
-
-        task_lbl = new Gtk.Label (_("Task duration (minutes)") + ":");
-        break_lbl = new Gtk.Label (_("Break duration (minutes)") + ":");
-        reminder_lbl = new Gtk.Label (_("Reminder before task ends (seconds)") +":");
-
-        // No more than one day: 60 * 24 -1 = 1439
-        task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
-        break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
-        // More than ten minutes would not make much sense
-        reminder_spin = new Gtk.SpinButton.with_range (0, 600, 1);
-
-        /* Configuration */
-        task_spin.value = settings.task_duration / 60;
-        break_spin.value = settings.break_duration / 60;
-        reminder_spin.value = settings.reminder_time;
-
-        /* Signal Handling */
-        task_spin.value_changed.connect ((e) => {
-            settings.task_duration = task_spin.get_value_as_int () * 60;
-        });
-        break_spin.value_changed.connect ((e) => {
-            settings.break_duration = break_spin.get_value_as_int () * 60;
-        });
-        reminder_spin.value_changed.connect ((e) => {
-            settings.reminder_time = reminder_spin.get_value_as_int ();
-        });
-
-        /* Add widgets */
-        int row = 0;
-        add_option (timer_page, task_lbl, task_spin, ref row, 0);
-        add_option (timer_page, break_lbl, break_spin, ref row, 0);
-        add_option (timer_page, reminder_lbl, reminder_spin, ref row, 0);
-    }
-
-    private void setup_appearance_settings_widgets () {
-        appearance_page = create_page_grid ();
-
-        int row = 0;
-        add_general_appearance_sect (ref row);
-        add_theme_section (ref row);
-    }
-
-    private void add_general_appearance_sect (ref int row) {
-        Gtk.Label general_sect_lbl;
-        Gtk.Label small_icons_lbl;
-        Gtk.Switch small_icons_switch;
-        Gtk.Label switch_app_lbl;
-        Gtk.ComboBoxText switch_app_selector;
-
-        /* Instantiation */
-        general_sect_lbl = new Gtk.Label (_("General"));
-
-        small_icons_lbl = new Gtk.Label (_("Use small toolbar icons") + ":");
-        small_icons_switch = new Gtk.Switch ();
-
-        switch_app_lbl = new Gtk.Label (_("Appearance of the activity switcher") + ":");
-        switch_app_selector = new Gtk.ComboBoxText ();
-
-        /* Configuration */
-        small_icons_switch.active =
-            settings.toolbar_icon_size == Gtk.IconSize.SMALL_TOOLBAR;
-
-        switch_app_selector.append ("icons", _("Icons"));
-        switch_app_selector.append ("text", _("Text"));
-        switch_app_selector.active_id =
-            settings.switcher_use_icons ? "icons" : "text";
-
-        /* Signal Handling */
-        small_icons_switch.notify["active"].connect ( () => {
-            if (small_icons_switch.active) {
-                settings.toolbar_icon_size = Gtk.IconSize.SMALL_TOOLBAR;
-            } else {
-                settings.toolbar_icon_size = Gtk.IconSize.LARGE_TOOLBAR;
-            }
-        });
-        switch_app_selector.changed.connect ( () => {
-            settings.switcher_use_icons =
-                switch_app_selector.active_id == "icons";
-        });
-
-        small_icons_switch.notify["active"].connect ( () => {
-            if (small_icons_switch.active) {
-                settings.toolbar_icon_size = Gtk.IconSize.SMALL_TOOLBAR;
-            } else {
-                settings.toolbar_icon_size = Gtk.IconSize.LARGE_TOOLBAR;
-            }
-        });
-
-        /* Add widgets */
-        add_section (appearance_page, general_sect_lbl, ref row);
-        add_option (appearance_page, small_icons_lbl, small_icons_switch, ref row);
-        add_option (appearance_page, switch_app_lbl, switch_app_selector, ref row);
-        if (GOFI.Utils.desktop_hb_status.config_useful ()) {
-            add_csd_settings_widgets (appearance_page, ref row);
-        }
-    }
-
-    private void add_theme_section (ref int row) {
-        Gtk.Label theme_sect_lbl;
-        Gtk.Label dark_theme_lbl;
-        Gtk.Label theme_lbl;
-        Gtk.Switch dark_theme_switch;
-        Gtk.ComboBoxText theme_selector;
-
-        /* Instantiation */
-        theme_sect_lbl = new Gtk.Label (_("Theme"));
-        dark_theme_lbl = new Gtk.Label (_("Dark theme") + ":");
-        theme_lbl = new Gtk.Label (_("Theme") + ":");
-        dark_theme_switch = new Gtk.Switch ();
-        theme_selector = new Gtk.ComboBoxText ();
-
-        /* Configuration */
-        dark_theme_switch.active = settings.use_dark_theme;
-        foreach (Theme theme in Theme.all ()) {
-            theme_selector.append (theme.to_string (), theme.to_theme_description ());
-        }
-        theme_selector.active_id = settings.theme.to_string ();
-
-        /* Signal Handling */
-        dark_theme_switch.notify["active"].connect ( () => {
-            settings.use_dark_theme = dark_theme_switch.active;
-        });
-        theme_selector.changed.connect ( () => {
-            settings.theme = Theme.from_string (theme_selector.active_id);
-        });
-
-        add_section (appearance_page, theme_sect_lbl, ref row);
-        add_option (appearance_page, theme_lbl, theme_selector, ref row);
-        add_option (appearance_page, dark_theme_lbl, dark_theme_switch, ref row);
-    }
-
-    private void add_csd_settings_widgets (Gtk.Grid grid, ref int row) {
-        Gtk.Label headerbar_lbl;
-        Gtk.Label restart_info_lbl;
-        Gtk.Switch headerbar_switch;
-
-        string restart_info = _("Go For It! needs to be restarted for this setting to take effect");
-
-        /* Instantiation */
-        headerbar_lbl = new Gtk.Label (_("Use a header bar") + ":");
-        restart_info_lbl = new Gtk.Label (@"<i>$restart_info</i>:");
-        headerbar_switch = new Gtk.Switch ();
-
-        /* Configuration */
-        headerbar_switch.active = settings.use_header_bar;
-        restart_info_lbl.use_markup = true;
-
-        /* Signal Handling */
-        headerbar_switch.notify["active"].connect ( () => {
-            settings.use_header_bar = headerbar_switch.active;
-        });
-
-        /* Add widgets */
-        add_explanation (grid, restart_info_lbl, ref row);
-        add_option (grid, headerbar_lbl, headerbar_switch, ref row, 2);
     }
 }

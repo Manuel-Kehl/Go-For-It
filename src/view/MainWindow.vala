@@ -57,7 +57,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     public const string ACTION_CONTRIBUTE = "contribute";
     public const string ACTION_FILTER = "filter";
     public const string ACTION_SETTINGS = "settings";
-    public const string ACTION_SHORTCUTS = "shortcuts";
     public const string ACTION_NEW = "new_todo";
     public const string ACTION_TIMER = "toggle_timer";
     public const string ACTION_SWITCH_PAGE_LEFT = "switch_page_left";
@@ -72,7 +71,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         { ACTION_CONTRIBUTE, show_contribute_dialog },
 #endif
         { ACTION_SETTINGS, show_settings },
-        { ACTION_SHORTCUTS, show_shortcuts },
         { ACTION_NEW, action_create_new },
         { ACTION_TIMER, action_toggle_timer },
         { ACTION_SWITCH_PAGE_LEFT, action_switch_page_left },
@@ -413,11 +411,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         config_item.action_name = ACTION_PREFIX + "." + ACTION_SETTINGS;
         menu_container.add (config_item);
 
-        var shortcuts_item = new Gtk.ModelButton ();
-        shortcuts_item.text = _("Shortcuts");
-        shortcuts_item.action_name = ACTION_PREFIX + "." + ACTION_SHORTCUTS;
-        menu_container.add (shortcuts_item);
-
 #if !NO_CONTRIBUTE_DIALOG
         var contribute_item = new Gtk.ModelButton ();
         contribute_item.text = _("Contribute / Donate");
@@ -450,11 +443,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     private void show_settings () {
         var dialog = new SettingsDialog (this, settings);
         dialog.show ();
-    }
-
-    private void show_shortcuts () {
-        var shortcuts_window = new ShortcutsWindow (this);
-        shortcuts_window.show ();
     }
 
     /**

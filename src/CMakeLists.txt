@@ -35,10 +35,14 @@ vala_precompile (VALA_C ${LIBNAME}
     view/Widgets/TodoListInfoRow.vala
     view/Widgets/DragList.vala
     view/Widgets/ViewSwitcher.vala
+    view/Dialogs/DialogUtils.vala
     view/Dialogs/SettingsDialog.vala
+    view/Dialogs/SettingsPages/AppearancePage.vala
+    view/Dialogs/SettingsPages/TimerPage.vala
+    view/Dialogs/SettingsPages/ShortcutsPage.vala
     view/Dialogs/AboutDialog.vala
     view/Dialogs/ContributeDialog.vala
-    view/Dialogs/ShortcutsWindow.vala
+    # view/Dialogs/ShortcutsWindow.vala
     view/TimerView.vala
     view/TaskListPage.vala
     view/SelectionPage.vala
