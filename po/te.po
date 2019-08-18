@@ -3,36 +3,39 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-26 11:45+0100\n"
-"PO-Revision-Date: 2016-11-18 22:38+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-08-19 11:24+0000\n"
+"Last-Translator: Babitha Siddula <siddulababithasiddu@gmail.com>\n"
+"Language-Team: Telugu <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/te/>\n"
+"Language: te\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.8\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
-"X-Generator: Launchpad (build 18505)\n"
 
 #: ../src/Main.vala:92
 msgid "Print version info and exit"
-msgstr ""
+msgstr "సంస్కరణ సమాచారాన్ని ముద్రించండి మరియు నిష్క్రమించండి"
 
 #: ../src/Main.vala:93
 msgid "Show about dialog"
-msgstr ""
+msgstr "డైలాగ్ గురించి చూపించు"
 
 #: ../src/SettingsManager.vala:292 ../src/todo.txt/TxtListManager.vala:58
 #: ../src/todo.txt/TxtListManager.vala:459
 msgid "Couldn't create directory: %s"
-msgstr ""
+msgstr "డైరెక్టరీని సృష్టించడం సాధ్యం కాలేదు"
 
 #: ../src/SettingsManager.vala:428
 msgid "Couldn't properly import settings from %s: %s"
-msgstr ""
+msgstr "నుండి సెట్టింగులను సరిగ్గా దిగుమతి చేయలేకపోయింది"
 
 #: ../src/Theme.vala:54
+#, fuzzy
 msgid "Inherit from Gtk theme"
-msgstr ""
+msgstr "నుండి Gtk థీమ్ నుండి వారసత్వం"
 
 #: ../src/todo.txt/Filter.vala:69 ../src/todo.txt/view/TaskRow.vala:303
 msgid "project"
@@ -40,11 +43,11 @@ msgstr ""
 
 #: ../src/todo.txt/Filter.vala:75 ../src/todo.txt/view/TaskRow.vala:298
 msgid "context"
-msgstr ""
+msgstr "సందర్భం"
 
 #: ../src/todo.txt/Filter.vala:81 ../src/todo.txt/view/TaskRow.vala:272
 msgid "priority"
-msgstr ""
+msgstr "ప్రాధాన్యత"
 
 #: ../src/todo.txt/TaskManager.vala:46
 msgid "Spread the word about \"Go For It!\""
@@ -52,11 +55,11 @@ msgstr ""
 
 #: ../src/todo.txt/TaskManager.vala:47
 msgid "Consider a donation to help the project"
-msgstr ""
+msgstr "ప్రాజెక్టుకు సహాయం చేయడానికి విరాళం పరిగణించండి"
 
 #: ../src/todo.txt/TaskManager.vala:48
 msgid "Consider contributing to the project"
-msgstr ""
+msgstr "ప్రాజెక్టుకు తోడ్పడటం పరిగణించండి"
 
 #: ../src/todo.txt/TaskManager.vala:51
 msgid ""
@@ -85,7 +88,7 @@ msgstr ""
 
 #: ../src/todo.txt/TxtListManager.vala:202
 msgid "An error was encountered while moving a file!"
-msgstr ""
+msgstr "ఫైల్‌ను తరలించేటప్పుడు లోపం ఎదురైంది!"
 
 #: ../src/todo.txt/TxtListManager.vala:204
 msgid "Error information: "
@@ -97,43 +100,45 @@ msgstr ""
 
 #: ../src/todo.txt/TxtListManager.vala:230
 msgid "What should be done with these files?"
-msgstr ""
+msgstr "ఈ ఫైళ్ళతో ఏమి చేయాలి?"
 
 #: ../src/todo.txt/TxtListManager.vala:232
+#, fuzzy
 msgid "Keep old"
-msgstr ""
+msgstr "పాతదిగా ఉంచండి"
 
 #: ../src/todo.txt/TxtListManager.vala:234
 msgid "Overwrite"
-msgstr ""
+msgstr "తిరిగి రాస్తుంది"
 
 #: ../src/todo.txt/TxtListManager.vala:236
 #: ../src/todo.txt/view/TxtListEditDialog.vala:56
 #: ../src/todo.txt/view/TxtListEditDialog.vala:61
 msgid "Cancel"
-msgstr ""
+msgstr "రద్దు"
 
 #: ../src/todo.txt/view/TaskList.vala:35
 msgid ""
 "You currently don't have any tasks.\n"
 "Add some!"
-msgstr ""
+msgstr "మీకు ప్రస్తుతం ఏ విధమైన పనులు లేవు. కొన్ని జోడించండి"
 
 #: ../src/todo.txt/view/TaskList.vala:36
+#, fuzzy
 msgid "The search operation did not return any tasks."
-msgstr ""
+msgstr "శోధన ఆపరేషన్ ఏ పనులను తిరిగి ఇవ్వలేదు."
 
 #: ../src/todo.txt/view/TaskList.vala:37
 msgid "You don't have any completed tasks stored."
-msgstr ""
+msgstr "మీకు పూర్తి చేసిన పనులు ఏవీ లేవు .."
 
 #: ../src/todo.txt/view/TaskList.vala:38
 msgid "You finished all tasks, good job!"
-msgstr ""
+msgstr "మీరు అన్ని పనులు పూర్తి చేసారు, మంచి ఉద్యోగం!"
 
 #: ../src/todo.txt/view/TaskList.vala:151
 msgid "Add new task"
-msgstr ""
+msgstr "క్రొత్త పనిని జోడించండి"
 
 #. //valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
@@ -146,13 +151,14 @@ msgid "Task completed at %s, created at %s"
 msgstr ""
 
 #: ../src/todo.txt/view/TaskRow.vala:262
+#, fuzzy
 msgid "Task created at %s"
-msgstr ""
+msgstr "%s వద్ద టాస్క్ సృష్టించబడింది"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:42
 #: ../src/todo.txt/view/TxtListEditDialog.vala:221
 msgid "directory"
-msgstr ""
+msgstr "డైరెక్టరీ"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:43
 msgid "List name"
@@ -173,7 +179,7 @@ msgstr ""
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:62
 msgid "Apply"
-msgstr ""
+msgstr "వర్తించు"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:108
 msgid "The configured directory is already in use by another list."
@@ -187,26 +193,26 @@ msgstr ""
 #: ../src/view/Dialogs/SettingsDialog.vala:69 ../src/view/TaskListPage.vala:87
 #: ../src/view/TaskListPage.vala:146
 msgid "Timer"
-msgstr ""
+msgstr "టైమర్"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:277
 msgid "Use default settings"
-msgstr ""
+msgstr "డిఫాల్ట్ సెట్టింగులను ఉపయోగించండి"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:278
 #: ../src/view/Dialogs/SettingsDialog.vala:131
 msgid "Task duration (minutes)"
-msgstr ""
+msgstr "పని వ్యవధి (నిమిషాలు)"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:279
 #: ../src/view/Dialogs/SettingsDialog.vala:132
 msgid "Break duration (minutes)"
-msgstr ""
+msgstr "విరామం వ్యవధి (నిమిషాలు)"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:280
 #: ../src/view/Dialogs/SettingsDialog.vala:133
 msgid "Reminder before task ends (seconds)"
-msgstr ""
+msgstr "పని ముగిసే ముందు రిమైండర్ (సెకన్లు)"
 
 #: ../src/view/Dialogs/AboutDialog.vala:27 ../src/view/MainWindow.vala:385
 msgid "About"
@@ -217,12 +223,13 @@ msgid "A stylish to-do list with built-in productivity timer."
 msgstr ""
 
 #: ../src/view/Dialogs/ContributeDialog.vala:28
+#, fuzzy
 msgid "Contributions and Donations"
-msgstr ""
+msgstr "విరాళాలు మరియు విరాళాలు"
 
 #: ../src/view/Dialogs/ContributeDialog.vala:31
 msgid "Thank you for supporting"
-msgstr ""
+msgstr "మద్దతు ఇచ్చినందుకు ధన్యవాదాలు"
 
 #: ../src/view/Dialogs/ContributeDialog.vala:32
 msgid ""
@@ -236,7 +243,7 @@ msgstr ""
 
 #: ../src/view/Dialogs/SettingsDialog.vala:45 ../src/view/MainWindow.vala:372
 msgid "Settings"
-msgstr ""
+msgstr "సెట్టింగులు"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:47
 msgid "Close"
@@ -244,23 +251,24 @@ msgstr ""
 
 #: ../src/view/Dialogs/SettingsDialog.vala:70
 msgid "Appearance"
-msgstr ""
+msgstr "స్వరూపం"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:180
+#, fuzzy
 msgid "General"
-msgstr ""
+msgstr "జనరల్"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:182
 msgid "Use small toolbar icons"
-msgstr ""
+msgstr "చిన్న టూల్ బార్ చిహ్నాలను ఉపయోగించండి"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:185
 msgid "Appearance of the activity switcher"
-msgstr ""
+msgstr "కార్యాచరణ స్విచ్చర్ యొక్క స్వరూపం"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:192
 msgid "Icons"
-msgstr ""
+msgstr "చిహ్నాలు"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:193
 msgid "Text"
@@ -269,7 +277,7 @@ msgstr ""
 #: ../src/view/Dialogs/SettingsDialog.vala:235
 #: ../src/view/Dialogs/SettingsDialog.vala:237
 msgid "Theme"
-msgstr ""
+msgstr "థీమ్"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:236
 msgid "Dark theme"
@@ -281,11 +289,12 @@ msgstr ""
 
 #: ../src/view/Dialogs/SettingsDialog.vala:269
 msgid "Use a header bar"
-msgstr ""
+msgstr "హెడర్ బార్ ఉపయోగించండి"
 
 #: ../src/view/MainWindow.vala:62
+#, fuzzy
 msgid "Go to overview"
-msgstr ""
+msgstr "అవలోకనానికి వెళ్లండి"
 
 #: ../src/view/MainWindow.vala:63
 msgid "Go back to the to-do list"
@@ -293,31 +302,31 @@ msgstr ""
 
 #: ../src/view/MainWindow.vala:274
 msgid "Menu"
-msgstr ""
+msgstr "మెనూ"
 
 #: ../src/view/MainWindow.vala:378
 msgid "Contribute / Donate"
-msgstr ""
+msgstr "సహకరించండి / దానం చేయండి"
 
 #: ../src/view/MainWindow.vala:427 ../src/view/TimerView.vala:81
 msgid "Take a Break"
-msgstr ""
+msgstr "విరామం"
 
 #: ../src/view/MainWindow.vala:428
 msgid "Relax and stop thinking about your current task for a while"
-msgstr ""
+msgstr "మీ ప్రస్తుత పని గురించి కొంతకాలం విశ్రాంతి తీసుకోండి"
 
 #: ../src/view/MainWindow.vala:433
 msgid "The Break is Over"
-msgstr ""
+msgstr "బ్రేక్ ముగిసింది"
 
 #: ../src/view/MainWindow.vala:434
 msgid "Your next task is"
-msgstr ""
+msgstr "మీ తదుపరి పని"
 
 #: ../src/view/MainWindow.vala:454
 msgid "Prepare for your break"
-msgstr ""
+msgstr "మీ విరామం కోసం సిద్ధం"
 
 #: ../src/view/MainWindow.vala:455
 msgid "You have %s seconds left"
@@ -327,11 +336,11 @@ msgstr ""
 msgid ""
 "Currently, no lists are configured.\n"
 "Add one below!"
-msgstr ""
+msgstr "ప్రస్తుతం, జాబితాలు ఏవీ కాన్ఫిగర్ చేయబడలేదు. క్రింద ఒకదాన్ని జోడించండి!"
 
 #: ../src/view/TaskListPage.vala:80
 msgid "Lists"
-msgstr ""
+msgstr "జాబితాలు"
 
 #: ../src/view/TaskListPage.vala:86 ../src/view/TaskListPage.vala:138
 msgid "To-Do"
@@ -339,48 +348,49 @@ msgstr ""
 
 #: ../src/view/TaskListPage.vala:88 ../src/view/TaskListPage.vala:141
 msgid "Done"
-msgstr ""
+msgstr "పూర్తి"
 
 #: ../src/view/TimerView.vala:85
 msgid "Active Task"
-msgstr ""
+msgstr "యాక్టివ్ టాస్క్"
 
 #: ../src/view/TimerView.vala:106
+#, fuzzy
 msgid "Pau_se"
-msgstr ""
+msgstr "పాజ్"
 
 #: ../src/view/TimerView.vala:109
 msgid "_Start"
-msgstr ""
+msgstr "ప్రారంభం"
 
 #: ../src/view/TimerView.vala:136
 msgid "Inactive"
-msgstr ""
+msgstr "క్రియారహిత"
 
 #: ../src/view/TimerView.vala:137
 msgid "No task has been selected"
-msgstr ""
+msgstr "ఏ పని ఎంచుకోబడలేదు"
 
 #: ../src/view/TimerView.vala:221
 msgid "S_kip"
-msgstr ""
+msgstr "దాటవేయి"
 
 #: ../src/view/TimerView.vala:222
 msgid "_Done"
-msgstr ""
+msgstr "పూర్తి"
 
 #: ../src/view/TimerView.vala:267
 msgid "Relax"
-msgstr ""
+msgstr "రిలాక్స్"
 
 #: ../src/view/TimerView.vala:268
 msgid "You have nothing to do."
-msgstr ""
+msgstr "మీకు ఏమీ లేదు."
 
 #: ../src/view/Widgets/TodoListInfoRow.vala:94
 msgid "Delete"
-msgstr ""
+msgstr "తొలగించు"
 
 #: ../src/view/Widgets/TodoListInfoRow.vala:95
 msgid "Edit"
-msgstr ""
+msgstr "మార్చు"
