@@ -24,7 +24,7 @@ using GOFI.TXT.TxtUtils;
  * by addressing the corresponding TaskStore instance.
  */
 class GOFI.TXT.TaskManager {
-    private ListSettings settings;
+    private ListSettings lsettings;
     // The user's todo.txt related files
     private File todo_txt_dir;
     private File todo_txt;
@@ -57,8 +57,8 @@ class GOFI.TXT.TaskManager {
     public signal void refreshing ();
     public signal void refreshed ();
 
-    public TaskManager (ListSettings settings) {
-        this.settings = settings;
+    public TaskManager (ListSettings lsettings) {
+        this.lsettings = lsettings;
 
         // Initialize TaskStores
         todo_store = new TaskStore (false);
@@ -70,7 +70,7 @@ class GOFI.TXT.TaskManager {
         connect_store_signals ();
 
         /* Signal processing */
-        settings.notify["todo-txt-location"].connect (load_task_stores);
+        lsettings.notify["todo-txt-location"].connect (load_task_stores);
     }
 
     public void set_active_task (TodoTask? task) {
@@ -113,7 +113,11 @@ class GOFI.TXT.TaskManager {
             var todo_task = new TodoTask (_task, false);
             todo_task.priority = priority;
             todo_task.creation_date = new GLib.DateTime.now_local ();
-            todo_store.add_task (todo_task);
+            if (settings.new_tasks_on_top) {
+                todo_store.prepend_task (todo_task);
+            } else {
+                todo_store.add_task (todo_task);
+            }
         }
     }
 
@@ -175,7 +179,7 @@ class GOFI.TXT.TaskManager {
     }
 
     private void load_task_stores () {
-        todo_txt_dir = File.new_for_path (settings.todo_txt_location);
+        todo_txt_dir = File.new_for_path (lsettings.todo_txt_location);
         todo_txt = todo_txt_dir.get_child ("todo.txt");
         done_txt = todo_txt_dir.get_child ("done.txt");
 
@@ -191,7 +195,7 @@ class GOFI.TXT.TaskManager {
         }
 
         if (todo_txt.query_exists ()) {
-            settings.add_default_todos = false;
+            lsettings.add_default_todos = false;
         }
 
         load_tasks ();
@@ -244,7 +248,7 @@ class GOFI.TXT.TaskManager {
         read_task_file (this.todo_txt, false);
         read_task_file (this.done_txt, true);
 
-        if (settings.add_default_todos) {
+        if (lsettings.add_default_todos) {
             add_default_todos ();
         }
 
@@ -259,7 +263,7 @@ class GOFI.TXT.TaskManager {
         for (int i = 0; i < default_todos.length; i++) {
             todo_store.add_task (new TodoTask (default_todos[i], false));
         }
-        settings.add_default_todos = false;
+        lsettings.add_default_todos = false;
     }
 
     private void save_todo_tasks () {

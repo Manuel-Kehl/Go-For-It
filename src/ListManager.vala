@@ -18,7 +18,6 @@
 using GOFI.TXT;
 
 class GOFI.ListManager : Object, DragListModel {
-    private SettingsManager settings;
     private SequentialList todolist_infos;
     private TxtListManager txt_manager;
 
@@ -29,9 +28,7 @@ class GOFI.ListManager : Object, DragListModel {
     /**
      * Constructor of the ListManager class
      */
-    public ListManager (SettingsManager settings) {
-        this.settings = settings;
-
+    public ListManager () {
         string txt_config_file = GOFI.Utils.get_module_config_dir ("Todo.txt");
 
         txt_manager = new TxtListManager (txt_config_file);

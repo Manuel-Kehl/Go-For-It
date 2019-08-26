@@ -18,10 +18,8 @@
 using GOFI.DialogUtils;
 
 class GOFI.AppearancePage : Gtk.Grid {
-    private SettingsManager settings;
 
-    public AppearancePage (SettingsManager settings) {
-        this.settings = settings;
+    public AppearancePage () {
         int row = 0;
         add_general_appearance_sect (ref row);
         add_theme_section (ref row);

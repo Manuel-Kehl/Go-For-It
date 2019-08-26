@@ -19,7 +19,6 @@
  * The central class for handling and coordinating timer functionality
  */
 class GOFI.TaskTimer {
-    private SettingsManager settings;
     public bool running { get; private set; default = false; }
     public bool break_active {get; private set; default = false; }
     /**
@@ -123,9 +122,7 @@ class GOFI.TaskTimer {
     public signal void active_task_description_changed (TodoTask task);
     public signal void active_task_changed (TodoTask? task, bool break_active);
 
-    public TaskTimer (SettingsManager settings) {
-        this.settings = settings;
-
+    public TaskTimer () {
         _task_duration = -1;
         _break_duration = -1;
         _reminder_time = -1;

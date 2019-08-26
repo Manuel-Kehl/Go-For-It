@@ -22,7 +22,6 @@ using GOFI.TXT;
  */
 class GOFI.TaskListPage : Gtk.Grid {
     private TxtList task_list = null;
-    private SettingsManager settings;
     private TaskTimer task_timer;
 
     /* Various GTK Widgets */
@@ -78,10 +77,9 @@ class GOFI.TaskListPage : Gtk.Grid {
     /**
      * The constructor of the TaskListPage class.
      */
-    public TaskListPage (SettingsManager settings, TaskTimer task_timer)
+    public TaskListPage (TaskTimer task_timer)
     {
         this.task_timer = task_timer;
-        this.settings = settings;
 
         this.orientation = Gtk.Orientation.VERTICAL;
         initial_setup ();

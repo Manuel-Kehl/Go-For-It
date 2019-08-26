@@ -38,7 +38,7 @@ vala_precompile (VALA_C ${LIBNAME}
     view/Dialogs/DialogUtils.vala
     view/Dialogs/SettingsDialog.vala
     view/Dialogs/SettingsPages/AppearancePage.vala
-    view/Dialogs/SettingsPages/TimerPage.vala
+    view/Dialogs/SettingsPages/BehaviorPage.vala
     view/Dialogs/SettingsPages/ShortcutsPage.vala
     view/Dialogs/AboutDialog.vala
     view/Dialogs/ContributeDialog.vala

@@ -24,7 +24,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     /* Various Variables */
     private ListManager list_manager;
     private TaskTimer task_timer;
-    private SettingsManager settings;
     private bool use_header_bar;
 
     private Gtk.CssProvider palette_css;
@@ -86,14 +85,13 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
      * The constructor of the MainWindow class.
      */
     public MainWindow (Gtk.Application app_context, ListManager list_manager,
-                       TaskTimer task_timer, SettingsManager settings)
+                       TaskTimer task_timer)
     {
         // Pass the applicaiton context via GObject-based construction, because
         // constructor chaining is not possible for Gtk.ApplicationWindow
         Object (application: app_context, title: APP_NAME);
         this.list_manager = list_manager;
         this.task_timer = task_timer;
-        this.settings = settings;
 
         apply_settings ();
 
@@ -201,7 +199,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         main_layout.get_style_context ().add_class ("main_layout");
 
         selection_page = new SelectionPage (list_manager);
-        task_page = new TaskListPage (settings, task_timer);
+        task_page = new TaskListPage (task_timer);
 
         selection_page.list_chosen.connect (on_list_chosen);
 
@@ -441,7 +439,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 #endif
 
     private void show_settings () {
-        var dialog = new SettingsDialog (this, settings);
+        var dialog = new SettingsDialog (this);
         dialog.show ();
     }
 

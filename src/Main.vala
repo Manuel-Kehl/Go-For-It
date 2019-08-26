@@ -17,6 +17,7 @@
 
 namespace GOFI {
     public KeyBindingSettings kbsettings;
+    private SettingsManager settings;
 }
 
 /**
@@ -24,7 +25,6 @@ namespace GOFI {
  * necessary steps to create a running instance of "Go For It!".
  */
 class GOFI.Main : Gtk.Application {
-    private SettingsManager settings;
     private TaskTimer task_timer;
     private ListManager list_manager;
     private MainWindow win;
@@ -48,10 +48,10 @@ class GOFI.Main : Gtk.Application {
 
         kbsettings = new KeyBindingSettings ();
         settings = new SettingsManager.load_from_key_file ();
-        list_manager = new ListManager (settings);
-        task_timer = new TaskTimer (settings);
+        list_manager = new ListManager ();
+        task_timer = new TaskTimer ();
 
-        win = new MainWindow (this, list_manager, task_timer, settings);
+        win = new MainWindow (this, list_manager, task_timer);
         win.show_all ();
     }
 

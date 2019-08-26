@@ -39,6 +39,14 @@ class GOFI.TXT.TaskStore : Object, DragListModel {
         tasks = new SequentialList (typeof (TodoTask));
     }
 
+    public void prepend_task (TodoTask task) {
+        tasks.prepend_item (task);
+        task.done_changed.connect (on_task_done);
+        task.data_changed.connect (on_task_data_changed);
+        items_changed (0, 0, 1);
+        task_data_changed ();
+    }
+
     public void add_task (TodoTask task) {
         tasks.append_item (task);
         task.done_changed.connect (on_task_done);

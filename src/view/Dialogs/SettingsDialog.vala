@@ -21,18 +21,16 @@ using GOFI.DialogUtils;
  * A dialog for changing the application's settings.
  */
 class GOFI.SettingsDialog : Gtk.Dialog {
-    private SettingsManager settings;
     /* GTK Widgets */
     private Gtk.Grid main_layout;
-    private TimerPage timer_page;
+    private BehaviorPage timer_page;
     private AppearancePage appearance_page;
     private ShortcutsPage shortcuts_page;
     private Gtk.StackSwitcher stack_switcher;
     private Gtk.Stack settings_stack;
 
-    public SettingsDialog (Gtk.Window? parent, SettingsManager settings) {
+    public SettingsDialog (Gtk.Window? parent) {
         this.set_transient_for (parent);
-        this.settings = settings;
         /* Initalization */
         main_layout = new Gtk.Grid ();
 
@@ -66,11 +64,11 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         stack_switcher.stack = settings_stack;
         stack_switcher.halign = Gtk.Align.CENTER;
 
-        timer_page = new TimerPage (settings);
-        appearance_page = new AppearancePage (settings);
+        timer_page = new BehaviorPage ();
+        appearance_page = new AppearancePage ();
         shortcuts_page = new ShortcutsPage ();
 
-        settings_stack.add_titled (timer_page, "timer_page", _("Timer"));
+        settings_stack.add_titled (timer_page, "behavior_page", _("Behavior"));
         settings_stack.add_titled (appearance_page, "appearance_page", _("Appearance"));
         settings_stack.add_titled (shortcuts_page, "shortcuts_page", _("Shortcuts"));
 

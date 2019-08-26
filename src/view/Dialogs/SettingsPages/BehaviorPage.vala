@@ -17,17 +17,19 @@
 
 using GOFI.DialogUtils;
 
-class GOFI.TimerPage : Gtk.Grid {
-    private SettingsManager settings;
+class GOFI.BehaviorPage : Gtk.Grid {
 
-    public TimerPage (SettingsManager settings) {
-        this.settings = settings;
-        setup_timer_settings_widgets ();
+    public BehaviorPage () {
+        int row = 0;
+        setup_task_settings_widgets (ref row);
+        setup_timer_settings_widgets (ref row);
+
         apply_grid_spacing (this);
     }
 
-    private void setup_timer_settings_widgets () {
+    private void setup_timer_settings_widgets (ref int row) {
         /* Declaration */
+        Gtk.Label timer_sect_lbl;
         Gtk.Label task_lbl;
         Gtk.SpinButton task_spin;
         Gtk.Label break_lbl;
@@ -36,6 +38,7 @@ class GOFI.TimerPage : Gtk.Grid {
         Gtk.SpinButton reminder_spin;
 
         /* Instantiation */
+        timer_sect_lbl = new Gtk.Label (_("Timer"));
         task_lbl = new Gtk.Label (_("Task duration (minutes)") + ":");
         break_lbl = new Gtk.Label (_("Break duration (minutes)") + ":");
         reminder_lbl = new Gtk.Label (_("Reminder before task ends (seconds)") +":");
@@ -63,9 +66,35 @@ class GOFI.TimerPage : Gtk.Grid {
         });
 
         /* Add widgets */
-        int row = 0;
-        add_option (this, task_lbl, task_spin, ref row, 0);
-        add_option (this, break_lbl, break_spin, ref row, 0);
-        add_option (this, reminder_lbl, reminder_spin, ref row, 0);
+        add_section (this, timer_sect_lbl, ref row);
+        add_option (this, task_lbl, task_spin, ref row);
+        add_option (this, break_lbl, break_spin, ref row);
+        add_option (this, reminder_lbl, reminder_spin, ref row);
+    }
+
+    private void setup_task_settings_widgets (ref int row) {
+        /* Declaration */
+        Gtk.Label task_sect_lbl;
+        Gtk.Label placement_lbl;
+        Gtk.ComboBoxText placement_cbox;
+
+        /* Instantiation */
+        task_sect_lbl = new Gtk.Label (_("Tasks"));
+        placement_lbl = new Gtk.Label (_("Placement of new tasks") + ":");
+        placement_cbox = new Gtk.ComboBoxText ();
+
+        placement_cbox.append ("top", _("Top of the list"));
+        placement_cbox.append ("bottom", _("Bottom of the list"));
+        placement_cbox.active_id =
+            settings.new_tasks_on_top ? "top" : "bottom";
+
+        placement_cbox.changed.connect ( () => {
+            settings.new_tasks_on_top =
+                placement_cbox.active_id == "top";
+        });
+
+        /* Add widgets */
+        add_section (this, task_sect_lbl, ref row);
+        add_option (this, placement_lbl, placement_cbox, ref row);
     }
 }

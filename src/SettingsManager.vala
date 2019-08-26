@@ -27,6 +27,7 @@ private class GOFI.SettingsManager {
      * A list of constants that define settings group names
      */
     private const string GROUP_TODO_TXT = "Todo.txt";
+    private const string GROUP_BEHAVIOR = "Behavior";
     private const string GROUP_TIMER = "Timer";
     private const string GROUP_UI = "Interface";
     private const string GROUP_LISTS = "Lists";
@@ -43,11 +44,20 @@ private class GOFI.SettingsManager {
      * The "heart" of the SettingsManager class.
      */
 
-    /*---GROUP:Todo.txt------------------------------------------------------*/
+    /*---GROUP:Todo.txt-------------------------------------------------------*/
     public string todo_txt_location {
         owned get { return get_value (GROUP_TODO_TXT, "location"); }
     }
-    /*---GROUP:Timer---------------------------------------------------------*/
+    /*---GROUP:Behavior-------------------------------------------------------*/
+    public bool new_tasks_on_top {
+        get {
+            return get_bool (GROUP_BEHAVIOR, "new_tasks_on_top", false);
+        }
+        set {
+            set_bool (GROUP_BEHAVIOR, "new_tasks_on_top", value);
+        }
+    }
+    /*---GROUP:Timer----------------------------------------------------------*/
     public int task_duration {
         get {
             var default_str = DEFAULT_TASK_DURATION.to_string ();
@@ -151,13 +161,12 @@ private class GOFI.SettingsManager {
     }
     public bool use_dark_theme {
         get {
-            var use_dark = get_value (
-                GROUP_UI, "use_dark_theme", "false"
+            return get_bool (
+                GROUP_UI, "use_dark_theme", false
             );
-            return bool.parse (use_dark);
         }
         set {
-            set_value (GROUP_UI, "use_dark_theme", value.to_string ());
+            set_bool (GROUP_UI, "use_dark_theme", value);
             use_dark_theme_changed (value);
         }
     }
@@ -319,20 +328,31 @@ private class GOFI.SettingsManager {
      * Public access is granted via the SettingsManager's attributes, so this
      * function has been declared private
      */
-    private string get_value (string group, string key, string default = "") {
+    private string get_value (string group, string key, string def = "") {
         try {
             // use key_file, if it has been assigned
-            if (key_file != null
-                && key_file.has_group (group)
-                && key_file.has_key (group, key)) {
-                    return key_file.get_value (group, key);
+            if (key_file != null) {
+                return key_file.get_value (group, key);
             } else {
-                return default;
+                return def;
             }
+        } catch (KeyFileError.GROUP_NOT_FOUND e) {
+            return def;
+        } catch (KeyFileError.KEY_NOT_FOUND e) {
+            return def;
         } catch (Error e) {
-                error ("An error occured while reading the setting"
-                    +" %s.%s: %s", group, key, e.message);
+            warning ("An error occured while reading the setting"
+                +" %s.%s: %s", group, key, e.message);
+            return def;
         }
+    }
+
+    private bool get_bool (string group, string key, bool def = false) {
+        var val = get_value (group, key);
+        if (val == "") {
+            return def;
+        }
+        return bool.parse (val);
     }
 
     /**
@@ -352,19 +372,26 @@ private class GOFI.SettingsManager {
         }
     }
 
-    private string[] get_string_list (string group, string key, string[] default = {}) {
+    private void set_bool (string group, string key, bool value) {
+        set_value (group, key, value.to_string ());
+    }
+
+    private string[] get_string_list (string group, string key, string[] def = {}) {
         try {
             // use key_file, if it has been assigned
-            if (key_file != null
-                && key_file.has_group (group)
-                && key_file.has_key (group, key)) {
-                    return key_file.get_string_list (group, key);
+            if (key_file != null) {
+                return key_file.get_string_list (group, key);
             } else {
-                return default;
+                return def;
             }
+        } catch (KeyFileError.GROUP_NOT_FOUND e) {
+            return def;
+        } catch (KeyFileError.KEY_NOT_FOUND e) {
+            return def;
         } catch (Error e) {
-                error ("An error occured while reading the setting"
-                    +" %s.%s: %s", group, key, e.message);
+            warning ("An error occured while reading the setting"
+                +" %s.%s: %s", group, key, e.message);
+            return def;
         }
     }
 
