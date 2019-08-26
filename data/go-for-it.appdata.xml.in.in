@@ -35,6 +35,20 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
+    <release version="1.7.3" date="2019-08-26">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Escape now cancels the editing of a task.</li>
+          <li>The following translations were updated: Turkish, German, Norwegian Bokmål, Japanese, Polish, Telugu.</li>
+        </ul>
+        <p>Bugfixes:</p>
+        <ul>
+          <li>Work around a ListBox bug which could cause situations where no row is selected even though suitable rows exist.</li>
+          <li>Keep the row focussed when the user stops editing a row.</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.7.2" date="2019-04-25">
       <description>
         <p>Improvements:</p>

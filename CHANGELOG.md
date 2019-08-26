@@ -1,5 +1,22 @@
 # Change Log
 
+## [1.7.3](https://github.com/JMoerman/Go-For-It/tree/1.7.3) (2019-08-26)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.7.2...1.7.3)
+
+This release contains some fixes and translation updates from the development branch.
+
+**Fixed bugs:**
+
+- Work around a ListBox bug which could cause situations where no row is selected even though suitable rows exist.
+- Keep the row focussed when the user stops editing a row.
+
+**Implemented enhancements:**
+
+- Escape now cancels the editing of a task.
+- The following translations were updated: Turkish, German, Norwegian Bokmål, Japanese, Polish, Telugu.
+
+# Change Log
+
 ## [1.7.2](https://github.com/JMoerman/Go-For-It/tree/1.7.2) (2019-04-25)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.7.1...1.7.2)
 
