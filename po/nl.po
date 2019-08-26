@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-26 11:45+0100\n"
-"PO-Revision-Date: 2019-03-11 12:54+0100\n"
-"Last-Translator: Jonathan Moerman <Unknown>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2019-08-26 16:14+0000\n"
+"Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
-"X-Generator: Poedit 2.0.6\n"
 
 #: ../src/Main.vala:92
 msgid "Print version info and exit"
@@ -44,7 +46,7 @@ msgstr "context"
 
 #: ../src/todo.txt/Filter.vala:81 ../src/todo.txt/view/TaskRow.vala:272
 msgid "priority"
-msgstr ""
+msgstr "prioriteit"
 
 #: ../src/todo.txt/TaskManager.vala:46
 msgid "Spread the word about \"Go For It!\""
@@ -128,17 +130,11 @@ msgstr ""
 
 #: ../src/todo.txt/view/TaskList.vala:36
 msgid "The search operation did not return any tasks."
-msgstr ""
+msgstr "De zoekactie leverde geen taken op."
 
 #: ../src/todo.txt/view/TaskList.vala:37
-#, fuzzy
-#| msgid ""
-#| "You currently don't have any tasks.\n"
-#| "Add some!"
 msgid "You don't have any completed tasks stored."
-msgstr ""
-"U heeft op het moment geen taken om te doen.\n"
-"Maak er wat aan!"
+msgstr "U heeft geen voltooide taken."
 
 #: ../src/todo.txt/view/TaskList.vala:38
 msgid "You finished all tasks, good job!"
