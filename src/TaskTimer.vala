@@ -171,7 +171,11 @@ class GOFI.TaskTimer {
     public void stop () {
         if (running) {
             duration_till_end = remaining_duration;
-            previous_runtime += get_runtime ().to_unix ();
+            var runtime = get_runtime ().to_unix ();
+            previous_runtime += runtime;
+            if (_active_task != null) {
+                _active_task.timer_value += (uint) runtime;
+            }
             running = false;
             timer_running_changed (running);
         }
@@ -263,7 +267,7 @@ class GOFI.TaskTimer {
     /**
      * Used to toggle between break and work state.
      */
-    public void toggle_break () {
+    private void toggle_break () {
         break_active = !break_active;
         reset ();
         if (break_active) {

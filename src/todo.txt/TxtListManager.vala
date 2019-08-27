@@ -277,6 +277,7 @@ class GOFI.TXT.TxtListManager {
         list_settings.task_duration = get_task_duration (list_id);
         list_settings.break_duration = get_break_duration (list_id);
         list_settings.reminder_time = get_reminder_time (list_id);
+        list_settings.log_timer_in_txt = get_timer_logging (list_id);
         connect_settings_signals (list_settings);
 
         return list_settings;
@@ -371,6 +372,9 @@ class GOFI.TXT.TxtListManager {
             case "reminder-time":
                 set_reminder_time (list.id, list.reminder_time);
                 break;
+            case "log-timer-in-txt":
+                set_timer_logging (list.id, list.log_timer_in_txt);
+                break;
         }
     }
 
@@ -386,6 +390,13 @@ class GOFI.TXT.TxtListManager {
     }
     public void set_name (string list_id, string value) {
         set_value (list_id, "name", value);
+    }
+
+    public bool get_timer_logging (string list_id) {
+        return bool.parse (get_value (list_id, "log_timer_in_txt", "false"));
+    }
+    public void set_timer_logging (string list_id, bool value) {
+        set_value (list_id, "log_timer_in_txt", value.to_string ());
     }
 
     /*---Overrides------------------------------------------------------------*/
@@ -418,20 +429,23 @@ class GOFI.TXT.TxtListManager {
      * Public access is granted via the SettingsManager's attributes, so this
      * function has been declared private
      */
-    private string get_value (string list_id, string key, string default = "") {
+    private string get_value (string list_id, string key, string def = "") {
         var group = "list" + list_id;
         try {
             // use key_file, if it has been assigned
-            if (key_file != null
-                && key_file.has_group (group)
-                && key_file.has_key (group, key)) {
-                    return key_file.get_value (group, key);
+            if (key_file != null) {
+                return key_file.get_value (group, key);
             } else {
-                return default;
+                return def;
             }
+        } catch (KeyFileError.GROUP_NOT_FOUND e) {
+            return def;
+        } catch (KeyFileError.KEY_NOT_FOUND e) {
+            return def;
         } catch (Error e) {
-                error ("An error occured while reading the setting"
-                    +" %s.%s: %s", group, key, e.message);
+            warning ("An error occured while reading the setting"
+                +" %s.%s: %s", group, key, e.message);
+            return def;
         }
     }
 

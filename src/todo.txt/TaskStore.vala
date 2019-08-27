@@ -41,8 +41,8 @@ class GOFI.TXT.TaskStore : Object, DragListModel {
 
     public void prepend_task (TodoTask task) {
         tasks.prepend_item (task);
+        task.notify.connect (on_task_notify);
         task.done_changed.connect (on_task_done);
-        task.data_changed.connect (on_task_data_changed);
         items_changed (0, 0, 1);
         task_data_changed ();
     }
@@ -50,7 +50,7 @@ class GOFI.TXT.TaskStore : Object, DragListModel {
     public void add_task (TodoTask task) {
         tasks.append_item (task);
         task.done_changed.connect (on_task_done);
-        task.data_changed.connect (on_task_data_changed);
+        task.notify.connect (on_task_notify);
         items_changed (tasks.length - 1, 0, 1);
         task_data_changed ();
     }
@@ -91,6 +91,17 @@ class GOFI.TXT.TaskStore : Object, DragListModel {
         }
         tasks.move_item (old_position, new_position);
         task_data_changed ();
+    }
+
+    private void on_task_notify (Object task, ParamSpec pspec) {
+        switch (pspec.name) {
+            case "done":
+                break;
+            default:
+                print ("notify\n");
+                on_task_data_changed ((TodoTask) task);
+                break;
+        }
     }
 
     private void on_task_done (TodoTask task) {

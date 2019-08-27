@@ -321,12 +321,12 @@ class GOFI.TXT.TaskManager {
 
         bool done = consume_status (ref line);
 
-        string[] parts = line.split (" ", 5);
+        string[] parts = line.split (" ");
         int last = parts.length - 1;
         int index = 0;
         DateTime creation_date = null;
         DateTime completion_date = null;
-        string description;
+        string description = "";
         char priority = TodoTask.NO_PRIO;
         TodoTask new_task;
 
@@ -347,7 +347,14 @@ class GOFI.TXT.TaskManager {
             }
         }
 
-        description = string.joinv (" ", parts[index:last + 1]);
+        var unparsed = parts[index:last + 1];
+        var timer_value = consume_timer_value (unparsed);
+        foreach (var part in unparsed) {
+            if (part != "") {
+                description += " " + part;
+            }
+        }
+        description = description.substring(1);
 
         if (description == "") {
             return null;
@@ -372,6 +379,8 @@ class GOFI.TXT.TaskManager {
             new_task.completion_date = completion_date;
         }
 
+        new_task.timer_value = timer_value;
+
         return new_task;
     }
 
@@ -383,8 +392,9 @@ class GOFI.TXT.TaskManager {
         string prio_str = (task_prio != TodoTask.NO_PRIO) ?  @"($task_prio) " : "";
         string comp_str = (task_comp_date != null) ? date_to_string (task_comp_date) + " " : "";
         string crea_str = (task_crea_date != null) ? date_to_string (task_crea_date) + " " : "";
+        string timer_str = (lsettings.log_timer_in_txt && task.timer_value != 0) ? " timer:" + timer_to_string (task.timer_value) : "";
 
-        return status_str + prio_str + comp_str + crea_str + task.description;
+        return status_str + prio_str + comp_str + crea_str + task.description + timer_str;
     }
 
     /**

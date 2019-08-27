@@ -30,6 +30,9 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private Gtk.SpinButton reminder_spin;
     private Gtk.Revealer timer_revealer;
 
+    private Gtk.Label log_timer_lbl;
+    private Gtk.Switch log_timer_switch;
+
     private Gtk.Label name_lbl;
     private Gtk.Entry name_entry;
     private Gtk.Label directory_lbl;
@@ -226,6 +229,9 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         name_lbl = new Gtk.Label (name_lbl_text);
         name_entry = new Gtk.Entry ();
 
+        log_timer_lbl = new Gtk.Label (_("Log the time spent working on each task") + ":");
+        log_timer_switch = new Gtk.Switch ();
+
         /* Configuration */
         directory_lbl.set_line_wrap (false);
         directory_lbl.set_use_markup (true);
@@ -241,13 +247,19 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             name_entry.text = settings.name;
         }
 
+        log_timer_switch.active = settings.log_timer_in_txt;
+
         /* Signal Handling */
         directory_btn.file_set.connect (on_directory_changed);
         name_entry.notify["text"].connect (on_name_entry_update);
+        log_timer_switch.notify["active"].connect (() => {
+            settings.log_timer_in_txt = log_timer_switch.active;
+        });
 
         add_section (main_layout, txt_sect_lbl, ref row);
         add_option (main_layout, directory_lbl, directory_btn, ref row);
         add_option (main_layout, name_lbl, name_entry, ref row);
+        add_option (main_layout, log_timer_lbl, log_timer_switch, ref row);
     }
 
     private void on_directory_changed () {

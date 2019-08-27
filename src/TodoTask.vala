@@ -64,6 +64,11 @@ public class GOFI.TodoTask : GLib.Object {
         public set;
     }
 
+    public uint timer_value {
+        public get;
+        public set;
+    }
+
     public char priority {
         public get;
         public set;
@@ -79,5 +84,6 @@ public class GOFI.TodoTask : GLib.Object {
         _done = done;
         _description = line;
         priority = NO_PRIO;
+        timer_value = 0;
     }
 }

@@ -64,6 +64,12 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         default = false;
     }
 
+    public bool log_timer_in_txt {
+        get;
+        set;
+        default = false;
+    }
+
     public ListSettings (string id, string name, string location) {
         this._id = id;
         this.name = name;
@@ -85,6 +91,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         copied.break_duration = break_duration;
         copied.reminder_time = reminder_time;
         copied.add_default_todos = add_default_todos;
+        copied.log_timer_in_txt = log_timer_in_txt;
         return copied;
     }
 
@@ -95,5 +102,6 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         this.task_duration = settings.task_duration;
         this.break_duration = settings.break_duration;
         this.reminder_time = settings.reminder_time;
+        this.log_timer_in_txt = settings.log_timer_in_txt;
     }
 }
