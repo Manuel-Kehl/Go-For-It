@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 18:03+0200\n"
-"PO-Revision-Date: 2019-07-06 12:02+0000\n"
+"PO-Revision-Date: 2019-08-29 13:24+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.8-dev\n"
+"X-Generator: Weblate 3.9-dev\n"
 "X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
 
 #: ../src/Main.vala:97
@@ -34,45 +34,43 @@ msgstr "%s から設定を正しくインポートできませんでした: %s"
 
 #: ../src/Shortcuts.vala:135
 msgid "Filter tasks"
-msgstr ""
+msgstr "タスクにフィルターを適用"
 
 #: ../src/Shortcuts.vala:136
-#, fuzzy
-#| msgid "Add new task"
 msgid "Add new task/list"
-msgstr "新しいタスクを追加"
+msgstr "新しいタスク/リストを追加"
 
 #: ../src/Shortcuts.vala:137
 msgid "Start/Stop the timer"
-msgstr ""
+msgstr "タイマーを開始/停止"
 
 #: ../src/Shortcuts.vala:138
 msgid "Mark the task as complete"
-msgstr ""
+msgstr "タスクを完了としてマーク"
 
 #: ../src/Shortcuts.vala:139
 msgid "Move selected row up"
-msgstr ""
+msgstr "選択した列を上に移動"
 
 #: ../src/Shortcuts.vala:140
 msgid "Move selected row down"
-msgstr ""
+msgstr "選択した列を下に移動"
 
 #: ../src/Shortcuts.vala:142
 msgid "Move to next task/row"
-msgstr ""
+msgstr "次のタスク/列に移動"
 
 #: ../src/Shortcuts.vala:143
 msgid "Move to previous task/row"
-msgstr ""
+msgstr "前のタスク/列に移動"
 
 #: ../src/Shortcuts.vala:144
 msgid "Move to right screen"
-msgstr ""
+msgstr "右の画面に移動"
 
 #: ../src/Shortcuts.vala:145
 msgid "Move to left screen"
-msgstr ""
+msgstr "左の画面に移動"
 
 #: ../src/Theme.vala:54
 msgid "Inherit from Gtk theme"
@@ -298,7 +296,7 @@ msgstr "閉じる"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:71
 msgid "Behavior"
-msgstr ""
+msgstr "動作"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:72
 msgid "Appearance"
@@ -306,7 +304,7 @@ msgstr "外観"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:73
 msgid "Shortcuts"
-msgstr ""
+msgstr "ショートカット"
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:37
 msgid "General"
@@ -347,21 +345,19 @@ msgstr "ヘッダーバーを使用"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:82
 msgid "Tasks"
-msgstr ""
+msgstr "タスク"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:83
 msgid "Placement of new tasks"
-msgstr ""
+msgstr "新しいタスクの配置"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:86
-#, fuzzy
-#| msgid "Go back to the to-do list"
 msgid "Top of the list"
-msgstr "ToDo リストに戻る"
+msgstr "リストの一番上"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:87
 msgid "Bottom of the list"
-msgstr ""
+msgstr "リストの一番下"
 
 #: ../src/view/MainWindow.vala:64
 msgid "Go to overview"
