@@ -71,29 +71,19 @@ class GOFI.TaskTimer {
      * These properies provide access to the timer values that should be used.
      * These properies will generally just return the value set in settings, but
      * can be used to set different timer values for specific lists or tasks.
-     * Setting a property to -1 will reset the value to the global settings
+     * Setting a property to null or -1 will reset the value to the global settings
      * value.
      */
-    public int task_duration {
+    public Schedule? schedule {
         public get {
-            if (_task_duration < 0) {
-                return settings.task_duration;
-            }
-            return _task_duration;
+            return _schedule;
         }
         public set {
-            _task_duration = value;
-        }
-    }
-    public int break_duration {
-        public get {
-            if (_break_duration < 0) {
-                return settings.break_duration;
+            _schedule = value;
+            if (_schedule == null) {
+                _schedule = settings.schedule;
             }
-            return _break_duration;
-        }
-        public set {
-            _break_duration = value;
+            iteration = 0;
         }
     }
     public int reminder_time {
@@ -108,9 +98,9 @@ class GOFI.TaskTimer {
             update ();
         }
     }
-    private int _break_duration;
-    private int _task_duration;
     private int _reminder_time;
+    private Schedule _schedule;
+    private uint iteration;
 
     /* Signals */
     public signal void timer_updated (DateTime remaining_duration);
@@ -123,9 +113,8 @@ class GOFI.TaskTimer {
     public signal void active_task_changed (TodoTask? task, bool break_active);
 
     public TaskTimer () {
-        _task_duration = -1;
-        _break_duration = -1;
         _reminder_time = -1;
+        _schedule = settings.schedule;
 
         /* Signal Handling*/
         settings.timer_duration_changed.connect ((e) => {
@@ -173,7 +162,7 @@ class GOFI.TaskTimer {
             duration_till_end = remaining_duration;
             var runtime = get_runtime ().to_unix ();
             previous_runtime += runtime;
-            if (_active_task != null) {
+            if (_active_task != null && !break_active) {
                 _active_task.timer_value += (uint) runtime;
             }
             running = false;
@@ -184,9 +173,9 @@ class GOFI.TaskTimer {
     public void reset () {
         int64 default_duration;
         if (break_active) {
-            default_duration = break_duration;
+            default_duration = schedule.get_break_duration (iteration);
         } else {
-            default_duration = task_duration;
+            default_duration = schedule.get_task_duration (iteration);
         }
         duration_till_end = new DateTime.from_unix_utc (default_duration);
         previous_runtime = 0;
@@ -268,7 +257,11 @@ class GOFI.TaskTimer {
      * Used to toggle between break and work state.
      */
     private void toggle_break () {
+        if (break_active) {
+            iteration++;
+        }
         break_active = !break_active;
+
         reset ();
         if (break_active) {
             start ();

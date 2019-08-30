@@ -98,7 +98,6 @@ class GOFI.TXT.TaskStore : Object, DragListModel {
             case "done":
                 break;
             default:
-                print ("notify\n");
                 on_task_data_changed ((TodoTask) task);
                 break;
         }

@@ -221,8 +221,7 @@ class GOFI.TaskListPage : Gtk.Grid {
         task_list.notify["selected-task"].connect (on_selected_task_changed);
         task_list.timer_values_changed.connect (update_timer_values);
         update_timer_values (
-            task_list.get_active_task_duration (),
-            task_list.get_active_break_duration (),
+            task_list.get_schedule (),
             task_list.get_reminder_time ()
         );
         add_widgets ();
@@ -230,9 +229,11 @@ class GOFI.TaskListPage : Gtk.Grid {
         on_selected_task_changed ();
     }
 
-    private void update_timer_values (int task_d, int break_d, int reminder_t) {
-        task_timer.task_duration = task_d;
-        task_timer.break_duration = break_d;
+    private void update_timer_values (Schedule? sched, int reminder_t) {
+        if (sched != null && !sched.valid) {
+            sched = null;
+        }
+        task_timer.schedule = sched;
         task_timer.reminder_time = reminder_t;
     }
 

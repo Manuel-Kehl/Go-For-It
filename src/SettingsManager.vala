@@ -33,8 +33,10 @@ private class GOFI.SettingsManager {
     private const string GROUP_LISTS = "Lists";
 
     private const int DEFAULT_TASK_DURATION = 1500;
+    private const int DEFAULT_LONG_BREAK_DURATION = 900;
     private const int DEFAULT_BREAK_DURATION = 300;
     private const int DEFAULT_REMINDER_TIME = 60;
+    private const int DEFAULT_POMODORO_PERIOD = 4;
 
     // Whether or not Go For It! has been started for the first time
     public bool first_start = false;
@@ -73,7 +75,7 @@ private class GOFI.SettingsManager {
             set_value (GROUP_TIMER, "task_duration", value.to_string ());
             timer_duration_changed ();
         }
-     }
+    }
     public int break_duration {
         get {
             var default_str = DEFAULT_BREAK_DURATION.to_string ();
@@ -87,6 +89,40 @@ private class GOFI.SettingsManager {
         }
         set {
             set_value (GROUP_TIMER, "break_duration", value.to_string ());
+            timer_duration_changed ();
+        }
+    }
+    public int long_break_duration {
+        get {
+            var default_str = DEFAULT_LONG_BREAK_DURATION.to_string ();
+            var duration = get_value (GROUP_TIMER, "long_break_duration", default_str);
+            var parsed_duration = int.parse (duration);
+            if (parsed_duration <= 0) {
+                warning ("Invalid break duration: %s", duration);
+                return DEFAULT_LONG_BREAK_DURATION;
+            }
+            return parsed_duration;
+        }
+        set {
+            set_value (GROUP_TIMER, "long_break_duration", value.to_string ());
+            build_schedule ();
+            timer_duration_changed ();
+        }
+    }
+    public int pomodoro_period {
+        get {
+            var default_str = DEFAULT_POMODORO_PERIOD.to_string ();
+            var period = get_value (GROUP_TIMER, "pomodoro_period", default_str);
+            var parsed_period = int.parse (period);
+            if (parsed_period <= 0) {
+                warning ("Invalid pomodoro period: %s", period);
+                return DEFAULT_POMODORO_PERIOD;
+            }
+            return parsed_period;
+        }
+        set {
+            set_value (GROUP_TIMER, "pomodoro_period", value.to_string ());
+            build_schedule ();
             timer_duration_changed ();
         }
     }
@@ -105,6 +141,88 @@ private class GOFI.SettingsManager {
             set_value (GROUP_TIMER, "reminder_time", value.to_string ());
         }
     }
+    public TimerMode timer_mode {
+        get {
+            var mode_str = get_value (GROUP_TIMER, "timer_mode");
+            return TimerMode.from_string (mode_str);
+        }
+        set {
+            set_value (GROUP_TIMER, "timer_mode", value.to_string ());
+            switch (value) {
+                case TimerMode.SIMPLE:
+                case TimerMode.POMODORO:
+                    build_schedule ();
+                    break;
+                default:
+                    write_schedule ();
+                    break;
+            }
+        }
+    }
+    public Schedule schedule {
+        get {
+            if (_schedule == null) {
+                _schedule = new Schedule ();
+                build_schedule ();
+            }
+            return _schedule;
+        }
+        set {
+            _schedule.set_durations (value.get_durations ());
+            write_schedule ();
+            timer_duration_changed ();
+        }
+    }
+    Schedule _schedule = null;
+
+    private void build_schedule () {
+        switch (timer_mode) {
+             case SIMPLE:
+                _schedule.set_durations ({task_duration, break_duration});
+                return;
+            case POMODORO:
+                build_pomodoro_schedule ();
+                return;
+            default:
+                try {
+                    var durations = key_file.get_integer_list (GROUP_TIMER, "schedule");
+                    if (durations.length >= 2) {
+                        _schedule.set_durations (durations);
+                        return;
+                    }
+                } catch (KeyFileError.GROUP_NOT_FOUND e) {
+                } catch (KeyFileError.KEY_NOT_FOUND e) {
+                } catch (Error e) {
+                    warning ("An error occured while reading the setting"
+                        +" %s.%s: %s", GROUP_TIMER, "schedule", e.message);
+                }
+                build_pomodoro_schedule ();
+                return;
+        }
+    }
+
+    private void write_schedule () {
+        try {
+            key_file.set_integer_list (GROUP_TIMER, "schedule", _schedule.get_durations ());
+            write_key_file ();
+        } catch (Error e) {
+            error ("An error occured while writing the setting"
+                +" %s.%s: %s", GROUP_TIMER, "schedule", e.message);
+        }
+    }
+
+    private void build_pomodoro_schedule () {
+        var arr_size = pomodoro_period * 2;
+        var durations = new int[arr_size];
+        for (int i = 0; i < arr_size - 2; i += 2) {
+            durations[i] = task_duration;
+            durations[i+1] = break_duration;
+        }
+        durations[arr_size - 2] = task_duration;
+        durations[arr_size - 1] = long_break_duration;
+        _schedule.set_durations (durations);
+    }
+
     public bool reminder_active {
         get {
             return (reminder_time > 0);
@@ -468,6 +586,40 @@ private class GOFI.SettingsManager {
             if (old_file.has_key (group, key)) {
                 key_file.set_value (group, key, old_file.get_value (group, key));
             }
+        }
+    }
+}
+
+private enum GOFI.TimerMode {
+    SIMPLE,
+    POMODORO,
+    CUSTOM;
+
+    public const string STR_SIMPLE = "simple";
+    public const string STR_POMODORO = "pomodoro";
+    public const string STR_CUSTOM = "custom";
+
+    public const TimerMode DEFAULT_TIMER_MODE = TimerMode.SIMPLE;
+
+    public static TimerMode from_string (string str) {
+        switch (str) {
+            case STR_SIMPLE: return SIMPLE;
+            case STR_POMODORO: return POMODORO;
+            case STR_CUSTOM: return CUSTOM;
+            default: return DEFAULT_TIMER_MODE;
+        }
+    }
+
+    public string to_string () {
+        switch (this) {
+            case SIMPLE:
+                return STR_SIMPLE;
+            case POMODORO:
+                return STR_POMODORO;
+            case CUSTOM:
+                return STR_CUSTOM;
+            default:
+                assert_not_reached();
         }
     }
 }

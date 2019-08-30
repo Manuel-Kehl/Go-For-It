@@ -25,6 +25,7 @@ vala_precompile (VALA_C ${LIBNAME}
     SettingsManager.vala
     TodoListInfo.vala
     ListManager.vala
+    Schedule.vala
     TodoTask.vala
     SequentialList.vala
     FileWatcher.vala
@@ -35,6 +36,7 @@ vala_precompile (VALA_C ${LIBNAME}
     view/Widgets/TodoListInfoRow.vala
     view/Widgets/DragList.vala
     view/Widgets/ViewSwitcher.vala
+    view/Widgets/TimerScheduleWidget.vala
     view/Dialogs/DialogUtils.vala
     view/Dialogs/SettingsDialog.vala
     view/Dialogs/SettingsPages/AppearancePage.vala

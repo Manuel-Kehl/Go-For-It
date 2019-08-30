@@ -15,9 +15,11 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
+using GOFI.DialogUtils;
+
 class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private TxtListManager list_manager;
-    private ListSettings settings;
+    private ListSettings lsettings;
 
     /* GTK Widgets */
     private Gtk.Grid main_layout;
@@ -25,10 +27,12 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private Gtk.Revealer error_revealer;
 
     private Gtk.Switch timer_default_switch;
-    private Gtk.SpinButton task_spin;
-    private Gtk.SpinButton break_spin;
     private Gtk.SpinButton reminder_spin;
-    private Gtk.Revealer timer_revealer;
+    private Gtk.Label timer_sect_lbl;
+    private Gtk.Label reminder_lbl1;
+    private Gtk.Label reminder_lbl2;
+    private Gtk.Label timer_default_lbl;
+    private TimerScheduleWidget sched_widget;
 
     private Gtk.Label log_timer_lbl;
     private Gtk.Switch log_timer_switch;
@@ -45,21 +49,21 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             + _("directory") + ":";
     private string name_lbl_text = _("List name") + ":";
 
-    public signal void add_list_clicked (ListSettings settings);
+    public signal void add_list_clicked (ListSettings lsettings);
 
     public TxtListEditDialog (
         Gtk.Window? parent, TxtListManager list_manager,
-        ListSettings? settings = null
+        ListSettings? lsettings = null
     ) {
         this.set_transient_for (parent);
         this.list_manager = list_manager;
         if (settings == null) {
-            this.settings = new ListSettings.empty ();
+            this.lsettings = new ListSettings.empty ();
             this.title = _("New to-do list");
             this.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
             this.add_button (_("Add list"), Gtk.ResponseType.ACCEPT);
         } else {
-            this.settings = settings;
+            this.lsettings = lsettings;
             this.title = _("Edit to-do list properties");
             this.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
             this.add_button (_("Apply"), Gtk.ResponseType.ACCEPT);
@@ -76,8 +80,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         this.set_modal (true);
         main_layout.visible = true;
         main_layout.orientation = Gtk.Orientation.VERTICAL;
-        main_layout.row_spacing = 10;
-        main_layout.column_spacing = 10;
+        apply_grid_spacing (main_layout);
 
         setup_settings_widgets ();
 
@@ -90,7 +93,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private void on_response (int response_id) {
         switch (response_id) {
             case Gtk.ResponseType.ACCEPT:
-                add_list_clicked (settings);
+                add_list_clicked (lsettings);
                 break;
             default:
                 this.destroy ();
@@ -101,10 +104,10 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private bool check_valid () {
         bool is_valid = true;
         string error_msg = "";
-        if (settings.todo_txt_location == null) {
+        if (lsettings.todo_txt_location == null) {
             // This setting hasn't been changed by the user
             is_valid = false;
-        } else if (!list_manager.location_available (settings)) {
+        } else if (!list_manager.location_available (lsettings)) {
             // The user has selected an invalid directory, so we show an error.
             if (error_msg != "") {error_msg += "\n";}
             error_msg += gen_error_markup (
@@ -121,10 +124,10 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             dir_showing_error = false;
         }
 
-        if (settings.name == null) {
+        if (lsettings.name == null) {
             // This setting hasn't been changed by the user
             is_valid = false;
-        } else if (settings.name == "") {
+        } else if (lsettings.name == "") {
             // The user entered an empty string (or just whitespace)
             if (error_msg != "") {error_msg += "\n";}
             error_msg += gen_error_markup (
@@ -162,33 +165,6 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         setup_error_widgets (main_layout, ref row);
     }
 
-    private void add_section (Gtk.Grid grid, Gtk.Label label, ref int row) {
-        label.set_markup ("<b>%s</b>".printf (label.get_text ()));
-        label.halign = Gtk.Align.START;
-
-        grid.attach (label, 0, row, 2, 1);
-        row++;
-    }
-
-    private void add_option (Gtk.Grid grid, Gtk.Widget label,
-                             Gtk.Widget switcher, ref int row)
-    {
-        label.hexpand = true;
-        label.margin_start = 20; // indentation relative to the section label
-        label.halign = Gtk.Align.START;
-
-        switcher.hexpand = true;
-        switcher.halign = Gtk.Align.FILL;
-
-        if (switcher is Gtk.Switch || switcher is Gtk.Entry) {
-            switcher.halign = Gtk.Align.START;
-        }
-
-        grid.attach (label, 0, row, 1, 1);
-        grid.attach (switcher, 1, row, 1, 1);
-        row++;
-    }
-
     /**
      * Generates a red error message
      */
@@ -209,7 +185,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         error_revealer.add (error_label);
         error_revealer.set_reveal_child (false);
 
-        grid.attach (error_revealer, 0, row, 2, 1);
+        grid.attach (error_revealer, 0, row, 3, 1);
         row++;
     }
 
@@ -236,24 +212,24 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         directory_lbl.set_line_wrap (false);
         directory_lbl.set_use_markup (true);
         directory_btn.create_folders = true;
-        if (settings.todo_txt_location != null) {
-            directory_btn.set_current_folder (settings.todo_txt_location);
+        if (lsettings.todo_txt_location != null) {
+            directory_btn.set_current_folder (lsettings.todo_txt_location);
         }
 
         name_lbl.use_markup = true;
-        if (settings.name == null) {
+        if (lsettings.name == null) {
             name_entry.text = "";
         } else {
-            name_entry.text = settings.name;
+            name_entry.text = lsettings.name;
         }
 
-        log_timer_switch.active = settings.log_timer_in_txt;
+        log_timer_switch.active = lsettings.log_timer_in_txt;
 
         /* Signal Handling */
         directory_btn.file_set.connect (on_directory_changed);
         name_entry.notify["text"].connect (on_name_entry_update);
         log_timer_switch.notify["active"].connect (() => {
-            settings.log_timer_in_txt = log_timer_switch.active;
+            lsettings.log_timer_in_txt = log_timer_switch.active;
         });
 
         add_section (main_layout, txt_sect_lbl, ref row);
@@ -263,106 +239,87 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     }
 
     private void on_directory_changed () {
-        settings.todo_txt_location = directory_btn.get_file ().get_path ();
+        lsettings.todo_txt_location = directory_btn.get_file ().get_path ();
         set_add_sensitive ();
     }
 
     private void on_name_entry_update () {
         var name = name_entry.text;
-        if (name != "" || settings.name != null) {
-            settings.name = name.strip ();
+        if (name != "" || lsettings.name != null) {
+            lsettings.name = name.strip ();
             set_add_sensitive ();
         }
     }
 
     private void setup_timer_settings_widgets (Gtk.Grid grid, ref int row) {
-        /* Declaration */
-        Gtk.Label timer_sect_lbl;
-        Gtk.Label task_lbl;
-        Gtk.Label break_lbl;
-        Gtk.Label reminder_lbl;
-        Gtk.Label timer_default_lbl;
-        Gtk.Grid timer_grid;
-
         /* Instantiation */
         timer_sect_lbl = new Gtk.Label (_("Timer"));
         timer_default_lbl = new Gtk.Label (_("Use default settings") + (":"));
-        task_lbl = new Gtk.Label (_("Task duration (minutes)") + ":");
-        break_lbl = new Gtk.Label (_("Break duration (minutes)") + ":");
-        reminder_lbl = new Gtk.Label (_("Reminder before task ends (seconds)") +":");
+        reminder_lbl1 = new Gtk.Label (_("Reminder before task ends") +":");
+        reminder_lbl2 = new Gtk.Label (_("seconds"));
 
         timer_default_switch = new Gtk.Switch ();
-        timer_revealer = new Gtk.Revealer ();
-        timer_grid = new Gtk.Grid ();
 
-        // No more than one day: 60 * 24 -1 = 1439
-        task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
-        break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
+        sched_widget = new TimerScheduleWidget ();
+
         // More than ten minutes would not make much sense
         reminder_spin = new Gtk.SpinButton.with_range (0, 600, 1);
 
         /* Configuration */
-        if (settings.task_duration <= 0) {
-            task_spin.value = 25;
-            break_spin.value = 5;
-            reminder_spin.value = 60;
-            timer_default_switch.active = true;
-            timer_revealer.set_reveal_child (false);
-        } else {
-            task_spin.value = settings.task_duration / 60;
-            break_spin.value = settings.break_duration / 60;
+        if (lsettings.reminder_time < 0 || lsettings.schedule == null) {
             reminder_spin.value = settings.reminder_time;
+            sched_widget.load_schedule (settings.schedule);
+            timer_default_switch.active = true;
+        } else {
+            reminder_spin.value = lsettings.reminder_time;
+            sched_widget.load_schedule (lsettings.schedule);
             timer_default_switch.active = false;
-            timer_revealer.set_reveal_child (true);
         }
 
-        timer_grid.orientation = Gtk.Orientation.VERTICAL;
-        timer_grid.row_spacing = 10;
-        timer_grid.column_spacing = 10;
-
         /* Signal Handling */
-        task_spin.value_changed.connect (on_task_value_changed);
-        break_spin.value_changed.connect (on_break_value_changed);
         reminder_spin.value_changed.connect (on_reminder_value_changed);
         timer_default_switch.notify["active"].connect (toggle_timer_settings);
+        sched_widget.schedule_updated.connect ((sched) => {
+            lsettings.schedule = sched;
+        });
 
         /* Add widgets */
-        timer_revealer.add (timer_grid);
-
         add_section (grid, timer_sect_lbl, ref row);
         add_option (grid, timer_default_lbl, timer_default_switch, ref row);
-        grid.attach (timer_revealer, 0, row, 2, 1);
+        add_option (grid, reminder_lbl1, reminder_spin, ref row, 1, reminder_lbl2);
+        grid.attach (sched_widget, 0, row, 3, 1);
         row++;
-
-        int row2 = 0;
-        add_option (timer_grid, task_lbl, task_spin, ref row2);
-        add_option (timer_grid, break_lbl, break_spin, ref row2);
-        add_option (timer_grid, reminder_lbl, reminder_spin, ref row2);
-    }
-
-    private void on_task_value_changed () {
-        settings.task_duration = task_spin.get_value_as_int () * 60;
-    }
-
-    private void on_break_value_changed () {
-        settings.break_duration = break_spin.get_value_as_int () * 60;
     }
 
     private void on_reminder_value_changed () {
         settings.reminder_time = reminder_spin.get_value_as_int ();
     }
 
+    public override void show_all () {
+        base.show_all ();
+        if (timer_default_switch.active) {
+            reminder_lbl1.hide ();
+            reminder_lbl2.hide ();
+            reminder_spin.hide ();
+            sched_widget.hide ();
+        }
+    }
+
     private void toggle_timer_settings () {
         if (timer_default_switch.active) {
-            settings.task_duration = -1;
-            settings.break_duration = -1;
-            settings.reminder_time = -1;
-            timer_revealer.set_reveal_child (false);
+            lsettings.reminder_time = -1;
+            lsettings.schedule = null;
+            reminder_lbl1.hide ();
+            reminder_lbl2.hide ();
+            reminder_spin.hide ();
+            sched_widget.hide ();
         } else {
-            settings.task_duration = task_spin.get_value_as_int () * 60;
-            settings.break_duration = break_spin.get_value_as_int () * 60;
-            settings.reminder_time = reminder_spin.get_value_as_int ();
-            timer_revealer.set_reveal_child (true);
+            lsettings.reminder_time = reminder_spin.get_value_as_int ();
+            lsettings.schedule = sched_widget.generate_schedule ();
+            reminder_lbl1.show ();
+            reminder_lbl2.show ();
+            reminder_spin.show ();
+            sched_widget.show();
         }
     }
 }

@@ -43,15 +43,9 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         set;
     }
 
-    public int task_duration {
+    public Schedule? schedule {
         get;
         set;
-        default = -1;
-    }
-    public int break_duration {
-        get;
-        set;
-        default = -1;
     }
     public int reminder_time {
         get;
@@ -74,12 +68,14 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         this._id = id;
         this.name = name;
         this.todo_txt_location = location;
+        this.schedule = null;
     }
 
     public ListSettings.empty () {
         this._id = null;
         this._name = null;
         this.todo_txt_location = null;
+        this.schedule = null;
     }
 
     public ListSettings copy (string? new_id = null) {
@@ -87,21 +83,28 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
             new_id = _id;
         }
         var copied = new ListSettings (new_id, _name, todo_txt_location);
-        copied.task_duration = task_duration;
-        copied.break_duration = break_duration;
         copied.reminder_time = reminder_time;
         copied.add_default_todos = add_default_todos;
         copied.log_timer_in_txt = log_timer_in_txt;
+        if (schedule != null) {
+            copied.schedule = new Schedule ();
+            copied.schedule.set_durations (this.schedule.get_durations ());
+        }
         return copied;
     }
 
-    public void apply (ListSettings settings) {
-        this.name = settings.name;
-        this.todo_txt_location = settings.todo_txt_location;
+    public void apply (ListSettings lsettings) {
+        this.name = lsettings.name;
+        this.todo_txt_location = lsettings.todo_txt_location;
 
-        this.task_duration = settings.task_duration;
-        this.break_duration = settings.break_duration;
-        this.reminder_time = settings.reminder_time;
-        this.log_timer_in_txt = settings.log_timer_in_txt;
+        if (lsettings.schedule == null) {
+            this.schedule = null;
+        } else {
+            var sched = new Schedule ();
+            sched.set_durations (lsettings.schedule.get_durations ());
+            this.schedule = sched;
+        }
+        this.reminder_time = lsettings.reminder_time;
+        this.log_timer_in_txt = lsettings.log_timer_in_txt;
     }
 }

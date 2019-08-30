@@ -18,6 +18,32 @@
 using GOFI.DialogUtils;
 
 class GOFI.BehaviorPage : Gtk.Grid {
+    Gtk.Label timer_sect_lbl;
+
+    Gtk.Label task_lbl1;
+    Gtk.Label task_lbl2;
+    Gtk.SpinButton task_spin;
+
+    Gtk.Label break_lbl1;
+    Gtk.Label break_lbl2;
+    Gtk.SpinButton break_spin;
+
+    Gtk.Label reminder_lbl1;
+    Gtk.Label reminder_lbl2;
+    Gtk.SpinButton reminder_spin;
+
+    Gtk.Label long_break_lbl1;
+    Gtk.Label long_break_lbl2;
+    Gtk.SpinButton long_break_spin;
+
+    Gtk.Label long_break_period_lbl1;
+    Gtk.Label long_break_period_lbl2;
+    Gtk.SpinButton long_break_period_spin;
+
+    Gtk.Label timer_mode_lbl;
+    Gtk.ComboBoxText timer_mode_cbox;
+
+    TimerScheduleWidget sched_widget;
 
     public BehaviorPage () {
         int row = 0;
@@ -28,31 +54,44 @@ class GOFI.BehaviorPage : Gtk.Grid {
     }
 
     private void setup_timer_settings_widgets (ref int row) {
-        /* Declaration */
-        Gtk.Label timer_sect_lbl;
-        Gtk.Label task_lbl;
-        Gtk.SpinButton task_spin;
-        Gtk.Label break_lbl;
-        Gtk.SpinButton break_spin;
-        Gtk.Label reminder_lbl;
-        Gtk.SpinButton reminder_spin;
-
         /* Instantiation */
         timer_sect_lbl = new Gtk.Label (_("Timer"));
-        task_lbl = new Gtk.Label (_("Task duration (minutes)") + ":");
-        break_lbl = new Gtk.Label (_("Break duration (minutes)") + ":");
-        reminder_lbl = new Gtk.Label (_("Reminder before task ends (seconds)") +":");
+        task_lbl1 = new Gtk.Label (_("Task duration") + ":");
+        task_lbl2 = new Gtk.Label (_("minutes"));
+        break_lbl1 = new Gtk.Label (_("Break duration") + ":");
+        break_lbl2 = new Gtk.Label (_("minutes"));
+        long_break_lbl1 = new Gtk.Label (_("Long break duration") + ":");
+        long_break_lbl2 = new Gtk.Label (_("minutes"));
+        reminder_lbl1 = new Gtk.Label (_("Reminder before task ends") +":");
+        reminder_lbl2 = new Gtk.Label (_("seconds"));
+        long_break_period_lbl1 = new Gtk.Label (_("Have a long break after"));
+        long_break_period_lbl2 = new Gtk.Label (_("short breaks"));
+        timer_mode_lbl = new Gtk.Label (_("Timer mode") + ":");
+
+        timer_mode_cbox = new Gtk.ComboBoxText ();
 
         // No more than one day: 60 * 24 -1 = 1439
         task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
+        long_break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         // More than ten minutes would not make much sense
         reminder_spin = new Gtk.SpinButton.with_range (0, 600, 1);
+
+        long_break_period_spin = new Gtk.SpinButton.with_range (1, 99, 1);
+
+        sched_widget = new TimerScheduleWidget ();
 
         /* Configuration */
         task_spin.value = settings.task_duration / 60;
         break_spin.value = settings.break_duration / 60;
+        long_break_spin.value = settings.long_break_duration / 60;
         reminder_spin.value = settings.reminder_time;
+        long_break_period_spin.value = settings.pomodoro_period - 1;
+
+        timer_mode_cbox.append (TimerMode.STR_SIMPLE, _("Simple"));
+        timer_mode_cbox.append (TimerMode.STR_POMODORO, _("Pomodoro"));
+        timer_mode_cbox.append (TimerMode.STR_CUSTOM, _("Custom"));
+        timer_mode_cbox.active_id = settings.timer_mode.to_string ();
 
         /* Signal Handling */
         task_spin.value_changed.connect ((e) => {
@@ -61,15 +100,35 @@ class GOFI.BehaviorPage : Gtk.Grid {
         break_spin.value_changed.connect ((e) => {
             settings.break_duration = break_spin.get_value_as_int () * 60;
         });
+        long_break_spin.value_changed.connect ((e) => {
+            settings.long_break_duration = long_break_spin.get_value_as_int () * 60;
+        });
+        long_break_period_spin.value_changed.connect ((e) => {
+            settings.pomodoro_period = long_break_period_spin.get_value_as_int () + 1;
+        });
         reminder_spin.value_changed.connect ((e) => {
             settings.reminder_time = reminder_spin.get_value_as_int ();
+        });
+        timer_mode_cbox.changed.connect ( () => {
+            var timer_mode = TimerMode.from_string (timer_mode_cbox.active_id);
+            settings.timer_mode = timer_mode;
+            this.show_all ();
+        });
+        sched_widget.schedule_updated.connect ((sched) => {
+            settings.schedule = sched;
         });
 
         /* Add widgets */
         add_section (this, timer_sect_lbl, ref row);
-        add_option (this, task_lbl, task_spin, ref row);
-        add_option (this, break_lbl, break_spin, ref row);
-        add_option (this, reminder_lbl, reminder_spin, ref row);
+        add_option (this, timer_mode_lbl, timer_mode_cbox, ref row);
+        add_option (this, reminder_lbl1, reminder_spin, ref row, 1, reminder_lbl2);
+        this.attach (sched_widget, 0, row, 3, 1);
+        row++;
+        add_option (this, task_lbl1, task_spin, ref row, 1, task_lbl2);
+        add_option (this, break_lbl1, break_spin, ref row, 1, break_lbl2);
+        add_option (this, long_break_lbl1, long_break_spin, ref row, 1, long_break_lbl2);
+        add_option (this, long_break_period_lbl1, long_break_period_spin, ref row, 1, long_break_period_lbl2);
+
     }
 
     private void setup_task_settings_widgets (ref int row) {
@@ -96,5 +155,43 @@ class GOFI.BehaviorPage : Gtk.Grid {
         /* Add widgets */
         add_section (this, task_sect_lbl, ref row);
         add_option (this, placement_lbl, placement_cbox, ref row);
+    }
+
+    public override void show_all () {
+        base.show_all ();
+        switch (settings.timer_mode) {
+            case TimerMode.SIMPLE:
+                long_break_period_spin.hide ();
+                long_break_period_lbl1.hide ();
+                long_break_period_lbl2.hide ();
+
+                long_break_spin.hide ();
+                long_break_lbl1.hide ();
+                long_break_lbl2.hide ();
+                sched_widget.hide ();
+                break;
+            case TimerMode.POMODORO:
+                sched_widget.hide ();
+                break;
+            default:
+                task_lbl1.hide ();
+                task_lbl2.hide ();
+                task_spin.hide ();
+
+                break_lbl1.hide ();
+                break_lbl2.hide ();
+                break_spin.hide ();
+
+                long_break_period_spin.hide ();
+                long_break_period_lbl1.hide ();
+                long_break_period_lbl2.hide ();
+
+                long_break_spin.hide ();
+                long_break_lbl1.hide ();
+                long_break_lbl2.hide ();
+
+                sched_widget.load_schedule (settings.schedule);
+                break;
+        }
     }
 }

@@ -22,11 +22,10 @@ class GOFI.TXT.TxtList : Object {
     private Gtk.ModelButton clear_done_button;
 
     /**
-     * @param task_d duration untill the break in seconds
-     * @param break_d duration off the break in seconds
+     * @param sched schedule of task and break durations
      * @param reminder_t when to show the reminder before the task ends in seconds
      */
-    public signal void timer_values_changed (int task_d, int break_d, int reminder_t);
+    public signal void timer_values_changed (Schedule? sched, int reminder_t);
 
     public ListSettings list_settings {
         public get;
@@ -75,10 +74,7 @@ class GOFI.TXT.TxtList : Object {
 
     private void on_list_settings_notify (ParamSpec pspec) {
         switch (pspec.get_name ()) {
-            case "task-duration":
-                signal_timer_values ();
-                break;
-            case "break-duration":
+            case "schedule":
                 signal_timer_values ();
                 break;
             case "reminder_time":
@@ -91,8 +87,7 @@ class GOFI.TXT.TxtList : Object {
 
     private void signal_timer_values () {
         timer_values_changed (
-            list_settings.task_duration,
-            list_settings.break_duration,
+            list_settings.schedule,
             list_settings.reminder_time
         );
     }
@@ -151,21 +146,10 @@ class GOFI.TXT.TxtList : Object {
     }
 
     /**
-     * Returns the duration (in seconds) the user should spend working on the
-     * currently active task untill taking a break.
-     * If no value is configured -1 should be returned.
+     * Returns the schedule of task and break times specific to this list.
      */
-    public int get_active_task_duration () {
-        return list_settings.task_duration;
-    }
-
-    /**
-     * Returns the duration (in seconds) of the break the user should take
-     * before resuming work on the task.
-     * If no value is configured -1 should be returned.
-     */
-    public int get_active_break_duration () {
-        return list_settings.break_duration;
+    public Schedule? get_schedule () {
+        return list_settings.schedule;
     }
 
     /**

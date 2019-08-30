@@ -274,8 +274,7 @@ class GOFI.TXT.TxtListManager {
             get_todo_txt_location (list_id)
         );
 
-        list_settings.task_duration = get_task_duration (list_id);
-        list_settings.break_duration = get_break_duration (list_id);
+        list_settings.schedule = get_schedule (list_id);
         list_settings.reminder_time = get_reminder_time (list_id);
         list_settings.log_timer_in_txt = get_timer_logging (list_id);
         connect_settings_signals (list_settings);
@@ -345,8 +344,7 @@ class GOFI.TXT.TxtListManager {
     private void save_listsettings (ListSettings list) {
         set_name (list.id, list.name);
         set_todo_txt_location (list.id, list.todo_txt_location);
-        set_task_duration (list.id, list.task_duration);
-        set_break_duration (list.id, list.break_duration);
+        set_schedule (list.id, list.schedule);
         set_reminder_time (list.id, list.reminder_time);
     }
 
@@ -363,11 +361,8 @@ class GOFI.TXT.TxtListManager {
             case "todo-txt-location":
                 set_todo_txt_location (list.id, list.todo_txt_location);
                 break;
-            case "task-duration":
-                set_task_duration (list.id, list.task_duration);
-                break;
-            case "break-duration":
-                set_break_duration (list.id, list.break_duration);
+            case "schedule":
+                set_schedule (list.id, list.schedule);
                 break;
             case "reminder-time":
                 set_reminder_time (list.id, list.reminder_time);
@@ -400,24 +395,57 @@ class GOFI.TXT.TxtListManager {
     }
 
     /*---Overrides------------------------------------------------------------*/
-    public int get_task_duration (string list_id) {
+    public Schedule? get_schedule (string list_id) {
+        if (get_reminder_time (list_id) < 0) {
+            return null;
+        }
+        var _schedule = new Schedule ();
+        try {
+            var durations = key_file.get_integer_list ("list" + list_id, "schedule");
+            if (durations.length >= 2 && durations[0] > 0) {
+                _schedule.set_durations (durations);
+                return _schedule;
+            }
+            return null;
+        } catch (KeyFileError.GROUP_NOT_FOUND e) {
+        } catch (KeyFileError.KEY_NOT_FOUND e) {
+        } catch (Error e) {
+            warning ("An error occured while reading the setting"
+                +" %s.%s: %s", list_id, "schedule", e.message);
+            return null;
+        }
+        _schedule.set_durations ({
+            get_task_duration (list_id),
+            get_break_duration (list_id)
+        });
+        return _schedule;
+    }
+    private void set_schedule (string list_id, Schedule? sched) {
+        try {
+            if (sched == null || !sched.valid) {
+                key_file.set_integer_list ("list" + list_id, "schedule", {0,0});
+            } else {
+                key_file.set_integer_list ("list" + list_id, "schedule", sched.get_durations ());
+            }
+            write_key_file ();
+        } catch (Error e) {
+            error ("An error occured while writing the setting"
+                +" %s.%s: %s", list_id, "schedule", e.message);
+        }
+    }
+
+    private int get_task_duration (string list_id) {
         var duration = get_value (list_id, "task_duration", "1500");
         return int.parse (duration);
     }
-    public void set_task_duration (string list_id, int value) {
-        set_value (list_id, "task_duration", value.to_string ());
-    }
 
-    public int get_break_duration (string list_id) {
+    private int get_break_duration (string list_id) {
         var duration = get_value (list_id, "break_duration", "300");
         return int.parse (duration);
     }
-    public void set_break_duration (string list_id, int value) {
-        set_value (list_id, "break_duration", value.to_string ());
-    }
 
     public int get_reminder_time (string list_id) {
-        var time = get_value (list_id, "reminder_time", "60");
+        var time = get_value (list_id, "reminder_time", "-1");
         return int.parse (time);
     }
     public void set_reminder_time (string list_id, int value) {

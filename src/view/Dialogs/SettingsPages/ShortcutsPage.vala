@@ -23,8 +23,8 @@ using GOFI.DialogUtils;
  */
 class GOFI.ShortcutsPage : Gtk.Grid {
 
-    public Gtk.TreeView sc_tree;
-    public Gtk.ScrolledWindow scrollwindow;
+    private Gtk.TreeView sc_tree;
+    private Gtk.ScrolledWindow scrollwindow;
 
     public ShortcutsPage () {
         setup_tree ();
