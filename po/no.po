@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-30 16:16+0200\n"
-"PO-Revision-Date: 2019-08-30 16:09+0200\n"
+"PO-Revision-Date: 2019-08-30 14:59+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/go-for-"
-"it/go-for-it/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"go-for-it/go-for-it/nb_NO/>\n"
 "Language: no\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Weblate 3.9-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Main.vala:97
@@ -35,7 +35,7 @@ msgstr "Kunne ikke importere innstillinger ordentlig fra %s: %s"
 
 #: ../src/Shortcuts.vala:135
 msgid "Filter tasks"
-msgstr ""
+msgstr "Filtrer gjøremål"
 
 #: ../src/Shortcuts.vala:136
 #, fuzzy
@@ -52,11 +52,11 @@ msgstr ""
 
 #: ../src/Shortcuts.vala:139
 msgid "Move selected row up"
-msgstr ""
+msgstr "Flytt valgt rad oppover"
 
 #: ../src/Shortcuts.vala:140
 msgid "Move selected row down"
-msgstr ""
+msgstr "Flytt valgt rad nedover"
 
 #: ../src/Shortcuts.vala:142
 msgid "Move to next task/row"
@@ -68,11 +68,11 @@ msgstr ""
 
 #: ../src/Shortcuts.vala:144
 msgid "Move to right screen"
-msgstr ""
+msgstr "Flytt til høyre skjerm"
 
 #: ../src/Shortcuts.vala:145
 msgid "Move to left screen"
-msgstr ""
+msgstr "Flytt til venstre skjerm"
 
 #: ../src/Theme.vala:54
 #, fuzzy
@@ -299,7 +299,7 @@ msgstr "Lukk"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:71
 msgid "Behavior"
-msgstr ""
+msgstr "Oppførsel"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:72
 msgid "Appearance"
@@ -307,7 +307,7 @@ msgstr "Utseende"
 
 #: ../src/view/Dialogs/SettingsDialog.vala:73
 msgid "Shortcuts"
-msgstr ""
+msgstr "Snarveier"
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:37
 msgid "General"
@@ -370,12 +370,12 @@ msgstr "Pausevarighet"
 #. / Part of "Have a long break after # short breaks"
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
 msgid "Have a long break after"
-msgstr ""
+msgstr "Ta en lang pause etter"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:71
 msgid "short breaks"
-msgstr ""
+msgstr "korte pauser"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:75
 msgid "Timer mode"
@@ -403,11 +403,11 @@ msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:151
 msgid "Top of the list"
-msgstr ""
+msgstr "Toppen av listen"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:152
 msgid "Bottom of the list"
-msgstr ""
+msgstr "Bunnen av listen"
 
 #: ../src/view/MainWindow.vala:64
 msgid "Go to overview"
