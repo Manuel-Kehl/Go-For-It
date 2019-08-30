@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-30 21:08+0200\n"
-"PO-Revision-Date: 2019-08-30 21:11+0200\n"
+"PO-Revision-Date: 2019-08-31 10:08+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Weblate 3.9-dev\n"
 "X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
 
 #: ../src/Main.vala:97
@@ -169,9 +169,8 @@ msgstr ""
 "追加しましょう！"
 
 #: ../src/todo.txt/view/TaskList.vala:36
-#, fuzzy
 msgid "No tasks found."
-msgstr "検索結果はありません。"
+msgstr "タスクはありません。"
 
 #: ../src/todo.txt/view/TaskList.vala:37
 msgid "You don't have any completed tasks stored."
@@ -235,7 +234,7 @@ msgstr "リストに名前を付けてください。"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:208
 msgid "Log the time spent working on each task"
-msgstr ""
+msgstr "それぞれのタスクにかかった時間を記録"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:256
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:64
@@ -365,37 +364,37 @@ msgstr "休憩時間"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "Resume task after the break"
-msgstr ""
+msgstr "休憩の後にタスクを復元"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:74
 msgid "Reset timer after switching tasks"
-msgstr ""
+msgstr "タスクの切り替え後にタイマーをリセット"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:77
 msgid "Have a long break after"
-msgstr ""
+msgstr "以下の回数の短い休憩を取ったら長い休憩を取る"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:79
 msgid "short breaks"
-msgstr ""
+msgstr "回"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:83
 msgid "Timer mode"
-msgstr ""
+msgstr "タイマーモード"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:108
 msgid "Simple"
-msgstr ""
+msgstr "シンプル"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:109
 msgid "Pomodoro"
-msgstr ""
+msgstr "ポモドーロ"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:110
 msgid "Custom"
-msgstr ""
+msgstr "カスタム"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:169
 msgid "Tasks"
@@ -414,10 +413,8 @@ msgid "Bottom of the list"
 msgstr "リストの一番下"
 
 #: ../src/view/Dialogs/SettingsPages/ShortcutsPage.vala:40
-#, fuzzy
-#| msgid "%s needs to be restarted for this setting to take effect"
 msgid "%s needs to be restarted for changes to take effect."
-msgstr "この設定を反映するには、%s を再起動する必要があります"
+msgstr "変更を反映するには、%s を再起動する必要があります。"
 
 #: ../src/view/MainWindow.vala:64
 msgid "Go to overview"
@@ -448,10 +445,8 @@ msgid "The Break is Over"
 msgstr "休憩終了"
 
 #: ../src/view/MainWindow.vala:470
-#, fuzzy
-#| msgid "Your next task is"
 msgid "Your current task is"
-msgstr "次のタスク"
+msgstr "現在のタスクは"
 
 #: ../src/view/MainWindow.vala:490
 msgid "Prepare for your break"
