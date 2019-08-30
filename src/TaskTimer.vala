@@ -50,8 +50,11 @@ class GOFI.TaskTimer {
     public TodoTask? active_task {
         get { return _active_task; }
         set {
+            bool was_running = running;
             stop ();
-            reset ();
+            if (settings.reset_timer_on_task_switch) {
+                reset ();
+            }
 
             if (_active_task != null) {
                 _active_task.notify["description"].disconnect (on_task_notify_description);
@@ -63,6 +66,10 @@ class GOFI.TaskTimer {
 
             // Emit the corresponding notifier signal
             update_active_task ();
+
+            if (was_running && _active_task != null && !settings.reset_timer_on_task_switch) {
+                start ();
+            }
         }
     }
     private bool almost_over_sent_already { get; set; default = false; }
@@ -84,6 +91,7 @@ class GOFI.TaskTimer {
                 _schedule = settings.schedule;
             }
             iteration = 0;
+            reset ();
         }
     }
     public int reminder_time {
@@ -228,7 +236,6 @@ class GOFI.TaskTimer {
      * Used to emit an "active_task_done" signal from outside of this class.
      */
     public void set_active_task_done () {
-        stop ();
         active_task_done (_active_task);
         // Resume break, only keep stopped when a task is active
         if (break_active) {
@@ -263,7 +270,7 @@ class GOFI.TaskTimer {
         break_active = !break_active;
 
         reset ();
-        if (break_active) {
+        if (break_active || settings.resume_tasks_after_break) {
             start ();
         }
         active_task_changed (_active_task, break_active);

@@ -35,7 +35,7 @@ class GOFI.AboutDialog : Gtk.AboutDialog {
      * Displays a welcome message with basic information about Go For It!
      */
     private void setup_content () {
-        program_name = "Go For It!";
+        program_name = APP_NAME;
         logo_icon_name = GOFI.ICON_NAME;
 
         comments = _("A stylish to-do list with built-in productivity timer.");

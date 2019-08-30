@@ -43,7 +43,7 @@ class GOFI.TXT.TaskManager {
     private bool active_task_found;
 
     string[] default_todos = {
-        _("Spread the word about \"%s\"").printf ("Go For It!"),
+        _("Spread the word about \"%s\"").printf (APP_NAME),
         _("Consider a donation to help the project"),
         _("Consider contributing to the project")
     };
@@ -424,7 +424,7 @@ class GOFI.TXT.TaskManager {
             }
         } catch (Error e) {
             io_failed = true;
-            var error_message = read_error_message.printf (file.get_path (), e.message) + error_implications.printf ("Go For It!");
+            var error_message = read_error_message.printf (file.get_path (), e.message) + error_implications.printf (APP_NAME);
             warning (error_message);
             show_error_dialog (error_message);
         }
@@ -453,7 +453,7 @@ class GOFI.TXT.TaskManager {
             }
         } catch (Error e) {
             io_failed = true;
-            var error_message = write_error_message.printf (file.get_path (), e.message) + error_implications.printf ("Go For It!");
+            var error_message = write_error_message.printf (file.get_path (), e.message) + error_implications.printf (APP_NAME);
             warning (error_message);
             show_error_dialog (error_message);
         }

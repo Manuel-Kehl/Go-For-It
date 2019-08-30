@@ -43,7 +43,6 @@ class GOFI.TaskListPage : Gtk.Grid {
         var next = task_list.get_next ();
 
         if (next != null) {
-            task_timer.stop ();
             task_list.active_task = next;
         }
     }
@@ -56,7 +55,6 @@ class GOFI.TaskListPage : Gtk.Grid {
         var prev = task_list.get_prev ();
 
         if (prev != null) {
-            task_timer.stop ();
             task_list.active_task = prev;
         }
     }

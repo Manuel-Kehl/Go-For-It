@@ -37,7 +37,7 @@ class GOFI.ShortcutsPage : Gtk.Grid {
 
         attach (shortcuts_frame, 0, 0, 1, 1);
         var restart_info_label = new Gtk.Label (
-            "%s needs to be restarted for changes to take effect.".printf ("Go For It!")
+            _("%s needs to be restarted for changes to take effect.").printf (APP_NAME)
         );
         attach (restart_info_label, 0, 1, 1, 1);
         load_and_display_shortcuts ();

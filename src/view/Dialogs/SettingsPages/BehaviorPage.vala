@@ -43,6 +43,12 @@ class GOFI.BehaviorPage : Gtk.Grid {
     Gtk.Label timer_mode_lbl;
     Gtk.ComboBoxText timer_mode_cbox;
 
+    Gtk.Label resume_task_lbl;
+    Gtk.Switch resume_task_switch;
+
+    Gtk.Label reset_on_switch_lbl;
+    Gtk.Switch reset_on_switch_switch;
+
     TimerScheduleWidget sched_widget;
 
     public BehaviorPage () {
@@ -64,6 +70,8 @@ class GOFI.BehaviorPage : Gtk.Grid {
         long_break_lbl2 = new Gtk.Label (_("minutes"));
         reminder_lbl1 = new Gtk.Label (_("Reminder before task ends") +":");
         reminder_lbl2 = new Gtk.Label (_("seconds"));
+        resume_task_lbl = new Gtk.Label (_("Resume task after the break") + ":");
+        reset_on_switch_lbl = new Gtk.Label (_("Reset timer after switching tasks") + ":");
 
         /// Part of "Have a long break after # short breaks"
         var long_break_period_text1 = _("Have a long break after");
@@ -75,6 +83,9 @@ class GOFI.BehaviorPage : Gtk.Grid {
         timer_mode_lbl = new Gtk.Label (_("Timer mode") + ":");
 
         timer_mode_cbox = new Gtk.ComboBoxText ();
+
+        resume_task_switch = new Gtk.Switch ();
+        reset_on_switch_switch = new Gtk.Switch ();
 
         // No more than one day: 60 * 24 -1 = 1439
         task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
@@ -98,6 +109,9 @@ class GOFI.BehaviorPage : Gtk.Grid {
         timer_mode_cbox.append (TimerMode.STR_POMODORO, _("Pomodoro"));
         timer_mode_cbox.append (TimerMode.STR_CUSTOM, _("Custom"));
         timer_mode_cbox.active_id = settings.timer_mode.to_string ();
+
+        resume_task_switch.active = settings.resume_tasks_after_break;
+        reset_on_switch_switch.active = settings.reset_timer_on_task_switch;
 
         /* Signal Handling */
         task_spin.value_changed.connect ((e) => {
@@ -123,10 +137,18 @@ class GOFI.BehaviorPage : Gtk.Grid {
         sched_widget.schedule_updated.connect ((sched) => {
             settings.schedule = sched;
         });
+        resume_task_switch.notify["active"].connect (() => {
+            settings.resume_tasks_after_break = resume_task_switch.active;
+        });
+        reset_on_switch_switch.notify["active"].connect (() => {
+            settings.reset_timer_on_task_switch = reset_on_switch_switch.active;
+        });
 
         /* Add widgets */
         add_section (this, timer_sect_lbl, ref row);
         add_option (this, timer_mode_lbl, timer_mode_cbox, ref row);
+        add_option (this, resume_task_lbl, resume_task_switch, ref row);
+        add_option (this, reset_on_switch_lbl, reset_on_switch_switch, ref row);
         add_option (this, reminder_lbl1, reminder_spin, ref row, 1, reminder_lbl2);
         this.attach (sched_widget, 0, row, 3, 1);
         row++;

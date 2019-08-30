@@ -223,6 +223,24 @@ private class GOFI.SettingsManager {
         _schedule.set_durations (durations);
     }
 
+    public bool resume_tasks_after_break {
+        get {
+            return get_bool (GROUP_TIMER, "resume_tasks_after_break", false);
+        }
+        set {
+            set_bool (GROUP_TIMER, "resume_tasks_after_break", value);
+        }
+    }
+
+    public bool reset_timer_on_task_switch {
+        get {
+            return get_bool (GROUP_TIMER, "reset_timer_on_task_switch", false);
+        }
+        set {
+            set_bool (GROUP_TIMER, "reset_timer_on_task_switch", value);
+        }
+    }
+
     public bool reminder_active {
         get {
             return (reminder_time > 0);
@@ -279,9 +297,7 @@ private class GOFI.SettingsManager {
     }
     public bool use_dark_theme {
         get {
-            return get_bool (
-                GROUP_UI, "use_dark_theme", false
-            );
+            return get_bool (GROUP_UI, "use_dark_theme", false);
         }
         set {
             set_bool (GROUP_UI, "use_dark_theme", value);
