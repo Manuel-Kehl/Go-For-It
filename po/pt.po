@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-30 16:16+0200\n"
-"PO-Revision-Date: 2019-04-20 16:33+0000\n"
+"PO-Revision-Date: 2019-08-30 16:52+0200\n"
 "Last-Translator: Rui Mendes <xz9@protonmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/go-for-it/go-"
 "for-it/pt/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.6\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Main.vala:97
@@ -102,13 +102,12 @@ msgid "Consider contributing to the project"
 msgstr ""
 
 #: ../src/todo.txt/TaskManager.vala:51
-#, fuzzy
 msgid ""
 "%s won't save or load from the current todo.txt directory until it is either "
 "restarted or another location is chosen."
 msgstr ""
-"O Go For It! não irá guardar ou abrir do diretório todo.txt atual enquanto "
-"não for reiniciado ou for escolhido outro local."
+"O %s não irá guardar ou abrir do diretório todo.txt atual enquanto não for "
+"reiniciado ou for escolhido outro local."
 
 #: ../src/todo.txt/TaskManager.vala:52
 msgid "Couldn't read the todo.txt file (%s):"
@@ -250,14 +249,13 @@ msgstr "Usar configurações originais"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:258
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:65
-#, fuzzy
 msgid "Reminder before task ends"
-msgstr "Lembrete antes do fim da tarefa (segundos)"
+msgstr "Lembrete antes do fim da tarefa"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:259
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:66
 msgid "seconds"
-msgstr ""
+msgstr "segundos"
 
 #: ../src/view/Dialogs/AboutDialog.vala:27 ../src/view/MainWindow.vala:421
 msgid "About"
@@ -348,26 +346,23 @@ msgstr "Usar a barra de cabeçalho"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:59
 #: ../src/view/Widgets/TimerScheduleWidget.vala:132
-#, fuzzy
 msgid "Task duration"
-msgstr "Duração da tarefa (minutos)"
+msgstr "Duração da tarefa"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:60
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:62
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:64
 msgid "minutes"
-msgstr ""
+msgstr "minutos"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:61
 #: ../src/view/Widgets/TimerScheduleWidget.vala:133
-#, fuzzy
 msgid "Break duration"
-msgstr "Duração do intervalo (minutos)"
+msgstr "Duração do intervalo"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:63
-#, fuzzy
 msgid "Long break duration"
-msgstr "Duração do intervalo (minutos)"
+msgstr "Duração do intervalo"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
@@ -380,9 +375,8 @@ msgid "short breaks"
 msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:75
-#, fuzzy
 msgid "Timer mode"
-msgstr "Temporizador"
+msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:97
 msgid "Simple"
@@ -405,9 +399,8 @@ msgid "Placement of new tasks"
 msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:151
-#, fuzzy
 msgid "Top of the list"
-msgstr "Voltar à lista de tarefas"
+msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:152
 msgid "Bottom of the list"
