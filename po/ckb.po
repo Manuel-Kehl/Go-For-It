@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 16:16+0200\n"
+"POT-Creation-Date: 2019-08-30 21:02+0200\n"
 "PO-Revision-Date: 2016-11-18 22:37+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,12 +21,12 @@ msgstr ""
 msgid "Show about dialog"
 msgstr ""
 
-#: ../src/SettingsManager.vala:419 ../src/todo.txt/TxtListManager.vala:58
+#: ../src/SettingsManager.vala:435 ../src/todo.txt/TxtListManager.vala:58
 #: ../src/todo.txt/TxtListManager.vala:501
 msgid "Couldn't create directory: %s"
 msgstr ""
 
-#: ../src/SettingsManager.vala:573
+#: ../src/SettingsManager.vala:589
 msgid "Couldn't properly import settings from %s: %s"
 msgstr ""
 
@@ -228,8 +228,8 @@ msgid "Log the time spent working on each task"
 msgstr ""
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:256
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:58
-#: ../src/view/TaskListPage.vala:106 ../src/view/TaskListPage.vala:195
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:64
+#: ../src/view/TaskListPage.vala:107 ../src/view/TaskListPage.vala:196
 msgid "Timer"
 msgstr ""
 
@@ -238,12 +238,12 @@ msgid "Use default settings"
 msgstr ""
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:258
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:65
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:71
 msgid "Reminder before task ends"
 msgstr ""
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:259
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:66
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:72
 msgid "seconds"
 msgstr ""
 
@@ -330,66 +330,78 @@ msgstr ""
 msgid "Use a header bar"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:59
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:65
 #: ../src/view/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:60
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:62
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:64
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:66
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:68
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:70
 msgid "minutes"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:61
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:67
 #: ../src/view/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:63
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
 msgid "Long break duration"
 msgstr ""
 
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:73
+msgid "Resume task after the break"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:74
+msgid "Reset timer after switching tasks"
+msgstr ""
+
 #. / Part of "Have a long break after # short breaks"
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:77
 msgid "Have a long break after"
 msgstr ""
 
 #. / Part of "Have a long break after # short breaks"
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:71
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:79
 msgid "short breaks"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:75
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:83
 msgid "Timer mode"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:97
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:108
 msgid "Simple"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:98
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:109
 msgid "Pomodoro"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:99
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:110
 msgid "Custom"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:147
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:169
 msgid "Tasks"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:148
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:170
 msgid "Placement of new tasks"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:151
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:173
 msgid "Top of the list"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:152
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:174
 msgid "Bottom of the list"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/ShortcutsPage.vala:40
+msgid "%s needs to be restarted for changes to take effect."
 msgstr ""
 
 #: ../src/view/MainWindow.vala:64
@@ -421,7 +433,7 @@ msgid "The Break is Over"
 msgstr ""
 
 #: ../src/view/MainWindow.vala:470
-msgid "Your next task is"
+msgid "Your current task is"
 msgstr ""
 
 #: ../src/view/MainWindow.vala:490
@@ -438,15 +450,15 @@ msgid ""
 "Add one below!"
 msgstr ""
 
-#: ../src/view/TaskListPage.vala:99
+#: ../src/view/TaskListPage.vala:100
 msgid "Lists"
 msgstr ""
 
-#: ../src/view/TaskListPage.vala:105 ../src/view/TaskListPage.vala:187
+#: ../src/view/TaskListPage.vala:106 ../src/view/TaskListPage.vala:188
 msgid "To-Do"
 msgstr ""
 
-#: ../src/view/TaskListPage.vala:107 ../src/view/TaskListPage.vala:190
+#: ../src/view/TaskListPage.vala:108 ../src/view/TaskListPage.vala:191
 msgid "Done"
 msgstr ""
 
