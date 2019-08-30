@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 21:02+0200\n"
-"PO-Revision-Date: 2019-08-29 13:24+0000\n"
+"POT-Creation-Date: 2019-08-30 21:08+0200\n"
+"PO-Revision-Date: 2019-08-30 21:11+0200\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/go-"
 "for-it/ja/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
 
 #: ../src/Main.vala:97
@@ -336,8 +336,8 @@ msgid "Dark theme"
 msgstr "ダークテーマ"
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:123
-msgid "Go For It! needs to be restarted for this setting to take effect"
-msgstr "この設定を反映するには、Go For It! を再起動する必要があります"
+msgid "%s needs to be restarted for this setting to take effect"
+msgstr "この設定を反映するには、%s を再起動する必要があります"
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:126
 msgid "Use a header bar"
@@ -415,9 +415,9 @@ msgstr "リストの一番下"
 
 #: ../src/view/Dialogs/SettingsPages/ShortcutsPage.vala:40
 #, fuzzy
-#| msgid "Go For It! needs to be restarted for this setting to take effect"
+#| msgid "%s needs to be restarted for this setting to take effect"
 msgid "%s needs to be restarted for changes to take effect."
-msgstr "この設定を反映するには、Go For It! を再起動する必要があります"
+msgstr "この設定を反映するには、%s を再起動する必要があります"
 
 #: ../src/view/MainWindow.vala:64
 msgid "Go to overview"

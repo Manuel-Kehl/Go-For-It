@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 21:02+0200\n"
-"PO-Revision-Date: 2019-08-30 16:05+0200\n"
+"POT-Creation-Date: 2019-08-30 21:08+0200\n"
+"PO-Revision-Date: 2019-08-30 21:12+0200\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/go-for-it/go-for-"
 "it/de/>\n"
@@ -338,9 +338,8 @@ msgid "Dark theme"
 msgstr "Dunkles Thema"
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:123
-msgid "Go For It! needs to be restarted for this setting to take effect"
-msgstr ""
-"Go For It! muss neu gestartet werden, damit diese Einstellung wirksam wird"
+msgid "%s needs to be restarted for this setting to take effect"
+msgstr "%s muss neu gestartet werden, damit diese Einstellung wirksam wird"
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:126
 msgid "Use a header bar"
@@ -385,9 +384,8 @@ msgid "short breaks"
 msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:83
-#, fuzzy
 msgid "Timer mode"
-msgstr "Stoppuhr"
+msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:108
 msgid "Simple"
@@ -418,11 +416,8 @@ msgid "Bottom of the list"
 msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/ShortcutsPage.vala:40
-#, fuzzy
-#| msgid "Go For It! needs to be restarted for this setting to take effect"
 msgid "%s needs to be restarted for changes to take effect."
-msgstr ""
-"Go For It! muss neu gestartet werden, damit diese Einstellung wirksam wird"
+msgstr "%s muss neu gestartet werden, damit diese Einstellung wirksam wird"
 
 #: ../src/view/MainWindow.vala:64
 msgid "Go to overview"

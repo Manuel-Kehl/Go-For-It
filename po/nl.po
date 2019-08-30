@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 21:02+0200\n"
-"PO-Revision-Date: 2019-08-30 16:28+0200\n"
+"POT-Creation-Date: 2019-08-30 21:08+0200\n"
+"PO-Revision-Date: 2019-08-30 21:12+0200\n"
 "Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/go-for-"
 "it/nl/>\n"
@@ -106,7 +106,7 @@ msgid ""
 "restarted or another location is chosen."
 msgstr ""
 "%s zal niets uit de huidige todo.txt map uitlezen of de takenlijst opslaan "
-"zolang er geen andere map gekozen wordt of Go For It! herstart wordt."
+"zolang er geen andere map gekozen wordt of het programma herstart wordt."
 
 #: ../src/todo.txt/TaskManager.vala:52
 msgid "Couldn't read the todo.txt file (%s):"
@@ -334,8 +334,8 @@ msgid "Dark theme"
 msgstr "Donker thema"
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:123
-msgid "Go For It! needs to be restarted for this setting to take effect"
-msgstr "Go For It! moet worden herstart voor deze instelling effect heeft"
+msgid "%s needs to be restarted for this setting to take effect"
+msgstr "%s moet worden herstart voor deze instelling effect heeft"
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:126
 msgid "Use a header bar"
@@ -415,7 +415,7 @@ msgstr "onderkant van de lijst"
 #, fuzzy
 #| msgid "Go For It! needs to be restarted for this setting to take effect"
 msgid "%s needs to be restarted for changes to take effect."
-msgstr "Go For It! moet worden herstart voor deze instelling effect heeft"
+msgstr "%s moet worden herstart voordat wijzigingen van kracht worden."
 
 #: ../src/view/MainWindow.vala:64
 msgid "Go to overview"

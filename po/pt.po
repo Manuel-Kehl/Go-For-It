@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 21:02+0200\n"
+"POT-Creation-Date: 2019-08-30 21:08+0200\n"
 "PO-Revision-Date: 2019-08-30 16:52+0200\n"
 "Last-Translator: Rui Mendes <xz9@protonmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/go-for-it/go-"
@@ -336,9 +336,9 @@ msgid "Dark theme"
 msgstr "Tema escuro"
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:123
-msgid "Go For It! needs to be restarted for this setting to take effect"
+msgid "%s needs to be restarted for this setting to take effect"
 msgstr ""
-"O Go For It! tem de ser reiniciado para que esta configuração surta efeito"
+"O %s tem de ser reiniciado para que esta configuração surta efeito"
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:126
 msgid "Use a header bar"
@@ -416,10 +416,10 @@ msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/ShortcutsPage.vala:40
 #, fuzzy
-#| msgid "Go For It! needs to be restarted for this setting to take effect"
+#| msgid "%s needs to be restarted for this setting to take effect"
 msgid "%s needs to be restarted for changes to take effect."
 msgstr ""
-"O Go For It! tem de ser reiniciado para que esta configuração surta efeito"
+"O %s tem de ser reiniciado para que esta configuração surta efeito"
 
 #: ../src/view/MainWindow.vala:64
 msgid "Go to overview"

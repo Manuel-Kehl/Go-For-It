@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: go-for-it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 21:02+0200\n"
-"PO-Revision-Date: 2017-10-02 17:28+0000\n"
+"POT-Creation-Date: 2019-08-30 21:08+0200\n"
+"PO-Revision-Date: 2019-08-30 21:16+0200\n"
 "Last-Translator: aberba <karabutaworld@gmail.com>\n"
 "Language-Team: Akan <ak@li.org>\n"
 "Language: ak\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:36+0000\n"
-"X-Generator: Launchpad (build 18505)\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: ../src/Main.vala:97
 msgid "Print version info and exit"
@@ -246,14 +246,13 @@ msgstr ""
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:258
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:71
-#, fuzzy
 msgid "Reminder before task ends"
-msgstr "Mmere dodow a ɛbɛbɔ wo nkae ansa dwuma no awie (sima)"
+msgstr "Mmere dodow a ɛbɛbɔ wo nkae ansa dwuma no awie"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:259
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:72
 msgid "seconds"
-msgstr ""
+msgstr "sima"
 
 #: ../src/view/Dialogs/AboutDialog.vala:27 ../src/view/MainWindow.vala:421
 msgid "About"
@@ -333,7 +332,7 @@ msgid "Dark theme"
 msgstr "Anim tebea tuntum"
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:123
-msgid "Go For It! needs to be restarted for this setting to take effect"
+msgid "%s needs to be restarted for this setting to take effect"
 msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:126
@@ -342,26 +341,23 @@ msgstr "Fa Header Bar di dwuma"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:65
 #: ../src/view/Widgets/TimerScheduleWidget.vala:132
-#, fuzzy
 msgid "Task duration"
-msgstr "Mmere a ɛda dwumadi no ho (sima)"
+msgstr "Mmere a ɛda dwumadi no ho"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:66
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:68
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:70
 msgid "minutes"
-msgstr ""
+msgstr "sima"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:67
 #: ../src/view/Widgets/TimerScheduleWidget.vala:133
-#, fuzzy
 msgid "Break duration"
-msgstr "Bere a wobɛgye woahome (sima)"
+msgstr "Bere a wobɛgye woahome"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
-#, fuzzy
 msgid "Long break duration"
-msgstr "Bere a wobɛgye woahome (sima)"
+msgstr "Bere a wobɛgye woahome"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "Resume task after the break"

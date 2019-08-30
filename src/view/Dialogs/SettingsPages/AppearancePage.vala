@@ -120,7 +120,7 @@ class GOFI.AppearancePage : Gtk.Grid {
         Gtk.Label restart_info_lbl;
         Gtk.Switch headerbar_switch;
 
-        string restart_info = _("Go For It! needs to be restarted for this setting to take effect");
+        string restart_info = _("%s needs to be restarted for this setting to take effect").printf (APP_NAME);
 
         /* Instantiation */
         headerbar_lbl = new Gtk.Label (_("Use a header bar") + ":");
