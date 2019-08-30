@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 21:02+0200\n"
+"POT-Creation-Date: 2019-08-30 21:08+0200\n"
 "PO-Revision-Date: 2019-08-30 16:13+0200\n"
 "Last-Translator: Jonathan Moerman <Unknown>\n"
 "Language-Team: \n"
@@ -324,7 +324,7 @@ msgid "Dark theme"
 msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:123
-msgid "Go For It! needs to be restarted for this setting to take effect"
+msgid "%s needs to be restarted for this setting to take effect"
 msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:126

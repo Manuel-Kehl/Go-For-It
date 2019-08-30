@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 21:02+0200\n"
+"POT-Creation-Date: 2019-08-30 21:08+0200\n"
 "PO-Revision-Date: 2019-08-30 14:59+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/go-for-"
@@ -339,7 +339,9 @@ msgid "Dark theme"
 msgstr "Mørk drakt"
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:123
-msgid "Go For It! needs to be restarted for this setting to take effect"
+#, fuzzy
+#| msgid "Go For It! needs to be restarted for this setting to take effect"
+msgid "%s needs to be restarted for this setting to take effect"
 msgstr ""
 "Gjør det! Må startes på ny for at denne innstillingen skal tre i effekt"
 
