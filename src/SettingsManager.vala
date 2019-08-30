@@ -177,10 +177,10 @@ private class GOFI.SettingsManager {
 
     private void build_schedule () {
         switch (timer_mode) {
-             case SIMPLE:
+            case TimerMode.SIMPLE:
                 _schedule.set_durations ({task_duration, break_duration});
                 return;
-            case POMODORO:
+            case TimerMode.POMODORO:
                 build_pomodoro_schedule ();
                 return;
             default:
