@@ -43,12 +43,12 @@ class GOFI.TXT.TaskManager {
     private bool active_task_found;
 
     string[] default_todos = {
-        _("Spread the word about \"Go For It!\""),
+        _("Spread the word about \"%s\"").printf ("Go For It!"),
         _("Consider a donation to help the project"),
         _("Consider contributing to the project")
     };
 
-    const string error_implications = _("Go For It! won't save or load from the current todo.txt directory until it is either restarted or another location is chosen.");
+    const string error_implications = _("%s won't save or load from the current todo.txt directory until it is either restarted or another location is chosen.");
     string read_error_message = _("Couldn't read the todo.txt file (%s):") + "\n\n%s\n\n";
     string write_error_message = _("Couldn't save the to-do list (%s):") + "\n\n%s\n\n";
     const string txt_dir_error = _("The path to the todo.txt directory does not point to a directory, but to a file or mountable location. Please change the path in the settings to a suitable directory or remove this file.");
@@ -424,7 +424,7 @@ class GOFI.TXT.TaskManager {
             }
         } catch (Error e) {
             io_failed = true;
-            var error_message = read_error_message.printf (file.get_path (), e.message) + error_implications;
+            var error_message = read_error_message.printf (file.get_path (), e.message) + error_implications.printf ("Go For It!");
             warning (error_message);
             show_error_dialog (error_message);
         }
@@ -453,7 +453,7 @@ class GOFI.TXT.TaskManager {
             }
         } catch (Error e) {
             io_failed = true;
-            var error_message = write_error_message.printf (file.get_path (), e.message) + error_implications;
+            var error_message = write_error_message.printf (file.get_path (), e.message) + error_implications.printf ("Go For It!");
             warning (error_message);
             show_error_dialog (error_message);
         }

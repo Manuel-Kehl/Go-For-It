@@ -23,12 +23,12 @@ msgstr "バージョンを表示して終了します"
 msgid "Show about dialog"
 msgstr "情報ダイアログを表示します"
 
-#: ../src/SettingsManager.vala:301 ../src/todo.txt/TxtListManager.vala:58
-#: ../src/todo.txt/TxtListManager.vala:459
+#: ../src/SettingsManager.vala:419 ../src/todo.txt/TxtListManager.vala:58
+#: ../src/todo.txt/TxtListManager.vala:501
 msgid "Couldn't create directory: %s"
 msgstr "ディレクトリを作成できませんでした: %s"
 
-#: ../src/SettingsManager.vala:455
+#: ../src/SettingsManager.vala:573
 msgid "Couldn't properly import settings from %s: %s"
 msgstr "%s から設定を正しくインポートできませんでした: %s"
 
@@ -89,8 +89,8 @@ msgid "priority"
 msgstr "優先順位"
 
 #: ../src/todo.txt/TaskManager.vala:46
-msgid "Spread the word about \"Go For It!\""
-msgstr "\"Go For It!\" に関する単語を広める"
+msgid "Spread the word about \"%s\""
+msgstr "\"%s\" に関する単語を広める"
 
 #: ../src/todo.txt/TaskManager.vala:47
 msgid "Consider a donation to help the project"
@@ -102,11 +102,11 @@ msgstr "プロジェクトへの貢献を検討する"
 
 #: ../src/todo.txt/TaskManager.vala:51
 msgid ""
-"Go For It! won't save or load from the current todo.txt directory until it "
-"is either restarted or another location is chosen."
+"%s won't save or load from the current todo.txt directory until it is either "
+"restarted or another location is chosen."
 msgstr ""
-"Go For It! は、再起動されるか他の場所が選択されるまで、todo.txt の読み込みや"
-"保存を行いません。"
+"%s は、再起動されるか他の場所が選択されるまで、todo.txt の読み込みや保存を行"
+"いません。"
 
 #: ../src/todo.txt/TaskManager.vala:52
 msgid "Couldn't read the todo.txt file (%s):"
@@ -126,7 +126,7 @@ msgstr ""
 "リ以外へのパスになっています。適切なディレクトリへのパスに変更するか、ファイ"
 "ルを削除してください。"
 
-#: ../src/todo.txt/TxtList.vala:193
+#: ../src/todo.txt/TxtList.vala:177
 msgid "Clear Done List"
 msgstr "完了リストを消去"
 
@@ -155,8 +155,8 @@ msgid "Overwrite"
 msgstr "上書き"
 
 #: ../src/todo.txt/TxtListManager.vala:236
-#: ../src/todo.txt/view/TxtListEditDialog.vala:56
-#: ../src/todo.txt/view/TxtListEditDialog.vala:61
+#: ../src/todo.txt/view/TxtListEditDialog.vala:63
+#: ../src/todo.txt/view/TxtListEditDialog.vala:68
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -169,7 +169,8 @@ msgstr ""
 "追加しましょう！"
 
 #: ../src/todo.txt/view/TaskList.vala:36
-msgid "The search operation did not return any tasks."
+#, fuzzy
+msgid "No tasks found."
 msgstr "検索結果はありません。"
 
 #: ../src/todo.txt/view/TaskList.vala:37
@@ -184,7 +185,7 @@ msgstr "すべてのタスクを完了しました。お疲れ様です！"
 msgid "Add new task"
 msgstr "新しいタスクを追加"
 
-#. //valadoc.org/glib-2.0/GLib.DateTime.format.html for
+#. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
 #: ../src/todo.txt/view/TaskRow.vala:273
 msgid "%Y-%m-%d"
@@ -198,64 +199,63 @@ msgstr "タスクは %2$s に作成され、%1$s に完了しました"
 msgid "Task created at %s"
 msgstr "タスクは %s に作成されました"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:42
-#: ../src/todo.txt/view/TxtListEditDialog.vala:221
+#: ../src/todo.txt/view/TxtListEditDialog.vala:49
+#: ../src/todo.txt/view/TxtListEditDialog.vala:200
 msgid "directory"
 msgstr "ディレクトリ"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:43
+#: ../src/todo.txt/view/TxtListEditDialog.vala:50
 msgid "List name"
 msgstr "リストの名前"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:55
+#: ../src/todo.txt/view/TxtListEditDialog.vala:62
 msgid "New to-do list"
 msgstr "新しい ToDo リスト"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:57
+#: ../src/todo.txt/view/TxtListEditDialog.vala:64
 #: ../src/view/SelectionPage.vala:106
 msgid "Add list"
 msgstr "リストを追加"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:60
+#: ../src/todo.txt/view/TxtListEditDialog.vala:67
 msgid "Edit to-do list properties"
 msgstr "ToDo リストのプロパティーを編集"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:62
+#: ../src/todo.txt/view/TxtListEditDialog.vala:69
 msgid "Apply"
 msgstr "適用"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:108
+#: ../src/todo.txt/view/TxtListEditDialog.vala:114
 msgid "The configured directory is already in use by another list."
 msgstr "設定されたディレクトリはすでに別のリストで使用されています。"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:128
+#: ../src/todo.txt/view/TxtListEditDialog.vala:134
 msgid "Please assign a name to the list."
 msgstr "リストに名前を付けてください。"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:276
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:41
+#: ../src/todo.txt/view/TxtListEditDialog.vala:208
+msgid "Log the time spent working on each task"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:256
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:58
 #: ../src/view/TaskListPage.vala:106 ../src/view/TaskListPage.vala:195
 msgid "Timer"
 msgstr "タイマー"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:277
+#: ../src/todo.txt/view/TxtListEditDialog.vala:257
 msgid "Use default settings"
 msgstr "デフォルト設定を使う"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:278
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:42
-msgid "Task duration (minutes)"
-msgstr "タスクの継続時間 (分)"
+#: ../src/todo.txt/view/TxtListEditDialog.vala:258
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:65
+msgid "Reminder before task ends"
+msgstr "タスク終了前の通知"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:279
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:43
-msgid "Break duration (minutes)"
-msgstr "休憩時間 (分)"
-
-#: ../src/todo.txt/view/TxtListEditDialog.vala:280
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:44
-msgid "Reminder before task ends (seconds)"
-msgstr "タスク終了前の通知 (秒)"
+#: ../src/todo.txt/view/TxtListEditDialog.vala:259
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:66
+msgid "seconds"
+msgstr "秒"
 
 #: ../src/view/Dialogs/AboutDialog.vala:27 ../src/view/MainWindow.vala:421
 msgid "About"
@@ -343,19 +343,65 @@ msgstr "この設定を反映するには、Go For It! を再起動する必要�
 msgid "Use a header bar"
 msgstr "ヘッダーバーを使用"
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:82
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:59
+#: ../src/view/Widgets/TimerScheduleWidget.vala:132
+msgid "Task duration"
+msgstr "タスクの継続時間"
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:60
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:62
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:64
+msgid "minutes"
+msgstr "分"
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:61
+#: ../src/view/Widgets/TimerScheduleWidget.vala:133
+msgid "Break duration"
+msgstr "休憩時間"
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:63
+msgid "Long break duration"
+msgstr "休憩時間"
+
+#. / Part of "Have a long break after # short breaks"
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
+msgid "Have a long break after"
+msgstr ""
+
+#. / Part of "Have a long break after # short breaks"
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:71
+msgid "short breaks"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:75
+msgid "Timer mode"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:97
+msgid "Simple"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:98
+msgid "Pomodoro"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:99
+msgid "Custom"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:147
 msgid "Tasks"
 msgstr "タスク"
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:83
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:148
 msgid "Placement of new tasks"
 msgstr "新しいタスクの配置"
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:86
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:151
 msgid "Top of the list"
 msgstr "リストの一番上"
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:87
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:152
 msgid "Bottom of the list"
 msgstr "リストの一番下"
 
@@ -462,6 +508,9 @@ msgstr "削除"
 #: ../src/view/Widgets/TodoListInfoRow.vala:95
 msgid "Edit"
 msgstr "編集"
+
+#~ msgid "The search operation did not return any tasks."
+#~ msgstr "検索結果はありません。"
 
 #~ msgid ""
 #~ "If no appropriate folder was found, Go For It! defaults to creating a "

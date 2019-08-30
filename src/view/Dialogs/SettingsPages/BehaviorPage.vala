@@ -64,8 +64,14 @@ class GOFI.BehaviorPage : Gtk.Grid {
         long_break_lbl2 = new Gtk.Label (_("minutes"));
         reminder_lbl1 = new Gtk.Label (_("Reminder before task ends") +":");
         reminder_lbl2 = new Gtk.Label (_("seconds"));
-        long_break_period_lbl1 = new Gtk.Label (_("Have a long break after"));
-        long_break_period_lbl2 = new Gtk.Label (_("short breaks"));
+
+        /// Part of "Have a long break after # short breaks"
+        var long_break_period_text1 = _("Have a long break after");
+        /// Part of "Have a long break after # short breaks"
+        var long_break_period_text2 = _("short breaks");
+
+        long_break_period_lbl1 = new Gtk.Label (long_break_period_text1);
+        long_break_period_lbl2 = new Gtk.Label (long_break_period_text2);
         timer_mode_lbl = new Gtk.Label (_("Timer mode") + ":");
 
         timer_mode_cbox = new Gtk.ComboBoxText ();

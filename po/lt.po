@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-26 18:03+0200\n"
-"PO-Revision-Date: 2019-04-22 20:34+0000\n"
+"POT-Creation-Date: 2019-08-30 16:16+0200\n"
+"PO-Revision-Date: 2019-08-30 16:06+0200\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/go-for-it/go-"
 "for-it/lt/>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && (n % 100 < 11 || n % 100 > "
 "19)) ? 0 : ((n % 10 >= 2 && n % 10 <= 9 && (n % 100 < 11 || n % 100 > 19)) ? "
 "1 : 2);\n"
-"X-Generator: Weblate 3.7-dev\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2018-04-05 05:31+0000\n"
 
 #: ../src/Main.vala:97
@@ -25,12 +25,12 @@ msgstr "Rodyti versijos informaciją ir išeiti"
 msgid "Show about dialog"
 msgstr "Rodyti dialogą apie programą"
 
-#: ../src/SettingsManager.vala:301 ../src/todo.txt/TxtListManager.vala:58
-#: ../src/todo.txt/TxtListManager.vala:459
+#: ../src/SettingsManager.vala:419 ../src/todo.txt/TxtListManager.vala:58
+#: ../src/todo.txt/TxtListManager.vala:501
 msgid "Couldn't create directory: %s"
 msgstr "Nepavyko sukurti katalogo: %s"
 
-#: ../src/SettingsManager.vala:455
+#: ../src/SettingsManager.vala:573
 msgid "Couldn't properly import settings from %s: %s"
 msgstr "Nepavyko tinkamai importuoti nustatymus iš %s: %s"
 
@@ -40,7 +40,6 @@ msgstr ""
 
 #: ../src/Shortcuts.vala:136
 #, fuzzy
-#| msgid "Add new task"
 msgid "Add new task/list"
 msgstr "Pridėti naują užduotį"
 
@@ -93,7 +92,7 @@ msgid "priority"
 msgstr ""
 
 #: ../src/todo.txt/TaskManager.vala:46
-msgid "Spread the word about \"Go For It!\""
+msgid "Spread the word about \"%s\""
 msgstr ""
 
 #: ../src/todo.txt/TaskManager.vala:47
@@ -106,11 +105,11 @@ msgstr ""
 
 #: ../src/todo.txt/TaskManager.vala:51
 msgid ""
-"Go For It! won't save or load from the current todo.txt directory until it "
-"is either restarted or another location is chosen."
+"%s won't save or load from the current todo.txt directory until it is either "
+"restarted or another location is chosen."
 msgstr ""
-"Programa Go For It! neįrašys ar neįkels iš esamo todo.txt katalogo tol, kol "
-"nebus paleista iš naujo arba nebus pasirinkta kita vieta."
+"Programa %s neįrašys ar neįkels iš esamo todo.txt katalogo tol, kol nebus "
+"paleista iš naujo arba nebus pasirinkta kita vieta."
 
 #: ../src/todo.txt/TaskManager.vala:52
 msgid "Couldn't read the todo.txt file (%s):"
@@ -130,7 +129,7 @@ msgstr ""
 "prijungiamą vietą. Pakeiskite nustatymuose kelią į tinkamą katalogą arba "
 "pašalinkite šį failą."
 
-#: ../src/todo.txt/TxtList.vala:193
+#: ../src/todo.txt/TxtList.vala:177
 msgid "Clear Done List"
 msgstr "Išvalyti atliktų užduočių sąrašą"
 
@@ -159,8 +158,8 @@ msgid "Overwrite"
 msgstr "Perrašyti"
 
 #: ../src/todo.txt/TxtListManager.vala:236
-#: ../src/todo.txt/view/TxtListEditDialog.vala:56
-#: ../src/todo.txt/view/TxtListEditDialog.vala:61
+#: ../src/todo.txt/view/TxtListEditDialog.vala:63
+#: ../src/todo.txt/view/TxtListEditDialog.vala:68
 msgid "Cancel"
 msgstr "Atsisakyti"
 
@@ -173,7 +172,7 @@ msgstr ""
 "Pridėkite jas!"
 
 #: ../src/todo.txt/view/TaskList.vala:36
-msgid "The search operation did not return any tasks."
+msgid "No tasks found."
 msgstr ""
 
 #: ../src/todo.txt/view/TaskList.vala:37
@@ -188,7 +187,7 @@ msgstr "Jūs užbaigėte visas užduotis, gerai padirbėta!"
 msgid "Add new task"
 msgstr "Pridėti naują užduotį"
 
-#. //valadoc.org/glib-2.0/GLib.DateTime.format.html for
+#. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
 #: ../src/todo.txt/view/TaskRow.vala:273
 msgid "%Y-%m-%d"
@@ -202,64 +201,63 @@ msgstr "Užduotis užbaigta ties %s, sukurta ties %s"
 msgid "Task created at %s"
 msgstr "Užduotis sukurta ties %s"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:42
-#: ../src/todo.txt/view/TxtListEditDialog.vala:221
+#: ../src/todo.txt/view/TxtListEditDialog.vala:49
+#: ../src/todo.txt/view/TxtListEditDialog.vala:200
 msgid "directory"
 msgstr "katalogas"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:43
+#: ../src/todo.txt/view/TxtListEditDialog.vala:50
 msgid "List name"
 msgstr "Sąrašo pavadinimas"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:55
+#: ../src/todo.txt/view/TxtListEditDialog.vala:62
 msgid "New to-do list"
 msgstr "Naujas užduočių sąrašas"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:57
+#: ../src/todo.txt/view/TxtListEditDialog.vala:64
 #: ../src/view/SelectionPage.vala:106
 msgid "Add list"
 msgstr "Pridėti sąrašą"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:60
+#: ../src/todo.txt/view/TxtListEditDialog.vala:67
 msgid "Edit to-do list properties"
 msgstr "Taisyti užduočių sąrašo savybes"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:62
+#: ../src/todo.txt/view/TxtListEditDialog.vala:69
 msgid "Apply"
 msgstr "Taikyti"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:108
+#: ../src/todo.txt/view/TxtListEditDialog.vala:114
 msgid "The configured directory is already in use by another list."
 msgstr "Sukonfigūruotą katalogą jau naudoja kitas sąrašas."
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:128
+#: ../src/todo.txt/view/TxtListEditDialog.vala:134
 msgid "Please assign a name to the list."
 msgstr "Priskirkite sąrašui pavadinimą."
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:276
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:41
+#: ../src/todo.txt/view/TxtListEditDialog.vala:208
+msgid "Log the time spent working on each task"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:256
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:58
 #: ../src/view/TaskListPage.vala:106 ../src/view/TaskListPage.vala:195
 msgid "Timer"
 msgstr "Laikmatis"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:277
+#: ../src/todo.txt/view/TxtListEditDialog.vala:257
 msgid "Use default settings"
 msgstr "Naudoti numatytuosius nustatymus"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:278
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:42
-msgid "Task duration (minutes)"
-msgstr "Užduoties trukmė (minučių)"
+#: ../src/todo.txt/view/TxtListEditDialog.vala:258
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:65
+msgid "Reminder before task ends"
+msgstr "Priminimas prieš pasibaigiant užduočiai"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:279
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:43
-msgid "Break duration (minutes)"
-msgstr "Pertraukos trukmė (minučių)"
-
-#: ../src/todo.txt/view/TxtListEditDialog.vala:280
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:44
-msgid "Reminder before task ends (seconds)"
-msgstr "Priminimas prieš pasibaigiant užduočiai (sekundžių)"
+#: ../src/todo.txt/view/TxtListEditDialog.vala:259
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:66
+msgid "seconds"
+msgstr "sekundžių"
 
 #: ../src/view/Dialogs/AboutDialog.vala:27 ../src/view/MainWindow.vala:421
 msgid "About"
@@ -347,21 +345,66 @@ msgstr ""
 msgid "Use a header bar"
 msgstr "Naudoti antraštės juostą"
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:82
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:59
+#: ../src/view/Widgets/TimerScheduleWidget.vala:132
+msgid "Task duration"
+msgstr "Užduoties trukmė"
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:60
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:62
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:64
+msgid "minutes"
+msgstr "minučių"
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:61
+#: ../src/view/Widgets/TimerScheduleWidget.vala:133
+msgid "Break duration"
+msgstr "Pertraukos trukmė"
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:63
+msgid "Long break duration"
+msgstr "Pertraukos trukmė"
+
+#. / Part of "Have a long break after # short breaks"
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
+msgid "Have a long break after"
+msgstr ""
+
+#. / Part of "Have a long break after # short breaks"
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:71
+msgid "short breaks"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:75
+msgid "Timer mode"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:97
+msgid "Simple"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:98
+msgid "Pomodoro"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:99
+msgid "Custom"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:147
 msgid "Tasks"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:83
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:148
 msgid "Placement of new tasks"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:86
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:151
 #, fuzzy
-#| msgid "Go back to the to-do list"
 msgid "Top of the list"
 msgstr "Grįžti į užduočių sąrašą"
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:87
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:152
 msgid "Bottom of the list"
 msgstr ""
 

@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-26 18:03+0200\n"
-"PO-Revision-Date: 2019-08-19 11:24+0000\n"
+"POT-Creation-Date: 2019-08-30 16:16+0200\n"
+"PO-Revision-Date: 2019-08-30 16:00+0200\n"
 "Last-Translator: Babitha Siddula <siddulababithasiddu@gmail.com>\n"
 "Language-Team: Telugu <https://hosted.weblate.org/projects/go-for-it/go-for-"
 "it/te/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.8\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
 
 #: ../src/Main.vala:97
@@ -23,12 +23,12 @@ msgstr "సంస్కరణ సమాచారాన్ని ముద్ర�
 msgid "Show about dialog"
 msgstr "డైలాగ్ గురించి చూపించు"
 
-#: ../src/SettingsManager.vala:301 ../src/todo.txt/TxtListManager.vala:58
-#: ../src/todo.txt/TxtListManager.vala:459
+#: ../src/SettingsManager.vala:419 ../src/todo.txt/TxtListManager.vala:58
+#: ../src/todo.txt/TxtListManager.vala:501
 msgid "Couldn't create directory: %s"
 msgstr "డైరెక్టరీని సృష్టించడం సాధ్యం కాలేదు"
 
-#: ../src/SettingsManager.vala:455
+#: ../src/SettingsManager.vala:573
 msgid "Couldn't properly import settings from %s: %s"
 msgstr "నుండి సెట్టింగులను సరిగ్గా దిగుమతి చేయలేకపోయింది"
 
@@ -38,7 +38,6 @@ msgstr ""
 
 #: ../src/Shortcuts.vala:136
 #, fuzzy
-#| msgid "Add new task"
 msgid "Add new task/list"
 msgstr "క్రొత్త పనిని జోడించండి"
 
@@ -92,7 +91,7 @@ msgid "priority"
 msgstr "ప్రాధాన్యత"
 
 #: ../src/todo.txt/TaskManager.vala:46
-msgid "Spread the word about \"Go For It!\""
+msgid "Spread the word about \"%s\""
 msgstr ""
 
 #: ../src/todo.txt/TaskManager.vala:47
@@ -105,8 +104,8 @@ msgstr "ప్రాజెక్టుకు తోడ్పడటం పరి�
 
 #: ../src/todo.txt/TaskManager.vala:51
 msgid ""
-"Go For It! won't save or load from the current todo.txt directory until it "
-"is either restarted or another location is chosen."
+"%s won't save or load from the current todo.txt directory until it is either "
+"restarted or another location is chosen."
 msgstr ""
 
 #: ../src/todo.txt/TaskManager.vala:52
@@ -124,7 +123,7 @@ msgid ""
 "suitable directory or remove this file."
 msgstr ""
 
-#: ../src/todo.txt/TxtList.vala:193
+#: ../src/todo.txt/TxtList.vala:177
 msgid "Clear Done List"
 msgstr ""
 
@@ -154,8 +153,8 @@ msgid "Overwrite"
 msgstr "తిరిగి రాస్తుంది"
 
 #: ../src/todo.txt/TxtListManager.vala:236
-#: ../src/todo.txt/view/TxtListEditDialog.vala:56
-#: ../src/todo.txt/view/TxtListEditDialog.vala:61
+#: ../src/todo.txt/view/TxtListEditDialog.vala:63
+#: ../src/todo.txt/view/TxtListEditDialog.vala:68
 msgid "Cancel"
 msgstr "రద్దు"
 
@@ -167,7 +166,7 @@ msgstr "మీకు ప్రస్తుతం ఏ విధమైన పన�
 
 #: ../src/todo.txt/view/TaskList.vala:36
 #, fuzzy
-msgid "The search operation did not return any tasks."
+msgid "No tasks found."
 msgstr "శోధన ఆపరేషన్ ఏ పనులను తిరిగి ఇవ్వలేదు."
 
 #: ../src/todo.txt/view/TaskList.vala:37
@@ -182,7 +181,7 @@ msgstr "మీరు అన్ని పనులు పూర్తి చే�
 msgid "Add new task"
 msgstr "క్రొత్త పనిని జోడించండి"
 
-#. //valadoc.org/glib-2.0/GLib.DateTime.format.html for
+#. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
 #: ../src/todo.txt/view/TaskRow.vala:273
 msgid "%Y-%m-%d"
@@ -197,64 +196,63 @@ msgstr ""
 msgid "Task created at %s"
 msgstr "%s వద్ద టాస్క్ సృష్టించబడింది"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:42
-#: ../src/todo.txt/view/TxtListEditDialog.vala:221
+#: ../src/todo.txt/view/TxtListEditDialog.vala:49
+#: ../src/todo.txt/view/TxtListEditDialog.vala:200
 msgid "directory"
 msgstr "డైరెక్టరీ"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:43
+#: ../src/todo.txt/view/TxtListEditDialog.vala:50
 msgid "List name"
 msgstr ""
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:55
+#: ../src/todo.txt/view/TxtListEditDialog.vala:62
 msgid "New to-do list"
 msgstr ""
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:57
+#: ../src/todo.txt/view/TxtListEditDialog.vala:64
 #: ../src/view/SelectionPage.vala:106
 msgid "Add list"
 msgstr ""
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:60
+#: ../src/todo.txt/view/TxtListEditDialog.vala:67
 msgid "Edit to-do list properties"
 msgstr ""
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:62
+#: ../src/todo.txt/view/TxtListEditDialog.vala:69
 msgid "Apply"
 msgstr "వర్తించు"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:108
+#: ../src/todo.txt/view/TxtListEditDialog.vala:114
 msgid "The configured directory is already in use by another list."
 msgstr ""
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:128
+#: ../src/todo.txt/view/TxtListEditDialog.vala:134
 msgid "Please assign a name to the list."
 msgstr ""
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:276
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:41
+#: ../src/todo.txt/view/TxtListEditDialog.vala:208
+msgid "Log the time spent working on each task"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:256
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:58
 #: ../src/view/TaskListPage.vala:106 ../src/view/TaskListPage.vala:195
 msgid "Timer"
 msgstr "టైమర్"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:277
+#: ../src/todo.txt/view/TxtListEditDialog.vala:257
 msgid "Use default settings"
 msgstr "డిఫాల్ట్ సెట్టింగులను ఉపయోగించండి"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:278
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:42
-msgid "Task duration (minutes)"
-msgstr "పని వ్యవధి (నిమిషాలు)"
+#: ../src/todo.txt/view/TxtListEditDialog.vala:258
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:65
+msgid "Reminder before task ends"
+msgstr "పని ముగిసే ముందు రిమైండర్"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:279
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:43
-msgid "Break duration (minutes)"
-msgstr "విరామం వ్యవధి (నిమిషాలు)"
-
-#: ../src/todo.txt/view/TxtListEditDialog.vala:280
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:44
-msgid "Reminder before task ends (seconds)"
-msgstr "పని ముగిసే ముందు రిమైండర్ (సెకన్లు)"
+#: ../src/todo.txt/view/TxtListEditDialog.vala:259
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:66
+msgid "seconds"
+msgstr "సెకన్లు"
 
 #: ../src/view/Dialogs/AboutDialog.vala:27 ../src/view/MainWindow.vala:421
 msgid "About"
@@ -341,19 +339,65 @@ msgstr ""
 msgid "Use a header bar"
 msgstr "హెడర్ బార్ ఉపయోగించండి"
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:82
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:59
+#: ../src/view/Widgets/TimerScheduleWidget.vala:132
+msgid "Task duration"
+msgstr "పని వ్యవధి"
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:60
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:62
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:64
+msgid "minutes"
+msgstr "నిమిషాలు"
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:61
+#: ../src/view/Widgets/TimerScheduleWidget.vala:133
+msgid "Break duration"
+msgstr "విరామం వ్యవధి"
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:63
+msgid "Long break duration"
+msgstr "విరామం వ్యవధి"
+
+#. / Part of "Have a long break after # short breaks"
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
+msgid "Have a long break after"
+msgstr ""
+
+#. / Part of "Have a long break after # short breaks"
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:71
+msgid "short breaks"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:75
+msgid "Timer mode"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:97
+msgid "Simple"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:98
+msgid "Pomodoro"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:99
+msgid "Custom"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:147
 msgid "Tasks"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:83
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:148
 msgid "Placement of new tasks"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:86
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:151
 msgid "Top of the list"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:87
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:152
 msgid "Bottom of the list"
 msgstr ""
 

@@ -268,7 +268,7 @@ class GOFI.TaskRow: DragListRow {
             DateTime completion_date = task.completion_date;
             DateTime creation_date = task.creation_date;
 
-            // see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
+            /// see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
             // formatting of DateTime
             string date_format = _("%Y-%m-%d");
 

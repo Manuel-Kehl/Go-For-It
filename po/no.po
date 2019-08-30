@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-26 18:03+0200\n"
-"PO-Revision-Date: 2019-06-14 21:58+0000\n"
+"POT-Creation-Date: 2019-08-30 16:16+0200\n"
+"PO-Revision-Date: 2019-08-30 16:09+0200\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/go-for-"
 "it/go-for-it/nb_NO/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7-dev\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Main.vala:97
@@ -23,13 +23,13 @@ msgstr "Skriv ut versjonsinfo og avslutt"
 msgid "Show about dialog"
 msgstr "Vis \"Om\"-dialog"
 
-#: ../src/SettingsManager.vala:301 ../src/todo.txt/TxtListManager.vala:58
-#: ../src/todo.txt/TxtListManager.vala:459
+#: ../src/SettingsManager.vala:419 ../src/todo.txt/TxtListManager.vala:58
+#: ../src/todo.txt/TxtListManager.vala:501
 #, fuzzy
 msgid "Couldn't create directory: %s"
 msgstr "Kunne ikke opprette mappe: %s"
 
-#: ../src/SettingsManager.vala:455
+#: ../src/SettingsManager.vala:573
 msgid "Couldn't properly import settings from %s: %s"
 msgstr "Kunne ikke importere innstillinger ordentlig fra %s: %s"
 
@@ -39,7 +39,6 @@ msgstr ""
 
 #: ../src/Shortcuts.vala:136
 #, fuzzy
-#| msgid "Add new task"
 msgid "Add new task/list"
 msgstr "Legg til nytt gjøremål"
 
@@ -93,8 +92,8 @@ msgid "priority"
 msgstr "prioritet"
 
 #: ../src/todo.txt/TaskManager.vala:46
-msgid "Spread the word about \"Go For It!\""
-msgstr "Fyr opp jungeltelegrafen om \"Go For It!\""
+msgid "Spread the word about \"%s\""
+msgstr "Fyr opp jungeltelegrafen om \"%s\""
 
 #: ../src/todo.txt/TaskManager.vala:47
 msgid "Consider a donation to help the project"
@@ -106,11 +105,11 @@ msgstr "Overvei å bidra til prosjektet"
 
 #: ../src/todo.txt/TaskManager.vala:51
 msgid ""
-"Go For It! won't save or load from the current todo.txt directory until it "
-"is either restarted or another location is chosen."
+"%s won't save or load from the current todo.txt directory until it is either "
+"restarted or another location is chosen."
 msgstr ""
-"Gjør det! vil ikke lagre eller laste fra gjeldende todo.txt-mappe til det "
-"enten startes på ny, eller en annen plassering velges."
+"%s vil ikke lagre eller laste fra gjeldende todo.txt-mappe til det enten "
+"startes på ny, eller en annen plassering velges."
 
 #: ../src/todo.txt/TaskManager.vala:52
 msgid "Couldn't read the todo.txt file (%s):"
@@ -130,7 +129,7 @@ msgstr ""
 "monterbar plassering. Endre stien i innstillingene til en passende mappe, "
 "eller fjern denne filen."
 
-#: ../src/todo.txt/TxtList.vala:193
+#: ../src/todo.txt/TxtList.vala:177
 msgid "Clear Done List"
 msgstr "Tøm \"Ferdig\"-liste"
 
@@ -159,8 +158,8 @@ msgid "Overwrite"
 msgstr "Overskriv"
 
 #: ../src/todo.txt/TxtListManager.vala:236
-#: ../src/todo.txt/view/TxtListEditDialog.vala:56
-#: ../src/todo.txt/view/TxtListEditDialog.vala:61
+#: ../src/todo.txt/view/TxtListEditDialog.vala:63
+#: ../src/todo.txt/view/TxtListEditDialog.vala:68
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -174,7 +173,7 @@ msgstr ""
 
 #: ../src/todo.txt/view/TaskList.vala:36
 #, fuzzy
-msgid "The search operation did not return any tasks."
+msgid "No tasks found."
 msgstr "Fant ikke noen gjøremål."
 
 #: ../src/todo.txt/view/TaskList.vala:37
@@ -189,7 +188,7 @@ msgstr "Du har fullført alle gjøremålene, godt jobbet."
 msgid "Add new task"
 msgstr "Legg til nytt gjøremål"
 
-#. //valadoc.org/glib-2.0/GLib.DateTime.format.html for
+#. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
 #: ../src/todo.txt/view/TaskRow.vala:273
 #, fuzzy
@@ -204,64 +203,63 @@ msgstr "Gjøremål fullført %s, opprettet %s"
 msgid "Task created at %s"
 msgstr "Gjøremål opprettet %s"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:42
-#: ../src/todo.txt/view/TxtListEditDialog.vala:221
+#: ../src/todo.txt/view/TxtListEditDialog.vala:49
+#: ../src/todo.txt/view/TxtListEditDialog.vala:200
 msgid "directory"
 msgstr "mappe"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:43
+#: ../src/todo.txt/view/TxtListEditDialog.vala:50
 msgid "List name"
 msgstr "Listenavn"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:55
+#: ../src/todo.txt/view/TxtListEditDialog.vala:62
 msgid "New to-do list"
 msgstr "Ny gjøremålsliste"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:57
+#: ../src/todo.txt/view/TxtListEditDialog.vala:64
 #: ../src/view/SelectionPage.vala:106
 msgid "Add list"
 msgstr "Legg til liste"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:60
+#: ../src/todo.txt/view/TxtListEditDialog.vala:67
 msgid "Edit to-do list properties"
 msgstr "Rediger gjøremållisteegenskaper"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:62
+#: ../src/todo.txt/view/TxtListEditDialog.vala:69
 msgid "Apply"
 msgstr "Bruk"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:108
+#: ../src/todo.txt/view/TxtListEditDialog.vala:114
 msgid "The configured directory is already in use by another list."
 msgstr "Oppsatt mappe er i bruk av en annen liste."
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:128
+#: ../src/todo.txt/view/TxtListEditDialog.vala:134
 msgid "Please assign a name to the list."
 msgstr "Gi listen et navn."
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:276
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:41
+#: ../src/todo.txt/view/TxtListEditDialog.vala:208
+msgid "Log the time spent working on each task"
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:256
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:58
 #: ../src/view/TaskListPage.vala:106 ../src/view/TaskListPage.vala:195
 msgid "Timer"
 msgstr "Tidsur"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:277
+#: ../src/todo.txt/view/TxtListEditDialog.vala:257
 msgid "Use default settings"
 msgstr "Bruk forvalgte innstillinger"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:278
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:42
-msgid "Task duration (minutes)"
-msgstr "Gjøremålsvarighet (minutter)"
+#: ../src/todo.txt/view/TxtListEditDialog.vala:258
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:65
+msgid "Reminder before task ends"
+msgstr "Påminnelse før gjøremål sluttføres"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:279
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:43
-msgid "Break duration (minutes)"
-msgstr "Pausevarighet (minutter)"
-
-#: ../src/todo.txt/view/TxtListEditDialog.vala:280
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:44
-msgid "Reminder before task ends (seconds)"
-msgstr "Påminnelse før gjøremål sluttføres (sekunder)"
+#: ../src/todo.txt/view/TxtListEditDialog.vala:259
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:66
+msgid "seconds"
+msgstr "sekunder"
 
 #: ../src/view/Dialogs/AboutDialog.vala:27 ../src/view/MainWindow.vala:421
 msgid "About"
@@ -349,21 +347,65 @@ msgstr ""
 msgid "Use a header bar"
 msgstr "Bruk topptekstfelt"
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:82
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:59
+#: ../src/view/Widgets/TimerScheduleWidget.vala:132
+msgid "Task duration"
+msgstr "Gjøremålsvarighet"
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:60
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:62
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:64
+msgid "minutes"
+msgstr "minutter"
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:61
+#: ../src/view/Widgets/TimerScheduleWidget.vala:133
+msgid "Break duration"
+msgstr "Pausevarighet"
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:63
+msgid "Long break duration"
+msgstr "Pausevarighet"
+
+#. / Part of "Have a long break after # short breaks"
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
+msgid "Have a long break after"
+msgstr ""
+
+#. / Part of "Have a long break after # short breaks"
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:71
+msgid "short breaks"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:75
+msgid "Timer mode"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:97
+msgid "Simple"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:98
+msgid "Pomodoro"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:99
+msgid "Custom"
+msgstr ""
+
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:147
 msgid "Tasks"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:83
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:148
 msgid "Placement of new tasks"
 msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:86
-#, fuzzy
-#| msgid "Go back to the to-do list"
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:151
 msgid "Top of the list"
-msgstr "Gå tilbake til gjøremålslisten"
+msgstr ""
 
-#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:87
+#: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:152
 msgid "Bottom of the list"
 msgstr ""
 
@@ -470,3 +512,7 @@ msgstr "Slett"
 #: ../src/view/Widgets/TodoListInfoRow.vala:95
 msgid "Edit"
 msgstr "Rediger"
+
+#, fuzzy
+#~ msgid "The search operation did not return any tasks."
+#~ msgstr "Fant ikke noen gjøremål."
