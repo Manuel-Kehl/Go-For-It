@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-30 21:08+0200\n"
-"PO-Revision-Date: 2019-08-30 14:59+0000\n"
+"PO-Revision-Date: 2019-08-31 13:04+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/go-for-"
-"it/go-for-it/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"go-for-it/go-for-it/nb_NO/>\n"
 "Language: no\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,17 +38,16 @@ msgid "Filter tasks"
 msgstr "Filtrer gjøremål"
 
 #: ../src/Shortcuts.vala:136
-#, fuzzy
 msgid "Add new task/list"
-msgstr "Legg til nytt gjøremål"
+msgstr "Legg til nytt gjøremål/liste"
 
 #: ../src/Shortcuts.vala:137
 msgid "Start/Stop the timer"
-msgstr ""
+msgstr "Start/stopp tidsuret"
 
 #: ../src/Shortcuts.vala:138
 msgid "Mark the task as complete"
-msgstr ""
+msgstr "Marker gjøremålet som fullført"
 
 #: ../src/Shortcuts.vala:139
 msgid "Move selected row up"
@@ -60,11 +59,11 @@ msgstr "Flytt valgt rad nedover"
 
 #: ../src/Shortcuts.vala:142
 msgid "Move to next task/row"
-msgstr ""
+msgstr "Flytt til neste gjøremål/rad"
 
 #: ../src/Shortcuts.vala:143
 msgid "Move to previous task/row"
-msgstr ""
+msgstr "Flytt til forrige gjøremål/rad"
 
 #: ../src/Shortcuts.vala:144
 msgid "Move to right screen"
@@ -239,7 +238,7 @@ msgstr "Gi listen et navn."
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:208
 msgid "Log the time spent working on each task"
-msgstr ""
+msgstr "Loggfør tid forbrukt på hvert gjøremål"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:256
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:64
@@ -339,11 +338,8 @@ msgid "Dark theme"
 msgstr "Mørk drakt"
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:123
-#, fuzzy
-#| msgid "Go For It! needs to be restarted for this setting to take effect"
 msgid "%s needs to be restarted for this setting to take effect"
-msgstr ""
-"Gjør det! Må startes på ny for at denne innstillingen skal tre i effekt"
+msgstr "%s må startes på ny for at denne innstillingen skal tre i effekt"
 
 #: ../src/view/Dialogs/SettingsPages/AppearancePage.vala:126
 msgid "Use a header bar"
@@ -371,11 +367,11 @@ msgstr "Pausevarighet"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "Resume task after the break"
-msgstr ""
+msgstr "Gjenoppta gjøremål etter pausen"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:74
 msgid "Reset timer after switching tasks"
-msgstr ""
+msgstr "Tilbakestill tidsuret etter bytting av gjøremål"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:77
@@ -389,27 +385,27 @@ msgstr "korte pauser"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:83
 msgid "Timer mode"
-msgstr ""
+msgstr "Tidsursmodus"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:108
 msgid "Simple"
-msgstr ""
+msgstr "Enkelt"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:109
 msgid "Pomodoro"
-msgstr ""
+msgstr "Pomodoro-teknikk"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:110
 msgid "Custom"
-msgstr ""
+msgstr "Egendefinert"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:169
 msgid "Tasks"
-msgstr ""
+msgstr "Gjøremål"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:170
 msgid "Placement of new tasks"
-msgstr ""
+msgstr "Plassering for nye gjøremål"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:173
 msgid "Top of the list"
@@ -420,11 +416,8 @@ msgid "Bottom of the list"
 msgstr "Bunnen av listen"
 
 #: ../src/view/Dialogs/SettingsPages/ShortcutsPage.vala:40
-#, fuzzy
-#| msgid "Go For It! needs to be restarted for this setting to take effect"
 msgid "%s needs to be restarted for changes to take effect."
-msgstr ""
-"Gjør det! Må startes på ny for at denne innstillingen skal tre i effekt"
+msgstr "%s må startes på ny for at denne innstillingen skal tre i effekt"
 
 #: ../src/view/MainWindow.vala:64
 msgid "Go to overview"
@@ -455,10 +448,8 @@ msgid "The Break is Over"
 msgstr "Pausen er over"
 
 #: ../src/view/MainWindow.vala:470
-#, fuzzy
-#| msgid "Your next task is"
 msgid "Your current task is"
-msgstr "Ditt neste gjøremål er"
+msgstr "Ditt nåværende gjøremål er"
 
 #: ../src/view/MainWindow.vala:490
 msgid "Prepare for your break"
