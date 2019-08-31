@@ -51,7 +51,7 @@ namespace GOFI {
                 case ELEMENTARY:
                     return "elementary";
                 case MINIMAL:
-                    return _("Inherit from Gtk theme");
+                    return _("Inherit from GTK theme");
                 default:
                     assert_not_reached();
             }
