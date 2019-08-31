@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-30 21:08+0200\n"
-"PO-Revision-Date: 2019-08-30 21:12+0200\n"
+"PO-Revision-Date: 2019-08-31 13:04+0000\n"
 "Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/nl/>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Weblate 3.9-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Main.vala:97
@@ -50,27 +50,27 @@ msgstr "Markeer de taak als voldaan"
 
 #: ../src/Shortcuts.vala:139
 msgid "Move selected row up"
-msgstr ""
+msgstr "Verplaats geselecteerde rij naar boven"
 
 #: ../src/Shortcuts.vala:140
 msgid "Move selected row down"
-msgstr ""
+msgstr "Verplaats geselecteerde rij naar beneden"
 
 #: ../src/Shortcuts.vala:142
 msgid "Move to next task/row"
-msgstr ""
+msgstr "Ga naar volgende taak/rij"
 
 #: ../src/Shortcuts.vala:143
 msgid "Move to previous task/row"
-msgstr ""
+msgstr "Ga naar de vorige taak/rij"
 
 #: ../src/Shortcuts.vala:144
 msgid "Move to right screen"
-msgstr ""
+msgstr "Ga naar het rechter scherm"
 
 #: ../src/Shortcuts.vala:145
 msgid "Move to left screen"
-msgstr ""
+msgstr "Ga naar het linker scherm"
 
 #: ../src/Theme.vala:54
 msgid "Inherit from Gtk theme"
@@ -90,7 +90,7 @@ msgstr "prioriteit"
 
 #: ../src/todo.txt/TaskManager.vala:46
 msgid "Spread the word about \"%s\""
-msgstr ""
+msgstr "Vertel anderen over \"%s\""
 
 #: ../src/todo.txt/TaskManager.vala:47
 msgid "Consider a donation to help the project"
@@ -234,7 +234,7 @@ msgstr "Geef een naam op voor deze lijst."
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:208
 msgid "Log the time spent working on each task"
-msgstr ""
+msgstr "Sla de tijd besteed an elke taak op"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:256
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:64
@@ -363,11 +363,11 @@ msgstr "Duur van de pauze"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "Resume task after the break"
-msgstr ""
+msgstr "Ga verder met de taak na de pauze"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:74
 msgid "Reset timer after switching tasks"
-msgstr ""
+msgstr "Reset de timer na het wisselen tussen taken"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:77
@@ -389,7 +389,7 @@ msgstr "Simpel"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:109
 msgid "Pomodoro"
-msgstr ""
+msgstr "Pomodoro"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:110
 msgid "Custom"
@@ -412,8 +412,6 @@ msgid "Bottom of the list"
 msgstr "onderkant van de lijst"
 
 #: ../src/view/Dialogs/SettingsPages/ShortcutsPage.vala:40
-#, fuzzy
-#| msgid "Go For It! needs to be restarted for this setting to take effect"
 msgid "%s needs to be restarted for changes to take effect."
 msgstr "%s moet worden herstart voordat wijzigingen van kracht worden."
 
@@ -446,10 +444,8 @@ msgid "The Break is Over"
 msgstr "De pauze is voorbij"
 
 #: ../src/view/MainWindow.vala:470
-#, fuzzy
-#| msgid "Your next task is"
 msgid "Your current task is"
-msgstr "Uw volgende taak is"
+msgstr "Uw huidige taak is"
 
 #: ../src/view/MainWindow.vala:490
 msgid "Prepare for your break"
