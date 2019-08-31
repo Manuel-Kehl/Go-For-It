@@ -228,6 +228,9 @@ class GOFI.TXT.TaskManager {
     private void task_done_handler (TaskStore source, TodoTask task) {
         if (source == todo_store) {
             transfer_task (task, todo_store, done_store);
+            if (task == active_task) {
+                active_task_invalid ();
+            }
         } else if (source == done_store) {
             transfer_task (task, done_store, todo_store);
         }

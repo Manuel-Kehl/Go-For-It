@@ -239,9 +239,11 @@ class GOFI.TaskTimer {
      * Used to emit an "active_task_done" signal from outside of this class.
      */
     public void set_active_task_done () {
+        bool was_running = running;
+        stop ();
         active_task_done (_active_task);
         // Resume break, only keep stopped when a task is active
-        if (break_active) {
+        if ((break_active || !settings.reset_timer_on_task_switch) && was_running) {
             start ();
         }
     }
