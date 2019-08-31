@@ -75,7 +75,7 @@ msgstr "Flytt til venstre skjerm"
 
 #: ../src/Theme.vala:54
 #, fuzzy
-msgid "Inherit from Gtk theme"
+msgid "Inherit from GTK theme"
 msgstr "Bruk fra GTK-drakt"
 
 #: ../src/todo.txt/Filter.vala:69 ../src/todo.txt/view/TaskRow.vala:325

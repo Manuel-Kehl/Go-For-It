@@ -75,8 +75,8 @@ msgstr ""
 
 #: ../src/Theme.vala:54
 #, fuzzy
-msgid "Inherit from Gtk theme"
-msgstr "నుండి Gtk థీమ్ నుండి వారసత్వం"
+msgid "Inherit from GTK theme"
+msgstr "నుండి GTK థీమ్ నుండి వారసత్వం"
 
 #: ../src/todo.txt/Filter.vala:69 ../src/todo.txt/view/TaskRow.vala:325
 msgid "project"

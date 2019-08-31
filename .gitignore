@@ -2,3 +2,4 @@ build*
 *~
 src/Constants.vala
 .*
+*.mo

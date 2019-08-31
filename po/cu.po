@@ -63,7 +63,7 @@ msgid "Move to left screen"
 msgstr ""
 
 #: ../src/Theme.vala:54
-msgid "Inherit from Gtk theme"
+msgid "Inherit from GTK theme"
 msgstr ""
 
 #: ../src/todo.txt/Filter.vala:69 ../src/todo.txt/view/TaskRow.vala:325
