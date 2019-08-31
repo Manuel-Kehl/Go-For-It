@@ -226,7 +226,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
     private void load_list (TxtList list) {
         current_list_info = list.list_info;
-        task_page.set_task_list (list);
+        task_page.show_task_list (list);
         switch_btn.sensitive = true;
         switch_top_stack (false);
         if (list_menu != null) {

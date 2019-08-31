@@ -86,6 +86,9 @@ class GOFI.TaskTimer {
             return _schedule;
         }
         public set {
+            if (value == _schedule) {
+                return;
+            }
             _schedule = value;
             if (_schedule == null) {
                 _schedule = settings.schedule;
