@@ -67,7 +67,7 @@ find_package (Vala REQUIRED)
 # make sure we use vala
 include (ValaVersion)
 # make sure it's the desired version of vala
-ensure_vala_version("0.26" MINIMUM)
+ensure_vala_version("0.36.15" MINIMUM)
 
 option (BUILD_TESTS "Build a unit test executable." OFF)
 
