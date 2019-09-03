@@ -29,10 +29,12 @@ If you already use Todo.txt, **beware** of the fact, that *Go For It!* automatic
 
 ##### Ubuntu
 
-I maintain a [Launchpad PPA](https://launchpad.net/~go-for-it-team/+archive/ubuntu/go-for-it-daily) which can be used to acquire .deb packages. On Ubuntu (+ derivates) it is recommended to add the PPA for automatic updates:
+I maintain a [Launchpad PPA](https://launchpad.net/~go-for-it-team/+archive/ubuntu/go-for-it-stable) which can be used to acquire .deb packages. On Ubuntu (+ derivates) it is recommended to add the PPA for automatic updates:
 
-    sudo add-apt-repository ppa:go-for-it-team/go-for-it-daily && sudo apt-get update
+    sudo add-apt-repository ppa:go-for-it-team/go-for-it-stable && sudo apt-get update
     sudo apt-get install go-for-it
+
+For git versions use https://code.launchpad.net/~go-for-it-team/+archive/ubuntu/go-for-it-daily instead.
 
 ##### Arch Linux
 
