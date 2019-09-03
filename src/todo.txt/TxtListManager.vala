@@ -79,8 +79,8 @@ class GOFI.TXT.TxtListManager {
         return dialog;
     }
 
-    private void on_dialog_list_add (TxtListEditDialog dialog, ListSettings settings) {
-        add_new_from_settings (settings);
+    private void on_dialog_list_add (TxtListEditDialog dialog, ListSettings lsettings) {
+        add_new_from_settings (lsettings);
         dialog.destroy ();
     }
 
@@ -133,12 +133,12 @@ class GOFI.TXT.TxtListManager {
         dialog.show_all ();
     }
 
-    private void on_dialog_list_edit (TxtListEditDialog dialog, ListSettings settings) {
-        var info = list_table[settings.id];
+    private void on_dialog_list_edit (TxtListEditDialog dialog, ListSettings lsettings) {
+        var info = list_table[lsettings.id];
         assert (info != null);
 
-        if (settings.todo_txt_location != info.todo_txt_location) {
-            var dir = File.new_for_path (settings.todo_txt_location);
+        if (lsettings.todo_txt_location != info.todo_txt_location) {
+            var dir = File.new_for_path (lsettings.todo_txt_location);
             if (!dir.query_exists ()) {
                 DirUtils.create_with_parents (dir.get_path (), 0700);
             }
@@ -149,7 +149,7 @@ class GOFI.TXT.TxtListManager {
                 confirm_dialog.response.connect ( (response_id) => {
                     handle_confirm_dialog_response (
                         dialog, confirm_dialog, todo_txt, done_txt,
-                        settings, info, response_id
+                        lsettings, info, response_id
                     );
                 });
                 confirm_dialog.show ();
@@ -157,7 +157,7 @@ class GOFI.TXT.TxtListManager {
             }
             move_files (todo_txt, done_txt, info.todo_txt_location);
         }
-        info.apply (settings);
+        info.apply (lsettings);
         dialog.destroy ();
     }
 

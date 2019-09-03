@@ -57,7 +57,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     ) {
         this.set_transient_for (parent);
         this.list_manager = list_manager;
-        if (settings == null) {
+        if (lsettings == null) {
             this.lsettings = new ListSettings.empty ();
             this.title = _("New to-do list");
             this.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
@@ -292,7 +292,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     }
 
     private void on_reminder_value_changed () {
-        settings.reminder_time = reminder_spin.get_value_as_int ();
+        lsettings.reminder_time = reminder_spin.get_value_as_int ();
     }
 
     public override void show_all () {
