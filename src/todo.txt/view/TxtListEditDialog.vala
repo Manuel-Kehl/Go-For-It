@@ -33,6 +33,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private Gtk.Label reminder_lbl2;
     private Gtk.Label timer_default_lbl;
     private TimerScheduleWidget sched_widget;
+    private Gtk.Revealer sched_widget_revealer;
 
     private Gtk.Label log_timer_lbl;
     private Gtk.Switch log_timer_switch;
@@ -261,6 +262,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         timer_default_switch = new Gtk.Switch ();
 
         sched_widget = new TimerScheduleWidget ();
+        sched_widget_revealer = new Gtk.Revealer ();
 
         // More than ten minutes would not make much sense
         reminder_spin = new Gtk.SpinButton.with_range (0, 600, 1);
@@ -270,10 +272,12 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             reminder_spin.value = settings.reminder_time;
             sched_widget.load_schedule (settings.schedule);
             timer_default_switch.active = true;
+            sched_widget_revealer.reveal_child = false;
         } else {
             reminder_spin.value = lsettings.reminder_time;
             sched_widget.load_schedule (lsettings.schedule);
             timer_default_switch.active = false;
+            sched_widget_revealer.reveal_child = true;
         }
 
         /* Signal Handling */
@@ -286,8 +290,14 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         /* Add widgets */
         add_section (grid, timer_sect_lbl, ref row);
         add_option (grid, timer_default_lbl, timer_default_switch, ref row);
+
+        // reminder_lbl* and reminder_spin are not added to a Gtk.Revealer as
+        // this messes up the horizontal allignment. During testing it somehow
+        // also caused an increase in the required minimum width of the dialog.
         add_option (grid, reminder_lbl1, reminder_spin, ref row, 1, reminder_lbl2);
-        grid.attach (sched_widget, 0, row, 3, 1);
+
+        sched_widget_revealer.add (sched_widget);
+        grid.attach (sched_widget_revealer, 0, row, 3, 1);
         row++;
     }
 
@@ -301,7 +311,6 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             reminder_lbl1.hide ();
             reminder_lbl2.hide ();
             reminder_spin.hide ();
-            sched_widget.hide ();
         }
     }
 
@@ -312,14 +321,14 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             reminder_lbl1.hide ();
             reminder_lbl2.hide ();
             reminder_spin.hide ();
-            sched_widget.hide ();
+            sched_widget_revealer.reveal_child = false;
         } else {
             lsettings.reminder_time = reminder_spin.get_value_as_int ();
             lsettings.schedule = sched_widget.generate_schedule ();
             reminder_lbl1.show ();
             reminder_lbl2.show ();
             reminder_spin.show ();
-            sched_widget.show();
+            sched_widget_revealer.reveal_child = true;
         }
     }
 }
