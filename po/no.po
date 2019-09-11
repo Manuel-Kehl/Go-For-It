@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-30 21:08+0200\n"
-"PO-Revision-Date: 2019-08-31 13:04+0000\n"
+"PO-Revision-Date: 2019-09-12 18:23+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "go-for-it/go-for-it/nb_NO/>\n"
@@ -362,8 +362,9 @@ msgid "Break duration"
 msgstr "Pausevarighet"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
+#, fuzzy
 msgid "Long break duration"
-msgstr ""
+msgstr "Varighet på lang pause"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "Resume task after the break"
