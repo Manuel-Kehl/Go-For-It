@@ -357,7 +357,7 @@ msgstr "విరామం వ్యవధి"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
 msgid "Long break duration"
-msgstr "విరామం వ్యవధి"
+msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "Resume task after the break"

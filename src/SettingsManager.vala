@@ -73,6 +73,7 @@ private class GOFI.SettingsManager {
         }
         set {
             set_value (GROUP_TIMER, "task_duration", value.to_string ());
+            build_schedule ();
             timer_duration_changed ();
         }
     }
@@ -89,6 +90,7 @@ private class GOFI.SettingsManager {
         }
         set {
             set_value (GROUP_TIMER, "break_duration", value.to_string ());
+            build_schedule ();
             timer_duration_changed ();
         }
     }

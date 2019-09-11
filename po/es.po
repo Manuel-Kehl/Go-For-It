@@ -355,7 +355,7 @@ msgstr "Duración del descanso"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
 msgid "Long break duration"
-msgstr "Duración del descanso"
+msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "Resume task after the break"

@@ -360,7 +360,7 @@ msgstr "休憩時間"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
 msgid "Long break duration"
-msgstr "休憩時間"
+msgstr ""
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "Resume task after the break"

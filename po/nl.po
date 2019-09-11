@@ -359,7 +359,7 @@ msgstr "Duur van de pauze"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
 msgid "Long break duration"
-msgstr "Duur van de pauze"
+msgstr "Duur van de lange pauze"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "Resume task after the break"

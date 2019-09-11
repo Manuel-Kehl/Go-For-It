@@ -78,10 +78,15 @@ namespace GOFI.TXT.TxtUtils {
         }
     }
 
+    /**
+     * Parses a timer value if present in the description parts.
+     * If a timer value is encountered it is removed from the description by
+     * clearing that part of the description.
+     */
     public static uint consume_timer_value (string[] description) {
         uint timer_val = 0;
         for (int i = 0; description[i] != null; i++) {
-            if (description[i].has_prefix ("timer:")) {
+            if (is_timer_value (description[i])) {
                 timer_val = string_to_timer (description[i].offset(6));
                 description[i] = "";
                 return timer_val;
