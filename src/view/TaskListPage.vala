@@ -73,7 +73,16 @@ class GOFI.TaskListPage : Gtk.Grid {
                 shown_list.mark_done (selected_task);
             }
         } else if (visible_child == timer_view) {
-            task_timer.set_active_task_done ();
+            bool was_running = task_timer.running;
+            task_timer.stop ();
+            on_task_done ();
+            // Resume break, only keep stopped when a task is active
+            if (active_list.active_task != null &&
+                (task_timer.break_active ||
+                 !settings.reset_timer_on_task_switch) &&
+                was_running) {
+                task_timer.start ();
+            }
         }
     }
 
@@ -86,7 +95,7 @@ class GOFI.TaskListPage : Gtk.Grid {
 
         this.orientation = Gtk.Orientation.VERTICAL;
         initial_setup ();
-        task_timer.active_task_done.connect (on_task_done);
+        task_timer.timer_stopped.connect (on_timer_stopped);
         get_style_context ().add_class ("task_layout");
     }
 
@@ -126,6 +135,7 @@ class GOFI.TaskListPage : Gtk.Grid {
         });
         settings.toolbar_icon_size_changed.connect (on_icon_size_changed);
         settings.switcher_use_icons_changed.connect (on_switcher_use_icons);
+        timer_view.done_btn_clicked.connect (on_task_done);
 
         switcher_stack.add_named (activity_switcher, "switcher");
         switcher_stack.add_named (activity_label, "label");
@@ -260,6 +270,20 @@ class GOFI.TaskListPage : Gtk.Grid {
             task_timer.active_task = shown_list.selected_task;
             shown_list.active_task = shown_list.selected_task;
         }
+    }
+
+    private void on_timer_stopped (DateTime start_time, uint runtime) {
+        if (task_timer.break_active) {
+            return;
+        }
+        var active_task = task_timer.active_task;
+        activity_log.log_task (
+            active_list.list_info.name,
+            active_task.description,
+            start_time,
+            runtime
+        );
+        active_task.timer_value += runtime;
     }
 
     private void on_icon_size_changed (Gtk.IconSize size) {

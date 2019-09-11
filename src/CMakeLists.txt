@@ -33,6 +33,7 @@ vala_precompile (VALA_C ${LIBNAME}
     DragListModel.vala
     Theme.vala
     Shortcuts.vala
+    ActivityLog.vala
     view/Widgets/TodoListInfoRow.vala
     view/Widgets/DragList.vala
     view/Widgets/ViewSwitcher.vala

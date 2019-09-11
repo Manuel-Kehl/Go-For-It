@@ -116,10 +116,10 @@ class GOFI.TaskTimer {
     /* Signals */
     public signal void timer_updated (DateTime remaining_duration);
     public signal void timer_updated_relative (double progress);
-    public signal void timer_running_changed (bool running);
+    public signal void timer_started ();
+    public signal void timer_stopped (DateTime start_time, uint runtime);
     public signal void timer_almost_over (DateTime remaining_duration);
     public signal void timer_finished (bool break_active);
-    public signal void active_task_done (TodoTask task);
     public signal void active_task_description_changed (TodoTask task);
     public signal void active_task_changed (TodoTask? task, bool break_active);
 
@@ -164,7 +164,7 @@ class GOFI.TaskTimer {
         if (!running && active_task != null) {
             start_time = new DateTime.now_utc ();
             running = true;
-            timer_running_changed (running);
+            timer_started ();
         }
     }
 
@@ -173,11 +173,8 @@ class GOFI.TaskTimer {
             duration_till_end = remaining_duration;
             var runtime = get_runtime ().to_unix ();
             previous_runtime += runtime;
-            if (_active_task != null && !break_active) {
-                _active_task.timer_value += (uint) runtime;
-            }
             running = false;
-            timer_running_changed (running);
+            timer_stopped (start_time, (uint) runtime);
         }
     }
 
@@ -233,19 +230,6 @@ class GOFI.TaskTimer {
      */
     private void on_task_notify_description () {
         active_task_description_changed (_active_task);
-    }
-
-    /**
-     * Used to emit an "active_task_done" signal from outside of this class.
-     */
-    public void set_active_task_done () {
-        bool was_running = running;
-        stop ();
-        active_task_done (_active_task);
-        // Resume break, only keep stopped when a task is active
-        if ((break_active || !settings.reset_timer_on_task_switch) && was_running) {
-            start ();
-        }
     }
 
     /**

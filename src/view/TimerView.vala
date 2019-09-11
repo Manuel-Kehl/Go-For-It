@@ -37,6 +37,8 @@ class GOFI.TimerView : Gtk.Grid {
     private Gtk.Button skip_btn;
     public Gtk.Button done_btn;
 
+    public signal void done_btn_clicked ();
+
     public TimerView (TaskTimer timer) {
         this.timer = timer;
 
@@ -49,11 +51,16 @@ class GOFI.TimerView : Gtk.Grid {
         setup_action_container ();
         setup_progress_bar ();
 
-        set_running (timer.running);
+        if (timer.running) {
+            on_timer_started ();
+        } else {
+            on_timer_stopped ();
+        }
 
         // Connect the timer's signals
         timer.timer_updated.connect (set_time);
-        timer.timer_running_changed.connect (set_running);
+        timer.timer_started.connect (on_timer_started);
+        timer.timer_stopped.connect (on_timer_stopped);
         timer.active_task_changed.connect (timer_active_task_changed);
         timer.timer_updated_relative.connect ((s, p) => {
             progress.set_fraction (p);
@@ -99,16 +106,18 @@ class GOFI.TimerView : Gtk.Grid {
         s_spin.value = time.get_second ();
     }
 
-    public void set_running (bool running) {
+    public void on_timer_started () {
         done_btn.visible = !timer.break_active;
 
-        if (running) {
-            run_btn.label = _("Pau_se");
-            run_btn.get_style_context ().remove_class ("suggested-action");
-        } else {
-            run_btn.label = _("_Start");
-            run_btn.get_style_context ().add_class ("suggested-action");
-        }
+        run_btn.label = _("Pau_se");
+        run_btn.get_style_context ().remove_class ("suggested-action");
+    }
+
+    public void on_timer_stopped () {
+        done_btn.visible = !timer.break_active;
+
+        run_btn.label = _("_Start");
+        run_btn.get_style_context ().add_class ("suggested-action");
     }
 
     private void on_run_btn_clicked () {
@@ -236,7 +245,7 @@ class GOFI.TimerView : Gtk.Grid {
             timer.end_iteration ();
         });
         done_btn.clicked.connect ((e) => {
-            timer.set_active_task_done ();
+            done_btn_clicked ();
         });
         run_btn.clicked.connect (on_run_btn_clicked);
 

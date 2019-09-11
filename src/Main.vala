@@ -18,6 +18,7 @@
 namespace GOFI {
     public KeyBindingSettings kbsettings;
     private SettingsManager settings;
+    private ActivityLog activity_log;
 }
 
 /**
@@ -31,6 +32,7 @@ class GOFI.Main : Gtk.Application {
 
     private static bool print_version = false;
     private static bool show_about_dialog = false;
+    private static string? logfile = null;
     /**
      * Constructor of the Application class.
      */
@@ -68,7 +70,7 @@ class GOFI.Main : Gtk.Application {
     }
 
     private int _command_line (ApplicationCommandLine command_line) {
-        var context = new OptionContext (GOFI.APP_NAME);
+        var context = new OptionContext (null);
         context.add_main_entries (entries, GOFI.EXEC_NAME);
         context.add_group (Gtk.get_option_group (true));
 
@@ -87,6 +89,11 @@ class GOFI.Main : Gtk.Application {
         } else if (show_about_dialog) {
             show_about ();
         } else {
+            if (logfile != null) {
+                activity_log = new ActivityLog (File.new_for_commandline_arg (logfile));
+            } else {
+                activity_log = new ActivityLog (null);
+            }
             new_window ();
         }
 
@@ -96,6 +103,7 @@ class GOFI.Main : Gtk.Application {
     const OptionEntry[] entries = {
         { "version", 'v', 0, OptionArg.NONE, out print_version, N_("Print version info and exit"), null },
         { "about", 'a', 0, OptionArg.NONE, out show_about_dialog, N_("Show about dialog"), null },
+        { "logfile", 0, 0, OptionArg.FILENAME, out logfile, N_("CSV file to log activities to."), "FILE" },
         { null }
     };
 }
