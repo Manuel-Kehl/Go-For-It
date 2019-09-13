@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-30 21:08+0200\n"
-"PO-Revision-Date: 2019-08-31 10:08+0000\n"
+"PO-Revision-Date: 2019-09-14 15:24+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/ja/>\n"
@@ -356,11 +356,11 @@ msgstr "分"
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:67
 #: ../src/view/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
-msgstr "休憩時間"
+msgstr "休憩の長さ"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:69
 msgid "Long break duration"
-msgstr ""
+msgstr "長い休憩の長さ"
 
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "Resume task after the break"
