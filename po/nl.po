@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 21:08+0200\n"
+"POT-Creation-Date: 2019-09-15 16:31+0200\n"
 "PO-Revision-Date: 2019-08-31 13:04+0000\n"
 "Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/"
-"go-for-it/nl/>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/go-for-"
+"it/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,20 +15,30 @@ msgstr ""
 "X-Generator: Weblate 3.9-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
-#: ../src/Main.vala:97
+#: ../src/ActivityLog.vala:55
+#, fuzzy
+#| msgid "Couldn't create directory: %s"
+msgid "Couldn't write to %s: %s"
+msgstr "Kon map niet aanmaken: %s"
+
+#: ../src/Main.vala:104
 msgid "Print version info and exit"
 msgstr "Toon versie informatie en verlaat applicatie"
 
-#: ../src/Main.vala:98
+#: ../src/Main.vala:105
 msgid "Show about dialog"
 msgstr "Toon info-dialoogvenster"
 
-#: ../src/SettingsManager.vala:435 ../src/todo.txt/TxtListManager.vala:58
+#: ../src/Main.vala:106
+msgid "CSV file to log activities to."
+msgstr ""
+
+#: ../src/SettingsManager.vala:437 ../src/todo.txt/TxtListManager.vala:58
 #: ../src/todo.txt/TxtListManager.vala:501
 msgid "Couldn't create directory: %s"
 msgstr "Kon map niet aanmaken: %s"
 
-#: ../src/SettingsManager.vala:589
+#: ../src/SettingsManager.vala:591
 msgid "Couldn't properly import settings from %s: %s"
 msgstr "Kon instellingen niet goed importeren vanuit %s: %s"
 
@@ -155,8 +165,8 @@ msgid "Overwrite"
 msgstr "Vervang door huidige lijst"
 
 #: ../src/todo.txt/TxtListManager.vala:236
-#: ../src/todo.txt/view/TxtListEditDialog.vala:63
-#: ../src/todo.txt/view/TxtListEditDialog.vala:68
+#: ../src/todo.txt/view/TxtListEditDialog.vala:64
+#: ../src/todo.txt/view/TxtListEditDialog.vala:69
 msgid "Cancel"
 msgstr "Annuleer"
 
@@ -198,60 +208,64 @@ msgstr "Taak was voltooid op %s en aangemaakt op %s"
 msgid "Task created at %s"
 msgstr "Taak was aangemaakt op %s"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:49
-#: ../src/todo.txt/view/TxtListEditDialog.vala:200
+#: ../src/todo.txt/view/TxtListEditDialog.vala:50
+#: ../src/todo.txt/view/TxtListEditDialog.vala:202
 msgid "directory"
 msgstr "map"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:50
+#: ../src/todo.txt/view/TxtListEditDialog.vala:51
 msgid "List name"
 msgstr "Lijst naam"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:62
+#: ../src/todo.txt/view/TxtListEditDialog.vala:63
 msgid "New to-do list"
 msgstr "Nieuwe takenlijst"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:64
+#: ../src/todo.txt/view/TxtListEditDialog.vala:65
 #: ../src/view/SelectionPage.vala:106
 msgid "Add list"
 msgstr "Voeg lijst toe"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:67
+#: ../src/todo.txt/view/TxtListEditDialog.vala:68
 msgid "Edit to-do list properties"
 msgstr "Bewerk lijst eigenschappen"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:69
+#: ../src/todo.txt/view/TxtListEditDialog.vala:70
 msgid "Apply"
 msgstr "Toepassen"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:114
+#: ../src/todo.txt/view/TxtListEditDialog.vala:115
 msgid "The configured directory is already in use by another list."
 msgstr "De ingestelde map wordt al gebruikt door een andere lijst."
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:134
+#: ../src/todo.txt/view/TxtListEditDialog.vala:135
 msgid "Please assign a name to the list."
 msgstr "Geef een naam op voor deze lijst."
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:208
+#: ../src/todo.txt/view/TxtListEditDialog.vala:210
 msgid "Log the time spent working on each task"
 msgstr "Sla de tijd besteed an elke taak op"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:256
+#: ../src/todo.txt/view/TxtListEditDialog.vala:211
+msgid "This information will be stored in the todo.txt files."
+msgstr ""
+
+#: ../src/todo.txt/view/TxtListEditDialog.vala:260
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:64
-#: ../src/view/TaskListPage.vala:107 ../src/view/TaskListPage.vala:196
+#: ../src/view/TaskListPage.vala:118 ../src/view/TaskListPage.vala:208
 msgid "Timer"
 msgstr "Timer"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:257
+#: ../src/todo.txt/view/TxtListEditDialog.vala:261
 msgid "Use default settings"
 msgstr "Gebruik de standaard instellingen"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:258
+#: ../src/todo.txt/view/TxtListEditDialog.vala:262
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:71
 msgid "Reminder before task ends"
 msgstr "Herinnering voordat de taak eindigt"
 
-#: ../src/todo.txt/view/TxtListEditDialog.vala:259
+#: ../src/todo.txt/view/TxtListEditDialog.vala:263
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:72
 msgid "seconds"
 msgstr "seconden"
@@ -431,7 +445,7 @@ msgstr "Menu"
 msgid "Contribute / Donate"
 msgstr "Draag bij / Doneer"
 
-#: ../src/view/MainWindow.vala:463 ../src/view/TimerView.vala:81
+#: ../src/view/MainWindow.vala:463 ../src/view/TimerView.vala:88
 msgid "Take a Break"
 msgstr "Neem even pauze"
 
@@ -463,51 +477,51 @@ msgstr ""
 "Er zijn op het moment geen lijsten geconfigureerd.\n"
 "Voeg er een toe!"
 
-#: ../src/view/TaskListPage.vala:100
+#: ../src/view/TaskListPage.vala:111
 msgid "Lists"
 msgstr "Lijsten"
 
-#: ../src/view/TaskListPage.vala:106 ../src/view/TaskListPage.vala:188
+#: ../src/view/TaskListPage.vala:117 ../src/view/TaskListPage.vala:200
 msgid "To-Do"
 msgstr "Te doen"
 
-#: ../src/view/TaskListPage.vala:108 ../src/view/TaskListPage.vala:191
+#: ../src/view/TaskListPage.vala:119 ../src/view/TaskListPage.vala:203
 msgid "Done"
 msgstr "Gedaan"
 
-#: ../src/view/TimerView.vala:85
+#: ../src/view/TimerView.vala:92
 msgid "Active Task"
 msgstr "Huidige taak"
 
-#: ../src/view/TimerView.vala:106
+#: ../src/view/TimerView.vala:112
 msgid "Pau_se"
 msgstr "_Pauzeer"
 
-#: ../src/view/TimerView.vala:109
+#: ../src/view/TimerView.vala:119
 msgid "_Start"
 msgstr "_Start"
 
-#: ../src/view/TimerView.vala:131
+#: ../src/view/TimerView.vala:140
 msgid "Inactive"
 msgstr "Inactief"
 
-#: ../src/view/TimerView.vala:132
+#: ../src/view/TimerView.vala:141
 msgid "No task has been selected"
 msgstr "Er is geen taak geselecteerd"
 
-#: ../src/view/TimerView.vala:216
+#: ../src/view/TimerView.vala:225
 msgid "S_kip"
 msgstr "Overs_laan"
 
-#: ../src/view/TimerView.vala:217
+#: ../src/view/TimerView.vala:226
 msgid "_Done"
 msgstr "_Voltooid"
 
-#: ../src/view/TimerView.vala:262
+#: ../src/view/TimerView.vala:271
 msgid "Relax"
 msgstr "Ontspan"
 
-#: ../src/view/TimerView.vala:263
+#: ../src/view/TimerView.vala:272
 msgid "You have nothing to do."
 msgstr "U heeft niets om te doen."
 
