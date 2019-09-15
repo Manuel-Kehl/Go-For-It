@@ -193,6 +193,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private void setup_txt_settings_widgets (Gtk.Grid grid, ref int row) {
         /* Declaration */
         Gtk.Label txt_sect_lbl;
+        Gtk.Label log_timer_expl_lbl;
 
         /* Instantiation */
         txt_sect_lbl = new Gtk.Label ("Todo.txt");
@@ -207,6 +208,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         name_entry = new Gtk.Entry ();
 
         log_timer_lbl = new Gtk.Label (_("Log the time spent working on each task") + ":");
+        log_timer_expl_lbl = new Gtk.Label (_("This information will be stored in the todo.txt files."));
         log_timer_switch = new Gtk.Switch ();
 
         /* Configuration */
@@ -237,6 +239,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         add_option (main_layout, directory_lbl, directory_btn, ref row);
         add_option (main_layout, name_lbl, name_entry, ref row);
         add_option (main_layout, log_timer_lbl, log_timer_switch, ref row);
+        add_explanation (main_layout, log_timer_expl_lbl, ref row);
     }
 
     private void on_directory_changed () {
