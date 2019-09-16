@@ -14,18 +14,12 @@
 * You should have received a copy of the GNU General Public License along
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
-class GOFI.TXT.TxtList : Object {
+class GOFI.TXT.TxtList : GOFI.TaskList, Object {
     private TaskManager task_manager;
-    private TaskList todo_list;
-    private TaskList done_list;
+    private TaskListWidget todo_list;
+    private TaskListWidget done_list;
 
     private Gtk.ModelButton clear_done_button;
-
-    /**
-     * @param sched schedule of task and break durations
-     * @param reminder_t when to show the reminder before the task ends in seconds
-     */
-    public signal void timer_values_changed (Schedule? sched, int reminder_t);
 
     public ListSettings list_settings {
         public get;
@@ -38,7 +32,7 @@ class GOFI.TXT.TxtList : Object {
      */
     public TodoTask? selected_task {
         public get;
-        private set;
+        protected set;
     }
 
     /**
@@ -51,14 +45,14 @@ class GOFI.TXT.TxtList : Object {
             return _active_task;
         }
         public set {
-            _active_task = value;
+            _active_task = (TxtTask) value;
             task_manager.set_active_task (_active_task);
             if (_active_task != null) {
                 todo_list.select_task (_active_task);
             }
         }
     }
-    private TodoTask? _active_task;
+    private TxtTask? _active_task;
 
     public TodoListInfo list_info {
         public get {
@@ -110,7 +104,7 @@ class GOFI.TXT.TxtList : Object {
      * Called when the user has finished working on this task.
      */
     public void mark_done (TodoTask task) {
-        task_manager.mark_done (task);
+        task_manager.mark_done ((TxtTask) task);
     }
 
     /**
@@ -137,7 +131,7 @@ class GOFI.TXT.TxtList : Object {
         task_manager.clear_done_store ();
     }
 
-    private void on_selection_changed (TodoTask? task) {
+    private void on_selection_changed (TxtTask? task) {
         selected_task = task;
     }
 
@@ -161,7 +155,7 @@ class GOFI.TXT.TxtList : Object {
         return list_settings.reminder_time;
     }
 
-    public void task_entry_focus () {
+    public void add_task_shortcut () {
         todo_list.entry_focus ();
     }
 
@@ -171,8 +165,8 @@ class GOFI.TXT.TxtList : Object {
      */
     public void load () {
         task_manager = new TaskManager (list_settings);
-        todo_list = new TaskList (this.task_manager.todo_store, true);
-        done_list = new TaskList (this.task_manager.done_store, false);
+        todo_list = new TaskListWidget (this.task_manager.todo_store, true);
+        done_list = new TaskListWidget (this.task_manager.done_store, false);
         clear_done_button = new Gtk.ModelButton ();
         clear_done_button.text = _("Clear Done List");
         clear_done_button.clicked.connect (clear_done_list);

@@ -39,7 +39,7 @@ class GOFI.TXT.TaskManager {
     private FileWatcher todo_watcher;
     private FileWatcher done_watcher;
 
-    private TodoTask active_task;
+    private TxtTask active_task;
     private bool active_task_found;
 
     string[] default_todos = {
@@ -73,20 +73,20 @@ class GOFI.TXT.TaskManager {
         lsettings.notify["todo-txt-location"].connect (load_task_stores);
     }
 
-    public void set_active_task (TodoTask? task) {
+    public void set_active_task (TxtTask? task) {
         active_task = task;
     }
 
-    public TodoTask? get_next () {
+    public TxtTask? get_next () {
         if (active_task == null) {
             return null;
         }
-        return (TodoTask) todo_store.get_item (
+        return (TxtTask) todo_store.get_item (
             todo_store.get_task_position (active_task) + 1
         );
     }
 
-    public TodoTask? get_prev () {
+    public TxtTask? get_prev () {
         if (active_task == null) {
             return null;
         }
@@ -94,12 +94,12 @@ class GOFI.TXT.TaskManager {
         if (active_pos == 0) {
             return active_task;
         }
-        return (TodoTask) todo_store.get_item (
+        return (TxtTask) todo_store.get_item (
             active_pos - 1
         );
     }
 
-    public void mark_done (TodoTask task) {
+    public void mark_done (TxtTask task) {
         task.done = true;
     }
 
@@ -110,7 +110,7 @@ class GOFI.TXT.TaskManager {
         string _task = task.strip ();
         if (_task != "") {
             char priority = consume_priority (ref _task);
-            var todo_task = new TodoTask (_task, false);
+            var todo_task = new TxtTask (_task, false);
             todo_task.priority = priority;
             todo_task.creation_date = new GLib.DateTime.now_local ();
             if (settings.new_tasks_on_top) {
@@ -121,7 +121,7 @@ class GOFI.TXT.TaskManager {
         }
     }
 
-    public void mark_task_done (TodoTask task) {
+    public void mark_task_done (TxtTask task) {
         task.done = true;
     }
 
@@ -129,7 +129,7 @@ class GOFI.TXT.TaskManager {
      * Transfers a task from one TaskStore to another.
      */
     private void transfer_task (
-        TodoTask task, TaskStore source, TaskStore destination
+        TxtTask task, TaskStore source, TaskStore destination
     ) {
         source.remove_task (task);
         destination.add_task (task);
@@ -225,7 +225,7 @@ class GOFI.TXT.TaskManager {
         }
     }
 
-    private void task_done_handler (TaskStore source, TodoTask task) {
+    private void task_done_handler (TaskStore source, TxtTask task) {
         if (source == todo_store) {
             transfer_task (task, todo_store, done_store);
             if (task == active_task) {
@@ -236,7 +236,7 @@ class GOFI.TXT.TaskManager {
         }
     }
 
-    private void remove_invalid (TaskStore store, TodoTask task) {
+    private void remove_invalid (TaskStore store, TxtTask task) {
         store.remove_task (task);
         File todo_file = (store == todo_store) ? todo_txt : done_txt;
         write_task_file (store, todo_file);
@@ -264,7 +264,7 @@ class GOFI.TXT.TaskManager {
 
     private void add_default_todos () {
         for (int i = 0; i < default_todos.length; i++) {
-            todo_store.add_task (new TodoTask (default_todos[i], false));
+            todo_store.add_task (new TxtTask (default_todos[i], false));
         }
         lsettings.add_default_todos = false;
     }
@@ -319,7 +319,7 @@ class GOFI.TXT.TaskManager {
         return line;
     }
 
-    private TodoTask? string_to_task (string _line, bool done_by_default) {
+    private TxtTask? string_to_task (string _line, bool done_by_default) {
         string line = remove_carriage_return (_line).strip ();
 
         bool done = consume_status (ref line);
@@ -330,8 +330,8 @@ class GOFI.TXT.TaskManager {
         DateTime creation_date = null;
         DateTime completion_date = null;
         string description = "";
-        char priority = TodoTask.NO_PRIO;
-        TodoTask new_task;
+        char priority = TxtTask.NO_PRIO;
+        TxtTask new_task;
 
         if (index != last && is_priority (parts[index])) {
             priority = parts[index][1];
@@ -370,9 +370,9 @@ class GOFI.TXT.TaskManager {
             }
         }
 
-        new_task = new TodoTask (description, done | done_by_default);
+        new_task = new TxtTask (description, done | done_by_default);
 
-        if (priority != TodoTask.NO_PRIO) {
+        if (priority != TxtTask.NO_PRIO) {
             new_task.priority = priority;
         }
         if (creation_date != null) {
@@ -387,12 +387,12 @@ class GOFI.TXT.TaskManager {
         return new_task;
     }
 
-    private string task_to_string (TodoTask task) {
+    private string task_to_string (TxtTask task) {
         var task_comp_date = task.completion_date;
         var task_crea_date = task.creation_date;
         char task_prio = task.priority;
         string status_str = task.done ? "x " : "";
-        string prio_str = (task_prio != TodoTask.NO_PRIO) ?  @"($task_prio) " : "";
+        string prio_str = (task_prio != TxtTask.NO_PRIO) ?  @"($task_prio) " : "";
         string comp_str = (task_comp_date != null) ? date_to_string (task_comp_date) + " " : "";
         string crea_str = (task_crea_date != null) ? date_to_string (task_crea_date) + " " : "";
         string timer_str = (lsettings.log_timer_in_txt && task.timer_value != 0) ? " timer:" + timer_to_string (task.timer_value) : "";
@@ -416,7 +416,7 @@ class GOFI.TXT.TaskManager {
             string line;
 
             while ((line = stream_in.read_line (null)) != null) {
-                TodoTask? task = string_to_task (line, done_by_default);
+                TxtTask? task = string_to_task (line, done_by_default);
                 if (task != null) {
                     if (task.done) {
                         done_store.add_task (task);
@@ -451,7 +451,7 @@ class GOFI.TXT.TaskManager {
 
             uint n_items = store.get_n_items ();
             for (uint i = 0; i < n_items; i++) {
-                TodoTask task = (TodoTask)store.get_item (i);
+                TxtTask task = (TxtTask)store.get_item (i);
                 stream_out.put_string (task_to_string (task) + "\n");
             }
         } catch (Error e) {

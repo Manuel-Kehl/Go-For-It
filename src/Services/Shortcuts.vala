@@ -186,7 +186,7 @@ namespace GOFI {
                 DragListBindings
             );
             install_bindings_for_class (
-                typeof (TXT.TaskList),
+                typeof (TXT.TaskListWidget),
                 TaskListBindings
             );
             install_bindings_for_class (

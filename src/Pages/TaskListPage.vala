@@ -22,9 +22,9 @@ using GOFI.TXT;
  */
 class GOFI.TaskListPage : Gtk.Grid {
     // The list that is currently shown
-    private TxtList shown_list = null;
+    private TaskList shown_list = null;
     // The list used by the timer
-    private TxtList active_list = null;
+    private TaskList active_list = null;
     private TaskTimer task_timer;
 
     /* Various GTK Widgets */
@@ -156,7 +156,7 @@ class GOFI.TaskListPage : Gtk.Grid {
 
     public void action_add_task () {
         activity_switcher.selected_item = "primary";
-        shown_list.task_entry_focus ();
+        shown_list.add_task_shortcut ();
     }
 
     public bool switch_page_left () {
@@ -222,9 +222,9 @@ class GOFI.TaskListPage : Gtk.Grid {
     }
 
     /**
-     * Updates this to display the new TxtList and use this list for the timer.
+     * Updates this to display the new TaskList and use this list for the timer.
      */
-    public void set_task_list (TxtList task_list) {
+    public void set_task_list (TaskList task_list) {
         if (this.active_list == null) {
             this.active_list = task_list;
         } else if (!task_timer.running) {
@@ -299,7 +299,7 @@ class GOFI.TaskListPage : Gtk.Grid {
      * If the timer is currently running the previous list will remain active
      * until the user selects another task.
      */
-    public void show_task_list (TxtList task_list) {
+    public void show_task_list (TaskList task_list) {
         if (task_list == shown_list) {
             return;
         }

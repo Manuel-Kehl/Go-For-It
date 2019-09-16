@@ -18,7 +18,7 @@
 /**
  * A widget for displaying and manipulating task lists.
  */
-class GOFI.TXT.TaskList : Gtk.Grid {
+class GOFI.TXT.TaskListWidget : Gtk.Grid {
     /* GTK Widgets */
     private Gtk.ScrolledWindow scroll_view;
     private DragList task_view;
@@ -40,7 +40,7 @@ class GOFI.TXT.TaskList : Gtk.Grid {
 
     /* Signals */
     public signal void add_new_task (string task);
-    public signal void selection_changed (TodoTask selected_task);
+    public signal void selection_changed (TxtTask selected_task);
 
     [Signal (action = true)]
     public virtual signal void toggle_filtering () {
@@ -57,10 +57,10 @@ class GOFI.TXT.TaskList : Gtk.Grid {
     }
 
     /**
-     * Constructor of the TaskList class.
+     * Constructor of the TaskListWidget class.
      * @param add_new whether or not to show a textfield for adding new entries
      */
-    public TaskList (TaskStore model, bool add_new = false) {
+    public TaskListWidget (TaskStore model, bool add_new = false) {
         /* Settings of the widget itself */
         this.orientation = Gtk.Orientation.VERTICAL;
         this.expand = true;
@@ -79,7 +79,7 @@ class GOFI.TXT.TaskList : Gtk.Grid {
         add_placeholder ();
     }
 
-    public TodoTask? get_selected_task () {
+    public TxtTask? get_selected_task () {
         TaskRow selected_row = (TaskRow) task_view.get_selected_row ();
         if (selected_row != null) {
             return selected_row.task;
@@ -87,7 +87,7 @@ class GOFI.TXT.TaskList : Gtk.Grid {
         return null;
     }
 
-    public void select_task (TodoTask task) {
+    public void select_task (TxtTask task) {
         var pos = model.get_task_position(task);
         var row = task_view.get_row_at_index ((int)pos);
         task_view.select_row (row);
@@ -122,7 +122,7 @@ class GOFI.TXT.TaskList : Gtk.Grid {
     }
 
     private Gtk.Widget create_row (Object task) {
-        TaskRow row = new TaskRow (((TodoTask) task));
+        TaskRow row = new TaskRow (((TxtTask) task));
         row.link_clicked.connect (on_row_link_clicked);
         row.deletion_requested.connect (on_deletion_requested);
         return row;
@@ -168,7 +168,7 @@ class GOFI.TXT.TaskList : Gtk.Grid {
     }
 
     private void on_task_view_row_selected (DragListRow? selected_row) {
-        TodoTask? task = null;
+        TxtTask? task = null;
         if (selected_row != null) {
             task = ((TaskRow) selected_row).task;
         }

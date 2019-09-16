@@ -5,9 +5,9 @@ include (ValaPrecompile)
 vala_precompile (VALA_C ${TEST_EXEC_NAME}
     TestCase.vala
     assertionhelpers.vala
-    TodoTaskTest.vala
     DragListTest.vala
     Tests.vala
+    todo.txt/TodoTaskTest.vala
     todo.txt/TaskStoreTest.vala
 
 # tell what libraries to use when compiling

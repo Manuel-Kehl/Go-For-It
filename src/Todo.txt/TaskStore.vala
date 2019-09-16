@@ -28,18 +28,18 @@ class GOFI.TXT.TaskStore : Object, DragListModel {
     /* Signals */
     // Emitted when the properties of a task (including position), excluding done, have changed
     public signal void task_data_changed ();
-    public signal void task_done_changed (TodoTask task);
-    public signal void task_became_invalid (TodoTask task);
+    public signal void task_done_changed (TxtTask task);
+    public signal void task_became_invalid (TxtTask task);
 
     /**
      * Constructor of the TaskStore class
      */
     public TaskStore (bool done_by_default) {
         this.done_by_default = done_by_default;
-        tasks = new SequentialList (typeof (TodoTask));
+        tasks = new SequentialList (typeof (TxtTask));
     }
 
-    public void prepend_task (TodoTask task) {
+    public void prepend_task (TxtTask task) {
         tasks.prepend_item (task);
         task.notify.connect (on_task_notify);
         task.done_changed.connect (on_task_done);
@@ -47,7 +47,7 @@ class GOFI.TXT.TaskStore : Object, DragListModel {
         task_data_changed ();
     }
 
-    public void add_task (TodoTask task) {
+    public void add_task (TxtTask task) {
         tasks.append_item (task);
         task.done_changed.connect (on_task_done);
         task.notify.connect (on_task_notify);
@@ -62,9 +62,9 @@ class GOFI.TXT.TaskStore : Object, DragListModel {
         task_data_changed ();
     }
 
-    public void remove_task (TodoTask task) {
+    public void remove_task (TxtTask task) {
         task.done_changed.disconnect (on_task_done);
-        task.data_changed.disconnect (on_task_data_changed);
+        task.notify.disconnect (on_task_notify);
         items_changed (tasks.remove_item (task), 1, 0);
         task_data_changed ();
     }
@@ -77,7 +77,7 @@ class GOFI.TXT.TaskStore : Object, DragListModel {
         return tasks.get_item (position);
     }
 
-    public uint get_task_position (TodoTask task) {
+    public uint get_task_position (TxtTask task) {
         return tasks.get_item_position (task);
     }
 
@@ -98,16 +98,16 @@ class GOFI.TXT.TaskStore : Object, DragListModel {
             case "done":
                 break;
             default:
-                on_task_data_changed ((TodoTask) task);
+                on_task_data_changed ((TxtTask) task);
                 break;
         }
     }
 
-    private void on_task_done (TodoTask task) {
+    private void on_task_done (TxtTask task) {
         task_done_changed (task);
     }
 
-    private void on_task_data_changed (TodoTask task) {
+    private void on_task_data_changed (TxtTask task) {
         if (task.valid) {
             task_data_changed ();
         } else {

@@ -22,45 +22,48 @@ vala_precompile (VALA_C ${LIBNAME}
     Constants.vala
     Utils.vala
     ListIdentifier.vala
-    SettingsManager.vala
     TodoListInfo.vala
-    ListManager.vala
     Schedule.vala
     TodoTask.vala
+    TaskList.vala
     SequentialList.vala
-    FileWatcher.vala
-    TaskTimer.vala
-    DragListModel.vala
     Theme.vala
-    Shortcuts.vala
-    ActivityLog.vala
-    view/Widgets/TodoListInfoRow.vala
-    view/Widgets/DragList.vala
-    view/Widgets/ViewSwitcher.vala
-    view/Widgets/TimerScheduleWidget.vala
-    view/Dialogs/DialogUtils.vala
-    view/Dialogs/SettingsDialog.vala
-    view/Dialogs/SettingsPages/AppearancePage.vala
-    view/Dialogs/SettingsPages/BehaviorPage.vala
-    view/Dialogs/SettingsPages/ShortcutsPage.vala
-    view/Dialogs/AboutDialog.vala
-    view/Dialogs/ContributeDialog.vala
-    # view/Dialogs/ShortcutsWindow.vala
-    view/TimerView.vala
-    view/TaskListPage.vala
-    view/SelectionPage.vala
-    view/MainWindow.vala
-    todo.txt/Constants.vala
-    todo.txt/TxtUtils.vala
-    todo.txt/TaskStore.vala
-    todo.txt/TaskManager.vala
-    todo.txt/ListSettings.vala
-    todo.txt/Filter.vala
-    todo.txt/TxtList.vala
-    todo.txt/TxtListManager.vala
-    todo.txt/view/TaskList.vala
-    todo.txt/view/TaskRow.vala
-    todo.txt/view/TxtListEditDialog.vala
+    Services/SettingsManager.vala
+    Services/ListManager.vala
+    Services/FileWatcher.vala
+    Services/TaskTimer.vala
+    Services/Shortcuts.vala
+    Services/ActivityLog.vala
+    Widgets/TodoListInfoRow.vala
+    Widgets/DragListModel.vala
+    Widgets/DragList.vala
+    Widgets/ViewSwitcher.vala
+    Widgets/TimerScheduleWidget.vala
+    Widgets/TimerView.vala
+    Pages/TaskListPage.vala
+    Pages/SelectionPage.vala
+    Dialogs/DialogUtils.vala
+    Dialogs/SettingsDialog.vala
+    Dialogs/SettingsPages/AppearancePage.vala
+    Dialogs/SettingsPages/BehaviorPage.vala
+    Dialogs/SettingsPages/ShortcutsPage.vala
+    Dialogs/AboutDialog.vala
+    Dialogs/ContributeDialog.vala
+
+    Todo.txt/Constants.vala
+    Todo.txt/TxtTask.vala
+    Todo.txt/TxtUtils.vala
+    Todo.txt/TaskStore.vala
+    Todo.txt/TaskManager.vala
+    Todo.txt/ListSettings.vala
+    Todo.txt/Filter.vala
+    Todo.txt/TxtList.vala
+    Todo.txt/TxtListManager.vala
+    Todo.txt/Widgets/TaskListWidget.vala
+    Todo.txt/Widgets/TaskRow.vala
+    Todo.txt/Dialogs/TxtListEditDialog.vala
+
+    MainWindow.vala
     Main.vala
 
 # tell what libraries to use when compiling

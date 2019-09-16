@@ -17,7 +17,7 @@
 
 using GOFI.TXT.TxtUtils;
 
-class GOFI.TaskRow: DragListRow {
+class GOFI.TXT.TaskRow: DragListRow {
     private Gtk.CheckButton check_button;
     private Gtk.Button delete_button;
     private TaskMarkupLabel markup_label;
@@ -31,7 +31,7 @@ class GOFI.TaskRow: DragListRow {
         }
     }
 
-    public TodoTask task {
+    public TxtTask task {
         get;
         private set;
     }
@@ -39,7 +39,7 @@ class GOFI.TaskRow: DragListRow {
     public signal void link_clicked (string uri);
     public signal void deletion_requested ();
 
-    public TaskRow (TodoTask task) {
+    public TaskRow (TxtTask task) {
         this.task = task;
 
         edit_entry = null;
@@ -206,12 +206,12 @@ class GOFI.TaskRow: DragListRow {
         public signal void editing_finished ();
         public signal void strings_changed ();
 
-        public TaskEditEntry (string description, char priority = TodoTask.NO_PRIO) {
+        public TaskEditEntry (string description, char priority = TxtTask.NO_PRIO) {
             this.description = description;
             this.priority = priority;
 
             can_focus = true;
-            if(priority == TodoTask.NO_PRIO) {
+            if(priority == TxtTask.NO_PRIO) {
                 text = _description;
             } else {
                 text = @"($_priority) $_description";
@@ -242,11 +242,11 @@ class GOFI.TaskRow: DragListRow {
     }
 
     class TaskMarkupLabel : Gtk.Label {
-        private TodoTask task;
+        private TxtTask task;
 
         private string markup_string;
 
-        public TaskMarkupLabel (TodoTask task) {
+        public TaskMarkupLabel (TxtTask task) {
             this.task = task;
 
             update ();
@@ -290,7 +290,7 @@ class GOFI.TaskRow: DragListRow {
 
         private void gen_markup () {
             markup_string = make_links (GLib.Markup.escape_text (task.description));
-            if(task.priority != TodoTask.NO_PRIO) {
+            if(task.priority != TxtTask.NO_PRIO) {
                 var prefix = _("priority");
                 var priority = task.priority;
                 markup_string = @"<b><a href=\"$prefix:$priority\">($priority)</a></b> $markup_string";

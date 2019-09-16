@@ -2,12 +2,12 @@ using GOFI.TXT;
 using GOFI;
 
 class TaskStoreTest : TestCase {
-    private TodoTask[] test_tasks;
+    private TxtTask[] test_tasks;
     private const uint TEST_TASKS_LENGTH = 5;
     private TaskStore test_store;
 
     private bool task_done_changed_expected;
-    private TodoTask task_done_changed_expected_task;
+    private TxtTask task_done_changed_expected_task;
 
     private bool task_data_changed_expected;
 
@@ -21,13 +21,14 @@ class TaskStoreTest : TestCase {
     private uint items_changed_expected_added;
 
     private bool task_invalid_expected;
-    private TodoTask task_invalid_expected_task;
+    private TxtTask task_invalid_expected_task;
 
     public TaskStoreTest () {
         base ("TaskStore");
         add_test ("access", test_access);
         add_test ("out_of_bounds", test_out_of_bounds);
         add_test ("removing_tasks", test_remove);
+        add_test ("removing_tasks (signals)", test_removed_signals);
         add_test ("clearing_tasks", test_clear);
         add_test ("move_item", test_move_item);
         add_test ("task_changes", test_task_changes);
@@ -84,23 +85,23 @@ class TaskStoreTest : TestCase {
         items_changed_expected = false;
     }
 
-    private void on_task_became_invalid (TodoTask task) {
+    private void on_task_became_invalid (TxtTask task) {
         assert (task_invalid_expected);
         assert (task_invalid_expected_task == task);
         task_invalid_expected = false;
     }
 
     private void set_up_tasks () {
-        test_tasks = new TodoTask[TEST_TASKS_LENGTH];
+        test_tasks = new TxtTask[TEST_TASKS_LENGTH];
         for (uint i = 0; i < TEST_TASKS_LENGTH; i++) {
-            test_tasks[i] = new TodoTask ("Task %u".printf (i), false);
+            test_tasks[i] = new TxtTask ("Task %u".printf (i), false);
         }
         init_signal_checkers ();
         connect_signals ();
     }
 
     private string safe_store_get_string (uint position) {
-        TodoTask task = (TodoTask)test_store.get_item (position);
+        TxtTask task = (TxtTask)test_store.get_item (position);
         return (task != null)? task.description : "<null>";
     }
 
@@ -180,9 +181,12 @@ class TaskStoreTest : TestCase {
                 assert (compare_tasks (j, i));
             }
         }
+    }
 
+    private void test_removed_signals () {
+        add_tasks ();
         // TaskStore shouln't listen to signals of removed tasks
-        TodoTask to_remove = (TodoTask)test_store.get_item (0);
+        TxtTask to_remove = (TxtTask)test_store.get_item (0);
         remove_task (0, 0);
         to_remove.description = "new task title";
         to_remove.done = !to_remove.done;

@@ -77,11 +77,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     };
 
     /**
-     * Used to determine if a notification should be sent.
-     */
-    private bool break_previously_active { get; set; default = false; }
-
-    /**
      * The constructor of the MainWindow class.
      */
     public MainWindow (Gtk.Application app_context, ListManager list_manager,
@@ -100,9 +95,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         setup_menu ();
         setup_widgets ();
         init_css ();
-        setup_notifications ();
-        // Enable Notifications for the App
-        Notify.init (GOFI.APP_NAME);
         Gtk.IconTheme.get_default ().add_resource_path (GOFI.RESOURCE_PATH + "/icons");
 
         load_last ();
@@ -224,7 +216,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         current_list_info = selected_info;
     }
 
-    private void load_list (TxtList list) {
+    private void load_list (TaskList list) {
         current_list_info = list.list_info;
         task_page.show_task_list (list);
         switch_btn.sensitive = true;
@@ -441,60 +433,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     private void show_settings () {
         var dialog = new SettingsDialog (this);
         dialog.show ();
-    }
-
-    /**
-     * Configures the emission of notifications when tasks/breaks are over
-     */
-    private void setup_notifications () {
-        task_timer.active_task_changed.connect (task_timer_activated);
-        task_timer.timer_almost_over.connect (display_almost_over_notification);
-    }
-
-    private void task_timer_activated (TodoTask? task, bool break_active) {
-        if (task == null) {
-            return;
-        }
-        if (break_previously_active != break_active) {
-            Notify.Notification notification;
-
-            if (break_active) {
-                notification = new Notify.Notification (
-                    _("Take a Break"),
-                    _("Relax and stop thinking about your current task for a while")
-                    + " :-)",
-                    GOFI.EXEC_NAME);
-            } else {
-                notification = new Notify.Notification (
-                    _("The Break is Over"),
-                    _("Your current task is") + ": " + task.description,
-                    GOFI.EXEC_NAME);
-            }
-            notification.set_hint (
-                "desktop-entry", new Variant.string (GOFI.APP_SYSTEM_NAME)
-            );
-
-            try {
-                notification.show ();
-            } catch (GLib.Error err){
-                GLib.stderr.printf (
-                    "Error in notify! (break_active notification)\n");
-            }
-        }
-        break_previously_active = break_active;
-    }
-
-    private void display_almost_over_notification (DateTime remaining_time) {
-        int64 secs = remaining_time.to_unix ();
-        Notify.Notification notification = new Notify.Notification (
-            _("Prepare for your break"),
-            _("You have %s seconds left").printf (secs.to_string ()), GOFI.EXEC_NAME);
-        try {
-            notification.show ();
-        } catch (GLib.Error err){
-            GLib.stderr.printf (
-                "Error in notify! (remaining_time notification)\n");
-        }
     }
 
     private void init_css () {

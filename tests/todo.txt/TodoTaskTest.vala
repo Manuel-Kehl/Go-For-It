@@ -1,4 +1,4 @@
-using GOFI;
+using GOFI.TXT;
 
 class TodoTaskTest : TestCase {
     private uint data_changed_emitted;
@@ -47,28 +47,29 @@ class TodoTaskTest : TestCase {
         notify_done_emitted = 0;
     }
 
-    private void connect_task (TodoTask task) {
-        task.data_changed.connect (on_task_data_changed);
+    private void connect_task (TxtTask task) {
         task.done_changed.connect (on_task_done_changed);
-        task.notify["done"].connect (on_task_notify_done);
+        task.notify.connect (on_task_property_changed);
     }
 
-    private void disconnect_task (TodoTask task) {
-        task.data_changed.disconnect (on_task_data_changed);
+    private void disconnect_task (TxtTask task) {
         task.done_changed.disconnect (on_task_done_changed);
-        task.notify["done"].disconnect (on_task_notify_done);
+        task.notify.disconnect (on_task_property_changed);
     }
 
-    private void on_task_data_changed () {
-        data_changed_emitted++;
+    private void on_task_property_changed (Object task, ParamSpec pspec) {
+        switch (pspec.name) {
+            case "done":
+                notify_done_emitted++;
+                break;
+            default:
+                data_changed_emitted++;
+                break;
+        }
     }
 
     private void on_task_done_changed () {
         done_changed_emitted++;
-    }
-
-    private void on_task_notify_done () {
-        notify_done_emitted++;
     }
 
     private void test_retreive () {
@@ -78,7 +79,7 @@ class TodoTaskTest : TestCase {
         for (int i = 0; i < 4; i++) {
             done = i % 2 == 0;
             test_title = "Task %i".printf (i);
-            TodoTask test_task = new TodoTask (test_title, done);
+            TxtTask test_task = new TxtTask (test_title, done);
 
             assert (test_task.description == test_title);
             assert (compare_bool (test_task.done, done));
@@ -94,7 +95,7 @@ class TodoTaskTest : TestCase {
             done = i % 2 == 0;
             test_title = "Task %i".printf (i);
 
-            TodoTask task = new TodoTask (test_title, done);
+            TxtTask task = new TxtTask (test_title, done);
 
             reset_counters ();
             connect_task (task);
@@ -112,7 +113,7 @@ class TodoTaskTest : TestCase {
             done = i % 2 == 0;
             test_title = "Task %i".printf (i);
 
-            TodoTask task = new TodoTask (test_title, done);
+            TxtTask task = new TxtTask (test_title, done);
 
             reset_counters ();
             connect_task (task);
@@ -136,7 +137,7 @@ class TodoTaskTest : TestCase {
             done = i % 2 == 0;
             test_title = "Task %i".printf (i);
 
-            TodoTask task = new TodoTask (test_title, done);
+            TxtTask task = new TxtTask (test_title, done);
 
             reset_counters ();
             connect_task (task);
@@ -153,7 +154,7 @@ class TodoTaskTest : TestCase {
             done = i % 2 == 0;
             test_title = "Task %i".printf (i);
 
-            TodoTask task = new TodoTask (test_title, done);
+            TxtTask task = new TxtTask (test_title, done);
 
             reset_counters ();
             connect_task (task);

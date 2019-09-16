@@ -1,4 +1,4 @@
-/* Copyright 2016-2017 Go For It! developers
+/* Copyright 2016-2019 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -19,71 +19,29 @@
  * This class stores all task information.
  */
 public class GOFI.TodoTask : GLib.Object {
-    public string description {
+    public virtual string description {
         public get {
             return _description;
         }
         public set {
             _description = value;
-            data_changed ();
         }
     }
     string _description;
 
-    public bool done {
-        public get {
-            return _done;
-        }
-        public set {
-            if (_done != value) {
-                if (value && creation_date != null) {
-                    completion_date = new GLib.DateTime.now_local ();
-                } else {
-                    completion_date = null;
-                }
-                _done = value;
-                done_changed ();
-            }
-        }
-    }
-    private bool _done;
-
-    public bool valid {
+    public virtual bool valid {
         get {
             return description != "";
         }
     }
 
-    public DateTime? creation_date {
+    public virtual uint timer_value {
         public get;
         public set;
     }
 
-    public DateTime? completion_date {
-        public get;
-        public set;
-    }
-
-    public uint timer_value {
-        public get;
-        public set;
-    }
-
-    public char priority {
-        public get;
-        public set;
-    }
-    public const char NO_PRIO=127;
-
-    public signal void done_changed ();
-    public signal void data_changed ();
-
-    public TodoTask (string line, bool done) {
-        creation_date = null;
-        completion_date = null;
-        _done = done;
+    public TodoTask (string line) {
         _description = line;
-        priority = NO_PRIO;
         timer_value = 0;
     }
 }
