@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-15 16:31+0200\n"
-"PO-Revision-Date: 2019-09-14 15:24+0000\n"
+"PO-Revision-Date: 2019-09-18 00:24+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,10 +16,8 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
 
 #: ../src/ActivityLog.vala:55
-#, fuzzy
-#| msgid "Couldn't create directory: %s"
 msgid "Couldn't write to %s: %s"
-msgstr "ディレクトリを作成できませんでした: %s"
+msgstr "%s に書き込めませんでした: %s"
 
 #: ../src/Main.vala:104
 msgid "Print version info and exit"
@@ -31,7 +29,7 @@ msgstr "情報ダイアログを表示します"
 
 #: ../src/Main.vala:106
 msgid "CSV file to log activities to."
-msgstr ""
+msgstr "アクティビティーを記録する CSV ファイルです。"
 
 #: ../src/SettingsManager.vala:437 ../src/todo.txt/TxtListManager.vala:58
 #: ../src/todo.txt/TxtListManager.vala:501
@@ -248,7 +246,7 @@ msgstr "それぞれのタスクにかかった時間を記録"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:211
 msgid "This information will be stored in the todo.txt files."
-msgstr ""
+msgstr "この情報は todo.txt ファイルに保存されます。"
 
 #: ../src/todo.txt/view/TxtListEditDialog.vala:260
 #: ../src/view/Dialogs/SettingsPages/BehaviorPage.vala:64
