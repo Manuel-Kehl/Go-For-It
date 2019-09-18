@@ -297,6 +297,21 @@ class GOFI.TXT.TaskRow: DragListRow {
             }
             if (task.done) {
                 markup_string = "<s>" + markup_string + "</s>";
+                if (task.timer_value >= 60) {
+                    var timer_val = task.timer_value;
+                    uint mins, hours;
+
+                    timer_val = timer_val / 60;
+                    mins = timer_val % 60;
+                    timer_val = timer_val / 60;
+                    hours = timer_val;
+
+                    if (hours != 0) {
+                        markup_string += "\n<b>" + _("Timer: %u hours and %u minutes").printf (hours, mins) + "</b>";
+                    } else {
+                        markup_string += "\n<b>" + _("Timer: %u minutes").printf (mins) + "</b>";
+                    }
+                }
             }
         }
 
