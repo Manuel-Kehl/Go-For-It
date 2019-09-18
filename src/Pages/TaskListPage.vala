@@ -213,11 +213,11 @@ class GOFI.TaskListPage : Gtk.Grid {
             task_timer.update_active_task ();
             // Otherwise it won't switch
             timer_view.show ();
-            activity_stack.set_visible_child (timer_view);
+            activity_switcher.selected_item = "timer";
         }
         else {
             first_page.show ();
-            activity_stack.set_visible_child (first_page);
+            activity_switcher.selected_item = "primary";
         }
     }
 
