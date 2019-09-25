@@ -67,11 +67,11 @@ class GOFI.TXT.TaskRow: DragListRow {
         delete_button.clicked.connect (on_delete_button_clicked);
         set_start_widget (delete_button);
 
-        edit_entry = new TaskEditEntry (task.description, task.priority);
+        edit_entry = new TaskEditEntry (task.to_simple_txt ());
         set_center_widget (edit_entry);
 
         edit_entry.edit ();
-        edit_entry.strings_changed.connect (on_edit_entry_strings_changed);
+        edit_entry.string_changed.connect (on_edit_entry_string_changed);
         edit_entry.editing_finished.connect (on_edit_entry_finished);
         editing = true;
     }
@@ -80,9 +80,8 @@ class GOFI.TXT.TaskRow: DragListRow {
         deletion_requested ();
     }
 
-    private void on_edit_entry_strings_changed () {
-        task.description = edit_entry.description;
-        task.priority = edit_entry.priority;
+    private void on_edit_entry_string_changed () {
+        task.update_from_simple_txt (edit_entry.text.strip ());
     }
 
     private void on_edit_entry_finished () {
@@ -183,45 +182,12 @@ class GOFI.TXT.TaskRow: DragListRow {
     }
 
     class TaskEditEntry : Gtk.Entry {
-        private string _description;
-        public string description {
-            public get {
-                return _description;
-            }
-            public set {
-                _description = value;
-            }
-        }
-
-        private char _priority;
-        public char priority {
-            public get {
-                return _priority;
-            }
-            public set {
-                _priority = value;
-            }
-        }
-
         public signal void editing_finished ();
-        public signal void strings_changed ();
+        public signal void string_changed ();
 
-        public TaskEditEntry (string description, char priority = TxtTask.NO_PRIO) {
-            this.description = description;
-            this.priority = priority;
-
+        public TaskEditEntry (string description) {
             can_focus = true;
-            if(priority == TxtTask.NO_PRIO) {
-                text = _description;
-            } else {
-                text = @"($_priority) $_description";
-            }
-        }
-
-        private void split_pseudo_description (string pseudo_description) {
-            string _pseudo_description = pseudo_description;
-            _priority = consume_priority (ref _pseudo_description);
-            description = _pseudo_description;
+            text = description;
         }
 
         private void abort_editing () {
@@ -229,8 +195,7 @@ class GOFI.TXT.TaskRow: DragListRow {
         }
 
         private void stop_editing () {
-            split_pseudo_description (text.strip ());
-            strings_changed ();
+            string_changed ();
             abort_editing ();
         }
 
@@ -290,26 +255,37 @@ class GOFI.TXT.TaskRow: DragListRow {
 
         private void gen_markup () {
             markup_string = make_links (GLib.Markup.escape_text (task.description));
+
+            var done = task.done;
+            var timer_value = task.timer_value;
+            var duration = task.duration;
+
             if(task.priority != TxtTask.NO_PRIO) {
                 var prefix = _("priority");
                 var priority = task.priority;
                 markup_string = @"<b><a href=\"$prefix:$priority\">($priority)</a></b> $markup_string";
             }
+            if (duration > 0) {
+                if (timer_value > 0 && !done) {
+                    markup_string = "%s <i>(%u/%u %s)</i>".printf (markup_string, timer_value/60, duration/60, _("min."));
+                } else {
+                    markup_string = "%s <i>(%u %s)</i>".printf (markup_string, duration/60, _("min."));
+                }
+            }
             if (task.done) {
                 markup_string = "<s>" + markup_string + "</s>";
-                if (task.timer_value >= 60) {
-                    var timer_val = task.timer_value;
+                if (timer_value >= 60) {
                     uint mins, hours;
 
-                    timer_val = timer_val / 60;
-                    mins = timer_val % 60;
-                    timer_val = timer_val / 60;
-                    hours = timer_val;
+                    timer_value = timer_value / 60;
+                    mins = timer_value % 60;
+                    timer_value = timer_value / 60;
+                    hours = timer_value;
 
                     if (hours != 0) {
-                        markup_string += "\n<b>" + _("Timer: %u hours and %u minutes").printf (hours, mins) + "</b>";
+                        markup_string += "\n<b>" + _("Timer") + ":" + _("%u hours and %u minutes").printf (hours, mins) + "</b>";
                     } else {
-                        markup_string += "\n<b>" + _("Timer: %u minutes").printf (mins) + "</b>";
+                        markup_string += "\n<b>" + _("Timer") + ":" + _("%u minutes").printf (mins) + "</b>";
                     }
                 }
             }
@@ -321,13 +297,14 @@ class GOFI.TXT.TaskRow: DragListRow {
          * @param description the string to took for contexts or projects
          */
         private string make_links (string description) {
-            string parsed = "";
-            string delimiter = null, prefix = null;
+            string? delimiter = null, prefix = null, val = null;
+            var parts = description.split (" ");
+            var length = parts.length;
 
-            foreach (string part in description.split (" ")) {
-                string? val = null;
-                if(part == "") {
-                    parsed += " ";
+            for (uint i = 0; i < length; i++) {
+                val = null;
+                var part = parts[i];
+                if (part == "") {
                     continue;
                 }
 
@@ -342,14 +319,12 @@ class GOFI.TXT.TaskRow: DragListRow {
                     val = part.offset(1);
                 }
                 if (val != null) {
-                    parsed += @" <a href=\"$prefix:$val\" title=\"$val\">" +
-                              @"$delimiter$val</a>";
-                } else {
-                    parsed += " " + part;
+                    parts[i] = @" <a href=\"$prefix:$val\" title=\"$val\">" +
+                               @"$delimiter$val</a>";
                 }
             }
 
-            return parsed.chug ();
+            return string.joinv (" ", parts);
         }
 
         private void update () {
@@ -360,6 +335,7 @@ class GOFI.TXT.TaskRow: DragListRow {
         private void connect_signals () {
             task.notify["description"].connect (update);
             task.notify["priority"].connect (update);
+            task.notify["timer-value"].connect (update);
         }
     }
 }

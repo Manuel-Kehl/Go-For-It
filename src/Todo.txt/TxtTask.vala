@@ -15,6 +15,8 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
+using GOFI.TXT.TxtUtils;
+
 /**
  * This class stores all task information.
  */
@@ -62,5 +64,88 @@ class GOFI.TXT.TxtTask : TodoTask {
         completion_date = null;
         _done = done;
         priority = NO_PRIO;
+    }
+
+    public TxtTask.from_simple_txt (string descr, bool done) {
+        base ("");
+        creation_date = new GLib.DateTime.now_local ();
+        completion_date = null;
+        update_from_simple_txt (descr);
+    }
+
+    public TxtTask.from_todo_txt (string descr, bool done) {
+        base ("");
+        var parts = descr.split (" ");
+        var last = parts.length - 1;
+        uint index = 0;
+
+        if (parts[0] == "x") {
+            done = true;
+            index++;
+        }
+        _done = done;
+
+        if (is_priority (parts[index])) {
+            priority = parts[index][1];
+            index++;
+        } else {
+            priority = NO_PRIO;
+        }
+
+        if (last != index && is_date (parts[index])) {
+            if (done && index + 1 != last && is_date (parts[index + 1])) {
+                completion_date = string_to_date (parts[index]);
+                creation_date = string_to_date (parts[index + 1]);
+                index += 2;
+            } else {
+                completion_date = null;
+                creation_date = string_to_date (parts[index]);
+                index++;
+            }
+        } else {
+            completion_date = null;
+            creation_date = null;
+        }
+
+        (unowned string)[] unparsed = parts[index:parts.length];
+        timer_value = consume_timer_value (unparsed);
+        duration = consume_duration_value (unparsed);
+
+        description = string.joinv (" ", unparsed).strip ();
+    }
+
+    public void update_from_simple_txt (string descr) {
+        var descr_parts = descr.split (" ");
+        (unowned string)[] unparsed;
+
+        if (is_priority (descr_parts[0])) {
+            priority = descr_parts[0][1];
+            unparsed = descr_parts[1:descr_parts.length];
+        } else {
+            priority = NO_PRIO;
+            unparsed = descr_parts;
+        }
+
+        duration = consume_duration_value (unparsed);
+
+        description = string.joinv (" ", unparsed).strip ();
+    }
+
+    public string to_simple_txt () {
+        string prio_str = (priority != NO_PRIO) ?  @"($priority) " : "";
+        string duration_str = duration != 0 ? " duration:%um".printf (duration/60) : "";
+
+        return prio_str + description + duration_str;
+    }
+
+    public string to_txt (bool log_timer) {
+        string status_str = done ? "x " : "";
+        string prio_str = (priority != NO_PRIO) ?  @"($priority) " : "";
+        string comp_str = (completion_date != null) ? date_to_string (completion_date) + " " : "";
+        string crea_str = (creation_date != null) ? date_to_string (creation_date) + " " : "";
+        string timer_str = (log_timer && timer_value != 0) ? " timer:" + timer_to_string (timer_value) : "";
+        string duration_str = duration != 0 ? " duration:%um".printf (duration/60) : "";
+
+        return status_str + prio_str + comp_str + crea_str + description + timer_str + duration_str;
     }
 }

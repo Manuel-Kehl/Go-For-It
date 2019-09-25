@@ -35,7 +35,19 @@ public class GOFI.TodoTask : GLib.Object {
         }
     }
 
+    /**
+     * Total time spent working on the task using the timer in seconds.
+     */
     public virtual uint timer_value {
+        public get;
+        public set;
+    }
+
+    /**
+     * Indication of the duration of the task in seconds.
+     * This should be set to 0 if no indication is given.
+     */
+    public uint duration {
         public get;
         public set;
     }
@@ -43,5 +55,6 @@ public class GOFI.TodoTask : GLib.Object {
     public TodoTask (string line) {
         _description = line;
         timer_value = 0;
+        duration = 0;
     }
 }

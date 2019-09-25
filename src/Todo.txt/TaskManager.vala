@@ -109,20 +109,16 @@ class GOFI.TXT.TaskManager {
     public void add_new_task (string task) {
         string _task = task.strip ();
         if (_task != "") {
-            char priority = consume_priority (ref _task);
-            var todo_task = new TxtTask (_task, false);
-            todo_task.priority = priority;
-            todo_task.creation_date = new GLib.DateTime.now_local ();
+            var todo_task = new TxtTask.from_simple_txt (_task, false);
+            if (!todo_task.valid) {
+                return;
+            }
             if (settings.new_tasks_on_top) {
                 todo_store.prepend_task (todo_task);
             } else {
                 todo_store.add_task (todo_task);
             }
         }
-    }
-
-    public void mark_task_done (TxtTask task) {
-        task.done = true;
     }
 
     /**
@@ -322,82 +318,19 @@ class GOFI.TXT.TaskManager {
     private TxtTask? string_to_task (string _line, bool done_by_default) {
         string line = remove_carriage_return (_line).strip ();
 
-        bool done = consume_status (ref line);
-
-        string[] parts = line.split (" ");
-        int last = parts.length - 1;
-        int index = 0;
-        DateTime creation_date = null;
-        DateTime completion_date = null;
-        string description = "";
-        char priority = TxtTask.NO_PRIO;
-        TxtTask new_task;
-
-        if (index != last && is_priority (parts[index])) {
-            priority = parts[index][1];
-            index++;
-        }
-
-        // parsing dates
-        if (index != last && is_date (parts[index])) {
-            if (done && index + 1 != last && is_date (parts[index + 1])) {
-                completion_date = string_to_date (parts[index]);
-                creation_date = string_to_date (parts[index + 1]);
-                index += 2;
-            } else {
-                creation_date = string_to_date (parts[index]);
-                index++;
-            }
-        }
-
-        var unparsed = parts[index:last + 1];
-        var timer_value = consume_timer_value (unparsed);
-        foreach (var part in unparsed) {
-            if (part != "") {
-                description += " " + part;
-            }
-        }
-        description = description.substring(1);
-
-        if (description == "") {
+        var task = new TxtTask.from_todo_txt (line, done_by_default);
+        if (!task.valid) {
             return null;
         }
 
-        if (!active_task_found && !done) {
-            if (description == active_task.description) {
+        if (!active_task_found && !task.done) {
+            if (task.description == active_task.description) {
                 active_task_found = true;
                 return active_task;
             }
         }
 
-        new_task = new TxtTask (description, done | done_by_default);
-
-        if (priority != TxtTask.NO_PRIO) {
-            new_task.priority = priority;
-        }
-        if (creation_date != null) {
-            new_task.creation_date = creation_date;
-        }
-        if (completion_date != null) {
-            new_task.completion_date = completion_date;
-        }
-
-        new_task.timer_value = timer_value;
-
-        return new_task;
-    }
-
-    private string task_to_string (TxtTask task) {
-        var task_comp_date = task.completion_date;
-        var task_crea_date = task.creation_date;
-        char task_prio = task.priority;
-        string status_str = task.done ? "x " : "";
-        string prio_str = (task_prio != TxtTask.NO_PRIO) ?  @"($task_prio) " : "";
-        string comp_str = (task_comp_date != null) ? date_to_string (task_comp_date) + " " : "";
-        string crea_str = (task_crea_date != null) ? date_to_string (task_crea_date) + " " : "";
-        string timer_str = (lsettings.log_timer_in_txt && task.timer_value != 0) ? " timer:" + timer_to_string (task.timer_value) : "";
-
-        return status_str + prio_str + comp_str + crea_str + task.description + timer_str;
+        return task;
     }
 
     /**
@@ -452,7 +385,7 @@ class GOFI.TXT.TaskManager {
             uint n_items = store.get_n_items ();
             for (uint i = 0; i < n_items; i++) {
                 TxtTask task = (TxtTask)store.get_item (i);
-                stream_out.put_string (task_to_string (task) + "\n");
+                stream_out.put_string (task.to_txt (lsettings.log_timer_in_txt) + "\n");
             }
         } catch (Error e) {
             io_failed = true;

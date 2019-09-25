@@ -50,49 +50,53 @@ namespace GOFI.TXT.TxtUtils {
         return /timer:([0-9]+)h-([0-9]+)m-([0-9]+)s/.match(token, 0, out info);
     }
 
-    /**
-     * Removes x from the start of finished tasks
-     */
-    public static bool consume_status (ref string txt_line) {
-        bool done = txt_line.has_prefix ("x ");
-
-        if (done) {
-            // Remove "x " from displayed string
-            txt_line = txt_line.substring (2);
-        }
-
-        return done;
-    }
-
-    /**
-     * Removes and returns the priority from pseudo descriptions (task lines
-     * consisting of at most a priority and a description)
-     */
-    public static char consume_priority (ref string pseudo_description) {
-        string[] parts = pseudo_description.split(" ", 2);
-        if (parts[1] != null && is_priority(parts[0])) {
-            pseudo_description = parts[1];
-            return parts[0][1];
-        } else {
-            return TxtTask.NO_PRIO;
-        }
+    public static bool is_duration_value (string token) {
+        MatchInfo info;
+        return /duration:([0-9]+)m/.match(token, 0, out info);
     }
 
     /**
      * Parses a timer value if present in the description parts.
-     * If a timer value is encountered it is removed from the description by
-     * clearing that part of the description.
      */
-    public static uint consume_timer_value (string[] description) {
+    public static uint consume_timer_value ((unowned string)[] description) {
         uint timer_val = 0;
-        for (int i = 0; description[i] != null; i++) {
+        int length = description.length;
+        for (int i = 0; description[i] != null && i < length; i++) {
             if (is_timer_value (description[i])) {
                 timer_val = string_to_timer (description[i].offset(6));
-                description[i] = "";
+                array_remove (description, i, length);
                 return timer_val;
             }
         }
         return timer_val;
+    }
+
+    public static uint consume_duration_value ((unowned string)[] description) {
+        uint duration = 0;
+        int length = description.length;
+        for (int i = 0; description[i] != null && i < length; i++) {
+            if (is_duration_value (description[i])) {
+                duration = (uint) uint64.parse(description[i].offset(9)) * 60;
+                array_remove (description, i, length);
+                return duration;
+            }
+        }
+        return duration;
+    }
+
+    /**
+     * Helper function used to remove elements from an array.
+     * This function is useful as .move can't be used when removing the last
+     * element and something went horribly wrong when using GLib.Array to have
+     * an array from which elements can be removed.
+     */
+    private static void array_remove ((unowned string)[] arr, int pos, int length) {
+        int to_move = length - pos - 1;
+        if (to_move > 0) {
+            arr.move (pos+1, pos, to_move);
+        } else {
+            arr[pos] = null;
+        }
     }
 
     public static DateTime string_to_date (string date_txt) {

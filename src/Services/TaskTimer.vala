@@ -110,6 +110,7 @@ class GOFI.TaskTimer {
         }
     }
     private int _reminder_time;
+    private int remaining_task_duration;
     private Schedule _schedule;
     private uint iteration;
 
@@ -122,6 +123,7 @@ class GOFI.TaskTimer {
     public signal void timer_finished (bool break_active);
     public signal void active_task_description_changed (TodoTask task);
     public signal void active_task_changed (TodoTask? task, bool break_active);
+    public signal void task_duration_exceeded ();
 
     public TaskTimer () {
         _reminder_time = -1;
@@ -161,8 +163,15 @@ class GOFI.TaskTimer {
     }
 
     public void start () {
-        if (!running && active_task != null) {
+        if (!running && _active_task != null) {
             start_time = new DateTime.now_utc ();
+            if (_active_task.duration > 0) {
+                remaining_task_duration = (int) remaining_duration.to_unix ()
+                    - ((int) (_active_task.duration - _active_task.timer_value));
+            } else {
+                remaining_task_duration = 0;
+            }
+
             running = true;
             timer_started ();
         }
@@ -203,18 +212,26 @@ class GOFI.TaskTimer {
         double progress = runtime / total;
         timer_updated_relative (progress);
 
-        // Check if "almost over" signal is to be send
-        if (remaining_duration.to_unix () <= reminder_time) {
-            if (settings.reminder_active
-                    && !almost_over_sent_already
-                    && running
-                    && !break_active) {
+        if (!running || break_active) {
+            return;
+        }
+        var rem_duration_unix = remaining_duration.to_unix ();
 
+        // Check if "almost over" signal is to be send
+        if (rem_duration_unix <= reminder_time) {
+            if (settings.reminder_active && !almost_over_sent_already) {
                 timer_almost_over (remaining_duration);
                 almost_over_sent_already = true;
             }
         } else {
             almost_over_sent_already = false;
+        }
+
+        if (remaining_task_duration > 0
+                && rem_duration_unix <= remaining_task_duration) {
+            print ("%i\n", remaining_task_duration);
+            remaining_task_duration = 0;
+            task_duration_exceeded ();
         }
     }
 

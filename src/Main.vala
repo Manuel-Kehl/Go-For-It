@@ -124,6 +124,7 @@ class GOFI.Main : Gtk.Application {
     private void setup_notifications () {
         task_timer.active_task_changed.connect (task_timer_activated);
         task_timer.timer_almost_over.connect (display_almost_over_notification);
+        task_timer.task_duration_exceeded.connect (display_duration_exceeded);
     }
 
     private void task_timer_activated (TodoTask? task, bool break_active) {
@@ -164,6 +165,18 @@ class GOFI.Main : Gtk.Application {
         Notify.Notification notification = new Notify.Notification (
             _("Prepare for your break"),
             _("You have %s seconds left").printf (secs.to_string ()), GOFI.EXEC_NAME);
+        try {
+            notification.show ();
+        } catch (GLib.Error err){
+            GLib.stderr.printf (
+                "Error in notify! (remaining_time notification)\n");
+        }
+    }
+
+    private void display_duration_exceeded () {
+        Notify.Notification notification = new Notify.Notification (
+            _("Task duration exceeded"),
+            _("Consider switching to a different task"), GOFI.EXEC_NAME);
         try {
             notification.show ();
         } catch (GLib.Error err){
