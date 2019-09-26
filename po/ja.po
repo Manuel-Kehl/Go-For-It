@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-26 12:32+0200\n"
-"PO-Revision-Date: 2019-09-18 00:24+0000\n"
+"PO-Revision-Date: 2019-09-28 09:55+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -230,14 +230,12 @@ msgid "You have %s seconds left"
 msgstr "残りあと %s 秒"
 
 #: ../src/Main.vala:178
-#, fuzzy
-#| msgid "Task duration"
 msgid "Task duration exceeded"
-msgstr "タスクの継続時間"
+msgstr "タスクの継続時間を超過しています"
 
 #: ../src/Main.vala:179
 msgid "Consider switching to a different task"
-msgstr ""
+msgstr "別のタスクへの切り替えをお考えください"
 
 #: ../src/MainWindow.vala:63
 msgid "Go to overview"
@@ -504,17 +502,15 @@ msgstr "タスクは %s に作成されました"
 #: ../src/Todo.txt/Widgets/TaskRow.vala:270
 #: ../src/Todo.txt/Widgets/TaskRow.vala:272
 msgid "min."
-msgstr ""
+msgstr "分"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:286
 msgid "%u hours and %u minutes"
-msgstr ""
+msgstr "%u 時間 %u 分"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:288
-#, fuzzy
-#| msgid "minutes"
 msgid "%u minutes"
-msgstr "分"
+msgstr "%u 分"
 
 #: ../src/Widgets/TimerView.vala:92
 msgid "Active Task"
