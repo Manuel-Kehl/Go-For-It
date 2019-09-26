@@ -22,9 +22,9 @@ using GOFI.TXT;
  */
 class GOFI.TaskListPage : Gtk.Grid {
     // The list that is currently shown
-    private TaskList shown_list = null;
+    private TaskList _shown_list = null;
     // The list used by the timer
-    private TaskList active_list = null;
+    private TaskList _active_list = null;
     private TaskTimer task_timer;
 
     /* Various GTK Widgets */
@@ -36,31 +36,43 @@ class GOFI.TaskListPage : Gtk.Grid {
     private TimerView timer_view;
     private Gtk.Widget last_page;
 
+    public TaskList? shown_list {
+        get {
+            return _shown_list;
+        }
+    }
+
+    public TaskList? active_list {
+        get {
+            return _active_list;
+        }
+    }
+
     public signal void removing_list ();
 
     [Signal (action = true)]
     public virtual signal void switch_to_next () {
-        set_active_task_list ();
-        if (shown_list == null) {
+        switch_active_task_list ();
+        if (_shown_list == null) {
             return;
         }
-        var next = active_list.get_next ();
+        var next = _active_list.get_next ();
 
         if (next != null) {
-            active_list.active_task = next;
+            _active_list.active_task = next;
         }
     }
 
     [Signal (action = true)]
     public virtual signal void switch_to_prev () {
-        set_active_task_list ();
-        if (shown_list == null) {
+        switch_active_task_list ();
+        if (_shown_list == null) {
             return;
         }
-        var prev = active_list.get_prev ();
+        var prev = _active_list.get_prev ();
 
         if (prev != null) {
-            active_list.active_task = prev;
+            _active_list.active_task = prev;
         }
     }
 
@@ -68,16 +80,16 @@ class GOFI.TaskListPage : Gtk.Grid {
     public virtual signal void mark_task_done () {
         var visible_child = activity_stack.get_visible_child ();
         if (visible_child == first_page) {
-            var selected_task = shown_list.selected_task;
+            var selected_task = _shown_list.selected_task;
             if (selected_task != null) {
-                shown_list.mark_done (selected_task);
+                _shown_list.mark_done (selected_task);
             }
         } else if (visible_child == timer_view) {
             bool was_running = task_timer.running;
             task_timer.stop ();
             on_task_done ();
             // Resume break, only keep stopped when a task is active
-            if (active_list.active_task != null &&
+            if (_active_list.active_task != null &&
                 (task_timer.break_active ||
                  !settings.reset_timer_on_task_switch) &&
                 was_running) {
@@ -156,7 +168,7 @@ class GOFI.TaskListPage : Gtk.Grid {
 
     public void action_add_task () {
         activity_switcher.selected_item = "primary";
-        shown_list.add_task_shortcut ();
+        _shown_list.add_task_shortcut ();
     }
 
     public bool switch_page_left () {
@@ -193,8 +205,8 @@ class GOFI.TaskListPage : Gtk.Grid {
         string second_page_name;
 
         /* Instantiation of the Widgets */
-        first_page = shown_list.get_primary_page (out first_page_name);
-        last_page = shown_list.get_secondary_page (out second_page_name);
+        first_page = _shown_list.get_primary_page (out first_page_name);
+        last_page = _shown_list.get_secondary_page (out second_page_name);
 
         if(first_page_name == null) {
            first_page_name = _("To-Do");
@@ -211,13 +223,18 @@ class GOFI.TaskListPage : Gtk.Grid {
         if (task_timer.running) {
             // Otherwise no task will be displayed in the timer view
             task_timer.update_active_task ();
+
             // Otherwise it won't switch
             timer_view.show ();
+
             activity_switcher.selected_item = "timer";
+            activity_stack.visible_child = timer_view;
         }
         else {
             first_page.show ();
+
             activity_switcher.selected_item = "primary";
+            activity_stack.visible_child = first_page;
         }
     }
 
@@ -225,20 +242,20 @@ class GOFI.TaskListPage : Gtk.Grid {
      * Updates this to display the new TaskList and use this list for the timer.
      */
     public void set_task_list (TaskList task_list) {
-        if (this.active_list == null) {
-            this.active_list = task_list;
+        if (this._active_list == null) {
+            this._active_list = task_list;
         } else if (!task_timer.running) {
             remove_task_list ();
-            this.active_list = task_list;
+            this._active_list = task_list;
         }
-        this.shown_list = task_list;
-        this.shown_list.load ();
-        shown_list.notify["active-task"].connect (on_active_task_changed);
-        shown_list.notify["selected-task"].connect (on_selected_task_changed);
-        shown_list.timer_values_changed.connect (update_timer_values);
+        this._shown_list = task_list;
+        this._shown_list.load ();
+        _shown_list.notify["active-task"].connect (on_active_task_changed);
+        _shown_list.notify["selected-task"].connect (on_selected_task_changed);
+        _shown_list.timer_values_changed.connect (update_timer_values);
         update_timer_values (
-            shown_list.get_schedule (),
-            shown_list.get_reminder_time ()
+            _shown_list.get_schedule (),
+            _shown_list.get_reminder_time ()
         );
         add_widgets ();
         this.show_all ();
@@ -254,21 +271,21 @@ class GOFI.TaskListPage : Gtk.Grid {
     }
 
     private void on_task_done () {
-        active_list.mark_done (task_timer.active_task);
+        _active_list.mark_done (task_timer.active_task);
     }
 
     private void on_active_task_changed () {
-        task_timer.active_task = active_list.active_task;
+        task_timer.active_task = _active_list.active_task;
     }
 
     private void on_selected_task_changed () {
         // Don't change task, while timer is running
         if (!task_timer.running) {
-            if (shown_list != active_list) {
-                set_active_task_list ();
+            if (_shown_list != _active_list) {
+                switch_active_task_list ();
             }
-            task_timer.active_task = shown_list.selected_task;
-            shown_list.active_task = shown_list.selected_task;
+            task_timer.active_task = _shown_list.selected_task;
+            _shown_list.active_task = _shown_list.selected_task;
         }
     }
 
@@ -278,7 +295,7 @@ class GOFI.TaskListPage : Gtk.Grid {
         }
         var active_task = task_timer.active_task;
         activity_log.log_task (
-            active_list.list_info.name,
+            _active_list.list_info.name,
             active_task.description,
             start_time,
             runtime
@@ -300,22 +317,27 @@ class GOFI.TaskListPage : Gtk.Grid {
      * until the user selects another task.
      */
     public void show_task_list (TaskList task_list) {
-        if (task_list == shown_list) {
+        if (task_list == _shown_list) {
             return;
         }
-        if (active_list != null) {
-            active_list.notify["selected-task"].disconnect (on_selected_task_changed);
+        if (_shown_list != null) {
+            _shown_list.notify["selected-task"].disconnect (on_selected_task_changed);
         }
         foreach (Gtk.Widget widget in activity_stack.get_children ()) {
             activity_stack.remove (widget);
         }
-        shown_list = task_list;
-        shown_list.load ();
+        if (_shown_list != _active_list) {
+            _shown_list.unload ();
+        }
+        _shown_list = task_list;
+        if (task_list != _active_list) {
+            _shown_list.load ();
+        }
         add_widgets ();
-        shown_list.notify["selected-task"].connect (on_selected_task_changed);
+        _shown_list.notify["selected-task"].connect (on_selected_task_changed);
 
         if (!task_timer.running) {
-            set_active_task_list ();
+            switch_active_task_list ();
         }
         this.show_all ();
     }
@@ -325,24 +347,24 @@ class GOFI.TaskListPage : Gtk.Grid {
      * if the list shown has been changed and the user switches to the next
      * task or if the timer was not running during the change of shown lists.
      */
-    private void set_active_task_list () {
-        if (active_list == shown_list) {
+    public void switch_active_task_list () {
+        if (_active_list == _shown_list) {
             return;
         }
         task_timer.stop ();
-        if (active_list != null) {
-            active_list.unload ();
-            active_list.notify["active-task"].disconnect (on_active_task_changed);
-            active_list.timer_values_changed.disconnect (update_timer_values);
+        if (_active_list != null) {
+            _active_list.unload ();
+            _active_list.notify["active-task"].disconnect (on_active_task_changed);
+            _active_list.timer_values_changed.disconnect (update_timer_values);
         }
 
-        active_list = shown_list;
+        _active_list = _shown_list;
 
-        active_list.notify["active-task"].connect (on_active_task_changed);
-        active_list.timer_values_changed.connect (update_timer_values);
+        _active_list.notify["active-task"].connect (on_active_task_changed);
+        _active_list.timer_values_changed.connect (update_timer_values);
         update_timer_values (
-            active_list.get_schedule (),
-            active_list.get_reminder_time ()
+            _active_list.get_schedule (),
+            _active_list.get_reminder_time ()
         );
         on_selected_task_changed ();
     }
@@ -352,14 +374,14 @@ class GOFI.TaskListPage : Gtk.Grid {
      */
     public void remove_task_list () {
         task_timer.stop ();
-        if (shown_list != null) {
-            shown_list.unload ();
-            if (shown_list != active_list) {
-                active_list.unload ();
+        if (_shown_list != null) {
+            _shown_list.unload ();
+            if (_shown_list != _active_list) {
+                _active_list.unload ();
             }
-            active_list.notify["active-task"].disconnect (on_active_task_changed);
-            shown_list.notify["selected-task"].disconnect (on_selected_task_changed);
-            active_list.timer_values_changed.disconnect (update_timer_values);
+            _active_list.notify["active-task"].disconnect (on_active_task_changed);
+            _shown_list.notify["selected-task"].disconnect (on_selected_task_changed);
+            _active_list.timer_values_changed.disconnect (update_timer_values);
         }
         foreach (Gtk.Widget widget in activity_stack.get_children ()) {
             activity_stack.remove (widget);
@@ -370,8 +392,8 @@ class GOFI.TaskListPage : Gtk.Grid {
 
         task_timer.reset ();
 
-        shown_list = null;
-        active_list = null;
+        _shown_list = null;
+        _active_list = null;
     }
 
     /**
@@ -379,7 +401,7 @@ class GOFI.TaskListPage : Gtk.Grid {
      */
     public bool ready {
         get {
-            return (active_list != null);
+            return (_active_list != null);
         }
     }
 }

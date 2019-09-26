@@ -48,7 +48,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
     private Gtk.Settings gtk_settings;
 
-    private TodoListInfo? current_list_info;
     private Gtk.Widget? list_menu;
 
     public const string ACTION_PREFIX = "win";
@@ -102,13 +101,33 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         list_manager.list_removed.connect (on_list_removed);
     }
 
+    /**
+     * Checks if this list is currently in use and removes this list from
+     * task_page, should this be the case.
+     */
     private void on_list_removed (string provider, string id) {
-        if (current_list_info != null &&
-            current_list_info.provider_name == provider &&
-            current_list_info.id == id
+        var shown_list = task_page.shown_list;
+        if (shown_list == null) {
+            return;
+        }
+        var list_info = shown_list.list_info;
+        if (list_info.provider_name == provider &&
+            list_info.id == id
         ) {
             switch_top_stack (true);
-            switch_btn.sensitive = false;
+            if (task_page.active_list == shown_list) {
+                switch_btn.sensitive = false;
+                task_page.remove_task_list ();
+            } else {
+                load_list (task_page.active_list);
+            }
+        } else {
+            list_info = task_page.active_list.list_info;
+            if (list_info.provider_name == provider &&
+                list_info.id == id
+            ) {
+                task_page.switch_active_task_list ();
+            }
         }
     }
 
@@ -123,9 +142,14 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         var last_loaded = settings.list_last_loaded;
         if (last_loaded != null) {
             var list = list_manager.get_list (last_loaded.id);
+            if (list == null) {
+                list_menu_container.hide ();
+                return;
+            }
             load_list (list);
+            switch_btn.sensitive = true;
+            switch_top_stack (false);
         } else {
-            current_list_info = null;
             list_menu_container.hide ();
         }
     }
@@ -205,22 +229,28 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     }
 
     private void on_list_chosen (TodoListInfo selected_info) {
-        if (selected_info == current_list_info) {
-            switch_top_stack (false);
-            return;
+        // Prevent retrieving a new list if this list is currently in use
+        var shown_list = task_page.shown_list;
+        if (shown_list != null) {
+            if (shown_list.list_info == selected_info) {
+                switch_top_stack (false);
+                return;
+            } else if (task_page.active_list.list_info == selected_info) {
+                load_list (task_page.active_list);
+                switch_top_stack (false);
+                return;
+            }
         }
+
         var list = list_manager.get_list (selected_info.id);
         assert (list != null);
         load_list (list);
-        settings.list_last_loaded = ListIdentifier.from_info (selected_info);
-        current_list_info = selected_info;
+        switch_btn.sensitive = true;
+        switch_top_stack (false);
     }
 
     private void load_list (TaskList list) {
-        current_list_info = list.list_info;
         task_page.show_task_list (list);
-        switch_btn.sensitive = true;
-        switch_top_stack (false);
         if (list_menu != null) {
             list_menu_container.remove (list_menu);
         }
@@ -334,6 +364,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             task_page.show_switcher (false);
             list_menu_container.hide ();
         } else if (task_page.ready) {
+            var current_list_info = task_page.shown_list.list_info;
             top_stack.set_visible_child (task_page);
             var prev_icon = GOFI.Utils.get_image_fallback ("go-previous-symbolic", "go-previous");
             switch_img.set_from_icon_name (prev_icon, settings.toolbar_icon_size);
