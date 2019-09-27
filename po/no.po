@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-26 12:32+0200\n"
-"PO-Revision-Date: 2019-09-12 18:23+0000\n"
+"PO-Revision-Date: 2019-09-28 09:55+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/go-for-"
-"it/go-for-it/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"go-for-it/go-for-it/nb_NO/>\n"
 "Language: no\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -203,7 +203,7 @@ msgstr "Vis \"Om\"-dialog"
 
 #: ../src/Main.vala:117
 msgid "CSV file to log activities to."
-msgstr ""
+msgstr "CSV-fil å logge aktiviteter til."
 
 #: ../src/Main.vala:139 ../src/Widgets/TimerView.vala:88
 msgid "Take a Break"
@@ -236,8 +236,9 @@ msgid "Task duration exceeded"
 msgstr "Gjøremålsvarighet"
 
 #: ../src/Main.vala:179
+#, fuzzy
 msgid "Consider switching to a different task"
-msgstr ""
+msgstr "Overvei å bytte til et annet gjøremål."
 
 #: ../src/MainWindow.vala:63
 msgid "Go to overview"
@@ -382,7 +383,7 @@ msgstr "Loggfør tid forbrukt på hvert gjøremål"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
 msgid "This information will be stored in the todo.txt files."
-msgstr ""
+msgstr "Denne informasjonen vil bli lagret i todo.txt-filene."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
 msgid "Use default settings"
@@ -509,11 +510,11 @@ msgstr "Gjøremål opprettet %s"
 #: ../src/Todo.txt/Widgets/TaskRow.vala:270
 #: ../src/Todo.txt/Widgets/TaskRow.vala:272
 msgid "min."
-msgstr ""
+msgstr "min."
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:286
 msgid "%u hours and %u minutes"
-msgstr ""
+msgstr "%u timer og %u minutter"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:288
 #, fuzzy
