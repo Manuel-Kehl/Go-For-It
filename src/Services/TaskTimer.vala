@@ -288,7 +288,7 @@ class GOFI.TaskTimer {
      * Handles switchting between breaks and active tasks as well as
      * emitting all corresponding signals.
      */
-    public void end_iteration ()  {
+    public void end_iteration () {
         // Emit the "timer_finished" signal
         timer_finished (break_active);
         stop ();

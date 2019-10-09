@@ -284,7 +284,6 @@ class GOFI.TaskListPage : Gtk.Grid {
             if (_shown_list != _active_list) {
                 switch_active_task_list ();
             }
-            task_timer.active_task = _shown_list.selected_task;
             _shown_list.active_task = _shown_list.selected_task;
         }
     }

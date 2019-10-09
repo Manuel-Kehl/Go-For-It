@@ -22,7 +22,6 @@ using GOFI.TXT;
  */
 class GOFI.MainWindow : Gtk.ApplicationWindow {
     /* Various Variables */
-    private ListManager list_manager;
     private TaskTimer task_timer;
     private bool use_header_bar;
 
@@ -78,14 +77,14 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     /**
      * The constructor of the MainWindow class.
      */
-    public MainWindow (Gtk.Application app_context, ListManager list_manager,
-                       TaskTimer task_timer)
+    public MainWindow (Gtk.Application app_context, TaskTimer task_timer,
+                       TodoListInfo? initial_list)
     {
         // Pass the applicaiton context via GObject-based construction, because
         // constructor chaining is not possible for Gtk.ApplicationWindow
         Object (application: app_context, title: APP_NAME);
-        this.list_manager = list_manager;
         this.task_timer = task_timer;
+        assert (GOFI.list_manager != null);
 
         apply_settings ();
 
@@ -96,7 +95,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         init_css ();
         Gtk.IconTheme.get_default ().add_resource_path (GOFI.RESOURCE_PATH + "/icons");
 
-        load_last ();
+        load_initial (initial_list);
 
         list_manager.list_removed.connect (on_list_removed);
     }
@@ -138,19 +137,11 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         }
     }
 
-    private void load_last () {
-        var last_loaded = settings.list_last_loaded;
-        if (last_loaded != null) {
-            var list = list_manager.get_list (last_loaded.id);
-            if (list == null) {
-                list_menu_container.hide ();
-                return;
-            }
-            load_list (list);
-            switch_btn.sensitive = true;
-            switch_top_stack (false);
-        } else {
+    private void load_initial (TodoListInfo? initial_list) {
+        if (initial_list == null) {
             list_menu_container.hide ();
+        } else {
+            on_list_chosen (initial_list);
         }
     }
 
@@ -214,7 +205,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         main_layout.orientation = Gtk.Orientation.VERTICAL;
         main_layout.get_style_context ().add_class ("main_layout");
 
-        selection_page = new SelectionPage (list_manager);
+        selection_page = new SelectionPage ();
         task_page = new TaskListPage (task_timer);
 
         selection_page.list_chosen.connect (on_list_chosen);
@@ -228,7 +219,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         this.add (main_layout);
     }
 
-    private void on_list_chosen (TodoListInfo selected_info) {
+    public void on_list_chosen (TodoListInfo selected_info) {
         // Prevent retrieving a new list if this list is currently in use
         var shown_list = task_page.shown_list;
         if (shown_list != null) {
@@ -242,7 +233,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             }
         }
 
-        var list = list_manager.get_list (selected_info.id);
+        var list = list_manager.get_list (selected_info.provider_name, selected_info.id);
         assert (list != null);
         load_list (list);
         switch_btn.sensitive = true;

@@ -28,9 +28,6 @@ class GOFI.SelectionPage : Gtk.Grid {
     private TxtListEditDialog create_dialog;
     private Gtk.Widget placeholder;
 
-    /* Data Model */
-    private ListManager list_manager;
-
     /* Signals */
     public signal void selection_changed (TodoListInfo selected_info);
     public signal void list_chosen (TodoListInfo selected_info);
@@ -38,11 +35,10 @@ class GOFI.SelectionPage : Gtk.Grid {
     /**
      * Constructor of the SelectionPage class.
      */
-    public SelectionPage (ListManager list_manager) {
+    public SelectionPage () {
         /* Settings of the widget itself */
         this.orientation = Gtk.Orientation.VERTICAL;
         this.expand = true;
-        this.list_manager = list_manager;
         create_dialog = null;
 
         /* Setup the widget's children */

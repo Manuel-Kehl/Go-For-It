@@ -81,12 +81,27 @@ class GOFI.ListManager : Object, DragListModel {
         });
     }
 
-    public TxtList? get_list (string id) {
+    public TxtList? get_list (string provider, string id) {
+        if (provider != "Todo.txt") {
+            return null;
+        }
         return txt_manager.get_list (id);
     }
 
-    public TodoListInfo? get_list_info (string id) {
+    public TodoListInfo? get_list_info (string provider, string id) {
+        if (provider != "Todo.txt") {
+            return null;
+        }
         return txt_manager.get_list_info (id);
+    }
+
+    public TodoListInfo[] get_list_infos () {
+        uint infos_length = todolist_infos.length;
+        var infos = new TodoListInfo[infos_length];
+        for (uint i = 0; i < infos_length; i++) {
+            infos[i] = (TodoListInfo) todolist_infos.get_item (i);
+        }
+        return infos;
     }
 
     public void delete_list (TodoListInfo list_info, Gtk.Window? window) {

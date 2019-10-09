@@ -17,8 +17,16 @@
 
 namespace GOFI {
     public KeyBindingSettings kbsettings;
-    private SettingsManager settings;
-    private ActivityLog activity_log;
+    private SettingsManager settings = null;
+    private ActivityLog activity_log = null;
+    private ListManager list_manager = null;
+}
+
+errordomain GOFIParseError {
+    TOO_FEW_ARGS,
+    TOO_MANY_ARGS,
+    BAD_VALUE,
+    PARAM_NOT_UNIQUE
 }
 
 /**
@@ -27,12 +35,25 @@ namespace GOFI {
  */
 class GOFI.Main : Gtk.Application {
     private TaskTimer task_timer;
-    private ListManager list_manager;
     private MainWindow win;
 
     private static bool print_version = false;
     private static bool show_about_dialog = false;
+    private static bool list_lists = false;
     private static string? logfile = null;
+    private static string[] load_list = null;
+
+    private void load_settings () {
+        if (settings == null) {
+            settings = new SettingsManager.load_from_key_file ();
+        }
+    }
+
+    private void load_list_manager () {
+        if (list_manager == null) {
+            list_manager = new ListManager ();
+        }
+    }
 
     /**
      * Used to determine if a notification should be sent.
@@ -47,16 +68,37 @@ class GOFI.Main : Gtk.Application {
     }
 
     public void new_window () {
+        load_settings ();
+        load_list_manager ();
+        assert (list_manager != null);
+
+        TodoListInfo? info = null;
+        if (load_list != null) {
+            info = list_manager.get_list_info (load_list[0], load_list[1]);
+            if (info == null) {
+                stdout.printf (_("Not a known list: %s"),
+                    new ListIdentifier(
+                        load_list[0],
+                        load_list[1]
+                    ).to_string ()
+                );
+                load_list = null;
+                return;
+            }
+            load_list = null;
+        }
+
         // Don't create a new window, if one already exists
         if (win != null) {
+            if (info != null) {
+                win.on_list_chosen (info);
+            }
             win.show ();
             win.present ();
             return;
         }
 
-        settings = new SettingsManager.load_from_key_file ();
         task_timer = new TaskTimer ();
-        list_manager = new ListManager ();
 
         // Enable Notifications for the App
         Notify.init (GOFI.APP_NAME);
@@ -64,8 +106,23 @@ class GOFI.Main : Gtk.Application {
 
         kbsettings = new KeyBindingSettings ();
 
-        win = new MainWindow (this, list_manager, task_timer);
+        if (info == null) {
+            info = get_last_list_info ();
+        }
+
+        win = new MainWindow (this, task_timer, info);
         win.show_all ();
+    }
+
+    private TodoListInfo? get_last_list_info () {
+        var last_loaded = settings.list_last_loaded;
+        if (last_loaded != null) {
+            var list = list_manager.get_list_info (last_loaded.provider, last_loaded.id);
+            if (list != null) {
+                return list;
+            }
+        }
+        return null;
     }
 
     public void show_about (Gtk.Window? parent = null) {
@@ -80,6 +137,54 @@ class GOFI.Main : Gtk.Application {
         return res;
     }
 
+    /**
+     * Removes arguments from args. This frees the args located at pos and
+     * shrinks args.
+     */
+    private static void remove_args (ref string[] args, int pos, int length) {
+        for (int i = 0; i < length; i++) {
+            args[pos+i] = null;
+        }
+        int to_move = args.length - pos - length;
+        int old_length = args.length;
+        if (to_move > 0) {
+            args.move (pos+length, pos, to_move);
+        }
+        args.length = old_length - length;
+    }
+
+    /**
+     * This function performs manual parsing of parameters that have multiple
+     * arguments. OptionContext.parse_strv isn't able to do that at this time.
+     */
+    private void multi_arg_parse (ref string[] args) throws GOFIParseError {
+        int i = 0;
+        for (; i < args.length; i++) {
+            if (args[i] == "--load") {
+                if (i+2 < args.length && args[i+1][0] != '-' && args[i+2][0] != '-') {
+                    if (i+3 != args.length && args[i+3][0] != '-') {
+                        throw new GOFIParseError.TOO_MANY_ARGS(
+                            "Too many arguments for --load: \"%s\"", args[i+3]
+                        );
+                    }
+                    load_list = {args[i+1], args[i+2]};
+                    remove_args (ref args, i ,3);
+                    break;
+                } else {
+                    throw new GOFIParseError.TOO_FEW_ARGS("Missing arguments for --load");
+                }
+            }
+        }
+        for (; i < args.length; i++) {
+            if (args[i] == "--load") {
+                throw new GOFIParseError.PARAM_NOT_UNIQUE(
+                    "Second --load parameter encountered!" + "\n" +
+                    "Only one list can be loaded at a time"
+                );
+            }
+        }
+    }
+
     private int _command_line (ApplicationCommandLine command_line) {
         var context = new OptionContext (null);
         context.add_main_entries (entries, GOFI.EXEC_NAME);
@@ -88,9 +193,10 @@ class GOFI.Main : Gtk.Application {
         string[] args = command_line.get_arguments ();
 
         try {
+            multi_arg_parse (ref args);
             context.parse_strv (ref args);
         } catch (Error e) {
-            stdout.printf ("%s: Error: %s \n", GOFI.APP_NAME, e.message);
+            stdout.printf (_("%s: Error: %s") + "\n", GOFI.APP_NAME, e.message);
             return 0;
         }
 
@@ -99,10 +205,17 @@ class GOFI.Main : Gtk.Application {
             stdout.printf ("Copyright 2014-2019 'Go For it!' Developers.\n");
         } else if (show_about_dialog) {
             show_about ();
+        } else if (list_lists) {
+            load_settings ();
+            load_list_manager ();
+            stdout.printf ("Lists (List type : List id - List name):\n");
+            foreach (var info in list_manager.get_list_infos ()) {
+                stdout.printf ("\"%s\" : \"%s\" - \"%s\"\n", info.provider_name, info.id, info.name);
+            }
         } else {
             if (logfile != null) {
                 activity_log = new ActivityLog (File.new_for_commandline_arg (logfile));
-            } else {
+            } else if (activity_log == null) {
                 activity_log = new ActivityLog (null);
             }
             new_window ();
@@ -115,6 +228,8 @@ class GOFI.Main : Gtk.Application {
         { "version", 'v', 0, OptionArg.NONE, out print_version, N_("Print version info and exit"), null },
         { "about", 'a', 0, OptionArg.NONE, out show_about_dialog, N_("Show about dialog"), null },
         { "logfile", 0, 0, OptionArg.FILENAME, out logfile, N_("CSV file to log activities to."), "FILE" },
+        { "list", 0, 0, OptionArg.NONE, out list_lists, N_("Show configured lists and exit"), null},
+        { "load", 0, 0, OptionArg.NONE, null, N_("Load the list specified by the list type and id"), "LIST_TYPE LIST_ID"},
         { null }
     };
 

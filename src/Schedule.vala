@@ -17,7 +17,15 @@
 
 public class GOFI.Schedule {
     private int[] durations;
-    public uint length;
+    public uint length {
+        get {
+            return _length;
+        }
+        private set {
+            _length = value;
+        }
+    }
+    private uint _length;
 
     public bool valid {
         get {
@@ -36,8 +44,9 @@ public class GOFI.Schedule {
             added_length -= 1;
             warning ("The added durations array has an uneven length, discarding the last entry");
         }
-        this.durations.resize ((int) (2 * length + added_length));
-        Memory.copy (((int*) this.durations) + length*2, durations, sizeof(int)*added_length);
+        this.durations.resize ((int) (2 * _length + added_length));
+        Memory.copy (((int*) this.durations) + _length*2, durations, sizeof(int)*added_length);
+        length += added_length;
     }
 
     public void append (int task_duration, int break_duration) {
@@ -47,11 +56,11 @@ public class GOFI.Schedule {
     }
 
     public int get_task_duration (uint iteration) {
-        return durations[(iteration % length)*2].abs ();
+        return durations[(iteration % _length)*2].abs ();
     }
 
     public int get_break_duration (uint iteration) {
-        return durations[(iteration % length)*2+1].abs ();
+        return durations[(iteration % _length)*2+1].abs ();
     }
 
     public void set_durations (int[] durations) {
