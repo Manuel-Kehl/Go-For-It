@@ -76,6 +76,7 @@ class GOFI.TXT.TxtTask : TodoTask {
     public TxtTask.from_todo_txt (string descr, bool done) {
         base ("");
         var parts = descr.split (" ");
+        assert (parts.length != 0);
         var last = parts.length - 1;
         uint index = 0;
 
@@ -92,8 +93,8 @@ class GOFI.TXT.TxtTask : TodoTask {
             priority = NO_PRIO;
         }
 
-        if (last != index && is_date (parts[index])) {
-            if (done && index + 1 != last && is_date (parts[index + 1])) {
+        if (index <= last && is_date (parts[index])) {
+            if (done && index + 1 <= last && is_date (parts[index + 1])) {
                 completion_date = string_to_date (parts[index]);
                 creation_date = string_to_date (parts[index + 1]);
                 index += 2;
@@ -107,11 +108,21 @@ class GOFI.TXT.TxtTask : TodoTask {
             creation_date = null;
         }
 
+        if (index > last) {
+            warning ("Task does not have a description: \"%s\"", descr);
+            description = "";
+            return;
+        }
+
         (unowned string)[] unparsed = parts[index:parts.length];
         timer_value = consume_timer_value (unparsed);
         duration = consume_duration_value (unparsed);
-
-        description = string.joinv (" ", unparsed).strip ();
+        if (unparsed[0] == null) {
+            warning ("Task does not have a description: \"%s\"", descr);
+            description = "";
+        } else {
+            description = string.joinv (" ", unparsed).strip ();
+        }
     }
 
     public void update_from_simple_txt (string descr) {

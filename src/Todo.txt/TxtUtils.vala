@@ -64,7 +64,7 @@ namespace GOFI.TXT.TxtUtils {
         for (int i = 0; description[i] != null && i < length; i++) {
             if (is_timer_value (description[i])) {
                 timer_val = string_to_timer (description[i].offset(6));
-                array_remove (description, i, length);
+                array_remove (description, i);
                 return timer_val;
             }
         }
@@ -77,7 +77,7 @@ namespace GOFI.TXT.TxtUtils {
         for (int i = 0; description[i] != null && i < length; i++) {
             if (is_duration_value (description[i])) {
                 duration = (uint) uint64.parse(description[i].offset(9)) * 60;
-                array_remove (description, i, length);
+                array_remove (description, i);
                 return duration;
             }
         }
@@ -90,13 +90,14 @@ namespace GOFI.TXT.TxtUtils {
      * element and something went horribly wrong when using GLib.Array to have
      * an array from which elements can be removed.
      */
-    private static void array_remove ((unowned string)[] arr, int pos, int length) {
-        int to_move = length - pos - 1;
+    private static void array_remove ((unowned string)[] arr, int pos) {
+        int to_move = arr.length - pos - 1;
         if (to_move > 0) {
             arr.move (pos+1, pos, to_move);
         } else {
             arr[pos] = null;
         }
+        arr.length--;
     }
 
     public static DateTime string_to_date (string date_txt) {

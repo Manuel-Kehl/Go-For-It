@@ -317,7 +317,9 @@ class GOFI.TXT.TaskManager {
 
     private TxtTask? string_to_task (string _line, bool done_by_default) {
         string line = remove_carriage_return (_line).strip ();
-
+        if (line == "") {
+            return null;
+        }
         var task = new TxtTask.from_todo_txt (line, done_by_default);
         if (!task.valid) {
             return null;
