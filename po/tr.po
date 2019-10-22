@@ -3,100 +3,104 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-26 12:32+0200\n"
-"PO-Revision-Date: 2019-08-30 16:12+0200\n"
-"Last-Translator: Oğuz Vatansever <ogzvatansever@gmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/tr/>\n"
+"PO-Revision-Date: 2019-10-22 13:08+0000\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Weblate 3.9.1-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:444
 msgid "About"
-msgstr ""
+msgstr "Hakkında"
 
 #: ../src/Dialogs/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
-msgstr ""
+msgstr "Yerleşik zamanlayıcılı şık bir yapılacaklar listesi."
 
 #: ../src/Dialogs/ContributeDialog.vala:28
 msgid "Contributions and Donations"
-msgstr ""
+msgstr "Katkı Vermek ve Bağış Yapmak"
 
 #: ../src/Dialogs/ContributeDialog.vala:31
 msgid "Thank you for supporting"
-msgstr ""
+msgstr "Desteğiniz için teşekkürler"
 
 #: ../src/Dialogs/ContributeDialog.vala:32
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
 msgstr ""
+"Projemize kod, sanat çalışması, çeviri veya belgelendirme konularında "
+"katkıda bulunabilirsiniz:"
 
 #: ../src/Dialogs/ContributeDialog.vala:36
 msgid "If you really like this app, you can buy me a drink:"
-msgstr ""
+msgstr "Uygulamayı cidden beğendiyseniz, bana bir içercek ısmarlayabilirsiniz:"
 
 #: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:431
 msgid "Settings"
-msgstr ""
+msgstr "Ayarlar"
 
 #: ../src/Dialogs/SettingsDialog.vala:48
 msgid "Close"
-msgstr ""
+msgstr "Kapat"
 
 #: ../src/Dialogs/SettingsDialog.vala:71
 msgid "Behavior"
-msgstr ""
+msgstr "Davranış"
 
 #: ../src/Dialogs/SettingsDialog.vala:72
 msgid "Appearance"
-msgstr ""
+msgstr "Görünüm"
 
 #: ../src/Dialogs/SettingsDialog.vala:73
 msgid "Shortcuts"
-msgstr ""
+msgstr "Kısayollar"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 msgid "General"
-msgstr ""
+msgstr "Genel"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
 msgid "Use small toolbar icons"
-msgstr ""
+msgstr "Küçük araç çubuğu simgelerini kullan"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:42
 msgid "Appearance of the activity switcher"
-msgstr ""
+msgstr "Etkinlik değiştiricinin görünümü"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:49
 msgid "Icons"
-msgstr ""
+msgstr "Simgeler"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:50
 msgid "Text"
-msgstr ""
+msgstr "Metin"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:92
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:94
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:93
 msgid "Dark theme"
-msgstr ""
+msgstr "Koyu tema"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:123
 msgid "%s needs to be restarted for this setting to take effect"
 msgstr ""
+"Bu ayarların etkin olabilmesi için %s uygulamasının yeniden başlatılması "
+"gerekiyor"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:126
 msgid "Use a header bar"
-msgstr ""
+msgstr "Başlık çubuğu kullan"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
 #: ../src/Pages/TaskListPage.vala:130 ../src/Pages/TaskListPage.vala:220
@@ -104,91 +108,93 @@ msgstr ""
 #: ../src/Todo.txt/Widgets/TaskRow.vala:286
 #: ../src/Todo.txt/Widgets/TaskRow.vala:288
 msgid "Timer"
-msgstr ""
+msgstr "Zamanlayıcı"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
 #: ../src/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
-msgstr ""
+msgstr "Görev süresi"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:66
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:70
 msgid "minutes"
-msgstr ""
+msgstr "dakika"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
 #: ../src/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
-msgstr ""
+msgstr "Ara süresi"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:69
 msgid "Long break duration"
-msgstr ""
+msgstr "Uzun ara süresi"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:262
 msgid "Reminder before task ends"
-msgstr ""
+msgstr "Görev bitmeden önce hatırlatıcı"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:72
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:263
 msgid "seconds"
-msgstr ""
+msgstr "saniye"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "Resume task after the break"
-msgstr ""
+msgstr "Aradan sonra görevi devam ettir"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:74
 msgid "Reset timer after switching tasks"
-msgstr ""
+msgstr "Görevler arasında geçiş yaptıktan sonra zamanlayıcıyı sıfırla"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
 msgid "Have a long break after"
-msgstr ""
+msgstr "Sonrasında uzun ara kullan"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:79
 msgid "short breaks"
-msgstr ""
+msgstr "kısa ara"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
 msgid "Timer mode"
-msgstr ""
+msgstr "Zamanlayıcı kipi"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:108
 msgid "Simple"
-msgstr ""
+msgstr "Basit"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:109
 msgid "Pomodoro"
-msgstr ""
+msgstr "Pomodoro"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:110
 msgid "Custom"
-msgstr ""
+msgstr "Özel"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:169
 msgid "Tasks"
-msgstr ""
+msgstr "Görevler"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:170
 msgid "Placement of new tasks"
-msgstr ""
+msgstr "Yeni görevlerin yerleşimi"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:173
 msgid "Top of the list"
-msgstr ""
+msgstr "Listenin başında"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:174
 msgid "Bottom of the list"
-msgstr ""
+msgstr "Listenin sonunda"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
 msgstr ""
+"Bu ayarların etkin olabilmesi için %s uygulamasının yeniden başlatılması "
+"gerekiyor."
 
 #: ../src/Main.vala:115
 msgid "Print version info and exit"
@@ -196,65 +202,67 @@ msgstr "Sürüm bilgisini yazdır ve çık"
 
 #: ../src/Main.vala:116
 msgid "Show about dialog"
-msgstr "Dialog hakkında bilgi göster"
+msgstr "Hakkında iletişim penceresini göster"
 
 #: ../src/Main.vala:117
 msgid "CSV file to log activities to."
-msgstr ""
+msgstr "Etkinliklerin kayıt altına alınacağı CVS dosyası."
 
 #: ../src/Main.vala:139 ../src/Widgets/TimerView.vala:88
 msgid "Take a Break"
-msgstr ""
+msgstr "Ara Ver"
 
 #: ../src/Main.vala:140
 msgid "Relax and stop thinking about your current task for a while"
-msgstr ""
+msgstr "Geçerli görev hakkında düşünmeye bir süre ara verip rahatlayın"
 
 #: ../src/Main.vala:145
 msgid "The Break is Over"
-msgstr ""
+msgstr "Şimdi Görev Zamanı"
 
 #: ../src/Main.vala:146
 msgid "Your current task is"
-msgstr ""
+msgstr "Geçerli görev"
 
 #: ../src/Main.vala:166
 msgid "Prepare for your break"
-msgstr ""
+msgstr "Ara için hazırlanın"
 
 #: ../src/Main.vala:167
 msgid "You have %s seconds left"
-msgstr ""
+msgstr "%s saniye kaldı"
 
 #: ../src/Main.vala:178
 msgid "Task duration exceeded"
-msgstr ""
+msgstr "Görev süresi aşıldı"
 
 #: ../src/Main.vala:179
 msgid "Consider switching to a different task"
-msgstr ""
+msgstr "Farklı bir göreve geçmiş yapmak güzel olabilir"
 
 #: ../src/MainWindow.vala:63
 msgid "Go to overview"
-msgstr ""
+msgstr "Genel görünüme git"
 
 #: ../src/MainWindow.vala:64
 msgid "Go back to the to-do list"
-msgstr ""
+msgstr "Yapılacaklar listesine geri dön"
 
 #: ../src/MainWindow.vala:332
 msgid "Menu"
-msgstr ""
+msgstr "Menü"
 
 #: ../src/MainWindow.vala:437
 msgid "Contribute / Donate"
-msgstr ""
+msgstr "Katkı / Bağış"
 
 #: ../src/Pages/SelectionPage.vala:96
 msgid ""
 "Currently, no lists are configured.\n"
 "Add one below!"
 msgstr ""
+"Henüz hiçbir liste yapılandırılmadı.\n"
+"Bir tane ekleyebilirsiniz!"
 
 #: ../src/Pages/SelectionPage.vala:106
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:65
@@ -263,76 +271,73 @@ msgstr "Liste ekle"
 
 #: ../src/Pages/TaskListPage.vala:123
 msgid "Lists"
-msgstr ""
+msgstr "Listeler"
 
 #: ../src/Pages/TaskListPage.vala:129 ../src/Pages/TaskListPage.vala:212
 msgid "To-Do"
-msgstr ""
+msgstr "Yapılacaklar"
 
 #: ../src/Pages/TaskListPage.vala:131 ../src/Pages/TaskListPage.vala:215
 msgid "Done"
-msgstr ""
+msgstr "Tamamlandı"
 
 #: ../src/Services/ActivityLog.vala:55
-#, fuzzy
-#| msgid "Couldn't create directory: %s"
 msgid "Couldn't write to %s: %s"
-msgstr "Belirtilen dizin oluşturulamadı: %s"
+msgstr "%s dizinine yazılamadı: %s"
 
 #: ../src/Services/SettingsManager.vala:437
 #: ../src/Todo.txt/TxtListManager.vala:58
 #: ../src/Todo.txt/TxtListManager.vala:501
 msgid "Couldn't create directory: %s"
-msgstr "Belirtilen dizin oluşturulamadı: %s"
+msgstr "Dizin oluşturulamadı: %s"
 
 #: ../src/Services/SettingsManager.vala:591
 msgid "Couldn't properly import settings from %s: %s"
-msgstr "%s 'den ayarlar içe aktarılamadı: %s"
+msgstr "Ayarlar %s dosyasından içe aktarılamadı: %s"
 
 #: ../src/Services/Shortcuts.vala:135
 msgid "Filter tasks"
-msgstr ""
+msgstr "Görevleri süz"
 
 #: ../src/Services/Shortcuts.vala:136
-#, fuzzy
 msgid "Add new task/list"
-msgstr "Yeni bir yapılacak ekle"
+msgstr "Yeni görev/liste ekle"
 
 #: ../src/Services/Shortcuts.vala:137
 msgid "Start/Stop the timer"
-msgstr ""
+msgstr "Zamanlayıcıyı Başlat/Durdur"
 
 #: ../src/Services/Shortcuts.vala:138
 msgid "Mark the task as complete"
-msgstr ""
+msgstr "Görevi tamamlandı olarak işaretle"
 
 #: ../src/Services/Shortcuts.vala:139
 msgid "Move selected row up"
-msgstr ""
+msgstr "Seçileni üst satıra taşı"
 
 #: ../src/Services/Shortcuts.vala:140
 msgid "Move selected row down"
-msgstr ""
+msgstr "Seçileni alt satıra taşı"
 
 #: ../src/Services/Shortcuts.vala:142
 msgid "Move to next task/row"
-msgstr ""
+msgstr "Sonraki göreve/satıra taşı"
 
 #: ../src/Services/Shortcuts.vala:143
 msgid "Move to previous task/row"
-msgstr ""
+msgstr "Önceki göreve/satıra taşı"
 
 #: ../src/Services/Shortcuts.vala:144
 msgid "Move to right screen"
-msgstr ""
+msgstr "Sağdaki ekrana taşı"
 
 #: ../src/Services/Shortcuts.vala:145
 msgid "Move to left screen"
-msgstr ""
+msgstr "Soldaki ekrana taşı"
 
 #: ../src/Theme.vala:54
 msgid "Inherit from GTK theme"
-msgstr "GTK temasının varisi"
+msgstr "GTK temasından miras al"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:50
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
@@ -351,7 +356,7 @@ msgstr "Yeni yapılacak listesi"
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:69
 #: ../src/Todo.txt/TxtListManager.vala:236
 msgid "Cancel"
-msgstr "İptal"
+msgstr "İptal Et"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:68
 msgid "Edit to-do list properties"
@@ -363,23 +368,23 @@ msgstr "Uygula"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:115
 msgid "The configured directory is already in use by another list."
-msgstr ""
+msgstr "Yapılandırılmış dizin zaten başka bir liste tarafından kullanılıyor."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:135
 msgid "Please assign a name to the list."
-msgstr ""
+msgstr "Lütfen liste için isim belirleyin."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:210
 msgid "Log the time spent working on each task"
-msgstr ""
+msgstr "Her görev için zaman kullanımını kayıt altına al"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
 msgid "This information will be stored in the todo.txt files."
-msgstr ""
+msgstr "Bu bilgi todo.txt dosyasında depolanır."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
 msgid "Use default settings"
-msgstr ""
+msgstr "Öntanımlı ayarları kullan"
 
 #: ../src/Todo.txt/Filter.vala:69 ../src/Todo.txt/Widgets/TaskRow.vala:317
 msgid "project"
@@ -395,11 +400,11 @@ msgstr "öncelik"
 
 #: ../src/Todo.txt/TaskManager.vala:46
 msgid "Spread the word about \"%s\""
-msgstr "\"%s\" 'i arkadaşlarınla da paylaş"
+msgstr "\"%s\" uygulamasını arkadaşlarınla da paylaş"
 
 #: ../src/Todo.txt/TaskManager.vala:47
 msgid "Consider a donation to help the project"
-msgstr "Projeye yardımda bulunmak için bir bağış düşünebilirsiniz"
+msgstr "Projeye bağışta bulunmayı düşünebilirsiniz"
 
 #: ../src/Todo.txt/TaskManager.vala:48
 msgid "Consider contributing to the project"
@@ -410,16 +415,16 @@ msgid ""
 "%s won't save or load from the current todo.txt directory until it is either "
 "restarted or another location is chosen."
 msgstr ""
-"%s yeni bir yer seçilinceye kadar yada resetleninceye kadar şu anki todo.txt "
-"dizine kaydedemez yada yükleme yapamaz."
+"%s, yeniden başlatılana veya farklı bir konum seçilene kadar geçerli "
+"todo.txt dizinine kaydedemez veya ilgili dizinden yükleyemez."
 
 #: ../src/Todo.txt/TaskManager.vala:52
 msgid "Couldn't read the todo.txt file (%s):"
-msgstr "Seçili todo.txt dosyası okunamadı (%s):"
+msgstr "todo.txt dosyası okunamadı (%s):"
 
 #: ../src/Todo.txt/TaskManager.vala:53
 msgid "Couldn't save the to-do list (%s):"
-msgstr "Seçili yapılacaklar listesi kaydedilemedi (%s):"
+msgstr "Yapılacaklar listesi kaydedilemedi (%s):"
 
 #: ../src/Todo.txt/TaskManager.vala:54
 msgid ""
@@ -427,14 +432,17 @@ msgid ""
 "file or mountable location. Please change the path in the settings to a "
 "suitable directory or remove this file."
 msgstr ""
+"Todo.txt dizininin yolu bir dizine değil, bir dosyaya veya çıkartılabilir "
+"bir konuma işaret ediyor. Lütfen ayarlardaki yolu uygun bir dizinle "
+"değiştirin veya bu dosyayı kaldırın."
 
 #: ../src/Todo.txt/TxtList.vala:171
 msgid "Clear Done List"
-msgstr "Tamamlananları Temizle"
+msgstr "Tamamlananlar Listesini Temizle"
 
 #: ../src/Todo.txt/TxtListManager.vala:202
 msgid "An error was encountered while moving a file!"
-msgstr "Bir dosyayı taşırken bir hata ile karşılaşıldı!"
+msgstr "Bir dosya taşınırken hata oluştu!"
 
 #: ../src/Todo.txt/TxtListManager.vala:204
 msgid "Error information: "
@@ -446,7 +454,7 @@ msgstr "Todo.txt dosyaları hedef dizinde bulundu."
 
 #: ../src/Todo.txt/TxtListManager.vala:230
 msgid "What should be done with these files?"
-msgstr "Bu dosyalarla neler yapılmalı?"
+msgstr "Bu dosyalarla ne yapmalı?"
 
 #: ../src/Todo.txt/TxtListManager.vala:232
 msgid "Keep old"
@@ -461,24 +469,24 @@ msgid ""
 "You currently don't have any tasks.\n"
 "Add some!"
 msgstr ""
-"Henüz yapılacak hiçbir şeyiniz yok.\n"
-"Ekleyin biraz!"
+"Şu anda yapılacak hiçbir göreviniz yok.\n"
+"Yeni görev ekleyin!"
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:36
 msgid "No tasks found."
-msgstr ""
+msgstr "Hiçbir görev bulunamadı."
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:37
 msgid "You don't have any completed tasks stored."
-msgstr "Kaydedilmiş hiçbir göreviniz yok."
+msgstr "Tamamlanmış hiçbir göreviniz yok."
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:38
 msgid "You finished all tasks, good job!"
-msgstr "Bütün yapılacaklarınızı tamamladınız, tebrikler!"
+msgstr "Tüm görevleri tamamladınız, tebrikler!"
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:191
 msgid "Add new task"
-msgstr "Yeni bir yapılacak ekle"
+msgstr "Yeni görev ekle"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
@@ -488,65 +496,65 @@ msgstr "%d-%m-%Y"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:242
 msgid "Task completed at %s, created at %s"
-msgstr ""
+msgstr "Görev tamamlanma saati: %s, oluşturulma saati: %s"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:249
 msgid "Task created at %s"
-msgstr ""
+msgstr "Görev oluşturulma saati: %s"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:270
 #: ../src/Todo.txt/Widgets/TaskRow.vala:272
 msgid "min."
-msgstr ""
+msgstr "dak."
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:286
 msgid "%u hours and %u minutes"
-msgstr ""
+msgstr "%u saat, %u dakika"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:288
 msgid "%u minutes"
-msgstr ""
+msgstr "%u dakika"
 
 #: ../src/Widgets/TimerView.vala:92
 msgid "Active Task"
-msgstr ""
+msgstr "Etkin Görev"
 
 #: ../src/Widgets/TimerView.vala:112
 msgid "Pau_se"
-msgstr ""
+msgstr "_Duraklat"
 
 #: ../src/Widgets/TimerView.vala:119
 msgid "_Start"
-msgstr ""
+msgstr "_Başlat"
 
 #: ../src/Widgets/TimerView.vala:140
 msgid "Inactive"
-msgstr ""
+msgstr "Devre dışı"
 
 #: ../src/Widgets/TimerView.vala:141
 msgid "No task has been selected"
-msgstr ""
+msgstr "Hiçbir görev seçilmedi"
 
 #: ../src/Widgets/TimerView.vala:225
 msgid "S_kip"
-msgstr ""
+msgstr "_Geç"
 
 #: ../src/Widgets/TimerView.vala:226
 msgid "_Done"
-msgstr ""
+msgstr "_Tamamlandı"
 
 #: ../src/Widgets/TimerView.vala:271
 msgid "Relax"
-msgstr ""
+msgstr "Rahatla"
 
 #: ../src/Widgets/TimerView.vala:272
 msgid "You have nothing to do."
-msgstr ""
+msgstr "Yapacak hiçbir görev yok."
 
 #: ../src/Widgets/TodoListInfoRow.vala:94
 msgid "Delete"
-msgstr ""
+msgstr "Sil"
 
 #: ../src/Widgets/TodoListInfoRow.vala:95
 msgid "Edit"
-msgstr ""
+msgstr "Düzenle"
