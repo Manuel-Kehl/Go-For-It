@@ -39,6 +39,9 @@ class GOFI.TXT.TaskManager {
     private FileWatcher todo_watcher;
     private FileWatcher done_watcher;
 
+    private uint todo_save_timeout_id;
+    private uint done_save_timeout_id;
+
     private TxtTask active_task;
     private bool active_task_found;
 
@@ -65,6 +68,8 @@ class GOFI.TXT.TaskManager {
         done_store = new TaskStore (true);
 
         refresh_queued = false;
+        todo_save_timeout_id = 0;
+        done_save_timeout_id = 0;
 
         load_task_stores ();
         connect_store_signals ();
@@ -162,8 +167,8 @@ class GOFI.TXT.TaskManager {
 
     private void connect_store_signals () {
         // Save data, as soon as something has changed
-        todo_store.task_data_changed.connect (save_todo_tasks);
-        done_store.task_data_changed.connect (save_done_tasks);
+        todo_store.task_data_changed.connect (queue_todo_task_save);
+        done_store.task_data_changed.connect (queue_done_task_save);
 
         // Move task from one list to another, if done or undone
         todo_store.task_done_changed.connect (task_done_handler);
@@ -265,20 +270,67 @@ class GOFI.TXT.TaskManager {
         lsettings.add_default_todos = false;
     }
 
-    private void save_todo_tasks () {
+    /**
+     * Saves lists for which a timeout job exists
+     */
+    public void save_queued_lists () {
+        if (todo_save_timeout_id != 0) {
+            Source.remove (todo_save_timeout_id);
+            save_todo_tasks ();
+        }
+        if (done_save_timeout_id != 0) {
+            Source.remove (done_save_timeout_id);
+            save_done_tasks ();
+        }
+    }
+
+    /**
+     * Adds a timeout job to save the todo.txt list.
+     * A timeout is used to reduce the number of times the list is saved.
+     * It may be useful to increase the interval value to reduce the amount of
+     * stutter when dealing with very large lists on weak machines.
+     * (Move the moment of saving to a time where the user isn't actively
+     * using the app)
+     * But we would need to check that the user isn't currently performing a
+     * drag and drop action as saves at such a moment would be the most
+     * noticable.
+     */
+    private void queue_todo_task_save () {
+        if (todo_save_timeout_id != 0 || read_only) {
+            return;
+        }
+        todo_save_timeout_id = GLib.Timeout.add (
+            100, save_todo_tasks, GLib.Priority.DEFAULT_IDLE
+        );
+    }
+
+    private void queue_done_task_save () {
+        if (done_save_timeout_id != 0 || read_only) {
+            return;
+        }
+        done_save_timeout_id = GLib.Timeout.add (
+            100, save_done_tasks, GLib.Priority.DEFAULT_IDLE
+        );
+    }
+
+    private bool save_todo_tasks () {
         if (!read_only) {
             todo_watcher.watching = false;
             write_task_file (this.todo_store, this.todo_txt);
             todo_watcher.watching = true;
         }
+        todo_save_timeout_id = 0;
+        return false;
     }
 
-    private void save_done_tasks () {
+    private bool save_done_tasks () {
         if (!read_only) {
             done_watcher.watching = false;
             write_task_file (this.done_store, this.done_txt);
             done_watcher.watching = true;
         }
+        done_save_timeout_id = 0;
+        return false;
     }
 
     private void show_error_dialog (string error_message) {

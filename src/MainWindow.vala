@@ -179,7 +179,10 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             dont_exit = true;
         }
 
-        if (dont_exit == false) Notify.uninit ();
+        if (dont_exit == false) {
+            task_page.remove_task_list ();
+            Notify.uninit ();
+        }
 
         return dont_exit;
     }
