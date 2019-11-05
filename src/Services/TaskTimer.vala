@@ -174,6 +174,7 @@ class GOFI.TaskTimer {
 
             running = true;
             timer_started ();
+            _active_task.status |= TaskStatus.TIMER_ACTIVE;
         }
     }
 
@@ -184,6 +185,7 @@ class GOFI.TaskTimer {
             previous_runtime += runtime;
             running = false;
             timer_stopped (start_time, (uint) runtime);
+            _active_task.status ^= TaskStatus.TIMER_ACTIVE;
         }
     }
 

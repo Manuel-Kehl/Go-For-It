@@ -283,11 +283,13 @@ class GOFI.TXT.TaskRow: DragListRow {
                     hours = timer_value;
 
                     if (hours != 0) {
-                        markup_string += "\n<b>" + _("Timer") + ":" + _("%u hours and %u minutes").printf (hours, mins) + "</b>";
+                        markup_string += "\n<b>" + _("Timer") + ": " + _("%u hours and %u minutes").printf (hours, mins) + "</b>";
                     } else {
-                        markup_string += "\n<b>" + _("Timer") + ":" + _("%u minutes").printf (mins) + "</b>";
+                        markup_string += "\n<b>" + _("Timer") + ": " + _("%u minutes").printf (mins) + "</b>";
                     }
                 }
+            } else if ((task.status & TaskStatus.TIMER_ACTIVE) != 0) {
+                markup_string += " ⏰";
             }
         }
 
@@ -336,6 +338,7 @@ class GOFI.TXT.TaskRow: DragListRow {
             task.notify["description"].connect (update);
             task.notify["priority"].connect (update);
             task.notify["timer-value"].connect (update);
+            task.notify["status"].connect (update);
         }
     }
 }

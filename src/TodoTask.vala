@@ -15,6 +15,11 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
+public enum TaskStatus {
+    NONE = 0,
+    TIMER_ACTIVE = 0x01
+}
+
 /**
  * This class stores all task information.
  */
@@ -41,6 +46,12 @@ public class GOFI.TodoTask : GLib.Object {
     public virtual uint timer_value {
         public get;
         public set;
+    }
+
+    public virtual TaskStatus status {
+        public get;
+        public set;
+        default = TaskStatus.NONE;
     }
 
     /**
