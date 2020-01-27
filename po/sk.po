@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-26 12:32+0200\n"
-"PO-Revision-Date: 2020-01-27 23:46+0000\n"
+"PO-Revision-Date: 2020-01-29 00:50+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/sk/>\n"
@@ -21,15 +21,15 @@ msgstr "O programe"
 
 #: ../src/Dialogs/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
-msgstr ""
+msgstr "Štýlový zoznam úloh so vstavaným časovačom produktivity."
 
 #: ../src/Dialogs/ContributeDialog.vala:28
 msgid "Contributions and Donations"
-msgstr ""
+msgstr "Príspevky a dary"
 
 #: ../src/Dialogs/ContributeDialog.vala:31
 msgid "Thank you for supporting"
-msgstr ""
+msgstr "Ďakujeme za vašu podporu"
 
 #: ../src/Dialogs/ContributeDialog.vala:32
 msgid ""
@@ -43,23 +43,23 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:431
 msgid "Settings"
-msgstr ""
+msgstr "Nastavenia"
 
 #: ../src/Dialogs/SettingsDialog.vala:48
 msgid "Close"
-msgstr ""
+msgstr "Zatvoriť"
 
 #: ../src/Dialogs/SettingsDialog.vala:71
 msgid "Behavior"
-msgstr ""
+msgstr "Správanie"
 
 #: ../src/Dialogs/SettingsDialog.vala:72
 msgid "Appearance"
-msgstr ""
+msgstr "Vzhľad"
 
 #: ../src/Dialogs/SettingsDialog.vala:73
 msgid "Shortcuts"
-msgstr ""
+msgstr "Klávesové skratky"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 msgid "General"
@@ -75,11 +75,11 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:49
 msgid "Icons"
-msgstr ""
+msgstr "Ikony"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:50
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:92
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:94
@@ -104,12 +104,12 @@ msgstr ""
 #: ../src/Todo.txt/Widgets/TaskRow.vala:286
 #: ../src/Todo.txt/Widgets/TaskRow.vala:288
 msgid "Timer"
-msgstr ""
+msgstr "Časovač"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
 #: ../src/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
-msgstr ""
+msgstr "Trvanie úlohy"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:66
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
@@ -120,7 +120,7 @@ msgstr ""
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
 #: ../src/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
-msgstr ""
+msgstr "Dĺžka prestávky"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:69
 msgid "Long break duration"
@@ -216,7 +216,7 @@ msgstr ""
 
 #: ../src/Main.vala:146
 msgid "Your current task is"
-msgstr ""
+msgstr "Vaša aktívna úloha je"
 
 #: ../src/Main.vala:166
 msgid "Prepare for your break"
@@ -244,11 +244,11 @@ msgstr ""
 
 #: ../src/MainWindow.vala:332
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: ../src/MainWindow.vala:437
 msgid "Contribute / Donate"
-msgstr ""
+msgstr "Prispejte/Darujte"
 
 #: ../src/Pages/SelectionPage.vala:96
 msgid ""
@@ -259,11 +259,11 @@ msgstr ""
 #: ../src/Pages/SelectionPage.vala:106
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:65
 msgid "Add list"
-msgstr ""
+msgstr "Pridať zoznam"
 
 #: ../src/Pages/TaskListPage.vala:123
 msgid "Lists"
-msgstr ""
+msgstr "Zoznamy"
 
 #: ../src/Pages/TaskListPage.vala:129 ../src/Pages/TaskListPage.vala:212
 msgid "To-Do"
@@ -271,7 +271,7 @@ msgstr ""
 
 #: ../src/Pages/TaskListPage.vala:131 ../src/Pages/TaskListPage.vala:215
 msgid "Done"
-msgstr ""
+msgstr "Hotovo"
 
 #: ../src/Services/ActivityLog.vala:55
 msgid "Couldn't write to %s: %s"
@@ -338,7 +338,7 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:51
 msgid "List name"
-msgstr ""
+msgstr "Názov zoznamu"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
 msgid "New to-do list"
@@ -348,7 +348,7 @@ msgstr ""
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:69
 #: ../src/Todo.txt/TxtListManager.vala:236
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušiť"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:68
 msgid "Edit to-do list properties"
@@ -356,7 +356,7 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:70
 msgid "Apply"
-msgstr ""
+msgstr "Vykonať"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:115
 msgid "The configured directory is already in use by another list."
@@ -471,7 +471,7 @@ msgstr ""
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:191
 msgid "Add new task"
-msgstr ""
+msgstr "Pridať novú úlohu"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
@@ -502,7 +502,7 @@ msgstr ""
 
 #: ../src/Widgets/TimerView.vala:92
 msgid "Active Task"
-msgstr ""
+msgstr "Aktívna úloha"
 
 #: ../src/Widgets/TimerView.vala:112
 msgid "Pau_se"
@@ -514,7 +514,7 @@ msgstr ""
 
 #: ../src/Widgets/TimerView.vala:140
 msgid "Inactive"
-msgstr ""
+msgstr "Neaktívne"
 
 #: ../src/Widgets/TimerView.vala:141
 msgid "No task has been selected"
@@ -538,8 +538,8 @@ msgstr ""
 
 #: ../src/Widgets/TodoListInfoRow.vala:94
 msgid "Delete"
-msgstr ""
+msgstr "Vymazať"
 
 #: ../src/Widgets/TodoListInfoRow.vala:95
 msgid "Edit"
-msgstr ""
+msgstr "Upraviť"
