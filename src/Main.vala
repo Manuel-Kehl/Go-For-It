@@ -208,7 +208,7 @@ class GOFI.Main : Gtk.Application {
         } else if (list_lists) {
             load_settings ();
             load_list_manager ();
-            stdout.printf ("Lists (List type : List id - List name):\n");
+            stdout.printf ("Lists (List type : List ID - List name):\n");
             foreach (var info in list_manager.get_list_infos ()) {
                 stdout.printf ("\"%s\" : \"%s\" - \"%s\"\n", info.provider_name, info.id, info.name);
             }
@@ -229,7 +229,7 @@ class GOFI.Main : Gtk.Application {
         { "about", 'a', 0, OptionArg.NONE, out show_about_dialog, N_("Show about dialog"), null },
         { "logfile", 0, 0, OptionArg.FILENAME, out logfile, N_("CSV file to log activities to."), "FILE" },
         { "list", 0, 0, OptionArg.NONE, out list_lists, N_("Show configured lists and exit"), null},
-        { "load", 0, 0, OptionArg.NONE, null, N_("Load the list specified by the list type and id"), "LIST_TYPE LIST_ID"},
+        { "load", 0, 0, OptionArg.NONE, null, N_("Load the list specified by the list type and ID"), "LIST_TYPE LIST_ID"},
         { null }
     };
 
