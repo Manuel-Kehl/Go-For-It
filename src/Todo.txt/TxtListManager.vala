@@ -55,7 +55,7 @@ class GOFI.TXT.TxtListManager {
                 config_dir, 0775
             );
             if (dir_exists != 0) {
-                error (_("Couldn't create directory: %s"), config_dir);
+                error (_("Couldn't create folder: %s"), config_dir);
             }
         } else {
             // If it does exist, read existing values
@@ -223,7 +223,7 @@ class GOFI.TXT.TxtListManager {
             Gtk.DialogFlags.MODAL,
             Gtk.MessageType.QUESTION,
             Gtk.ButtonsType.NONE,
-            _("Todo.txt files were found in the destination directory.")
+            _("Todo.txt files were found in the destination folder.")
             +
             "\n"
             +
@@ -498,7 +498,7 @@ class GOFI.TXT.TxtListManager {
     private void write_key_file () throws Error {
         int dir_exists = DirUtils.create_with_parents (config_dir, 0775);
         if (dir_exists != 0) {
-            error (_("Couldn't create directory: %s"), config_dir);
+            error (_("Couldn't create folder: %s"), config_dir);
         }
         GLib.FileUtils.set_contents (list_file, key_file.to_data ());
     }

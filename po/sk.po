@@ -300,7 +300,7 @@ msgstr "Nepodarilo sa zapísať do %s: %s"
 #: ../src/Services/SettingsManager.vala:437
 #: ../src/Todo.txt/TxtListManager.vala:58
 #: ../src/Todo.txt/TxtListManager.vala:501
-msgid "Couldn't create directory: %s"
+msgid "Couldn't create folder: %s"
 msgstr "Nepodarilo sa vytvoriť adresár: %s"
 
 #: ../src/Services/SettingsManager.vala:591
@@ -353,7 +353,7 @@ msgstr "Použiť z GTK témy"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:50
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
-msgid "directory"
+msgid "folder"
 msgstr "adresár"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:51
@@ -379,7 +379,7 @@ msgid "Apply"
 msgstr "Vykonať"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:115
-msgid "The configured directory is already in use by another list."
+msgid "The configured folder is already in use by another list."
 msgstr "Nakonfigurovaný adresár už používa iný zoznam."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:135
@@ -424,7 +424,7 @@ msgstr "Zvážte príspevok k projektu"
 
 #: ../src/Todo.txt/TaskManager.vala:54
 msgid ""
-"%s won't save or load from the current todo.txt directory until it is either "
+"%s won't save or load from the current todo.txt folder until it is either "
 "restarted or another location is chosen."
 msgstr ""
 "%s sa neuloží alebo nenačíta z aktuálneho adresára todo.txt, kým sa "
@@ -440,9 +440,9 @@ msgstr "Zoznam úloh (%s) sa nepodarilo uložiť:"
 
 #: ../src/Todo.txt/TaskManager.vala:57
 msgid ""
-"The path to the todo.txt directory does not point to a directory, but to a "
+"The path to the todo.txt folder does not point to a folder, but to a "
 "file or mountable location. Please change the path in the settings to a "
-"suitable directory or remove this file."
+"suitable folder or remove this file."
 msgstr ""
 "Cesta k adresáru todo.txt nesmeruje na adresár, ale na súbor alebo "
 "pripojiteľné umiestnenie. Zmeňte cestu v nastaveniach do vhodného adresára "
@@ -461,7 +461,7 @@ msgid "Error information: "
 msgstr "Informácie o chybe: "
 
 #: ../src/Todo.txt/TxtListManager.vala:226
-msgid "Todo.txt files were found in the destination directory."
+msgid "Todo.txt files were found in the destination folder."
 msgstr "V cieľovom adresári sa našli súbory Todo.txt."
 
 #: ../src/Todo.txt/TxtListManager.vala:230

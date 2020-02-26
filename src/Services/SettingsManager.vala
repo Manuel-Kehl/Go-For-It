@@ -434,7 +434,7 @@ private class GOFI.SettingsManager {
                 GOFI.Utils.config_dir, 0775
             );
             if (dir_exists != 0) {
-                error (_("Couldn't create directory: %s"), GOFI.Utils.config_dir);
+                error (_("Couldn't create folder: %s"), GOFI.Utils.config_dir);
             }
             if (!import_from_old_path ()) {
                 stdout.printf ("old file not imported\n");

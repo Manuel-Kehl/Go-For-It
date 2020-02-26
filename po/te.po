@@ -298,14 +298,14 @@ msgstr "పూర్తి"
 
 #: ../src/Services/ActivityLog.vala:55
 #, fuzzy
-#| msgid "Couldn't create directory: %s"
+#| msgid "Couldn't create folder: %s"
 msgid "Couldn't write to %s: %s"
 msgstr "డైరెక్టరీని సృష్టించడం సాధ్యం కాలేదు"
 
 #: ../src/Services/SettingsManager.vala:437
 #: ../src/Todo.txt/TxtListManager.vala:58
 #: ../src/Todo.txt/TxtListManager.vala:501
-msgid "Couldn't create directory: %s"
+msgid "Couldn't create folder: %s"
 msgstr "డైరెక్టరీని సృష్టించడం సాధ్యం కాలేదు"
 
 #: ../src/Services/SettingsManager.vala:591
@@ -360,7 +360,7 @@ msgstr "నుండి GTK థీమ్ నుండి వారసత్వ�
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:50
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
-msgid "directory"
+msgid "folder"
 msgstr "డైరెక్టరీ"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:51
@@ -386,7 +386,7 @@ msgid "Apply"
 msgstr "వర్తించు"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:115
-msgid "The configured directory is already in use by another list."
+msgid "The configured folder is already in use by another list."
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:135
@@ -431,7 +431,7 @@ msgstr "ప్రాజెక్టుకు తోడ్పడటం పరి�
 
 #: ../src/Todo.txt/TaskManager.vala:54
 msgid ""
-"%s won't save or load from the current todo.txt directory until it is either "
+"%s won't save or load from the current todo.txt folder until it is either "
 "restarted or another location is chosen."
 msgstr ""
 
@@ -445,9 +445,9 @@ msgstr ""
 
 #: ../src/Todo.txt/TaskManager.vala:57
 msgid ""
-"The path to the todo.txt directory does not point to a directory, but to a "
+"The path to the todo.txt folder does not point to a folder, but to a "
 "file or mountable location. Please change the path in the settings to a "
-"suitable directory or remove this file."
+"suitable folder or remove this file."
 msgstr ""
 
 #: ../src/Todo.txt/TxtList.vala:171
@@ -463,7 +463,7 @@ msgid "Error information: "
 msgstr ""
 
 #: ../src/Todo.txt/TxtListManager.vala:226
-msgid "Todo.txt files were found in the destination directory."
+msgid "Todo.txt files were found in the destination folder."
 msgstr ""
 
 #: ../src/Todo.txt/TxtListManager.vala:230

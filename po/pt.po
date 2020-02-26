@@ -307,7 +307,7 @@ msgstr ""
 #: ../src/Services/SettingsManager.vala:437
 #: ../src/Todo.txt/TxtListManager.vala:58
 #: ../src/Todo.txt/TxtListManager.vala:501
-msgid "Couldn't create directory: %s"
+msgid "Couldn't create folder: %s"
 msgstr "Não foi possível criar o diretório: %s"
 
 #: ../src/Services/SettingsManager.vala:591
@@ -361,7 +361,7 @@ msgstr "Herdar do tema GTK"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:50
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
-msgid "directory"
+msgid "folder"
 msgstr "diretório"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:51
@@ -387,7 +387,7 @@ msgid "Apply"
 msgstr "Aplicar"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:115
-msgid "The configured directory is already in use by another list."
+msgid "The configured folder is already in use by another list."
 msgstr "O diretório configurado já está a ser usado por outra lista."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:135
@@ -432,7 +432,7 @@ msgstr ""
 
 #: ../src/Todo.txt/TaskManager.vala:54
 msgid ""
-"%s won't save or load from the current todo.txt directory until it is either "
+"%s won't save or load from the current todo.txt folder until it is either "
 "restarted or another location is chosen."
 msgstr ""
 "O %s não irá guardar ou abrir do diretório todo.txt atual enquanto não for "
@@ -448,9 +448,9 @@ msgstr "Não foi possível de guardar a lista de tarefas (%s):"
 
 #: ../src/Todo.txt/TaskManager.vala:57
 msgid ""
-"The path to the todo.txt directory does not point to a directory, but to a "
+"The path to the todo.txt folder does not point to a folder, but to a "
 "file or mountable location. Please change the path in the settings to a "
-"suitable directory or remove this file."
+"suitable folder or remove this file."
 msgstr ""
 "O caminho para o diretório todo.txt não aponta para um diretório, mas sim "
 "para um ficheiro ou local montável. Altere o caminho nas configurações para "
@@ -469,7 +469,7 @@ msgid "Error information: "
 msgstr "Informação do erro: "
 
 #: ../src/Todo.txt/TxtListManager.vala:226
-msgid "Todo.txt files were found in the destination directory."
+msgid "Todo.txt files were found in the destination folder."
 msgstr "Foram encontrados ficheiros Todo.txt no diretório de destino."
 
 #: ../src/Todo.txt/TxtListManager.vala:230

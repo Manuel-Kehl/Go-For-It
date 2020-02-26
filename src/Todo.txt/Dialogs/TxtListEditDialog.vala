@@ -47,7 +47,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
 
     private string directory_lbl_text =
             "<a href=\"http://todotxt.com\">Todo.txt</a> "
-            + _("directory") + ":";
+            + _("folder") + ":";
     private string name_lbl_text = _("List name") + ":";
 
     public signal void add_list_clicked (ListSettings lsettings);
@@ -112,7 +112,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             // The user has selected an invalid directory, so we show an error.
             if (error_msg != "") {error_msg += "\n";}
             error_msg += gen_error_markup (
-                _("The configured directory is already in use by another list.")
+                _("The configured folder is already in use by another list.")
             );
             is_valid = false;
             if (!dir_showing_error) {
@@ -199,7 +199,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         txt_sect_lbl = new Gtk.Label ("Todo.txt");
 
         directory_btn = new Gtk.FileChooserButton (
-            "Todo.txt " + _("directory"), Gtk.FileChooserAction.SELECT_FOLDER
+            "Todo.txt " + _("folder"), Gtk.FileChooserAction.SELECT_FOLDER
         );
 
         directory_lbl = new Gtk.Label (directory_lbl_text);

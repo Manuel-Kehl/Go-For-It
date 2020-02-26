@@ -303,7 +303,7 @@ msgstr "Konnte nicht in %s schreiben: %s"
 #: ../src/Services/SettingsManager.vala:437
 #: ../src/Todo.txt/TxtListManager.vala:58
 #: ../src/Todo.txt/TxtListManager.vala:501
-msgid "Couldn't create directory: %s"
+msgid "Couldn't create folder: %s"
 msgstr "Verzeichnis konnte nicht erstellt werden: %s"
 
 #: ../src/Services/SettingsManager.vala:591
@@ -356,7 +356,7 @@ msgstr "Vom GTK-Thema erben"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:50
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
-msgid "directory"
+msgid "folder"
 msgstr "Verzeichnis"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:51
@@ -382,7 +382,7 @@ msgid "Apply"
 msgstr "Anwenden"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:115
-msgid "The configured directory is already in use by another list."
+msgid "The configured folder is already in use by another list."
 msgstr ""
 "Das konfigurierte Verzeichnis wird bereits von einer anderen Liste verwendet."
 
@@ -428,7 +428,7 @@ msgstr "Erwägen Sie, einen Beitrag zum Projekt zu leisten"
 
 #: ../src/Todo.txt/TaskManager.vala:54
 msgid ""
-"%s won't save or load from the current todo.txt directory until it is either "
+"%s won't save or load from the current todo.txt folder until it is either "
 "restarted or another location is chosen."
 msgstr ""
 "%s speichert oder lädt nichts aus dem aktuellen todo.txt-Verzeichnis bis es "
@@ -444,9 +444,9 @@ msgstr "Die Aufgabenliste konnte nicht gespeichert werden (%s):"
 
 #: ../src/Todo.txt/TaskManager.vala:57
 msgid ""
-"The path to the todo.txt directory does not point to a directory, but to a "
+"The path to the todo.txt folder does not point to a folder, but to a "
 "file or mountable location. Please change the path in the settings to a "
-"suitable directory or remove this file."
+"suitable folder or remove this file."
 msgstr ""
 "Der Pfad zum todo.txt-Verzeichnis zeigt nicht auf ein Verzeichnis, sondern "
 "auf eine Datei oder einen mountbaren Speicherort. Bitte ändern Sie den Pfad "
@@ -466,7 +466,7 @@ msgid "Error information: "
 msgstr "Fehlerinformation: "
 
 #: ../src/Todo.txt/TxtListManager.vala:226
-msgid "Todo.txt files were found in the destination directory."
+msgid "Todo.txt files were found in the destination folder."
 msgstr "Todo.txt-Dateien wurden im Zielverzeichnis gefunden."
 
 #: ../src/Todo.txt/TxtListManager.vala:230
