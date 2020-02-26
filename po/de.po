@@ -232,10 +232,8 @@ msgid "You have %s seconds left"
 msgstr "Sie haben noch %s Skunden"
 
 #: ../src/Main.vala:178
-#, fuzzy
-#| msgid "Task duration"
 msgid "Task duration exceeded"
-msgstr "Aufgabendauer"
+msgstr "Aufgabendauer überschritten"
 
 #: ../src/Main.vala:179
 msgid "Consider switching to a different task"
@@ -284,7 +282,7 @@ msgstr "Erledigt"
 
 #: ../src/Services/ActivityLog.vala:55
 msgid "Couldn't write to %s: %s"
-msgstr "Schreiben in Verzeichnis nicht möglich: %s"
+msgstr "Konnte nicht in %s schreiben: %s"
 
 #: ../src/Services/SettingsManager.vala:437
 #: ../src/Todo.txt/TxtListManager.vala:58
@@ -512,13 +510,11 @@ msgstr ""
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:286
 msgid "%u hours and %u minutes"
-msgstr ""
+msgstr "%u Uhr und %u Minuten"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:288
-#, fuzzy
-#| msgid "minutes"
 msgid "%u minutes"
-msgstr "Minuten"
+msgstr "%u Minuten"
 
 #: ../src/Widgets/TimerView.vala:92
 msgid "Active Task"

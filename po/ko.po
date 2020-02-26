@@ -274,10 +274,8 @@ msgid "Done"
 msgstr ""
 
 #: ../src/Services/ActivityLog.vala:55
-#, fuzzy
-#| msgid "Couldn't create directory: %s"
 msgid "Couldn't write to %s: %s"
-msgstr "다음 다이렉토리를 생성할 수 없습니다 : %s"
+msgstr ""
 
 #: ../src/Services/SettingsManager.vala:437
 #: ../src/Todo.txt/TxtListManager.vala:58
@@ -286,8 +284,9 @@ msgid "Couldn't create directory: %s"
 msgstr "다음 다이렉토리를 생성할 수 없습니다 : %s"
 
 #: ../src/Services/SettingsManager.vala:591
+#, fuzzy
 msgid "Couldn't properly import settings from %s: %s"
-msgstr "다음으로부터 설정을 제대로 불러올 수 없습니다 : %s"
+msgstr "다음으로부터 설정을 제대로 불러올 수 없습니다 %s: %s"
 
 #: ../src/Services/Shortcuts.vala:135
 msgid "Filter tasks"

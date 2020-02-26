@@ -275,10 +275,8 @@ msgid "Done"
 msgstr ""
 
 #: ../src/Services/ActivityLog.vala:55
-#, fuzzy
-#| msgid "Couldn't create directory: %s"
 msgid "Couldn't write to %s: %s"
-msgstr "Nie można utworzyć katalogu: %s"
+msgstr ""
 
 #: ../src/Services/SettingsManager.vala:437
 #: ../src/Todo.txt/TxtListManager.vala:58

@@ -284,10 +284,8 @@ msgid "Done"
 msgstr "Terminé"
 
 #: ../src/Services/ActivityLog.vala:55
-#, fuzzy
-#| msgid "Couldn't create directory: %s"
 msgid "Couldn't write to %s: %s"
-msgstr "Impossible de créer le répertoire : %s"
+msgstr ""
 
 #: ../src/Services/SettingsManager.vala:437
 #: ../src/Todo.txt/TxtListManager.vala:58
@@ -515,10 +513,8 @@ msgid "%u hours and %u minutes"
 msgstr ""
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:288
-#, fuzzy
-#| msgid "minutes"
 msgid "%u minutes"
-msgstr "minutes"
+msgstr "%u minutes"
 
 #: ../src/Widgets/TimerView.vala:92
 msgid "Active Task"

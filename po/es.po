@@ -507,10 +507,8 @@ msgid "%u hours and %u minutes"
 msgstr ""
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:288
-#, fuzzy
-#| msgid "minutes"
 msgid "%u minutes"
-msgstr "minutos"
+msgstr "%u minutos"
 
 #: ../src/Widgets/TimerView.vala:92
 msgid "Active Task"

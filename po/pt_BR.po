@@ -281,10 +281,8 @@ msgid "Done"
 msgstr "Concluído"
 
 #: ../src/Services/ActivityLog.vala:55
-#, fuzzy
-#| msgid "Couldn't save the to-do list (%s):"
 msgid "Couldn't write to %s: %s"
-msgstr "Impossível salvar a lista afazeres (%s):"
+msgstr ""
 
 #: ../src/Services/SettingsManager.vala:437
 #: ../src/Todo.txt/TxtListManager.vala:58
@@ -512,10 +510,8 @@ msgid "%u hours and %u minutes"
 msgstr ""
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:288
-#, fuzzy
-#| msgid "minutes"
 msgid "%u minutes"
-msgstr "minutos"
+msgstr "%u minutos"
 
 #: ../src/Widgets/TimerView.vala:92
 msgid "Active Task"

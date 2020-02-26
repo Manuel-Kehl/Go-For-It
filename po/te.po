@@ -514,7 +514,7 @@ msgstr ""
 #, fuzzy
 #| msgid "minutes"
 msgid "%u minutes"
-msgstr "నిమిషాలు"
+msgstr "%u నిమిషాలు"
 
 #: ../src/Widgets/TimerView.vala:92
 msgid "Active Task"
