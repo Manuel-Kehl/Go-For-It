@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-26 18:26+0100\n"
-"PO-Revision-Date: 2020-01-07 22:21+0000\n"
+"PO-Revision-Date: 2020-02-26 20:11+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/it/>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10.1-dev\n"
+"X-Generator: Weblate 4.0-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:438
@@ -195,11 +195,11 @@ msgstr "Devi riavviare %s perché le modifiche abbiano effetto."
 
 #: ../src/Main.vala:79
 msgid "Not a known list: %s"
-msgstr ""
+msgstr "Elenco non noto: %s"
 
 #: ../src/Main.vala:199
 msgid "%s: Error: %s"
-msgstr ""
+msgstr "%s: Errore: %s"
 
 #: ../src/Main.vala:228
 msgid "Print version info and exit"
@@ -215,11 +215,11 @@ msgstr "File CSV su cui verranno registrate le Attività."
 
 #: ../src/Main.vala:231
 msgid "Show configured lists and exit"
-msgstr ""
+msgstr "Mostra gli elenchi configurati ed esci"
 
 #: ../src/Main.vala:232
 msgid "Load the list specified by the list type and id"
-msgstr ""
+msgstr "Carica l'elenco specificato dal tipo di elenco e dall'ID"
 
 #: ../src/Main.vala:254 ../src/Widgets/TimerView.vala:88
 msgid "Take a Break"
@@ -300,7 +300,7 @@ msgstr "Impossibile scrivere a %s: %s"
 #: ../src/Todo.txt/TxtListManager.vala:58
 #: ../src/Todo.txt/TxtListManager.vala:501
 msgid "Couldn't create folder: %s"
-msgstr "Impossibile creare la cartella: %s"
+msgstr "Impossibile creare la directory: %s"
 
 #: ../src/Services/SettingsManager.vala:591
 msgid "Couldn't properly import settings from %s: %s"
@@ -352,8 +352,10 @@ msgstr "Eredita tema GTK"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:50
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
+#, fuzzy
+#| msgid "directory"
 msgid "folder"
-msgstr "folder"
+msgstr "directory"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:51
 msgid "List name"
@@ -378,8 +380,10 @@ msgid "Apply"
 msgstr "Applica"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:115
+#, fuzzy
+#| msgid "The configured directory is already in use by another list."
 msgid "The configured folder is already in use by another list."
-msgstr "La folder selezionata è già usata da un'altra lista."
+msgstr "La directory selezionata è già usata da un'altra lista."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:135
 msgid "Please assign a name to the list."
