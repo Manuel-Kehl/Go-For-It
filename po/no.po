@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-26 12:32+0200\n"
+"POT-Creation-Date: 2020-02-26 18:26+0100\n"
 "PO-Revision-Date: 2019-09-28 09:55+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
-"go-for-it/go-for-it/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/go-for-"
+"it/go-for-it/nb_NO/>\n"
 "Language: no\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Weblate 3.9-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:444
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:438
 msgid "About"
 msgstr "Om"
 
@@ -43,7 +43,7 @@ msgstr ""
 msgid "If you really like this app, you can buy me a drink:"
 msgstr "Hvis du liker dette programmet, kan du rive i et glass:"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:431
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:425
 msgid "Settings"
 msgstr "Innstillinger"
 
@@ -193,70 +193,86 @@ msgstr "Bunnen av listen"
 msgid "%s needs to be restarted for changes to take effect."
 msgstr "%s må startes på ny for at denne innstillingen skal tre i effekt"
 
-#: ../src/Main.vala:115
+#: ../src/Main.vala:79
+msgid "Not a known list: %s"
+msgstr ""
+
+#: ../src/Main.vala:199
+msgid "%s: Error: %s"
+msgstr ""
+
+#: ../src/Main.vala:228
 msgid "Print version info and exit"
 msgstr "Skriv ut versjonsinfo og avslutt"
 
-#: ../src/Main.vala:116
+#: ../src/Main.vala:229
 msgid "Show about dialog"
 msgstr "Vis \"Om\"-dialog"
 
-#: ../src/Main.vala:117
+#: ../src/Main.vala:230
 msgid "CSV file to log activities to."
 msgstr "CSV-fil å logge aktiviteter til."
 
-#: ../src/Main.vala:139 ../src/Widgets/TimerView.vala:88
+#: ../src/Main.vala:231
+msgid "Show configured lists and exit"
+msgstr ""
+
+#: ../src/Main.vala:232
+msgid "Load the list specified by the list type and id"
+msgstr ""
+
+#: ../src/Main.vala:254 ../src/Widgets/TimerView.vala:88
 msgid "Take a Break"
 msgstr "Ta en pause"
 
-#: ../src/Main.vala:140
+#: ../src/Main.vala:255
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "Slapp av og slutt å tenke på gjøremålet en stund"
 
-#: ../src/Main.vala:145
+#: ../src/Main.vala:260
 msgid "The Break is Over"
 msgstr "Pausen er over"
 
-#: ../src/Main.vala:146
+#: ../src/Main.vala:261
 msgid "Your current task is"
 msgstr "Ditt nåværende gjøremål er"
 
-#: ../src/Main.vala:166
+#: ../src/Main.vala:281
 msgid "Prepare for your break"
 msgstr "Forbered deg på pause"
 
-#: ../src/Main.vala:167
+#: ../src/Main.vala:282
 msgid "You have %s seconds left"
 msgstr "Du har %s sekunder igjen"
 
-#: ../src/Main.vala:178
+#: ../src/Main.vala:293
 #, fuzzy
 #| msgid "Task duration"
 msgid "Task duration exceeded"
 msgstr "Gjøremålsvarighet"
 
-#: ../src/Main.vala:179
+#: ../src/Main.vala:294
 #, fuzzy
 msgid "Consider switching to a different task"
 msgstr "Overvei å bytte til et annet gjøremål."
 
-#: ../src/MainWindow.vala:63
+#: ../src/MainWindow.vala:62
 msgid "Go to overview"
 msgstr "Gå til oversikt"
 
-#: ../src/MainWindow.vala:64
+#: ../src/MainWindow.vala:63
 msgid "Go back to the to-do list"
 msgstr "Gå tilbake til gjøremålslisten"
 
-#: ../src/MainWindow.vala:332
+#: ../src/MainWindow.vala:326
 msgid "Menu"
 msgstr "Meny"
 
-#: ../src/MainWindow.vala:437
+#: ../src/MainWindow.vala:431
 msgid "Contribute / Donate"
 msgstr "Bidra / doner"
 
-#: ../src/Pages/SelectionPage.vala:96
+#: ../src/Pages/SelectionPage.vala:92
 msgid ""
 "Currently, no lists are configured.\n"
 "Add one below!"
@@ -264,7 +280,7 @@ msgstr ""
 "Ingen lister satt opp.\n"
 "Legg til en nedenfor."
 
-#: ../src/Pages/SelectionPage.vala:106
+#: ../src/Pages/SelectionPage.vala:102
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:65
 msgid "Add list"
 msgstr "Legg til liste"
@@ -388,11 +404,11 @@ msgstr "Denne informasjonen vil bli lagret i todo.txt-filene."
 msgid "Use default settings"
 msgstr "Bruk forvalgte innstillinger"
 
-#: ../src/Todo.txt/Filter.vala:69 ../src/Todo.txt/Widgets/TaskRow.vala:317
+#: ../src/Todo.txt/Filter.vala:69 ../src/Todo.txt/Widgets/TaskRow.vala:319
 msgid "project"
 msgstr "prosjekt"
 
-#: ../src/Todo.txt/Filter.vala:75 ../src/Todo.txt/Widgets/TaskRow.vala:312
+#: ../src/Todo.txt/Filter.vala:75 ../src/Todo.txt/Widgets/TaskRow.vala:314
 msgid "context"
 msgstr "kontekst"
 
@@ -400,19 +416,19 @@ msgstr "kontekst"
 msgid "priority"
 msgstr "prioritet"
 
-#: ../src/Todo.txt/TaskManager.vala:46
+#: ../src/Todo.txt/TaskManager.vala:49
 msgid "Spread the word about \"%s\""
 msgstr "Fyr opp jungeltelegrafen om \"%s\""
 
-#: ../src/Todo.txt/TaskManager.vala:47
+#: ../src/Todo.txt/TaskManager.vala:50
 msgid "Consider a donation to help the project"
 msgstr "Overvei å donere for å hjelpe prosjektet"
 
-#: ../src/Todo.txt/TaskManager.vala:48
+#: ../src/Todo.txt/TaskManager.vala:51
 msgid "Consider contributing to the project"
 msgstr "Overvei å bidra til prosjektet"
 
-#: ../src/Todo.txt/TaskManager.vala:51
+#: ../src/Todo.txt/TaskManager.vala:54
 msgid ""
 "%s won't save or load from the current todo.txt directory until it is either "
 "restarted or another location is chosen."
@@ -420,15 +436,15 @@ msgstr ""
 "%s vil ikke lagre eller laste fra gjeldende todo.txt-mappe til det enten "
 "startes på ny, eller en annen plassering velges."
 
-#: ../src/Todo.txt/TaskManager.vala:52
+#: ../src/Todo.txt/TaskManager.vala:55
 msgid "Couldn't read the todo.txt file (%s):"
 msgstr "Kunne ikke lese todo.txt-filen (%s):"
 
-#: ../src/Todo.txt/TaskManager.vala:53
+#: ../src/Todo.txt/TaskManager.vala:56
 msgid "Couldn't save the to-do list (%s):"
 msgstr "Kunne ikke lagre gjøremålsliste (%s):"
 
-#: ../src/Todo.txt/TaskManager.vala:54
+#: ../src/Todo.txt/TaskManager.vala:57
 msgid ""
 "The path to the todo.txt directory does not point to a directory, but to a "
 "file or mountable location. Please change the path in the settings to a "

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-26 12:32+0200\n"
+"POT-Creation-Date: 2020-02-26 18:26+0100\n"
 "PO-Revision-Date: 2019-08-30 16:00+0200\n"
 "Last-Translator: Babitha Siddula <siddulababithasiddu@gmail.com>\n"
 "Language-Team: Telugu <https://hosted.weblate.org/projects/go-for-it/go-for-"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:444
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:438
 msgid "About"
 msgstr ""
 
@@ -42,7 +42,7 @@ msgstr ""
 msgid "If you really like this app, you can buy me a drink:"
 msgstr ""
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:431
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:425
 msgid "Settings"
 msgstr "సెట్టింగులు"
 
@@ -192,78 +192,94 @@ msgstr ""
 msgid "%s needs to be restarted for changes to take effect."
 msgstr ""
 
-#: ../src/Main.vala:115
+#: ../src/Main.vala:79
+msgid "Not a known list: %s"
+msgstr ""
+
+#: ../src/Main.vala:199
+msgid "%s: Error: %s"
+msgstr ""
+
+#: ../src/Main.vala:228
 msgid "Print version info and exit"
 msgstr "సంస్కరణ సమాచారాన్ని ముద్రించండి మరియు నిష్క్రమించండి"
 
-#: ../src/Main.vala:116
+#: ../src/Main.vala:229
 msgid "Show about dialog"
 msgstr "డైలాగ్ గురించి చూపించు"
 
-#: ../src/Main.vala:117
+#: ../src/Main.vala:230
 msgid "CSV file to log activities to."
 msgstr ""
 
-#: ../src/Main.vala:139 ../src/Widgets/TimerView.vala:88
+#: ../src/Main.vala:231
+msgid "Show configured lists and exit"
+msgstr ""
+
+#: ../src/Main.vala:232
+msgid "Load the list specified by the list type and id"
+msgstr ""
+
+#: ../src/Main.vala:254 ../src/Widgets/TimerView.vala:88
 msgid "Take a Break"
 msgstr "విరామం"
 
-#: ../src/Main.vala:140
+#: ../src/Main.vala:255
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "మీ ప్రస్తుత పని గురించి కొంతకాలం విశ్రాంతి తీసుకోండి"
 
-#: ../src/Main.vala:145
+#: ../src/Main.vala:260
 msgid "The Break is Over"
 msgstr "బ్రేక్ ముగిసింది"
 
-#: ../src/Main.vala:146
+#: ../src/Main.vala:261
 #, fuzzy
 #| msgid "Your next task is"
 msgid "Your current task is"
 msgstr "మీ తదుపరి పని"
 
-#: ../src/Main.vala:166
+#: ../src/Main.vala:281
 msgid "Prepare for your break"
 msgstr "మీ విరామం కోసం సిద్ధం"
 
-#: ../src/Main.vala:167
+#: ../src/Main.vala:282
 msgid "You have %s seconds left"
 msgstr ""
 
-#: ../src/Main.vala:178
+#: ../src/Main.vala:293
 #, fuzzy
 #| msgid "Task duration"
 msgid "Task duration exceeded"
 msgstr "పని వ్యవధి"
 
-#: ../src/Main.vala:179
+#: ../src/Main.vala:294
 msgid "Consider switching to a different task"
 msgstr ""
 
-#: ../src/MainWindow.vala:63
+#: ../src/MainWindow.vala:62
 #, fuzzy
 msgid "Go to overview"
 msgstr "అవలోకనానికి వెళ్లండి"
 
-#: ../src/MainWindow.vala:64
+#: ../src/MainWindow.vala:63
 msgid "Go back to the to-do list"
 msgstr ""
 
-#: ../src/MainWindow.vala:332
+#: ../src/MainWindow.vala:326
 msgid "Menu"
 msgstr "మెనూ"
 
-#: ../src/MainWindow.vala:437
+#: ../src/MainWindow.vala:431
 msgid "Contribute / Donate"
 msgstr "సహకరించండి / దానం చేయండి"
 
-#: ../src/Pages/SelectionPage.vala:96
+#: ../src/Pages/SelectionPage.vala:92
 msgid ""
 "Currently, no lists are configured.\n"
 "Add one below!"
 msgstr "ప్రస్తుతం, జాబితాలు ఏవీ కాన్ఫిగర్ చేయబడలేదు. క్రింద ఒకదాన్ని జోడించండి!"
 
-#: ../src/Pages/SelectionPage.vala:106
+#: ../src/Pages/SelectionPage.vala:102
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:65
 msgid "Add list"
 msgstr ""
@@ -389,11 +405,11 @@ msgstr ""
 msgid "Use default settings"
 msgstr "డిఫాల్ట్ సెట్టింగులను ఉపయోగించండి"
 
-#: ../src/Todo.txt/Filter.vala:69 ../src/Todo.txt/Widgets/TaskRow.vala:317
+#: ../src/Todo.txt/Filter.vala:69 ../src/Todo.txt/Widgets/TaskRow.vala:319
 msgid "project"
 msgstr ""
 
-#: ../src/Todo.txt/Filter.vala:75 ../src/Todo.txt/Widgets/TaskRow.vala:312
+#: ../src/Todo.txt/Filter.vala:75 ../src/Todo.txt/Widgets/TaskRow.vala:314
 msgid "context"
 msgstr "సందర్భం"
 
@@ -401,33 +417,33 @@ msgstr "సందర్భం"
 msgid "priority"
 msgstr "ప్రాధాన్యత"
 
-#: ../src/Todo.txt/TaskManager.vala:46
+#: ../src/Todo.txt/TaskManager.vala:49
 msgid "Spread the word about \"%s\""
 msgstr ""
 
-#: ../src/Todo.txt/TaskManager.vala:47
+#: ../src/Todo.txt/TaskManager.vala:50
 msgid "Consider a donation to help the project"
 msgstr "ప్రాజెక్టుకు సహాయం చేయడానికి విరాళం పరిగణించండి"
 
-#: ../src/Todo.txt/TaskManager.vala:48
+#: ../src/Todo.txt/TaskManager.vala:51
 msgid "Consider contributing to the project"
 msgstr "ప్రాజెక్టుకు తోడ్పడటం పరిగణించండి"
 
-#: ../src/Todo.txt/TaskManager.vala:51
+#: ../src/Todo.txt/TaskManager.vala:54
 msgid ""
 "%s won't save or load from the current todo.txt directory until it is either "
 "restarted or another location is chosen."
 msgstr ""
 
-#: ../src/Todo.txt/TaskManager.vala:52
+#: ../src/Todo.txt/TaskManager.vala:55
 msgid "Couldn't read the todo.txt file (%s):"
 msgstr ""
 
-#: ../src/Todo.txt/TaskManager.vala:53
+#: ../src/Todo.txt/TaskManager.vala:56
 msgid "Couldn't save the to-do list (%s):"
 msgstr ""
 
-#: ../src/Todo.txt/TaskManager.vala:54
+#: ../src/Todo.txt/TaskManager.vala:57
 msgid ""
 "The path to the todo.txt directory does not point to a directory, but to a "
 "file or mountable location. Please change the path in the settings to a "

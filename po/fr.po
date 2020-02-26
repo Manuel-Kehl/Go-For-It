@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-26 12:32+0200\n"
+"POT-Creation-Date: 2020-02-26 18:26+0100\n"
 "PO-Revision-Date: 2019-08-30 16:09+0200\n"
 "Last-Translator: NathanBnm\n"
 "Language-Team: Français\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:444
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:438
 msgid "About"
 msgstr "À propos"
 
@@ -47,7 +47,7 @@ msgid "If you really like this app, you can buy me a drink:"
 msgstr ""
 "Si vous aimez vraiment cette application, vous pouvez me payer un verre :"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:431
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:425
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -196,77 +196,93 @@ msgstr ""
 msgid "%s needs to be restarted for changes to take effect."
 msgstr ""
 
-#: ../src/Main.vala:115
+#: ../src/Main.vala:79
+msgid "Not a known list: %s"
+msgstr ""
+
+#: ../src/Main.vala:199
+msgid "%s: Error: %s"
+msgstr ""
+
+#: ../src/Main.vala:228
 msgid "Print version info and exit"
 msgstr "Afficher les informations de version et sortir"
 
-#: ../src/Main.vala:116
+#: ../src/Main.vala:229
 msgid "Show about dialog"
 msgstr "Afficher la boîte de dialogue À propos"
 
-#: ../src/Main.vala:117
+#: ../src/Main.vala:230
 msgid "CSV file to log activities to."
 msgstr ""
 
-#: ../src/Main.vala:139 ../src/Widgets/TimerView.vala:88
+#: ../src/Main.vala:231
+msgid "Show configured lists and exit"
+msgstr ""
+
+#: ../src/Main.vala:232
+msgid "Load the list specified by the list type and id"
+msgstr ""
+
+#: ../src/Main.vala:254 ../src/Widgets/TimerView.vala:88
 msgid "Take a Break"
 msgstr "Faire une pause"
 
-#: ../src/Main.vala:140
+#: ../src/Main.vala:255
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "Relaxez-vous et oubliez vos tâches en cours pendant un moment"
 
-#: ../src/Main.vala:145
+#: ../src/Main.vala:260
 msgid "The Break is Over"
 msgstr "La pause est terminée"
 
-#: ../src/Main.vala:146
+#: ../src/Main.vala:261
 #, fuzzy
 #| msgid "Your next task is"
 msgid "Your current task is"
 msgstr "Votre prochaine tâche est"
 
-#: ../src/Main.vala:166
+#: ../src/Main.vala:281
 msgid "Prepare for your break"
 msgstr "Préparez-vous pour votre pause"
 
-#: ../src/Main.vala:167
+#: ../src/Main.vala:282
 msgid "You have %s seconds left"
 msgstr "Il vous reste %s secondes"
 
-#: ../src/Main.vala:178
+#: ../src/Main.vala:293
 #, fuzzy
 #| msgid "Task duration"
 msgid "Task duration exceeded"
 msgstr "Durée de tâche"
 
-#: ../src/Main.vala:179
+#: ../src/Main.vala:294
 msgid "Consider switching to a different task"
 msgstr ""
 
-#: ../src/MainWindow.vala:63
+#: ../src/MainWindow.vala:62
 msgid "Go to overview"
 msgstr ""
 
-#: ../src/MainWindow.vala:64
+#: ../src/MainWindow.vala:63
 msgid "Go back to the to-do list"
 msgstr ""
 
-#: ../src/MainWindow.vala:332
+#: ../src/MainWindow.vala:326
 msgid "Menu"
 msgstr "Menu"
 
-#: ../src/MainWindow.vala:437
+#: ../src/MainWindow.vala:431
 msgid "Contribute / Donate"
 msgstr "Contribuer / Faire un don"
 
-#: ../src/Pages/SelectionPage.vala:96
+#: ../src/Pages/SelectionPage.vala:92
 msgid ""
 "Currently, no lists are configured.\n"
 "Add one below!"
 msgstr ""
 
-#: ../src/Pages/SelectionPage.vala:106
+#: ../src/Pages/SelectionPage.vala:102
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:65
 msgid "Add list"
 msgstr ""
@@ -389,11 +405,11 @@ msgstr ""
 msgid "Use default settings"
 msgstr ""
 
-#: ../src/Todo.txt/Filter.vala:69 ../src/Todo.txt/Widgets/TaskRow.vala:317
+#: ../src/Todo.txt/Filter.vala:69 ../src/Todo.txt/Widgets/TaskRow.vala:319
 msgid "project"
 msgstr "projet"
 
-#: ../src/Todo.txt/Filter.vala:75 ../src/Todo.txt/Widgets/TaskRow.vala:312
+#: ../src/Todo.txt/Filter.vala:75 ../src/Todo.txt/Widgets/TaskRow.vala:314
 msgid "context"
 msgstr "contexte"
 
@@ -401,19 +417,19 @@ msgstr "contexte"
 msgid "priority"
 msgstr ""
 
-#: ../src/Todo.txt/TaskManager.vala:46
+#: ../src/Todo.txt/TaskManager.vala:49
 msgid "Spread the word about \"%s\""
 msgstr ""
 
-#: ../src/Todo.txt/TaskManager.vala:47
+#: ../src/Todo.txt/TaskManager.vala:50
 msgid "Consider a donation to help the project"
 msgstr ""
 
-#: ../src/Todo.txt/TaskManager.vala:48
+#: ../src/Todo.txt/TaskManager.vala:51
 msgid "Consider contributing to the project"
 msgstr ""
 
-#: ../src/Todo.txt/TaskManager.vala:51
+#: ../src/Todo.txt/TaskManager.vala:54
 msgid ""
 "%s won't save or load from the current todo.txt directory until it is either "
 "restarted or another location is chosen."
@@ -421,15 +437,15 @@ msgstr ""
 "%s n'enregistrera pas ou ne chargera pas le dossier todo.txt avant d'être "
 "redémarré ou qu'un autre emplacement soit choisi."
 
-#: ../src/Todo.txt/TaskManager.vala:52
+#: ../src/Todo.txt/TaskManager.vala:55
 msgid "Couldn't read the todo.txt file (%s):"
 msgstr "Lecture du fichier todo.txt impossible  (%s) :"
 
-#: ../src/Todo.txt/TaskManager.vala:53
+#: ../src/Todo.txt/TaskManager.vala:56
 msgid "Couldn't save the to-do list (%s):"
 msgstr "Enregistrement de la liste des tâches impossible (%s) :"
 
-#: ../src/Todo.txt/TaskManager.vala:54
+#: ../src/Todo.txt/TaskManager.vala:57
 msgid ""
 "The path to the todo.txt directory does not point to a directory, but to a "
 "file or mountable location. Please change the path in the settings to a "
