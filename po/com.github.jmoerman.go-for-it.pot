@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-26 18:26+0100\n"
+"POT-Creation-Date: 2020-03-03 20:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -217,7 +217,7 @@ msgid "Show configured lists and exit"
 msgstr ""
 
 #: ../src/Main.vala:232
-msgid "Load the list specified by the list type and id"
+msgid "Load the list specified by the list type and ID"
 msgstr ""
 
 #: ../src/Main.vala:254 ../src/Widgets/TimerView.vala:88
