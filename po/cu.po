@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-26 18:26+0100\n"
+"POT-Creation-Date: 2020-03-03 20:07+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -205,7 +205,7 @@ msgid "Show configured lists and exit"
 msgstr ""
 
 #: ../src/Main.vala:232
-msgid "Load the list specified by the list type and id"
+msgid "Load the list specified by the list type and ID"
 msgstr ""
 
 #: ../src/Main.vala:254 ../src/Widgets/TimerView.vala:88
@@ -424,9 +424,9 @@ msgstr ""
 
 #: ../src/Todo.txt/TaskManager.vala:57
 msgid ""
-"The path to the todo.txt folder does not point to a folder, but to a "
-"file or mountable location. Please change the path in the settings to a "
-"suitable folder or remove this file."
+"The path to the todo.txt folder does not point to a folder, but to a file or "
+"mountable location. Please change the path in the settings to a suitable "
+"folder or remove this file."
 msgstr ""
 
 #: ../src/Todo.txt/TxtList.vala:171
