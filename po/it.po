@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-03 20:07+0100\n"
 "PO-Revision-Date: 2020-03-26 19:46+0000\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
+"Last-Translator: Jeannette L <j.lavoie@net-c.ca>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/it/>\n"
 "Language: it\n"
@@ -411,7 +411,7 @@ msgstr "priorità"
 
 #: ../src/Todo.txt/TaskManager.vala:49
 msgid "Spread the word about \"%s\""
-msgstr "Spargi la voce su \"%s\""
+msgstr "Spargi la voce su «%s»"
 
 #: ../src/Todo.txt/TaskManager.vala:50
 msgid "Consider a donation to help the project"
@@ -419,7 +419,7 @@ msgstr "Se ti piace questa app, considera l'idea di aiutarci con una donazione"
 
 #: ../src/Todo.txt/TaskManager.vala:51
 msgid "Consider contributing to the project"
-msgstr "Sostieni il nostro lavoro con una donazione"
+msgstr "Puoi anche contribuire al progetto"
 
 #: ../src/Todo.txt/TaskManager.vala:54
 msgid ""
@@ -501,7 +501,7 @@ msgstr "Aggiungi nuova attività"
 #. formatting of DateTime
 #: ../src/Todo.txt/Widgets/TaskRow.vala:238
 msgid "%Y-%m-%d"
-msgstr "%Y-%m-%d"
+msgstr "%d/%m/%Y"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:242
 msgid "Task completed at %s, created at %s"
