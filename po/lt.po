@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-03 20:07+0100\n"
-"PO-Revision-Date: 2019-09-28 09:55+0000\n"
+"PO-Revision-Date: 2020-03-26 19:46+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
-"Language-Team: Lithuanian <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/lt/>\n"
+"Language-Team: Lithuanian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && (n % 100 < 11 || n % 100 > "
 "19)) ? 0 : ((n % 10 >= 2 && n % 10 <= 9 && (n % 100 < 11 || n % 100 > 19)) ? "
 "1 : 2);\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 4.0-dev\n"
 "X-Launchpad-Export-Date: 2018-04-05 05:31+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:438
@@ -196,11 +196,11 @@ msgstr "Tam, kad šis nustatymas įsigaliotų, %s turi būti paleista iš naujo.
 
 #: ../src/Main.vala:79
 msgid "Not a known list: %s"
-msgstr ""
+msgstr "Nežinomas sąrašas: %s"
 
 #: ../src/Main.vala:199
 msgid "%s: Error: %s"
-msgstr ""
+msgstr "%s: Klaida: %s"
 
 #: ../src/Main.vala:228
 msgid "Print version info and exit"
@@ -216,11 +216,11 @@ msgstr "CSV failas, į kurį registruoti veiklą."
 
 #: ../src/Main.vala:231
 msgid "Show configured lists and exit"
-msgstr ""
+msgstr "Rodyti sukonfigūruotus sąrašus ir išeiti"
 
 #: ../src/Main.vala:232
 msgid "Load the list specified by the list type and ID"
-msgstr ""
+msgstr "Įkelti sąrašą, nurodytą pagal sąrašo tipą ir ID"
 
 #: ../src/Main.vala:254 ../src/Widgets/TimerView.vala:88
 msgid "Take a Break"
