@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-03 20:07+0100\n"
 "PO-Revision-Date: 2020-03-26 19:46+0000\n"
-"Last-Translator: Jeannette L <j.lavoie@net-c.ca>\n"
+"Last-Translator: anonymous <noreply@weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/fr/>\n"
 "Language: fr\n"
@@ -71,7 +71,7 @@ msgstr "Raccourcis"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 msgid "General"
-msgstr ""
+msgstr "Général"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
 msgid "Use small toolbar icons"
