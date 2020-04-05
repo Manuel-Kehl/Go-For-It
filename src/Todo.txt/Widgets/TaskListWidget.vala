@@ -176,7 +176,7 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
     }
 
     private void on_task_view_row_activated (DragListRow? selected_row) {
-       ((TaskRow) selected_row).edit ();
+       ((TaskRow) selected_row).edit (true);
     }
 
     /**

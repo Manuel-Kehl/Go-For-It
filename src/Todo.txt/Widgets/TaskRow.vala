@@ -57,7 +57,7 @@ class GOFI.TXT.TaskRow: DragListRow {
         show_all ();
     }
 
-    public void edit () {
+    public void edit (bool wrestle_focus=false) {
         if (edit_entry != null) {
             return;
         }
@@ -74,6 +74,17 @@ class GOFI.TXT.TaskRow: DragListRow {
         edit_entry.string_changed.connect (on_edit_entry_string_changed);
         edit_entry.editing_finished.connect (on_edit_entry_finished);
         editing = true;
+
+        if (wrestle_focus) {
+            // Ugly hack: on Gtk 3.22 the row will steal focus from the entry in
+            // about 0.1s if the row has been activated using a double-click
+            // we want the entry to remain in focus until the user decides
+            // otherwise.
+            edit_entry.hold_focus = true;
+            GLib.Timeout.add(
+                200, release_focus_claim, GLib.Priority.DEFAULT_IDLE
+            );
+        }
     }
 
     private void on_delete_button_clicked () {
@@ -116,6 +127,11 @@ class GOFI.TXT.TaskRow: DragListRow {
             return false;
         }
         return GLib.Source.REMOVE;
+    }
+
+    private bool release_focus_claim () {
+        edit_entry.hold_focus = false;
+        return false;
     }
 
     public void stop_editing () {
@@ -184,10 +200,34 @@ class GOFI.TXT.TaskRow: DragListRow {
     class TaskEditEntry : Gtk.Entry {
         public signal void editing_finished ();
         public signal void string_changed ();
+        private uint8 focus_wrestle_counter;
+
+        public bool hold_focus {
+            get {
+                return focus_wrestle_counter != 0;
+            }
+            set {
+                if (value) {
+                    // 1 seems to be sufficient right now
+                    focus_wrestle_counter = 1;
+                } else {
+                    focus_wrestle_counter = 0;
+                }
+            }
+        }
 
         public TaskEditEntry (string description) {
             can_focus = true;
             text = description;
+            focus_wrestle_counter = 0;
+            focus_out_event.connect (() => {
+                if (focus_wrestle_counter == 0) {
+                    return false;
+                }
+                focus_wrestle_counter--;
+                grab_focus ();
+                return false;
+            });
         }
 
         private void abort_editing () {
