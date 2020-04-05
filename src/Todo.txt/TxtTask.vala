@@ -86,7 +86,7 @@ class GOFI.TXT.TxtTask : TodoTask {
         }
         _done = done;
 
-        if (is_priority (parts[index])) {
+        if (index <= last && is_priority (parts[index])) {
             priority = parts[index][1];
             index++;
         } else {
@@ -129,7 +129,7 @@ class GOFI.TXT.TxtTask : TodoTask {
         var descr_parts = descr.split (" ");
         (unowned string)[] unparsed;
 
-        if (is_priority (descr_parts[0])) {
+        if (descr_parts[0] != null && is_priority (descr_parts[0])) {
             priority = descr_parts[0][1];
             unparsed = descr_parts[1:descr_parts.length];
         } else {
@@ -137,7 +137,10 @@ class GOFI.TXT.TxtTask : TodoTask {
             unparsed = descr_parts;
         }
 
-        duration = consume_duration_value (unparsed);
+        // If descr_parts.length == 1 then unparsed will be null
+        if (unparsed != null) {
+          duration = consume_duration_value (unparsed);
+        }
 
         description = string.joinv (" ", unparsed).strip ();
     }
