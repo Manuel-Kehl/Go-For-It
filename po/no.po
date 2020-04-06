@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-03 20:07+0100\n"
-"PO-Revision-Date: 2020-02-27 22:33+0000\n"
+"PO-Revision-Date: 2020-04-07 04:22+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/go-for-"
-"it/go-for-it/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"go-for-it/go-for-it/nb_NO/>\n"
 "Language: no\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -217,8 +217,6 @@ msgid "Show configured lists and exit"
 msgstr "Vis oppsatte lister og avslutt"
 
 #: ../src/Main.vala:232
-#, fuzzy
-#| msgid "Load the list specified by the list type and id"
 msgid "Load the list specified by the list type and ID"
 msgstr "Last inn angitt listetype og ID"
 
