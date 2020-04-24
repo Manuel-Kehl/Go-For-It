@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-03 20:07+0100\n"
-"PO-Revision-Date: 2020-03-26 19:46+0000\n"
+"PO-Revision-Date: 2020-04-25 03:11+0000\n"
 "Last-Translator: Jeannette L <j.lavoie@net-c.ca>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/de/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0-dev\n"
+"X-Generator: Weblate 4.0.2-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:438
@@ -195,11 +195,11 @@ msgstr "%s muss neu gestartet werden, damit diese Einstellung wirksam wird."
 
 #: ../src/Main.vala:79
 msgid "Not a known list: %s"
-msgstr ""
+msgstr "Keine bekannte Liste: %s"
 
 #: ../src/Main.vala:199
 msgid "%s: Error: %s"
-msgstr ""
+msgstr "%s: Fehler: %s"
 
 #: ../src/Main.vala:228
 msgid "Print version info and exit"
@@ -215,7 +215,7 @@ msgstr "CSV Datei um Aktivitäten zu protokollieren."
 
 #: ../src/Main.vala:231
 msgid "Show configured lists and exit"
-msgstr ""
+msgstr "Konfigurierte Listen anzeigen und beenden"
 
 #: ../src/Main.vala:232
 msgid "Load the list specified by the list type and ID"
