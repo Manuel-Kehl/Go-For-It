@@ -294,7 +294,7 @@ class GOFI.TXT.TaskRow: DragListRow {
         }
 
         private void gen_markup () {
-            markup_string = make_links (GLib.Markup.escape_text (task.description));
+            markup_string = make_links (task.get_descr_parts ());
 
             var done = task.done;
             var timer_value = task.timer_value;
@@ -303,7 +303,8 @@ class GOFI.TXT.TaskRow: DragListRow {
             if(task.priority != TxtTask.NO_PRIO) {
                 var prefix = _("priority");
                 var priority = task.priority;
-                markup_string = @"<b><a href=\"$prefix:$priority\">($priority)</a></b> $markup_string";
+                char prio_char = priority + 65;
+                markup_string = @"<b><a href=\"$prefix:$prio_char\">($prio_char)</a></b> $markup_string";
             }
             if (duration > 0) {
                 if (timer_value > 0 && !done) {
@@ -338,35 +339,36 @@ class GOFI.TXT.TaskRow: DragListRow {
          * link.
          * @param description the string to took for contexts or projects
          */
-        private string make_links (string description) {
+        private string make_links (TxtPart[] description) {
+            var length = description.length;
+            var markup_parts = new string[length];
             string? delimiter = null, prefix = null, val = null;
-            var parts = description.split (" ");
-            var length = parts.length;
 
             for (uint i = 0; i < length; i++) {
-                val = null;
-                var part = parts[i];
-                if (part == "") {
-                    continue;
-                }
+                unowned TxtPart part = description[i];
+                val = GLib.Markup.escape_text (part.content);
 
-                if (is_context_tag (part)) {
-                    prefix = _("context");
-                    delimiter = "@";
-                    val = part.offset(1);
+                switch (part.part_type) {
+                    case CONTEXT:
+                        prefix = _("context");
+                        delimiter = "@";
+                        break;
+                    case PROJECT:
+                        prefix = _("project");
+                        delimiter = "+";
+                        break;
+                    case TAG:
+                        markup_parts[i] = part.tag_name + ":" + val;
+                        continue;
+                    default:
+                        markup_parts[i] = val;
+                        continue;
                 }
-                if (is_project_tag (part)) {
-                    prefix = _("project");
-                    delimiter = "+";
-                    val = part.offset(1);
-                }
-                if (val != null) {
-                    parts[i] = @" <a href=\"$prefix:$val\" title=\"$val\">" +
-                               @"$delimiter$val</a>";
-                }
+                markup_parts[i] = @" <a href=\"$prefix:$val\" title=\"$val\">" +
+                                  @"$delimiter$val</a>";
             }
 
-            return string.joinv (" ", parts);
+            return string.joinv (" ", markup_parts);
         }
 
         private void update () {

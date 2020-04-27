@@ -47,57 +47,12 @@ namespace GOFI.TXT.TxtUtils {
 
     public static bool is_timer_value (string token) {
         MatchInfo info;
-        return /timer:([0-9]+)h-([0-9]+)m-([0-9]+)s/.match(token, 0, out info);
+        return /([0-9]+)h-([0-9]+)m-([0-9]+)s/.match(token, 0, out info);
     }
 
     public static bool is_duration_value (string token) {
         MatchInfo info;
-        return /duration:([0-9]+)m/.match(token, 0, out info);
-    }
-
-    /**
-     * Parses a timer value if present in the description parts.
-     */
-    public static uint consume_timer_value ((unowned string)[] description) {
-        uint timer_val = 0;
-        int length = description.length;
-        for (int i = 0; description[i] != null && i < length; i++) {
-            if (is_timer_value (description[i])) {
-                timer_val = string_to_timer (description[i].offset(6));
-                array_remove (description, i);
-                return timer_val;
-            }
-        }
-        return timer_val;
-    }
-
-    public static uint consume_duration_value ((unowned string)[] description) {
-        uint duration = 0;
-        int length = description.length;
-        for (int i = 0; description[i] != null && i < length; i++) {
-            if (is_duration_value (description[i])) {
-                duration = (uint) uint64.parse(description[i].offset(9)) * 60;
-                array_remove (description, i);
-                return duration;
-            }
-        }
-        return duration;
-    }
-
-    /**
-     * Helper function used to remove elements from an array.
-     * This function is useful as .move can't be used when removing the last
-     * element and something went horribly wrong when using GLib.Array to have
-     * an array from which elements can be removed.
-     */
-    private static void array_remove ((unowned string)[] arr, int pos) {
-        int to_move = arr.length - pos - 1;
-        if (to_move > 0) {
-            arr.move (pos+1, pos, to_move);
-        } else {
-            arr[pos] = null;
-        }
-        arr.length--;
+        return /([0-9]+)m/.match(token, 0, out info);
     }
 
     public static DateTime string_to_date (string date_txt) {

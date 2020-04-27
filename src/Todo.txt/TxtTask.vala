@@ -17,6 +17,41 @@
 
 using GOFI.TXT.TxtUtils;
 
+enum TxtPartType {
+    TAG,
+    WORD,
+    PROJECT,
+    CONTEXT;
+}
+
+[Compact]
+class TxtPart {
+    public TxtPartType part_type;
+    public string content;
+    public string tag_name;
+
+    public TxtPart.word (string word) {
+        this.part_type = WORD;
+        this.content = word;
+    }
+
+    public TxtPart.tag (string tag_name, string tag_value) {
+        this.part_type = TAG;
+        this.tag_name= tag_name;
+        this.content = tag_value;
+    }
+
+    public TxtPart.context (string context) {
+        this.part_type = CONTEXT;
+        this.content = context;
+    }
+
+    public TxtPart.project (string project) {
+        this.part_type = PROJECT;
+        this.content = project;
+    }
+}
+
 /**
  * This class stores all task information.
  */
@@ -50,11 +85,22 @@ class GOFI.TXT.TxtTask : TodoTask {
         public set;
     }
 
-    public char priority {
+    public uint8 priority {
         public get;
         public set;
     }
-    public const char NO_PRIO=127;
+    public const uint8 NO_PRIO=127;
+
+
+    private void set_descr_parts (owned TxtPart[] parts) {
+        _parts = (owned) parts;
+        description = parts_to_description ();
+    }
+    public unowned TxtPart[] get_descr_parts () {
+        return _parts;
+    }
+    private TxtPart[] _parts;
+
 
     public signal void done_changed ();
 
@@ -76,85 +122,165 @@ class GOFI.TXT.TxtTask : TodoTask {
     public TxtTask.from_todo_txt (string descr, bool done) {
         base ("");
         var parts = descr.split (" ");
-        assert (parts.length != 0);
-        var last = parts.length - 1;
+        assert (parts[0] != null);
         uint index = 0;
 
-        if (parts[0] == "x") {
-            done = true;
-            index++;
-        }
-        _done = done;
+        _done = parse_done (parts, ref index);
+        parse_priority (parts, ref index);
+        parse_dates (parts, ref index);
 
-        if (index <= last && is_priority (parts[index])) {
-            priority = parts[index][1];
+        set_descr_parts (parse_description (parts, index));
+
+        if (description == "") {
+            warning ("Task does not have a description: \"%s\"", descr);
+            return;
+        }
+    }
+
+    private inline bool parse_done (string[] parts, ref uint index) {
+        if (parts[index] == "x") {
+            index++;
+            return true;
+        }
+        return false;
+    }
+
+    private inline void parse_priority (string[] parts, ref uint index) {
+        if (parts[index] != null && is_priority (parts[index])) {
+            priority = parts[index][1] - 65;
             index++;
         } else {
             priority = NO_PRIO;
         }
+    }
 
-        if (index <= last && is_date (parts[index])) {
-            if (done && index + 1 <= last && is_date (parts[index + 1])) {
-                completion_date = string_to_date (parts[index]);
-                creation_date = string_to_date (parts[index + 1]);
-                index += 2;
-            } else {
-                completion_date = null;
-                creation_date = string_to_date (parts[index]);
-                index++;
-            }
+    private inline DateTime? try_parse_date (string[] parts, ref uint index) {
+        uint _index = index;
+        if (parts[_index] != null && is_date (parts[_index])) {
+            index++;
+            return string_to_date (parts[_index]);
+        }
+        return null;
+    }
+
+    private inline void parse_dates (string[] parts, ref uint index) {
+        DateTime? date1 = try_parse_date (parts, ref index);
+        DateTime? date2 = null;
+
+        if (date1 != null && _done && (date2 = try_parse_date (parts, ref index)) != null) {
+            creation_date = date2;
+            completion_date = date1;
         } else {
+            creation_date = date1;
             completion_date = null;
-            creation_date = null;
         }
+    }
 
-        if (index > last) {
-            warning ("Task does not have a description: \"%s\"", descr);
-            description = "";
-            return;
-        }
-
-        (unowned string)[] unparsed = parts[index:parts.length];
-        timer_value = consume_timer_value (unparsed);
-        duration = consume_duration_value (unparsed);
-        if (unparsed[0] == null) {
-            warning ("Task does not have a description: \"%s\"", descr);
-            description = "";
+    private TxtPart tokenize_descr_part (string p) {
+        if (is_project_tag (p)) {
+            return new TxtPart.project (p.offset(1));
+        } else if (is_context_tag (p)) {
+            return new TxtPart.context (p.offset(1));
         } else {
-            description = string.joinv (" ", unparsed).strip ();
+            var colon_pos = p.index_of_char (':');
+            if (colon_pos > 0 &&
+                p.get_char (colon_pos+1).isgraph () &&
+                p.index_of_char (':', colon_pos+1) == -1
+            ) {
+                return new TxtPart.tag (
+                    p.slice (0, colon_pos), // key
+                    p.offset (colon_pos+1)  // value
+                );
+            } else {
+                return new TxtPart.word (p);
+            }
         }
+    }
+
+    private TxtPart[] parse_description (string[] unparsed, uint offset) {
+        string? p;
+        TxtPart[] parsed_parts = {};
+
+        for (p=unparsed[offset]; p != null; offset++, p=unparsed[offset]) {
+            var t = tokenize_descr_part (p);
+            if (t.part_type == TAG) {
+                if (t.tag_name == "timer" && is_timer_value (t.content)) {
+                    timer_value = string_to_timer (t.content);
+                    continue;
+                }
+                if (t.tag_name == "duration" && is_duration_value (t.content)) {
+                    duration = (uint) uint64.parse(t.content) * 60;
+                    continue;
+                }
+            }
+            parsed_parts += (owned) t;
+        }
+
+        return parsed_parts;
     }
 
     public void update_from_simple_txt (string descr) {
-        var descr_parts = descr.split (" ");
-        (unowned string)[] unparsed;
+        var parts = descr.split (" ");
+        assert (parts[0] != null);
+        uint index = 0;
 
-        if (descr_parts[0] != null && is_priority (descr_parts[0])) {
-            priority = descr_parts[0][1];
-            unparsed = descr_parts[1:descr_parts.length];
-        } else {
-            priority = NO_PRIO;
-            unparsed = descr_parts;
+        parse_priority (parts, ref index);
+
+        duration = 0;
+        set_descr_parts (parse_description (parts, index));
+
+        if (description == "") {
+            warning ("Task does not have a description: \"%s\"", descr);
+            return;
         }
+    }
 
-        // If descr_parts.length == 1 then unparsed will be null
-        if (unparsed != null) {
-          duration = consume_duration_value (unparsed);
+    public string parts_to_description () {
+        var descr = "";
+        bool add_leading_space = false;
+        foreach (unowned TxtPart p in _parts) {
+            if (add_leading_space) {
+                descr += " ";
+            }
+            add_leading_space = true;
+            switch (p.part_type) {
+                case TAG:
+                    descr += p.tag_name + ":" + p.content;
+                    break;
+                case PROJECT:
+                    descr += "+" + p.content;
+                    break;
+                case CONTEXT:
+                    descr += "@" + p.content;
+                    break;
+                default:
+                    descr += p.content;
+                    break;
+            }
         }
-
-        description = string.joinv (" ", unparsed).strip ();
+        return descr;
     }
 
     public string to_simple_txt () {
-        string prio_str = (priority != NO_PRIO) ?  @"($priority) " : "";
+        string prio_str = (priority != NO_PRIO) ?  @"($((char) (priority + 65))) " : "";
         string duration_str = duration != 0 ? " duration:%um".printf (duration/60) : "";
 
         return prio_str + description + duration_str;
     }
 
+    private string prio_to_string () {
+        if (priority >= NO_PRIO) {
+            return "";
+        } else {
+            char prio_char = priority + 65;
+            print ("'%i'\n", prio_char);
+            return @"($prio_char) ";
+        }
+    }
+
     public string to_txt (bool log_timer) {
         string status_str = done ? "x " : "";
-        string prio_str = (priority != NO_PRIO) ?  @"($priority) " : "";
+        string prio_str = prio_to_string ();
         string comp_str = (completion_date != null) ? date_to_string (completion_date) + " " : "";
         string crea_str = (creation_date != null) ? date_to_string (creation_date) + " " : "";
         string timer_str = (log_timer && timer_value != 0) ? " timer:" + timer_to_string (timer_value) : "";

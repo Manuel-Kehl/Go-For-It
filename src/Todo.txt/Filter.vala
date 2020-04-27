@@ -16,13 +16,11 @@
 */
 
 class GOFI.TXT.Filter {
-    private List<string> tags;
-    private List<string> sentence_pieces;
+    private List<TxtPart> search_parts;
     private PrioConstraint? priority_constraint;
 
     public Filter () {
-        tags = new List<string> ();
-        sentence_pieces = new List<string> ();
+        search_parts = new List<TxtPart> ();
     }
 
     private enum prio_constr_type {
@@ -36,11 +34,11 @@ class GOFI.TXT.Filter {
 
     [Compact]
     private class PrioConstraint {
-        public char p1;
-        public char p2;
+        public uint8 p1;
+        public uint8 p2;
         public prio_constr_type pc_type;
 
-        public PrioConstraint (prio_constr_type pc_type, char p1, char p2=0) {
+        public PrioConstraint (prio_constr_type pc_type, uint8 p1, uint8 p2=0) {
             if (p1 > p2) {
                 this.p1 = p1;
                 this.p2 = p2;
@@ -54,129 +52,98 @@ class GOFI.TXT.Filter {
     }
 
     public void parse (string filter_string) {
-        tags = new List<string> ();
-        sentence_pieces = new List<string> ();
+        search_parts = new List<TxtPart> ();
         priority_constraint = null;
 
-        string sentence_piece = "";
+        string[] parts = filter_string.casefold ().split (" ");
 
-        string[] parts = filter_string.split (" ");
+        string project_pre = _("project").casefold () + ":";
+        string context_pre = _("context").casefold () + ":";
+        string priority_pre = _("priority").casefold () + ":";
 
         foreach (string part in parts) {
             if (part == "") {
                 continue;
             }
-            if (part.has_prefix (_("project") + ":")) {
+            if (part.has_prefix (project_pre)) {
                 string? project = part.split (":", 2)[1];
                 if (project != null && project != "") {
-                    tags.prepend ("+" + project);
-                    add_sentence_piece (sentence_piece);
+                    search_parts.prepend (new TxtPart.project (project));
                 }
-            } else if (part.has_prefix (_("context") + ":")) {
+            } else if (part.has_prefix (context_pre)) {
                 string? context = part.split (":", 2)[1];
                 if (context != null && context != "") {
-                    tags.prepend ("@" + context);
-                    add_sentence_piece (sentence_piece);
+                    search_parts.prepend (new TxtPart.context (context));
                 }
-            } else if (part.has_prefix (_("priority") + ":")) {
-                string? priority = part.split (":", 2)[1];
-                if (priority != null && priority[0] != '\0') {
-                    var offset = 0;
-                    var pc_type = prio_constr_type.EQUAL;
-                    if (priority[0] == '>') {
-                        if (priority[1] == '=') {
-                            pc_type = prio_constr_type.GREATER_OR_EQUAL;
-                            offset = 2;
-                        } else {
-                            pc_type = prio_constr_type.GREATER;
-                            offset = 1;
-                        }
-                    } else if (priority[0] == '<') {
-                        if (priority[1] == '=') {
-                            pc_type = prio_constr_type.LESS_OR_EQUAL;
-                            offset = 2;
-                        } else {
-                            pc_type = prio_constr_type.LESS;
-                            offset = 1;
-                        }
-                    }
-                    var offset_prio = priority.offset(offset);
-                    if (offset_prio[0] < 'A' || offset_prio[0] > 'Z') {
-                        //TODO: highlight mistake?
-                        continue;
-                    }
-                    if (offset_prio[1] == '\0') {
-                        priority_constraint = new PrioConstraint (pc_type, offset_prio[0]);
-                    } else if (pc_type == prio_constr_type.EQUAL && offset_prio[1] == '-') {
-                        if (offset_prio[2] >= 'A' && offset_prio[2] <= 'Z' && offset_prio[3] == '\0') {
-                            pc_type = prio_constr_type.BETWEEN;
-                            priority_constraint = new PrioConstraint (pc_type, offset_prio[0], offset_prio[2]);
-                        }
-                    } else {
-                        //TODO: highlight mistake?
-                        continue;
-                    }
+            } else if (part.has_prefix (priority_pre)) {
+                parse_priority_contstraint (part);
+            } else {
+                var key_value = part.split (":", 2);
+                if (key_value[1] != null && key_value[1] != "") {
+                    search_parts.prepend (new TxtPart.tag (key_value[0], key_value[1]));
+                } else {
+                    search_parts.prepend (new TxtPart.word (part));
+                }
+            }
+        }
+    }
+
+    private void parse_priority_contstraint (string part) {
+        string? priority = part.split (":", 2)[1];
+        if (priority != null && priority[0] != '\0') {
+            var offset = 0;
+            var pc_type = prio_constr_type.EQUAL;
+            if (priority[0] == '>') {
+                if (priority[1] == '=') {
+                    pc_type = prio_constr_type.GREATER_OR_EQUAL;
+                    offset = 2;
+                } else {
+                    pc_type = prio_constr_type.GREATER;
+                    offset = 1;
+                }
+            } else if (priority[0] == '<') {
+                if (priority[1] == '=') {
+                    pc_type = prio_constr_type.LESS_OR_EQUAL;
+                    offset = 2;
+                } else {
+                    pc_type = prio_constr_type.LESS;
+                    offset = 1;
+                }
+            }
+            var offset_prio = priority.offset(offset);
+            if (offset_prio[0] < 'a' || offset_prio[0] > 'z') {
+                //TODO: highlight mistake?
+                return;
+            }
+            uint8 prio1 = offset_prio[0] - 97;
+
+            if (offset_prio[1] == '\0') {
+                priority_constraint = new PrioConstraint (pc_type, prio1);
+            } else if (pc_type == prio_constr_type.EQUAL && offset_prio[1] == '-') {
+                if (offset_prio[2] >= 'a' && offset_prio[2] <= 'z' && offset_prio[3] == '\0') {
+                    pc_type = prio_constr_type.BETWEEN;
+                    uint8 prio2 = offset_prio[2] - 97;
+                    priority_constraint = new PrioConstraint (pc_type, prio1, prio2);
                 }
             } else {
-                sentence_piece += " " + part.casefold ();
+                //TODO: highlight mistake?
+                return;
             }
         }
-        add_sentence_piece (sentence_piece);
     }
 
-    private void add_sentence_piece (string sentence_piece) {
-        if (sentence_piece == "") {
-            return;
+    private inline bool part_match (TxtPart search_part, TxtPart task_part) {
+        if (task_part.part_type != search_part.part_type) {
+            return false;
         }
-
-        sentence_pieces.prepend (sentence_piece.chug ());
+        if (task_part.part_type == TxtPartType.TAG &&
+            task_part.tag_name.casefold () != search_part.tag_name) {
+            return false;
+        }
+        return task_part.content.casefold ().contains (search_part.content);
     }
 
-    /**
-     * Checks if filter_string is a substring with the following extra
-     * properties: if title doesn't start with filter_string a space must
-     * preceed it, and if title doesn't end with it a space must succeed it.
-     */
-    private bool contains_tag (string title, string filter_string) {
-        int index, title_length, search_length;
-
-        index = title.index_of (filter_string);
-
-        if (index >= 0) {
-            if (index > 0) {
-                if (title.get (index - 1) != ' ') {
-                    return false;
-                }
-            }
-            title_length = title.length;
-            search_length = filter_string.length;
-            if (index + search_length < title_length) {
-                return (title.get (index + search_length) == ' ');
-            }
-            return true;
-        }
-        return false;
-    }
-
-    public bool filter (DragListRow _row) {
-        assert (this != null);
-        var row = _row as TaskRow;
-        var task = row.task;
-
-        foreach (string tag in tags) {
-            if (!contains_tag (task.description, tag)) {
-                return false;
-            }
-        }
-
-        string title = task.description.casefold ();
-
-        foreach (string sentence_piece in sentence_pieces) {
-            if (!title.contains (sentence_piece)) {
-                return false;
-            }
-        }
-
+    private inline bool check_prio (TxtTask task) {
         if (priority_constraint != null) {
             switch (priority_constraint.pc_type) {
                 case prio_constr_type.LESS:
@@ -191,6 +158,43 @@ class GOFI.TXT.Filter {
                     return task.priority <= priority_constraint.p1 && task.priority >= priority_constraint.p2;
                 default:
                     return task.priority == priority_constraint.p1;
+            }
+        }
+        return true;
+    }
+
+    // Not the most efficient filtering implementation, but it should suffice
+    public bool filter (DragListRow _row) {
+        assert (this != null);
+        var row = _row as TaskRow;
+        var task = row.task;
+
+        if (!check_prio (task)) {
+            return false;
+        }
+
+        string title = task.description.casefold ();
+        unowned TxtPart[] task_parts = task.get_descr_parts ();
+
+        foreach (unowned TxtPart search_part in search_parts) {
+            switch (search_part.part_type) {
+                case WORD:
+                    if (!title.contains (search_part.content)) {
+                        return false;
+                    }
+                    break;
+                default:
+                    bool matches = false;
+                    foreach (unowned TxtPart task_part in task_parts) {
+                        if (part_match (search_part, task_part)) {
+                            matches = true;
+                            break;
+                        }
+                    }
+                    if (!matches) {
+                        return false;
+                    }
+                    break;
             }
         }
 

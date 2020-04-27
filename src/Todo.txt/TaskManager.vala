@@ -219,7 +219,7 @@ class GOFI.TXT.TaskManager {
             refresh_queued = true;
 
             // Reload after 0.5 seconds so we can be relatively sure, that the
-            // other application has finished, writing
+            // other application has finished writing
             GLib.Timeout.add (
                 500, auto_refresh, GLib.Priority.DEFAULT_IDLE
             );
