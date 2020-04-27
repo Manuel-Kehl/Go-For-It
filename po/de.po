@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-03 20:07+0100\n"
-"PO-Revision-Date: 2020-04-25 03:11+0000\n"
+"PO-Revision-Date: 2020-04-28 08:32+0000\n"
 "Last-Translator: Jeannette L <j.lavoie@net-c.ca>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/de/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0.2-dev\n"
+"X-Generator: Weblate 4.0.2\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:438
@@ -107,7 +107,7 @@ msgstr "Eine Kopfzeile benutzen"
 #: ../src/Todo.txt/Widgets/TaskRow.vala:286
 #: ../src/Todo.txt/Widgets/TaskRow.vala:288
 msgid "Timer"
-msgstr "Stoppuhr"
+msgstr "Schaltuhr"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
 #: ../src/Widgets/TimerScheduleWidget.vala:132
@@ -145,7 +145,7 @@ msgstr "Aufgabe nach der Pause fortführen"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:74
 msgid "Reset timer after switching tasks"
-msgstr "Timer nach Aufgabenwechsel zurücksetzen"
+msgstr "Schaltuhr nach Aufgabenwechsel zurücksetzen"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
@@ -159,7 +159,7 @@ msgstr "kurzen Pausen"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
 msgid "Timer mode"
-msgstr "Timer Modus"
+msgstr "Schaltuhr-Modus"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:108
 msgid "Simple"
@@ -167,7 +167,7 @@ msgstr "Einfach"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:109
 msgid "Pomodoro"
-msgstr ""
+msgstr "Pomodoro"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:110
 msgid "Custom"
@@ -234,10 +234,8 @@ msgid "The Break is Over"
 msgstr "Die Pause ist vorbei"
 
 #: ../src/Main.vala:261
-#, fuzzy
-#| msgid "Your next task is"
 msgid "Your current task is"
-msgstr "Deine nächste Aufgabe ist"
+msgstr "Deine aktuelle Aufgabe ist"
 
 #: ../src/Main.vala:281
 msgid "Prepare for your break"
@@ -320,7 +318,7 @@ msgstr "Neue Aufgabe/Aufgabenliste hinzufügen"
 
 #: ../src/Services/Shortcuts.vala:137
 msgid "Start/Stop the timer"
-msgstr "Timer starten/stoppen"
+msgstr "Schaltuhr starten/stoppen"
 
 #: ../src/Services/Shortcuts.vala:138
 msgid "Mark the task as complete"
@@ -522,7 +520,7 @@ msgstr "Aufgabe erstellt um %s"
 #: ../src/Todo.txt/Widgets/TaskRow.vala:270
 #: ../src/Todo.txt/Widgets/TaskRow.vala:272
 msgid "min."
-msgstr ""
+msgstr "min"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:286
 msgid "%u hours and %u minutes"
