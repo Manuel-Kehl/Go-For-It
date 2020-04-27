@@ -279,7 +279,12 @@ class GOFI.Main : Gtk.Application {
         int64 secs = remaining_time.to_unix ();
         Notify.Notification notification = new Notify.Notification (
             _("Prepare for your break"),
-            _("You have %s seconds left").printf (secs.to_string ()), GOFI.EXEC_NAME);
+            _("You have %s seconds left").printf (secs.to_string ()),
+            GOFI.EXEC_NAME
+        );
+        notification.set_hint (
+            "desktop-entry", new Variant.string (GOFI.APP_SYSTEM_NAME)
+        );
         try {
             notification.show ();
         } catch (GLib.Error err){
