@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-03 20:07+0100\n"
-"PO-Revision-Date: 2020-04-07 04:22+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2020-04-28 08:32+0000\n"
+"Last-Translator: Jeannette L <j.lavoie@net-c.ca>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "go-for-it/go-for-it/nb_NO/>\n"
 "Language: no\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0-dev\n"
+"X-Generator: Weblate 4.0.2\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:438
@@ -190,7 +190,7 @@ msgstr "Bunnen av listen"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
-msgstr "%s må startes på ny for at denne innstillingen skal tre i effekt"
+msgstr "%s må startes på ny for at denne innstillingen skal tre i effekt."
 
 #: ../src/Main.vala:79
 msgid "Not a known list: %s"
@@ -249,9 +249,8 @@ msgid "Task duration exceeded"
 msgstr "Gjøremålsvarighet overskredet"
 
 #: ../src/Main.vala:294
-#, fuzzy
 msgid "Consider switching to a different task"
-msgstr "Overvei å bytte til et annet gjøremål."
+msgstr "Overvei å bytte til et annet gjøremål"
 
 #: ../src/MainWindow.vala:62
 msgid "Go to overview"
@@ -275,7 +274,7 @@ msgid ""
 "Add one below!"
 msgstr ""
 "Ingen lister satt opp.\n"
-"Legg til en nedenfor."
+"Legg til en nedenfor!"
 
 #: ../src/Pages/SelectionPage.vala:102
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:65
@@ -457,7 +456,7 @@ msgstr "Tøm \"Ferdig\"-liste"
 
 #: ../src/Todo.txt/TxtListManager.vala:202
 msgid "An error was encountered while moving a file!"
-msgstr "En feil inntraff under flytting av en fil."
+msgstr "En feil inntraff under flytting av en fil!"
 
 #: ../src/Todo.txt/TxtListManager.vala:204
 msgid "Error information: "
@@ -485,7 +484,7 @@ msgid ""
 "Add some!"
 msgstr ""
 "Du har ikke noen gjøremål.\n"
-"Legg til noen."
+"Legg til noen!"
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:36
 #, fuzzy
@@ -498,7 +497,7 @@ msgstr "Du har ingen fullførte gjøremål lagret."
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:38
 msgid "You finished all tasks, good job!"
-msgstr "Du har fullført alle gjøremålene, godt jobbet."
+msgstr "Du har fullført alle gjøremålene, godt jobbet!"
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:191
 msgid "Add new task"
@@ -507,9 +506,8 @@ msgstr "Legg til nytt gjøremål"
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
 #: ../src/Todo.txt/Widgets/TaskRow.vala:238
-#, fuzzy
 msgid "%Y-%m-%d"
-msgstr "%d. %m %Y"
+msgstr "%d.%m.%Y"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:242
 msgid "Task completed at %s, created at %s"
