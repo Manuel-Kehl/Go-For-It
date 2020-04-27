@@ -274,6 +274,15 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         );
     }
 
+    [Signal (action = true)]
+    public virtual signal void filter_fallback_action () {
+        // If the user presses ctrl+f and the task list is shown but not
+        // focussed we need to manually activate the key binding
+        if (top_stack.visible_child == task_page) {
+            task_page.propagate_filter_action ();
+        }
+    }
+
     private void action_create_new () {
         if (top_stack.visible_child == task_page) {
             task_page.action_add_task ();

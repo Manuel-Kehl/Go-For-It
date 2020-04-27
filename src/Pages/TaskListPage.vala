@@ -76,6 +76,20 @@ class GOFI.TaskListPage : Gtk.Grid {
         }
     }
 
+    public void propagate_filter_action () {
+        var visible_child = activity_stack.get_visible_child ();
+        unowned ObjectClass? oc = null;
+        if (visible_child == first_page) {
+            oc = first_page.get_class ();
+        } else if (visible_child == last_page) {
+            oc = last_page.get_class ();
+        }
+        if (oc != null) {
+            var sc = kbsettings.get_shortcut ("filter");
+            Gtk.BindingSet.by_class (oc).activate (sc.key, sc.modifier, visible_child);
+        }
+    }
+
     [Signal (action = true)]
     public virtual signal void mark_task_done () {
         var visible_child = activity_stack.get_visible_child ();

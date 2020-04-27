@@ -54,7 +54,7 @@ namespace GOFI {
 
         public string to_readable () {
             if (!this.is_valid) {
-                return "disabled";
+                return _("disabled");
             }
 
             var tmp = "";
@@ -156,6 +156,10 @@ namespace GOFI {
             KeyBinding("filter", "toggle-filtering", {}),
         };
 
+        static KeyBinding[] WindowBindings = {
+            KeyBinding("filter", "filter-fallback-action", {}),
+        };
+
         static KeyBinding[] TaskListPageBindings = {
             KeyBinding("next-task", "switch_to_next", {}),
             KeyBinding("prev-task", "switch_to_prev", {}),
@@ -192,6 +196,10 @@ namespace GOFI {
             install_bindings_for_class (
                 typeof (TaskListPage),
                 TaskListPageBindings
+            );
+            install_bindings_for_class (
+                typeof (MainWindow),
+                WindowBindings
             );
         }
 
