@@ -31,23 +31,23 @@ class TxtPart {
     public string tag_name;
 
     public TxtPart.word (string word) {
-        this.part_type = WORD;
+        this.part_type = TxtPartType.WORD;
         this.content = word;
     }
 
     public TxtPart.tag (string tag_name, string tag_value) {
-        this.part_type = TAG;
+        this.part_type = TxtPartType.TAG;
         this.tag_name= tag_name;
         this.content = tag_value;
     }
 
     public TxtPart.context (string context) {
-        this.part_type = CONTEXT;
+        this.part_type = TxtPartType.CONTEXT;
         this.content = context;
     }
 
     public TxtPart.project (string project) {
-        this.part_type = PROJECT;
+        this.part_type = TxtPartType.PROJECT;
         this.content = project;
     }
 }
@@ -203,7 +203,7 @@ class GOFI.TXT.TxtTask : TodoTask {
 
         for (p=unparsed[offset]; p != null; offset++, p=unparsed[offset]) {
             var t = tokenize_descr_part (p);
-            if (t.part_type == TAG) {
+            if (t.part_type ==TxtPartType.TAG) {
                 if (t.tag_name == "timer" && is_timer_value (t.content)) {
                     timer_value = string_to_timer (t.content);
                     continue;
@@ -244,13 +244,13 @@ class GOFI.TXT.TxtTask : TodoTask {
             }
             add_leading_space = true;
             switch (p.part_type) {
-                case TAG:
+                case TxtPartType.TAG:
                     descr += p.tag_name + ":" + p.content;
                     break;
-                case PROJECT:
+                case TxtPartType.PROJECT:
                     descr += "+" + p.content;
                     break;
-                case CONTEXT:
+                case TxtPartType.CONTEXT:
                     descr += "@" + p.content;
                     break;
                 default:

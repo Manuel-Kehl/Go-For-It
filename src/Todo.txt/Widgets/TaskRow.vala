@@ -349,15 +349,15 @@ class GOFI.TXT.TaskRow: DragListRow {
                 val = GLib.Markup.escape_text (part.content);
 
                 switch (part.part_type) {
-                    case CONTEXT:
+                    case TxtPartType.CONTEXT:
                         prefix = _("context");
                         delimiter = "@";
                         break;
-                    case PROJECT:
+                    case TxtPartType.PROJECT:
                         prefix = _("project");
                         delimiter = "+";
                         break;
-                    case TAG:
+                    case TxtPartType.TAG:
                         markup_parts[i] = part.tag_name + ":" + val;
                         continue;
                     default:

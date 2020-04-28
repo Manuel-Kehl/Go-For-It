@@ -178,7 +178,7 @@ class GOFI.TXT.Filter {
 
         foreach (unowned TxtPart search_part in search_parts) {
             switch (search_part.part_type) {
-                case WORD:
+                case TxtPartType.WORD:
                     if (!title.contains (search_part.content)) {
                         return false;
                     }
