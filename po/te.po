@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-03 20:07+0100\n"
+"POT-Creation-Date: 2020-04-28 10:51+0200\n"
 "PO-Revision-Date: 2019-08-30 16:00+0200\n"
 "Last-Translator: Babitha Siddula <siddulababithasiddu@gmail.com>\n"
 "Language-Team: Telugu <https://hosted.weblate.org/projects/go-for-it/go-for-"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:438
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:447
 msgid "About"
 msgstr ""
 
@@ -42,7 +42,7 @@ msgstr ""
 msgid "If you really like this app, you can buy me a drink:"
 msgstr ""
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:425
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:434
 msgid "Settings"
 msgstr "సెట్టింగులు"
 
@@ -101,10 +101,10 @@ msgid "Use a header bar"
 msgstr "హెడర్ బార్ ఉపయోగించండి"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
-#: ../src/Pages/TaskListPage.vala:130 ../src/Pages/TaskListPage.vala:220
+#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:234
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:260
-#: ../src/Todo.txt/Widgets/TaskRow.vala:286
-#: ../src/Todo.txt/Widgets/TaskRow.vala:288
+#: ../src/Todo.txt/Widgets/TaskRow.vala:327
+#: ../src/Todo.txt/Widgets/TaskRow.vala:329
 msgid "Timer"
 msgstr "టైమర్"
 
@@ -246,13 +246,13 @@ msgstr "మీ విరామం కోసం సిద్ధం"
 msgid "You have %s seconds left"
 msgstr ""
 
-#: ../src/Main.vala:293
+#: ../src/Main.vala:298
 #, fuzzy
 #| msgid "Task duration"
 msgid "Task duration exceeded"
 msgstr "పని వ్యవధి"
 
-#: ../src/Main.vala:294
+#: ../src/Main.vala:299
 msgid "Consider switching to a different task"
 msgstr ""
 
@@ -265,11 +265,11 @@ msgstr "అవలోకనానికి వెళ్లండి"
 msgid "Go back to the to-do list"
 msgstr ""
 
-#: ../src/MainWindow.vala:326
+#: ../src/MainWindow.vala:335
 msgid "Menu"
 msgstr "మెనూ"
 
-#: ../src/MainWindow.vala:431
+#: ../src/MainWindow.vala:440
 msgid "Contribute / Donate"
 msgstr "సహకరించండి / దానం చేయండి"
 
@@ -284,15 +284,15 @@ msgstr "ప్రస్తుతం, జాబితాలు ఏవీ కా�
 msgid "Add list"
 msgstr ""
 
-#: ../src/Pages/TaskListPage.vala:123
+#: ../src/Pages/TaskListPage.vala:137
 msgid "Lists"
 msgstr "జాబితాలు"
 
-#: ../src/Pages/TaskListPage.vala:129 ../src/Pages/TaskListPage.vala:212
+#: ../src/Pages/TaskListPage.vala:143 ../src/Pages/TaskListPage.vala:226
 msgid "To-Do"
 msgstr ""
 
-#: ../src/Pages/TaskListPage.vala:131 ../src/Pages/TaskListPage.vala:215
+#: ../src/Pages/TaskListPage.vala:145 ../src/Pages/TaskListPage.vala:229
 msgid "Done"
 msgstr "పూర్తి"
 
@@ -311,6 +311,10 @@ msgstr "డైరెక్టరీని సృష్టించడం సా�
 #: ../src/Services/SettingsManager.vala:591
 msgid "Couldn't properly import settings from %s: %s"
 msgstr "నుండి సెట్టింగులను సరిగ్గా దిగుమతి చేయలేకపోయింది"
+
+#: ../src/Services/Shortcuts.vala:57
+msgid "disabled"
+msgstr ""
 
 #: ../src/Services/Shortcuts.vala:135
 msgid "Filter tasks"
@@ -405,15 +409,15 @@ msgstr ""
 msgid "Use default settings"
 msgstr "డిఫాల్ట్ సెట్టింగులను ఉపయోగించండి"
 
-#: ../src/Todo.txt/Filter.vala:69 ../src/Todo.txt/Widgets/TaskRow.vala:319
+#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:357
 msgid "project"
 msgstr ""
 
-#: ../src/Todo.txt/Filter.vala:75 ../src/Todo.txt/Widgets/TaskRow.vala:314
+#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:353
 msgid "context"
 msgstr "సందర్భం"
 
-#: ../src/Todo.txt/Filter.vala:81 ../src/Todo.txt/Widgets/TaskRow.vala:264
+#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:304
 msgid "priority"
 msgstr "ప్రాధాన్యత"
 
@@ -504,29 +508,29 @@ msgstr "క్రొత్త పనిని జోడించండి"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
-#: ../src/Todo.txt/Widgets/TaskRow.vala:238
+#: ../src/Todo.txt/Widgets/TaskRow.vala:278
 msgid "%Y-%m-%d"
 msgstr ""
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:242
+#: ../src/Todo.txt/Widgets/TaskRow.vala:282
 msgid "Task completed at %s, created at %s"
 msgstr ""
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:249
+#: ../src/Todo.txt/Widgets/TaskRow.vala:289
 #, fuzzy
 msgid "Task created at %s"
 msgstr "%s వద్ద టాస్క్ సృష్టించబడింది"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:270
-#: ../src/Todo.txt/Widgets/TaskRow.vala:272
+#: ../src/Todo.txt/Widgets/TaskRow.vala:311
+#: ../src/Todo.txt/Widgets/TaskRow.vala:313
 msgid "min."
 msgstr ""
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:286
+#: ../src/Todo.txt/Widgets/TaskRow.vala:327
 msgid "%u hours and %u minutes"
 msgstr ""
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:288
+#: ../src/Todo.txt/Widgets/TaskRow.vala:329
 #, fuzzy
 #| msgid "minutes"
 msgid "%u minutes"

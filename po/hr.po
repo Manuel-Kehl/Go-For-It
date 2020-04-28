@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-03 20:07+0100\n"
+"POT-Creation-Date: 2020-04-28 10:51+0200\n"
 "PO-Revision-Date: 2020-03-05 18:32+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/go-"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Generator: Weblate 4.0-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:438
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:447
 msgid "About"
 msgstr "Informacije"
 
@@ -44,7 +44,7 @@ msgstr ""
 msgid "If you really like this app, you can buy me a drink:"
 msgstr "Ako ti se doista sviđa ova aplikacija, možeš mi kupiti piće:"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:425
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:434
 msgid "Settings"
 msgstr "Postavke"
 
@@ -102,10 +102,10 @@ msgid "Use a header bar"
 msgstr "Koristi jednu traku zaglavlja"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
-#: ../src/Pages/TaskListPage.vala:130 ../src/Pages/TaskListPage.vala:220
+#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:234
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:260
-#: ../src/Todo.txt/Widgets/TaskRow.vala:286
-#: ../src/Todo.txt/Widgets/TaskRow.vala:288
+#: ../src/Todo.txt/Widgets/TaskRow.vala:327
+#: ../src/Todo.txt/Widgets/TaskRow.vala:329
 msgid "Timer"
 msgstr "Timer"
 
@@ -245,11 +245,11 @@ msgstr "Pripremi se za tvoj odmor"
 msgid "You have %s seconds left"
 msgstr "Preostalih sekundi: %s"
 
-#: ../src/Main.vala:293
+#: ../src/Main.vala:298
 msgid "Task duration exceeded"
 msgstr "Trajanje zadatka je prekoračeno"
 
-#: ../src/Main.vala:294
+#: ../src/Main.vala:299
 msgid "Consider switching to a different task"
 msgstr "Razmisli o prebacivanju na drugi zadatak"
 
@@ -261,11 +261,11 @@ msgstr "Idi na pregled"
 msgid "Go back to the to-do list"
 msgstr "Idi natrag na popis zadataka"
 
-#: ../src/MainWindow.vala:326
+#: ../src/MainWindow.vala:335
 msgid "Menu"
 msgstr "Izbornik"
 
-#: ../src/MainWindow.vala:431
+#: ../src/MainWindow.vala:440
 msgid "Contribute / Donate"
 msgstr "Pridonesi/doniraj"
 
@@ -282,15 +282,15 @@ msgstr ""
 msgid "Add list"
 msgstr "Dodaj popis"
 
-#: ../src/Pages/TaskListPage.vala:123
+#: ../src/Pages/TaskListPage.vala:137
 msgid "Lists"
 msgstr "Popisi"
 
-#: ../src/Pages/TaskListPage.vala:129 ../src/Pages/TaskListPage.vala:212
+#: ../src/Pages/TaskListPage.vala:143 ../src/Pages/TaskListPage.vala:226
 msgid "To-Do"
 msgstr "Zadatak"
 
-#: ../src/Pages/TaskListPage.vala:131 ../src/Pages/TaskListPage.vala:215
+#: ../src/Pages/TaskListPage.vala:145 ../src/Pages/TaskListPage.vala:229
 msgid "Done"
 msgstr "Obavljeno"
 
@@ -307,6 +307,10 @@ msgstr "Nije bilo moguće stvoriti mapu: %s"
 #: ../src/Services/SettingsManager.vala:591
 msgid "Couldn't properly import settings from %s: %s"
 msgstr "Nije bilo moguće ispravno uvesti postave od %s: %s"
+
+#: ../src/Services/Shortcuts.vala:57
+msgid "disabled"
+msgstr ""
 
 #: ../src/Services/Shortcuts.vala:135
 msgid "Filter tasks"
@@ -399,15 +403,15 @@ msgstr "Ove informacije će se spremati u todo.txt datoteke."
 msgid "Use default settings"
 msgstr "Koristi standardne postavke"
 
-#: ../src/Todo.txt/Filter.vala:69 ../src/Todo.txt/Widgets/TaskRow.vala:319
+#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:357
 msgid "project"
 msgstr "projekt"
 
-#: ../src/Todo.txt/Filter.vala:75 ../src/Todo.txt/Widgets/TaskRow.vala:314
+#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:353
 msgid "context"
 msgstr "kontekst"
 
-#: ../src/Todo.txt/Filter.vala:81 ../src/Todo.txt/Widgets/TaskRow.vala:264
+#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:304
 msgid "priority"
 msgstr "važnost"
 
@@ -502,28 +506,28 @@ msgstr "Dodaj novi zadatak"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
-#: ../src/Todo.txt/Widgets/TaskRow.vala:238
+#: ../src/Todo.txt/Widgets/TaskRow.vala:278
 msgid "%Y-%m-%d"
 msgstr "%d. %m. %Y."
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:242
+#: ../src/Todo.txt/Widgets/TaskRow.vala:282
 msgid "Task completed at %s, created at %s"
 msgstr "Zadatak dovršen %s, stvoren %s"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:249
+#: ../src/Todo.txt/Widgets/TaskRow.vala:289
 msgid "Task created at %s"
 msgstr "Zadatak stvoren %s"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:270
-#: ../src/Todo.txt/Widgets/TaskRow.vala:272
+#: ../src/Todo.txt/Widgets/TaskRow.vala:311
+#: ../src/Todo.txt/Widgets/TaskRow.vala:313
 msgid "min."
 msgstr "min"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:286
+#: ../src/Todo.txt/Widgets/TaskRow.vala:327
 msgid "%u hours and %u minutes"
 msgstr "%u h i %u min"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:288
+#: ../src/Todo.txt/Widgets/TaskRow.vala:329
 msgid "%u minutes"
 msgstr "%u min"
 
