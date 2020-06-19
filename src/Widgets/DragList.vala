@@ -1,4 +1,4 @@
-/* Copyright 2017 Go For It! developers
+/* Copyright 2017-2020 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -691,15 +691,16 @@ namespace GOFI {
     }
 }
 
+
 public class GOFI.DragListRow : Gtk.ListBoxRow {
     private Gtk.EventBox handle;
-    private Gtk.Box layout;
+    private DragListRowBox layout;
     private Gtk.Image image;
     private Gtk.Widget start_widget;
     private Gtk.Widget center_widget;
 
     public DragListRow () {
-        layout = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
+        layout = new DragListRowBox (5);
         layout.margin_start = 5;
         layout.margin_end = 5;
         add (layout);
@@ -707,7 +708,7 @@ public class GOFI.DragListRow : Gtk.ListBoxRow {
         handle = new Gtk.EventBox ();
         image = new Gtk.Image.from_icon_name ("drag-handle-symbolic", Gtk.IconSize.MENU);
         handle.add (image);
-        layout.pack_end (handle, false);
+        layout.set_end_widget (handle);
 
         Gtk.drag_source_set (
             handle, Gdk.ModifierType.BUTTON1_MASK, dlb_entries, Gdk.DragAction.MOVE
@@ -717,13 +718,8 @@ public class GOFI.DragListRow : Gtk.ListBoxRow {
     }
 
     public void set_start_widget (Gtk.Widget? widget) {
-        if (start_widget != null) {
-            layout.remove (start_widget);
-        }
         start_widget = widget;
-        if (start_widget != null) {
-            layout.pack_start (start_widget, false);
-        }
+            layout.set_start_widget (start_widget);
     }
 
     public unowned Gtk.Widget? get_start_widget () {
@@ -734,9 +730,6 @@ public class GOFI.DragListRow : Gtk.ListBoxRow {
         center_widget = widget;
         if (center_widget != null) {
             layout.set_center_widget (center_widget);
-            layout.set_child_packing (
-                center_widget, true, true, 0, Gtk.PackType.START
-            );
         }
     }
 

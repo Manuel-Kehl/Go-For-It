@@ -56,6 +56,7 @@ public class GOFI.TodoTask : GLib.Object {
 
     /**
      * Indication of the duration of the task in seconds.
+     * (How long the user thinks the task should take)
      * This should be set to 0 if no indication is given.
      */
     public uint duration {

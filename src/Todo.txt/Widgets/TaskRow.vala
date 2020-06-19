@@ -1,4 +1,4 @@
-/* Copyright 2017-2019 Go For It! developers
+/* Copyright 2017-2020 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -20,7 +20,9 @@ using GOFI.TXT.TxtUtils;
 class GOFI.TXT.TaskRow: DragListRow {
     private Gtk.CheckButton check_button;
     private Gtk.Button delete_button;
+    private DynOrientationBox label_box;
     private TaskMarkupLabel markup_label;
+    private Gtk.Label status_label;
     private TaskEditEntry edit_entry;
     private bool editing;
     private bool focus_cooldown_active;
@@ -46,15 +48,32 @@ class GOFI.TXT.TaskRow: DragListRow {
         editing = false;
         focus_cooldown_active = false;
         markup_label = new TaskMarkupLabel (task);
+        markup_label.halign = Gtk.Align.START;
+        status_label = new Gtk.Label (null);
+        status_label.halign = Gtk.Align.END;
+        status_label.use_markup = true;
+        update_status_label ();
+
+        label_box = new DynOrientationBox (2, 0);
+        label_box.set_primary_widget (markup_label);
+        label_box.set_secondary_widget (status_label);
 
         check_button = new Gtk.CheckButton ();
         check_button.active = task.done;
 
         set_start_widget (check_button);
-        set_center_widget (markup_label);
+        set_center_widget (label_box);
 
         connect_signals ();
         show_all ();
+    }
+
+    public override void show_all () {
+        bool status_label_was_visible = status_label.visible;
+        base.show_all ();
+        if (!status_label_was_visible) {
+            status_label.hide ();
+        }
     }
 
     public void edit (bool wrestle_focus=false) {
@@ -139,7 +158,7 @@ class GOFI.TXT.TaskRow: DragListRow {
             return;
         }
         var had_focus = edit_entry.has_focus;
-        set_center_widget (markup_label);
+        set_center_widget (label_box);
         set_start_widget (check_button);
         delete_button = null;
         edit_entry = null;
@@ -171,11 +190,15 @@ class GOFI.TXT.TaskRow: DragListRow {
 
     private void connect_signals () {
         check_button.toggled.connect (on_check_toggled);
-        task.done_changed.connect (on_task_done_changed);
         markup_label.activate_link.connect (on_activate_link);
+
         set_focus_child.connect (on_set_focus_child);
         focus_out_event.connect (on_focus_out);
         key_release_event.connect (on_row_key_release);
+
+        task.done_changed.connect (on_task_done_changed);
+        task.notify["status"].connect (update_status_label);
+        task.notify["timer-value"].connect (update_status_label);
     }
 
     private void on_check_toggled () {
@@ -194,6 +217,20 @@ class GOFI.TXT.TaskRow: DragListRow {
     private void on_set_focus_child (Gtk.Widget? widget) {
         if(widget == null && !has_focus) {
             on_focus_out ();
+        }
+    }
+
+    private void update_status_label () {
+        var timer_value = task.timer_value;
+        if (task.done && timer_value >= 60) {
+            var timer_value_str = Utils.seconds_to_pretty_string (timer_value);
+            status_label.label = "<i>%s</i>".printf(timer_value_str);
+            status_label.show ();
+        } else if ((task.status & TaskStatus.TIMER_ACTIVE) != 0) {
+            status_label.label = "⏰";
+            status_label.show ();
+        } else {
+            status_label.hide ();
         }
     }
 
@@ -259,7 +296,6 @@ class GOFI.TXT.TaskRow: DragListRow {
             hexpand = true;
             wrap = true;
             wrap_mode = Pango.WrapMode.WORD_CHAR;
-            width_request = 200;
             // Workaround for: "undefined symbol: gtk_label_set_xalign"
             ((Gtk.Misc) this).xalign = 0f;
 
@@ -297,7 +333,6 @@ class GOFI.TXT.TaskRow: DragListRow {
             markup_string = make_links (task.get_descr_parts ());
 
             var done = task.done;
-            var timer_value = task.timer_value;
             var duration = task.duration;
 
             if(task.priority != TxtTask.NO_PRIO) {
@@ -307,30 +342,15 @@ class GOFI.TXT.TaskRow: DragListRow {
                 markup_string = @"<b><a href=\"$prefix:$prio_char\">($prio_char)</a></b> $markup_string";
             }
             if (duration > 0) {
+                var timer_value = task.timer_value;
                 if (timer_value > 0 && !done) {
                     markup_string = "%s <i>(%u/%u %s)</i>".printf (markup_string, timer_value/60, duration/60, _("min."));
                 } else {
                     markup_string = "%s <i>(%u %s)</i>".printf (markup_string, duration/60, _("min."));
                 }
             }
-            if (task.done) {
+            if (done) {
                 markup_string = "<s>" + markup_string + "</s>";
-                if (timer_value >= 60) {
-                    uint mins, hours;
-
-                    timer_value = timer_value / 60;
-                    mins = timer_value % 60;
-                    timer_value = timer_value / 60;
-                    hours = timer_value;
-
-                    if (hours != 0) {
-                        markup_string += "\n<b>" + _("Timer") + ": " + _("%u hours and %u minutes").printf (hours, mins) + "</b>";
-                    } else {
-                        markup_string += "\n<b>" + _("Timer") + ": " + _("%u minutes").printf (mins) + "</b>";
-                    }
-                }
-            } else if ((task.status & TaskStatus.TIMER_ACTIVE) != 0) {
-                markup_string += " ⏰";
             }
         }
 
@@ -380,7 +400,6 @@ class GOFI.TXT.TaskRow: DragListRow {
             task.notify["description"].connect (update);
             task.notify["priority"].connect (update);
             task.notify["timer-value"].connect (update);
-            task.notify["status"].connect (update);
         }
     }
 }

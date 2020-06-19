@@ -36,6 +36,7 @@ vala_precompile (VALA_C ${LIBNAME}
     Services/ActivityLog.vala
     Widgets/TodoListInfoRow.vala
     Widgets/DragListModel.vala
+    Widgets/DragListRowBox.vala
     Widgets/DragList.vala
     Widgets/ViewSwitcher.vala
     Widgets/TimerScheduleWidget.vala
@@ -61,6 +62,7 @@ vala_precompile (VALA_C ${LIBNAME}
     Todo.txt/TxtListManager.vala
     Todo.txt/Widgets/TaskListWidget.vala
     Todo.txt/Widgets/TaskRow.vala
+    Todo.txt/Widgets/DynOrientationBox.vala
     Todo.txt/Dialogs/TxtListEditDialog.vala
 
     MainWindow.vala

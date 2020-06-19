@@ -175,6 +175,22 @@ namespace GOFI {
             }
         }
 
+        //TODO: printing more than 60 minutes is probably not the best way to handle this
+        public static string seconds_to_short_string (uint seconds) {
+            return "%u %s".printf (seconds/60, _("min."));
+        }
+
+        public static string seconds_to_pretty_string (uint seconds) {
+            var timer_mins = seconds / 60;
+            var mins = timer_mins % 60;
+            var hours = timer_mins / 60;
+
+            if (hours == 0) {
+                return _("%u minutes").printf (mins);
+            }
+            return _("%u hours and %u minutes").printf (hours, mins);
+        }
+
         public static Gtk.Button create_menu_button (string label) {
             var button = new Gtk.Button.with_label (label);
             button.get_style_context ().add_class ("menuitem");
