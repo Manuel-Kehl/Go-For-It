@@ -1,4 +1,4 @@
-/* Copyright 2014-2019 Go For It! developers
+/* Copyright 2014-2020 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -21,31 +21,47 @@
 class GOFI.TaskTimer {
     public bool running { get; private set; default = false; }
     public bool break_active {get; private set; default = false; }
-    /**
-     * The duration till the end, since the last start of the timer
-     */
-    private DateTime duration_till_end;
+    private uint update_loop_id;
+
+    private int64 start_sys_time;
+    private int64 prev_update_sys_time;
+    private int64 prev_task_update_sys;
+    private int64 task_time;
+
+    private int64 iteration_duration;
+
+    public const int64 us_c = 1000000; // μs<->s conversion
+
+    public const int64 update_interval = 60 * us_c;
+
     /**
      * A proxy attribute, that does not store any data itself, but provides
-     * convenient access to duration_till_end considering the current runtime.
+     * convenient way to get the remaining duration in seconds;
      */
-    public DateTime remaining_duration {
+    public uint remaining_duration {
         // owned, so that it returns a strong reference
         owned get {
-            var diff = duration_till_end.difference (get_runtime ());
-            return new DateTime.from_unix_utc (0).add (diff);
+            int64 total_runtime;
+            if (running) {
+                var now_monotonic = GLib.get_monotonic_time ();
+                total_runtime = now_monotonic - start_sys_time + previous_runtime;
+            } else {
+                total_runtime = previous_runtime;
+            }
+            var rounded_up = iteration_duration - total_runtime + 500000;
+            return (uint) (rounded_up / us_c);
         }
         set {
             // Don't change, while timer is running
             if (!running) {
-                TimeSpan diff = value.difference (remaining_duration);
-                duration_till_end = duration_till_end.add (diff);
+                iteration_duration = value * us_c + previous_runtime;
                 update ();
             }
         }
     }
     public DateTime start_time;
     private int64 previous_runtime { get; set; default = 0; }
+
     private TodoTask? _active_task;
     public TodoTask? active_task {
         get { return _active_task; }
@@ -60,9 +76,14 @@ class GOFI.TaskTimer {
                 _active_task.notify["description"].disconnect (on_task_notify_description);
             }
             _active_task = value;
+            task_time = _active_task.timer_value * us_c;
             if (_active_task != null) {
                 _active_task.notify["description"].connect (on_task_notify_description);
             }
+
+            var task_duration = _active_task.duration;
+            task_duration_exceeded_sent_already =
+                task_duration == 0 || task_duration < _active_task.timer_value;
 
             // Emit the corresponding notifier signal
             update_active_task ();
@@ -73,6 +94,7 @@ class GOFI.TaskTimer {
         }
     }
     private bool almost_over_sent_already { get; set; default = false; }
+    private bool task_duration_exceeded_sent_already { get; set; default = false; }
 
     /**
      * These properies provide access to the timer values that should be used.
@@ -110,17 +132,17 @@ class GOFI.TaskTimer {
         }
     }
     private int _reminder_time;
-    private int remaining_task_duration;
     private Schedule _schedule;
     private uint iteration;
 
     /* Signals */
-    public signal void timer_updated (DateTime remaining_duration);
+    public signal void timer_updated (uint remaining_duration);
     public signal void timer_updated_relative (double progress);
     public signal void timer_started ();
     public signal void timer_stopped (DateTime start_time, uint runtime);
-    public signal void timer_almost_over (DateTime remaining_duration);
+    public signal void timer_almost_over (uint remaining_duration);
     public signal void timer_finished (bool break_active);
+    public signal void task_time_updated (TodoTask task);
     public signal void active_task_description_changed (TodoTask task);
     public signal void active_task_changed (TodoTask? task, bool break_active);
     public signal void task_duration_exceeded ();
@@ -136,21 +158,6 @@ class GOFI.TaskTimer {
             }
         });
 
-        /*
-         * The TaskTimer's update loop. Actual time tracking is implemented
-         * by comparing timestamps, so the update interval has no influence
-         * on that.
-         */
-        Timeout.add_full (Priority.DEFAULT, 500, () => {
-            if (running) {
-                if (has_finished ()) {
-                    end_iteration ();
-                }
-                update ();
-            }
-            // TODO: Check if it may make sense to check for program exit state
-            return true;
-        });
         reset ();
     }
 
@@ -165,13 +172,16 @@ class GOFI.TaskTimer {
     public void start () {
         if (!running && _active_task != null) {
             start_time = new DateTime.now_utc ();
-            if (_active_task.duration > 0) {
-                remaining_task_duration = (int) remaining_duration.to_unix ()
-                    - ((int) (_active_task.duration - _active_task.timer_value));
-            } else {
-                remaining_task_duration = 0;
-            }
+            start_sys_time = GLib.get_monotonic_time ();
+            prev_task_update_sys = start_sys_time;
+            almost_over_sent_already = false;
 
+            /*
+             * The TaskTimer's update loop. Actual time tracking is implemented
+             * by comparing timestamps, so the update interval has no influence
+             * on that.
+             */
+            update_loop_id = Timeout.add_full (Priority.DEFAULT, 500, update_loop);
             running = true;
             timer_started ();
             _active_task.status |= TaskStatus.TIMER_ACTIVE;
@@ -180,12 +190,26 @@ class GOFI.TaskTimer {
 
     public void stop () {
         if (running) {
-            duration_till_end = remaining_duration;
-            var runtime = get_runtime ().to_unix ();
-            previous_runtime += runtime;
-            running = false;
-            timer_stopped (start_time, (uint) runtime);
-            _active_task.status ^= TaskStatus.TIMER_ACTIVE;
+            var now_monotonic = GLib.get_monotonic_time ();
+            _stop (now_monotonic);
+        }
+    }
+
+    private void _stop (int64 last_measurement) {
+        var runtime = last_measurement - start_sys_time;
+        previous_runtime += runtime;
+
+        update_task_time (last_measurement, true);
+
+        GLib.Source.remove (update_loop_id);
+        running = false;
+        timer_stopped (start_time, (uint) (runtime / us_c));
+        _active_task.status ^= TaskStatus.TIMER_ACTIVE;
+    }
+
+    private void stop_with_inconsistent_time () {
+        if (running) {
+            _stop (prev_update_sys_time);
         }
     }
 
@@ -196,44 +220,90 @@ class GOFI.TaskTimer {
         } else {
             default_duration = schedule.get_task_duration (iteration);
         }
-        duration_till_end = new DateTime.from_unix_utc (default_duration);
+        iteration_duration = default_duration * us_c;
         previous_runtime = 0;
         update ();
+    }
+
+    private bool update_loop () {
+        update ();
+        return true;
     }
 
     /**
      * Used to initiate a timer_updated signal from outside of this class.
      */
     public void update () {
-        timer_updated (remaining_duration);
+        int64 total_runtime, remaining_us, now_monotonic;
 
-        double runtime =
-            (double) (get_runtime ().to_unix () + previous_runtime);
-        double total =
-            (double) (duration_till_end.to_unix () + previous_runtime);
-        double progress = runtime / total;
+        now_monotonic = GLib.get_monotonic_time ();
+
+        if (running) {
+            if (prev_update_sys_time - now_monotonic > 60 * us_c) {
+                stdout.printf (
+                    "The monotonic system time has jumped by more than a minute!" +
+                        " (~0.5s was expected)\n" +
+                    "The system was either suspended or is starved for resources.\n" +
+                    "Stopping the timer!\n"
+                );
+                stop_with_inconsistent_time ();
+                return;
+            }
+
+            total_runtime = now_monotonic - start_sys_time + previous_runtime;
+            remaining_us = iteration_duration - total_runtime;
+
+            if (remaining_us <= 0) {
+                end_iteration ();
+                return;
+            }
+        } else {
+            total_runtime = previous_runtime;
+            remaining_us = iteration_duration - total_runtime;
+        }
+
+        timer_updated ((uint) (remaining_us / us_c));
+        double progress = ((double) total_runtime) / ((double) iteration_duration);
         timer_updated_relative (progress);
 
         if (!running || break_active) {
             return;
         }
-        var rem_duration_unix = remaining_duration.to_unix ();
 
-        // Check if "almost over" signal is to be send
-        if (rem_duration_unix <= reminder_time) {
-            if (settings.reminder_active && !almost_over_sent_already) {
+        prev_update_sys_time = now_monotonic;
+
+        update_task_time (now_monotonic, false);
+
+        check_almost_over (total_runtime);
+    }
+
+    // Check if "almost over" signal is to be send
+    private void check_almost_over (int64 total_runtime) {
+        if (!almost_over_sent_already &&
+            iteration_duration - total_runtime <= reminder_time * us_c ) {
+            if (settings.reminder_active) {
                 timer_almost_over (remaining_duration);
-                almost_over_sent_already = true;
             }
-        } else {
-            almost_over_sent_already = false;
+            almost_over_sent_already = true;
         }
+    }
 
-        if (remaining_task_duration > 0
-                && rem_duration_unix <= remaining_task_duration) {
-            print ("%i\n", remaining_task_duration);
-            remaining_task_duration = 0;
-            task_duration_exceeded ();
+    private void update_task_time (int64 now_monotonic, bool force_update) {
+        var time_diff = now_monotonic - prev_task_update_sys;
+
+        if (force_update || time_diff >= update_interval) {
+            prev_task_update_sys = now_monotonic;
+            task_time += time_diff;
+
+            var task_time_sec = task_time / us_c;
+            _active_task.timer_value = (uint) task_time_sec;
+            task_time_updated (_active_task);
+
+            if (!task_duration_exceeded_sent_already &&
+                task_time_sec >= _active_task.duration) {
+                task_duration_exceeded ();
+                task_duration_exceeded_sent_already = true;
+            }
         }
     }
 
@@ -249,23 +319,6 @@ class GOFI.TaskTimer {
      */
     private void on_task_notify_description () {
         active_task_description_changed (_active_task);
-    }
-
-    /**
-     * Determines if the running timer has finished, according to runtime and
-     * duration.
-     */
-    private bool has_finished () {
-        return (get_runtime ().compare (duration_till_end) >= 0);
-    }
-
-    public DateTime get_runtime () {
-        if (running) {
-            var diff = new DateTime.now_utc ().difference (start_time);
-            return new DateTime.from_unix_utc (0).add (diff);
-        } else {
-            return new DateTime.from_unix_utc (0);
-        }
     }
 
     /**

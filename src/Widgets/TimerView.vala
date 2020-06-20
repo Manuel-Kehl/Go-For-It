@@ -100,10 +100,12 @@ class GOFI.TimerView : Gtk.Grid {
         task_description_lbl.label = task.description;
     }
 
-    public void set_time (DateTime time) {
-        h_spin.value = time.get_hour ();
-        m_spin.value = time.get_minute ();
-        s_spin.value = time.get_second ();
+    public void set_time (uint timer_value) {
+        uint hours, minutes, seconds;
+        Utils.uint_to_time (timer_value, out hours, out minutes, out seconds);
+        h_spin.value = hours;
+        m_spin.value = minutes;
+        s_spin.value = seconds;
     }
 
     public void on_timer_started () {
@@ -124,12 +126,11 @@ class GOFI.TimerView : Gtk.Grid {
         timer.toggle_running ();
     }
 
-    public DateTime get_timer_values ()  {
-        var duration = new DateTime.from_unix_utc (0);
-        duration = duration.add_hours ((int) h_spin.value);
-        duration = duration.add_minutes ((int) m_spin.value);
-        duration = duration.add_seconds (s_spin.value);
-        return duration;
+    public uint get_timer_value ()  {
+        var hours   = (uint) h_spin.get_value_as_int ();
+        var minutes = (uint) m_spin.get_value_as_int ();
+        var seconds = (uint) s_spin.get_value_as_int ();
+        return Utils.time_to_uint (hours, minutes, seconds);
     }
 
     /**
@@ -180,13 +181,13 @@ class GOFI.TimerView : Gtk.Grid {
 
         /* Signal Handling */
         h_spin.value_changed.connect (() => {
-            timer.remaining_duration = get_timer_values ();
+            timer.remaining_duration = get_timer_value ();
         });
         m_spin.value_changed.connect (() => {
-            timer.remaining_duration = get_timer_values ();
+            timer.remaining_duration = get_timer_value ();
         });
         s_spin.value_changed.connect (() => {
-            timer.remaining_duration = get_timer_values ();
+            timer.remaining_duration = get_timer_value ();
         });
 
         /* Add Widgets */

@@ -181,14 +181,27 @@ namespace GOFI {
         }
 
         public static string seconds_to_pretty_string (uint seconds) {
-            var timer_mins = seconds / 60;
-            var mins = timer_mins % 60;
-            var hours = timer_mins / 60;
+            uint hours, minutes;
+            uint_to_time (seconds, out hours, out minutes, null);
 
             if (hours == 0) {
-                return _("%u minutes").printf (mins);
+                return _("%u minutes").printf (minutes);
             }
-            return _("%u hours and %u minutes").printf (hours, mins);
+            return _("%u hours and %u minutes").printf (hours, minutes);
+        }
+
+        public static void uint_to_time (uint time_val, out uint hours, out uint minutes, out uint seconds) {
+            seconds = time_val % 60;
+            time_val = time_val / 60;
+
+            minutes = time_val % 60;
+            time_val = time_val / 60;
+
+            hours = time_val;
+        }
+
+        public static uint time_to_uint (uint hours, uint minutes, uint seconds) {
+            return 3600 * hours + 60 * minutes + seconds;
         }
 
         public static Gtk.Button create_menu_button (string label) {

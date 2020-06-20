@@ -226,10 +226,10 @@ class GOFI.Main : Gtk.Application {
 
     const OptionEntry[] entries = {
         { "version", 'v', 0, OptionArg.NONE, out print_version, N_("Print version info and exit"), null },
-        { "about", 'a', 0, OptionArg.NONE, out show_about_dialog, N_("Show about dialog"), null },
-        { "logfile", 0, 0, OptionArg.FILENAME, out logfile, N_("CSV file to log activities to."), "FILE" },
-        { "list", 0, 0, OptionArg.NONE, out list_lists, N_("Show configured lists and exit"), null},
-        { "load", 0, 0, OptionArg.NONE, null, N_("Load the list specified by the list type and ID"), "LIST_TYPE LIST_ID"},
+        { "about",   'a', 0, OptionArg.NONE, out show_about_dialog, N_("Show about dialog"), null },
+        { "logfile",   0, 0, OptionArg.FILENAME, out logfile, N_("CSV file to log activities to."), "FILE" },
+        { "list",      0, 0, OptionArg.NONE, out list_lists, N_("Show configured lists and exit"), null},
+        { "load",      0, 0, OptionArg.NONE, null, N_("Load the list specified by the list type and ID"), "LIST_TYPE LIST_ID"},
         { null }
     };
 
@@ -275,11 +275,10 @@ class GOFI.Main : Gtk.Application {
         break_previously_active = break_active;
     }
 
-    private void display_almost_over_notification (DateTime remaining_time) {
-        int64 secs = remaining_time.to_unix ();
+    private void display_almost_over_notification (uint remaining_time) {
         Notify.Notification notification = new Notify.Notification (
             _("Prepare for your break"),
-            _("You have %s seconds left").printf (secs.to_string ()),
+            _("You have %s seconds left").printf (remaining_time.to_string ()),
             GOFI.EXEC_NAME
         );
         notification.set_hint (

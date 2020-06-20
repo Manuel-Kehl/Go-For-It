@@ -313,7 +313,6 @@ class GOFI.TaskListPage : Gtk.Grid {
             start_time,
             runtime
         );
-        active_task.timer_value += runtime;
     }
 
     private void on_icon_size_changed (Gtk.IconSize size) {
