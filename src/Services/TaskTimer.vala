@@ -48,8 +48,7 @@ class GOFI.TaskTimer {
             } else {
                 total_runtime = previous_runtime;
             }
-            var rounded_up = iteration_duration - total_runtime + 500000;
-            return (uint) (rounded_up / us_c);
+            return us_to_s (iteration_duration - total_runtime);
         }
         set {
             // Don't change, while timer is running
@@ -161,6 +160,10 @@ class GOFI.TaskTimer {
         reset ();
     }
 
+    private uint us_to_s (int64 us_val) {
+        return (uint) ((us_val + 500000) / us_c);
+    }
+
     public void toggle_running () {
         if (running) {
             stop ();
@@ -203,7 +206,7 @@ class GOFI.TaskTimer {
 
         GLib.Source.remove (update_loop_id);
         running = false;
-        timer_stopped (start_time, (uint) (runtime / us_c));
+        timer_stopped (start_time, us_to_s (runtime));
         _active_task.status ^= TaskStatus.TIMER_ACTIVE;
     }
 
@@ -262,7 +265,7 @@ class GOFI.TaskTimer {
             remaining_us = iteration_duration - total_runtime;
         }
 
-        timer_updated ((uint) (remaining_us / us_c));
+        timer_updated (us_to_s (remaining_us));
         double progress = ((double) total_runtime) / ((double) iteration_duration);
         timer_updated_relative (progress);
 
@@ -295,12 +298,11 @@ class GOFI.TaskTimer {
             prev_task_update_sys = now_monotonic;
             task_time += time_diff;
 
-            var task_time_sec = task_time / us_c;
-            _active_task.timer_value = (uint) task_time_sec;
+            _active_task.timer_value = us_to_s (task_time);
             task_time_updated (_active_task);
 
             if (!task_duration_exceeded_sent_already &&
-                task_time_sec >= _active_task.duration) {
+                task_time >= _active_task.duration * us_c) {
                 task_duration_exceeded ();
                 task_duration_exceeded_sent_already = true;
             }
