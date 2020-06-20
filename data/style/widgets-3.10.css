@@ -12,6 +12,10 @@ GtkLabel.task_active {
     font-size: 120%;
 }
 
+GtkLabel.task_duration_exceeded {
+    color: @gofi_text_attention;
+}
+
 .timerview GtkSpinButton {
     font-size: 400%;
 }

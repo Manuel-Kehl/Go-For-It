@@ -12,6 +12,10 @@ label.task_active {
     font-size: 120%;
 }
 
+label.task_duration_exceeded {
+    color: @gofi_text_attention;
+}
+
 .timerview spinbutton {
     font-size: 400%;
 }

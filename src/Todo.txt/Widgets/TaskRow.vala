@@ -344,9 +344,9 @@ class GOFI.TXT.TaskRow: DragListRow {
             if (duration > 0) {
                 var timer_value = task.timer_value;
                 if (timer_value > 0 && !done) {
-                    markup_string = "%s <i>(%u/%u %s)</i>".printf (markup_string, timer_value/60, duration/60, _("min."));
+                    markup_string = "%s <i>(%u / %s)</i>".printf (markup_string, timer_value/60, Utils.seconds_to_short_string (duration));
                 } else {
-                    markup_string = "%s <i>(%u %s)</i>".printf (markup_string, duration/60, _("min."));
+                    markup_string = "%s <i>(%s)</i>".printf (markup_string, Utils.seconds_to_short_string (duration));
                 }
             }
             if (done) {

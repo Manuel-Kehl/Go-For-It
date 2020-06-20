@@ -1,4 +1,4 @@
-/* Copyright 2014-2017 Go For It! developers
+/* Copyright 2014-2020 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -26,6 +26,7 @@ class GOFI.TimerView : Gtk.Grid {
     private Gtk.ProgressBar progress;
     private Gtk.Label task_status_lbl;
     private Gtk.Label task_description_lbl;
+    private Gtk.Label task_duration_lbl;
     private Gtk.Grid timer_grid;
     private Gtk.SpinButton h_spin;
     private Gtk.SpinButton m_spin;
@@ -65,6 +66,7 @@ class GOFI.TimerView : Gtk.Grid {
         timer.timer_updated_relative.connect ((s, p) => {
             progress.set_fraction (p);
         });
+        timer.task_time_updated.connect (update_task_duration);
         timer.active_task_description_changed.connect (update_description);
 
         // Update timer, to refresh the view
@@ -81,6 +83,7 @@ class GOFI.TimerView : Gtk.Grid {
         run_btn.visible = true;
 
         update_description (task);
+        update_task_duration (task);
         var style = task_description_lbl.get_style_context ();
 
         // Append correct class according to break status
@@ -98,6 +101,27 @@ class GOFI.TimerView : Gtk.Grid {
 
     private void update_description (TodoTask task) {
         task_description_lbl.label = task.description;
+    }
+
+    public void update_task_duration (TodoTask task) {
+        var duration = task.duration;
+        if (duration > 0) {
+            var timer_value = task.timer_value;
+            task_duration_lbl.label = "<i>%u / %s</i>".printf (
+                timer_value / 60,
+                Utils.seconds_to_short_string (duration)
+            );
+            var style = task_duration_lbl.get_style_context ();
+            if (duration <= timer_value) {
+                style.add_class ("task_duration_exceeded");
+            } else {
+                style.remove_class ("task_duration_exceeded");
+            }
+            task_duration_lbl.visible = true;
+        } else {
+            task_duration_lbl.label = "";
+            task_duration_lbl.visible = false;
+        }
     }
 
     public void set_time (uint timer_value) {
@@ -140,18 +164,24 @@ class GOFI.TimerView : Gtk.Grid {
         /* Instantiation */
         task_status_lbl = new Gtk.Label (_("Inactive"));
         task_description_lbl = new Gtk.Label (_("No task has been selected"));
+        task_duration_lbl = new Gtk.Label ("");
 
         /* Configuration */
         task_status_lbl.margin_top = 30;
         task_status_lbl.get_style_context ().add_class ("task_status");
         task_description_lbl.margin = 20;
         task_description_lbl.margin_top = 30;
+        task_description_lbl.margin_bottom = 10;
         task_description_lbl.lines = 3;
         task_description_lbl.wrap = true;
+
+        task_duration_lbl.use_markup = true;
+        task_duration_lbl.margin_bottom = 10;
 
         /* Add Widgets */
         this.add (task_status_lbl);
         this.add (task_description_lbl);
+        this.add (task_duration_lbl);
     }
 
     /**
@@ -169,6 +199,7 @@ class GOFI.TimerView : Gtk.Grid {
         timer_grid.orientation = Gtk.Orientation.HORIZONTAL;
         timer_grid.halign = Gtk.Align.CENTER;
         timer_grid.valign = Gtk.Align.CENTER;
+        timer_grid.margin_top = 10;
         // Add CSS class
         timer_grid.get_style_context ().add_class ("timerview");
         h_spin.orientation = Gtk.Orientation.VERTICAL;
@@ -274,6 +305,8 @@ class GOFI.TimerView : Gtk.Grid {
         skip_btn.visible = false;
         run_btn.visible = false;
         done_btn.visible = false;
+        task_duration_lbl.label = "";
+        task_duration_lbl.visible = false;
     }
 
     public override void show_all () {
@@ -284,6 +317,9 @@ class GOFI.TimerView : Gtk.Grid {
             done_btn.visible = false;
         } else if (timer.break_active) {
             done_btn.visible = false;
+        }
+        if (task_duration_lbl.label == "") {
+            task_duration_lbl.visible = false;
         }
     }
 
