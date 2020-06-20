@@ -53,10 +53,10 @@ namespace GOFI.TXT.TxtUtils {
     public static bool match_duration_value (string token, out uint duration) {
         duration = 0;
         MatchInfo info;
-        if (/((?P<f1>[0-9])+h-)?(?P<f2>[0-9]+)(?P<f2u>h|m)/.match(token, 0, out info)) {
-            var hour_field = info.fetch_named ("f1");
-            var field2 = info.fetch_named ("f2");
-            var field2_unit = info.fetch_named ("f2u");
+        if (/(([0-9]+)h-)?([0-9]+)(h|m)/.match(token, 0, out info)) {
+            var hour_field = info.fetch (2);
+            var field2 = info.fetch (3);
+            var field2_unit = info.fetch (4);
 
             if (hour_field != null && hour_field != "") {
                 if (field2_unit == "h") {
