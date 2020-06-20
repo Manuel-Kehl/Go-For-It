@@ -1,4 +1,4 @@
-/* Copyright 2016-2019 Go For It! developers
+/* Copyright 2016-2020 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -208,8 +208,9 @@ class GOFI.TXT.TxtTask : TodoTask {
                     timer_value = string_to_timer (t.content);
                     continue;
                 }
-                if (t.tag_name == "duration" && is_duration_value (t.content)) {
-                    duration = (uint) uint64.parse(t.content) * 60;
+                uint new_duration = 0;
+                if (t.tag_name == "duration" && match_duration_value (t.content, out new_duration)) {
+                    duration = new_duration;
                     continue;
                 }
             }
@@ -261,9 +262,22 @@ class GOFI.TXT.TxtTask : TodoTask {
         return descr;
     }
 
+    private string duration_to_string () {
+        uint hours, minutes;
+        Utils.uint_to_time (duration, out hours, out minutes, null);
+        if (hours > 0) {
+            if (minutes > 0) {
+                return "duration:%uh-%um".printf(hours, minutes);
+            }
+            return "duration:%uh".printf(hours);
+        } else {
+            return "duration:%um".printf(minutes);
+        }
+    }
+
     public string to_simple_txt () {
         string prio_str = (priority != NO_PRIO) ?  @"($((char) (priority + 65))) " : "";
-        string duration_str = duration != 0 ? " duration:%um".printf (duration/60) : "";
+        string duration_str = duration != 0 ? " " + duration_to_string () : "";
 
         return prio_str + description + duration_str;
     }
@@ -273,7 +287,6 @@ class GOFI.TXT.TxtTask : TodoTask {
             return "";
         } else {
             char prio_char = priority + 65;
-            print ("'%i'\n", prio_char);
             return @"($prio_char) ";
         }
     }
@@ -284,7 +297,7 @@ class GOFI.TXT.TxtTask : TodoTask {
         string comp_str = (completion_date != null) ? date_to_string (completion_date) + " " : "";
         string crea_str = (creation_date != null) ? date_to_string (creation_date) + " " : "";
         string timer_str = (log_timer && timer_value != 0) ? " timer:" + timer_to_string (timer_value) : "";
-        string duration_str = duration != 0 ? " duration:%um".printf (duration/60) : "";
+        string duration_str = duration != 0 ? " " + duration_to_string () : "";
 
         return status_str + prio_str + comp_str + crea_str + description + timer_str + duration_str;
     }

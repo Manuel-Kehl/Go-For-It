@@ -50,9 +50,31 @@ namespace GOFI.TXT.TxtUtils {
         return /([0-9]+)h-([0-9]+)m-([0-9]+)s/.match(token, 0, out info);
     }
 
-    public static bool is_duration_value (string token) {
+    public static bool match_duration_value (string token, out uint duration) {
+        duration = 0;
         MatchInfo info;
-        return /([0-9]+)m/.match(token, 0, out info);
+        if (/((?P<f1>[0-9])+h-)?(?P<f2>[0-9]+)(?P<f2u>h|m)/.match(token, 0, out info)) {
+            var hour_field = info.fetch_named ("f1");
+            var field2 = info.fetch_named ("f2");
+            var field2_unit = info.fetch_named ("f2u");
+
+            if (hour_field != null && hour_field != "") {
+                if (field2_unit == "h") {
+                    return false;
+                }
+                duration = Utils.time_to_uint (
+                    (uint) int.parse (hour_field),
+                    (uint) int.parse (field2),
+                    0
+                );
+            } else if (field2_unit == "h") {
+                duration = Utils.time_to_uint ((uint) int.parse (field2), 0, 0);
+            } else {
+                duration = Utils.time_to_uint (0, (uint) int.parse (field2), 0);
+            }
+            return true;
+        }
+        return false;
     }
 
     public static DateTime string_to_date (string date_txt) {
