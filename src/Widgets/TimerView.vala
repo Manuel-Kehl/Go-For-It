@@ -83,7 +83,6 @@ class GOFI.TimerView : Gtk.Grid {
         run_btn.visible = true;
 
         update_description (task);
-        update_task_duration (task);
         var style = task_description_lbl.get_style_context ();
 
         // Append correct class according to break status
@@ -101,6 +100,7 @@ class GOFI.TimerView : Gtk.Grid {
 
     private void update_description (TodoTask task) {
         task_description_lbl.label = task.description;
+        update_task_duration (task);
     }
 
     public void update_task_duration (TodoTask task) {
