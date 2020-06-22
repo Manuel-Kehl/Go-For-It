@@ -86,12 +86,16 @@ namespace GOFI {
     }
 
     public struct KeyBindingParam<G> {
-        Type type;
-        G param;
+        Gtk.BindingArg arg;
 
+        // t should be long, double, or string depending on G
         public KeyBindingParam(G p, Type t) {
-            this.param = p;
-            this.type = t;
+            this.arg.arg_type = t;
+            this.arg.string_data = (string) p; // should be large enough
+        }
+
+        public G get_param () {
+            return (G) arg.string_data;
         }
     }
 
@@ -100,8 +104,8 @@ namespace GOFI {
 
         MoveKeyParams(Gtk.MovementStep step, int count) {
             params = {
-                KeyBindingParam<Gtk.MovementStep>(step, typeof( Gtk.MovementStep )),
-                KeyBindingParam<int>(count, typeof( int ))
+                KeyBindingParam<Gtk.MovementStep>(step, typeof(long)),
+                KeyBindingParam<int>(count, typeof(long))
             };
         }
     }
@@ -148,8 +152,8 @@ namespace GOFI {
         static KeyBinding[] DragListBindings = {
             KeyBinding("next-task", "move-cursor", MoveKeyParams(Gtk.MovementStep.DISPLAY_LINES, 1).params),
             KeyBinding("prev-task", "move-cursor", MoveKeyParams(Gtk.MovementStep.DISPLAY_LINES, -1).params),
-            KeyBinding("move-row-up", "move-selected-row", {KeyBindingParam<int>(1, typeof(int))}),
-            KeyBinding("move-row-down", "move-selected-row", {KeyBindingParam<int>(-1, typeof(int))}),
+            KeyBinding("move-row-up", "move-selected-row", {KeyBindingParam<long>(1, typeof(long))}),
+            KeyBinding("move-row-down", "move-selected-row", {KeyBindingParam<long>(-1, typeof(long))}),
         };
 
         static KeyBinding[] TaskListBindings = {
@@ -253,37 +257,18 @@ namespace GOFI {
                 if (!sc.is_valid) {
                     return;
                 }
-                switch (kb.params.length) {
-                    case 0:
-                        Gtk.BindingEntry.add_signal (
-                            bind_set, sc.key, sc.modifier, kb.signal_name, 0
-                        );
-                        break;
-                    case 1:
-                        Gtk.BindingEntry.add_signal (
-                            bind_set, sc.key, sc.modifier, kb.signal_name, 1,
-                             kb.params[0].type, kb.params[0].param
-                        );
-                        break;
-                    case 2:
-                        Gtk.BindingEntry.add_signal (
-                            bind_set, sc.key, sc.modifier, kb.signal_name, 2,
-                            kb.params[0].type, kb.params[0].param,
-                            kb.params[1].type, kb.params[1].param
-                        );
-                        break;
-                    case 3:
-                        Gtk.BindingEntry.add_signal (
-                            bind_set, sc.key, sc.modifier, kb.signal_name, 2,
-                            kb.params[0].type, kb.params[0].param,
-                            kb.params[1].type, kb.params[1].param,
-                            kb.params[2].type, kb.params[2].param
-                        );
-                        break;
-                    default:
-                        warning ("Too many parameters (max = 3): %s", kb.signal_name);
-                        break;
+
+                var binding_args = new SList<Gtk.BindingArg?> ();
+
+                for (int i = 0; i < kb.params.length; i++) {
+                    binding_args.prepend (kb.params[i].arg);
                 }
+
+                binding_args.reverse ();
+
+                Gtk.BindingEntry.add_signall (
+                    bind_set, sc.key, sc.modifier, kb.signal_name, binding_args
+                );
             }
         }
     }
