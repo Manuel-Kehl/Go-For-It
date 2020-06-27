@@ -60,6 +60,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         this.list_manager = list_manager;
         if (lsettings == null) {
             this.lsettings = new ListSettings.empty ();
+            this.lsettings.log_timer_in_txt = true;
             this.title = _("New to-do list");
             this.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
             this.add_button (_("Add list"), Gtk.ResponseType.ACCEPT);
