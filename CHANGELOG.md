@@ -1,5 +1,37 @@
 # Change Log
 
+## [1.8.0](https://github.com/JMoerman/Go-For-It/tree/1.8.0) (2020-06-27)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.7.2...1.8.0)
+
+**Implemented enhancements:**
+
+- Introduces configurable shortcuts.
+- A custom drag handle icon is now used instead of the "view-list" icon.
+- Introduces an option to log the time spent working on a task (using the timer) to the todo.txt files.
+- _Go For It!_ now highlights the task you are currently working on with ⏰.
+- Changing the system clock or suspending your system will no longer affect the timer.
+- It is now possible to tell _Go For It!_ how long a task should take by adding `duration:Xh-Ym` to the description of a task. (Where X and Y are the number of hours and minutes respectively. For a five minute task one would need to add `duration:5m`.) _Go For It!_ will notify you when you exceed this duration. (Do not forget to enable timer logging so _Go For It!_ will know how much time you have spent working on a task after closing the application!)
+- Not every break (or time between breaks) has to be of the same length: You can now use _Go For It!_ as a pomodoro timer or use a custom timer schedule.
+- Added an option to add new tasks at the start of each list instead of appending them to the end.
+- Added `--list` and `--load <id>` arguments to show the configured lists and load a specified list respectively.
+- Experimental: It is now possible to log your activities to a csv file by starting _Go For It!_ with `--logfile <filename>`.
+- Many translations were updated.
+
+## [1.7.3](https://github.com/JMoerman/Go-For-It/tree/1.7.3) (2019-08-26)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.7.2...1.7.3)
+
+This release contains some fixes and translation updates from the development branch.
+
+**Fixed bugs:**
+
+- Work around a ListBox bug which could cause situations where no row is selected even though suitable rows exist.
+- Keep the row focussed when the user stops editing a row.
+
+**Implemented enhancements:**
+
+- Escape now cancels the editing of a task.
+- The following translations were updated: Turkish, German, Norwegian Bokmål, Japanese, Polish, Telugu.
+
 ## [1.7.2](https://github.com/JMoerman/Go-For-It/tree/1.7.2) (2019-04-25)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.7.1...1.7.2)
 

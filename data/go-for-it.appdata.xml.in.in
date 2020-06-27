@@ -35,6 +35,38 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
+    <release version="1.8.0" date="2020-06-27">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Introduces configurable shortcuts.</li>
+          <li>Introduces an option to log the time spent working on a task (using the timer) to the todo.txt files.</li>
+          <li>A custom drag handle icon is now used instead of the "view-list" icon.</li>
+          <li>Go For It! now highlights the task you are currently working on with ⏰.</li>
+          <li>Changing the system clock or suspending your system will no longer affect the timer.</li>
+          <li>It is now possible to tell Go For It! how long a task should take by adding `duration:Xh-Ym` to the description of a task. (Where X and Y are the number of hours and minutes respectively. For a five minute task one would need to add `duration:5m`.) Go For It! will notify you when you exceed this duration. (Do not forget to enable timer logging so Go For It! will know how much time you have spent working on a task after closing the application!)</li>
+          <li>Not every break (or time between breaks) has to be of the same length: You can now use Go For It! as a pomodoro timer or use a custom timer schedule.</li>
+          <li>Added an option to add new tasks at the start of each list instead of appending them to the end.</li>
+          <li>Added "--list" and  "--load &lt;id&gt;" arguments to show the configured lists and load a specified list respectively.</li>
+          <li>Experimental: It is now possible to log your activities to a csv file by starting Go For It! with "--logfile &lt;filename&gt;".</li>
+          <li>Many translations were updated.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.7.3" date="2019-08-26">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Escape now cancels the editing of a task.</li>
+          <li>The following translations were updated: Turkish, German, Norwegian Bokmål, Japanese, Polish, Telugu.</li>
+        </ul>
+        <p>Bugfixes:</p>
+        <ul>
+          <li>Work around a ListBox bug which could cause situations where no row is selected even though suitable rows exist.</li>
+          <li>Keep the row focussed when the user stops editing a row.</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.7.2" date="2019-04-25">
       <description>
         <p>Improvements:</p>
@@ -65,7 +97,7 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
         </ul>
         <p>Bugfixes:</p>
         <ul>
-          <li><i>Go For It!</i> now properly exports that it uses notifications.</li>
+          <li>Go For It! now properly exports that it uses notifications.</li>
           <li>Non ascii character were not properly parsed when parsing contexts and projects.</li>
         </ul>
       </description>
