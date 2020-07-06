@@ -16,6 +16,13 @@ else ()
     message ("-- No recent Gtk+-3.0 found... Using pre 3.22 features.")
 endif ()
 
+set (VALA_PACKAGES gtk+-3.0 libnotify)
+
+if (USE_GRANITE)
+    set (VALAC_OPTIONS ${VALAC_OPTIONS} -D USE_GRANITE)
+    set (VALA_PACKAGES ${VALA_PACKAGES} granite)
+endif ()
+
 # files we want to compile
 include (ValaPrecompile)
 vala_precompile (VALA_C ${LIBNAME}
@@ -70,8 +77,7 @@ vala_precompile (VALA_C ${LIBNAME}
 
 # tell what libraries to use when compiling
 PACKAGES
-    gtk+-3.0
-    libnotify
+    ${VALA_PACKAGES}
 OPTIONS
     ${VALAC_OPTIONS}
 GENERATE_VAPI

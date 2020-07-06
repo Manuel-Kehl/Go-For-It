@@ -43,11 +43,31 @@ set (DOLLAR "$")
 # find pkgconfig to make sure dependencies are installed
 find_package (PkgConfig)
 # check for the required dependencies
-pkg_check_modules (DEPS REQUIRED
+pkg_check_modules (CORE_DEPS REQUIRED
     gtk+-3.0>=3.14.0
     glib-2.0>=2.40
     libnotify
 )
+
+set (DEPS_CFLAGS ${CORE_DEPS_CFLAGS})
+set (DEPS_LIBRARY_DIRS ${CORE_DEPS_LIBRARY_DIRS})
+set (DEPS_LIBRARIES ${CORE_DEPS_LIBRARIES})
+
+option (USE_GRANITE "Build against granite" OFF)
+if (USE_GRANITE)
+    pkg_check_modules (GRANITE granite)
+    if (${GRANITE_VERSION} VERSION_GREATER 5.4)
+        set (DEPS_CFLAGS ${DEPS_CFLAGS} ${GRANITE_CFLAGS})
+        set (DEPS_LIBRARY_DIRS ${DEPS_LIBRARY_DIRS} ${GRANITE_LIBRARY_DIRS})
+        set (DEPS_LIBRARIES ${DEPS_LIBRARIES} ${GRANITE_LIBRARIES})
+        message ("-- building against granite")
+    else ()
+        message ("-- Granite is missing or too old, using plain Gtk+ 3.0!")
+        set (USE_GRANITE OFF CACHE BOOL "" FORCE)
+    endif ()
+else ()
+    message ("-- Not using granite")
+endif ()
 
 add_definitions(${DEPS_CFLAGS})
 link_directories(${DEPS_LIBRARY_DIRS})
