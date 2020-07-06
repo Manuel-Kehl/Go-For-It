@@ -299,11 +299,78 @@ private class GOFI.SettingsManager {
     }
     public bool use_dark_theme {
         get {
-            return get_bool (GROUP_UI, "use_dark_theme", false);
+            switch (color_scheme) {
+                case ColorScheme.LIGHT:
+                    return false;
+                case ColorScheme.DARK:
+                    return true;
+                default:
+#if USE_GRANITE
+                    switch (Granite.Settings.get_default ().prefers_color_scheme) {
+                        case Granite.Settings.ColorScheme.DARK:
+                            return true;
+                        default:
+                            return false;
+                    }
+#else
+                    return false;
+#endif
+            }
         }
         set {
-            set_bool (GROUP_UI, "use_dark_theme", value);
+            if (value) {
+                color_scheme = ColorScheme.DARK;
+            } else {
+                color_scheme = ColorScheme.LIGHT;
+            }
             use_dark_theme_changed (value);
+        }
+    }
+    public ColorScheme color_scheme {
+        get {
+            try {
+                if (key_file.has_key (GROUP_UI, "color_scheme")) {
+                    var cs_val = get_value (GROUP_UI, "color_scheme", "default");
+                    switch (cs_val) {
+                        case "dark":
+                            return ColorScheme.DARK;
+                        case "light":
+                            return ColorScheme.LIGHT;
+                        default:
+                            return ColorScheme.DEFAULT;
+                    }
+                } else if (key_file.has_key (GROUP_UI, "use_dark_theme")) {
+                    if (get_bool (GROUP_UI, "use_dark_theme", false)) {
+                        return ColorScheme.DARK;
+                    }
+                    return ColorScheme.LIGHT;
+                }
+            } catch (Error e) {
+                warning ("An error occured while reading"
+                    +" %s.%s: %s", GROUP_UI, "color_scheme", e.message);
+            }
+            return ColorScheme.DEFAULT;
+        }
+        set {
+            string str_val = "default";
+            switch (value) {
+                case ColorScheme.DARK:
+                    str_val = "dark";
+                    break;
+                case ColorScheme.LIGHT:
+                    str_val = "light";
+                    break;
+                default:
+                    break;
+            }
+            try {
+                key_file.remove_key (GROUP_UI, "use_dark_theme");
+            } catch (Error e) {
+                warning ("An error occured while erasing"
+                    +" %s.%s: %s", GROUP_UI, "use_dark_theme", e.message);
+            }
+            set_value (GROUP_UI, "color_scheme", str_val);
+
         }
     }
     public Theme theme {
@@ -450,6 +517,14 @@ private class GOFI.SettingsManager {
                 error ("%s", e.message);
             }
         }
+
+#if USE_GRANITE
+        Granite.Settings.get_default ().notify["prefers-color-scheme"].connect (() => {
+            if (color_scheme == ColorScheme.DEFAULT) {
+                use_dark_theme_changed (use_dark_theme);
+            }
+        });
+#endif
     }
 
     private string header_bar_default () {
