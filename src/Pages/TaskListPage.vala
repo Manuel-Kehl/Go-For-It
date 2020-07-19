@@ -218,6 +218,8 @@ class GOFI.TaskListPage : Gtk.Grid {
         string first_page_name;
         string second_page_name;
 
+        disconnect_first_page_signals ();
+
         /* Instantiation of the Widgets */
         first_page = _shown_list.get_primary_page (out first_page_name);
         last_page = _shown_list.get_secondary_page (out second_page_name);
@@ -249,6 +251,22 @@ class GOFI.TaskListPage : Gtk.Grid {
 
             activity_switcher.selected_item = "primary";
             activity_stack.visible_child = first_page;
+        }
+
+        connect_first_page_signals ();
+    }
+
+    private void connect_first_page_signals () {
+        var first_page_cont = first_page as Gtk.Container;
+        if (first_page_cont != null) {
+            first_page_cont.set_focus_child.connect (on_first_page_focus);
+        }
+    }
+
+    private void disconnect_first_page_signals () {
+        var first_page_cont = first_page as Gtk.Container;
+        if (first_page_cont != null) {
+            first_page_cont.set_focus_child.disconnect (on_first_page_focus);
         }
     }
 
@@ -299,6 +317,17 @@ class GOFI.TaskListPage : Gtk.Grid {
                 switch_active_task_list ();
             }
             _shown_list.active_task = _shown_list.selected_task;
+        }
+    }
+
+    /**
+     * If the first page receives focus, check if the selected task needs to be
+     * refreshed
+     */
+    private void on_first_page_focus (Gtk.Widget? child) {
+        if (child != null && shown_list != active_list) {
+            // Task may be stale, lets refresh the selected task if necessary
+            on_selected_task_changed ();
         }
     }
 
@@ -399,6 +428,7 @@ class GOFI.TaskListPage : Gtk.Grid {
             activity_stack.remove (widget);
         }
 
+        disconnect_first_page_signals ();
         first_page = null;
         last_page = null;
 
