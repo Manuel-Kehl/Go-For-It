@@ -215,6 +215,14 @@ class GOFI.Main : Gtk.Application {
             }
         } else {
             if (logfile != null) {
+                // resolving ~, useful if --logfile=~/something is used
+                // (The user probably doesn't mean that it wants to create a
+                // folder called ~)
+                // Doing this is probably non standard, but I think that its
+                // better to be helpful than to confuse the user.
+                if (logfile.get(0) == '~' && logfile.get(1) == '/') {
+                    logfile = Environment.get_home_dir () + logfile.offset(1);
+                }
                 activity_log = new ActivityLog (File.new_for_commandline_arg (logfile));
             } else if (activity_log == null) {
                 activity_log = new ActivityLog (null);
