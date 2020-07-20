@@ -1,4 +1,4 @@
-/* Copyright 2014-2017 Go For It! developers
+/* Copyright 2014-2020 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -188,6 +188,7 @@ class GOFI.Main : Gtk.Application {
     private int _command_line (ApplicationCommandLine command_line) {
         var context = new OptionContext (null);
         context.add_main_entries (entries, GOFI.EXEC_NAME);
+        context.add_main_entries (get_dynamic_entries (), GOFI.EXEC_NAME);
         context.add_group (Gtk.get_option_group (true));
 
         string[] args = command_line.get_arguments ();
@@ -202,13 +203,13 @@ class GOFI.Main : Gtk.Application {
 
         if (print_version) {
             stdout.printf ("%s %s\n", GOFI.APP_NAME, GOFI.APP_VERSION);
-            stdout.printf ("Copyright 2014-2019 'Go For it!' Developers.\n");
+            stdout.printf ("Copyright 2014-2020 'Go For it!' Developers.\n");
         } else if (show_about_dialog) {
             show_about ();
         } else if (list_lists) {
             load_settings ();
             load_list_manager ();
-            stdout.printf ("Lists (List type : List ID - List name):\n");
+            stdout.printf (_("Lists (List type : List ID - List name)") + ":\n");
             foreach (var info in list_manager.get_list_infos ()) {
                 stdout.printf ("\"%s\" : \"%s\" - \"%s\"\n", info.provider_name, info.id, info.name);
             }
@@ -227,11 +228,28 @@ class GOFI.Main : Gtk.Application {
     const OptionEntry[] entries = {
         { "version", 'v', 0, OptionArg.NONE, out print_version, N_("Print version info and exit"), null },
         { "about",   'a', 0, OptionArg.NONE, out show_about_dialog, N_("Show about dialog"), null },
-        { "logfile",   0, 0, OptionArg.FILENAME, out logfile, N_("CSV file to log activities to."), "FILE" },
+        { "logfile",   0, 0, OptionArg.FILENAME, out logfile, N_("CSV file to log activities to."), N_("FILE") },
         { "list",      0, 0, OptionArg.NONE, out list_lists, N_("Show configured lists and exit"), null},
-        { "load",      0, 0, OptionArg.NONE, null, N_("Load the list specified by the list type and ID"), "LIST_TYPE LIST_ID"},
         { null }
     };
+
+    private const string load_entry_descr = N_("Load the list specified by the list type and ID");
+    private string load_entry_name = "load" + " " + _("LIST-TYPE") + " " + _("LIST-ID");
+
+    private OptionEntry[] get_dynamic_entries () {
+        return {
+            OptionEntry () {
+                long_name = load_entry_name,
+                short_name = 0,
+                flags = 0,
+                arg = OptionArg.NONE,
+                arg_data = null,
+                description = load_entry_descr,
+                arg_description = null
+            },
+            {null}
+        };
+    }
 
     /**
      * Configures the emission of notifications when tasks/breaks are over
