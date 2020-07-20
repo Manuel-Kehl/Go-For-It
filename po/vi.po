@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-28 10:51+0200\n"
+"POT-Creation-Date: 2020-07-20 15:51+0200\n"
 "PO-Revision-Date: 2020-06-05 04:41+0000\n"
 "Last-Translator: Nguyễn Công Dũng <dung.dev.gramer@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/go-for-it/go-"
@@ -100,10 +100,8 @@ msgid "Use a header bar"
 msgstr ""
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
-#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:234
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:260
-#: ../src/Todo.txt/Widgets/TaskRow.vala:327
-#: ../src/Todo.txt/Widgets/TaskRow.vala:329
+#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
 msgid "Timer"
 msgstr "Thời gian"
 
@@ -128,12 +126,12 @@ msgid "Long break duration"
 msgstr "thời gian nghỉ dài"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:262
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:263
 msgid "Reminder before task ends"
 msgstr "Nhắc nhở trước khi nhiệm vụ kết thúc"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:72
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:263
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:264
 msgid "seconds"
 msgstr "giây"
 
@@ -195,60 +193,76 @@ msgstr "%s cần khởi động lại để thay đổi có hiệu lực."
 msgid "Not a known list: %s"
 msgstr ""
 
-#: ../src/Main.vala:199
+#: ../src/Main.vala:200
 msgid "%s: Error: %s"
 msgstr "%s: Lỗi: %s"
 
-#: ../src/Main.vala:228
+#: ../src/Main.vala:212
+msgid "Lists (List type : List ID - List name)"
+msgstr ""
+
+#: ../src/Main.vala:237
 msgid "Print version info and exit"
 msgstr "In thông tin phiên bản và thoát"
 
-#: ../src/Main.vala:229
+#: ../src/Main.vala:238
 msgid "Show about dialog"
 msgstr "Hiển thị hộp thoại"
 
-#: ../src/Main.vala:230
+#: ../src/Main.vala:239
 msgid "CSV file to log activities to."
 msgstr "tập tin CSV để ghi lại hoạt động."
 
-#: ../src/Main.vala:231
+#: ../src/Main.vala:239
+msgid "FILE"
+msgstr ""
+
+#: ../src/Main.vala:240
 msgid "Show configured lists and exit"
 msgstr "Hiển thị danh sách cấu hình và thoát"
 
-#: ../src/Main.vala:232
+#: ../src/Main.vala:244
 msgid "Load the list specified by the list type and ID"
 msgstr "Tải danh sách theo quy định của loại danh sách và ID"
 
-#: ../src/Main.vala:254 ../src/Widgets/TimerView.vala:88
+#: ../src/Main.vala:245
+msgid "LIST-TYPE"
+msgstr ""
+
+#: ../src/Main.vala:245
+msgid "LIST-ID"
+msgstr ""
+
+#: ../src/Main.vala:288 ../src/Widgets/TimerView.vala:90
 msgid "Take a Break"
 msgstr "Nghỉ ngơi một lát"
 
-#: ../src/Main.vala:255
+#: ../src/Main.vala:289
 msgid "Relax and stop thinking about your current task for a while"
 msgstr ""
 "Thư giãn và dừng suy nghĩ về công việc hiện tại của bạn trong một thời gian"
 
-#: ../src/Main.vala:260
+#: ../src/Main.vala:294
 msgid "The Break is Over"
 msgstr "Đã hết giờ nghỉ ngơi"
 
-#: ../src/Main.vala:261
+#: ../src/Main.vala:295
 msgid "Your current task is"
 msgstr "Nhiệm vụ hiện tại của bạn là"
 
-#: ../src/Main.vala:281
+#: ../src/Main.vala:314
 msgid "Prepare for your break"
 msgstr "Chuẩn bị nghỉ ngơi"
 
-#: ../src/Main.vala:282
+#: ../src/Main.vala:315
 msgid "You have %s seconds left"
 msgstr "Bạn còn %s giây"
 
-#: ../src/Main.vala:298
+#: ../src/Main.vala:331
 msgid "Task duration exceeded"
 msgstr ""
 
-#: ../src/Main.vala:299
+#: ../src/Main.vala:332
 msgid "Consider switching to a different task"
 msgstr "Xem xét chuyển sang một công việc khác"
 
@@ -277,7 +291,7 @@ msgstr ""
 "Thêm mới dưới đây!"
 
 #: ../src/Pages/SelectionPage.vala:102
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:65
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid "Add list"
 msgstr "Thêm danh sách"
 
@@ -285,11 +299,11 @@ msgstr "Thêm danh sách"
 msgid "Lists"
 msgstr "Danh sách"
 
-#: ../src/Pages/TaskListPage.vala:143 ../src/Pages/TaskListPage.vala:226
+#: ../src/Pages/TaskListPage.vala:143 ../src/Pages/TaskListPage.vala:228
 msgid "To-Do"
 msgstr ""
 
-#: ../src/Pages/TaskListPage.vala:145 ../src/Pages/TaskListPage.vala:229
+#: ../src/Pages/TaskListPage.vala:145 ../src/Pages/TaskListPage.vala:231
 msgid "Done"
 msgstr "Hoàn thành"
 
@@ -311,43 +325,43 @@ msgstr "Không thể nhập từ cài đặt %s: %s"
 msgid "disabled"
 msgstr "Vô hiệu hoá"
 
-#: ../src/Services/Shortcuts.vala:135
+#: ../src/Services/Shortcuts.vala:139
 msgid "Filter tasks"
 msgstr "Lọc nhiệm vụ"
 
-#: ../src/Services/Shortcuts.vala:136
+#: ../src/Services/Shortcuts.vala:140
 msgid "Add new task/list"
 msgstr "Thêm mới nhiệm vụ / danh sách"
 
-#: ../src/Services/Shortcuts.vala:137
+#: ../src/Services/Shortcuts.vala:141
 msgid "Start/Stop the timer"
 msgstr "Bắt đầu / Kết thúc bộ đếm thời gian"
 
-#: ../src/Services/Shortcuts.vala:138
+#: ../src/Services/Shortcuts.vala:142
 msgid "Mark the task as complete"
 msgstr "Đánh dấu là hoàn tất"
 
-#: ../src/Services/Shortcuts.vala:139
+#: ../src/Services/Shortcuts.vala:143
 msgid "Move selected row up"
 msgstr "Di chuyển hàng đã chọn lên trên"
 
-#: ../src/Services/Shortcuts.vala:140
+#: ../src/Services/Shortcuts.vala:144
 msgid "Move selected row down"
 msgstr "Di chuyển hàng đã chọn xuống dưới"
 
-#: ../src/Services/Shortcuts.vala:142
+#: ../src/Services/Shortcuts.vala:146
 msgid "Move to next task/row"
 msgstr "Di chuyển đến hàng / nhiệm vụ tiếp theo"
 
-#: ../src/Services/Shortcuts.vala:143
+#: ../src/Services/Shortcuts.vala:147
 msgid "Move to previous task/row"
 msgstr "Di chuyển đến hàng / nhiệm vụ trước đó"
 
-#: ../src/Services/Shortcuts.vala:144
+#: ../src/Services/Shortcuts.vala:148
 msgid "Move to right screen"
 msgstr "Di chuyển về bên phải màn hình"
 
-#: ../src/Services/Shortcuts.vala:145
+#: ../src/Services/Shortcuts.vala:149
 msgid "Move to left screen"
 msgstr "Di chuyển về bên tráimàn hình"
 
@@ -356,7 +370,7 @@ msgid "Inherit from GTK theme"
 msgstr "Kế thừa từ chủ đề GTK"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:50
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:203
 msgid "folder"
 msgstr "thư mục"
 
@@ -364,53 +378,53 @@ msgstr "thư mục"
 msgid "List name"
 msgstr "Tên danh sách"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
 msgid "New to-do list"
 msgstr "Thêm những việc cần làm"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:69
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:65
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:70
 #: ../src/Todo.txt/TxtListManager.vala:236
 msgid "Cancel"
 msgstr "Huỷ"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:68
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:69
 msgid "Edit to-do list properties"
 msgstr "Chỉnh sửa danh sách công việc"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:70
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 msgid "Apply"
 msgstr "Áp dụng"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:115
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:116
 msgid "The configured folder is already in use by another list."
 msgstr "Các thư mục cấu hình đã được sử dụng bởi một danh sách khác."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:135
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:136
 msgid "Please assign a name to the list."
 msgstr "Hãy gán một tên vào danh sách."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:210
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
 msgid "Log the time spent working on each task"
 msgstr "Ghi lại thời gian làm trên mỗi công việc"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:212
 msgid "This information will be stored in the todo.txt files."
 msgstr "Những thông tin này sẽ được lưu trữ trong các tập tin todo.txt."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:262
 msgid "Use default settings"
 msgstr "Sử dụng cài đặt mặc định"
 
-#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:357
+#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:377
 msgid "project"
 msgstr "dự án"
 
-#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:353
+#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:373
 msgid "context"
 msgstr "bối cảnh"
 
-#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:304
+#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:339
 msgid "priority"
 msgstr "ưu tiên"
 
@@ -506,64 +520,63 @@ msgstr "Thêm nhiệm vụ mới"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
-#: ../src/Todo.txt/Widgets/TaskRow.vala:278
+#: ../src/Todo.txt/Widgets/TaskRow.vala:314
 msgid "%Y-%m-%d"
 msgstr ""
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:282
+#: ../src/Todo.txt/Widgets/TaskRow.vala:318
 msgid "Task completed at %s, created at %s"
 msgstr ""
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:289
+#: ../src/Todo.txt/Widgets/TaskRow.vala:325
 msgid "Task created at %s"
 msgstr ""
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:311
-#: ../src/Todo.txt/Widgets/TaskRow.vala:313
+#: ../src/Utils.vala:180
 msgid "min."
 msgstr "phút."
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:327
-msgid "%u hours and %u minutes"
-msgstr "%u giờ và %u phút"
-
-#: ../src/Todo.txt/Widgets/TaskRow.vala:329
+#: ../src/Utils.vala:188
 msgid "%u minutes"
 msgstr "%u phút"
 
-#: ../src/Widgets/TimerView.vala:92
+#: ../src/Utils.vala:190
+msgid "%u hours and %u minutes"
+msgstr "%u giờ và %u phút"
+
+#: ../src/Widgets/TimerView.vala:94
 msgid "Active Task"
 msgstr "Kích hoạt nhiệm vụ"
 
-#: ../src/Widgets/TimerView.vala:112
+#: ../src/Widgets/TimerView.vala:138
 msgid "Pau_se"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:119
+#: ../src/Widgets/TimerView.vala:145
 msgid "_Start"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:140
+#: ../src/Widgets/TimerView.vala:165
 msgid "Inactive"
 msgstr "Không hoạt động"
 
-#: ../src/Widgets/TimerView.vala:141
+#: ../src/Widgets/TimerView.vala:166
 msgid "No task has been selected"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:225
+#: ../src/Widgets/TimerView.vala:257
 msgid "S_kip"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:226
+#: ../src/Widgets/TimerView.vala:258
 msgid "_Done"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:271
+#: ../src/Widgets/TimerView.vala:303
 msgid "Relax"
 msgstr "Thư giãn"
 
-#: ../src/Widgets/TimerView.vala:272
+#: ../src/Widgets/TimerView.vala:304
 msgid "You have nothing to do."
 msgstr "Bạn không có gì để làm."
 

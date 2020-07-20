@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-28 10:51+0200\n"
+"POT-Creation-Date: 2020-07-20 15:51+0200\n"
 "PO-Revision-Date: 2020-07-04 15:41+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
-"Language-Team: Lithuanian <https://hosted.weblate.org/projects/go-for-it/"
-"go-for-it/lt/>\n"
+"Language-Team: Lithuanian <https://hosted.weblate.org/projects/go-for-it/go-"
+"for-it/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -102,10 +102,8 @@ msgid "Use a header bar"
 msgstr "Naudoti antraštės juostą"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
-#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:234
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:260
-#: ../src/Todo.txt/Widgets/TaskRow.vala:327
-#: ../src/Todo.txt/Widgets/TaskRow.vala:329
+#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
 msgid "Timer"
 msgstr "Laikmatis"
 
@@ -130,12 +128,12 @@ msgid "Long break duration"
 msgstr "Ilgos pertraukos trukmė"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:262
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:263
 msgid "Reminder before task ends"
 msgstr "Priminimas prieš pasibaigiant užduočiai"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:72
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:263
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:264
 msgid "seconds"
 msgstr "sekundžių"
 
@@ -197,59 +195,75 @@ msgstr "Tam, kad šis nustatymas įsigaliotų, %s turi būti paleista iš naujo.
 msgid "Not a known list: %s"
 msgstr "Nežinomas sąrašas: %s"
 
-#: ../src/Main.vala:199
+#: ../src/Main.vala:200
 msgid "%s: Error: %s"
 msgstr "%s: Klaida: %s"
 
-#: ../src/Main.vala:228
+#: ../src/Main.vala:212
+msgid "Lists (List type : List ID - List name)"
+msgstr ""
+
+#: ../src/Main.vala:237
 msgid "Print version info and exit"
 msgstr "Rodyti versijos informaciją ir išeiti"
 
-#: ../src/Main.vala:229
+#: ../src/Main.vala:238
 msgid "Show about dialog"
 msgstr "Rodyti dialogą apie programą"
 
-#: ../src/Main.vala:230
+#: ../src/Main.vala:239
 msgid "CSV file to log activities to."
 msgstr "CSV failas, į kurį registruoti veiklą."
 
-#: ../src/Main.vala:231
+#: ../src/Main.vala:239
+msgid "FILE"
+msgstr ""
+
+#: ../src/Main.vala:240
 msgid "Show configured lists and exit"
 msgstr "Rodyti sukonfigūruotus sąrašus ir išeiti"
 
-#: ../src/Main.vala:232
+#: ../src/Main.vala:244
 msgid "Load the list specified by the list type and ID"
 msgstr "Įkelti sąrašą, nurodytą pagal sąrašo tipą ir ID"
 
-#: ../src/Main.vala:254 ../src/Widgets/TimerView.vala:88
+#: ../src/Main.vala:245
+msgid "LIST-TYPE"
+msgstr ""
+
+#: ../src/Main.vala:245
+msgid "LIST-ID"
+msgstr ""
+
+#: ../src/Main.vala:288 ../src/Widgets/TimerView.vala:90
 msgid "Take a Break"
 msgstr "Padaryti pertrauką"
 
-#: ../src/Main.vala:255
+#: ../src/Main.vala:289
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "Atsipalaiduokite ir kurį laiką nebegalvokite apie esamą užduotį"
 
-#: ../src/Main.vala:260
+#: ../src/Main.vala:294
 msgid "The Break is Over"
 msgstr "Pertrauka pasibaigė"
 
-#: ../src/Main.vala:261
+#: ../src/Main.vala:295
 msgid "Your current task is"
 msgstr "Jūsų dabartinė užduotis yra"
 
-#: ../src/Main.vala:281
+#: ../src/Main.vala:314
 msgid "Prepare for your break"
 msgstr "Pasiruoškite pertraukai"
 
-#: ../src/Main.vala:282
+#: ../src/Main.vala:315
 msgid "You have %s seconds left"
 msgstr "Jums liko %s sekundžių"
 
-#: ../src/Main.vala:298
+#: ../src/Main.vala:331
 msgid "Task duration exceeded"
 msgstr "Viršyta užduoties trukmė"
 
-#: ../src/Main.vala:299
+#: ../src/Main.vala:332
 msgid "Consider switching to a different task"
 msgstr "Apsvarstykite galimybę pereiti prie kitos užduoties"
 
@@ -278,7 +292,7 @@ msgstr ""
 "Pridėkite kurį nors žemiau!"
 
 #: ../src/Pages/SelectionPage.vala:102
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:65
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid "Add list"
 msgstr "Pridėti sąrašą"
 
@@ -286,11 +300,11 @@ msgstr "Pridėti sąrašą"
 msgid "Lists"
 msgstr "Sąrašai"
 
-#: ../src/Pages/TaskListPage.vala:143 ../src/Pages/TaskListPage.vala:226
+#: ../src/Pages/TaskListPage.vala:143 ../src/Pages/TaskListPage.vala:228
 msgid "To-Do"
 msgstr "Užduotys"
 
-#: ../src/Pages/TaskListPage.vala:145 ../src/Pages/TaskListPage.vala:229
+#: ../src/Pages/TaskListPage.vala:145 ../src/Pages/TaskListPage.vala:231
 msgid "Done"
 msgstr "Atlikta"
 
@@ -312,43 +326,43 @@ msgstr "Nepavyko tinkamai importuoti nustatymus iš %s: %s"
 msgid "disabled"
 msgstr "išjungta"
 
-#: ../src/Services/Shortcuts.vala:135
+#: ../src/Services/Shortcuts.vala:139
 msgid "Filter tasks"
 msgstr "Filtruoti užduotis"
 
-#: ../src/Services/Shortcuts.vala:136
+#: ../src/Services/Shortcuts.vala:140
 msgid "Add new task/list"
 msgstr "Pridėti naują užduotį/sąrašą"
 
-#: ../src/Services/Shortcuts.vala:137
+#: ../src/Services/Shortcuts.vala:141
 msgid "Start/Stop the timer"
 msgstr "Paleisti/Stabdyti laikmatį"
 
-#: ../src/Services/Shortcuts.vala:138
+#: ../src/Services/Shortcuts.vala:142
 msgid "Mark the task as complete"
 msgstr "Žymėti užduotį kaip užbaigtą"
 
-#: ../src/Services/Shortcuts.vala:139
+#: ../src/Services/Shortcuts.vala:143
 msgid "Move selected row up"
 msgstr "Pakelti pažymėtą eilutę"
 
-#: ../src/Services/Shortcuts.vala:140
+#: ../src/Services/Shortcuts.vala:144
 msgid "Move selected row down"
 msgstr "Nuleisti pažymėtą eilutę"
 
-#: ../src/Services/Shortcuts.vala:142
+#: ../src/Services/Shortcuts.vala:146
 msgid "Move to next task/row"
 msgstr "Perkelti į kitą užduotį/eilutę"
 
-#: ../src/Services/Shortcuts.vala:143
+#: ../src/Services/Shortcuts.vala:147
 msgid "Move to previous task/row"
 msgstr "Perkelti į ankstesnę užduotį/eilutę"
 
-#: ../src/Services/Shortcuts.vala:144
+#: ../src/Services/Shortcuts.vala:148
 msgid "Move to right screen"
 msgstr "Perkelti į dešinįjį ekraną"
 
-#: ../src/Services/Shortcuts.vala:145
+#: ../src/Services/Shortcuts.vala:149
 msgid "Move to left screen"
 msgstr "Perkelti į kairįjį ekraną"
 
@@ -357,7 +371,7 @@ msgid "Inherit from GTK theme"
 msgstr "Paveldėti iš GTK temos"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:50
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:203
 msgid "folder"
 msgstr "katalogas"
 
@@ -365,53 +379,53 @@ msgstr "katalogas"
 msgid "List name"
 msgstr "Sąrašo pavadinimas"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
 msgid "New to-do list"
 msgstr "Naujas užduočių sąrašas"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:69
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:65
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:70
 #: ../src/Todo.txt/TxtListManager.vala:236
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:68
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:69
 msgid "Edit to-do list properties"
 msgstr "Taisyti užduočių sąrašo savybes"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:70
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 msgid "Apply"
 msgstr "Taikyti"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:115
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:116
 msgid "The configured folder is already in use by another list."
 msgstr "Sukonfigūruotą katalogą jau naudoja kitas sąrašas."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:135
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:136
 msgid "Please assign a name to the list."
 msgstr "Priskirkite sąrašui pavadinimą."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:210
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
 msgid "Log the time spent working on each task"
 msgstr "Registruoti kiekvienai užduočiai skirtą laiką"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:212
 msgid "This information will be stored in the todo.txt files."
 msgstr "Ši informacija bus saugoma todo.txt failuose."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:262
 msgid "Use default settings"
 msgstr "Naudoti numatytuosius nustatymus"
 
-#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:357
+#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:377
 msgid "project"
 msgstr "projektas"
 
-#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:353
+#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:373
 msgid "context"
 msgstr "kontekstas"
 
-#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:304
+#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:339
 msgid "priority"
 msgstr "pirmenybė"
 
@@ -507,64 +521,63 @@ msgstr "Pridėti naują užduotį"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
-#: ../src/Todo.txt/Widgets/TaskRow.vala:278
+#: ../src/Todo.txt/Widgets/TaskRow.vala:314
 msgid "%Y-%m-%d"
 msgstr "%Y %m %d"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:282
+#: ../src/Todo.txt/Widgets/TaskRow.vala:318
 msgid "Task completed at %s, created at %s"
 msgstr "Užduotis užbaigta ties %s, sukurta ties %s"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:289
+#: ../src/Todo.txt/Widgets/TaskRow.vala:325
 msgid "Task created at %s"
 msgstr "Užduotis sukurta ties %s"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:311
-#: ../src/Todo.txt/Widgets/TaskRow.vala:313
+#: ../src/Utils.vala:180
 msgid "min."
 msgstr "min."
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:327
-msgid "%u hours and %u minutes"
-msgstr "%u val. ir %u min."
-
-#: ../src/Todo.txt/Widgets/TaskRow.vala:329
+#: ../src/Utils.vala:188
 msgid "%u minutes"
 msgstr "%u min."
 
-#: ../src/Widgets/TimerView.vala:92
+#: ../src/Utils.vala:190
+msgid "%u hours and %u minutes"
+msgstr "%u val. ir %u min."
+
+#: ../src/Widgets/TimerView.vala:94
 msgid "Active Task"
 msgstr "Aktyvi užduotis"
 
-#: ../src/Widgets/TimerView.vala:112
+#: ../src/Widgets/TimerView.vala:138
 msgid "Pau_se"
 msgstr "Pri_stabdyti"
 
-#: ../src/Widgets/TimerView.vala:119
+#: ../src/Widgets/TimerView.vala:145
 msgid "_Start"
 msgstr "_Pradėti"
 
-#: ../src/Widgets/TimerView.vala:140
+#: ../src/Widgets/TimerView.vala:165
 msgid "Inactive"
 msgstr "Neaktyvi"
 
-#: ../src/Widgets/TimerView.vala:141
+#: ../src/Widgets/TimerView.vala:166
 msgid "No task has been selected"
 msgstr "Nebuvo pasirinkta jokia užduotis"
 
-#: ../src/Widgets/TimerView.vala:225
+#: ../src/Widgets/TimerView.vala:257
 msgid "S_kip"
 msgstr "P_raleisti"
 
-#: ../src/Widgets/TimerView.vala:226
+#: ../src/Widgets/TimerView.vala:258
 msgid "_Done"
 msgstr "_Atlikta"
 
-#: ../src/Widgets/TimerView.vala:271
+#: ../src/Widgets/TimerView.vala:303
 msgid "Relax"
 msgstr "Atsipalaiduokite"
 
-#: ../src/Widgets/TimerView.vala:272
+#: ../src/Widgets/TimerView.vala:304
 msgid "You have nothing to do."
 msgstr "Jums nėra ką atlikti."
 
