@@ -255,7 +255,15 @@ class GOFI.Main : Gtk.Application {
                 description = load_entry_descr,
                 arg_description = null
             },
-            {null}
+            OptionEntry () { // empty OptionEntry to null terminate list
+                long_name = null,
+                short_name = 0,
+                flags = 0,
+                arg = 0,
+                arg_data = null,
+                description = null,
+                arg_description = null
+            }
         };
     }
 
