@@ -1,5 +1,18 @@
 # Change Log
 
+## [1.8.1](https://github.com/JMoerman/Go-For-It/tree/1.8.1) (2020-07-20)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.0...1.8.1)
+
+**Fixed bugs:**
+
+- The command line help now correctly shows `--load LIST-TYPE LIST-ID` instead of `--load=LIST-TYPE LIST-ID`.
+- The active task did not properly refresh when pausing the timer after switching lists and interacting with the to-do list.
+
+**Implemented enhancements:**
+
+- When using `--logfile=~/something`: `~` is now expanded.
+- The translations for Central Kurdish, Lithuanian and Portuguese (Brazil) have been updated.
+
 ## [1.8.0](https://github.com/JMoerman/Go-For-It/tree/1.8.0) (2020-06-27)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.7.2...1.8.0)
 

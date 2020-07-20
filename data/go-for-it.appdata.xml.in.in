@@ -35,6 +35,20 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
+    <release version="1.8.1" date="2020-07-20">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>When using "--logfile=~/something": "~" is now expanded.</li>
+          <li>The translations for Central Kurdish, Lithuanian and Portuguese (Brazil) have been updated.</li>
+        </ul>
+        <p>Bugfixes:</p>
+        <ul>
+          <li>The command line help now correctly shows "--load LIST-TYPE LIST-ID" instead of "--load=LIST-TYPE LIST-ID".</li>
+          <li>The active task did not properly refresh when pausing the timer after switching lists and interacting with the to-do list.</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.8.0" date="2020-06-27">
       <description>
         <p>Improvements:</p>
