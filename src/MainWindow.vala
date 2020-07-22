@@ -358,6 +358,11 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
     private void switch_top_stack (bool show_select) {
         if (show_select) {
+            var shown_list = task_page.shown_list;
+            if (shown_list != null) {
+                selection_page.select_row (shown_list.list_info);
+            }
+
             top_stack.set_visible_child (selection_page);
 
             var next_icon = GOFI.Utils.get_image_fallback ("go-next-symbolic", "go-next");

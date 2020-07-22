@@ -64,6 +64,19 @@ class GOFI.SelectionPage : Gtk.Grid {
         todolist_view.move_cursor(Gtk.MovementStep.DISPLAY_LINES, amount);
     }
 
+    public void select_row (TodoListInfo info) {
+        DragListRow corresponding_row = null;
+        foreach (var row in todolist_view.get_rows ()) {
+            if (((TodoListInfoRow) row).info.cmp (info) == 0) {
+                corresponding_row = row;
+                break;
+            }
+        }
+        if (corresponding_row != null) {
+            todolist_view.select_row (corresponding_row);
+        }
+    }
+
     public void move_selected_row (int amount) {
         var row = todolist_view.get_selected_row ();
         if (row == null) {

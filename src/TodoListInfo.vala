@@ -46,4 +46,12 @@ public interface GOFI.TodoListInfo : Object{
         get;
         set;
     }
+
+    public int cmp (TodoListInfo other) {
+        var provider_cmp = strcmp (this.provider_name, other.provider_name);
+        if (provider_cmp == 0) {
+            return strcmp (this.id, other.id);
+        }
+        return provider_cmp;
+    }
 }
