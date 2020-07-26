@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-20 15:51+0200\n"
-"PO-Revision-Date: 2020-06-24 23:41+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/de/>\n"
+"PO-Revision-Date: 2020-07-27 20:41+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -201,7 +201,7 @@ msgstr "%s: Fehler: %s"
 
 #: ../src/Main.vala:212
 msgid "Lists (List type : List ID - List name)"
-msgstr ""
+msgstr "Listen (Listen Art : Listen ID - Listen Name)"
 
 #: ../src/Main.vala:237
 msgid "Print version info and exit"
@@ -217,7 +217,7 @@ msgstr "CSV Datei um Aktivitäten zu protokollieren."
 
 #: ../src/Main.vala:239
 msgid "FILE"
-msgstr ""
+msgstr "DATEI"
 
 #: ../src/Main.vala:240
 msgid "Show configured lists and exit"
@@ -229,11 +229,11 @@ msgstr "Liste nach Typ und ID laden"
 
 #: ../src/Main.vala:245
 msgid "LIST-TYPE"
-msgstr ""
+msgstr "LISTEN-ART"
 
 #: ../src/Main.vala:245
 msgid "LIST-ID"
-msgstr ""
+msgstr "LISTEN-ID"
 
 #: ../src/Main.vala:288 ../src/Widgets/TimerView.vala:90
 msgid "Take a Break"
