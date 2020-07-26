@@ -1,5 +1,8 @@
 # _Go For It!_
-[![Translation status](https://hosted.weblate.org/widgets/go-for-it/-/svg-badge.svg)](https://hosted.weblate.org/engage/go-for-it/?utm_source=widget)
+
+_Go For It!_ has been translated into many languages already. If your language is missing or incomplete, please help to translate it at [Weblate](https://hosted.weblate.org/engage/go-for-it/?utm_source=widget).
+
+[![Translation status](https://hosted.weblate.org/widgets/go-for-it/-/horizontal-auto.svg)](https://hosted.weblate.org/engage/go-for-it/?utm_source=widget)
 ## Information for End Users
 
 _Go For It!_ is a simple and stylish productivity app, featuring a to-do list, merged with a timer that keeps your focus on the current task. More information for end users can be found [here](http://manuel-kehl.de/projects/go-for-it).
