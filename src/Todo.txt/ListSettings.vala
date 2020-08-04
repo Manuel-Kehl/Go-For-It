@@ -88,7 +88,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         copied.log_timer_in_txt = log_timer_in_txt;
         if (schedule != null) {
             copied.schedule = new Schedule ();
-            copied.schedule.set_durations (this.schedule.get_durations ());
+            copied.schedule.import_raw (this.schedule.export_raw ());
         }
         return copied;
     }
@@ -101,7 +101,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
             this.schedule = null;
         } else {
             var sched = new Schedule ();
-            sched.set_durations (lsettings.schedule.get_durations ());
+            sched.import_raw (lsettings.schedule.export_raw ());
             this.schedule = sched;
         }
         this.reminder_time = lsettings.reminder_time;

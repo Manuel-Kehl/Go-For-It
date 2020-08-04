@@ -63,7 +63,7 @@ public class GOFI.Schedule {
         return durations[(iteration % _length)*2+1].abs ();
     }
 
-    public void set_durations (int[] durations) {
+    public void import_raw (int[] durations) {
         var new_length = durations.length;
         if (new_length % 2 == 1) {
             new_length -= 1;
@@ -76,7 +76,47 @@ public class GOFI.Schedule {
         length = new_length / 2;
     }
 
-    public unowned int[] get_durations () {
+    public unowned int[] export_raw () {
         return durations;
+    }
+
+    /**
+     * Populates the schedule with the contents of a variant with variant type
+     * "a(ii)"
+     */
+    public void load_variant (Variant variant) {
+        size_t schedule_length = variant.n_children ();
+        durations = new int[schedule_length*2];
+        for (size_t i = 0; i < schedule_length; i++) {
+            int t_duration, b_duration;
+            variant.get_child (i, "(ii)", out t_duration, out b_duration);
+
+            // Input sanitizing
+            if (t_duration <= 0) {
+                t_duration = 1500;
+            }
+            if (b_duration < 0) {
+                b_duration = 300;
+            }
+
+            durations[2*i]   = t_duration;
+            durations[1+2*i] = b_duration;
+        }
+        _length = (uint) schedule_length;
+    }
+
+    /**
+     * Exports the contents of this to a variant with variant type "a(ii)"
+     */
+    public Variant to_variant () {
+        Variant[] sched_tuples = new Variant[_length];
+        for (uint i = 0; i < _length; i++) {
+            sched_tuples[i] = new Variant.tuple ({
+                new Variant.int32 (durations[2*i]),
+                new Variant.int32 (durations[1+2*i])
+                }
+            );
+        }
+        return new Variant.array (new VariantType ("(ii)"), sched_tuples);
     }
 }

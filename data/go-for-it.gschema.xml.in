@@ -1,5 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+  <enum id="@APP_ID@.timer-mode">
+    <value nick="simple" value="0"/>
+    <value nick="pomodoro" value="1"/>
+    <value nick="custom" value="2"/>
+  </enum>
+
+  <enum id="@APP_ID@.override-bool">
+    <value nick="default" value="0"/>
+    <value nick="false" value="1"/>
+    <value nick="true" value="2"/>
+  </enum>
+
+  <enum id="@APP_ID@.color-scheme">
+    <value nick="default" value="0"/>
+    <value nick="light" value="1"/>
+    <value nick="dark" value="2"/>
+  </enum>
+
+  <schema path="@SCHEMA_PATH@/saved-state/" id="@APP_ID@.saved-state">
+    <key name="window-size" type="(ii)">
+      <default>(280,320)</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="window-position" type="(ii)">
+      <default>(-1,-1)</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="last-loaded-list" type="(ss)">
+      <default>('','')</default>
+      <summary></summary>
+      <description></description>
+    </key>
+  </schema>
+
+  <schema path="@SCHEMA_PATH@/timer/" id="@APP_ID@.timer">
+    <key name="task-duration" type="i">
+      <range min="1" max="86340"/>
+      <default>1500</default>
+      <summary>Duration of the timer when working on a task in seconds</summary>
+      <description></description>
+    </key>
+    <key name="break-duration" type="i">
+      <range min="1" max="86340"/>
+      <default>300</default>
+      <summary>Duration of a normal break in seconds</summary>
+      <description></description>
+    </key>
+    <key name="long-break-duration" type="i">
+      <range min="1" max="86340"/>
+      <default>900</default>
+      <summary>Duration of a long break (for pomodoro timer) in seconds.</summary>
+      <description></description>
+    </key>
+    <key name="pomodoro-period" type="i">
+      <range min="2" max="100"/>
+      <default>4</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="reminder-time" type="i">
+      <range min="0" max="600"/>
+      <default>60</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="timer-mode" enum="@APP_ID@.timer-mode">
+      <default>'simple'</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="schedule" type="a(ii)">
+      <default>[]</default>
+      <summary></summary>
+      <description></description>
+    </key>
+
+    <key name="resume-tasks-after-break" type="b">
+      <default>false</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="reset-timer-on-task-switch" type="b">
+      <default>false</default>
+      <summary></summary>
+      <description></description>
+    </key>
+  </schema>
+
+  <schema path="@SCHEMA_PATH@/settings/" id="@APP_ID@.settings">
+    <key name="lists" type="a(ss)">
+      <default>[]</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="new-tasks-on-top" type="b">
+      <default>false</default>
+      <summary></summary>
+      <description></description>
+    </key>
+
+    <!--ui-->
+    <key name="use-header-bar" enum="@APP_ID@.override-bool">
+      <default>'default'</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="color-scheme" enum="@APP_ID@.color-scheme">
+      <default>'default'</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="theme" type="s">
+      <default>'@DEFAULT_THEME@'</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="small-toolbar-icons" type="b">
+      <default>false</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="switcher-use-icons" type="b">
+      <default>true</default>
+      <summary></summary>
+      <description></description>
+    </key>
+  </schema>
+
   <schema path="@SCHEMA_PATH@/keybindings/" id="@APP_ID@.keybindings">
     <key name="move-row-up" type="s">
       <default><![CDATA['<Control>j']]></default>

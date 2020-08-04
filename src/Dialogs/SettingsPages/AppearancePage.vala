@@ -43,8 +43,7 @@ class GOFI.AppearancePage : Gtk.Grid {
         switch_app_selector = new Gtk.ComboBoxText ();
 
         /* Configuration */
-        small_icons_switch.active =
-            settings.toolbar_icon_size == Gtk.IconSize.SMALL_TOOLBAR;
+        small_icons_switch.active = settings.use_small_toolbar_icons;
 
         switch_app_selector.append ("icons", _("Icons"));
         switch_app_selector.append ("text", _("Text"));
@@ -52,24 +51,13 @@ class GOFI.AppearancePage : Gtk.Grid {
             settings.switcher_use_icons ? "icons" : "text";
 
         /* Signal Handling */
-        small_icons_switch.notify["active"].connect ( () => {
-            if (small_icons_switch.active) {
-                settings.toolbar_icon_size = Gtk.IconSize.SMALL_TOOLBAR;
-            } else {
-                settings.toolbar_icon_size = Gtk.IconSize.LARGE_TOOLBAR;
-            }
-        });
         switch_app_selector.changed.connect ( () => {
             settings.switcher_use_icons =
                 switch_app_selector.active_id == "icons";
         });
 
         small_icons_switch.notify["active"].connect ( () => {
-            if (small_icons_switch.active) {
-                settings.toolbar_icon_size = Gtk.IconSize.SMALL_TOOLBAR;
-            } else {
-                settings.toolbar_icon_size = Gtk.IconSize.LARGE_TOOLBAR;
-            }
+            settings.use_small_toolbar_icons = small_icons_switch.active;
         });
 
         /* Add widgets */
@@ -104,7 +92,11 @@ class GOFI.AppearancePage : Gtk.Grid {
 
         /* Signal Handling */
         dark_theme_switch.notify["active"].connect ( () => {
-            settings.use_dark_theme = dark_theme_switch.active;
+            if (dark_theme_switch.active) {
+                settings.color_scheme = ColorScheme.DARK;
+            } else {
+                settings.color_scheme = ColorScheme.LIGHT;
+            }
         });
         theme_selector.changed.connect ( () => {
             settings.theme = Theme.from_string (theme_selector.active_id);

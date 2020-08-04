@@ -510,13 +510,16 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
      * Restores the window geometry from settings
      */
     private void restore_win_geometry () {
-        if (settings.win_x == -1 || settings.win_y == -1) {
+        int x, y, width, height;
+        settings.get_window_position (out x, out y);
+        settings.get_window_size (out width, out height);
+        if (x < 0 || y < 0) {
             // Center if no position have been saved yet
             this.set_position (Gtk.WindowPosition.CENTER);
         } else {
-            this.move (settings.win_x, settings.win_y);
+            this.move (x, y);
         }
-        this.set_default_size (settings.win_width, settings.win_height);
+        this.set_default_size (width, height);
     }
 
     /**
@@ -527,10 +530,8 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         this.get_position (out x, out y);
         this.get_size (out width, out height);
 
-        // Store values in SettingsManager
-        settings.win_x = x;
-        settings.win_y = y;
-        settings.win_width = width;
-        settings.win_height = height;
+        // Store values
+        settings.set_window_position (x, y);
+        settings.set_window_size (width, height);
     }
 }

@@ -403,7 +403,7 @@ class GOFI.TXT.TxtListManager {
         try {
             var durations = key_file.get_integer_list ("list" + list_id, "schedule");
             if (durations.length >= 2 && durations[0] > 0) {
-                _schedule.set_durations (durations);
+                _schedule.import_raw (durations);
                 return _schedule;
             }
             return null;
@@ -414,7 +414,7 @@ class GOFI.TXT.TxtListManager {
                 +" %s.%s: %s", list_id, "schedule", e.message);
             return null;
         }
-        _schedule.set_durations ({
+        _schedule.import_raw ({
             get_task_duration (list_id),
             get_break_duration (list_id)
         });
@@ -425,7 +425,7 @@ class GOFI.TXT.TxtListManager {
             if (sched == null || !sched.valid) {
                 key_file.set_integer_list ("list" + list_id, "schedule", {0,0});
             } else {
-                key_file.set_integer_list ("list" + list_id, "schedule", sched.get_durations ());
+                key_file.set_integer_list ("list" + list_id, "schedule", sched.export_raw ());
             }
             write_key_file ();
         } catch (Error e) {

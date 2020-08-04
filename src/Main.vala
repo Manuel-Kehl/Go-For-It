@@ -45,7 +45,7 @@ class GOFI.Main : Gtk.Application {
 
     private void load_settings () {
         if (settings == null) {
-            settings = new SettingsManager.load_from_key_file ();
+            settings = new SettingsManager ();
         }
     }
 
