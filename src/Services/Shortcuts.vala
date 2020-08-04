@@ -135,18 +135,30 @@ namespace GOFI {
             }
         }
 
-        public static ConfigurableShortcut[] known_shortcuts = {
-            ConfigurableShortcut ("filter",         _("Filter tasks")),
-            ConfigurableShortcut ("add-new",        _("Add new task/list")),
-            ConfigurableShortcut ("toggle-timer",   _("Start/Stop the timer")),
-            ConfigurableShortcut ("mark-task-done", _("Mark the task as complete")),
-            ConfigurableShortcut ("move-row-up",    _("Move selected row up")),
-            ConfigurableShortcut ("move-row-down",  _("Move selected row down")),
+        public const string SCK_FILTER = "filter";
+        public const string SCK_ADD_NEW = "add-new";
+        public const string SCK_TOGGLE_TIMER = "toggle-timer";
+        public const string SCK_MARK_TASK_DONE = "mark-task-done";
+        public const string SCK_MOVE_ROW_UP = "move-row-up";
+        public const string SCK_MOVE_ROW_DOWN = "move-row-down";
+        public const string SCK_NEXT_TASK = "next-task";
+        public const string SCK_PREV_TASK = "prev-task";
+        public const string SCK_CYCLE_PAGE = "cycle-page";
+        public const string SCK_CYCLE_PAGE_REV = "cycle-page-reverse";
+        public const string[] SC_KEYS = {SCK_FILTER, SCK_ADD_NEW, SCK_TOGGLE_TIMER, SCK_MARK_TASK_DONE, SCK_MOVE_ROW_UP, SCK_MOVE_ROW_DOWN, SCK_NEXT_TASK, SCK_PREV_TASK, SCK_CYCLE_PAGE, SCK_CYCLE_PAGE_REV};
 
-            ConfigurableShortcut ("next-task",      _("Move to next task/row")),
-            ConfigurableShortcut ("prev-task",      _("Move to previous task/row")),
-            ConfigurableShortcut ("cycle-page",     _("Move to right screen")),
-            ConfigurableShortcut ("cycle-page-reverse", _("Move to left screen")),
+        public static ConfigurableShortcut[] known_shortcuts = {
+            ConfigurableShortcut (SCK_FILTER,         _("Filter tasks")),
+            ConfigurableShortcut (SCK_ADD_NEW,        _("Add new task/list")),
+            ConfigurableShortcut (SCK_TOGGLE_TIMER,   _("Start/Stop the timer")),
+            ConfigurableShortcut (SCK_MARK_TASK_DONE, _("Mark the task as complete")),
+            ConfigurableShortcut (SCK_MOVE_ROW_UP,    _("Move selected row up")),
+            ConfigurableShortcut (SCK_MOVE_ROW_DOWN,  _("Move selected row down")),
+
+            ConfigurableShortcut (SCK_NEXT_TASK,      _("Move to next task/row")),
+            ConfigurableShortcut (SCK_PREV_TASK,      _("Move to previous task/row")),
+            ConfigurableShortcut (SCK_CYCLE_PAGE,     _("Move to right screen")),
+            ConfigurableShortcut (SCK_CYCLE_PAGE_REV, _("Move to left screen")),
         };
 
         static KeyBinding[] DragListBindings = {
@@ -173,20 +185,9 @@ namespace GOFI {
         public KeyBindingSettings () {
             shortcuts = new HashTable<string, Shortcut> (str_hash, str_equal);
 
-            var schema_source = GLib.SettingsSchemaSource.get_default ();
-            var schema_id = GOFI.APP_ID + ".keybindings";
+            settings_backend = new GLib.Settings (GOFI.APP_ID + ".keybindings");
 
-            var schema = schema_source.lookup (schema_id, true);
-            settings_backend = new GLib.Settings.full (schema, null, null);
-
-            if (schema != null) {
-                settings_backend = new GLib.Settings.full (schema, null, null);
-            } else {
-                warning ("Settings schema \"%s\" is not installed on your system!", schema_id);
-                return;
-            }
-
-            foreach (var key in settings_backend.list_keys ()) {
+            foreach (var key in SC_KEYS) {
                 shortcuts[key] = new Shortcut.from_string (settings_backend.get_string (key));
             }
             install_bindings_for_class (
