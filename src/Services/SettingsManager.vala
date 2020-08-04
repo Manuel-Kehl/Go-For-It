@@ -274,12 +274,12 @@ private class GOFI.SettingsManager : Object {
     }
 
 // Broken due to bad gio vapi bindings
-/**/
+/*
     public SettingsManager.key_file_backend (string path) {
         var key_file_backend = GLib.SettingsBackend.keyfile_settings_backend_new (path, "/", null);
         init_with_backend (key_file_backend);
     }
-/**/
+*/
 
     private void bind_settings () {
         var sbf = GLib.SettingsBindFlags.DEFAULT;
