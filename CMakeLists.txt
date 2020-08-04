@@ -78,8 +78,8 @@ if (NOT INTLTOOL_MERGE_EXECUTABLE)
     message ( FATAL_ERROR "Couldn't find the intltool-merge executable. Please make sure intltool is installed and try again")
 endif ()
 
-# disable c compiler warnings
-add_definitions (-w)
+# disable some c compiler warnings
+add_definitions (-Wno-incompatible-pointer-types -Wno-discarded-qualifiers -Werror=implicit-function-declaration)
 add_definitions (-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
 
 # make sure we have vala
