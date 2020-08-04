@@ -55,77 +55,29 @@ private class GOFI.SettingsManager : Object {
     const string KEY_RESET_TIMER_ON_TASK_SWITCH = "reset-timer-on-task-switch";
 
     public int task_duration {
-        get {
-            int _task_duration = timer_settings.get_int (KEY_TASK_DURATION);
-            if (_task_duration <= 0) {
-                _task_duration = get_default_timer_int (KEY_TASK_DURATION);
-            }
-            return _task_duration;
-        }
-        set {
-            timer_settings.set_int (KEY_TASK_DURATION, value);
-            build_schedule ();
-            timer_duration_changed ();
-        }
+        get;
+        set;
     }
     public int break_duration {
-        get {
-            int _break_duration = timer_settings.get_int (KEY_BREAK_DURATION);
-            if (_break_duration <= 0) {
-                _break_duration = get_default_timer_int (KEY_BREAK_DURATION);
-            }
-            return _break_duration;
-        }
-        set {
-            timer_settings.set_int (KEY_BREAK_DURATION, value);
-            build_schedule ();
-            timer_duration_changed ();
-        }
+        get;
+        set;
     }
     public int long_break_duration {
-        get {
-            int _long_break_duration = timer_settings.get_int (KEY_LBREAK_DURATION);
-            if (_long_break_duration <= 0) {
-                _long_break_duration = get_default_timer_int (KEY_LBREAK_DURATION);
-            }
-            return _long_break_duration;
-        }
-        set {
-            timer_settings.set_int (KEY_LBREAK_DURATION, value);
-            build_schedule ();
-            timer_duration_changed ();
-        }
+        get;
+        set;
     }
     public int pomodoro_period {
-        get {
-            int _pomodoro_period = timer_settings.get_int (KEY_POMODORO_PERIOD);
-            if (_pomodoro_period < 1) {
-                _pomodoro_period = get_default_timer_int (KEY_POMODORO_PERIOD);
-            }
-            return _pomodoro_period;
-        }
-        set {
-            timer_settings.set_int (KEY_POMODORO_PERIOD, value);
-            build_schedule ();
-            timer_duration_changed ();
-        }
+        get;
+        set;
     }
 
     public int reminder_time {
-        get { return _reminder_time; }
-        set {
-            if (value < 0) {
-                _reminder_time = get_default_timer_int (KEY_REMINDER_TIME);
-            } else {
-                _reminder_time = value;
-            }
-        }
+        get;
+        set;
     }
-    int _reminder_time;
-
     public bool reminder_active {
         get {
-            return (_reminder_time > 0);
+            return (reminder_time > 0);
         }
     }
 
@@ -181,17 +133,12 @@ private class GOFI.SettingsManager : Object {
         set;
     }
     public ColorScheme color_scheme {
-        get {
-            return _color_scheme;
-        }
-        set {
-            use_dark_theme_changed (use_dark_theme);
-        }
+        get;
+        set;
     }
-    ColorScheme _color_scheme;
     public bool use_dark_theme {
         get {
-            switch (_color_scheme) {
+            switch (color_scheme) {
                 case ColorScheme.LIGHT:
                     return false;
                 case ColorScheme.DARK:
@@ -202,17 +149,9 @@ private class GOFI.SettingsManager : Object {
         }
     }
     public bool system_theme_is_dark {
-        get {
-            return _system_theme_is_dark;
-        }
-        set {
-            _system_theme_is_dark = value;
-            if (_color_scheme == ColorScheme.DEFAULT) {
-                use_dark_theme_changed (value);
-            }
-        }
+        get;
+        set;
     }
-    bool _system_theme_is_dark = false;
     public Theme theme {
         get {
             var theme_str = _settings.get_string ("theme");
@@ -233,32 +172,20 @@ private class GOFI.SettingsManager : Object {
     }
     public Gtk.IconSize toolbar_icon_size {
         get {
-            if (_use_small_toolbar_icons) {
+            if (use_small_toolbar_icons) {
                 return Gtk.IconSize.SMALL_TOOLBAR;
             }
             return Gtk.IconSize.LARGE_TOOLBAR;
         }
     }
     public bool use_small_toolbar_icons {
-        get {
-            return _use_small_toolbar_icons;
-        }
-        set {
-            _use_small_toolbar_icons = value;
-            toolbar_icon_size_changed (toolbar_icon_size);
-        }
+        get;
+        set;
     }
-    bool _use_small_toolbar_icons;
     public bool switcher_use_icons {
-        get {
-            return _switcher_use_icons;
-        }
-        set {
-            _switcher_use_icons = value;
-            switcher_use_icons_changed (value);
-        }
+        get;
+        set;
     }
-    bool _switcher_use_icons;
     /*---GROUP:LISTS----------------------------------------------------------*/
     public List<ListIdentifier?> lists {
         owned get {
@@ -366,11 +293,46 @@ private class GOFI.SettingsManager : Object {
         timer_settings.bind (KEY_TIMER_MODE, this, "timer_mode", sbf);
         timer_settings.bind (KEY_RESUME_TASKS_AFTER_BREAK, this, "resume_tasks_after_break", sbf);
         timer_settings.bind (KEY_RESET_TIMER_ON_TASK_SWITCH, this, "reset_timer_on_task_switch", sbf);
+        timer_settings.bind (KEY_TASK_DURATION, this, "task_duration", sbf);
+        timer_settings.bind (KEY_BREAK_DURATION, this, "break_duration", sbf);
+        timer_settings.bind (KEY_LBREAK_DURATION, this, "long_break_duration", sbf);
+        timer_settings.bind (KEY_POMODORO_PERIOD, this, "pomodoro_period", sbf);
 
         if (timer_mode == TimerMode.CUSTOM) {
             restore_saved_schedule ();
         } else {
             build_schedule ();
+        }
+
+        this.notify.connect (on_property_changed);
+
+    }
+
+    private void on_property_changed (GLib.ParamSpec pspec) {
+        switch (pspec.name) {
+            case "task-duration":
+            case "break-duration":
+            case "long-break-duration":
+            case "pomodoro-period":
+                build_schedule ();
+                timer_duration_changed ();
+                break;
+            case "color-scheme":
+                use_dark_theme_changed (use_dark_theme);
+                break;
+            case "switcher-use-icons":
+                switcher_use_icons_changed (switcher_use_icons);
+                break;
+            case "use-small-toolbar-icons":
+                toolbar_icon_size_changed (toolbar_icon_size);
+                break;
+            case "system-theme-is-dark":
+                if (color_scheme == ColorScheme.DEFAULT) {
+                    use_dark_theme_changed (system_theme_is_dark);
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -387,10 +349,6 @@ private class GOFI.SettingsManager : Object {
 
     private void save_schedule () {
         timer_settings.set_value (KEY_SCHEDULE, _schedule.to_variant ());
-    }
-
-    private int get_default_timer_int (string key) {
-        return timer_settings.get_default_value (key).get_int32 ();
     }
 
     private void build_schedule () {
