@@ -91,6 +91,11 @@
   </schema>
 
   <schema path="@SCHEMA_PATH@/settings/" id="@APP_ID@.settings">
+    <key name="settings-version" type="i">
+      <default>0</default>
+      <summary></summary>
+      <description></description>
+    </key>
     <key name="lists" type="a(ss)">
       <default>[]</default>
       <summary></summary>

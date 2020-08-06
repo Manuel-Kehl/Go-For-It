@@ -1,4 +1,4 @@
-/* Copyright 2014-2019 Go For It! developers
+/* Copyright 2014-2020 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -31,6 +31,31 @@ private class GOFI.SettingsManager : Object {
      * The "heart" of the SettingsManager class.
      */
 
+    const string ID_TIMER = GOFI.APP_ID + ".timer";
+    const string KEY_TASK_DURATION = "task-duration";
+    const string KEY_BREAK_DURATION = "break-duration";
+    const string KEY_LBREAK_DURATION = "long-break-duration";
+    const string KEY_POMODORO_PERIOD = "pomodoro-period";
+    const string KEY_REMINDER_TIME = "reminder-time";
+    const string KEY_TIMER_MODE = "timer-mode";
+    const string KEY_SCHEDULE = "schedule";
+    const string KEY_RESUME_TASKS_AFTER_BREAK = "resume-tasks-after-break";
+    const string KEY_RESET_TIMER_ON_TASK_SWITCH = "reset-timer-on-task-switch";
+
+    const string ID_GENERAL = GOFI.APP_ID + ".settings";
+    const string KEY_TASKS_ON_TOP = "new-tasks-on-top";
+    const string KEY_LISTS = "lists";
+    const string KEY_USE_HEADER_BAR = "use-header-bar";
+    const string KEY_COLOR_SCHEME = "color-scheme";
+    const string KEY_THEME = "theme";
+    const string KEY_SMALL_ICONS = "small-toolbar-icons";
+    const string KEY_SWITCHER_USE_ICONS = "switcher-use-icons";
+
+    const string ID_SAVED_STATE = GOFI.APP_ID + ".saved-state";
+    const string KEY_WINDOW_POS = "window-position";
+    const string KEY_WINDOW_SIZE = "window-size";
+    const string KEY_LAST_LIST = "last-loaded-list";
+
     // Whether or not Go For It! has been started for the first time
     public bool first_start = false;
 
@@ -44,15 +69,7 @@ private class GOFI.SettingsManager : Object {
         public set;
     }
     /*---GROUP:Timer----------------------------------------------------------*/
-    const string KEY_TASK_DURATION = "task-duration";
-    const string KEY_BREAK_DURATION = "break-duration";
-    const string KEY_LBREAK_DURATION = "long-break-duration";
-    const string KEY_POMODORO_PERIOD = "pomodoro-period";
-    const string KEY_REMINDER_TIME = "reminder-time";
-    const string KEY_TIMER_MODE = "timer-mode";
-    const string KEY_SCHEDULE = "schedule";
-    const string KEY_RESUME_TASKS_AFTER_BREAK = "resume-tasks-after-break";
-    const string KEY_RESET_TIMER_ON_TASK_SWITCH = "reset-timer-on-task-switch";
+
 
     public int task_duration {
         get;
@@ -154,7 +171,7 @@ private class GOFI.SettingsManager : Object {
     }
     public Theme theme {
         get {
-            var theme_str = _settings.get_string ("theme");
+            var theme_str = _settings.get_string (KEY_THEME);
             var theme_val = Theme.from_string (theme_str);
             if (theme_val != Theme.INVALID) {
                 return theme_val;
@@ -162,11 +179,11 @@ private class GOFI.SettingsManager : Object {
 
             warning ("Unknown theme setting: %s", theme_str);
             return Theme.from_string (
-                _settings.get_default_value ("theme").get_string ()
+                _settings.get_default_value (KEY_THEME).get_string ()
             );
         }
         set {
-            _settings.set_string ("theme", value.to_string ());
+            _settings.set_string (KEY_THEME, value.to_string ());
             theme_changed (value);
         }
     }
@@ -191,7 +208,7 @@ private class GOFI.SettingsManager : Object {
         owned get {
             List<ListIdentifier?> identifiers = new List<ListIdentifier?> ();
 
-            var lists_value = _settings.get_value ("lists");
+            var lists_value = _settings.get_value (KEY_LISTS);
             var n_lists = lists_value.n_children ();
 
             for (size_t i = 0; i < n_lists; i++) {
@@ -211,27 +228,27 @@ private class GOFI.SettingsManager : Object {
                     new Variant.string (identifier.id)
                 });
             }
-            _settings.set_value ("lists", new Variant.array (new VariantType ("(ss)"), _lists));
+            _settings.set_value (KEY_LISTS, new Variant.array (new VariantType ("(ss)"), _lists));
         }
     }
 
     /*---Saved state----------------------------------------------------------*/
     public void set_window_position (int x, int y) {
-        saved_state.set ("window-position", "(ii)", x, y);
+        saved_state.set (KEY_WINDOW_POS, "(ii)", x, y);
     }
     public void get_window_position (out int x, out int y) {
-        saved_state.get ("window-position", "(ii)", out x, out y);
+        saved_state.get (KEY_WINDOW_POS, "(ii)", out x, out y);
     }
     public void set_window_size (int width, int height) {
-        saved_state.set ("window-size", "(ii)", width, height);
+        saved_state.set (KEY_WINDOW_SIZE, "(ii)", width, height);
     }
     public void get_window_size (out int width, out int height) {
-        saved_state.get ("window-size", "(ii)", out width, out height);
+        saved_state.get (KEY_WINDOW_SIZE, "(ii)", out width, out height);
     }
     public ListIdentifier? list_last_loaded {
         owned get {
             string provider, id;
-            saved_state.get ("last-loaded-list", "(ss)", out provider, out id);
+            saved_state.get (KEY_LAST_LIST, "(ss)", out provider, out id);
             if (provider != "" && id != "") {
                 return new ListIdentifier (provider, id);
             }
@@ -239,9 +256,9 @@ private class GOFI.SettingsManager : Object {
         }
         set {
             if (value == null) {
-                saved_state.set ("last-loaded-list", "(ss)", "", "");
+                saved_state.set (KEY_LAST_LIST, "(ss)", "", "");
             } else {
-                saved_state.set ("last-loaded-list", "(ss)", value.provider, value.id);
+                saved_state.set (KEY_LAST_LIST, "(ss)", value.provider, value.id);
             }
         }
     }
@@ -261,16 +278,17 @@ private class GOFI.SettingsManager : Object {
     private void init_with_backend (GLib.SettingsBackend? backend) {
         _schedule = new Schedule ();
         if (backend != null) {
-            _settings = new GLib.Settings.with_backend (GOFI.APP_ID + ".settings", backend);
-            timer_settings = new GLib.Settings.with_backend (GOFI.APP_ID + ".timer", backend);
-            saved_state = new GLib.Settings.with_backend (GOFI.APP_ID + ".saved-state", backend);
+            _settings = new GLib.Settings.with_backend (ID_GENERAL, backend);
+            timer_settings = new GLib.Settings.with_backend (ID_TIMER, backend);
+            saved_state = new GLib.Settings.with_backend (ID_SAVED_STATE, backend);
         } else {
-            _settings = new GLib.Settings (GOFI.APP_ID + ".settings");
-            timer_settings = new GLib.Settings (GOFI.APP_ID + ".timer");
-            saved_state = new GLib.Settings (GOFI.APP_ID + ".saved-state");
+            _settings = new GLib.Settings (ID_GENERAL);
+            timer_settings = new GLib.Settings (ID_TIMER);
+            saved_state = new GLib.Settings (ID_SAVED_STATE);
         }
 
         bind_settings ();
+        perform_migration ();
     }
 
 // Broken due to bad gio vapi bindings
@@ -283,11 +301,11 @@ private class GOFI.SettingsManager : Object {
 
     private void bind_settings () {
         var sbf = GLib.SettingsBindFlags.DEFAULT;
-        _settings.bind ("new-tasks-on-top", this, "new_tasks_on_top", sbf);
-        _settings.bind ("switcher-use-icons", this, "switcher_use_icons", sbf);
-        _settings.bind ("small-toolbar-icons", this, "use_small_toolbar_icons", sbf);
-        _settings.bind ("color-scheme", this, "color_scheme", sbf);
-        _settings.bind ("use-header-bar", this, "prefers_header_bar", sbf);
+        _settings.bind (KEY_TASKS_ON_TOP, this, "new_tasks_on_top", sbf);
+        _settings.bind (KEY_SWITCHER_USE_ICONS, this, "switcher_use_icons", sbf);
+        _settings.bind (KEY_SMALL_ICONS, this, "use_small_toolbar_icons", sbf);
+        _settings.bind (KEY_COLOR_SCHEME, this, "color_scheme", sbf);
+        _settings.bind (KEY_USE_HEADER_BAR, this, "prefers_header_bar", sbf);
 
         timer_settings.bind (KEY_REMINDER_TIME, this, "reminder_time", sbf);
         timer_settings.bind (KEY_TIMER_MODE, this, "timer_mode", sbf);
@@ -375,9 +393,17 @@ private class GOFI.SettingsManager : Object {
         durations[arr_size - 1] = long_break_duration;
         _schedule.import_raw (durations);
     }
+
+    private void perform_migration () {
+        if (_settings.get_int("settings-version") <= 0) {
+            first_start = !KeyFileSettings.import_settings (this);
+        }
+
+        _settings.set_int("settings-version", 1) ;
+    }
 }
 
-namespace GOFI.LegacySettings {
+namespace GOFI.KeyFileSettings {
 
     /*
      * A list of constants that define settings group names
@@ -388,7 +414,7 @@ namespace GOFI.LegacySettings {
     private const string GROUP_UI = "Interface";
     private const string GROUP_LISTS = "Lists";
 
-    private void importtimer_settings (KeyFile key_file) throws GLib.KeyFileError {
+    private void importtimer_settings (KeyFile key_file, SettingsManager settings) throws GLib.KeyFileError {
         if (!key_file.has_group (GROUP_TIMER)) {
             return;
         }
@@ -437,7 +463,7 @@ namespace GOFI.LegacySettings {
         }
     }
 
-    private void import_ui_settings (KeyFile key_file) throws GLib.KeyFileError {
+    private void import_ui_settings (KeyFile key_file, SettingsManager settings) throws GLib.KeyFileError {
         if (!key_file.has_group (GROUP_UI)) {
             return;
         }
@@ -481,7 +507,7 @@ namespace GOFI.LegacySettings {
         settings.set_window_position (x, y);
     }
 
-    private void import_list_settings (KeyFile key_file) throws GLib.KeyFileError {
+    private void import_list_settings (KeyFile key_file, SettingsManager settings) throws GLib.KeyFileError {
         if (!key_file.has_group (GROUP_LISTS)) {
             return;
         }
@@ -510,7 +536,7 @@ namespace GOFI.LegacySettings {
         }
     }
 
-    private void import_behavior_settings (KeyFile key_file) throws GLib.KeyFileError {
+    private void import_behavior_settings (KeyFile key_file, SettingsManager settings) throws GLib.KeyFileError {
         if (!key_file.has_group (GROUP_BEHAVIOR)) {
             return;
         }
@@ -520,7 +546,7 @@ namespace GOFI.LegacySettings {
         }
     }
 
-    internal static void import_settings () {
+    internal static bool import_settings (SettingsManager settings) {
         // Instantiate the key_file object
         var key_file = new KeyFile ();
 
@@ -532,21 +558,22 @@ namespace GOFI.LegacySettings {
             } catch (Error e) {
                 stderr.printf ("Reading %s failed", GOFI.Utils.config_file);
                 warning ("%s", e.message);
-                return;
+                return false;
             }
         } else {
-            return;
+            return false;
         }
 
         try {
-            import_list_settings (key_file);
-            importtimer_settings (key_file);
-            import_ui_settings (key_file);
-            import_behavior_settings (key_file);
+            import_list_settings (key_file, settings);
+            importtimer_settings (key_file, settings);
+            import_ui_settings (key_file, settings);
+            import_behavior_settings (key_file, settings);
         } catch (Error e) {
             warning ("An error occured while importing the settings from"
                 +" %s: %s", GOFI.Utils.config_file, e.message);
         }
+        return true;
     }
 }
 
