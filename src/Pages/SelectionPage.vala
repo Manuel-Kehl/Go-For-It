@@ -39,6 +39,8 @@ class GOFI.SelectionPage : Gtk.Grid {
         /* Settings of the widget itself */
         this.orientation = Gtk.Orientation.VERTICAL;
         this.expand = true;
+        this.width_request = 200;
+        this.height_request = 250;
         create_dialog = null;
 
         /* Setup the widget's children */
