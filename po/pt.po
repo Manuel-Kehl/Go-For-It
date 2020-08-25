@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-28 10:51+0200\n"
-"PO-Revision-Date: 2019-08-30 16:52+0200\n"
-"Last-Translator: Rui Mendes <xz9@protonmail.com>\n"
+"PO-Revision-Date: 2020-08-25 18:43+0100\n"
+"Last-Translator: André Barata <andretiagob@protonmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/go-for-it/go-"
 "for-it/pt/>\n"
 "Language: pt\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:447
@@ -54,7 +54,7 @@ msgstr "Fechar"
 
 #: ../src/Dialogs/SettingsDialog.vala:71
 msgid "Behavior"
-msgstr ""
+msgstr "Comportamento"
 
 #: ../src/Dialogs/SettingsDialog.vala:72
 msgid "Appearance"
@@ -62,7 +62,7 @@ msgstr "Aparência"
 
 #: ../src/Dialogs/SettingsDialog.vala:73
 msgid "Shortcuts"
-msgstr ""
+msgstr "Atalhos"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 msgid "General"
@@ -127,7 +127,7 @@ msgstr "Duração do intervalo"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:69
 msgid "Long break duration"
-msgstr ""
+msgstr "Duração do intervalo longo"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:262
@@ -141,67 +141,65 @@ msgstr "segundos"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "Resume task after the break"
-msgstr ""
+msgstr "Resumir tarefas depois do intervalo"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:74
 msgid "Reset timer after switching tasks"
-msgstr ""
+msgstr "Repor temporizador depois de mudar de tarefas"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
 msgid "Have a long break after"
-msgstr ""
+msgstr "Tenha um longo intervalo depois"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:79
 msgid "short breaks"
-msgstr ""
+msgstr "pequenos intervalos"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
 msgid "Timer mode"
-msgstr ""
+msgstr "Modo do Temporizador"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:108
 msgid "Simple"
-msgstr ""
+msgstr "Simples"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:109
 msgid "Pomodoro"
-msgstr ""
+msgstr "Pomodoro"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:110
 msgid "Custom"
-msgstr ""
+msgstr "Personalizado"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:169
 msgid "Tasks"
-msgstr ""
+msgstr "Tarefas"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:170
 msgid "Placement of new tasks"
-msgstr ""
+msgstr "Colocação de novas tarefas"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:173
 msgid "Top of the list"
-msgstr ""
+msgstr "Topo da lista"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:174
 msgid "Bottom of the list"
-msgstr ""
+msgstr "Fim da lista"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
-#, fuzzy
-#| msgid "%s needs to be restarted for this setting to take effect"
 msgid "%s needs to be restarted for changes to take effect."
-msgstr "O %s tem de ser reiniciado para que esta configuração surta efeito"
+msgstr "O %s tem de ser reiniciado para que esta configuração surta efeito."
 
 #: ../src/Main.vala:79
 msgid "Not a known list: %s"
-msgstr ""
+msgstr "Não é uma lista conhecida: %s"
 
 #: ../src/Main.vala:199
 msgid "%s: Error: %s"
-msgstr ""
+msgstr "%s: Erro: %s"
 
 #: ../src/Main.vala:228
 msgid "Print version info and exit"
@@ -213,15 +211,15 @@ msgstr "Mostrar janela sobre a aplicação"
 
 #: ../src/Main.vala:230
 msgid "CSV file to log activities to."
-msgstr ""
+msgstr "Ficheiro CSV para registar atividades."
 
 #: ../src/Main.vala:231
 msgid "Show configured lists and exit"
-msgstr ""
+msgstr "Mostrar listas configuradas e sair"
 
 #: ../src/Main.vala:232
 msgid "Load the list specified by the list type and ID"
-msgstr ""
+msgstr "Carrega a lista especificada pelo tipo e ID de lista"
 
 #: ../src/Main.vala:254 ../src/Widgets/TimerView.vala:88
 msgid "Take a Break"
@@ -236,10 +234,8 @@ msgid "The Break is Over"
 msgstr "O intervalo terminou"
 
 #: ../src/Main.vala:261
-#, fuzzy
-#| msgid "Your next task is"
 msgid "Your current task is"
-msgstr "A sua próxima tarefa é"
+msgstr "A sua tarefa atual é"
 
 #: ../src/Main.vala:281
 msgid "Prepare for your break"
@@ -250,14 +246,12 @@ msgid "You have %s seconds left"
 msgstr "Restam %s segundos"
 
 #: ../src/Main.vala:298
-#, fuzzy
-#| msgid "Task duration"
 msgid "Task duration exceeded"
-msgstr "Duração da tarefa"
+msgstr "Duração da tarefa excedida"
 
 #: ../src/Main.vala:299
 msgid "Consider switching to a different task"
-msgstr ""
+msgstr "Considere alterar para uma tarefa diferente"
 
 #: ../src/MainWindow.vala:62
 msgid "Go to overview"
@@ -273,7 +267,7 @@ msgstr "Menu"
 
 #: ../src/MainWindow.vala:440
 msgid "Contribute / Donate"
-msgstr "Colaborar / doar"
+msgstr "Colaborar / Doar"
 
 #: ../src/Pages/SelectionPage.vala:92
 msgid ""
@@ -302,7 +296,7 @@ msgstr "Concluído"
 
 #: ../src/Services/ActivityLog.vala:55
 msgid "Couldn't write to %s: %s"
-msgstr ""
+msgstr "Não foi possível escrever para %s: %s"
 
 #: ../src/Services/SettingsManager.vala:437
 #: ../src/Todo.txt/TxtListManager.vala:58
@@ -316,48 +310,47 @@ msgstr "Não foi possível importar as configurações de %s: %s"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
-msgstr ""
+msgstr "desativado"
 
 #: ../src/Services/Shortcuts.vala:135
 msgid "Filter tasks"
-msgstr ""
+msgstr "Filtrar tarefas"
 
 #: ../src/Services/Shortcuts.vala:136
-#, fuzzy
 msgid "Add new task/list"
-msgstr "Adicionar nova tarefa"
+msgstr "Adicionar nova tarefa/lista"
 
 #: ../src/Services/Shortcuts.vala:137
 msgid "Start/Stop the timer"
-msgstr ""
+msgstr "Iniciar/Parar o temporizador"
 
 #: ../src/Services/Shortcuts.vala:138
 msgid "Mark the task as complete"
-msgstr ""
+msgstr "Marcar a tarefa como completada"
 
 #: ../src/Services/Shortcuts.vala:139
 msgid "Move selected row up"
-msgstr ""
+msgstr "Mover a linha selecionada para cima"
 
 #: ../src/Services/Shortcuts.vala:140
 msgid "Move selected row down"
-msgstr ""
+msgstr "Mover a linha selecionada para baixo"
 
 #: ../src/Services/Shortcuts.vala:142
 msgid "Move to next task/row"
-msgstr ""
+msgstr "Mover para a próxima tarefa/linha"
 
 #: ../src/Services/Shortcuts.vala:143
 msgid "Move to previous task/row"
-msgstr ""
+msgstr "Mover para tarefa/linha anterior"
 
 #: ../src/Services/Shortcuts.vala:144
 msgid "Move to right screen"
-msgstr ""
+msgstr "Mover para o ecrã direito"
 
 #: ../src/Services/Shortcuts.vala:145
 msgid "Move to left screen"
-msgstr ""
+msgstr "Mover para o ecrã esquerdo"
 
 #: ../src/Theme.vala:54
 msgid "Inherit from GTK theme"
@@ -400,15 +393,15 @@ msgstr "Por favor atribua um nome à lista."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:210
 msgid "Log the time spent working on each task"
-msgstr ""
+msgstr "Registe o tempo gasto a trabalhar em cada tarefa"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
 msgid "This information will be stored in the todo.txt files."
-msgstr ""
+msgstr "Esta informação vai ser guardada no ficheiro todo.txt "
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
 msgid "Use default settings"
-msgstr "Usar configurações originais"
+msgstr "Usar configurações padrão"
 
 #: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:357
 msgid "project"
@@ -420,19 +413,19 @@ msgstr "contexto"
 
 #: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:304
 msgid "priority"
-msgstr ""
+msgstr "prioridade"
 
 #: ../src/Todo.txt/TaskManager.vala:49
 msgid "Spread the word about \"%s\""
-msgstr ""
+msgstr "Espalhe a palavra sobre \"%s\""
 
 #: ../src/Todo.txt/TaskManager.vala:50
 msgid "Consider a donation to help the project"
-msgstr ""
+msgstr "Considere fazer um donativo para ajudar o projeto"
 
 #: ../src/Todo.txt/TaskManager.vala:51
 msgid "Consider contributing to the project"
-msgstr ""
+msgstr "Considere contribuir para o projeto"
 
 #: ../src/Todo.txt/TaskManager.vala:54
 msgid ""
@@ -474,7 +467,7 @@ msgstr "Informação do erro: "
 
 #: ../src/Todo.txt/TxtListManager.vala:226
 msgid "Todo.txt files were found in the destination folder."
-msgstr "Foram encontrados ficheiros Todo.txt no diretório de destino."
+msgstr "Foram encontrados ficheiros todo.txt no diretório de destino."
 
 #: ../src/Todo.txt/TxtListManager.vala:230
 msgid "What should be done with these files?"
@@ -498,11 +491,11 @@ msgstr ""
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:36
 msgid "No tasks found."
-msgstr ""
+msgstr "Nenhuma tarefa encontrada."
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:37
 msgid "You don't have any completed tasks stored."
-msgstr ""
+msgstr "Não tem nenhuma tarefa completada guardada."
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:38
 msgid "You finished all tasks, good job!"
@@ -529,11 +522,11 @@ msgstr "Tarefa criada em %s"
 #: ../src/Todo.txt/Widgets/TaskRow.vala:311
 #: ../src/Todo.txt/Widgets/TaskRow.vala:313
 msgid "min."
-msgstr ""
+msgstr "min."
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:327
 msgid "%u hours and %u minutes"
-msgstr ""
+msgstr "%u horas e %u minutos"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:329
 msgid "%u minutes"
