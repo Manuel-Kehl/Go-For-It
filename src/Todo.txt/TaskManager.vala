@@ -26,7 +26,6 @@ using GOFI.TXT.TxtUtils;
 class GOFI.TXT.TaskManager {
     private ListSettings lsettings;
     // The user's todo.txt related files
-    private File todo_txt_dir;
     private File todo_txt;
     private File done_txt;
     public TaskStore todo_store;
@@ -75,7 +74,8 @@ class GOFI.TXT.TaskManager {
         connect_store_signals ();
 
         /* Signal processing */
-        lsettings.notify["todo-txt-location"].connect (load_task_stores);
+        lsettings.notify["todo-uri"].connect (load_task_stores);
+        lsettings.notify["done-uri"].connect (load_task_stores);
     }
 
     public void set_active_task (TxtTask? task) {
@@ -180,20 +180,8 @@ class GOFI.TXT.TaskManager {
     }
 
     private void load_task_stores () {
-        todo_txt_dir = File.new_for_path (lsettings.todo_txt_location);
-        todo_txt = todo_txt_dir.get_child ("todo.txt");
-        done_txt = todo_txt_dir.get_child ("done.txt");
-
-        if (
-            todo_txt_dir.query_exists () &&
-            todo_txt_dir.query_file_type (FileQueryInfoFlags.NONE) != FileType.DIRECTORY
-        ) {
-            io_failed = true;
-            show_error_dialog (txt_dir_error);
-            warning (txt_dir_error);
-        } else {
-            io_failed = false;
-        }
+        todo_txt = File.new_for_uri (lsettings.todo_uri);
+        done_txt = File.new_for_uri (lsettings.done_uri);
 
         if (todo_txt.query_exists ()) {
             lsettings.add_default_todos = false;
@@ -346,9 +334,12 @@ class GOFI.TXT.TaskManager {
     }
 
     private void ensure_file_exists (File file) throws Error {
-        // Create file and return if it does not exist
+        // Create file with its parent directory if it doesn't currently exist
         if (!file.query_exists ()) {
-            DirUtils.create_with_parents (todo_txt_dir.get_path (), 0700);
+            var parent_dir = file.get_parent ();
+            if (parent_dir != null) {
+                parent_dir.make_directory_with_parents ();
+            }
             file.create (FileCreateFlags.NONE);
         }
     }
@@ -394,7 +385,7 @@ class GOFI.TXT.TaskManager {
         if (io_failed) {
             return;
         }
-        stdout.printf ("Reading file: %s\n", file.get_path ());
+        stdout.printf ("Reading file: %s\n", file.get_uri ());
 
         // Read data from todo.txt and done.txt files
         try {

@@ -187,5 +187,48 @@
       <description></description>
     </key>
   </schema>
+
+  <schema path="@SCHEMA_PATH@/backends/todo-txt/" id="@APP_ID@.todo-txt">
+    <key name="lists" type="as">
+      <default>[]</default>
+      <summary></summary>
+      <description></description>
+    </key>
+  </schema>
+
+  <schema id="@APP_ID@.todo-txt.list">
+    <key name="name" type="s">
+      <default>''</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="todo-list-uri" type="s">
+      <default>''</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="done-list-uri" type="s">
+      <default>''</default>
+      <summary></summary>
+      <description></description>
+    </key>
+
+    <key name="log-timer-in-txt" type="b">
+      <default>true</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="reminder-time" type="i">
+      <range min="-1" max="600"/>
+      <default>-1</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="schedule" type="a(ii)">
+      <default>[]</default>
+      <summary></summary>
+      <description></description>
+    </key>
+  </schema>
 </schemalist>
 

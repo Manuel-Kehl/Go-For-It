@@ -34,13 +34,6 @@ class GOFI.ListManager : Object, DragListModel {
         txt_manager = new TxtListManager (txt_config_file);
         todolist_infos = new SequentialList (typeof (TodoListInfo));
 
-        if (txt_manager.first_run) {
-            var old_txt_path = settings.todo_txt_location;
-            if (old_txt_path != "") {
-                txt_manager.add_new ("Todo.txt", old_txt_path);
-            }
-        }
-
         populate_items ();
 
         txt_manager.lists_added.connect (add_new_lists);

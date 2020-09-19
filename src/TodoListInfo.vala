@@ -27,6 +27,7 @@ public interface GOFI.TodoListInfo : Object{
      * this list. On restarting the application the id must remain the same.
      */
     public abstract string id {
+        construct set;
         get;
     }
 

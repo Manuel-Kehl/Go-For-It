@@ -291,7 +291,7 @@ private class GOFI.SettingsManager : Object {
         perform_migration ();
     }
 
-// Broken due to bad gio vapi bindings
+// Broken due to bad gio vapi bindings (vala version < 0.50)
 /*
     public SettingsManager.key_file_backend (string path) {
         var key_file_backend = GLib.SettingsBackend.keyfile_settings_backend_new (path, "/", null);

@@ -38,4 +38,5 @@ namespace GOFI {
     const string GETTEXT_PACKAGE = "@GETTEXT_PACKAGE@";
     const string DEFAULT_THEME = "@DEFAULT_THEME@";
     const string RESOURCE_PATH = "@RESOURCE_PATH@";
+    const string SCHEMA_PATH = "@SCHEMA_PATH@";
 }
