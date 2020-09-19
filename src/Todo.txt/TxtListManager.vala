@@ -105,7 +105,7 @@ class GOFI.TXT.TxtListManager {
     }
 
     private void swap_todo_done (string todo_uri, string done_uri) throws Error {
-        var tmp_file = File.new_build_filename (Environment.get_tmp_dir (), "gofi-done.txt");
+        var tmp_file = File.new_for_path (Path.build_filename (Environment.get_tmp_dir (), "gofi-done.txt"));
         var todo_txt = File.new_for_uri (todo_uri);
         var done_txt = File.new_for_uri (done_uri);
         bool todo_exists = todo_txt.query_exists ();
