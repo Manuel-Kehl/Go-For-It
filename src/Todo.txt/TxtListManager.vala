@@ -54,6 +54,7 @@ class GOFI.TXT.TxtListManager {
      */
     public TxtListManager (string? import_dir) {
         var list_table = new HashTable<string, ListSettings> (str_hash, str_equal);
+        global_txt_settings = new GLib.Settings (ID_TODO_TXT);
         if (import_dir != null) {
             var legacy_settings = new LegacyTxtListImport (import_dir);
             legacy_settings.import_settings_instances (list_table);
@@ -79,7 +80,7 @@ class GOFI.TXT.TxtListManager {
             if (list.todo_uri == todo_uri && list.id != changed.id) {
                 return false;
             }
-            if (list.done_uri == todo_uri) {
+            if (list.done_uri == todo_uri && list.id != changed.id) {
                 return false;
             }
         }

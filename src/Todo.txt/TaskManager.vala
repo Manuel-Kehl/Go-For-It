@@ -32,6 +32,7 @@ class GOFI.TXT.TaskManager {
     public TaskStore done_store;
     private bool read_only;
     private bool io_failed;
+    private bool single_file_mode;
 
     // refreshing
     private bool refresh_queued;
@@ -183,6 +184,8 @@ class GOFI.TXT.TaskManager {
         todo_txt = File.new_for_uri (lsettings.todo_uri);
         done_txt = File.new_for_uri (lsettings.done_uri);
 
+        single_file_mode = todo_txt.equal (done_txt);
+
         if (todo_txt.query_exists ()) {
             lsettings.add_default_todos = false;
         }
@@ -196,10 +199,14 @@ class GOFI.TXT.TaskManager {
 
     private void watch_files () {
         todo_watcher = new FileWatcher (todo_txt);
-        done_watcher = new FileWatcher (done_txt);
-
         todo_watcher.changed.connect (on_file_changed);
-        done_watcher.changed.connect (on_file_changed);
+
+        if (single_file_mode) {
+            done_watcher = null;
+        } else {
+            done_watcher = new FileWatcher (done_txt);
+            done_watcher.changed.connect (on_file_changed);
+        }
     }
 
     private void on_file_changed () {
@@ -227,8 +234,7 @@ class GOFI.TXT.TaskManager {
 
     private void remove_invalid (TaskStore store, TxtTask task) {
         store.remove_task (task);
-        File todo_file = (store == todo_store) ? todo_txt : done_txt;
-        write_task_file (store, todo_file);
+        save_store (store);
     }
 
     private void load_tasks () {
@@ -238,7 +244,9 @@ class GOFI.TXT.TaskManager {
         done_store.clear ();
         active_task_found = active_task == null;
         read_task_file (this.todo_txt, false);
-        read_task_file (this.done_txt, true);
+        if (!single_file_mode) {
+            read_task_file (this.done_txt, true);
+        }
 
         if (lsettings.add_default_todos) {
             add_default_todos ();
@@ -303,9 +311,7 @@ class GOFI.TXT.TaskManager {
 
     private bool save_todo_tasks () {
         if (!read_only) {
-            todo_watcher.watching = false;
-            write_task_file (this.todo_store, this.todo_txt);
-            todo_watcher.watching = true;
+            save_store (todo_store);
         }
         todo_save_timeout_id = 0;
         return false;
@@ -313,9 +319,7 @@ class GOFI.TXT.TaskManager {
 
     private bool save_done_tasks () {
         if (!read_only) {
-            done_watcher.watching = false;
-            write_task_file (this.done_store, this.done_txt);
-            done_watcher.watching = true;
+            save_store (done_store);
         }
         done_save_timeout_id = 0;
         return false;
@@ -331,6 +335,21 @@ class GOFI.TXT.TaskManager {
         });
 
         dialog.show ();
+    }
+
+    private void save_store (TaskStore store) {
+        bool is_todo_store = store == todo_store;
+        File todo_file = is_todo_store ? todo_txt : done_txt;
+        if (single_file_mode) {
+            todo_watcher.watching = false;
+            write_task_file ({todo_store, done_store}, todo_file);
+            todo_watcher.watching = true;
+        } else {
+            FileWatcher watcher = is_todo_store ? todo_watcher : done_watcher;
+            watcher.watching = false;
+            write_task_file ({store}, todo_file);
+            watcher.watching = true;
+        }
     }
 
     private void ensure_file_exists (File file) throws Error {
@@ -385,7 +404,7 @@ class GOFI.TXT.TaskManager {
         if (io_failed) {
             return;
         }
-        stdout.printf ("Reading file: %s\n", file.get_uri ());
+        message ("Reading todo.txt file: %s\n", file.get_uri ());
 
         // Read data from todo.txt and done.txt files
         try {
@@ -405,7 +424,7 @@ class GOFI.TXT.TaskManager {
             }
         } catch (Error e) {
             io_failed = true;
-            var error_message = read_error_message.printf (file.get_path (), e.message) + error_implications.printf (APP_NAME);
+            var error_message = read_error_message.printf (file.get_uri (), e.message) + error_implications.printf (APP_NAME);
             warning (error_message);
             show_error_dialog (error_message);
         }
@@ -414,11 +433,11 @@ class GOFI.TXT.TaskManager {
     /**
      * Saves tasks to a Todo.txt formatted file.
      */
-    private void write_task_file (TaskStore store, File file) {
+    private void write_task_file (TaskStore[] stores, File file) {
         if (io_failed) {
             return;
         }
-        stdout.printf ("Writing file: %s\n", file.get_path ());
+        message ("Writing todo.txt file: %s\n", file.get_uri ());
 
         try {
             ensure_file_exists (file);
@@ -427,16 +446,23 @@ class GOFI.TXT.TaskManager {
             var stream_out =
                 new DataOutputStream (file_io_stream.output_stream);
 
-            uint n_items = store.get_n_items ();
-            for (uint i = 0; i < n_items; i++) {
-                TxtTask task = (TxtTask)store.get_item (i);
-                stream_out.put_string (task.to_txt (lsettings.log_timer_in_txt) + "\n");
+            foreach (var store in stores) {
+                write_tasks_to_stream (store, stream_out, lsettings.log_timer_in_txt);
             }
         } catch (Error e) {
             io_failed = true;
-            var error_message = write_error_message.printf (file.get_path (), e.message) + error_implications.printf (APP_NAME);
+            var error_message = write_error_message.printf (file.get_uri (), e.message) + error_implications.printf (APP_NAME);
             warning (error_message);
             show_error_dialog (error_message);
+        }
+    }
+
+    private void write_tasks_to_stream (TaskStore store, DataOutputStream stream_out, bool log_timer) throws Error {
+        uint n_items = store.get_n_items ();
+        for (uint i = 0; i < n_items; i++) {
+            TxtTask task = (TxtTask)store.get_item (i);
+            stream_out.put_string (task.to_txt (log_timer));
+            stream_out.put_byte ('\n');
         }
     }
 }
