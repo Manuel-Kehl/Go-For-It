@@ -35,6 +35,15 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
+    <release version="1.8.2" date="2020-09-20">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>When switching to list overview, the previously shown list will now be selected.</li>
+          <li>Various translations have been updated (Croatian, French, German, Norwegian Bokmål, Polish, Portuguese, Slovak, Turkish).</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.8.1" date="2020-07-20">
       <description>
         <p>Improvements:</p>

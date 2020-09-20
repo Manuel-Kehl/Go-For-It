@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.8.1](https://github.com/JMoerman/Go-For-It/tree/1.8.2) (2020-09-20)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.1...1.8.2)
+
+**Implemented enhancements:**
+
+- When switching to list overview, the previously shown list will now be selected.
+- Various translations have been updated (Croatian, French, German, Norwegian Bokmål, Polish, Portuguese, Slovak, Turkish).
+
 ## [1.8.1](https://github.com/JMoerman/Go-For-It/tree/1.8.1) (2020-07-20)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.0...1.8.1)
 
