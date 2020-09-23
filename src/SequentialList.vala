@@ -88,6 +88,7 @@ class GOFI.SequentialList {
             i++;
         }
         assert (iter != null);
+        iter.data.unref ();
         items.delete_link (iter);
         return i;
     }
@@ -101,6 +102,7 @@ class GOFI.SequentialList {
             i++;
         }
         assert (iter != null);
+        iter.data.unref ();
         items.delete_link (iter);
         return i;
     }

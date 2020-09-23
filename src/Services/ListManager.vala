@@ -120,6 +120,7 @@ class GOFI.ListManager : Object, DragListModel {
             unowned List<TodoListInfo> link = search_list_link (txt_lists, identifier.id);
             if (link != null) {
                 todolist_infos.append_item (link.data);
+                link.data.unref ();
                 txt_lists.delete_link (link);
             } else {
                 warning ("Couldn't find list '%s:%s'\n", identifier.provider, identifier.id);
