@@ -63,7 +63,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
             return _schedule;
         }
         set {
-            if (value.valid) {
+            if (schedule == null || value.valid) {
                 _schedule = value;
             } else {
                 _schedule = null;
@@ -94,7 +94,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
             if (id == null) {
                 return null;
             }
-            return (GOFI.SCHEMA_PATH + "/backends/todo-txt/" + id);
+            return construct_schema_path (id);
         }
     }
 
@@ -108,9 +108,12 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         this.schedule = null;
     }
 
+    public static string construct_schema_path (string id) {
+        return GOFI.SCHEMA_PATH + "/backends/todo-txt/" + id + "/";
+    }
+
     public ListSettings.glib_settings (string id) {
-        this._id = id;
-        var settings = new GLib.Settings.with_path (ID_TODO_TXT_LIST, schema_path);
+        var settings = new GLib.Settings.with_path (ID_TODO_TXT_LIST, construct_schema_path (id));
 
         Object (
             id: id,
@@ -171,6 +174,14 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         stored_settings.bind (KEY_REMINDER_TIME, this, "reminder_time", sbf);
         stored_settings.bind (KEY_LOG_TIMER, this, "log_timer_in_txt", sbf);
         stored_settings.bind (KEY_NAME, this, "name", sbf);
+    }
+
+    public void unbind () {
+        GLib.Settings.unbind (this, "todo_uri");
+        GLib.Settings.unbind (this, "done_uri");
+        GLib.Settings.unbind (this, "reminder_time");
+        GLib.Settings.unbind (this, "log_timer_in_txt");
+        GLib.Settings.unbind (this, "name");
     }
 
     private void load_schedule () {

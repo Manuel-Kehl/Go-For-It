@@ -413,7 +413,7 @@ public class GOFI.DragList : Gtk.Bin {
      *
      * @param index the index of the row
      */
-    public DragListRow get_row_at_index (int index) {
+    public unowned DragListRow? get_row_at_index (int index) {
         return (DragListRow)listbox.get_row_at_index (index);
     }
 

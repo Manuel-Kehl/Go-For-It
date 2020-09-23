@@ -230,5 +230,13 @@
       <description></description>
     </key>
   </schema>
+
+  <schema path="@SCHEMA_PATH@/plugins/" id="@APP_ID@.plugins">
+    <key name="enabled-plugins" type="as">
+      <default>[]</default>
+      <summary></summary>
+      <description></description>
+    </key>
+  </schema>
 </schemalist>
 

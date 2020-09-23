@@ -14,6 +14,7 @@ set (APP_SYSTEM_NAME ${APP_ID} CACHE STRING "Name to used for file names. For ex
 set (SCHEMA_PATH "/com/github/jmoerman/go-for-it" CACHE STRING "The gsettings schema path.")
 
 set (PKGDATADIR ${DATADIR}/${APP_SYSTEM_NAME})
+set (PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/${APP_SYSTEM_NAME}/plugins")
 set (FILE_CONF ${PROJECT_NAME}.conf)
 
 set (EXEC_NAME ${APP_SYSTEM_NAME})
@@ -47,6 +48,8 @@ pkg_check_modules (CORE_DEPS REQUIRED
     gtk+-3.0>=3.14.0
     glib-2.0>=2.40
     libnotify
+    libpeas-1.0
+    libpeas-gtk-1.0
 )
 
 set (DEPS_CFLAGS ${CORE_DEPS_CFLAGS})

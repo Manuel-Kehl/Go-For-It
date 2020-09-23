@@ -396,14 +396,15 @@ private class GOFI.SettingsManager : Object {
 
     private void perform_migration () {
         if (_settings.get_int("settings-version") <= 0) {
-            first_start = !KeyFileSettings.import_settings (this);
+            var settings_importer = new KeyFileSettingsImport (this);
+            first_start = !settings_importer.import_settings ();
         }
 
         _settings.set_int("settings-version", 1) ;
     }
 }
 
-namespace GOFI.KeyFileSettings {
+class GOFI.KeyFileSettingsImport {
 
     /*
      * A list of constants that define settings group names
@@ -414,7 +415,14 @@ namespace GOFI.KeyFileSettings {
     private const string GROUP_UI = "Interface";
     private const string GROUP_LISTS = "Lists";
 
-    private void importtimer_settings (KeyFile key_file, SettingsManager settings) throws GLib.KeyFileError {
+    private KeyFile key_file;
+    private SettingsManager settings;
+
+    public KeyFileSettingsImport (SettingsManager settings) {
+        this.settings = settings;
+    }
+
+    private void import_timer_settings () throws GLib.KeyFileError {
         if (!key_file.has_group (GROUP_TIMER)) {
             return;
         }
@@ -463,7 +471,7 @@ namespace GOFI.KeyFileSettings {
         }
     }
 
-    private void import_ui_settings (KeyFile key_file, SettingsManager settings) throws GLib.KeyFileError {
+    private void import_ui_settings () throws GLib.KeyFileError {
         if (!key_file.has_group (GROUP_UI)) {
             return;
         }
@@ -507,7 +515,7 @@ namespace GOFI.KeyFileSettings {
         settings.set_window_position (x, y);
     }
 
-    private void import_list_settings (KeyFile key_file, SettingsManager settings) throws GLib.KeyFileError {
+    private void import_list_settings () throws GLib.KeyFileError {
         if (!key_file.has_group (GROUP_LISTS)) {
             return;
         }
@@ -536,7 +544,7 @@ namespace GOFI.KeyFileSettings {
         }
     }
 
-    private void import_behavior_settings (KeyFile key_file, SettingsManager settings) throws GLib.KeyFileError {
+    private void import_behavior_settings () throws GLib.KeyFileError {
         if (!key_file.has_group (GROUP_BEHAVIOR)) {
             return;
         }
@@ -546,9 +554,9 @@ namespace GOFI.KeyFileSettings {
         }
     }
 
-    internal static bool import_settings (SettingsManager settings) {
+    public bool import_settings () {
         // Instantiate the key_file object
-        var key_file = new KeyFile ();
+        key_file = new KeyFile ();
 
         if (FileUtils.test (GOFI.Utils.config_file, FileTest.EXISTS)) {
             // If it does exist, read existing values
@@ -565,10 +573,10 @@ namespace GOFI.KeyFileSettings {
         }
 
         try {
-            import_list_settings (key_file, settings);
-            importtimer_settings (key_file, settings);
-            import_ui_settings (key_file, settings);
-            import_behavior_settings (key_file, settings);
+            import_list_settings ();
+            import_timer_settings ();
+            import_ui_settings ();
+            import_behavior_settings ();
         } catch (Error e) {
             warning ("An error occured while importing the settings from"
                 +" %s: %s", GOFI.Utils.config_file, e.message);

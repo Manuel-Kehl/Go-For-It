@@ -20,6 +20,8 @@ namespace GOFI {
     private SettingsManager settings = null;
     private ActivityLog activity_log = null;
     private ListManager list_manager = null;
+    private PluginManager plugin_manager = null;
+    private TaskTimer task_timer;
 }
 
 errordomain GOFIParseError {
@@ -34,7 +36,6 @@ errordomain GOFIParseError {
  * necessary steps to create a running instance of "Go For It!".
  */
 class GOFI.Main : Gtk.Application {
-    private TaskTimer task_timer;
     private MainWindow win;
 
     private static bool print_version = false;
@@ -55,6 +56,21 @@ class GOFI.Main : Gtk.Application {
         }
     }
 
+    private void load_plugin_manager () {
+        if (plugin_manager == null) {
+            plugin_manager = new PluginManager (task_timer);
+        }
+    }
+
+    private void setup_timer_and_notifications () {
+        if (task_timer == null) {
+            task_timer = new TaskTimer ();
+            // Enable Notifications for the App
+            Notify.init (GOFI.APP_NAME);
+            setup_notifications ();
+        }
+    }
+
     /**
      * Used to determine if a notification should be sent.
      */
@@ -69,8 +85,9 @@ class GOFI.Main : Gtk.Application {
 
     public void new_window () {
         load_settings ();
+        setup_timer_and_notifications ();
+        load_plugin_manager ();
         load_list_manager ();
-        assert (list_manager != null);
 
         TodoListInfo? info = null;
         if (load_list != null) {
@@ -98,12 +115,6 @@ class GOFI.Main : Gtk.Application {
             return;
         }
 
-        task_timer = new TaskTimer ();
-
-        // Enable Notifications for the App
-        Notify.init (GOFI.APP_NAME);
-        setup_notifications ();
-
         kbsettings = new KeyBindingSettings ();
 
         if (info == null) {
@@ -112,6 +123,11 @@ class GOFI.Main : Gtk.Application {
 
         win = new MainWindow (this, task_timer, info);
         win.show_all ();
+        win.delete_event.connect (() => {
+            win = null;
+            task_timer = null;
+            return false;
+        });
     }
 
     private TodoListInfo? get_last_list_info () {
@@ -276,10 +292,11 @@ class GOFI.Main : Gtk.Application {
         task_timer.task_duration_exceeded.connect (display_duration_exceeded);
     }
 
-    private void task_timer_activated (TodoTask? task, bool break_active) {
+    private void task_timer_activated (TodoTask? task) {
         if (task == null) {
             return;
         }
+        var break_active = task_timer.break_active;
         if (break_previously_active != break_active) {
             Notify.Notification notification;
 

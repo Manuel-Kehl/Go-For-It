@@ -35,6 +35,7 @@ namespace GOFI {
     const string PROJECT_DONATIONS = "@PROJECT_DONATIONS@";
     const string INSTALL_PREFIX = "@INSTALL_PREFIX@";
     const string DATADIR = "@PKGDATADIR@";
+    const string PLUGINDIR = "@PLUGINDIR@";
     const string GETTEXT_PACKAGE = "@GETTEXT_PACKAGE@";
     const string DEFAULT_THEME = "@DEFAULT_THEME@";
     const string RESOURCE_PATH = "@RESOURCE_PATH@";

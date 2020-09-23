@@ -18,7 +18,7 @@
 /**
  * The central class for handling and coordinating timer functionality
  */
-class GOFI.TaskTimer {
+public class GOFI.TaskTimer {
     public bool running { get; private set; default = false; }
     public bool break_active {get; private set; default = false; }
     private uint update_loop_id;
@@ -30,7 +30,7 @@ class GOFI.TaskTimer {
 
     private int64 iteration_duration;
 
-    public const int64 us_c = 1000000; // μs<->s conversion
+    private const int64 us_c = 1000000; // μs<->s conversion
 
     public const int64 update_interval = 60 * us_c;
 
@@ -40,7 +40,7 @@ class GOFI.TaskTimer {
      */
     public uint remaining_duration {
         // owned, so that it returns a strong reference
-        owned get {
+        get {
             int64 total_runtime;
             if (running) {
                 var now_monotonic = GLib.get_monotonic_time ();
@@ -58,13 +58,13 @@ class GOFI.TaskTimer {
             }
         }
     }
-    public DateTime start_time;
+    private DateTime start_time;
     private int64 previous_runtime { get; set; default = 0; }
 
     private TodoTask? _active_task;
     public TodoTask? active_task {
         get { return _active_task; }
-        set {
+        internal set {
             bool was_running = running;
             stop ();
             if (settings.reset_timer_on_task_switch) {
@@ -143,7 +143,7 @@ class GOFI.TaskTimer {
     public signal void timer_finished (bool break_active);
     public signal void task_time_updated (TodoTask task);
     public signal void active_task_description_changed (TodoTask task);
-    public signal void active_task_changed (TodoTask? task, bool break_active);
+    public signal void active_task_changed (TodoTask? task);
     public signal void task_duration_exceeded ();
 
     public TaskTimer () {
@@ -313,7 +313,7 @@ class GOFI.TaskTimer {
      * Used to initate an active_task_changed signal
      */
     public void update_active_task () {
-        active_task_changed (_active_task, break_active);
+        active_task_changed (_active_task);
     }
 
     /**
@@ -336,7 +336,7 @@ class GOFI.TaskTimer {
         if (break_active || settings.resume_tasks_after_break) {
             start ();
         }
-        active_task_changed (_active_task, break_active);
+        active_task_changed (_active_task);
     }
 
     /**

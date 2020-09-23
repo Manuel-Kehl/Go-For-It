@@ -478,7 +478,9 @@ class DragListTest : TestCase {
 
         public void remove_rows (uint position, uint amount) {
             for (uint i = amount; i > 0; i--) {
-                row_list.delete_link (row_list.nth (position));
+                var nth_link = row_list.nth (position));
+                nth_link.data.unref ();
+                row_list.delete_link (nth_link);
             }
             items_changed (position, amount, 0);
         }
@@ -486,7 +488,9 @@ class DragListTest : TestCase {
         public void replace (uint position, uint remove, DragListRow[] new_rows) {
             uint added = 0;
             for (uint i = remove; i > 0; i--) {
-                row_list.delete_link (row_list.nth (position));
+                var nth_link = row_list.nth (position));
+                nth_link.data.unref ();
+                row_list.delete_link (nth_link);
             }
             foreach (DragListRow row in new_rows) {
                 row_list.insert (row, (int) (position + added));
@@ -505,6 +509,7 @@ class DragListTest : TestCase {
         private void _move_item (uint old_position, uint new_position) {
             unowned List<DragListRow> link = row_list.nth (old_position);
             var row = link.data;
+            //TODO: check if unref is necessary here
             row_list.delete_link (link);
             row_list.insert (row, (int)new_position);
         }

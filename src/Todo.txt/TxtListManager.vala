@@ -38,7 +38,15 @@ class GOFI.TXT.TxtListManager {
 
     string[] list_ids {
         owned get {
-            return global_txt_settings.get_strv (KEY_LIST_IDS);
+            string[] ids = {};
+            foreach (string id in global_txt_settings.get_strv (KEY_LIST_IDS)) {
+                if (is_valid_id (id)) {
+                    ids += id;
+                } else {
+                    warning ("Invalid todo.txt list id: %s", id);
+                }
+            }
+            return ids;
         }
         set {
             global_txt_settings.set_strv (KEY_LIST_IDS, value);
@@ -53,7 +61,7 @@ class GOFI.TXT.TxtListManager {
      * Reads the corresponding file and creates it, if necessary.
      */
     public TxtListManager (string? import_dir) {
-        var list_table = new HashTable<string, ListSettings> (str_hash, str_equal);
+        list_table = new HashTable<string, ListSettings> (str_hash, str_equal);
         global_txt_settings = new GLib.Settings (ID_TODO_TXT);
         if (import_dir != null) {
             var legacy_settings = new LegacyTxtListImport (import_dir);
@@ -166,6 +174,10 @@ class GOFI.TXT.TxtListManager {
         return list_table.contains (id);
     }
 
+    private bool is_valid_id (string id) {
+        return /[\d[a-z][A-Z]]+(\-?[\d[a-z][A-Z]]+)*/.match(id, 0, null);
+    }
+
     /**
      * Generates a new unique id.
      * The resulting id is the string representation of an unsigned integer.
@@ -249,6 +261,7 @@ class GOFI.TXT.TxtListManager {
         sync_list_ids ();
 
         var dconf_settings = lsettings.stored_settings;
+        lsettings.unbind ();
         lsettings = null;
 
         reset_dconf_path (dconf_settings);

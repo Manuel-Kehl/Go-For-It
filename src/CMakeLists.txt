@@ -16,7 +16,11 @@ else ()
     message ("-- No recent Gtk+-3.0 found... Using pre 3.22 features.")
 endif ()
 
-set (VALA_PACKAGES gtk+-3.0 libnotify)
+set (VALA_PACKAGES
+    gtk+-3.0
+    libnotify
+    libpeas-1.0
+    libpeas-gtk-1.0)
 
 if (USE_GRANITE)
     set (VALAC_OPTIONS ${VALAC_OPTIONS} -D USE_GRANITE)
@@ -35,7 +39,9 @@ vala_precompile (VALA_C ${LIBNAME}
     TaskList.vala
     SequentialList.vala
     Theme.vala
+    PluginInterface.vala
     Services/SettingsManager.vala
+    Services/PluginManager.vala
     Services/ListManager.vala
     Services/FileWatcher.vala
     Services/TaskTimer.vala

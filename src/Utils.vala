@@ -25,7 +25,7 @@ namespace GOFI {
      * Used to pass information about if a feature is standard on the desktop
      * of the user.
      */
-    public enum FeatureStatus {
+    private enum FeatureStatus {
         UNKNOWN,
         ALWAYS,
         COMMON,

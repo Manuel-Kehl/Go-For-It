@@ -187,9 +187,11 @@ class GOFI.TXT.TxtList : GOFI.TaskList, Object {
      * Widgets and other objects should be freed to preserver resources.
      */
     public void unload () {
+        stdout.printf ("unloading %s!\n", list_settings.name);
         task_manager.save_queued_lists ();
         todo_list = null;
         done_list = null;
+        // stdout.printf ("task_manager %u!\n", task_manager.ref_count);
         task_manager = null;
         clear_done_button = null;
     }

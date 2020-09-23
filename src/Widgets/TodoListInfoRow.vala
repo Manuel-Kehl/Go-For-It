@@ -117,12 +117,16 @@ class GOFI.TodoListInfoRow: DragListRow {
 
     private void on_menuitem_delete_clicked () {
         delete_clicked (this.info);
-        Utils.popover_hide (popover);
+        if (popover != null) {
+            Utils.popover_hide (popover);
+        }
     }
 
     private void on_menuitem_edit_clicked () {
         edit_clicked (this.info);
-        Utils.popover_hide (popover);
+        if (popover != null) {
+            Utils.popover_hide (popover);
+        }
     }
 
     private void update () {
