@@ -23,6 +23,7 @@ class GOFI.TodoListInfoRow: DragListRow {
     private Gtk.ToggleButton options_button;
     private Gtk.EventBox event_box;
     private Gtk.Box center_box;
+    private Gtk.Popover popover;
 
     public TodoListInfo info {
         get;
@@ -86,7 +87,7 @@ class GOFI.TodoListInfoRow: DragListRow {
             return;
         }
         showing_menu = true;
-        var popover = new Gtk.Popover (options_button);
+        popover = new Gtk.Popover (options_button);
         popover.position = Gtk.PositionType.BOTTOM;
 
         var popover_cont = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
@@ -94,27 +95,34 @@ class GOFI.TodoListInfoRow: DragListRow {
         var menuitem_delete = Utils.create_menu_button (_("Delete"));
         var menuitem_edit = Utils.create_menu_button (_("Edit"));
 
-        menuitem_delete.clicked.connect ( () => {
-            delete_clicked (this.info);
-            Utils.popover_hide (popover);
-        });
-        menuitem_edit.clicked.connect ( () => {
-            edit_clicked (this.info);
-            Utils.popover_hide (popover);
-        });
+        menuitem_delete.clicked.connect (on_menuitem_delete_clicked);
+        menuitem_edit.clicked.connect (on_menuitem_edit_clicked);
 
         popover_cont.add (menuitem_edit);
         popover_cont.add (menuitem_delete);
         popover.add (popover_cont);
         Utils.popover_show (popover);
 
-        popover.closed.connect ( () => {
-            option_revealer.reveal_child = false;
-            options_button.active = false;
-            showing_menu = false;
+        popover.closed.connect (on_popover_closed);
+    }
 
-            popover.destroy ();
-        });
+    private void on_popover_closed () {
+        option_revealer.reveal_child = false;
+        options_button.active = false;
+        showing_menu = false;
+
+        popover.destroy ();
+        popover = null;
+    }
+
+    private void on_menuitem_delete_clicked () {
+        delete_clicked (this.info);
+        Utils.popover_hide (popover);
+    }
+
+    private void on_menuitem_edit_clicked () {
+        edit_clicked (this.info);
+        Utils.popover_hide (popover);
     }
 
     private void update () {
