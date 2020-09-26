@@ -35,6 +35,15 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
+    <release version="1.8.3" date="2020-09-26">
+      <description>
+        <p>Bugfixes:</p>
+        <ul>
+          <li>Fixed an issue that would cause the application to crash when clearing the description of a task.</li>
+          <li>Fixed several minor memory leaks.</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.8.2" date="2020-09-20">
       <description>
         <p>Improvements:</p>

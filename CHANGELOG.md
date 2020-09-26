@@ -1,6 +1,14 @@
 # Change Log
 
-## [1.8.1](https://github.com/JMoerman/Go-For-It/tree/1.8.2) (2020-09-20)
+## [1.8.3](https://github.com/JMoerman/Go-For-It/tree/1.8.2) (2020-09-26)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.2...1.8.3)
+
+**Fixed bugs:**
+
+- Fixed an issue that would cause _Go For It!_ to crash when clearing the description of a task.
+- Fixed several minor memory leaks.
+
+## [1.8.2](https://github.com/JMoerman/Go-For-It/tree/1.8.2) (2020-09-20)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.1...1.8.2)
 
 **Implemented enhancements:**
