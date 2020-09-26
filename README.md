@@ -55,6 +55,12 @@ Stable releases are hosted on [Flathub](https://flathub.org):
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     flatpak install flathub de.manuel_kehl.go-for-it
 
+#### FreeBSD
+
+_Go For It!_ is avaiable in the [FreeBSD Ports Collection](freshports.org/deskutils/go-for-it):
+
+    pkg install go-for-it
+
 #### Windows
 
 Unfortunately, a recent Windows version isn't available. The https://github.com/mank319/Go-For-It/commits/windows-cmake branch may be a good starting point for porting the current version of _Go For It!_ to Windows.
