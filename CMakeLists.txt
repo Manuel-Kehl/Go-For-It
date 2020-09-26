@@ -102,6 +102,7 @@ option (SHOW_ABOUT "Show the about action in the .desktop and menu." ON)
 
 add_subdirectory (src)
 add_subdirectory (executable)
+add_subdirectory (plugins)
 if (BUILD_TESTS)
     add_subdirectory (tests)
 endif (BUILD_TESTS)

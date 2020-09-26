@@ -1,5 +1,6 @@
 # Create Constants.vala
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/Constants.vala.cmake ${CMAKE_CURRENT_SOURCE_DIR}/Constants.vala)
+configure_file (${CMAKE_CURRENT_SOURCE_DIR}/go-for-it.pc.in ${CMAKE_CURRENT_BINARY_DIR}/${LIBNAME}.pc)
 
 if (${NO_CONTRIBUTE_DIALOG})
     set (VALAC_OPTIONS ${VALAC_OPTIONS} -D NO_CONTRIBUTE_DIALOG)
@@ -7,6 +8,8 @@ endif ()
 if (${SHOW_ABOUT})
     set (VALAC_OPTIONS ${VALAC_OPTIONS} -D SHOW_ABOUT)
 endif ()
+
+add_definitions(-DG_LOG_DOMAIN="${LIBNAME}")
 
 # checking if have a recent version of Gtk+-3.0
 pkg_check_modules( GTK3 gtk+-3.0 )
@@ -103,8 +106,19 @@ link_directories (${LIB_PATHS})
 
 set (LIB_FILES ${C_SOURCES} ${VALA_C})
 
-add_library (${LIBNAME} STATIC
+add_library (${LIBNAME} SHARED
     ${LIB_FILES}
 )
 
+set_target_properties (${LIBNAME} PROPERTIES
+    VERSION ${LIBVERSION}.0
+    SOVERSION ${SOVERSION})
+
 target_link_libraries (${LIBNAME} ${LIBS})
+
+install (TARGETS ${LIBNAME} DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
+
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIBNAME}.pc DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIBNAME}.h DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR}/${PACKAGE_NAME}/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIBNAME}.vapi DESTINATION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/vala/vapi/)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/go-for-it.deps DESTINATION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/vala/vapi/${LIBNAME}.deps)

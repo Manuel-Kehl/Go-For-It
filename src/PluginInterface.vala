@@ -27,6 +27,10 @@ public class GOFI.PluginInterface : GLib.Object {
         return timer;
     }
 
+    public Gtk.Window get_window () {
+        return win;
+    }
+
     internal PluginInterface (PluginManager plugin_manager, TaskTimer timer) {
         this.plugin_manager = plugin_manager;
         this.timer = timer;

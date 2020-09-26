@@ -22,6 +22,7 @@ namespace GOFI {
     private ListManager list_manager = null;
     private PluginManager plugin_manager = null;
     private TaskTimer task_timer;
+    private MainWindow win;
 }
 
 errordomain GOFIParseError {
@@ -36,8 +37,6 @@ errordomain GOFIParseError {
  * necessary steps to create a running instance of "Go For It!".
  */
 class GOFI.Main : Gtk.Application {
-    private MainWindow win;
-
     private static bool print_version = false;
     private static bool show_about_dialog = false;
     private static bool list_lists = false;
@@ -111,6 +110,7 @@ class GOFI.Main : Gtk.Application {
                 win.on_list_chosen (info);
             }
             win.show ();
+            win.restore_win_geometry ();
             win.present ();
             return;
         }
@@ -123,11 +123,26 @@ class GOFI.Main : Gtk.Application {
 
         win = new MainWindow (this, task_timer, info);
         win.show_all ();
-        win.delete_event.connect (() => {
+        win.delete_event.connect (on_win_delete_event);
+    }
+
+    private bool on_win_delete_event () {
+        bool dont_exit = false;
+        // Save window state upon deleting the window
+        win.save_win_geometry ();
+
+        if (task_timer.running) {
+            win.hide ();
+            dont_exit = true;
+        }
+
+        if (dont_exit == false) {
             win = null;
             task_timer = null;
-            return false;
-        });
+            Notify.uninit ();
+        }
+
+        return dont_exit;
     }
 
     private TodoListInfo? get_last_list_info () {

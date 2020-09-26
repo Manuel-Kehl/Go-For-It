@@ -100,6 +100,10 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         list_manager.list_removed.connect (on_list_removed);
     }
 
+    ~MainWindow () {
+        task_page.remove_task_list ();
+    }
+
     /**
      * Checks if this list is currently in use and removes this list from
      * task_page, should this be the case.
@@ -165,26 +169,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     private void on_icon_size_changed (Gtk.IconSize size) {
         ((Gtk.Image) menu_btn.image).icon_size = size;
         switch_img.icon_size = size;
-    }
-
-    public override bool delete_event (Gdk.EventAny event) {
-        bool dont_exit = false;
-
-        // Save window state upon deleting the window
-        save_win_geometry ();
-
-        if (task_timer.running) {
-            this.show.connect (restore_win_geometry);
-            hide ();
-            dont_exit = true;
-        }
-
-        if (dont_exit == false) {
-            task_page.remove_task_list ();
-            Notify.uninit ();
-        }
-
-        return dont_exit;
     }
 
     /**
@@ -371,6 +355,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             settings.list_last_loaded = null;
             task_page.show_switcher (false);
             list_menu_container.hide ();
+            list_menu_container.hide ();
         } else if (task_page.ready) {
             var current_list_info = task_page.shown_list.list_info;
             top_stack.set_visible_child (task_page);
@@ -509,7 +494,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     /**
      * Restores the window geometry from settings
      */
-    private void restore_win_geometry () {
+    public void restore_win_geometry () {
         int x, y, width, height;
         settings.get_window_position (out x, out y);
         settings.get_window_size (out width, out height);
@@ -525,7 +510,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     /**
      * Persistently store the window geometry
      */
-    private void save_win_geometry () {
+    public void save_win_geometry () {
         int x, y, width, height;
         this.get_position (out x, out y);
         this.get_size (out width, out height);

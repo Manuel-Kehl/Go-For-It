@@ -71,6 +71,7 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         settings_stack.add_titled (timer_page, "behavior_page", _("Behavior"));
         settings_stack.add_titled (appearance_page, "appearance_page", _("Appearance"));
         settings_stack.add_titled (shortcuts_page, "shortcuts_page", _("Shortcuts"));
+        settings_stack.add_titled (plugin_manager.get_settings_widget (), "plugins_page", _("Plugins"));
 
         main_layout.add(stack_switcher);
         main_layout.add(settings_stack);

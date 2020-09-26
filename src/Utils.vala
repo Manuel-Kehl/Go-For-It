@@ -62,12 +62,12 @@ namespace GOFI {
     /**
      * A collection of static utility functions.
      */
-    class Utils {
+    public class Utils {
         /**
          * A convenient way to get the path of the directory where Go For It!
          * stores it's configuration files.
          */
-        public static string config_dir {
+        internal static string config_dir {
             owned get {
                 string user_config_dir = Environment.get_user_config_dir ();
                 return Path.build_filename (user_config_dir, APP_SYSTEM_NAME);
@@ -77,7 +77,7 @@ namespace GOFI {
         /**
          * A convenient way to get the path of Go For It!'s configuration file
          */
-        public static string config_file {
+        internal static string config_file {
             owned get {
                 return Path.build_filename (config_dir, FILE_CONF);
             }
@@ -87,14 +87,14 @@ namespace GOFI {
          * The path of the config file prior to being installed in its own
          * directory
          */
-        public static string old_config_file {
+        internal static string old_config_file {
             owned get {
                 string user_config_dir = Environment.get_user_config_dir ();
                 return Path.build_filename (user_config_dir, FILE_CONF);
             }
         }
 
-        public static string get_module_config_dir (string module_name) {
+        internal static string get_module_config_dir (string module_name) {
             return Path.build_filename (config_dir, module_name);
         }
 
@@ -102,7 +102,7 @@ namespace GOFI {
          * Returns whether headerbars are used by native apps on the desktop
          * environment of the user.
          */
-        public static FeatureStatus desktop_hb_status {
+        internal static FeatureStatus desktop_hb_status {
             get {
                 string desktop = Environment.get_variable ("DESKTOP_SESSION");
 
@@ -176,7 +176,7 @@ namespace GOFI {
         }
 
         //TODO: printing more than 60 minutes is probably not the best way to handle this
-        public static string seconds_to_short_string (uint seconds) {
+        internal static string seconds_to_short_string (uint seconds) {
             return "%u %s".printf (seconds/60, _("min."));
         }
 

@@ -23,12 +23,12 @@
  */
 namespace GOFI {
     /* Strings */
-    const string APP_NAME = "@APP_NAME@";
-    const string EXEC_NAME = "@EXEC_NAME@";
-    const string APP_SYSTEM_NAME = "@APP_SYSTEM_NAME@";
-    const string APP_ID = "@APP_ID@";
-    const string APP_VERSION = "@VERSION@";
-    const string ICON_NAME = "@ICON_NAME@";
+    public const string APP_NAME = "@APP_NAME@";
+    public const string EXEC_NAME = "@EXEC_NAME@";
+    public const string APP_SYSTEM_NAME = "@APP_SYSTEM_NAME@";
+    public const string APP_ID = "@APP_ID@";
+    public const string APP_VERSION = "@VERSION@";
+    public const string ICON_NAME = "@ICON_NAME@";
     const string FILE_CONF = "@FILE_CONF@";
     const string PROJECT_WEBSITE = "@PROJECT_WEBSITE@";
     const string PROJECT_REPO = "@PROJECT_REPO@";
