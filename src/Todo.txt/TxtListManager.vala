@@ -59,6 +59,8 @@ class GOFI.TXT.TxtListManager {
     /**
      * Constructs a SettingsManager object from a configuration file.
      * Reads the corresponding file and creates it, if necessary.
+     *
+     * import_dir will be null iff its settings have already been initialized.
      */
     public TxtListManager (string? import_dir) {
         list_table = new HashTable<string, ListSettings> (str_hash, str_equal);
@@ -175,23 +177,33 @@ class GOFI.TXT.TxtListManager {
     }
 
     private bool is_valid_id (string id) {
-        return /[\d[a-z][A-Z]]+(\-?[\d[a-z][A-Z]]+)*/.match(id, 0, null);
+        if (id == "") {
+            return false;
+        }
+        foreach (uint8 byte in id.data) {
+            if (!(
+                ('0' <= byte && byte <= '9')
+                ||
+                ('a' <= byte && byte <= 'z')
+                ||
+                ('A' <= byte && byte <= 'Z')
+            )) {
+                return false;
+            }
+        }
+        return true;
     }
 
-    /**
-     * Generates a new unique id.
-     * The resulting id is the string representation of an unsigned integer.
-     */
     public string get_new_id (string name) {
-        uint id = str_hash (name);
-        string id_str = id.to_string ();
+        uint num_id = str_hash (name);
+        string id_str = "list" + num_id.to_string ();
         while (has_id (id_str)) {
-            if (id < uint.MAX) {
-                id++;
+            if (num_id < uint.MAX) {
+                num_id++;
             } else {
-                id = 0;
+                num_id = 0;
             }
-            id_str = id.to_string ();
+            id_str = "list" + num_id.to_string ();
         }
         return id_str;
     }
@@ -358,7 +370,7 @@ class GOFI.TXT.LegacyTxtListImport {
     public void import_settings_instances (HashTable<string, ListSettings> list_table) {
         foreach (string group in key_file.get_groups ()) {
             if (group.has_prefix ("list")) {
-                var list_id = group.offset (4);
+                var list_id = group;
                 if (list_id == "") {
                     warning ("Invalid list id stored in %s: '%s'", list_file, group);
                     continue;
@@ -377,7 +389,7 @@ class GOFI.TXT.LegacyTxtListImport {
      * file.
      */
     private ListSettings? import_settings_instance (string list_id) {
-        var list_group = "list"+list_id;
+        var list_group = list_id;
         ListSettings list_settings = null;
         try {
             if (key_file.has_key (list_group, "name") && key_file.has_key (list_group, "location")) {

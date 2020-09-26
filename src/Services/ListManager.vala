@@ -31,7 +31,12 @@ class GOFI.ListManager : Object, DragListModel {
     public ListManager () {
         string txt_config_file = GOFI.Utils.get_module_config_dir ("Todo.txt");
 
-        txt_manager = new TxtListManager (txt_config_file);
+        if (settings.first_start) {
+            txt_manager = new TxtListManager (txt_config_file);
+        } else {
+            txt_manager = new TxtListManager (null);
+        }
+
         todolist_infos = new SequentialList (typeof (TodoListInfo));
 
         populate_items ();
