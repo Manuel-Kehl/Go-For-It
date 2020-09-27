@@ -28,6 +28,9 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private Gtk.Label error_label;
     private Gtk.Revealer error_revealer;
 
+    private Gtk.StackSwitcher stack_switcher;
+    private Gtk.Stack settings_stack;
+
     private Gtk.Switch timer_default_switch;
     private Gtk.SpinButton reminder_spin;
     private Gtk.Label timer_sect_lbl;
@@ -35,7 +38,6 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private Gtk.Label reminder_lbl2;
     private Gtk.Label timer_default_lbl;
     private TimerScheduleWidget sched_widget;
-    private Gtk.Revealer sched_widget_revealer;
 
     private Gtk.Label log_timer_lbl;
     private Gtk.Switch log_timer_switch;
@@ -93,9 +95,9 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         this.get_content_area ().margin = 10;
         this.get_content_area ().pack_start (main_layout);
         this.set_modal (true);
-        main_layout.visible = true;
         main_layout.orientation = Gtk.Orientation.VERTICAL;
-        apply_grid_spacing (main_layout);
+        main_layout.row_spacing = 10;
+        main_layout.visible = true;
 
         setup_settings_widgets ();
 
@@ -122,13 +124,30 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     }
 
     private void setup_settings_widgets () {
+        settings_stack = new Gtk.Stack ();
+        stack_switcher = new Gtk.StackSwitcher ();
+
+        stack_switcher.stack = settings_stack;
+        stack_switcher.halign = Gtk.Align.CENTER;
+
+        var txt_page = new  Gtk.Grid ();
+        var timer_page = new Gtk.Grid ();
+
+        apply_grid_spacing (txt_page);
+        apply_grid_spacing (timer_page);
+
+        settings_stack.add_titled (txt_page, "txt_page", "Todo.txt");
+        settings_stack.add_titled (timer_page, "timer_page", _("Timer"));
+
         int row = 0;
-        showing_todo_uri_error = false;
-        showing_name_error = false;
-        error_label = new Gtk.Label ("");
-        setup_txt_settings_widgets (main_layout, ref row);
-        setup_timer_settings_widgets (main_layout, ref row);
-        setup_error_widgets (main_layout, ref row);
+        setup_txt_settings_widgets (txt_page, ref row);
+        setup_error_widgets (txt_page, ref row);
+
+        row = 0;
+        setup_timer_settings_widgets (timer_page, ref row);
+
+        main_layout.add(stack_switcher);
+        main_layout.add(settings_stack);
     }
 
     /**
@@ -139,6 +158,9 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     }
 
     private void setup_error_widgets (Gtk.Grid grid, ref int row) {
+        showing_todo_uri_error = false;
+        showing_name_error = false;
+        error_label = new Gtk.Label ("");
         error_revealer = new Gtk.Revealer ();
 
         error_label.hexpand = true;
@@ -164,12 +186,12 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         txt_sect_lbl = new Gtk.Label ("Todo.txt");
 
         todo_uri_btn = new Gtk.FileChooserButton (
-            _("Select file to store to-do tasks in"), Gtk.FileChooserAction.SAVE
+            _("Select file to store to-do tasks in"), Gtk.FileChooserAction.OPEN
         );
         todo_uri_lbl = new Gtk.Label (todo_uri_text);
 
         done_uri_btn = new Gtk.FileChooserButton (
-            _("Select file to store completed tasks in"), Gtk.FileChooserAction.SAVE
+            _("Select file to store completed tasks in"), Gtk.FileChooserAction.OPEN
         );
         done_uri_lbl = new Gtk.Label (done_uri_text);
 
@@ -211,12 +233,12 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             lsettings.log_timer_in_txt = log_timer_switch.active;
         });
 
-        add_section (main_layout, txt_sect_lbl, ref row);
-        add_option (main_layout, todo_uri_lbl, todo_uri_btn, ref row);
-        add_option (main_layout, done_uri_lbl, done_uri_btn, ref row);
-        add_option (main_layout, name_lbl, name_entry, ref row);
-        add_option (main_layout, log_timer_lbl, log_timer_switch, ref row);
-        add_explanation (main_layout, log_timer_expl_lbl, ref row);
+        add_section (grid, txt_sect_lbl, ref row);
+        add_option (grid, todo_uri_lbl, todo_uri_btn, ref row);
+        add_option (grid, done_uri_lbl, done_uri_btn, ref row);
+        add_option (grid, name_lbl, name_entry, ref row);
+        add_option (grid, log_timer_lbl, log_timer_switch, ref row);
+        add_explanation (grid, log_timer_expl_lbl, ref row);
     }
 
     private void on_todo_uri_changed () {
@@ -247,7 +269,6 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         timer_default_switch = new Gtk.Switch ();
 
         sched_widget = new TimerScheduleWidget ();
-        sched_widget_revealer = new Gtk.Revealer ();
 
         // More than ten minutes would not make much sense
         reminder_spin = new Gtk.SpinButton.with_range (0, 600, 1);
@@ -257,12 +278,14 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             reminder_spin.value = settings.reminder_time;
             sched_widget.load_schedule (settings.schedule);
             timer_default_switch.active = true;
-            sched_widget_revealer.reveal_child = false;
+            reminder_spin.sensitive = false;
+            sched_widget.sensitive = false;
         } else {
             reminder_spin.value = lsettings.reminder_time;
             sched_widget.load_schedule (lsettings.schedule);
             timer_default_switch.active = false;
-            sched_widget_revealer.reveal_child = true;
+            reminder_spin.sensitive = true;
+            sched_widget.sensitive = true;
         }
 
         /* Signal Handling */
@@ -281,8 +304,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         // also caused an increase in the required minimum width of the dialog.
         add_option (grid, reminder_lbl1, reminder_spin, ref row, 1, reminder_lbl2);
 
-        sched_widget_revealer.add (sched_widget);
-        grid.attach (sched_widget_revealer, 0, row, 3, 1);
+        grid.attach (sched_widget, 0, row, 3, 1);
         row++;
     }
 
@@ -290,30 +312,17 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         lsettings.reminder_time = reminder_spin.get_value_as_int ();
     }
 
-    public override void show_all () {
-        base.show_all ();
-        if (timer_default_switch.active) {
-            reminder_lbl1.hide ();
-            reminder_lbl2.hide ();
-            reminder_spin.hide ();
-        }
-    }
-
     private void toggle_timer_settings () {
         if (timer_default_switch.active) {
             lsettings.reminder_time = -1;
             lsettings.schedule = null;
-            reminder_lbl1.hide ();
-            reminder_lbl2.hide ();
-            reminder_spin.hide ();
-            sched_widget_revealer.reveal_child = false;
+            reminder_spin.sensitive = false;
+            sched_widget.sensitive = false;
         } else {
             lsettings.reminder_time = reminder_spin.get_value_as_int ();
             lsettings.schedule = sched_widget.generate_schedule ();
-            reminder_lbl1.show ();
-            reminder_lbl2.show ();
-            reminder_spin.show ();
-            sched_widget_revealer.reveal_child = true;
+            reminder_spin.sensitive = true;
+            sched_widget.sensitive = true;
         }
     }
 
