@@ -595,6 +595,44 @@ private enum GOFI.ColorScheme {
     DEFAULT = 0,
     LIGHT = 1,
     DARK = 2;
+
+    public const string STR_DEFAULT = "default";
+    public const string STR_DARK = "dark";
+    public const string STR_LIGHT = "light";
+
+    public string get_description () {
+        switch (this) {
+            case LIGHT:
+                return _("Light");
+            case DARK:
+                return _("Dark");
+            default:
+                return _("Default");
+        }
+    }
+
+    public static ColorScheme from_string (string str) {
+        switch (str) {
+            case STR_LIGHT: return LIGHT;
+            case STR_DARK: return DARK;
+            default: return DEFAULT;
+        }
+    }
+
+    public string to_string () {
+        switch (this) {
+            case LIGHT:
+                return STR_LIGHT;
+            case DARK:
+                return STR_DARK;
+            default:
+                return STR_DEFAULT;
+        }
+    }
+
+    public static ColorScheme[] all () {
+        return {DEFAULT, LIGHT, DARK};
+    }
 }
 
 private enum GOFI.TimerMode {

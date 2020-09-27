@@ -71,32 +71,31 @@ class GOFI.AppearancePage : Gtk.Grid {
 
     private void add_theme_section (ref int row) {
         Gtk.Label theme_sect_lbl;
-        Gtk.Label dark_theme_lbl;
+        Gtk.Label color_scheme_lbl;
         Gtk.Label theme_lbl;
-        Gtk.Switch dark_theme_switch;
+        Gtk.ComboBoxText color_scheme_selector;
         Gtk.ComboBoxText theme_selector;
 
         /* Instantiation */
         theme_sect_lbl = new Gtk.Label (_("Theme"));
-        dark_theme_lbl = new Gtk.Label (_("Dark theme") + ":");
+        color_scheme_lbl = new Gtk.Label (_("Color scheme") + ":");
         theme_lbl = new Gtk.Label (_("Theme") + ":");
-        dark_theme_switch = new Gtk.Switch ();
+        color_scheme_selector = new Gtk.ComboBoxText ();
         theme_selector = new Gtk.ComboBoxText ();
 
         /* Configuration */
-        dark_theme_switch.active = settings.use_dark_theme;
+        foreach (ColorScheme cs in ColorScheme.all ()) {
+            color_scheme_selector.append (cs.to_string (), cs.get_description ());
+        }
+        color_scheme_selector.active_id = settings.color_scheme.to_string ();
         foreach (Theme theme in Theme.all ()) {
             theme_selector.append (theme.to_string (), theme.to_theme_description ());
         }
         theme_selector.active_id = settings.theme.to_string ();
 
         /* Signal Handling */
-        dark_theme_switch.notify["active"].connect ( () => {
-            if (dark_theme_switch.active) {
-                settings.color_scheme = ColorScheme.DARK;
-            } else {
-                settings.color_scheme = ColorScheme.LIGHT;
-            }
+        theme_selector.changed.connect ( () => {
+            settings.color_scheme = ColorScheme.from_string (color_scheme_selector.active_id);
         });
         theme_selector.changed.connect ( () => {
             settings.theme = Theme.from_string (theme_selector.active_id);
@@ -104,7 +103,7 @@ class GOFI.AppearancePage : Gtk.Grid {
 
         add_section (this, theme_sect_lbl, ref row);
         add_option (this, theme_lbl, theme_selector, ref row);
-        add_option (this, dark_theme_lbl, dark_theme_switch, ref row);
+        add_option (this, color_scheme_lbl, color_scheme_selector, ref row);
     }
 
     private void add_csd_settings_widgets (Gtk.Grid grid, ref int row) {
