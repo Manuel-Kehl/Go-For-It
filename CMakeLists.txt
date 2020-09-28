@@ -48,8 +48,6 @@ pkg_check_modules (CORE_DEPS REQUIRED
     gtk+-3.0>=3.14.0
     glib-2.0>=2.40
     libnotify
-    libpeas-1.0
-    libpeas-gtk-1.0
 )
 
 set (DEPS_CFLAGS ${CORE_DEPS_CFLAGS})
@@ -70,6 +68,25 @@ if (USE_GRANITE)
     endif ()
 else ()
     message ("-- Not using granite")
+endif ()
+
+option (ENABLE_PLUGINS "Compile with plugin support" ON)
+if (ENABLE_PLUGINS)
+    pkg_check_modules (PEAS 
+        libpeas-1.0
+        libpeas-gtk-1.0
+    )
+    if (PEAS_FOUND)
+        set (DEPS_CFLAGS ${DEPS_CFLAGS} ${PEAS_CFLAGS})
+        set (DEPS_LIBRARY_DIRS ${DEPS_LIBRARY_DIRS} ${PEAS_LIBRARY_DIRS})
+        set (DEPS_LIBRARIES ${DEPS_LIBRARIES} ${PEAS_LIBRARIES})
+        message ("-- plugin support is enabled")
+    else ()
+        message ("-- libpeas is missing, disabling plugin support")
+        set (ENABLE_PLUGINS OFF CACHE BOOL "" FORCE)
+    endif ()
+else ()
+    message ("-- plugin support is disabled")
 endif ()
 
 add_definitions(${DEPS_CFLAGS})
@@ -102,7 +119,9 @@ option (SHOW_ABOUT "Show the about action in the .desktop and menu." ON)
 
 add_subdirectory (src)
 add_subdirectory (executable)
+if (ENABLE_PLUGINS)
 add_subdirectory (plugins)
+endif (ENABLE_PLUGINS)
 if (BUILD_TESTS)
     add_subdirectory (tests)
 endif (BUILD_TESTS)

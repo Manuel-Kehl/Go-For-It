@@ -30,6 +30,12 @@ if (USE_GRANITE)
     set (VALA_PACKAGES ${VALA_PACKAGES} granite)
 endif ()
 
+if (ENABLE_PLUGINS)
+    set (VALA_PACKAGES ${VALA_PACKAGES} libpeas-1.0 libpeas-gtk-1.0)
+else ()
+    set (VALAC_OPTIONS ${VALAC_OPTIONS} -D NO_PLUGINS)
+endif ()
+
 # files we want to compile
 include (ValaPrecompile)
 vala_precompile (VALA_C ${LIBNAME}

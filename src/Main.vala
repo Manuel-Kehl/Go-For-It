@@ -20,7 +20,9 @@ namespace GOFI {
     private SettingsManager settings = null;
     private ActivityLog activity_log = null;
     private ListManager list_manager = null;
+#if !NO_PLUGINS
     private PluginManager plugin_manager = null;
+#endif
     private TaskTimer task_timer;
     private MainWindow win;
 }
@@ -55,11 +57,13 @@ class GOFI.Main : Gtk.Application {
         }
     }
 
+#if !NO_PLUGINS
     private void load_plugin_manager () {
         if (plugin_manager == null) {
             plugin_manager = new PluginManager (task_timer);
         }
     }
+#endif
 
     private void setup_timer_and_notifications () {
         if (task_timer == null) {
@@ -85,7 +89,9 @@ class GOFI.Main : Gtk.Application {
     public void new_window () {
         load_settings ();
         setup_timer_and_notifications ();
+#if !NO_PLUGINS
         load_plugin_manager ();
+#endif
         load_list_manager ();
 
         TodoListInfo? info = null;

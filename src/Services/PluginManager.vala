@@ -15,6 +15,7 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
+#if !NO_PLUGINS
 /**
  * PluginManager loads and controls all plugins.
  */
@@ -80,3 +81,4 @@ class GOFI.PluginManager : GLib.Object {
     }
 }
 
+#endif

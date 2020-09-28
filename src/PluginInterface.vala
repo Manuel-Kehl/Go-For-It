@@ -15,6 +15,7 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
+#if !NO_PLUGINS
 /**
  * Interface to be used by plugins.
  */
@@ -36,3 +37,5 @@ public class GOFI.PluginInterface : GLib.Object {
         this.timer = timer;
     }
 }
+#endif
+
