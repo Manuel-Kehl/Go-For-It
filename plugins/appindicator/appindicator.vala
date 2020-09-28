@@ -49,7 +49,6 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
         }
         indicator = new Indicator(GOFI.APP_ID, GOFI.ICON_NAME, IndicatorCategory.APPLICATION_STATUS);
         indicator.set_status(IndicatorStatus.ACTIVE);
-        indicator.set_attention_icon("indicator-messages-new");
 
         var menu = new Gtk.Menu();
 

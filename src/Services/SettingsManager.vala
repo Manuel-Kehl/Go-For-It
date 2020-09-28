@@ -58,6 +58,7 @@ private class GOFI.SettingsManager : Object {
 
     // Whether or not Go For It! has been started for the first time
     public bool first_start = false;
+    public bool performed_migration = false;
 
     /*---GROUP:Todo.txt-------------------------------------------------------*/
     public string todo_txt_location {
@@ -398,6 +399,7 @@ private class GOFI.SettingsManager : Object {
         if (_settings.get_int("settings-version") <= 0) {
             var settings_importer = new KeyFileSettingsImport (this);
             first_start = !settings_importer.import_settings ();
+            performed_migration = true;
         }
 
         _settings.set_int("settings-version", 1) ;

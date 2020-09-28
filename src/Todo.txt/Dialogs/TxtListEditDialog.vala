@@ -200,6 +200,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
 
         log_timer_lbl = new Gtk.Label (_("Log the time spent working on each task") + ":");
         log_timer_expl_lbl = new Gtk.Label (_("This information will be stored in the todo.txt files."));
+        log_timer_expl_lbl.wrap = true;
         log_timer_switch = new Gtk.Switch ();
 
         /* Configuration */

@@ -29,9 +29,8 @@ class GOFI.ListManager : Object, DragListModel {
      * Constructor of the ListManager class
      */
     public ListManager () {
-        string txt_config_file = GOFI.Utils.get_module_config_dir ("Todo.txt");
-
-        if (settings.first_start) {
+        if (settings.performed_migration) {
+            string txt_config_file = GOFI.Utils.get_module_config_dir ("Todo.txt");
             txt_manager = new TxtListManager (txt_config_file);
         } else {
             txt_manager = new TxtListManager (null);
