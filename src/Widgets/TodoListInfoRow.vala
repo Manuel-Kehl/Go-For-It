@@ -103,15 +103,14 @@ class GOFI.TodoListInfoRow: DragListRow {
         popover.add (popover_cont);
         Utils.popover_show (popover);
 
-        popover.closed.connect (on_popover_closed);
+        popover.hide.connect (on_popover_hidden);
     }
 
-    private void on_popover_closed () {
+    private void on_popover_hidden () {
         option_revealer.reveal_child = false;
         options_button.active = false;
 
-        // Destroy popover after animation has finished, interval is 2x animation duration
-        GLib.Timeout.add_full (GLib.Priority.DEFAULT, 300, on_popover_animation_finished);
+        GLib.Idle.add (on_popover_animation_finished);
     }
 
     private bool on_popover_animation_finished () {
