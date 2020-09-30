@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 17:53+0200\n"
+"POT-Creation-Date: 2020-09-30 20:37+0200\n"
 "PO-Revision-Date: 2020-09-30 18:34+0000\n"
 "Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/"
-"go-for-it/nl/>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/go-for-"
+"it/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +48,9 @@ msgid "Replace \"%s\"?"
 msgstr "Vervang \"%s\"?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
-msgid "Should this file be replaced or should the old file be used?"
+#, fuzzy
+#| msgid "Should this file be replaced or should the old file be used?"
+msgid "Should this file be replaced or should this old file be used?"
 msgstr ""
 "Moet dit bestand vervangen worden of moet dit oude bestand gebruikt worden?"
 
@@ -456,9 +458,13 @@ msgstr ""
 "bestand bestaat al."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
+#, fuzzy
+#| msgid ""
+#| "Completed task file has been changed to \"%s\" (was \"%s\"), but this "
+#| "file already exists."
 msgid ""
-"Completed task file has been changed to \"%s\" (was \"%s\"), but this file "
-"already exists."
+"The location to store completed tasks in has been changed to \"%s\" (was \"%s"
+"\"), but this file already exists."
 msgstr ""
 "Het bestand met voltooide taken is veranderd naar \"%s\" (was \"%s\"), maar "
 "dit bestand bestaat al."
@@ -568,11 +574,11 @@ msgstr ""
 "of aankoppelbare locatie. Wijzig alstublieft het pad naar een geschikte map "
 "of verwijder het bestand."
 
-#: ../src/Todo.txt/TxtList.vala:175
+#: ../src/Todo.txt/TxtList.vala:176
 msgid "Clear Done List"
 msgstr "Wis de gedane taken"
 
-#: ../src/Todo.txt/TxtList.vala:179
+#: ../src/Todo.txt/TxtList.vala:180
 msgid "Sort tasks"
 msgstr "Taken sorteren"
 

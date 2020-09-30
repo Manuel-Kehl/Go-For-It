@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 17:53+0200\n"
+"POT-Creation-Date: 2020-09-30 20:37+0200\n"
 "PO-Revision-Date: 2020-08-06 23:32+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/go-for-"
@@ -48,7 +48,7 @@ msgid "Replace \"%s\"?"
 msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
-msgid "Should this file be replaced or should the old file be used?"
+msgid "Should this file be replaced or should this old file be used?"
 msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
@@ -455,8 +455,8 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid ""
-"Completed task file has been changed to \"%s\" (was \"%s\"), but this file "
-"already exists."
+"The location to store completed tasks in has been changed to \"%s\" (was \"%s"
+"\"), but this file already exists."
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
@@ -564,11 +564,11 @@ msgstr ""
 "monterbar plassering. Endre stien i innstillingene til en passende mappe, "
 "eller fjern denne filen."
 
-#: ../src/Todo.txt/TxtList.vala:175
+#: ../src/Todo.txt/TxtList.vala:176
 msgid "Clear Done List"
 msgstr "Tøm \"Ferdig\"-liste"
 
-#: ../src/Todo.txt/TxtList.vala:179
+#: ../src/Todo.txt/TxtList.vala:180
 msgid "Sort tasks"
 msgstr ""
 
