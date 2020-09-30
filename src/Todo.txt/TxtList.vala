@@ -19,7 +19,7 @@ class GOFI.TXT.TxtList : GOFI.TaskList, Object {
     private TaskListWidget todo_list;
     private TaskListWidget done_list;
 
-    private Gtk.ModelButton clear_done_button;
+    private Gtk.Box menu_box;
 
     public ListSettings list_settings {
         public get;
@@ -124,11 +124,15 @@ class GOFI.TXT.TxtList : GOFI.TaskList, Object {
     }
 
     public unowned Gtk.Widget? get_menu () {
-        return clear_done_button;
+        return menu_box;
     }
 
     public void clear_done_list () {
         task_manager.clear_done_store ();
+    }
+
+    public void sort_tasks () {
+        task_manager.sort_tasks ();
     }
 
     private void on_selection_changed (TxtTask? task) {
@@ -167,10 +171,18 @@ class GOFI.TXT.TxtList : GOFI.TaskList, Object {
         task_manager = new TaskManager (list_settings);
         todo_list = new TaskListWidget (this.task_manager.todo_store, true);
         done_list = new TaskListWidget (this.task_manager.done_store, false);
-        clear_done_button = new Gtk.ModelButton ();
+        var clear_done_button = new Gtk.ModelButton ();
         clear_done_button.text = _("Clear Done List");
         clear_done_button.clicked.connect (clear_done_list);
-        clear_done_button.show_all ();
+
+        var sort_tasks_button = new Gtk.ModelButton ();
+        sort_tasks_button.text = _("Sort tasks");
+        sort_tasks_button.clicked.connect (sort_tasks);
+
+        menu_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        menu_box.add (sort_tasks_button);
+        menu_box.add (clear_done_button);
+        menu_box.show_all ();
 
         /* Action and Signal Handling */
         todo_list.add_new_task.connect (task_manager.add_new_task);
@@ -190,8 +202,7 @@ class GOFI.TXT.TxtList : GOFI.TaskList, Object {
         task_manager.save_queued_lists ();
         todo_list = null;
         done_list = null;
-        // stdout.printf ("task_manager %u!\n", task_manager.ref_count);
         task_manager = null;
-        clear_done_button = null;
+        menu_box = null;
     }
 }

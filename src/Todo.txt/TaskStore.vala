@@ -62,6 +62,17 @@ class GOFI.TXT.TaskStore : Object, DragListModel {
         task_data_changed ();
     }
 
+    public void sort () {
+        tasks.sort (compare_tasks);
+        uint n_tasks = tasks.length;
+        items_changed (0, n_tasks, n_tasks);
+        task_data_changed ();
+    }
+
+    private int compare_tasks (Object t1, Object t2) {
+        return ((TxtTask) t1).cmp ((TxtTask) t2);
+    }
+
     public void remove_task (TxtTask task) {
         task.done_changed.disconnect (on_task_done);
         task.notify.disconnect (on_task_notify);

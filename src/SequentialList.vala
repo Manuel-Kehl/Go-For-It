@@ -139,4 +139,9 @@ class GOFI.SequentialList {
         iter_link = null;
         items.clear ();
     }
+
+    public void sort (GLib.CompareDataFunc<Object> compare_func) {
+        items.sort (compare_func);
+        iter_link = null;
+    }
 }

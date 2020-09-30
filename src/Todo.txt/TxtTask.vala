@@ -300,4 +300,35 @@ class GOFI.TXT.TxtTask : TodoTask {
 
         return status_str + prio_str + comp_str + crea_str + description + timer_str + duration_str;
     }
+
+    public int cmp (TxtTask other) {
+        if (other == this) {
+            return 0;
+        }
+        if (this.priority == other.priority) {
+            var cmp_tmp = this.description.ascii_casecmp (other.description);
+            if (cmp_tmp != 0) {
+                return cmp_tmp;
+            }
+            cmp_tmp = GLib.strcmp (this.description, other.description);
+            if (cmp_tmp != 0) {
+                return cmp_tmp;
+            }
+            if (((void*) this) > ((void*) other)) {
+                return 1;
+            }
+
+            return -1;
+        }
+        if (this.priority == NO_PRIO) {
+            return 1;
+        }
+        if (other.priority == NO_PRIO) {
+            return -1;
+        }
+        if (this.priority > other.priority) {
+            return 1;
+        }
+        return -1;
+    }
 }

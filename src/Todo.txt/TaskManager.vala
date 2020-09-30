@@ -144,6 +144,11 @@ class GOFI.TXT.TaskManager {
         done_store.clear ();
     }
 
+    public void sort_tasks () {
+        todo_store.sort ();
+        done_store.sort ();
+    }
+
     /**
      * Reloads all tasks.
      */
