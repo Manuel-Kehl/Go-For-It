@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-20 15:51+0200\n"
+"POT-Creation-Date: 2020-09-30 17:53+0200\n"
 "PO-Revision-Date: 2020-07-21 21:41+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/go-for-it/"
-"go-for-it/sk/>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/go-for-it/go-for-"
+"it/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Weblate 4.2-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:447
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:437
 msgid "About"
 msgstr "O programe"
 
@@ -43,7 +43,31 @@ msgstr ""
 msgid "If you really like this app, you can buy me a drink:"
 msgstr "Ak sa vám táto aplikácia skutočne páči, môžete mi kúpiť drink:"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:434
+#: ../src/Dialogs/FileConflictDialog.vala:86
+msgid "Replace \"%s\"?"
+msgstr ""
+
+#: ../src/Dialogs/FileConflictDialog.vala:87
+msgid "Should this file be replaced or should the old file be used?"
+msgstr ""
+
+#: ../src/Dialogs/FileConflictDialog.vala:108
+msgid "Keep old"
+msgstr "Ponechať staré"
+
+#: ../src/Dialogs/FileConflictDialog.vala:109
+msgid "Replace"
+msgstr ""
+
+#: ../src/Dialogs/FileConflictDialog.vala:115
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:81
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:88
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:270
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:300
+msgid "Cancel"
+msgstr "Zrušiť"
+
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:424
 msgid "Settings"
 msgstr "Nastavenia"
 
@@ -63,7 +87,12 @@ msgstr "Vzhľad"
 msgid "Shortcuts"
 msgstr "Klávesové skratky"
 
+#: ../src/Dialogs/SettingsDialog.vala:75
+msgid "Plugins"
+msgstr ""
+
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:142
 msgid "General"
 msgstr "Všeobecné"
 
@@ -75,34 +104,34 @@ msgstr "Použiť malé ikony na paneli s nástrojmi"
 msgid "Appearance of the activity switcher"
 msgstr "Vzhľad prepínača činnosti"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:49
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:48
 msgid "Icons"
 msgstr "Ikony"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:50
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:49
 msgid "Text"
 msgstr "Text"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:92
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:94
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:80
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:82
 msgid "Theme"
 msgstr "Téma"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:93
-msgid "Dark theme"
-msgstr "Tmavá téma"
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
+msgid "Color scheme"
+msgstr ""
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:123
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
 msgid "%s needs to be restarted for this setting to take effect"
 msgstr "Aby sa toto nastavenie prejavilo, je potrebné %s reštartovať"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:126
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
 msgid "Use a header bar"
 msgstr "Použiť hlavičku"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
 #: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:143
 msgid "Timer"
 msgstr "Časovač"
 
@@ -127,12 +156,12 @@ msgid "Long break duration"
 msgstr "Trvanie dlhej prestávky"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:263
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
 msgid "Reminder before task ends"
 msgstr "Pripomienka pred ukončením úlohy"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:72
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:264
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
 msgid "seconds"
 msgstr "sekundy"
 
@@ -190,79 +219,109 @@ msgstr "Na spodku zoznamu"
 msgid "%s needs to be restarted for changes to take effect."
 msgstr "Aby sa zmeny prejavili, je potrebné %s reštartovať."
 
-#: ../src/Main.vala:79
+#: ../src/LegacyStrings.vala:2
+msgid "Todo.txt files were found in the destination folder."
+msgstr "V cieľovom adresári sa našli súbory Todo.txt."
+
+#. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
+#: ../src/LegacyStrings.vala:3
+msgid "What should be done with these files?"
+msgstr "Čo by sa malo s týmito súbormi urobiť?"
+
+#. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
+#: ../src/LegacyStrings.vala:4
+msgid "Overwrite"
+msgstr "Prepísať"
+
+#: ../src/LegacyStrings.vala:5
+msgid "The configured folder is already in use by another list."
+msgstr "Nakonfigurovaný adresár už používa iný zoznam."
+
+#: ../src/LegacyStrings.vala:6
+msgid "folder"
+msgstr "adresár"
+
+#: ../src/LegacyStrings.vala:7
+msgid "Dark theme"
+msgstr "Tmavá téma"
+
+#: ../src/LegacyStrings.vala:8
+msgid "Couldn't properly import settings from %s: %s"
+msgstr "Nepodarilo sa správne importovať nastavenia z %s: %s"
+
+#: ../src/Main.vala:101
 msgid "Not a known list: %s"
 msgstr "Nie je známy zoznam: %s"
 
-#: ../src/Main.vala:200
+#: ../src/Main.vala:237
 msgid "%s: Error: %s"
 msgstr "%s: Chyba: %s"
 
-#: ../src/Main.vala:212
+#: ../src/Main.vala:249
 msgid "Lists (List type : List ID - List name)"
 msgstr "Zoznamy (Typ zoznamu: ID zoznamu - Názov zoznamu)"
 
-#: ../src/Main.vala:237
+#: ../src/Main.vala:274
 msgid "Print version info and exit"
 msgstr "Vytlačiť informácie o verzii a ukončiť"
 
-#: ../src/Main.vala:238
+#: ../src/Main.vala:275
 msgid "Show about dialog"
 msgstr "Zobraziť okno o programe"
 
-#: ../src/Main.vala:239
+#: ../src/Main.vala:276
 msgid "CSV file to log activities to."
 msgstr "Súbor CSV na zaznamenanie aktivít."
 
-#: ../src/Main.vala:239
+#: ../src/Main.vala:276
 msgid "FILE"
 msgstr "SÚBOR"
 
-#: ../src/Main.vala:240
+#: ../src/Main.vala:277
 msgid "Show configured lists and exit"
 msgstr "Zobraziť nastavené zoznamy a ukončiť"
 
-#: ../src/Main.vala:244
+#: ../src/Main.vala:281
 msgid "Load the list specified by the list type and ID"
 msgstr "Načítať zoznam určený typom zoznamu a ID"
 
-#: ../src/Main.vala:245
+#: ../src/Main.vala:282
 msgid "LIST-TYPE"
 msgstr "TYP-ZOZNAMU"
 
-#: ../src/Main.vala:245
+#: ../src/Main.vala:282
 msgid "LIST-ID"
 msgstr "ID-ZOZNAMU"
 
-#: ../src/Main.vala:288 ../src/Widgets/TimerView.vala:90
+#: ../src/Main.vala:326 ../src/Widgets/TimerView.vala:90
 msgid "Take a Break"
 msgstr "Dajte si prestávku"
 
-#: ../src/Main.vala:289
+#: ../src/Main.vala:327
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "Uvoľnite sa a prestaňte na chvíľu premýšľať o svojej aktuálnej úlohe"
 
-#: ../src/Main.vala:294
+#: ../src/Main.vala:332
 msgid "The Break is Over"
 msgstr "Prestávka skončila"
 
-#: ../src/Main.vala:295
+#: ../src/Main.vala:333
 msgid "Your current task is"
 msgstr "Vaša aktívna úloha je"
 
-#: ../src/Main.vala:314
+#: ../src/Main.vala:352
 msgid "Prepare for your break"
 msgstr "Pripravte sa na svoju prestávku"
 
-#: ../src/Main.vala:315
+#: ../src/Main.vala:353
 msgid "You have %s seconds left"
 msgstr "Zostáva vám %s sekúnd"
 
-#: ../src/Main.vala:331
+#: ../src/Main.vala:369
 msgid "Task duration exceeded"
 msgstr "Prekročená dĺžka úlohy"
 
-#: ../src/Main.vala:332
+#: ../src/Main.vala:370
 msgid "Consider switching to a different task"
 msgstr "Zvážte prechod na inú úlohu"
 
@@ -274,15 +333,15 @@ msgstr "Prejsť na prehľad"
 msgid "Go back to the to-do list"
 msgstr "Späť na zoznam úloh"
 
-#: ../src/MainWindow.vala:335
+#: ../src/MainWindow.vala:319
 msgid "Menu"
 msgstr "Menu"
 
-#: ../src/MainWindow.vala:440
+#: ../src/MainWindow.vala:430
 msgid "Contribute / Donate"
 msgstr "Prispejte/Darujte"
 
-#: ../src/Pages/SelectionPage.vala:92
+#: ../src/Pages/SelectionPage.vala:107
 msgid ""
 "Currently, no lists are configured.\n"
 "Add one below!"
@@ -290,8 +349,8 @@ msgstr ""
 "Momentálne nie sú nakonfigurované žiadne zoznamy.\n"
 "Pridajte jeden nižšie!"
 
-#: ../src/Pages/SelectionPage.vala:102
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
+#: ../src/Pages/SelectionPage.vala:117
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:82
 msgid "Add list"
 msgstr "Pridať zoznam"
 
@@ -311,57 +370,59 @@ msgstr "Hotovo"
 msgid "Couldn't write to %s: %s"
 msgstr "Nepodarilo sa zapísať do %s: %s"
 
-#: ../src/Services/SettingsManager.vala:437
-#: ../src/Todo.txt/TxtListManager.vala:58
-#: ../src/Todo.txt/TxtListManager.vala:501
-msgid "Couldn't create folder: %s"
-msgstr "Nepodarilo sa vytvoriť adresár: %s"
+#: ../src/Services/SettingsManager.vala:608
+msgid "Light"
+msgstr ""
 
-#: ../src/Services/SettingsManager.vala:591
-msgid "Couldn't properly import settings from %s: %s"
-msgstr "Nepodarilo sa správne importovať nastavenia z %s: %s"
+#: ../src/Services/SettingsManager.vala:610
+msgid "Dark"
+msgstr ""
+
+#: ../src/Services/SettingsManager.vala:612
+msgid "Default"
+msgstr ""
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
 msgstr "vypnuté"
 
-#: ../src/Services/Shortcuts.vala:139
+#: ../src/Services/Shortcuts.vala:151
 msgid "Filter tasks"
 msgstr "Filtrovať úlohy"
 
-#: ../src/Services/Shortcuts.vala:140
+#: ../src/Services/Shortcuts.vala:152
 msgid "Add new task/list"
 msgstr "Pridať novú úlohu/zoznam"
 
-#: ../src/Services/Shortcuts.vala:141
+#: ../src/Services/Shortcuts.vala:153
 msgid "Start/Stop the timer"
 msgstr "Spustiť/Zastaviť časovač"
 
-#: ../src/Services/Shortcuts.vala:142
+#: ../src/Services/Shortcuts.vala:154
 msgid "Mark the task as complete"
 msgstr "Označiť úlohu ako dokončenú"
 
-#: ../src/Services/Shortcuts.vala:143
+#: ../src/Services/Shortcuts.vala:155
 msgid "Move selected row up"
 msgstr "Posunúť vybraté o riadok vyššie"
 
-#: ../src/Services/Shortcuts.vala:144
+#: ../src/Services/Shortcuts.vala:156
 msgid "Move selected row down"
 msgstr "Posunúť vybraté o riadok nižšie"
 
-#: ../src/Services/Shortcuts.vala:146
+#: ../src/Services/Shortcuts.vala:158
 msgid "Move to next task/row"
 msgstr "Presun na ďalšiu úlohu/riadok"
 
-#: ../src/Services/Shortcuts.vala:147
+#: ../src/Services/Shortcuts.vala:159
 msgid "Move to previous task/row"
 msgstr "Presun na predchádzajúcu úlohu/riadok"
 
-#: ../src/Services/Shortcuts.vala:148
+#: ../src/Services/Shortcuts.vala:160
 msgid "Move to right screen"
 msgstr "Presunúť na pravú stranu"
 
-#: ../src/Services/Shortcuts.vala:149
+#: ../src/Services/Shortcuts.vala:161
 msgid "Move to left screen"
 msgstr "Presunúť na ľavú stranu"
 
@@ -369,62 +430,98 @@ msgstr "Presunúť na ľavú stranu"
 msgid "Inherit from GTK theme"
 msgstr "Použiť z GTK témy"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:50
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:203
-msgid "folder"
-msgstr "adresár"
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:61
+msgid "Store to-do tasks in"
+msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:51
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:62
+msgid "Store completed tasks in"
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
 msgid "List name"
 msgstr "Názov zoznamu"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
+msgid "Choose a file"
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
+msgid ""
+"Task list location has been changed to \"%s\" (was \"%s\"), but this file "
+"already exists."
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
+msgid ""
+"Completed task file has been changed to \"%s\" (was \"%s\"), but this file "
+"already exists."
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
 msgid "New to-do list"
 msgstr "Nový zoznam úloh"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:65
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:70
-#: ../src/Todo.txt/TxtListManager.vala:236
-msgid "Cancel"
-msgstr "Zrušiť"
-
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:69
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
 msgid "Edit to-do list properties"
 msgstr "Upraviť vlastnosti zoznamu úloh"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:89
 msgid "Apply"
 msgstr "Vykonať"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:116
-msgid "The configured folder is already in use by another list."
-msgstr "Nakonfigurovaný adresár už používa iný zoznam."
-
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:136
-msgid "Please assign a name to the list."
-msgstr "Pomenujte prosím zoznam."
-
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:219
 msgid "Log the time spent working on each task"
 msgstr "Zaznamenať čas strávený prácou na každej úlohe"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:212
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:220
 msgid "This information will be stored in the todo.txt files."
 msgstr "Tieto informácie budú uložené v súboroch todo.txt."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:262
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
+msgid "Select file to store to-do tasks in"
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:265
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:271
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:301
+msgid "_Select"
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
+msgid "Select file to store completed tasks in"
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:350
 msgid "Use default settings"
 msgstr "Použiť predvolené nastavenia"
 
-#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:377
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:423
+#, fuzzy
+#| msgid "The configured folder is already in use by another list."
+msgid "The configured to-do file is already in use by another list."
+msgstr "Nakonfigurovaný adresár už používa iný zoznam."
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
+msgid ""
+"Another todo.txt list uses the file chosen to archive completed tasks to to "
+"store its to-do tasks."
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:459
+msgid "Please assign a name to the list."
+msgstr "Pomenujte prosím zoznam."
+
+#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:380
 msgid "project"
 msgstr "projekt"
 
-#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:373
+#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:376
 msgid "context"
 msgstr "kontext"
 
-#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:339
+#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:342
 msgid "priority"
 msgstr "priorita"
 
@@ -470,29 +567,17 @@ msgstr ""
 msgid "Clear Done List"
 msgstr "Vyčistiť zoznam dokončených úloh"
 
-#: ../src/Todo.txt/TxtListManager.vala:202
+#: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
 msgstr "Pri presúvaní súboru sa vyskytla chyba!"
 
-#: ../src/Todo.txt/TxtListManager.vala:204
+#: ../src/Todo.txt/TxtListManager.vala:138
 msgid "Error information: "
 msgstr "Informácie o chybe: "
 
-#: ../src/Todo.txt/TxtListManager.vala:226
-msgid "Todo.txt files were found in the destination folder."
-msgstr "V cieľovom adresári sa našli súbory Todo.txt."
-
-#: ../src/Todo.txt/TxtListManager.vala:230
-msgid "What should be done with these files?"
-msgstr "Čo by sa malo s týmito súbormi urobiť?"
-
-#: ../src/Todo.txt/TxtListManager.vala:232
-msgid "Keep old"
-msgstr "Ponechať staré"
-
-#: ../src/Todo.txt/TxtListManager.vala:234
-msgid "Overwrite"
-msgstr "Prepísať"
+#: ../src/Todo.txt/TxtListManager.vala:355
+msgid "Couldn't create folder: %s"
+msgstr "Nepodarilo sa vytvoriť adresár: %s"
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:35
 msgid ""
@@ -520,15 +605,15 @@ msgstr "Pridať novú úlohu"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
-#: ../src/Todo.txt/Widgets/TaskRow.vala:314
+#: ../src/Todo.txt/Widgets/TaskRow.vala:317
 msgid "%Y-%m-%d"
 msgstr "%R-%m-%d"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:318
+#: ../src/Todo.txt/Widgets/TaskRow.vala:321
 msgid "Task completed at %s, created at %s"
 msgstr "Úloha dokončená o %s, vytvorená o %s"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:325
+#: ../src/Todo.txt/Widgets/TaskRow.vala:328
 msgid "Task created at %s"
 msgstr "Úloha bola vytvorená o %s"
 
@@ -580,10 +665,10 @@ msgstr "Relaxujte"
 msgid "You have nothing to do."
 msgstr "Nemáte žiadnu úlohu."
 
-#: ../src/Widgets/TodoListInfoRow.vala:94
+#: ../src/Widgets/TodoListInfoRow.vala:95
 msgid "Delete"
 msgstr "Vymazať"
 
-#: ../src/Widgets/TodoListInfoRow.vala:95
+#: ../src/Widgets/TodoListInfoRow.vala:96
 msgid "Edit"
 msgstr "Upraviť"
