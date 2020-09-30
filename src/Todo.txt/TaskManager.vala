@@ -361,7 +361,7 @@ class GOFI.TXT.TaskManager {
         // Create file with its parent directory if it doesn't currently exist
         if (!file.query_exists ()) {
             var parent_dir = file.get_parent ();
-            if (parent_dir != null) {
+            if (parent_dir != null && !parent_dir.query_exists ()) {
                 parent_dir.make_directory_with_parents ();
             }
             file.create (FileCreateFlags.NONE);
