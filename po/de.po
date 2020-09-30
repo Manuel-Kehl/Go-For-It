@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 17:53+0200\n"
+"POT-Creation-Date: 2020-09-30 20:37+0200\n"
 "PO-Revision-Date: 2020-07-27 20:41+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/go-for-it/go-for-"
@@ -49,7 +49,7 @@ msgid "Replace \"%s\"?"
 msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
-msgid "Should this file be replaced or should the old file be used?"
+msgid "Should this file be replaced or should this old file be used?"
 msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
@@ -456,8 +456,8 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid ""
-"Completed task file has been changed to \"%s\" (was \"%s\"), but this file "
-"already exists."
+"The location to store completed tasks in has been changed to \"%s\" (was \"%s"
+"\"), but this file already exists."
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
@@ -567,11 +567,11 @@ msgstr ""
 "in den Einstellungen in ein geeignetes Verzeichnis oder entfernen Sie diese "
 "Datei."
 
-#: ../src/Todo.txt/TxtList.vala:175
+#: ../src/Todo.txt/TxtList.vala:176
 msgid "Clear Done List"
 msgstr "Erledigtliste leeren"
 
-#: ../src/Todo.txt/TxtList.vala:179
+#: ../src/Todo.txt/TxtList.vala:180
 msgid "Sort tasks"
 msgstr ""
 
