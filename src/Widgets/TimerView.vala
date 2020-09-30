@@ -73,7 +73,7 @@ class GOFI.TimerView : Gtk.Grid {
         timer.update ();
     }
 
-    private void timer_active_task_changed (TodoTask? task, bool break_active) {
+    private void timer_active_task_changed (TodoTask? task) {
         if (task == null) {
             show_no_task ();
             return;
@@ -86,7 +86,7 @@ class GOFI.TimerView : Gtk.Grid {
         var style = task_description_lbl.get_style_context ();
 
         // Append correct class according to break status
-        if (break_active) {
+        if (timer.break_active) {
             task_status_lbl.label = _("Take a Break") + "!";
             style.remove_class ("task_active");
             style.add_class ("task_break");

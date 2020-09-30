@@ -190,6 +190,7 @@ class GOFI.TXT.TxtList : GOFI.TaskList, Object {
         task_manager.save_queued_lists ();
         todo_list = null;
         done_list = null;
+        // stdout.printf ("task_manager %u!\n", task_manager.ref_count);
         task_manager = null;
         clear_done_button = null;
     }

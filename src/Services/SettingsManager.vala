@@ -1,4 +1,4 @@
-/* Copyright 2014-2019 Go For It! developers
+/* Copyright 2014-2020 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -20,196 +20,366 @@
  * Its main motivation is the option of easily replacing Glib.KeyFile with
  * another settings storage mechanism in the future.
  */
-private class GOFI.SettingsManager {
-    private KeyFile key_file;
+private class GOFI.SettingsManager : Object {
 
-    /*
-     * A list of constants that define settings group names
-     */
-    private const string GROUP_TODO_TXT = "Todo.txt";
-    private const string GROUP_BEHAVIOR = "Behavior";
-    private const string GROUP_TIMER = "Timer";
-    private const string GROUP_UI = "Interface";
-    private const string GROUP_LISTS = "Lists";
-
-    private const int DEFAULT_TASK_DURATION = 1500;
-    private const int DEFAULT_LONG_BREAK_DURATION = 900;
-    private const int DEFAULT_BREAK_DURATION = 300;
-    private const int DEFAULT_REMINDER_TIME = 60;
-    private const int DEFAULT_POMODORO_PERIOD = 4;
-
-    // Whether or not Go For It! has been started for the first time
-    public bool first_start = false;
+    private GLib.Settings _settings;
+    private GLib.Settings timer_settings;
+    private GLib.Settings saved_state;
 
     /*
      * A list of settings values with their corresponding access methods.
      * The "heart" of the SettingsManager class.
      */
 
+    const string ID_TIMER = GOFI.APP_ID + ".timer";
+    const string KEY_TASK_DURATION = "task-duration";
+    const string KEY_BREAK_DURATION = "break-duration";
+    const string KEY_LBREAK_DURATION = "long-break-duration";
+    const string KEY_POMODORO_PERIOD = "pomodoro-period";
+    const string KEY_REMINDER_TIME = "reminder-time";
+    const string KEY_TIMER_MODE = "timer-mode";
+    const string KEY_SCHEDULE = "schedule";
+    const string KEY_RESUME_TASKS_AFTER_BREAK = "resume-tasks-after-break";
+    const string KEY_RESET_TIMER_ON_TASK_SWITCH = "reset-timer-on-task-switch";
+
+    const string ID_GENERAL = GOFI.APP_ID + ".settings";
+    const string KEY_TASKS_ON_TOP = "new-tasks-on-top";
+    const string KEY_LISTS = "lists";
+    const string KEY_USE_HEADER_BAR = "use-header-bar";
+    const string KEY_COLOR_SCHEME = "color-scheme";
+    const string KEY_THEME = "theme";
+    const string KEY_SMALL_ICONS = "small-toolbar-icons";
+    const string KEY_SWITCHER_USE_ICONS = "switcher-use-icons";
+
+    const string ID_SAVED_STATE = GOFI.APP_ID + ".saved-state";
+    const string KEY_WINDOW_POS = "window-position";
+    const string KEY_WINDOW_SIZE = "window-size";
+    const string KEY_LAST_LIST = "last-loaded-list";
+
+    // Whether or not Go For It! has been started for the first time
+    public bool first_start = false;
+    public bool performed_migration = false;
+
     /*---GROUP:Todo.txt-------------------------------------------------------*/
     public string todo_txt_location {
-        owned get { return get_value (GROUP_TODO_TXT, "location"); }
+        owned get { return ""; }
     }
     /*---GROUP:Behavior-------------------------------------------------------*/
     public bool new_tasks_on_top {
-        get {
-            return get_bool (GROUP_BEHAVIOR, "new_tasks_on_top", false);
-        }
-        set {
-            set_bool (GROUP_BEHAVIOR, "new_tasks_on_top", value);
-        }
+        public get;
+        public set;
     }
     /*---GROUP:Timer----------------------------------------------------------*/
+
+
     public int task_duration {
-        get {
-            var default_str = DEFAULT_TASK_DURATION.to_string ();
-            var duration = get_value (GROUP_TIMER, "task_duration", default_str);
-            var parsed_duration = int.parse (duration);
-            if (parsed_duration <= 0) {
-                warning ("Invalid task duration: %s", duration);
-                return DEFAULT_TASK_DURATION;
-            }
-            return parsed_duration;
-        }
-        set {
-            set_value (GROUP_TIMER, "task_duration", value.to_string ());
-            build_schedule ();
-            timer_duration_changed ();
-        }
+        get;
+        set;
     }
     public int break_duration {
-        get {
-            var default_str = DEFAULT_BREAK_DURATION.to_string ();
-            var duration = get_value (GROUP_TIMER, "break_duration", default_str);
-            var parsed_duration = int.parse (duration);
-            if (parsed_duration <= 0) {
-                warning ("Invalid break duration: %s", duration);
-                return DEFAULT_BREAK_DURATION;
-            }
-            return parsed_duration;
-        }
-        set {
-            set_value (GROUP_TIMER, "break_duration", value.to_string ());
-            build_schedule ();
-            timer_duration_changed ();
-        }
+        get;
+        set;
     }
     public int long_break_duration {
-        get {
-            var default_str = DEFAULT_LONG_BREAK_DURATION.to_string ();
-            var duration = get_value (GROUP_TIMER, "long_break_duration", default_str);
-            var parsed_duration = int.parse (duration);
-            if (parsed_duration <= 0) {
-                warning ("Invalid break duration: %s", duration);
-                return DEFAULT_LONG_BREAK_DURATION;
-            }
-            return parsed_duration;
-        }
-        set {
-            set_value (GROUP_TIMER, "long_break_duration", value.to_string ());
-            build_schedule ();
-            timer_duration_changed ();
-        }
+        get;
+        set;
     }
     public int pomodoro_period {
-        get {
-            var default_str = DEFAULT_POMODORO_PERIOD.to_string ();
-            var period = get_value (GROUP_TIMER, "pomodoro_period", default_str);
-            var parsed_period = int.parse (period);
-            if (parsed_period <= 0) {
-                warning ("Invalid pomodoro period: %s", period);
-                return DEFAULT_POMODORO_PERIOD;
-            }
-            return parsed_period;
-        }
-        set {
-            set_value (GROUP_TIMER, "pomodoro_period", value.to_string ());
-            build_schedule ();
-            timer_duration_changed ();
-        }
+        get;
+        set;
     }
+
     public int reminder_time {
+        get;
+        set;
+    }
+    public bool reminder_active {
         get {
-            var default_str = DEFAULT_REMINDER_TIME.to_string ();
-            var time = get_value (GROUP_TIMER, "reminder_time", default_str);
-            var parsed_time = int.parse (time);
-            if (parsed_time < 0) {
-                warning ("Invalid reminder time: %s", time);
-                return 0;
-            }
-            return parsed_time;
-        }
-        set {
-            set_value (GROUP_TIMER, "reminder_time", value.to_string ());
+            return (reminder_time > 0);
         }
     }
+
     public TimerMode timer_mode {
-        get {
-            var mode_str = get_value (GROUP_TIMER, "timer_mode");
-            return TimerMode.from_string (mode_str);
-        }
-        set {
-            set_value (GROUP_TIMER, "timer_mode", value.to_string ());
-            switch (value) {
-                case TimerMode.SIMPLE:
-                case TimerMode.POMODORO:
-                    build_schedule ();
-                    break;
-                default:
-                    write_schedule ();
-                    break;
-            }
-        }
+        public get;
+        public set;
     }
+
     public Schedule schedule {
         get {
-            if (_schedule == null) {
-                _schedule = new Schedule ();
-                build_schedule ();
-            }
             return _schedule;
         }
         set {
-            _schedule.set_durations (value.get_durations ());
-            write_schedule ();
+            _schedule.import_raw (value.export_raw ());
+            save_schedule ();
             timer_duration_changed ();
         }
     }
-    Schedule _schedule = null;
+    Schedule _schedule;
+
+    public bool resume_tasks_after_break {
+        get;
+        set;
+    }
+
+    public bool reset_timer_on_task_switch {
+        get;
+        set;
+    }
+
+    /*---GROUP:UI-------------------------------------------------------------*/
+    public bool use_header_bar {
+        get {
+            switch (prefers_header_bar) {
+                case OverrideBool.TRUE:
+                    return true;
+                case OverrideBool.FALSE:
+                    return false;
+                default:
+                    return GOFI.Utils.desktop_hb_status.use_feature (true);
+            }
+        }
+        set {
+            if (value) {
+                prefers_header_bar = OverrideBool.TRUE;
+            } else {
+                prefers_header_bar = OverrideBool.FALSE;
+            }
+        }
+    }
+    public OverrideBool prefers_header_bar {
+        get;
+        set;
+    }
+    public ColorScheme color_scheme {
+        get;
+        set;
+    }
+    public bool use_dark_theme {
+        get {
+            switch (color_scheme) {
+                case ColorScheme.LIGHT:
+                    return false;
+                case ColorScheme.DARK:
+                    return true;
+                default:
+                    return system_theme_is_dark;
+            }
+        }
+    }
+    public bool system_theme_is_dark {
+        get;
+        set;
+    }
+    public Theme theme {
+        get {
+            var theme_str = _settings.get_string (KEY_THEME);
+            var theme_val = Theme.from_string (theme_str);
+            if (theme_val != Theme.INVALID) {
+                return theme_val;
+            }
+
+            warning ("Unknown theme setting: %s", theme_str);
+            return Theme.from_string (
+                _settings.get_default_value (KEY_THEME).get_string ()
+            );
+        }
+        set {
+            _settings.set_string (KEY_THEME, value.to_string ());
+            theme_changed (value);
+        }
+    }
+    public Gtk.IconSize toolbar_icon_size {
+        get {
+            if (use_small_toolbar_icons) {
+                return Gtk.IconSize.SMALL_TOOLBAR;
+            }
+            return Gtk.IconSize.LARGE_TOOLBAR;
+        }
+    }
+    public bool use_small_toolbar_icons {
+        get;
+        set;
+    }
+    public bool switcher_use_icons {
+        get;
+        set;
+    }
+    /*---GROUP:LISTS----------------------------------------------------------*/
+    public List<ListIdentifier?> lists {
+        owned get {
+            List<ListIdentifier?> identifiers = new List<ListIdentifier?> ();
+
+            var lists_value = _settings.get_value (KEY_LISTS);
+            var n_lists = lists_value.n_children ();
+
+            for (size_t i = 0; i < n_lists; i++) {
+                string provider, id;
+                lists_value.get_child (i, "(ss)", out provider, out id);
+                if (provider != "" && id != "") {
+                    identifiers.prepend (new ListIdentifier (provider, id));
+                }
+            }
+            return identifiers;
+        }
+        set {
+            Variant[] _lists = {};
+            foreach (unowned ListIdentifier identifier in value) {
+                _lists += new Variant.tuple ({
+                    new Variant.string (identifier.provider),
+                    new Variant.string (identifier.id)
+                });
+            }
+            _settings.set_value (KEY_LISTS, new Variant.array (new VariantType ("(ss)"), _lists));
+        }
+    }
+
+    /*---Saved state----------------------------------------------------------*/
+    public void set_window_position (int x, int y) {
+        saved_state.set (KEY_WINDOW_POS, "(ii)", x, y);
+    }
+    public void get_window_position (out int x, out int y) {
+        saved_state.get (KEY_WINDOW_POS, "(ii)", out x, out y);
+    }
+    public void set_window_size (int width, int height) {
+        saved_state.set (KEY_WINDOW_SIZE, "(ii)", width, height);
+    }
+    public void get_window_size (out int width, out int height) {
+        saved_state.get (KEY_WINDOW_SIZE, "(ii)", out width, out height);
+    }
+    public ListIdentifier? list_last_loaded {
+        owned get {
+            string provider, id;
+            saved_state.get (KEY_LAST_LIST, "(ss)", out provider, out id);
+            if (provider != "" && id != "") {
+                return new ListIdentifier (provider, id);
+            }
+            return null;
+        }
+        set {
+            if (value == null) {
+                saved_state.set (KEY_LAST_LIST, "(ss)", "", "");
+            } else {
+                saved_state.set (KEY_LAST_LIST, "(ss)", value.provider, value.id);
+            }
+        }
+    }
+
+    /* Signals */
+    public signal void todo_txt_location_changed ();
+    public signal void timer_duration_changed ();
+    public signal void theme_changed (Theme theme);
+    public signal void use_dark_theme_changed (bool use_dark);
+    public signal void toolbar_icon_size_changed (Gtk.IconSize size);
+    public signal void switcher_use_icons_changed (bool use_icons);
+
+    public SettingsManager () {
+        init_with_backend (null);
+    }
+
+    private void init_with_backend (GLib.SettingsBackend? backend) {
+        _schedule = new Schedule ();
+        if (backend != null) {
+            _settings = new GLib.Settings.with_backend (ID_GENERAL, backend);
+            timer_settings = new GLib.Settings.with_backend (ID_TIMER, backend);
+            saved_state = new GLib.Settings.with_backend (ID_SAVED_STATE, backend);
+        } else {
+            _settings = new GLib.Settings (ID_GENERAL);
+            timer_settings = new GLib.Settings (ID_TIMER);
+            saved_state = new GLib.Settings (ID_SAVED_STATE);
+        }
+
+        bind_settings ();
+        perform_migration ();
+    }
+
+// Broken due to bad gio vapi bindings (vala version < 0.50)
+/*
+    public SettingsManager.key_file_backend (string path) {
+        var key_file_backend = GLib.SettingsBackend.keyfile_settings_backend_new (path, "/", null);
+        init_with_backend (key_file_backend);
+    }
+*/
+
+    private void bind_settings () {
+        var sbf = GLib.SettingsBindFlags.DEFAULT;
+        _settings.bind (KEY_TASKS_ON_TOP, this, "new_tasks_on_top", sbf);
+        _settings.bind (KEY_SWITCHER_USE_ICONS, this, "switcher_use_icons", sbf);
+        _settings.bind (KEY_SMALL_ICONS, this, "use_small_toolbar_icons", sbf);
+        _settings.bind (KEY_COLOR_SCHEME, this, "color_scheme", sbf);
+        _settings.bind (KEY_USE_HEADER_BAR, this, "prefers_header_bar", sbf);
+
+        timer_settings.bind (KEY_REMINDER_TIME, this, "reminder_time", sbf);
+        timer_settings.bind (KEY_TIMER_MODE, this, "timer_mode", sbf);
+        timer_settings.bind (KEY_RESUME_TASKS_AFTER_BREAK, this, "resume_tasks_after_break", sbf);
+        timer_settings.bind (KEY_RESET_TIMER_ON_TASK_SWITCH, this, "reset_timer_on_task_switch", sbf);
+        timer_settings.bind (KEY_TASK_DURATION, this, "task_duration", sbf);
+        timer_settings.bind (KEY_BREAK_DURATION, this, "break_duration", sbf);
+        timer_settings.bind (KEY_LBREAK_DURATION, this, "long_break_duration", sbf);
+        timer_settings.bind (KEY_POMODORO_PERIOD, this, "pomodoro_period", sbf);
+
+        if (timer_mode == TimerMode.CUSTOM) {
+            restore_saved_schedule ();
+        } else {
+            build_schedule ();
+        }
+
+        this.notify.connect (on_property_changed);
+
+    }
+
+    private void on_property_changed (GLib.ParamSpec pspec) {
+        switch (pspec.name) {
+            case "task-duration":
+            case "break-duration":
+            case "long-break-duration":
+            case "pomodoro-period":
+                build_schedule ();
+                timer_duration_changed ();
+                break;
+            case "color-scheme":
+                use_dark_theme_changed (use_dark_theme);
+                break;
+            case "switcher-use-icons":
+                switcher_use_icons_changed (switcher_use_icons);
+                break;
+            case "use-small-toolbar-icons":
+                toolbar_icon_size_changed (toolbar_icon_size);
+                break;
+            case "system-theme-is-dark":
+                if (color_scheme == ColorScheme.DEFAULT) {
+                    use_dark_theme_changed (system_theme_is_dark);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void restore_saved_schedule () {
+        _schedule.load_variant (timer_settings.get_value (KEY_SCHEDULE));
+        if (!_schedule.valid) {
+            warning (
+                "Timer-mode is set to custom, but no schedule has been configured!" +
+                "populating schedule with a pomodoro schedule!"
+            );
+            build_pomodoro_schedule ();
+        }
+    }
+
+    private void save_schedule () {
+        timer_settings.set_value (KEY_SCHEDULE, _schedule.to_variant ());
+    }
 
     private void build_schedule () {
         switch (timer_mode) {
             case TimerMode.SIMPLE:
-                _schedule.set_durations ({task_duration, break_duration});
+                _schedule.import_raw ({task_duration, break_duration});
                 return;
             case TimerMode.POMODORO:
                 build_pomodoro_schedule ();
                 return;
             default:
-                try {
-                    var durations = key_file.get_integer_list (GROUP_TIMER, "schedule");
-                    if (durations.length >= 2) {
-                        _schedule.set_durations (durations);
-                        return;
-                    }
-                } catch (KeyFileError.GROUP_NOT_FOUND e) {
-                } catch (KeyFileError.KEY_NOT_FOUND e) {
-                } catch (Error e) {
-                    warning ("An error occured while reading the setting"
-                        +" %s.%s: %s", GROUP_TIMER, "schedule", e.message);
-                }
-                build_pomodoro_schedule ();
                 return;
-        }
-    }
-
-    private void write_schedule () {
-        try {
-            key_file.set_integer_list (GROUP_TIMER, "schedule", _schedule.get_durations ());
-            write_key_file ();
-        } catch (Error e) {
-            error ("An error occured while writing the setting"
-                +" %s.%s: %s", GROUP_TIMER, "schedule", e.message);
         }
     }
 
@@ -222,159 +392,139 @@ private class GOFI.SettingsManager {
         }
         durations[arr_size - 2] = task_duration;
         durations[arr_size - 1] = long_break_duration;
-        _schedule.set_durations (durations);
+        _schedule.import_raw (durations);
     }
 
-    public bool resume_tasks_after_break {
-        get {
-            return get_bool (GROUP_TIMER, "resume_tasks_after_break", false);
+    private void perform_migration () {
+        if (_settings.get_int("settings-version") <= 0) {
+            var settings_importer = new KeyFileSettingsImport (this);
+            first_start = !settings_importer.import_settings ();
+            performed_migration = true;
         }
-        set {
-            set_bool (GROUP_TIMER, "resume_tasks_after_break", value);
-        }
+
+        _settings.set_int("settings-version", 1) ;
+    }
+}
+
+class GOFI.KeyFileSettingsImport {
+
+    /*
+     * A list of constants that define settings group names
+     */
+    private const string GROUP_TODO_TXT = "Todo.txt";
+    private const string GROUP_BEHAVIOR = "Behavior";
+    private const string GROUP_TIMER = "Timer";
+    private const string GROUP_UI = "Interface";
+    private const string GROUP_LISTS = "Lists";
+
+    private KeyFile key_file;
+    private SettingsManager settings;
+
+    public KeyFileSettingsImport (SettingsManager settings) {
+        this.settings = settings;
     }
 
-    public bool reset_timer_on_task_switch {
-        get {
-            return get_bool (GROUP_TIMER, "reset_timer_on_task_switch", false);
+    private void import_timer_settings () throws GLib.KeyFileError {
+        if (!key_file.has_group (GROUP_TIMER)) {
+            return;
         }
-        set {
-            set_bool (GROUP_TIMER, "reset_timer_on_task_switch", value);
-        }
-    }
 
-    public bool reminder_active {
-        get {
-            return (reminder_time > 0);
+        if (key_file.has_key (GROUP_TIMER, "task_duration")) {
+            settings.task_duration =
+                key_file.get_integer (GROUP_TIMER, "task_duration");
         }
-    }
-    /*---GROUP:UI-------------------------------------------------------------*/
-    public int win_x {
-        get {
-            var x = get_value (GROUP_UI, "win_x", "-1");
-            return int.parse (x);
+        if (key_file.has_key (GROUP_TIMER, "break_duration")) {
+            settings.break_duration =
+                key_file.get_integer (GROUP_TIMER, "break_duration");
         }
-        set {
-            set_value (GROUP_UI, "win_x", value.to_string ());
+        if (key_file.has_key (GROUP_TIMER, "long_break_duration")) {
+            settings.long_break_duration =
+                key_file.get_integer (GROUP_TIMER, "long_break_duration");
         }
-    }
-    public int win_y {
-        get {
-            var y = get_value (GROUP_UI, "win_y", "-1");
-            return int.parse (y);
+        if (key_file.has_key (GROUP_TIMER, "reminder_time")) {
+            settings.reminder_time =
+                key_file.get_integer (GROUP_TIMER, "reminder_time");
         }
-        set {
-            set_value (GROUP_UI, "win_y", value.to_string ());
+        if (key_file.has_key (GROUP_TIMER, "pomodoro_period")) {
+            settings.pomodoro_period =
+                key_file.get_integer (GROUP_TIMER, "pomodoro_period");
         }
-    }
-    public int win_width {
-        get {
-            var width = get_value (GROUP_UI, "win_width", "350");
-            return int.parse (width);
+        if (key_file.has_key (GROUP_TIMER, "resume_tasks_after_break")) {
+            settings.resume_tasks_after_break =
+                key_file.get_boolean (GROUP_TIMER, "resume_tasks_after_break");
         }
-        set {
-            set_value (GROUP_UI, "win_width", value.to_string ());
+        if (key_file.has_key (GROUP_TIMER, "reset_timer_on_task_switch")) {
+            settings.reset_timer_on_task_switch =
+                key_file.get_boolean (GROUP_TIMER, "reset_timer_on_task_switch");
         }
-    }
-    public int win_height {
-        get {
-            var height = get_value (GROUP_UI, "win_height", "650");
-            return int.parse (height);
-        }
-        set {
-            set_value (GROUP_UI, "win_height", value.to_string ());
-        }
-    }
-    public bool use_header_bar {
-        get {
-            var use_header_bar = get_value (
-                GROUP_UI, "use_header_bar", header_bar_default ()
-            );
-            return bool.parse (use_header_bar);
-        }
-        set {
-            set_value (GROUP_UI, "use_header_bar", value.to_string ());
-            use_header_bar_changed ();
-        }
-    }
-    public bool use_dark_theme {
-        get {
-            return get_bool (GROUP_UI, "use_dark_theme", false);
-        }
-        set {
-            set_bool (GROUP_UI, "use_dark_theme", value);
-            use_dark_theme_changed (value);
-        }
-    }
-    public Theme theme {
-        get {
-            var theme_str = get_value (
-                GROUP_UI, "theme", DEFAULT_THEME
-            );
-            var theme_val = Theme.from_string (theme_str);
-
-            if (theme_val != Theme.INVALID) {
-                return theme_val;
+        if (key_file.has_key (GROUP_TIMER, "timer_mode")) {
+            var timer_mode = TimerMode.from_string (key_file.get_value (GROUP_TIMER, "timer_mode"));
+            if (timer_mode == TimerMode.CUSTOM && key_file.has_key (GROUP_TIMER, "schedule")) {
+                var schedule = new Schedule ();
+                var durations = key_file.get_integer_list (GROUP_TIMER, "schedule");
+                if (durations.length >= 2) {
+                    schedule.import_raw (durations);
+                    return;
+                }
             }
-            warning ("Unknown theme setting: %s", theme_str);
-            return Theme.from_string (DEFAULT_THEME);
-        }
-        set {
-            set_value (GROUP_UI, "theme", value.to_string ());
-            theme_changed (value);
+            settings.timer_mode = timer_mode;
+        } else {
+            settings.timer_mode = TimerMode.SIMPLE;
         }
     }
-    public Gtk.IconSize toolbar_icon_size {
-        owned get {
-            var icon_size = get_value (
-                GROUP_UI, "icon_size", "large"
-            );
-            switch (icon_size) {
-                case "small":
-                    return Gtk.IconSize.SMALL_TOOLBAR;
-                case "large":
-                    return Gtk.IconSize.LARGE_TOOLBAR;
-                default:
-                    warning ("Unknown toolbar icon size");
-                    return Gtk.IconSize.LARGE_TOOLBAR;
-            }
+
+    private void import_ui_settings () throws GLib.KeyFileError {
+        if (!key_file.has_group (GROUP_UI)) {
+            return;
         }
-        set {
-            string size_str;
-            if (value == Gtk.IconSize.SMALL_TOOLBAR) {
-                size_str = "small";
+
+        if (key_file.has_key (GROUP_UI, "use_header_bar")) {
+            if (key_file.get_boolean (GROUP_UI, "use_header_bar")) {
+                settings.prefers_header_bar = OverrideBool.TRUE;
             } else {
-                size_str = "large";
-            }
-            set_value (GROUP_UI, "icon_size", size_str);
-            toolbar_icon_size_changed (value);
-        }
-    }
-    public bool switcher_use_icons {
-        get {
-            var label_type = get_value (
-                GROUP_UI, "switcher_label_type", "icons"
-            );
-            switch (label_type) {
-                case "icons":
-                    return true;
-                case "text":
-                    return false;
-                default:
-                    warning ("Unknown switcher setting: %s, expected icons/text", label_type);
-                    return true;
+                settings.prefers_header_bar = OverrideBool.FALSE;
             }
         }
-        set {
-            set_value (GROUP_UI, "switcher_label_type", value ? "icons" : "text");
-            switcher_use_icons_changed (value);
+        if (key_file.has_key (GROUP_UI, "use_dark_theme")) {
+            if (key_file.get_boolean (GROUP_UI, "use_dark_theme")) {
+                settings.color_scheme = ColorScheme.DARK;
+            } else {
+                settings.color_scheme = ColorScheme.LIGHT;
+            }
         }
+        if (key_file.has_key (GROUP_UI, "switcher_label_type")) {
+            settings.switcher_use_icons =
+                key_file.get_value (GROUP_UI, "switcher_label_type") != "text";
+        }
+        if (key_file.has_key (GROUP_UI, "theme")) {
+            settings.theme =
+                Theme.from_string (key_file.get_value (GROUP_UI, "theme"));
+        }
+        if (key_file.has_key (GROUP_UI, "toolbar_icon_size")) {
+            settings.use_small_toolbar_icons =
+                key_file.get_value (GROUP_UI, "toolbar_icon_size") == "small";
+        }
+
+        int x, y, width, height;
+        width = key_file.get_integer (GROUP_UI, "win_width");
+        height = key_file.get_integer (GROUP_UI, "win_height");
+
+        settings.set_window_size (width, height);
+
+        x = key_file.get_integer (GROUP_UI, "win_x");
+        y = key_file.get_integer (GROUP_UI, "win_y");
+
+        settings.set_window_position (x, y);
     }
-    /*---GROUP:LISTS----------------------------------------------------------*/
-    public List<ListIdentifier?> lists {
-        owned get {
+
+    private void import_list_settings () throws GLib.KeyFileError {
+        if (!key_file.has_group (GROUP_LISTS)) {
+            return;
+        }
+
+        if (key_file.has_key (GROUP_LISTS, "lists")) {
             List<ListIdentifier?> identifiers = new List<ListIdentifier?> ();
-            var strs = get_string_list (GROUP_LISTS, "lists", {});
+            var strs = key_file.get_string_list (GROUP_LISTS, "lists");
 
             foreach (string id_str in strs) {
                 var identifier = ListIdentifier.from_string (id_str);
@@ -384,234 +534,113 @@ private class GOFI.SettingsManager {
                     warning ("Can't decode list information! (%s)", id_str);
                 }
             }
-            return identifiers;
+            settings.lists = identifiers;
         }
-        set {
-            string[] _lists = {};
-            foreach (unowned ListIdentifier identifier in value) {
-                _lists += identifier.to_string ();
-            }
 
-            set_string_list (GROUP_LISTS, "lists", _lists);
-        }
-    }
-    public ListIdentifier? list_last_loaded {
-        owned get {
-            var encoded_id = get_value (GROUP_LISTS, "last", "");
-            if (encoded_id != "") {
-                return ListIdentifier.from_string (encoded_id);
-            }
-            return null;
-        }
-        set {
-            if (value == null) {
-                set_value (GROUP_LISTS, "last", "");
-            } else {
-                set_value (GROUP_LISTS, "last", value.to_string ());
+        if (key_file.has_key (GROUP_LISTS, "last")) {
+            var encoded_id = key_file.get_value (GROUP_LISTS, "last");
+            ListIdentifier list_identifier = null;
+            if (encoded_id != "" && (list_identifier = ListIdentifier.from_string (encoded_id)) != null) {
+                settings.list_last_loaded = list_identifier;
             }
         }
     }
 
-    /* Signals */
-    public signal void todo_txt_location_changed ();
-    public signal void timer_duration_changed ();
-    public signal void theme_changed (Theme theme);
-    public signal void use_dark_theme_changed (bool use_dark);
-    public signal void use_header_bar_changed ();
-    public signal void toolbar_icon_size_changed (Gtk.IconSize size);
-    public signal void switcher_use_icons_changed (bool use_icons);
+    private void import_behavior_settings () throws GLib.KeyFileError {
+        if (!key_file.has_group (GROUP_BEHAVIOR)) {
+            return;
+        }
 
-    /**
-     * Constructs a SettingsManager object from a configuration file.
-     * Reads the corresponding file and creates it, if necessary.
-     */
-    public SettingsManager.load_from_key_file () {
+        if (key_file.has_key (GROUP_BEHAVIOR, "new_tasks_on_top")) {
+            settings.new_tasks_on_top = key_file.get_boolean (GROUP_BEHAVIOR, "new_tasks_on_top");
+        }
+    }
+
+    public bool import_settings () {
         // Instantiate the key_file object
         key_file = new KeyFile ();
 
-        if (!FileUtils.test (GOFI.Utils.config_file, FileTest.EXISTS)) {
-            int dir_exists = DirUtils.create_with_parents (
-                GOFI.Utils.config_dir, 0775
-            );
-            if (dir_exists != 0) {
-                error (_("Couldn't create folder: %s"), GOFI.Utils.config_dir);
-            }
-            if (!import_from_old_path ()) {
-                stdout.printf ("old file not imported\n");
-                first_start = true;
-            }
-        } else {
+        if (FileUtils.test (GOFI.Utils.config_file, FileTest.EXISTS)) {
             // If it does exist, read existing values
             try {
                 key_file.load_from_file (GOFI.Utils.config_file,
                    KeyFileFlags.KEEP_COMMENTS | KeyFileFlags.KEEP_TRANSLATIONS);
             } catch (Error e) {
                 stderr.printf ("Reading %s failed", GOFI.Utils.config_file);
-                error ("%s", e.message);
+                warning ("%s", e.message);
+                return false;
             }
-        }
-    }
-
-    private string header_bar_default () {
-        if (GOFI.Utils.desktop_hb_status.use_feature (true)) {
-            return "true";
-        }
-        return "false";
-    }
-
-    /**
-     * Provides read access to a setting, given a certain group and key.
-     * Public access is granted via the SettingsManager's attributes, so this
-     * function has been declared private
-     */
-    private string get_value (string group, string key, string def = "") {
-        try {
-            // use key_file, if it has been assigned
-            if (key_file != null) {
-                return key_file.get_value (group, key);
-            } else {
-                return def;
-            }
-        } catch (KeyFileError.GROUP_NOT_FOUND e) {
-            return def;
-        } catch (KeyFileError.KEY_NOT_FOUND e) {
-            return def;
-        } catch (Error e) {
-            warning ("An error occured while reading the setting"
-                +" %s.%s: %s", group, key, e.message);
-            return def;
-        }
-    }
-
-    private bool get_bool (string group, string key, bool def = false) {
-        var val = get_value (group, key);
-        if (val == "") {
-            return def;
-        }
-        return bool.parse (val);
-    }
-
-    /**
-     * Provides write access to a setting, given a certain group key and value.
-     * Public access is granted via the SettingsManager's attributes, so this
-     * function has been declared private
-     */
-    private void set_value (string group, string key, string value) {
-        if (key_file != null) {
-            try {
-                key_file.set_value (group, key, value);
-                write_key_file ();
-            } catch (Error e) {
-                error ("An error occured while writing the setting"
-                    +" %s.%s to %s: %s", group, key, value, e.message);
-            }
-        }
-    }
-
-    private void set_bool (string group, string key, bool value) {
-        set_value (group, key, value.to_string ());
-    }
-
-    private string[] get_string_list (string group, string key, string[] def = {}) {
-        try {
-            // use key_file, if it has been assigned
-            if (key_file != null) {
-                return key_file.get_string_list (group, key);
-            } else {
-                return def;
-            }
-        } catch (KeyFileError.GROUP_NOT_FOUND e) {
-            return def;
-        } catch (KeyFileError.KEY_NOT_FOUND e) {
-            return def;
-        } catch (Error e) {
-            warning ("An error occured while reading the setting"
-                +" %s.%s: %s", group, key, e.message);
-            return def;
-        }
-    }
-
-    private void set_string_list (string group, string key, string[] string_list) {
-        if (key_file != null) {
-            try {
-                key_file.set_string_list (group, key, string_list);
-                write_key_file ();
-            } catch (Error e) {
-                error (
-                    "An error occured while writing the setting" +
-                    " %s.%s to {%s}: %s",
-                     group, key, string.joinv (", ", string_list), e.message
-                );
-            }
-        }
-    }
-
-    /**
-     * Function made for compability with older versions of GLib.
-     */
-    private void write_key_file () throws Error {
-        GLib.FileUtils.set_contents (GOFI.Utils.config_file, key_file.to_data ());
-    }
-
-    /**
-     * Try to read the configuration from a keyfile from an older version.
-     */
-    private bool import_from_old_path () {
-        if (!FileUtils.test (GOFI.Utils.old_config_file, FileTest.EXISTS)) {
-            return false;
-        }
-
-        // Instantiate the key_file object
-        var old_file = new KeyFile ();
-
-        try {
-            old_file.load_from_file (GOFI.Utils.old_config_file,
-               KeyFileFlags.KEEP_COMMENTS | KeyFileFlags.KEEP_TRANSLATIONS);
-        } catch (Error e) {
-            stderr.printf ("Reading %s failed", GOFI.Utils.old_config_file);
-            warning ("%s", e.message);
+        } else {
             return false;
         }
 
         try {
-            import_group (
-                old_file, GROUP_TODO_TXT,
-                {"location"}
-            );
-            import_group (
-                old_file, GROUP_TIMER,
-                {"task_duration", "break_duration", "reminder_time"}
-            );
-            import_group (
-                old_file, GROUP_UI,
-                {"win_x", "win_y", "win_width", "win_height", "use_dark_theme"}
-            );
-       } catch (KeyFileError e) {
-            warning (
-                _("Couldn't properly import settings from %s: %s"),
-                GOFI.Utils.old_config_file, e.message
-            );
-            return false;
+            import_list_settings ();
+            import_timer_settings ();
+            import_ui_settings ();
+            import_behavior_settings ();
+        } catch (Error e) {
+            warning ("An error occured while importing the settings from"
+                +" %s: %s", GOFI.Utils.config_file, e.message);
         }
         return true;
     }
+}
 
-    private void import_group (KeyFile old_file, string group, string[] keys) throws KeyFileError {
-        if (!old_file.has_group (group)) {
-            return;
+private enum GOFI.OverrideBool {
+    DEFAULT = 0,
+    FALSE = 1,
+    TRUE = 2;
+}
+
+private enum GOFI.ColorScheme {
+    DEFAULT = 0,
+    LIGHT = 1,
+    DARK = 2;
+
+    public const string STR_DEFAULT = "default";
+    public const string STR_DARK = "dark";
+    public const string STR_LIGHT = "light";
+
+    public string get_description () {
+        switch (this) {
+            case LIGHT:
+                return _("Light");
+            case DARK:
+                return _("Dark");
+            default:
+                return _("Default");
         }
-        foreach (string key in keys) {
-            if (old_file.has_key (group, key)) {
-                key_file.set_value (group, key, old_file.get_value (group, key));
-            }
+    }
+
+    public static ColorScheme from_string (string str) {
+        switch (str) {
+            case STR_LIGHT: return LIGHT;
+            case STR_DARK: return DARK;
+            default: return DEFAULT;
         }
+    }
+
+    public string to_string () {
+        switch (this) {
+            case LIGHT:
+                return STR_LIGHT;
+            case DARK:
+                return STR_DARK;
+            default:
+                return STR_DEFAULT;
+        }
+    }
+
+    public static ColorScheme[] all () {
+        return {DEFAULT, LIGHT, DARK};
     }
 }
 
 private enum GOFI.TimerMode {
-    SIMPLE,
-    POMODORO,
-    CUSTOM;
+    SIMPLE = 0,
+    POMODORO = 1,
+    CUSTOM = 2;
 
     public const string STR_SIMPLE = "simple";
     public const string STR_POMODORO = "pomodoro";

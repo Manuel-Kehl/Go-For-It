@@ -29,17 +29,14 @@ class GOFI.ListManager : Object, DragListModel {
      * Constructor of the ListManager class
      */
     public ListManager () {
-        string txt_config_file = GOFI.Utils.get_module_config_dir ("Todo.txt");
-
-        txt_manager = new TxtListManager (txt_config_file);
-        todolist_infos = new SequentialList (typeof (TodoListInfo));
-
-        if (txt_manager.first_run) {
-            var old_txt_path = settings.todo_txt_location;
-            if (old_txt_path != "") {
-                txt_manager.add_new ("Todo.txt", old_txt_path);
-            }
+        if (settings.performed_migration) {
+            string txt_config_file = GOFI.Utils.get_module_config_dir ("Todo.txt");
+            txt_manager = new TxtListManager (txt_config_file);
+        } else {
+            txt_manager = new TxtListManager (null);
         }
+
+        todolist_infos = new SequentialList (typeof (TodoListInfo));
 
         populate_items ();
 

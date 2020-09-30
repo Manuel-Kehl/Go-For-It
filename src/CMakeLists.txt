@@ -1,5 +1,6 @@
 # Create Constants.vala
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/Constants.vala.cmake ${CMAKE_CURRENT_SOURCE_DIR}/Constants.vala)
+configure_file (${CMAKE_CURRENT_SOURCE_DIR}/go-for-it.pc.in ${CMAKE_CURRENT_BINARY_DIR}/${LIBNAME}.pc)
 
 if (${NO_CONTRIBUTE_DIALOG})
     set (VALAC_OPTIONS ${VALAC_OPTIONS} -D NO_CONTRIBUTE_DIALOG)
@@ -8,12 +9,31 @@ if (${SHOW_ABOUT})
     set (VALAC_OPTIONS ${VALAC_OPTIONS} -D SHOW_ABOUT)
 endif ()
 
+add_definitions(-DG_LOG_DOMAIN="${LIBNAME}")
+
 # checking if have a recent version of Gtk+-3.0
 pkg_check_modules( GTK3 gtk+-3.0 )
 if (${GTK3_VERSION} VERSION_GREATER 3.21)
     set (VALAC_OPTIONS ${VALAC_OPTIONS} -D HAS_GTK322)
 else ()
     message ("-- No recent Gtk+-3.0 found... Using pre 3.22 features.")
+endif ()
+
+set (VALA_PACKAGES
+    gtk+-3.0
+    libnotify
+    libpeas-1.0
+    libpeas-gtk-1.0)
+
+if (USE_GRANITE)
+    set (VALAC_OPTIONS ${VALAC_OPTIONS} -D USE_GRANITE)
+    set (VALA_PACKAGES ${VALA_PACKAGES} granite)
+endif ()
+
+if (ENABLE_PLUGINS)
+    set (VALA_PACKAGES ${VALA_PACKAGES} libpeas-1.0 libpeas-gtk-1.0)
+else ()
+    set (VALAC_OPTIONS ${VALAC_OPTIONS} -D NO_PLUGINS)
 endif ()
 
 # files we want to compile
@@ -28,7 +48,9 @@ vala_precompile (VALA_C ${LIBNAME}
     TaskList.vala
     SequentialList.vala
     Theme.vala
+    PluginInterface.vala
     Services/SettingsManager.vala
+    Services/PluginManager.vala
     Services/ListManager.vala
     Services/FileWatcher.vala
     Services/TaskTimer.vala
@@ -43,6 +65,7 @@ vala_precompile (VALA_C ${LIBNAME}
     Widgets/TimerView.vala
     Pages/TaskListPage.vala
     Pages/SelectionPage.vala
+    Dialogs/FileConflictDialog.vala
     Dialogs/DialogUtils.vala
     Dialogs/SettingsDialog.vala
     Dialogs/SettingsPages/AppearancePage.vala
@@ -70,8 +93,7 @@ vala_precompile (VALA_C ${LIBNAME}
 
 # tell what libraries to use when compiling
 PACKAGES
-    gtk+-3.0
-    libnotify
+    ${VALA_PACKAGES}
 OPTIONS
     ${VALAC_OPTIONS}
 GENERATE_VAPI
@@ -90,8 +112,19 @@ link_directories (${LIB_PATHS})
 
 set (LIB_FILES ${C_SOURCES} ${VALA_C})
 
-add_library (${LIBNAME} STATIC
+add_library (${LIBNAME} SHARED
     ${LIB_FILES}
 )
 
+set_target_properties (${LIBNAME} PROPERTIES
+    VERSION ${LIBVERSION}.0
+    SOVERSION ${SOVERSION})
+
 target_link_libraries (${LIBNAME} ${LIBS})
+
+install (TARGETS ${LIBNAME} DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
+
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIBNAME}.pc DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIBNAME}.h DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR}/${PACKAGE_NAME}/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIBNAME}.vapi DESTINATION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/vala/vapi/)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/go-for-it.deps DESTINATION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/vala/vapi/${LIBNAME}.deps)

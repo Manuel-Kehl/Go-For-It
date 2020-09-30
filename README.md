@@ -92,12 +92,13 @@ The user interface is inspired by the design philosophy of [elementary OS](http:
 ### How To Build
 To build *Go For It!* you need to have the following software installed:
 
-    valac >= 0.26
+    valac >= 0.36
     cmake >= 2.8.9
     intltool
-    gtk+-3.0 (>= 3.14)
-    glib-2.0
-    libnotify
+    gtk+-3.0 (libgtk-3-0, libgtk-3-dev) (>= 3.14)
+    glib-2.0 (libglib2.0-0, libglib2.0-dev)
+    libnotify (libnotify-dev)
+    libpeas (libpeas-1.0-0, libpeas-dev)
 
 Use the following commands in this order to build *Go For It!*:
 

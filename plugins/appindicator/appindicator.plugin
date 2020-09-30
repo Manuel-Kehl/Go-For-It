@@ -1,0 +1,6 @@
+[Plugin]
+Module=appindicator
+Loader=C
+Name=Panel indicator
+Description=Ayatana appindicator plugin for Go For It!
+Authors=JMoerman

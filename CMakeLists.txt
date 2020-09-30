@@ -14,6 +14,7 @@ set (APP_SYSTEM_NAME ${APP_ID} CACHE STRING "Name to used for file names. For ex
 set (SCHEMA_PATH "/com/github/jmoerman/go-for-it" CACHE STRING "The gsettings schema path.")
 
 set (PKGDATADIR ${DATADIR}/${APP_SYSTEM_NAME})
+set (PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/${APP_SYSTEM_NAME}/plugins")
 set (FILE_CONF ${PROJECT_NAME}.conf)
 
 set (EXEC_NAME ${APP_SYSTEM_NAME})
@@ -43,11 +44,50 @@ set (DOLLAR "$")
 # find pkgconfig to make sure dependencies are installed
 find_package (PkgConfig)
 # check for the required dependencies
-pkg_check_modules (DEPS REQUIRED
+pkg_check_modules (CORE_DEPS REQUIRED
     gtk+-3.0>=3.14.0
     glib-2.0>=2.40
     libnotify
 )
+
+set (DEPS_CFLAGS ${CORE_DEPS_CFLAGS})
+set (DEPS_LIBRARY_DIRS ${CORE_DEPS_LIBRARY_DIRS})
+set (DEPS_LIBRARIES ${CORE_DEPS_LIBRARIES})
+
+option (USE_GRANITE "Build against granite" OFF)
+if (USE_GRANITE)
+    pkg_check_modules (GRANITE granite)
+    if (${GRANITE_VERSION} VERSION_GREATER 5.4)
+        set (DEPS_CFLAGS ${DEPS_CFLAGS} ${GRANITE_CFLAGS})
+        set (DEPS_LIBRARY_DIRS ${DEPS_LIBRARY_DIRS} ${GRANITE_LIBRARY_DIRS})
+        set (DEPS_LIBRARIES ${DEPS_LIBRARIES} ${GRANITE_LIBRARIES})
+        message ("-- building against granite")
+    else ()
+        message ("-- Granite is missing or too old, using plain Gtk+ 3.0!")
+        set (USE_GRANITE OFF CACHE BOOL "" FORCE)
+    endif ()
+else ()
+    message ("-- Not using granite")
+endif ()
+
+option (ENABLE_PLUGINS "Compile with plugin support" ON)
+if (ENABLE_PLUGINS)
+    pkg_check_modules (PEAS 
+        libpeas-1.0
+        libpeas-gtk-1.0
+    )
+    if (PEAS_FOUND)
+        set (DEPS_CFLAGS ${DEPS_CFLAGS} ${PEAS_CFLAGS})
+        set (DEPS_LIBRARY_DIRS ${DEPS_LIBRARY_DIRS} ${PEAS_LIBRARY_DIRS})
+        set (DEPS_LIBRARIES ${DEPS_LIBRARIES} ${PEAS_LIBRARIES})
+        message ("-- plugin support is enabled")
+    else ()
+        message ("-- libpeas is missing, disabling plugin support")
+        set (ENABLE_PLUGINS OFF CACHE BOOL "" FORCE)
+    endif ()
+else ()
+    message ("-- plugin support is disabled")
+endif ()
 
 add_definitions(${DEPS_CFLAGS})
 link_directories(${DEPS_LIBRARY_DIRS})
@@ -58,8 +98,8 @@ if (NOT INTLTOOL_MERGE_EXECUTABLE)
     message ( FATAL_ERROR "Couldn't find the intltool-merge executable. Please make sure intltool is installed and try again")
 endif ()
 
-# disable c compiler warnings
-add_definitions (-w)
+# disable some c compiler warnings
+add_definitions (-Wno-incompatible-pointer-types -Wno-discarded-qualifiers -Werror=implicit-function-declaration)
 add_definitions (-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
 
 # make sure we have vala
@@ -79,6 +119,9 @@ option (SHOW_ABOUT "Show the about action in the .desktop and menu." ON)
 
 add_subdirectory (src)
 add_subdirectory (executable)
+if (ENABLE_PLUGINS)
+add_subdirectory (plugins)
+endif (ENABLE_PLUGINS)
 if (BUILD_TESTS)
     add_subdirectory (tests)
 endif (BUILD_TESTS)
