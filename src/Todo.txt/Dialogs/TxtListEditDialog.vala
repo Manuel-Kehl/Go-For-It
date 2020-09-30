@@ -78,15 +78,15 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             this.lsettings = new ListSettings.empty ();
             this.lsettings.log_timer_in_txt = true;
             this.title = _("New to-do list");
-            this.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
-            this.add_button (_("Add list"), Gtk.ResponseType.ACCEPT);
+            this.add_button (_("_Cancel"), Gtk.ResponseType.CANCEL);
+            this.add_button (_("_Add list"), Gtk.ResponseType.ACCEPT);
             old_todo_uri = null;
             old_done_uri = null;
         } else {
             this.lsettings = lsettings;
             this.title = _("Edit to-do list properties");
-            this.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
-            this.add_button (_("Apply"), Gtk.ResponseType.ACCEPT);
+            this.add_button (_("_Cancel"), Gtk.ResponseType.CANCEL);
+            this.add_button (_("_Apply"), Gtk.ResponseType.ACCEPT);
             this.old_todo_uri = lsettings.todo_uri;
             this.old_done_uri = lsettings.done_uri;
         }
@@ -258,10 +258,19 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     }
 
     private void on_todo_btn_clicked () {
+        var dialog_title = _("Select file to store to-do tasks in");
+#if HAS_GTK322
         var todo_uri_chooser = new Gtk.FileChooserNative (
-            _("Select file to store to-do tasks in"), this,
-            Gtk.FileChooserAction.SAVE, _("select"), null
+            dialog_title, this, Gtk.FileChooserAction.SAVE,
+            _("_Select"), null
         );
+#else
+        var todo_uri_chooser = new Gtk.FileChooserDialog (
+            dialog_title, this, Gtk.FileChooserAction.SAVE,
+            _("_Cancel"), Gtk.ResponseType.CANCEL,
+            _("_Select"), Gtk.ResponseType.ACCEPT
+        );
+#endif
         todo_uri_chooser.select_multiple = false;
         todo_uri_chooser.do_overwrite_confirmation = false;
 
@@ -279,10 +288,19 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     }
 
     private void on_done_btn_clicked () {
+        var dialog_title = _("Select file to store completed tasks in");
+#if HAS_GTK322
         var done_uri_chooser = new Gtk.FileChooserNative (
-            _("Select file to store completed tasks in"), this,
-            Gtk.FileChooserAction.SAVE, _("select"), null
+            dialog_title, this, Gtk.FileChooserAction.SAVE,
+            _("_Select"), null
         );
+#else
+        var done_uri_chooser = new Gtk.FileChooserDialog (
+            dialog_title, this, Gtk.FileChooserAction.SAVE,
+            _("_Cancel"), Gtk.ResponseType.CANCEL,
+            _("_Select"), Gtk.ResponseType.ACCEPT
+        );
+#endif
         done_uri_chooser.select_multiple = false;
         done_uri_chooser.do_overwrite_confirmation = false;
 
