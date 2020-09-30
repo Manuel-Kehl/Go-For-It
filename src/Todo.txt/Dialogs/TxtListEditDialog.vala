@@ -33,7 +33,6 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
 
     private Gtk.Switch timer_default_switch;
     private Gtk.SpinButton reminder_spin;
-    private Gtk.Label timer_sect_lbl;
     private Gtk.Label reminder_lbl1;
     private Gtk.Label reminder_lbl2;
     private Gtk.Label timer_default_lbl;
@@ -137,6 +136,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         stack_switcher.halign = Gtk.Align.CENTER;
 
         var txt_page = DialogUtils.create_page_grid ();
+        txt_page.halign = Gtk.Align.START;
         var timer_page = DialogUtils.create_page_grid ();
 
         settings_stack.add_titled (txt_page, "txt_page", _("General"));
@@ -194,6 +194,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         todo_uri_file_lbl = new Gtk.Label (choose_file_text);
         todo_uri_file_lbl.ellipsize = Pango.EllipsizeMode.START;
         todo_uri_file_lbl.hexpand = true;
+        todo_uri_file_lbl.halign = Gtk.Align.START;
         todo_uri_btn = new Gtk.Button.from_icon_name ("document-open-symbolic");
 
         todo_uri_lbl = new Gtk.Label (todo_uri_text);
@@ -205,6 +206,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         done_uri_file_lbl = new Gtk.Label (choose_file_text);
         done_uri_file_lbl.ellipsize = Pango.EllipsizeMode.START;
         done_uri_file_lbl.hexpand = true;
+        done_uri_file_lbl.halign = Gtk.Align.START;
         done_uri_btn = new Gtk.Button.from_icon_name ("document-open-symbolic");
 
         done_uri_lbl = new Gtk.Label (done_uri_text);
@@ -248,10 +250,10 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         });
 
         add_option (grid, name_lbl, name_entry, ref row);
+
         add_section (grid, txt_sect_lbl, ref row);
         add_option (grid, todo_uri_lbl, todo_uri_box, ref row);
         add_option (grid, done_uri_lbl, done_uri_box, ref row);
-
         add_option (grid, log_timer_lbl, log_timer_switch, ref row, 1, log_timer_expl_widget);
     }
 
@@ -327,7 +329,6 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
 
     private void setup_timer_settings_widgets (Gtk.Grid grid, ref int row) {
         /* Instantiation */
-        timer_sect_lbl = new Gtk.Label (_("Timer"));
         timer_default_lbl = new Gtk.Label (_("Use default settings") + (":"));
         reminder_lbl1 = new Gtk.Label (_("Reminder before task ends") +":");
         reminder_lbl2 = new Gtk.Label (_("seconds"));
@@ -362,13 +363,12 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         });
 
         /* Add widgets */
-        add_section (grid, timer_sect_lbl, ref row);
-        add_option (grid, timer_default_lbl, timer_default_switch, ref row);
+        add_option (grid, timer_default_lbl, timer_default_switch, ref row, 0);
 
         // reminder_lbl* and reminder_spin are not added to a Gtk.Revealer as
         // this messes up the horizontal allignment. During testing it somehow
         // also caused an increase in the required minimum width of the dialog.
-        add_option (grid, reminder_lbl1, reminder_spin, ref row, 1, reminder_lbl2);
+        add_option (grid, reminder_lbl1, reminder_spin, ref row, 0, reminder_lbl2);
 
         grid.attach (sched_widget, 0, row, 3, 1);
         row++;

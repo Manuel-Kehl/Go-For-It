@@ -10,8 +10,7 @@ namespace GOFI.DialogUtils {
     public static void add_option (Gtk.Grid grid, Gtk.Widget label,
                             Gtk.Widget switcher, ref int row, int indent=1, Gtk.Widget? label2 = null)
     {
-        label.hexpand = true;
-        label.margin_start = indent * 20; // indentation relative to the section label
+        label.margin_start = indent * 12; // indentation relative to the section label
         label.halign = Gtk.Align.END;
 
         grid.attach (label, 0, row, 1, 1);
