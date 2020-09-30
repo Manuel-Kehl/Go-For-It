@@ -5,8 +5,8 @@ msgstr ""
 "POT-Creation-Date: 2020-09-30 17:53+0200\n"
 "PO-Revision-Date: 2020-09-30 18:02+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/go-for-it/"
-"go-for-it/tr/>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/go-for-it/go-for-"
+"it/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -573,9 +573,15 @@ msgstr ""
 "bir konuma işaret ediyor. Lütfen ayarlardaki yolu uygun bir dizinle "
 "değiştirin veya bu dosyayı kaldırın."
 
-#: ../src/Todo.txt/TxtList.vala:171
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr "Tamamlananlar Listesini Temizle"
+
+#: ../src/Todo.txt/TxtList.vala:179
+#, fuzzy
+#| msgid "Store to-do tasks in"
+msgid "Sort tasks"
+msgstr "Yapılacak görevleri şurada depola"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"

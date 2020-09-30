@@ -563,9 +563,15 @@ msgstr ""
 "hoặc vị trí có thể gắn kết. Vui lòng thay đổi đường dẫn trong cài đặt thành "
 "một thư mục phù hợp hoặc xóa tệp này."
 
-#: ../src/Todo.txt/TxtList.vala:171
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr "Xóa danh sách đã hoàn thành"
+
+#: ../src/Todo.txt/TxtList.vala:179
+#, fuzzy
+#| msgid "Filter tasks"
+msgid "Sort tasks"
+msgstr "Lọc nhiệm vụ"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"

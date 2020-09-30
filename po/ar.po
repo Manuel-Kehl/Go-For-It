@@ -557,9 +557,15 @@ msgid ""
 "folder or remove this file."
 msgstr ""
 
-#: ../src/Todo.txt/TxtList.vala:171
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr ""
+
+#: ../src/Todo.txt/TxtList.vala:179
+#, fuzzy
+#| msgid "Filter tasks"
+msgid "Sort tasks"
+msgstr "تصفية المهام"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"

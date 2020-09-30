@@ -564,9 +564,15 @@ msgstr ""
 "リ以外へのパスになっています。適切なディレクトリへのパスに変更するか、ファイ"
 "ルを削除してください。"
 
-#: ../src/Todo.txt/TxtList.vala:171
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr "完了リストを消去"
+
+#: ../src/Todo.txt/TxtList.vala:179
+#, fuzzy
+#| msgid "Filter tasks"
+msgid "Sort tasks"
+msgstr "タスクにフィルターを適用"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"

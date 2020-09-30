@@ -564,9 +564,15 @@ msgstr ""
 "monterbar plassering. Endre stien i innstillingene til en passende mappe, "
 "eller fjern denne filen."
 
-#: ../src/Todo.txt/TxtList.vala:171
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr "Tøm \"Ferdig\"-liste"
+
+#: ../src/Todo.txt/TxtList.vala:179
+#, fuzzy
+#| msgid "Filter tasks"
+msgid "Sort tasks"
+msgstr "Filtrer gjøremål"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
