@@ -136,6 +136,9 @@ class GOFI.TXT.TxtListManager {
     private void perform_file_operations (ConflictChoices? file_operations) {
         string move_err_msg = _("An error was encountered while moving a file!");
         string move_err_info_msg =  _("Error information: ");
+        if (file_operations == null) {
+            return;
+        }
         foreach (var to_move in file_operations.get_replace_choices ()) {
             try {
                 var src_file = File.new_for_uri (to_move.src_uri);
