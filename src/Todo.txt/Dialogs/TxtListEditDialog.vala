@@ -44,19 +44,25 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
 
     private Gtk.Label name_lbl;
     private Gtk.Entry name_entry;
-    private Gtk.Label todo_uri_lbl;
+
     private Gtk.Label done_uri_lbl;
-    private Gtk.FileChooserButton todo_uri_btn;
-    private Gtk.FileChooserButton done_uri_btn;
+    private Gtk.Label done_uri_file_lbl;
+    private Gtk.Button done_uri_btn;
+
+    private Gtk.Label todo_uri_lbl;
+    private Gtk.Label todo_uri_file_lbl;
+    private Gtk.Button todo_uri_btn;
+
+    private FileConflictDialogWrapper conflict_dialog_wrapper;
+
     private bool showing_name_error;
     private bool showing_todo_uri_error;
     private bool showing_done_uri_error;
 
-    private FileConflictDialogWrapper conflict_dialog_wrapper;
-
     private string todo_uri_text = _("Store to-do tasks in") + ":";
     private string done_uri_text = _("Store completed tasks in") + ":";
     private string name_lbl_text = _("List name") + ":";
+    private string choose_file_text = _("Choose a file");
 
     string todo_replace_info = _("Task list location has been changed to \"%s\" (was \"%s\"), but this file already exists.");
     string done_replace_info = _("Completed task file has been changed to \"%s\" (was \"%s\"), but this file already exists.");
@@ -130,13 +136,10 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         stack_switcher.stack = settings_stack;
         stack_switcher.halign = Gtk.Align.CENTER;
 
-        var txt_page = new  Gtk.Grid ();
-        var timer_page = new Gtk.Grid ();
+        var txt_page = DialogUtils.create_page_grid ();
+        var timer_page = DialogUtils.create_page_grid ();
 
-        apply_grid_spacing (txt_page);
-        apply_grid_spacing (timer_page);
-
-        settings_stack.add_titled (txt_page, "txt_page", "Todo.txt");
+        settings_stack.add_titled (txt_page, "txt_page", _("General"));
         settings_stack.add_titled (timer_page, "timer_page", _("Timer"));
 
         int row = 0;
@@ -180,41 +183,51 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private void setup_txt_settings_widgets (Gtk.Grid grid, ref int row) {
         /* Declaration */
         Gtk.Label txt_sect_lbl;
-        Gtk.Label log_timer_expl_lbl;
+        Gtk.Widget log_timer_expl_widget;
+        Gtk.Box todo_uri_box, done_uri_box;
 
         /* Instantiation */
         txt_sect_lbl = new Gtk.Label ("Todo.txt");
 
-        todo_uri_btn = new Gtk.FileChooserButton (
-            _("Select file to store to-do tasks in"), Gtk.FileChooserAction.OPEN
-        );
-        todo_uri_lbl = new Gtk.Label (todo_uri_text);
+        todo_uri_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3);
+        todo_uri_box.hexpand = true;
+        todo_uri_file_lbl = new Gtk.Label (choose_file_text);
+        todo_uri_file_lbl.ellipsize = Pango.EllipsizeMode.START;
+        todo_uri_file_lbl.hexpand = true;
+        todo_uri_btn = new Gtk.Button.from_icon_name ("document-open-symbolic");
 
-        done_uri_btn = new Gtk.FileChooserButton (
-            _("Select file to store completed tasks in"), Gtk.FileChooserAction.OPEN
-        );
+        todo_uri_lbl = new Gtk.Label (todo_uri_text);
+        todo_uri_box.add (todo_uri_file_lbl);
+        todo_uri_box.add (todo_uri_btn);
+
+        done_uri_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3);
+        done_uri_box.hexpand = true;
+        done_uri_file_lbl = new Gtk.Label (choose_file_text);
+        done_uri_file_lbl.ellipsize = Pango.EllipsizeMode.START;
+        done_uri_file_lbl.hexpand = true;
+        done_uri_btn = new Gtk.Button.from_icon_name ("document-open-symbolic");
+
         done_uri_lbl = new Gtk.Label (done_uri_text);
+        done_uri_box.add (done_uri_file_lbl);
+        done_uri_box.add (done_uri_btn);
 
         name_lbl = new Gtk.Label (name_lbl_text);
         name_entry = new Gtk.Entry ();
 
         log_timer_lbl = new Gtk.Label (_("Log the time spent working on each task") + ":");
-        log_timer_expl_lbl = new Gtk.Label (_("This information will be stored in the todo.txt files."));
-        log_timer_expl_lbl.wrap = true;
+        log_timer_expl_widget = DialogUtils.get_explanation_widget (_("This information will be stored in the todo.txt files."));
         log_timer_switch = new Gtk.Switch ();
 
         /* Configuration */
         todo_uri_lbl.set_line_wrap (false);
         todo_uri_lbl.set_use_markup (true);
-        todo_uri_btn.create_folders = true;
         if (old_todo_uri != null) {
-            todo_uri_btn.set_uri (old_todo_uri);
+            todo_uri_file_lbl.label = old_todo_uri;
         }
         done_uri_lbl.set_line_wrap (false);
         done_uri_lbl.set_use_markup (true);
-        done_uri_btn.create_folders = true;
         if (old_done_uri != null) {
-            done_uri_btn.set_uri (old_done_uri);
+            done_uri_file_lbl.label = old_done_uri;
         }
 
         name_lbl.use_markup = true;
@@ -227,28 +240,80 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         log_timer_switch.active = lsettings.log_timer_in_txt;
 
         /* Signal Handling */
-        todo_uri_btn.file_set.connect (on_todo_uri_changed);
-        done_uri_btn.file_set.connect (on_done_uri_changed);
+        todo_uri_btn.clicked.connect (on_todo_btn_clicked);
+        done_uri_btn.clicked.connect (on_done_btn_clicked);
         name_entry.notify["text"].connect (on_name_entry_update);
         log_timer_switch.notify["active"].connect (() => {
             lsettings.log_timer_in_txt = log_timer_switch.active;
         });
 
-        add_section (grid, txt_sect_lbl, ref row);
-        add_option (grid, todo_uri_lbl, todo_uri_btn, ref row);
-        add_option (grid, done_uri_lbl, done_uri_btn, ref row);
         add_option (grid, name_lbl, name_entry, ref row);
-        add_option (grid, log_timer_lbl, log_timer_switch, ref row);
-        add_explanation (grid, log_timer_expl_lbl, ref row);
+        add_section (grid, txt_sect_lbl, ref row);
+        add_option (grid, todo_uri_lbl, todo_uri_box, ref row);
+        add_option (grid, done_uri_lbl, done_uri_box, ref row);
+
+        add_option (grid, log_timer_lbl, log_timer_switch, ref row, 1, log_timer_expl_widget);
     }
 
-    private void on_todo_uri_changed () {
-        lsettings.todo_uri = todo_uri_btn.get_file ().get_uri ();
+    private void on_todo_btn_clicked () {
+        var todo_uri_chooser = new Gtk.FileChooserNative (
+            _("Select file to store to-do tasks in"), this,
+            Gtk.FileChooserAction.SAVE, _("select"), null
+        );
+        todo_uri_chooser.select_multiple = false;
+        todo_uri_chooser.do_overwrite_confirmation = false;
+
+        string todo_uri = lsettings.todo_uri;
+        if (todo_uri == null) {
+            todo_uri_chooser.set_current_name ("todo.txt");
+        } else {
+            todo_uri_chooser.set_uri (todo_uri);
+        }
+        int response_id = todo_uri_chooser.run ();
+        if (response_id == Gtk.ResponseType.OK || response_id == Gtk.ResponseType.ACCEPT) {
+            update_todo_uri (todo_uri_chooser.get_uri ());
+        }
+        todo_uri_chooser.destroy ();
+    }
+
+    private void on_done_btn_clicked () {
+        var done_uri_chooser = new Gtk.FileChooserNative (
+            _("Select file to store completed tasks in"), this,
+            Gtk.FileChooserAction.SAVE, _("select"), null
+        );
+        done_uri_chooser.select_multiple = false;
+        done_uri_chooser.do_overwrite_confirmation = false;
+
+        string done_uri = lsettings.todo_uri;
+        if (done_uri == null) {
+            done_uri_chooser.set_current_name ("done.txt");
+        } else {
+            done_uri_chooser.set_uri (done_uri);
+        }
+        int response_id = done_uri_chooser.run ();
+        if (response_id == Gtk.ResponseType.OK || response_id == Gtk.ResponseType.ACCEPT) {
+            update_done_uri (done_uri_chooser.get_uri ());
+        }
+        done_uri_chooser.destroy ();
+    }
+
+    private void update_todo_uri (string? uri) {
+        if (uri != null) {
+            todo_uri_file_lbl.label = uri;
+        } else {
+            todo_uri_file_lbl.label = choose_file_text;
+        }
+        lsettings.todo_uri = uri;
         set_add_sensitive ();
     }
 
-    private void on_done_uri_changed () {
-        lsettings.done_uri = done_uri_btn.get_file ().get_uri ();
+    private void update_done_uri (string? uri) {
+        if (uri != null) {
+            done_uri_file_lbl.label = uri;
+        } else {
+            done_uri_file_lbl.label = choose_file_text;
+        }
+        lsettings.done_uri = uri;
         set_add_sensitive ();
     }
 

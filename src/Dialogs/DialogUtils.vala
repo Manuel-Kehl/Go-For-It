@@ -1,5 +1,5 @@
 namespace GOFI.DialogUtils {
-    public void add_section (Gtk.Grid grid, Gtk.Label label, ref int row) {
+    public static void add_section (Gtk.Grid grid, Gtk.Label label, ref int row) {
         label.set_markup ("<b>%s</b>".printf (label.get_text ()));
         label.halign = Gtk.Align.START;
 
@@ -7,7 +7,7 @@ namespace GOFI.DialogUtils {
         row++;
     }
 
-    public void add_option (Gtk.Grid grid, Gtk.Widget label,
+    public static void add_option (Gtk.Grid grid, Gtk.Widget label,
                             Gtk.Widget switcher, ref int row, int indent=1, Gtk.Widget? label2 = null)
     {
         label.hexpand = true;
@@ -34,7 +34,7 @@ namespace GOFI.DialogUtils {
         row++;
     }
 
-    public void add_explanation (Gtk.Grid grid, Gtk.Label label, ref int row) {
+    public static void add_explanation (Gtk.Grid grid, Gtk.Label label, ref int row) {
         label.hexpand = true;
         label.margin_start = 20; // indentation relative to the section label
         label.halign = Gtk.Align.START;
@@ -43,14 +43,20 @@ namespace GOFI.DialogUtils {
         row++;
     }
 
-    public void apply_grid_spacing (Gtk.Grid grid) {
+    public static void apply_grid_spacing (Gtk.Grid grid) {
         grid.row_spacing = 6;
         grid.column_spacing = 10;
     }
 
-    public Gtk.Grid create_page_grid () {
+    public static Gtk.Grid create_page_grid () {
         var grid = new Gtk.Grid ();
         apply_grid_spacing (grid);
         return grid;
+    }
+
+    public static Gtk.Widget get_explanation_widget (string explanation) {
+        var image_widget = new Gtk.Image.from_icon_name ("dialog-information-symbolic", Gtk.IconSize.BUTTON);
+        image_widget.tooltip_text = explanation;
+        return image_widget;
     }
 }
