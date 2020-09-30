@@ -21,18 +21,18 @@
   <schema path="@SCHEMA_PATH@/saved-state/" id="@APP_ID@.saved-state">
     <key name="window-size" type="(ii)">
       <default>(280,320)</default>
-      <summary></summary>
-      <description></description>
+      <summary>Window size</summary>
+      <description>Most recent size of the window (width, height)</description>
     </key>
     <key name="window-position" type="(ii)">
       <default>(-1,-1)</default>
-      <summary></summary>
-      <description></description>
+      <summary>Window position</summary>
+      <description>Most recent position of the window (x, y)</description>
     </key>
     <key name="last-loaded-list" type="(ss)">
       <default>('','')</default>
       <summary></summary>
-      <description></description>
+      <description>To-do list that was most recently displayed (list type, list ID). If instead of a to-do list, the list overview was last shown, type and id are empty.</description>
     </key>
   </schema>
 
@@ -40,32 +40,32 @@
     <key name="task-duration" type="i">
       <range min="1" max="86340"/>
       <default>1500</default>
-      <summary>Duration of the timer when working on a task in seconds</summary>
-      <description></description>
+      <summary>Default task duration</summary>
+      <description>Duration of the timer when working on a task in seconds.</description>
     </key>
     <key name="break-duration" type="i">
       <range min="1" max="86340"/>
       <default>300</default>
-      <summary>Duration of a normal break in seconds</summary>
-      <description></description>
+      <summary>Break duration</summary>
+      <description>Duration of a normal break in seconds.</description>
     </key>
     <key name="long-break-duration" type="i">
       <range min="1" max="86340"/>
       <default>900</default>
-      <summary>Duration of a long break (for pomodoro timer) in seconds.</summary>
-      <description></description>
+      <summary>Duration of a long break</summary>
+      <description>Duration of a long break (for pomodoro timer) in seconds.</description>
     </key>
     <key name="pomodoro-period" type="i">
       <range min="2" max="100"/>
       <default>4</default>
       <summary></summary>
-      <description></description>
+      <description>This value determines when a long break should be scheduled. For value n (n-1) normal breaks are scheduled followed by a long break, after which the cycle repeats.</description>
     </key>
     <key name="reminder-time" type="i">
       <range min="0" max="600"/>
       <default>60</default>
       <summary></summary>
-      <description></description>
+      <description>When to show a reminder. Value is number of seconds from the end of the task duration.</description>
     </key>
     <key name="timer-mode" enum="@APP_ID@.timer-mode">
       <default>'simple'</default>
@@ -74,8 +74,8 @@
     </key>
     <key name="schedule" type="a(ii)">
       <default>[]</default>
-      <summary></summary>
-      <description></description>
+      <summary>Task/break duration schedule</summary>
+      <description>Task and break duration schedule given as list of (task duration, break duration) pears, both in seconds.</description>
     </key>
 
     <key name="resume-tasks-after-break" type="b">
@@ -94,17 +94,17 @@
     <key name="settings-version" type="i">
       <default>0</default>
       <summary></summary>
-      <description></description>
+      <description>Value used to determine if settings should be migrated. If set to 0 the application will try to import its settings from keyfiles used in versions &lt;=1.8.</description>
     </key>
     <key name="lists" type="a(ss)">
       <default>[]</default>
-      <summary></summary>
-      <description></description>
+      <summary>To-do lists</summary>
+      <description>Configured to-do lists in the order in which the user placed them in the list overview (list type, list ID).</description>
     </key>
     <key name="new-tasks-on-top" type="b">
       <default>false</default>
       <summary></summary>
-      <description></description>
+      <description>If set to true new tasks will be placed at the top of a list, otherwise new tasks will be placed at the end.</description>
     </key>
 
     <!--ui-->
@@ -191,51 +191,51 @@
   <schema path="@SCHEMA_PATH@/backends/todo-txt/" id="@APP_ID@.todo-txt">
     <key name="lists" type="as">
       <default>[]</default>
-      <summary></summary>
-      <description></description>
+      <summary>Todo.txt lists</summary>
+      <description>IDs of the configured lists.</description>
     </key>
   </schema>
 
   <schema id="@APP_ID@.todo-txt.list">
     <key name="name" type="s">
       <default>''</default>
-      <summary></summary>
-      <description></description>
+      <summary>Name of the to-do list</summary>
+      <description>Name of the to-do list.</description>
     </key>
     <key name="todo-list-uri" type="s">
       <default>''</default>
-      <summary></summary>
-      <description></description>
+      <summary>URI of to-do list</summary>
+      <description>URI of the file containing to-do tasks that have yet to be completed.</description>
     </key>
     <key name="done-list-uri" type="s">
       <default>''</default>
-      <summary></summary>
-      <description></description>
+      <summary>URI of "done" list</summary>
+      <description>URI of the file containing to-do tasks that have already been completed.</description>
     </key>
 
     <key name="log-timer-in-txt" type="b">
       <default>true</default>
-      <summary></summary>
+      <summary>Log total time per task in todo.txt files</summary>
       <description></description>
     </key>
     <key name="reminder-time" type="i">
       <range min="-1" max="600"/>
       <default>-1</default>
       <summary></summary>
-      <description></description>
+      <description>When to show a reminder. Value is number of seconds from the end of the task duration. If set to -1, the default reminder time is used.</description>
     </key>
     <key name="schedule" type="a(ii)">
       <default>[]</default>
-      <summary></summary>
-      <description></description>
+      <summary>Task/break duration schedule</summary>
+      <description>Task and break duration schedule given as list of (task duration, break duration) pears, both in seconds.</description>
     </key>
   </schema>
 
   <schema path="@SCHEMA_PATH@/plugins/" id="@APP_ID@.plugins">
     <key name="enabled-plugins" type="as">
       <default>[]</default>
-      <summary></summary>
-      <description></description>
+      <summary>Enabled plugins</summary>
+      <description>List of enabled plugins. Plugin support must be enabled at compile time.</description>
     </key>
   </schema>
 </schemalist>
