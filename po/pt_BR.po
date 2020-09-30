@@ -565,9 +565,15 @@ msgstr ""
 "um arquivo ou local montável. Por favor mude o caminho nas configurações "
 "para o diretório correto ou remova este arquivo."
 
-#: ../src/Todo.txt/TxtList.vala:171
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr "Limpar concluídos"
+
+#: ../src/Todo.txt/TxtList.vala:179
+#, fuzzy
+#| msgid "Filter tasks"
+msgid "Sort tasks"
+msgstr "Filtro de tarefas"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"

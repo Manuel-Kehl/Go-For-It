@@ -569,9 +569,15 @@ msgstr ""
 "périphérique. Merci de modifier le chemin dans les paramètres pour pointer "
 "vers un répertoire correct, ou de supprimer ce fichier."
 
-#: ../src/Todo.txt/TxtList.vala:171
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr "Effacer la liste des tâches terminées"
+
+#: ../src/Todo.txt/TxtList.vala:179
+#, fuzzy
+#| msgid "Filter tasks"
+msgid "Sort tasks"
+msgstr "Filtrer les tâches"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"

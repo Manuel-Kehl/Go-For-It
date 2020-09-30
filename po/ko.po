@@ -555,8 +555,12 @@ msgid ""
 "folder or remove this file."
 msgstr ""
 
-#: ../src/Todo.txt/TxtList.vala:171
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
+msgstr ""
+
+#: ../src/Todo.txt/TxtList.vala:179
+msgid "Sort tasks"
 msgstr ""
 
 #: ../src/Todo.txt/TxtListManager.vala:137

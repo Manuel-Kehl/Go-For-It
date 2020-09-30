@@ -562,9 +562,15 @@ msgstr ""
 "připojitelné umístění. Změňte umístění v nastavení na použitelnou složku "
 "nebo tento soubor odeberte."
 
-#: ../src/Todo.txt/TxtList.vala:171
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr "Vyčistit seznam dokončených"
+
+#: ../src/Todo.txt/TxtList.vala:179
+#, fuzzy
+#| msgid "Your next task is"
+msgid "Sort tasks"
+msgstr "Váš další úkol je"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"

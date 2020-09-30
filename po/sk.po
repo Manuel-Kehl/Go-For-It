@@ -563,9 +563,15 @@ msgstr ""
 "pripojiteľné umiestnenie. Zmeňte cestu v nastaveniach do vhodného adresára "
 "alebo tento súbor odstráňte."
 
-#: ../src/Todo.txt/TxtList.vala:171
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr "Vyčistiť zoznam dokončených úloh"
+
+#: ../src/Todo.txt/TxtList.vala:179
+#, fuzzy
+#| msgid "Filter tasks"
+msgid "Sort tasks"
+msgstr "Filtrovať úlohy"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
