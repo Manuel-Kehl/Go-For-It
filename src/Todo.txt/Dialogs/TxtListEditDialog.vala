@@ -64,7 +64,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private string choose_file_text = _("Choose a file");
 
     string todo_replace_info = _("Task list location has been changed to \"%s\" (was \"%s\"), but this file already exists.");
-    string done_replace_info = _("Completed task file has been changed to \"%s\" (was \"%s\"), but this file already exists.");
+    string done_replace_info = _("The location to store completed tasks in has been changed to \"%s\" (was \"%s\"), but this file already exists.");
 
     public signal void add_list_clicked (ListSettings lsettings, ConflictChoices? file_operations);
 

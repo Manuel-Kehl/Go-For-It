@@ -84,7 +84,7 @@ namespace GOFI {
     class FileConflictDialogWrapper {
 
         string replace_dialog_primary = _("Replace \"%s\"?");
-        string replace_dialog_question = _("Should this file be replaced or should the old file be used?");
+        string replace_dialog_question = _("Should this file be replaced or should this old file be used?");
 
         Gtk.MessageDialog dialog;
         ConflictChoices choices;
