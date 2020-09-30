@@ -568,10 +568,8 @@ msgid "Clear Done List"
 msgstr "Izbriši popis obavljenih"
 
 #: ../src/Todo.txt/TxtList.vala:179
-#, fuzzy
-#| msgid "Filter tasks"
 msgid "Sort tasks"
-msgstr "Filtriraj zadatke"
+msgstr ""
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"

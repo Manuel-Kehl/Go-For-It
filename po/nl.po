@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-30 17:53+0200\n"
-"PO-Revision-Date: 2020-02-26 17:27+0000\n"
+"PO-Revision-Date: 2020-09-30 18:34+0000\n"
 "Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/nl/>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0-dev\n"
+"X-Generator: Weblate 4.3-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:437
@@ -45,11 +45,12 @@ msgstr "Als u deze app geweldig vindt, kunt u mij een drankje kopen:"
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr ""
+msgstr "Vervang \"%s\"?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should the old file be used?"
 msgstr ""
+"Moet dit bestand vervangen worden of moet dit oude bestand gebruikt worden?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
@@ -57,7 +58,7 @@ msgstr "Oude bestanden behouden"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "Vervang"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:81
@@ -89,7 +90,7 @@ msgstr "Sneltoetsen"
 
 #: ../src/Dialogs/SettingsDialog.vala:75
 msgid "Plugins"
-msgstr ""
+msgstr "Plugins"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:142
@@ -119,7 +120,7 @@ msgstr "Thema"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
 msgid "Color scheme"
-msgstr ""
+msgstr "Kleurenschema"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
 msgid "%s needs to be restarted for this setting to take effect"
@@ -251,15 +252,15 @@ msgstr "Kon instellingen niet goed importeren vanuit %s: %s"
 
 #: ../src/Main.vala:101
 msgid "Not a known list: %s"
-msgstr ""
+msgstr "Niet een bekende lijst: %s"
 
 #: ../src/Main.vala:237
 msgid "%s: Error: %s"
-msgstr ""
+msgstr "%s: Fout: %s"
 
 #: ../src/Main.vala:249
 msgid "Lists (List type : List ID - List name)"
-msgstr ""
+msgstr "Lijst (Type van lijst : ID van lijst - Naam van lijst)"
 
 #: ../src/Main.vala:274
 msgid "Print version info and exit"
@@ -275,23 +276,23 @@ msgstr "CSV bestand om activiteiten in bij te houden."
 
 #: ../src/Main.vala:276
 msgid "FILE"
-msgstr ""
+msgstr "BESTAND"
 
 #: ../src/Main.vala:277
 msgid "Show configured lists and exit"
-msgstr ""
+msgstr "Geef de geconfigureerde lijsten weer en sluit"
 
 #: ../src/Main.vala:281
 msgid "Load the list specified by the list type and ID"
-msgstr ""
+msgstr "Laad de lijst die gespecificeerd is met het lijst type en ID"
 
 #: ../src/Main.vala:282
 msgid "LIST-TYPE"
-msgstr ""
+msgstr "LIJST-TYPE"
 
 #: ../src/Main.vala:282
 msgid "LIST-ID"
-msgstr ""
+msgstr "LIJST-ID"
 
 #: ../src/Main.vala:326 ../src/Widgets/TimerView.vala:90
 msgid "Take a Break"
@@ -372,19 +373,19 @@ msgstr "Kon map niet schrijven naar %s: %s"
 
 #: ../src/Services/SettingsManager.vala:608
 msgid "Light"
-msgstr ""
+msgstr "Licht"
 
 #: ../src/Services/SettingsManager.vala:610
 msgid "Dark"
-msgstr ""
+msgstr "Donker"
 
 #: ../src/Services/SettingsManager.vala:612
 msgid "Default"
-msgstr ""
+msgstr "Standaard"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
-msgstr ""
+msgstr "uitgeschakeld"
 
 #: ../src/Services/Shortcuts.vala:151
 msgid "Filter tasks"
@@ -432,11 +433,11 @@ msgstr "Baseer op GTK thema"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:61
 msgid "Store to-do tasks in"
-msgstr ""
+msgstr "Sla taken op in"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:62
 msgid "Store completed tasks in"
-msgstr ""
+msgstr "Sla voltooide taken op in"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
 msgid "List name"
@@ -444,19 +445,23 @@ msgstr "Lijst naam"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
 msgid "Choose a file"
-msgstr ""
+msgstr "Kies een bestand"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid ""
 "Task list location has been changed to \"%s\" (was \"%s\"), but this file "
 "already exists."
 msgstr ""
+"De locatie van de takenlijst is gewijzigd naar \"%s\" (was \"%s\"), maar dit "
+"bestand bestaat al."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid ""
 "Completed task file has been changed to \"%s\" (was \"%s\"), but this file "
 "already exists."
 msgstr ""
+"Het bestand met voltooide taken is veranderd naar \"%s\" (was \"%s\"), maar "
+"dit bestand bestaat al."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
 msgid "New to-do list"
@@ -480,34 +485,34 @@ msgstr "Deze informatie zal in de todo.txt bestanden opgeslagen worden."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
 msgid "Select file to store to-do tasks in"
-msgstr ""
+msgstr "Selecteer bestand om taken in op te slaan"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:265
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:271
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:301
 msgid "_Select"
-msgstr ""
+msgstr "_Selecteer"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
 msgid "Select file to store completed tasks in"
-msgstr ""
+msgstr "Selecteer bestand om voltooide taken in op te slaan"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:350
 msgid "Use default settings"
 msgstr "Gebruik de standaard instellingen"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:423
-#, fuzzy
-#| msgid "The configured folder is already in use by another list."
 msgid "The configured to-do file is already in use by another list."
-msgstr "De ingestelde map wordt al gebruikt door een andere lijst."
+msgstr "Het ingestelde takenbestand wordt al gebruikt door een andere lijst."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
 msgid ""
 "Another todo.txt list uses the file chosen to archive completed tasks to to "
 "store its to-do tasks."
 msgstr ""
+"Eeen andere todo.txt lijst gebruikt het gekozen bestand om voltooide taken "
+"naar te archiveren."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:459
 msgid "Please assign a name to the list."
@@ -568,10 +573,8 @@ msgid "Clear Done List"
 msgstr "Wis de gedane taken"
 
 #: ../src/Todo.txt/TxtList.vala:179
-#, fuzzy
-#| msgid "Filter tasks"
 msgid "Sort tasks"
-msgstr "Taken filteren"
+msgstr "Taken sorteren"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
