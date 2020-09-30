@@ -584,7 +584,7 @@ msgid "Clear Done List"
 msgstr "Tamamlananlar Listesini Temizle"
 
 #: ../src/Todo.txt/TxtList.vala:180
-msgid "Sort tasks"
+msgid "Sort Tasks"
 msgstr "Görevleri sırala"
 
 #: ../src/Todo.txt/TxtListManager.vala:137

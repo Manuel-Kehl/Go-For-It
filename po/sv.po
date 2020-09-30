@@ -564,7 +564,7 @@ msgstr ""
 #: ../src/Todo.txt/TxtList.vala:180
 #, fuzzy
 #| msgid "Your next task is"
-msgid "Sort tasks"
+msgid "Sort Tasks"
 msgstr "Din nästa uppgift är"
 
 #: ../src/Todo.txt/TxtListManager.vala:137

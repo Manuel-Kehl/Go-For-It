@@ -566,7 +566,7 @@ msgstr "Очистить список Сделано"
 #: ../src/Todo.txt/TxtList.vala:180
 #, fuzzy
 #| msgid "Your current task is"
-msgid "Sort tasks"
+msgid "Sort Tasks"
 msgstr "Ваша текущая задача"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
