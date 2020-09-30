@@ -569,9 +569,8 @@ msgid "Clear Done List"
 msgstr "Yi nea woawie no fi mu"
 
 #: ../src/Todo.txt/TxtList.vala:179
-#| msgid "Your next task is"
 msgid "Sort tasks"
-msgstr "
+msgstr ""
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
