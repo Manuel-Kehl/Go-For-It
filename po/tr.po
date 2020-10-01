@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-30 20:37+0200\n"
-"PO-Revision-Date: 2020-09-30 18:47+0000\n"
+"PO-Revision-Date: 2020-10-01 11:09+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/tr/>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,13 +45,11 @@ msgstr "Uygulamayı cidden beğendiyseniz, bana bir içercek ısmarlayabilirsini
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr "\"%s\" ile değiştirilsin mi?"
+msgstr "\"%s\" dosyası değiştirilsin mi?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
-#, fuzzy
-#| msgid "Should this file be replaced or should the old file be used?"
 msgid "Should this file be replaced or should this old file be used?"
-msgstr "Bu dosya ile değiştirilsin mi yoksa eski dosya mı kullanılsın?"
+msgstr "Bu dosya değiştirilsin mi yoksa eski dosya mı kullanılsın?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
@@ -461,16 +459,12 @@ msgstr ""
 "zaten var."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
-#, fuzzy
-#| msgid ""
-#| "Completed task file has been changed to \"%s\" (was \"%s\"), but this "
-#| "file already exists."
 msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
 msgstr ""
-"Tamamlanan görev dosyası \"%s\" olarak değiştirildi (\"%s\" idi), ancak bu "
-"dosya zaten var."
+"Tamamlanan görevlerin depolanacağı konum \"%s\" olarak değiştirildi (\"%s\" "
+"idi), ancak bu dosya zaten var."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
 msgid "New to-do list"
