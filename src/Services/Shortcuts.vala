@@ -150,24 +150,24 @@ namespace GOFI {
         };
 
         static KeyBinding[] DragListBindings = {
-            KeyBinding("next-task", "move-cursor", MoveKeyParams(Gtk.MovementStep.DISPLAY_LINES, 1).params),
-            KeyBinding("prev-task", "move-cursor", MoveKeyParams(Gtk.MovementStep.DISPLAY_LINES, -1).params),
-            KeyBinding("move-row-up", "move-selected-row", {KeyBindingParam<long>(1, typeof(long))}),
-            KeyBinding("move-row-down", "move-selected-row", {KeyBindingParam<long>(-1, typeof(long))}),
+            KeyBinding(SCK_NEXT_TASK, "move-cursor", MoveKeyParams(Gtk.MovementStep.DISPLAY_LINES, 1).params),
+            KeyBinding(SCK_PREV_TASK, "move-cursor", MoveKeyParams(Gtk.MovementStep.DISPLAY_LINES, -1).params),
+            KeyBinding(SCK_MOVE_ROW_UP, "move-selected-row", {KeyBindingParam<long>(1, typeof(long))}),
+            KeyBinding(SCK_MOVE_ROW_DOWN, "move-selected-row", {KeyBindingParam<long>(-1, typeof(long))}),
         };
 
         static KeyBinding[] TaskListBindings = {
-            KeyBinding("filter", "toggle-filtering", {}),
+            KeyBinding(SCK_FILTER, "toggle-filtering", {}),
         };
 
         static KeyBinding[] WindowBindings = {
-            KeyBinding("filter", "filter-fallback-action", {}),
+            KeyBinding(SCK_FILTER, "filter-fallback-action", {}),
         };
 
         static KeyBinding[] TaskListPageBindings = {
-            KeyBinding("next-task", "switch_to_next", {}),
-            KeyBinding("prev-task", "switch_to_prev", {}),
-            KeyBinding("mark-task-done", "mark_task_done", {}),
+            KeyBinding(SCK_NEXT_TASK, "switch_to_next", {}),
+            KeyBinding(SCK_PREV_TASK, "switch_to_prev", {}),
+            KeyBinding(SCK_MARK_TASK_DONE, "mark_task_done", {}),
         };
 
         public KeyBindingSettings () {
