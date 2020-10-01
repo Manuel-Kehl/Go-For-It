@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-30 20:37+0200\n"
-"PO-Revision-Date: 2020-07-27 20:41+0000\n"
-"Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/de/>\n"
+"PO-Revision-Date: 2020-10-01 20:14+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.2-dev\n"
+"X-Generator: Weblate 4.3-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:437
@@ -46,11 +46,12 @@ msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr ""
+msgstr "„%s“ ersetzen?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
 msgstr ""
+"Soll diese Datei ersetzt werden oder soll diese alte Datei verwendet werden?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
@@ -58,7 +59,7 @@ msgstr "Alte behalten"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "Ersetzen"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:81
@@ -90,7 +91,7 @@ msgstr "Abkürzungen"
 
 #: ../src/Dialogs/SettingsDialog.vala:75
 msgid "Plugins"
-msgstr ""
+msgstr "Zusatzmodule"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:142
@@ -120,7 +121,7 @@ msgstr "Thema"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
 msgid "Color scheme"
-msgstr ""
+msgstr "Farbschema"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
 msgid "%s needs to be restarted for this setting to take effect"
@@ -374,15 +375,15 @@ msgstr "Konnte nicht in %s schreiben: %s"
 
 #: ../src/Services/SettingsManager.vala:608
 msgid "Light"
-msgstr ""
+msgstr "Hell"
 
 #: ../src/Services/SettingsManager.vala:610
 msgid "Dark"
-msgstr ""
+msgstr "Dunkel"
 
 #: ../src/Services/SettingsManager.vala:612
 msgid "Default"
-msgstr ""
+msgstr "Standardmäßig"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
@@ -434,11 +435,11 @@ msgstr "Vom GTK-Thema erben"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:61
 msgid "Store to-do tasks in"
-msgstr ""
+msgstr "Zu erledigende Aufgaben speichern in"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:62
 msgid "Store completed tasks in"
-msgstr ""
+msgstr "Erledigte Aufgaben speichern in"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
 msgid "List name"
@@ -446,19 +447,23 @@ msgstr "Listenname"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
 msgid "Choose a file"
-msgstr ""
+msgstr "Wählen Sie eine Datei"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid ""
 "Task list location has been changed to \"%s\" (was \"%s\"), but this file "
 "already exists."
 msgstr ""
+"Der Speicherort der Aufgabenliste wurde in „%s“ geändert (war „%s“), aber "
+"diese Datei ist bereits vorhanden."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
 msgstr ""
+"Der Speicherort für abgeschlossene Aufgaben wurde in „%s“ geändert (war „%s“)"
+", aber diese Datei ist bereits vorhanden."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
 msgid "New to-do list"
@@ -483,34 +488,40 @@ msgstr "Diese Information wird in den todo.txt Dateien gespeichert."
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
 msgid "Select file to store to-do tasks in"
 msgstr ""
+"Wählen Sie die Datei aus, in der die zu erledigenden Aufgaben gespeichert "
+"werden sollen"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:265
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:271
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:301
 msgid "_Select"
-msgstr ""
+msgstr "_Auswählen"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
 msgid "Select file to store completed tasks in"
 msgstr ""
+"Wählen Sie die Datei aus, in der die erledigten Aufgaben gespeichert werden "
+"sollen"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:350
 msgid "Use default settings"
 msgstr "Standardeinstellungen verwenden"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:423
-#, fuzzy
-#| msgid "The configured folder is already in use by another list."
 msgid "The configured to-do file is already in use by another list."
 msgstr ""
-"Das konfigurierte Verzeichnis wird bereits von einer anderen Liste verwendet."
+"Die konfigurierte Zu-erledigen-Datei wird bereits von einer anderen Liste "
+"verwendet."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
 msgid ""
 "Another todo.txt list uses the file chosen to archive completed tasks to to "
 "store its to-do tasks."
 msgstr ""
+"Eine andere todo.txt-Liste verwendet die Datei, die zum Archivieren "
+"abgeschlossener Aufgaben ausgewählt wurde, um die zu erledigenden Aufgaben "
+"zu speichern."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:459
 msgid "Please assign a name to the list."
@@ -573,7 +584,7 @@ msgstr "Erledigtliste leeren"
 
 #: ../src/Todo.txt/TxtList.vala:180
 msgid "Sort Tasks"
-msgstr ""
+msgstr "Aufgaben sortieren"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
