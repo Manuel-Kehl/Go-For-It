@@ -569,7 +569,7 @@ msgstr "Vyčistit seznam dokončených"
 #: ../src/Todo.txt/TxtList.vala:180
 #, fuzzy
 #| msgid "Your next task is"
-msgid "Sort tasks"
+msgid "Sort Tasks"
 msgstr "Váš další úkol je"
 
 #: ../src/Todo.txt/TxtListManager.vala:137

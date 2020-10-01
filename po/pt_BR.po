@@ -570,7 +570,7 @@ msgid "Clear Done List"
 msgstr "Limpar concluídos"
 
 #: ../src/Todo.txt/TxtList.vala:180
-msgid "Sort tasks"
+msgid "Sort Tasks"
 msgstr ""
 
 #: ../src/Todo.txt/TxtListManager.vala:137

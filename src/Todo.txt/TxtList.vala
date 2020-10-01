@@ -176,7 +176,7 @@ class GOFI.TXT.TxtList : GOFI.TaskList, Object {
         clear_done_button.clicked.connect (clear_done_list);
 
         var sort_tasks_button = new Gtk.ModelButton ();
-        sort_tasks_button.text = _("Sort tasks");
+        sort_tasks_button.text = _("Sort Tasks");
         sort_tasks_button.clicked.connect (sort_tasks);
 
         menu_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);

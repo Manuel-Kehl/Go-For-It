@@ -569,7 +569,7 @@ msgstr "Limpiar Lista Completada"
 #: ../src/Todo.txt/TxtList.vala:180
 #, fuzzy
 #| msgid "Your next task is"
-msgid "Sort tasks"
+msgid "Sort Tasks"
 msgstr "Su siguiente tarea es"
 
 #: ../src/Todo.txt/TxtListManager.vala:137

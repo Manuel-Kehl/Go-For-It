@@ -579,7 +579,7 @@ msgid "Clear Done List"
 msgstr "Wis de gedane taken"
 
 #: ../src/Todo.txt/TxtList.vala:180
-msgid "Sort tasks"
+msgid "Sort Tasks"
 msgstr "Taken sorteren"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
