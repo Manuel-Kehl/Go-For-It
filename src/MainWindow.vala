@@ -320,6 +320,10 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
         menu_popover = new Gtk.Popover (menu_btn);
         menu_popover.add (menu_container);
+        menu_popover.get_style_context ().add_class ("menu");
+#if !USE_GRANITE
+        menu_container.margin = 10;
+#endif
         menu_btn.popover = menu_popover;
 
         switch_img = new Gtk.Image.from_icon_name ("go-next", settings.toolbar_icon_size);
