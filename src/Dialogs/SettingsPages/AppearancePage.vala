@@ -94,7 +94,7 @@ class GOFI.AppearancePage : Gtk.Grid {
         theme_selector.active_id = settings.theme.to_string ();
 
         /* Signal Handling */
-        theme_selector.changed.connect ( () => {
+        color_scheme_selector.changed.connect ( () => {
             settings.color_scheme = ColorScheme.from_string (color_scheme_selector.active_id);
         });
         theme_selector.changed.connect ( () => {
