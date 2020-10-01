@@ -325,7 +325,28 @@ private class GOFI.SettingsManager : Object {
 
         this.notify.connect (on_property_changed);
 
+#if USE_GRANITE
+        read_granite_prefers_color_scheme ();
+        Granite.Settings.get_default ().notify["prefers-color-scheme"]
+            .connect (read_granite_prefers_color_scheme);
+#else
+        var gtk_settings = Gtk.Settings.get_default();
+        system_theme_is_dark = gtk_settings.gtk_application_prefer_dark_theme;
+#endif
     }
+
+#if USE_GRANITE
+    private void read_granite_prefers_color_scheme () {
+        switch (Granite.Settings.get_default ().prefers_color_scheme) {
+            case Granite.Settings.ColorScheme.DARK:
+                system_theme_is_dark = true;
+                break;
+            default:
+                system_theme_is_dark = false;
+                break;
+        }
+    }
+#endif
 
     private void on_property_changed (GLib.ParamSpec pspec) {
         switch (pspec.name) {
