@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-30 20:37+0200\n"
-"PO-Revision-Date: 2020-10-01 11:09+0000\n"
+"PO-Revision-Date: 2020-10-03 12:30+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/go-for-"
-"it/go-for-it/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"go-for-it/go-for-it/nb_NO/>\n"
 "Language: no\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -120,7 +120,7 @@ msgstr "Drakt"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
 msgid "Color scheme"
-msgstr ""
+msgstr "Fargepalett"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
 msgid "%s needs to be restarted for this setting to take effect"
@@ -433,8 +433,9 @@ msgid "Inherit from GTK theme"
 msgstr "Bruk fra GTK-drakt"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:61
+#, fuzzy
 msgid "Store to-do tasks in"
-msgstr ""
+msgstr "Lagre gjøremål i"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:62
 msgid "Store completed tasks in"
@@ -449,16 +450,22 @@ msgid "Choose a file"
 msgstr "Velg en fil"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
+#, fuzzy
 msgid ""
 "Task list location has been changed to \"%s\" (was \"%s\"), but this file "
 "already exists."
 msgstr ""
+"Gjøremålslisteplassering endret til «%s» (fra «%s»), men denne filen finnes "
+"allerede."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
+#, fuzzy
 msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
 msgstr ""
+"Plassering å lagre fullførte gjøremål endret til «%s» (fra «%s»), men denne "
+"filen finnes allerede."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
 msgid "New to-do list"
@@ -481,8 +488,9 @@ msgid "This information will be stored in the todo.txt files."
 msgstr "Denne informasjonen vil bli lagret i todo.txt-filene."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
+#, fuzzy
 msgid "Select file to store to-do tasks in"
-msgstr ""
+msgstr "Velg fil å lagre gjøremål i"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:265
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:271
@@ -506,10 +514,13 @@ msgid "The configured to-do file is already in use by another list."
 msgstr "Oppsatt mappe er i bruk av en annen liste."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
+#, fuzzy
 msgid ""
 "Another todo.txt list uses the file chosen to archive completed tasks to to "
 "store its to-do tasks."
 msgstr ""
+"En annen todo.txt-liste bruker filen valgt til å arkivere fullførte gjøremål "
+"for å lagre sine gjøremålsoppgaver."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:459
 msgid "Please assign a name to the list."
