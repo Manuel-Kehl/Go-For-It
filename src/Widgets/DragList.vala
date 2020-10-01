@@ -95,7 +95,11 @@ public class GOFI.DragList : Gtk.Bin {
         if (selected_row == null) {
             return;
         }
-        _move_row (selected_row, offset, false);
+        var index = selected_row.get_index () + offset;
+        if (index < 0) {
+          index = 0;
+        }
+        _move_row (selected_row, index, false);
     }
 
     private void on_list_move_cursor (Gtk.MovementStep step, int count) {
