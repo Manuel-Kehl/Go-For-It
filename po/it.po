@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-30 20:37+0200\n"
-"PO-Revision-Date: 2020-06-18 18:41+0000\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/it/>\n"
+"PO-Revision-Date: 2020-10-01 20:14+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.1.1-dev\n"
+"X-Generator: Weblate 4.3-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:437
@@ -46,11 +46,13 @@ msgstr "Se davvero ami quest'app, puoi offrirmi da bere:"
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr ""
+msgstr "Sostituire «%s»?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
 msgstr ""
+"Questo file dovrebbe essere sostituito o dovrebbe essere usato questo "
+"vecchio file?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
@@ -58,7 +60,7 @@ msgstr "Mantieni i vecchi file"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "Sostituisci"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:81
@@ -90,7 +92,7 @@ msgstr "Scorciatoie"
 
 #: ../src/Dialogs/SettingsDialog.vala:75
 msgid "Plugins"
-msgstr ""
+msgstr "Estensioni"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:142
@@ -120,7 +122,7 @@ msgstr "Tema"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
 msgid "Color scheme"
-msgstr ""
+msgstr "Schema colori"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
 msgid "%s needs to be restarted for this setting to take effect"
@@ -260,7 +262,7 @@ msgstr "%s: Errore: %s"
 
 #: ../src/Main.vala:249
 msgid "Lists (List type : List ID - List name)"
-msgstr ""
+msgstr "Liste (Tipo di lista: ID lista — Nome della lista)"
 
 #: ../src/Main.vala:274
 msgid "Print version info and exit"
@@ -276,7 +278,7 @@ msgstr "File CSV su cui verranno registrate le Attività."
 
 #: ../src/Main.vala:276
 msgid "FILE"
-msgstr ""
+msgstr "FILE"
 
 #: ../src/Main.vala:277
 msgid "Show configured lists and exit"
@@ -288,11 +290,11 @@ msgstr "Carica l'elenco specificato dal tipo di elenco e dall'ID"
 
 #: ../src/Main.vala:282
 msgid "LIST-TYPE"
-msgstr ""
+msgstr "TIPO DI LISTA"
 
 #: ../src/Main.vala:282
 msgid "LIST-ID"
-msgstr ""
+msgstr "ID LISTA"
 
 #: ../src/Main.vala:326 ../src/Widgets/TimerView.vala:90
 msgid "Take a Break"
@@ -373,15 +375,15 @@ msgstr "Impossibile scrivere a %s: %s"
 
 #: ../src/Services/SettingsManager.vala:608
 msgid "Light"
-msgstr ""
+msgstr "Chiaro"
 
 #: ../src/Services/SettingsManager.vala:610
 msgid "Dark"
-msgstr ""
+msgstr "Scuro"
 
 #: ../src/Services/SettingsManager.vala:612
 msgid "Default"
-msgstr ""
+msgstr "Predefinito"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
@@ -433,11 +435,11 @@ msgstr "Eredita tema GTK"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:61
 msgid "Store to-do tasks in"
-msgstr ""
+msgstr "Archivia le attività da svolgere in"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:62
 msgid "Store completed tasks in"
-msgstr ""
+msgstr "Archivia le attività completate in"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
 msgid "List name"
@@ -445,19 +447,23 @@ msgstr "nome Lista"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
 msgid "Choose a file"
-msgstr ""
+msgstr "Scegli un file"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid ""
 "Task list location has been changed to \"%s\" (was \"%s\"), but this file "
 "already exists."
 msgstr ""
+"La posizione della lista delle attività è stata modificata in «%s» (era «%s»)"
+", ma questo file esiste già."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
 msgstr ""
+"La posizione in cui archiviare le attività completate è stata modificata in "
+"«%s» (era «%s»), ma questo file esiste già."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
 msgid "New to-do list"
@@ -481,34 +487,34 @@ msgstr "Questa informazione verrà salvata nel file todo.txt."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
 msgid "Select file to store to-do tasks in"
-msgstr ""
+msgstr "Seleziona il file in cui archiviare le attività da fare"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:265
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:271
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:301
 msgid "_Select"
-msgstr ""
+msgstr "_Seleziona"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
 msgid "Select file to store completed tasks in"
-msgstr ""
+msgstr "Seleziona il file in cui archiviare le attività da fare"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:350
 msgid "Use default settings"
 msgstr "Usa le impostazioni di default"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:423
-#, fuzzy
-#| msgid "The configured folder is already in use by another list."
 msgid "The configured to-do file is already in use by another list."
-msgstr "La cartella configurata è già in uso da un altro elenco."
+msgstr "Il file da-fare configurato è già in uso da un'altra lista."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
 msgid ""
 "Another todo.txt list uses the file chosen to archive completed tasks to to "
 "store its to-do tasks."
 msgstr ""
+"Un'altra lista todo.txt utilizza il file scelto per archiviare le attività "
+"completate per memorizzare le attività da fare."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:459
 msgid "Please assign a name to the list."
@@ -570,7 +576,7 @@ msgstr "Elimina Liste completate"
 
 #: ../src/Todo.txt/TxtList.vala:180
 msgid "Sort Tasks"
-msgstr ""
+msgstr "Ordina attività"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
