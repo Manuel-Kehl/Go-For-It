@@ -3,17 +3,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-30 20:37+0200\n"
-"PO-Revision-Date: 2020-07-27 20:41+0000\n"
+"PO-Revision-Date: 2020-10-03 12:30+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/hr/>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.2-dev\n"
+"X-Generator: Weblate 4.3-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:437
@@ -46,11 +46,11 @@ msgstr "Ako ti se doista sviđa ova aplikacija, možeš mi kupiti piće:"
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr ""
+msgstr "Zamijeniti „%s”?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
-msgstr ""
+msgstr "Želiš li zamijeniti ovu datoteku ili koristiti ovu staru datoteku?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
@@ -58,7 +58,7 @@ msgstr "Zadrži stare"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "Zamijeni"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:81
@@ -90,7 +90,7 @@ msgstr "Prečaci"
 
 #: ../src/Dialogs/SettingsDialog.vala:75
 msgid "Plugins"
-msgstr ""
+msgstr "Dodaci"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:142
@@ -120,7 +120,7 @@ msgstr "Dizajn"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
 msgid "Color scheme"
-msgstr ""
+msgstr "Shema boja"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
 msgid "%s needs to be restarted for this setting to take effect"
@@ -373,15 +373,15 @@ msgstr "Nije bilo moguće pisati u %s: %s"
 
 #: ../src/Services/SettingsManager.vala:608
 msgid "Light"
-msgstr ""
+msgstr "Svijetla"
 
 #: ../src/Services/SettingsManager.vala:610
 msgid "Dark"
-msgstr ""
+msgstr "Tamna"
 
 #: ../src/Services/SettingsManager.vala:612
 msgid "Default"
-msgstr ""
+msgstr "Standardna"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
@@ -433,11 +433,11 @@ msgstr "Naslijedi od GTK dizajna"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:61
 msgid "Store to-do tasks in"
-msgstr ""
+msgstr "Spremi zadatke u"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:62
 msgid "Store completed tasks in"
-msgstr ""
+msgstr "Spremi završene zadatke u"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
 msgid "List name"
@@ -445,19 +445,23 @@ msgstr "Ime popisa"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
 msgid "Choose a file"
-msgstr ""
+msgstr "Odaberi datoteku"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid ""
 "Task list location has been changed to \"%s\" (was \"%s\"), but this file "
 "already exists."
 msgstr ""
+"Mjesto popisa zadataka promijenjeno je u „%s” (bilo je „%s”), ali ta "
+"datoteka već postoji."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
 msgstr ""
+"Mjesto za spremanje završenih zadataka promijenjeno je u „%s” (bilo je „%s”)"
+", ali ta datoteka već postoji."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
 msgid "New to-do list"
@@ -481,34 +485,34 @@ msgstr "Ove informacije će se spremati u todo.txt datoteke."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
 msgid "Select file to store to-do tasks in"
-msgstr ""
+msgstr "Odaberi datoteku za spremanje zadataka"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:265
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:271
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:301
 msgid "_Select"
-msgstr ""
+msgstr "_Odaberi"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
 msgid "Select file to store completed tasks in"
-msgstr ""
+msgstr "Odaberi datoteku za spremanje završenih zadataka"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:350
 msgid "Use default settings"
 msgstr "Koristi standardne postavke"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:423
-#, fuzzy
-#| msgid "The configured folder is already in use by another list."
 msgid "The configured to-do file is already in use by another list."
-msgstr "Jedan drugi popis već koristi konfigurirani direktorij."
+msgstr "Jedan drugi popis već koristi konfiguriranu datoteku zadataka."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
 msgid ""
 "Another todo.txt list uses the file chosen to archive completed tasks to to "
 "store its to-do tasks."
 msgstr ""
+"Jedan drugi popis todo.txt koristi odabranu datoteku koja je odabrana za "
+"arhiviranje završenih zadataka, za spremanje zadataka."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:459
 msgid "Please assign a name to the list."
@@ -569,7 +573,7 @@ msgstr "Izbriši popis obavljenih"
 
 #: ../src/Todo.txt/TxtList.vala:180
 msgid "Sort Tasks"
-msgstr ""
+msgstr "Razvrstaj zadatke"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
