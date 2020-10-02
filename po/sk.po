@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-30 20:37+0200\n"
-"PO-Revision-Date: 2020-07-21 21:41+0000\n"
+"PO-Revision-Date: 2020-10-03 12:30+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/sk/>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.2-dev\n"
+"X-Generator: Weblate 4.3-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:437
@@ -45,11 +45,12 @@ msgstr "Ak sa vám táto aplikácia skutočne páči, môžete mi kúpiť drink:
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr ""
+msgstr "Nahradiť \"%s\"?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
 msgstr ""
+"Mal by sa tento súbor nahradiť alebo by sa mal použiť tento starý súbor?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
@@ -57,7 +58,7 @@ msgstr "Ponechať staré"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "Nahradiť"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:81
@@ -89,7 +90,7 @@ msgstr "Klávesové skratky"
 
 #: ../src/Dialogs/SettingsDialog.vala:75
 msgid "Plugins"
-msgstr ""
+msgstr "Doplnky"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:142
@@ -119,7 +120,7 @@ msgstr "Téma"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
 msgid "Color scheme"
-msgstr ""
+msgstr "Farebná schéma"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
 msgid "%s needs to be restarted for this setting to take effect"
@@ -372,15 +373,15 @@ msgstr "Nepodarilo sa zapísať do %s: %s"
 
 #: ../src/Services/SettingsManager.vala:608
 msgid "Light"
-msgstr ""
+msgstr "Svetlá"
 
 #: ../src/Services/SettingsManager.vala:610
 msgid "Dark"
-msgstr ""
+msgstr "Tmavá"
 
 #: ../src/Services/SettingsManager.vala:612
 msgid "Default"
-msgstr ""
+msgstr "Predvolené"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
@@ -432,11 +433,11 @@ msgstr "Použiť z GTK témy"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:61
 msgid "Store to-do tasks in"
-msgstr ""
+msgstr "Ukladať úlohy do"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:62
 msgid "Store completed tasks in"
-msgstr ""
+msgstr "Ukladať dokončené úlohy do"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
 msgid "List name"
@@ -444,19 +445,23 @@ msgstr "Názov zoznamu"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
 msgid "Choose a file"
-msgstr ""
+msgstr "Vybrať súbor"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid ""
 "Task list location has been changed to \"%s\" (was \"%s\"), but this file "
 "already exists."
 msgstr ""
+"Umiestnenie zoznamu úloh bolo zmenené na \"%s\" (bolo \"%s\"), ale tento "
+"súbor už existuje."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
 msgstr ""
+"Miesto na uloženie dokončených úloh bolo zmenené na \"%s\" (bolo \"%s\"), "
+"ale tento súbor už existuje."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
 msgid "New to-do list"
@@ -480,34 +485,34 @@ msgstr "Tieto informácie budú uložené v súboroch todo.txt."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
 msgid "Select file to store to-do tasks in"
-msgstr ""
+msgstr "Vyberte súbor, do ktorého sa majú ukladať úlohy"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:265
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:271
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:301
 msgid "_Select"
-msgstr ""
+msgstr "_Vybrať"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
 msgid "Select file to store completed tasks in"
-msgstr ""
+msgstr "Vyberte súbor, do ktorého sa majú ukladať dokončené úlohy"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:350
 msgid "Use default settings"
 msgstr "Použiť predvolené nastavenia"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:423
-#, fuzzy
-#| msgid "The configured folder is already in use by another list."
 msgid "The configured to-do file is already in use by another list."
-msgstr "Nakonfigurovaný adresár už používa iný zoznam."
+msgstr "Nastavený súbor úloh je už používaný iným zoznamom."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
 msgid ""
 "Another todo.txt list uses the file chosen to archive completed tasks to to "
 "store its to-do tasks."
 msgstr ""
+"Iný zoznam todo.txt už používa súbor vybraný na archiváciu dokončených úloh "
+"na ukladanie úloh."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:459
 msgid "Please assign a name to the list."
@@ -569,7 +574,7 @@ msgstr "Vyčistiť zoznam dokončených úloh"
 
 #: ../src/Todo.txt/TxtList.vala:180
 msgid "Sort Tasks"
-msgstr ""
+msgstr "Zoradiť úlohy"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
