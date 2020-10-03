@@ -47,7 +47,7 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
         if (indicator != null) {
             return;
         }
-        indicator = new Indicator(GOFI.APP_ID, GOFI.ICON_NAME, IndicatorCategory.APPLICATION_STATUS);
+        indicator = new Indicator(GOFI.APP_ID, GOFI.ICON_NAME+"-symbolic", IndicatorCategory.APPLICATION_STATUS);
         indicator.set_status(IndicatorStatus.ACTIVE);
 
         var menu = new Gtk.Menu();
