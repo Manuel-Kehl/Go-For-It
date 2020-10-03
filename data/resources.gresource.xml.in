@@ -3,8 +3,10 @@
   <gresource prefix="@RESOURCE_PATH@">
     <file>icons/16x16/actions/go-to-done.svg</file>
     <file>icons/16x16/actions/go-to-list-symbolic.svg</file>
+    <file>icons/16x16/actions/go-to-done-symbolic.svg</file>
     <file>icons/16x16/actions/drag-handle-symbolic.svg</file>
     <file>icons/24x24/actions/go-to-done.svg</file>
+    <file>icons/24x24/actions/go-to-done-symbolic.svg</file>
     <file>icons/24x24/actions/go-to-list-symbolic.svg</file>
     <file>icons/24x24/actions/open-menu-fallback.svg</file>
 
