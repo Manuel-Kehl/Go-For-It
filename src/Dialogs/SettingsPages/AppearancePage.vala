@@ -102,7 +102,10 @@ class GOFI.AppearancePage : Gtk.Grid {
         });
 
         add_section (this, theme_sect_lbl, ref row);
-        add_option (this, theme_lbl, theme_selector, ref row);
+        // Remove once we have more themes
+        if (!(Gtk.Settings.get_default ().gtk_theme_name == "elementary") || theme_selector.active_id != "elementary") {
+            add_option (this, theme_lbl, theme_selector, ref row);
+        }
         add_option (this, color_scheme_lbl, color_scheme_selector, ref row);
     }
 
