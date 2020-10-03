@@ -141,6 +141,9 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
     private void on_timer_stopped () {
         timer_running = false;
         indicator.label = "";
+        shown_hours = 0;
+        shown_minutes = 0;
+        shown_seconds = 0;
         start_timer_item.label = "Start timer";
     }
 
