@@ -75,14 +75,16 @@ public class GOFI.TaskTimer {
                 _active_task.notify["description"].disconnect (on_task_notify_description);
             }
             _active_task = value;
-            task_time = _active_task.timer_value * us_c;
             if (_active_task != null) {
+                task_time = _active_task.timer_value * us_c;
+                var task_duration = _active_task.duration;
+                task_duration_exceeded_sent_already =
+                    task_duration == 0 || task_duration < _active_task.timer_value;
                 _active_task.notify["description"].connect (on_task_notify_description);
+            } else {
+                task_time = 0;
+                task_duration_exceeded_sent_already = false;
             }
-
-            var task_duration = _active_task.duration;
-            task_duration_exceeded_sent_already =
-                task_duration == 0 || task_duration < _active_task.timer_value;
 
             // Emit the corresponding notifier signal
             update_active_task ();
