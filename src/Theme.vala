@@ -61,21 +61,14 @@ namespace GOFI {
             return {ELEMENTARY, MINIMAL};
         }
 
-        public string get_palette (bool dark_variant) {
+        public string get_stylesheet (bool dark_variant) {
             switch (this) {
                 case ELEMENTARY:
-                    return dark_variant ? "elementary-dark" : "elementary";
-                case MINIMAL:
-                    return "theme-based";
-                default:
-                    assert_not_reached();
-            }
-        }
-
-        public string get_stylesheet () {
-            switch (this) {
-                case ELEMENTARY:
-                    return "widgets";
+                    if (dark_variant) {
+                        return "elementary-dark";
+                    } else {
+                        return "elementary";
+                    }
                 case MINIMAL:
                     return "widgets-minimal";
                 default:

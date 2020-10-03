@@ -23,7 +23,3 @@
 
 @define-color gofi_row_drag_highlight_bottom white;
 @define-color gofi_row_drag_highlight_top white;
-
-* {
-    -gtk-icon-style: symbolic
-}

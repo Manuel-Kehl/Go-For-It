@@ -1,3 +1,5 @@
+@import url("palettes/theme-based.css");
+
 label.task_status {
     font-size: 200%;
     font-weight: bold;
@@ -58,4 +60,8 @@ row.drag-hover-bottom {
     margin: 0;
     padding: 0;
     border: 0px;
+}
+
+.gofi_main_window {
+    -gtk-icon-style: symbolic
 }

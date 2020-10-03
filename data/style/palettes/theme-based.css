@@ -14,7 +14,3 @@
 
 @define-color gofi_row_drag_highlight_bottom @theme_fg_color;
 @define-color gofi_row_drag_highlight_top @theme_fg_color;
-
-* {
-    -gtk-icon-style: symbolic
-}

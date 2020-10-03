@@ -25,7 +25,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     private TaskTimer task_timer;
     private bool use_header_bar;
 
-    private Gtk.CssProvider palette_css;
     private Gtk.CssProvider stylesheet_css;
 
     /* Various GTK Widgets */
@@ -92,6 +91,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         setup_actions (app_context);
         setup_menu ();
         setup_widgets ();
+        this.get_style_context ().add_class ("gofi_main_window");
         init_css ();
         Gtk.IconTheme.get_default ().add_resource_path (GOFI.RESOURCE_PATH + "/icons");
 
@@ -465,14 +465,10 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
     private void init_css () {
         var screen = this.get_screen ();
-        palette_css = new Gtk.CssProvider ();
         stylesheet_css = new Gtk.CssProvider ();
 
         load_css ();
 
-        Gtk.StyleContext.add_provider_for_screen (
-            screen, palette_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-        );
         Gtk.StyleContext.add_provider_for_screen (
             screen, stylesheet_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         );
@@ -484,14 +480,13 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
      */
     private void load_css () {
         var theme = settings.theme;
-        var palette = theme.get_palette (settings.use_dark_theme);
+        var use_dark_theme = settings.use_dark_theme;
 
         string version = (Gtk.get_minor_version () >= 19) ? "3.20" : "3.10";
 
         // Pick the stylesheet that is compatible with the user's Gtk version
-        string stylesheet = @"$(theme.get_stylesheet ())-$version.css";
+        string stylesheet = @"$(theme.get_stylesheet (use_dark_theme))-$version.css";
 
-        palette_css.load_from_resource (@"$(GOFI.RESOURCE_PATH)/style/palettes/$(palette).css");
         stylesheet_css.load_from_resource (@"$(GOFI.RESOURCE_PATH)/style/$(stylesheet)");
     }
 

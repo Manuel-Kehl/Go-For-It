@@ -14,6 +14,10 @@
     <file>style/widgets-minimal-3.10.css</file>
     <file>style/widgets-3.20.css</file>
     <file>style/widgets-3.10.css</file>
+    <file>style/elementary-3.20.css</file>
+    <file>style/elementary-3.10.css</file>
+    <file>style/elementary-dark-3.20.css</file>
+    <file>style/elementary-dark-3.10.css</file>
 
     <file>style/palettes/theme-based.css</file>
     <file>style/palettes/elementary-dark.css</file>
