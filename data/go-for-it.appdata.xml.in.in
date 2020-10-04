@@ -45,7 +45,6 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
         <ul>
           <li>A symbolic icon variant has been added for both the logo and the checkmark icons.</li>
           <li>Various translations have been updated (Arabic, Croatian, Dutch, French, German, Italian, Norwegian Bokmål, Slovak, Turkish). (Most of the changes will not apply to this version, however.)</li>
-</li>
         </ul>
       </description>
     </release>
