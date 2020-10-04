@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-30 20:37+0200\n"
-"PO-Revision-Date: 2020-09-29 19:09+0000\n"
+"PO-Revision-Date: 2020-10-05 02:00+0000\n"
 "Last-Translator: Youssef Mohamed <youssef11bc@gmail.com>\n"
-"Language-Team: Arabic <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/ar/>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,19 +46,19 @@ msgstr "إذا أعجبك هذا التطبيق حقًا ، يمكنك شراء 
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr ""
+msgstr "استبدال \"٪ s\"؟"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
-msgstr ""
+msgstr "هل يجب استبدال هذا الملف أم يجب استخدام هذا الملف القديم؟"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
-msgstr ""
+msgstr "احتفظ بالقديم"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "استبدال"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:81
@@ -90,7 +90,7 @@ msgstr "الاختصارات"
 
 #: ../src/Dialogs/SettingsDialog.vala:75
 msgid "Plugins"
-msgstr ""
+msgstr "الإضافات"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:142
@@ -120,7 +120,7 @@ msgstr "اللون"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
 msgid "Color scheme"
-msgstr ""
+msgstr "نظام الألوان"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
 msgid "%s needs to be restarted for this setting to take effect"
@@ -222,21 +222,21 @@ msgstr "٪ s يجب إعادة تشغيل لتصبح التغييرات ساري
 
 #: ../src/LegacyStrings.vala:2
 msgid "Todo.txt files were found in the destination folder."
-msgstr ""
+msgstr "تم العثور على ملفات Todo.txt في مجلد الوجهة."
 
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:3
 msgid "What should be done with these files?"
-msgstr ""
+msgstr "ما العمل بهذه الملفات؟"
 
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:4
 msgid "Overwrite"
-msgstr ""
+msgstr "الاستبدال"
 
 #: ../src/LegacyStrings.vala:5
 msgid "The configured folder is already in use by another list."
-msgstr ""
+msgstr "المجلد الذي تم تكوينه قيد الاستخدام بالفعل من قبل قائمة أخرى."
 
 #: ../src/LegacyStrings.vala:6
 msgid "folder"
@@ -373,15 +373,15 @@ msgstr "تعذر الكتابة إلى٪ s:٪ s"
 
 #: ../src/Services/SettingsManager.vala:608
 msgid "Light"
-msgstr ""
+msgstr "فاتح"
 
 #: ../src/Services/SettingsManager.vala:610
 msgid "Dark"
-msgstr ""
+msgstr "داكن"
 
 #: ../src/Services/SettingsManager.vala:612
 msgid "Default"
-msgstr ""
+msgstr "إفتراضي"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
@@ -433,11 +433,11 @@ msgstr "ترث من مظهر GTK"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:61
 msgid "Store to-do tasks in"
-msgstr ""
+msgstr "تخزين المهام في"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:62
 msgid "Store completed tasks in"
-msgstr ""
+msgstr "تخزين المهام المكتملة في"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
 msgid "List name"
@@ -445,19 +445,23 @@ msgstr "‮اسم القائمة"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
 msgid "Choose a file"
-msgstr ""
+msgstr "اختيار ملف"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid ""
 "Task list location has been changed to \"%s\" (was \"%s\"), but this file "
 "already exists."
 msgstr ""
+"تم تغيير موقع قائمة المهام إلى \"٪ s\" (كان \"٪ s\") ، ولكن هذا الملف موجود "
+"بالفعل."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
 msgstr ""
+"تم تغيير موقع تخزين المهام المكتملة إلى \"٪ s\" (كان \"٪ s\") ، ولكن هذا "
+"الملف موجود بالفعل."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
 msgid "New to-do list"
@@ -465,11 +469,11 @@ msgstr "قائمة مهام جديدة"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
 msgid "Edit to-do list properties"
-msgstr ""
+msgstr "تحرير خصائص قائمة المهام"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:89
 msgid "Apply"
-msgstr ""
+msgstr "تطبيق"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:219
 msgid "Log the time spent working on each task"
