@@ -1,6 +1,18 @@
 # Change Log
 
-## [1.8.3](https://github.com/JMoerman/Go-For-It/tree/1.8.2) (2020-09-26)
+## [1.8.4](https://github.com/JMoerman/Go-For-It/tree/1.8.4) (2020-10-24)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.3...1.8.4)
+
+**Fixed bugs:**
+
+- The shortcuts for moving tasks up or down now work correctly.
+
+**Implemented enhancements:**
+
+- A symbolic icon variant has been added for both the logo and the checkmark icons.
+- Various translations have been updated (Arabic, Croatian, Dutch, French, German, Italian, Norwegian Bokmål, Slovak, Turkish). (Most of the changes will not apply to this version, however.)
+
+## [1.8.3](https://github.com/JMoerman/Go-For-It/tree/1.8.3) (2020-09-26)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.2...1.8.3)
 
 **Fixed bugs:**
