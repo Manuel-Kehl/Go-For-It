@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-30 20:37+0200\n"
-"PO-Revision-Date: 2020-05-05 02:11+0000\n"
+"PO-Revision-Date: 2020-10-05 17:59+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.1-dev\n"
+"X-Generator: Weblate 4.3-dev\n"
 "X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:437
@@ -46,11 +46,11 @@ msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr ""
+msgstr "\"%s\" を置き換えますか？"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
-msgstr ""
+msgstr "このファイルを置き換えるか、古いファイルを維持するかを選択してください。"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
@@ -58,7 +58,7 @@ msgstr "古いものを維持"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "置き換え"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:81
@@ -90,7 +90,7 @@ msgstr "ショートカット"
 
 #: ../src/Dialogs/SettingsDialog.vala:75
 msgid "Plugins"
-msgstr ""
+msgstr "プラグイン"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:142
@@ -120,7 +120,7 @@ msgstr "テーマ"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
 msgid "Color scheme"
-msgstr ""
+msgstr "カラースキーム"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
 msgid "%s needs to be restarted for this setting to take effect"
@@ -236,7 +236,7 @@ msgstr "上書き"
 
 #: ../src/LegacyStrings.vala:5
 msgid "The configured folder is already in use by another list."
-msgstr "設定されたディレクトリはすでに別のリストで使用されています。"
+msgstr "設定されたディレクトリは、すでに別のリストで使用されています。"
 
 #: ../src/LegacyStrings.vala:6
 msgid "folder"
@@ -373,15 +373,15 @@ msgstr "%s に書き込めませんでした: %s"
 
 #: ../src/Services/SettingsManager.vala:608
 msgid "Light"
-msgstr ""
+msgstr "ライト"
 
 #: ../src/Services/SettingsManager.vala:610
 msgid "Dark"
-msgstr ""
+msgstr "ダーク"
 
 #: ../src/Services/SettingsManager.vala:612
 msgid "Default"
-msgstr ""
+msgstr "デフォルト"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
@@ -433,11 +433,11 @@ msgstr "GTK テーマを継承"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:61
 msgid "Store to-do tasks in"
-msgstr ""
+msgstr "以下のファイルに ToDo タスクを保存:"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:62
 msgid "Store completed tasks in"
-msgstr ""
+msgstr "以下のファイルに完了したタスクを保存:"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
 msgid "List name"
@@ -445,19 +445,19 @@ msgstr "リストの名前"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
 msgid "Choose a file"
-msgstr ""
+msgstr "ファイルを選択"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid ""
 "Task list location has been changed to \"%s\" (was \"%s\"), but this file "
 "already exists."
-msgstr ""
+msgstr "タスク一覧の場所が \"%2$s\" から \"%1$s\" に変更されましたが、このファイルはすでに存在します。"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
-msgstr ""
+msgstr "完了したタスクを保存する場所が \"%2$s\" から \"%1$s\" に変更されましたが、このファイルはすでに存在します。"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
 msgid "New to-do list"
@@ -481,28 +481,26 @@ msgstr "この情報は todo.txt ファイルに保存されます。"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
 msgid "Select file to store to-do tasks in"
-msgstr ""
+msgstr "ToDo タスクを保存するファイルを選択"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:265
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:271
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:301
 msgid "_Select"
-msgstr ""
+msgstr "選択(_S)"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
 msgid "Select file to store completed tasks in"
-msgstr ""
+msgstr "完了したタスクを保存するファイルを選択"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:350
 msgid "Use default settings"
 msgstr "デフォルト設定を使う"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:423
-#, fuzzy
-#| msgid "The configured folder is already in use by another list."
 msgid "The configured to-do file is already in use by another list."
-msgstr "設定されたディレクトリはすでに別のリストで使用されています。"
+msgstr "設定された ToDo ファイルは、すでに別のリストで使用されています。"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
 msgid ""
@@ -570,7 +568,7 @@ msgstr "完了リストを消去"
 
 #: ../src/Todo.txt/TxtList.vala:180
 msgid "Sort Tasks"
-msgstr ""
+msgstr "タスクを並べ替え"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
