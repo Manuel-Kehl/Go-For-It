@@ -60,6 +60,8 @@ class GOFI.TXT.TaskRow: DragListRow {
 
         check_button = new Gtk.CheckButton ();
         check_button.active = task.done;
+        var sc = kbsettings.get_shortcut (KeyBindingSettings.SCK_MARK_TASK_DONE);
+        check_button.tooltip_markup = sc.get_accel_markup (_("Mark the task as complete"));
 
         set_start_widget (check_button);
         set_center_widget (label_box);
