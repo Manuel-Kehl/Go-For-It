@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 20:37+0200\n"
-"PO-Revision-Date: 2020-08-30 19:37+0000\n"
+"POT-Creation-Date: 2020-10-06 15:15+0200\n"
+"PO-Revision-Date: 2020-10-06 15:23+0200\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/go-for-it/go-"
 "for-it/pt/>\n"
@@ -12,10 +12,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.2.1-dev\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:437
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:441
 msgid "About"
 msgstr "Sobre"
 
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:424
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:428
 msgid "Settings"
 msgstr "Configurações"
 
@@ -122,11 +122,11 @@ msgstr "Tema"
 msgid "Color scheme"
 msgstr ""
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
 msgid "%s needs to be restarted for this setting to take effect"
 msgstr "O %s tem de ser reiniciado para que esta configuração surta efeito"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
 msgid "Use a header bar"
 msgstr "Usar a barra de cabeçalho"
 
@@ -326,11 +326,11 @@ msgstr "A duração da tarefa foi excedida"
 msgid "Consider switching to a different task"
 msgstr "Considere mudar para uma tarefa diferente"
 
-#: ../src/MainWindow.vala:62
+#: ../src/MainWindow.vala:61
 msgid "Go to overview"
 msgstr "Ir para o resumo"
 
-#: ../src/MainWindow.vala:63
+#: ../src/MainWindow.vala:62
 msgid "Go back to the to-do list"
 msgstr "Voltar à lista de tarefas"
 
@@ -338,7 +338,7 @@ msgstr "Voltar à lista de tarefas"
 msgid "Menu"
 msgstr "Menu"
 
-#: ../src/MainWindow.vala:430
+#: ../src/MainWindow.vala:434
 msgid "Contribute / Donate"
 msgstr "Colaborar / doar"
 
@@ -371,15 +371,15 @@ msgstr "Concluído"
 msgid "Couldn't write to %s: %s"
 msgstr "Não foi possível gravar no %s: %s"
 
-#: ../src/Services/SettingsManager.vala:608
+#: ../src/Services/SettingsManager.vala:629
 msgid "Light"
 msgstr ""
 
-#: ../src/Services/SettingsManager.vala:610
+#: ../src/Services/SettingsManager.vala:631
 msgid "Dark"
 msgstr ""
 
-#: ../src/Services/SettingsManager.vala:612
+#: ../src/Services/SettingsManager.vala:633
 msgid "Default"
 msgstr ""
 
@@ -387,43 +387,43 @@ msgstr ""
 msgid "disabled"
 msgstr "desativado"
 
-#: ../src/Services/Shortcuts.vala:151
+#: ../src/Services/Shortcuts.vala:153
 msgid "Filter tasks"
 msgstr "Filtro de tarefas"
 
-#: ../src/Services/Shortcuts.vala:152
+#: ../src/Services/Shortcuts.vala:154
 msgid "Add new task/list"
 msgstr "Adicionar uma nova tarefa/lista"
 
-#: ../src/Services/Shortcuts.vala:153
+#: ../src/Services/Shortcuts.vala:155
 msgid "Start/Stop the timer"
 msgstr "Iniciar/Parar o temporizador"
 
-#: ../src/Services/Shortcuts.vala:154
+#: ../src/Services/Shortcuts.vala:156 ../src/Widgets/TimerView.vala:280
 msgid "Mark the task as complete"
 msgstr "Marque a tarefa como concluída"
 
-#: ../src/Services/Shortcuts.vala:155
+#: ../src/Services/Shortcuts.vala:157
 msgid "Move selected row up"
 msgstr "Mover a linha selecionada para cima"
 
-#: ../src/Services/Shortcuts.vala:156
+#: ../src/Services/Shortcuts.vala:158
 msgid "Move selected row down"
 msgstr "Mover a linha selecionada para baixo"
 
-#: ../src/Services/Shortcuts.vala:158
+#: ../src/Services/Shortcuts.vala:160
 msgid "Move to next task/row"
 msgstr "Avançar para a próxima tarefa/linha"
 
-#: ../src/Services/Shortcuts.vala:159
+#: ../src/Services/Shortcuts.vala:161
 msgid "Move to previous task/row"
 msgstr "Ir para a tarefa/fila anterior"
 
-#: ../src/Services/Shortcuts.vala:160
+#: ../src/Services/Shortcuts.vala:162
 msgid "Move to right screen"
 msgstr "Mover para o ecrã da direita"
 
-#: ../src/Services/Shortcuts.vala:161
+#: ../src/Services/Shortcuts.vala:163
 msgid "Move to left screen"
 msgstr "Deslocar para o ecrã da esquerda"
 
@@ -564,11 +564,11 @@ msgstr ""
 "para um ficheiro ou local montável. Altere o caminho nas configurações para "
 "o diretório correto ou remova este ficheiro."
 
-#: ../src/Todo.txt/TxtList.vala:176
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr "Limpar concluídos"
 
-#: ../src/Todo.txt/TxtList.vala:180
+#: ../src/Todo.txt/TxtList.vala:179
 msgid "Sort Tasks"
 msgstr ""
 
@@ -580,7 +580,7 @@ msgstr "Surgiu um erro ao mover um ficheiro!"
 msgid "Error information: "
 msgstr "Informação do erro: "
 
-#: ../src/Todo.txt/TxtListManager.vala:355
+#: ../src/Todo.txt/TxtListManager.vala:358
 msgid "Couldn't create folder: %s"
 msgstr "Não foi possível criar o diretório: %s"
 
@@ -642,31 +642,41 @@ msgstr "Tarefa ativa"
 msgid "Pau_se"
 msgstr "Pau_sa"
 
-#: ../src/Widgets/TimerView.vala:145
+#: ../src/Widgets/TimerView.vala:140
+#, fuzzy
+msgid "Stop the timer"
+msgstr "Parar o temporizador"
+
+#: ../src/Widgets/TimerView.vala:147
 msgid "_Start"
 msgstr "_Iniciar"
 
-#: ../src/Widgets/TimerView.vala:165
+#: ../src/Widgets/TimerView.vala:149
+#, fuzzy
+msgid "Start the timer"
+msgstr "Iniciar o temporizador"
+
+#: ../src/Widgets/TimerView.vala:169
 msgid "Inactive"
 msgstr "Inativo"
 
-#: ../src/Widgets/TimerView.vala:166
+#: ../src/Widgets/TimerView.vala:170
 msgid "No task has been selected"
 msgstr "Nenhuma tarefa selecionada"
 
-#: ../src/Widgets/TimerView.vala:257
+#: ../src/Widgets/TimerView.vala:261
 msgid "S_kip"
 msgstr "_Ignorar"
 
-#: ../src/Widgets/TimerView.vala:258
+#: ../src/Widgets/TimerView.vala:262
 msgid "_Done"
 msgstr "_Concluído"
 
-#: ../src/Widgets/TimerView.vala:303
+#: ../src/Widgets/TimerView.vala:310
 msgid "Relax"
 msgstr "Relaxar"
 
-#: ../src/Widgets/TimerView.vala:304
+#: ../src/Widgets/TimerView.vala:311
 msgid "You have nothing to do."
 msgstr "Não tem nada para fazer."
 

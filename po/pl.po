@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 20:37+0200\n"
-"PO-Revision-Date: 2020-08-30 19:37+0000\n"
+"POT-Creation-Date: 2020-10-06 15:15+0200\n"
+"PO-Revision-Date: 2020-10-06 15:24+0200\n"
 "Last-Translator: WaldiS <sto@tutanota.de>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/go-for-it/go-for-"
 "it/pl/>\n"
@@ -13,10 +13,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.2.1-dev\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:437
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:441
 msgid "About"
 msgstr "O aplikacji"
 
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:424
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:428
 msgid "Settings"
 msgstr "Ustawienia"
 
@@ -122,11 +122,11 @@ msgstr "Motyw"
 msgid "Color scheme"
 msgstr ""
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
 msgid "%s needs to be restarted for this setting to take effect"
 msgstr "%s musi zostać uruchomiony ponownie, aby zmiany zostały zastosowane"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
 msgid "Use a header bar"
 msgstr "Użyj paska nagłówka"
 
@@ -326,11 +326,11 @@ msgstr "Przekroczono czas trwania zadania"
 msgid "Consider switching to a different task"
 msgstr "Rozważ przejście do innego zadania"
 
-#: ../src/MainWindow.vala:62
+#: ../src/MainWindow.vala:61
 msgid "Go to overview"
 msgstr "Wróć do przeglądu"
 
-#: ../src/MainWindow.vala:63
+#: ../src/MainWindow.vala:62
 msgid "Go back to the to-do list"
 msgstr "Powrót do listy zadań do wykonania"
 
@@ -338,7 +338,7 @@ msgstr "Powrót do listy zadań do wykonania"
 msgid "Menu"
 msgstr "Meni"
 
-#: ../src/MainWindow.vala:430
+#: ../src/MainWindow.vala:434
 msgid "Contribute / Donate"
 msgstr "Wkład / Darowizna"
 
@@ -371,15 +371,15 @@ msgstr "Gotowe"
 msgid "Couldn't write to %s: %s"
 msgstr "Nie można zapisać w %s: %s"
 
-#: ../src/Services/SettingsManager.vala:608
+#: ../src/Services/SettingsManager.vala:629
 msgid "Light"
 msgstr ""
 
-#: ../src/Services/SettingsManager.vala:610
+#: ../src/Services/SettingsManager.vala:631
 msgid "Dark"
 msgstr ""
 
-#: ../src/Services/SettingsManager.vala:612
+#: ../src/Services/SettingsManager.vala:633
 msgid "Default"
 msgstr ""
 
@@ -387,43 +387,43 @@ msgstr ""
 msgid "disabled"
 msgstr "wyłączone"
 
-#: ../src/Services/Shortcuts.vala:151
+#: ../src/Services/Shortcuts.vala:153
 msgid "Filter tasks"
 msgstr "Filtrowanie zadań"
 
-#: ../src/Services/Shortcuts.vala:152
+#: ../src/Services/Shortcuts.vala:154
 msgid "Add new task/list"
 msgstr "Dodaj nowe zadanie/listę"
 
-#: ../src/Services/Shortcuts.vala:153
+#: ../src/Services/Shortcuts.vala:155
 msgid "Start/Stop the timer"
 msgstr "Uruchom/Zatrzymaj zegar"
 
-#: ../src/Services/Shortcuts.vala:154
+#: ../src/Services/Shortcuts.vala:156 ../src/Widgets/TimerView.vala:280
 msgid "Mark the task as complete"
 msgstr "Oznacz zadanie jako zakończone"
 
-#: ../src/Services/Shortcuts.vala:155
+#: ../src/Services/Shortcuts.vala:157
 msgid "Move selected row up"
 msgstr "Przenieś wybrany wiersz w górę"
 
-#: ../src/Services/Shortcuts.vala:156
+#: ../src/Services/Shortcuts.vala:158
 msgid "Move selected row down"
 msgstr "Przenieś wybrany wiersz w dół"
 
-#: ../src/Services/Shortcuts.vala:158
+#: ../src/Services/Shortcuts.vala:160
 msgid "Move to next task/row"
 msgstr "Przejdź do następnego zadania/wiersza"
 
-#: ../src/Services/Shortcuts.vala:159
+#: ../src/Services/Shortcuts.vala:161
 msgid "Move to previous task/row"
 msgstr "Przejdź do poprzedniego zadania/wiersza"
 
-#: ../src/Services/Shortcuts.vala:160
+#: ../src/Services/Shortcuts.vala:162
 msgid "Move to right screen"
 msgstr "Przejdź do prawego ekranu"
 
-#: ../src/Services/Shortcuts.vala:161
+#: ../src/Services/Shortcuts.vala:163
 msgid "Move to left screen"
 msgstr "Przejdź do lewego ekranu"
 
@@ -564,11 +564,11 @@ msgstr ""
 "do montowania. Zmień ścieżkę w ustawieniach na odpowiedni folder lub usuń "
 "ten plik."
 
-#: ../src/Todo.txt/TxtList.vala:176
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr "Wyczyść Gotowe Listy"
 
-#: ../src/Todo.txt/TxtList.vala:180
+#: ../src/Todo.txt/TxtList.vala:179
 msgid "Sort Tasks"
 msgstr ""
 
@@ -580,7 +580,7 @@ msgstr "Wystąpił błąd podczas przenoszenia pliku!"
 msgid "Error information: "
 msgstr "Informacje o błędach: "
 
-#: ../src/Todo.txt/TxtListManager.vala:355
+#: ../src/Todo.txt/TxtListManager.vala:358
 msgid "Couldn't create folder: %s"
 msgstr "Nie można utworzyć katalogu: %s"
 
@@ -642,31 +642,41 @@ msgstr "Aktywne zadanie"
 msgid "Pau_se"
 msgstr "Pau_za"
 
-#: ../src/Widgets/TimerView.vala:145
+#: ../src/Widgets/TimerView.vala:140
+#, fuzzy
+msgid "Stop the timer"
+msgstr "Zatrzymaj zegar"
+
+#: ../src/Widgets/TimerView.vala:147
 msgid "_Start"
 msgstr "_Uruchom"
 
-#: ../src/Widgets/TimerView.vala:165
+#: ../src/Widgets/TimerView.vala:149
+#, fuzzy
+msgid "Start the timer"
+msgstr "Uruchom zegar"
+
+#: ../src/Widgets/TimerView.vala:169
 msgid "Inactive"
 msgstr "Nieaktywne"
 
-#: ../src/Widgets/TimerView.vala:166
+#: ../src/Widgets/TimerView.vala:170
 msgid "No task has been selected"
 msgstr "Nie wybrano żadnego zadania"
 
-#: ../src/Widgets/TimerView.vala:257
+#: ../src/Widgets/TimerView.vala:261
 msgid "S_kip"
 msgstr "P_omiń"
 
-#: ../src/Widgets/TimerView.vala:258
+#: ../src/Widgets/TimerView.vala:262
 msgid "_Done"
 msgstr "_Gotowe"
 
-#: ../src/Widgets/TimerView.vala:303
+#: ../src/Widgets/TimerView.vala:310
 msgid "Relax"
 msgstr "Zrelaksuj się"
 
-#: ../src/Widgets/TimerView.vala:304
+#: ../src/Widgets/TimerView.vala:311
 msgid "You have nothing to do."
 msgstr "Nie masz nic do zrobienia."
 

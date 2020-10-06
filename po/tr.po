@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 20:37+0200\n"
-"PO-Revision-Date: 2020-10-01 11:09+0000\n"
+"POT-Creation-Date: 2020-10-06 15:15+0200\n"
+"PO-Revision-Date: 2020-10-06 15:20+0200\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/go-for-it/go-for-"
 "it/tr/>\n"
@@ -12,10 +12,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:437
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:441
 msgid "About"
 msgstr "Hakkında"
 
@@ -67,7 +67,7 @@ msgstr "Değiştir"
 msgid "Cancel"
 msgstr "İptal Et"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:424
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:428
 msgid "Settings"
 msgstr "Ayarlar"
 
@@ -121,13 +121,13 @@ msgstr "Tema"
 msgid "Color scheme"
 msgstr "Renk şeması"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
 msgid "%s needs to be restarted for this setting to take effect"
 msgstr ""
 "Bu ayarların etkin olabilmesi için %s uygulamasının yeniden başlatılması "
 "gerekiyor"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
 msgid "Use a header bar"
 msgstr "Başlık çubuğu kullan"
 
@@ -329,11 +329,11 @@ msgstr "Görev süresi aşıldı"
 msgid "Consider switching to a different task"
 msgstr "Farklı bir göreve geçmiş yapmak güzel olabilir"
 
-#: ../src/MainWindow.vala:62
+#: ../src/MainWindow.vala:61
 msgid "Go to overview"
 msgstr "Genel görünüme git"
 
-#: ../src/MainWindow.vala:63
+#: ../src/MainWindow.vala:62
 msgid "Go back to the to-do list"
 msgstr "Yapılacaklar listesine geri dön"
 
@@ -341,7 +341,7 @@ msgstr "Yapılacaklar listesine geri dön"
 msgid "Menu"
 msgstr "Menü"
 
-#: ../src/MainWindow.vala:430
+#: ../src/MainWindow.vala:434
 msgid "Contribute / Donate"
 msgstr "Katkı / Bağış"
 
@@ -374,15 +374,15 @@ msgstr "Tamamlandı"
 msgid "Couldn't write to %s: %s"
 msgstr "%s dizinine yazılamadı: %s"
 
-#: ../src/Services/SettingsManager.vala:608
+#: ../src/Services/SettingsManager.vala:629
 msgid "Light"
 msgstr "Aydınlık"
 
-#: ../src/Services/SettingsManager.vala:610
+#: ../src/Services/SettingsManager.vala:631
 msgid "Dark"
 msgstr "Karanlık"
 
-#: ../src/Services/SettingsManager.vala:612
+#: ../src/Services/SettingsManager.vala:633
 msgid "Default"
 msgstr "Öntanımlı"
 
@@ -390,43 +390,43 @@ msgstr "Öntanımlı"
 msgid "disabled"
 msgstr "devre dışı"
 
-#: ../src/Services/Shortcuts.vala:151
+#: ../src/Services/Shortcuts.vala:153
 msgid "Filter tasks"
 msgstr "Görevleri süz"
 
-#: ../src/Services/Shortcuts.vala:152
+#: ../src/Services/Shortcuts.vala:154
 msgid "Add new task/list"
 msgstr "Yeni görev/liste ekle"
 
-#: ../src/Services/Shortcuts.vala:153
+#: ../src/Services/Shortcuts.vala:155
 msgid "Start/Stop the timer"
 msgstr "Zamanlayıcıyı Başlat/Durdur"
 
-#: ../src/Services/Shortcuts.vala:154
+#: ../src/Services/Shortcuts.vala:156 ../src/Widgets/TimerView.vala:280
 msgid "Mark the task as complete"
 msgstr "Görevi tamamlandı olarak işaretle"
 
-#: ../src/Services/Shortcuts.vala:155
+#: ../src/Services/Shortcuts.vala:157
 msgid "Move selected row up"
 msgstr "Seçileni üst satıra taşı"
 
-#: ../src/Services/Shortcuts.vala:156
+#: ../src/Services/Shortcuts.vala:158
 msgid "Move selected row down"
 msgstr "Seçileni alt satıra taşı"
 
-#: ../src/Services/Shortcuts.vala:158
+#: ../src/Services/Shortcuts.vala:160
 msgid "Move to next task/row"
 msgstr "Sonraki göreve/satıra taşı"
 
-#: ../src/Services/Shortcuts.vala:159
+#: ../src/Services/Shortcuts.vala:161
 msgid "Move to previous task/row"
 msgstr "Önceki göreve/satıra taşı"
 
-#: ../src/Services/Shortcuts.vala:160
+#: ../src/Services/Shortcuts.vala:162
 msgid "Move to right screen"
 msgstr "Sağdaki ekrana taşı"
 
-#: ../src/Services/Shortcuts.vala:161
+#: ../src/Services/Shortcuts.vala:163
 msgid "Move to left screen"
 msgstr "Soldaki ekrana taşı"
 
@@ -573,11 +573,11 @@ msgstr ""
 "bir konuma işaret ediyor. Lütfen ayarlardaki yolu uygun bir dizinle "
 "değiştirin veya bu dosyayı kaldırın."
 
-#: ../src/Todo.txt/TxtList.vala:176
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr "Tamamlananlar Listesini Temizle"
 
-#: ../src/Todo.txt/TxtList.vala:180
+#: ../src/Todo.txt/TxtList.vala:179
 msgid "Sort Tasks"
 msgstr "Görevleri sırala"
 
@@ -589,7 +589,7 @@ msgstr "Bir dosya taşınırken hata oluştu!"
 msgid "Error information: "
 msgstr "Hata bilgisi: "
 
-#: ../src/Todo.txt/TxtListManager.vala:355
+#: ../src/Todo.txt/TxtListManager.vala:358
 msgid "Couldn't create folder: %s"
 msgstr "Dizin oluşturulamadı: %s"
 
@@ -651,31 +651,41 @@ msgstr "Etkin Görev"
 msgid "Pau_se"
 msgstr "_Duraklat"
 
-#: ../src/Widgets/TimerView.vala:145
+#: ../src/Widgets/TimerView.vala:140
+#, fuzzy
+msgid "Stop the timer"
+msgstr "Zamanlayıcıyı Durdur"
+
+#: ../src/Widgets/TimerView.vala:147
 msgid "_Start"
 msgstr "_Başlat"
 
-#: ../src/Widgets/TimerView.vala:165
+#: ../src/Widgets/TimerView.vala:149
+#, fuzzy
+msgid "Start the timer"
+msgstr "Zamanlayıcıyı Başlat"
+
+#: ../src/Widgets/TimerView.vala:169
 msgid "Inactive"
 msgstr "Devre dışı"
 
-#: ../src/Widgets/TimerView.vala:166
+#: ../src/Widgets/TimerView.vala:170
 msgid "No task has been selected"
 msgstr "Hiçbir görev seçilmedi"
 
-#: ../src/Widgets/TimerView.vala:257
+#: ../src/Widgets/TimerView.vala:261
 msgid "S_kip"
 msgstr "_Geç"
 
-#: ../src/Widgets/TimerView.vala:258
+#: ../src/Widgets/TimerView.vala:262
 msgid "_Done"
 msgstr "_Tamamlandı"
 
-#: ../src/Widgets/TimerView.vala:303
+#: ../src/Widgets/TimerView.vala:310
 msgid "Relax"
 msgstr "Rahatla"
 
-#: ../src/Widgets/TimerView.vala:304
+#: ../src/Widgets/TimerView.vala:311
 msgid "You have nothing to do."
 msgstr "Yapacak hiçbir görev yok."
 

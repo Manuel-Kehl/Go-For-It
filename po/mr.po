@@ -1,21 +1,20 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 20:37+0200\n"
-"PO-Revision-Date: 2019-12-28 20:34+0000\n"
+"POT-Creation-Date: 2020-10-06 15:15+0200\n"
+"PO-Revision-Date: 2020-10-06 15:26+0200\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/mr/>\n"
+"Language-Team: Marathi <https://hosted.weblate.org/projects/go-for-it/go-for-it/mr/>\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:437
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:441
 msgid "About"
 msgstr "आमच्या बद्दल"
 
@@ -33,11 +32,11 @@ msgstr "आधार दिल्याबद्दल धन्यवाद"
 
 #: ../src/Dialogs/ContributeDialog.vala:32
 msgid ""
-"Submitting code, artwork, translations or documentation is a great way of "
-"contributing to the project:"
+"Submitting code, artwork, translations or documentation is a great way of contributing "
+"to the project:"
 msgstr ""
-"कोड, आर्टवर्क, भाषांतरे किंवा दस्तऐवजीकरण सबमिट करणे हा या प्रकल्पात योगदान देण्याचा एक "
-"चांगला मार्ग आहे:"
+"कोड, आर्टवर्क, भाषांतरे किंवा दस्तऐवजीकरण सबमिट करणे हा या प्रकल्पात योगदान देण्याचा एक चांगला मार्ग "
+"आहे:"
 
 #: ../src/Dialogs/ContributeDialog.vala:36
 msgid "If you really like this app, you can buy me a drink:"
@@ -67,7 +66,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:424
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:428
 msgid "Settings"
 msgstr "सेटिंग्ज"
 
@@ -121,17 +120,16 @@ msgstr "थीम"
 msgid "Color scheme"
 msgstr ""
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
 msgid "%s needs to be restarted for this setting to take effect"
 msgstr "ही सेटिंग प्रभावी होण्यासाठी %s ला पुन्हा सुरू करण्याची आवश्यकता आहे"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
 msgid "Use a header bar"
 msgstr "शीर्षलेख बार वापरा"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
-#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:143
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64 ../src/Pages/TaskListPage.vala:144
+#: ../src/Pages/TaskListPage.vala:236 ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:143
 msgid "Timer"
 msgstr "टाइमर"
 
@@ -325,11 +323,11 @@ msgstr ""
 msgid "Consider switching to a different task"
 msgstr ""
 
-#: ../src/MainWindow.vala:62
+#: ../src/MainWindow.vala:61
 msgid "Go to overview"
 msgstr ""
 
-#: ../src/MainWindow.vala:63
+#: ../src/MainWindow.vala:62
 msgid "Go back to the to-do list"
 msgstr ""
 
@@ -337,7 +335,7 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-#: ../src/MainWindow.vala:430
+#: ../src/MainWindow.vala:434
 msgid "Contribute / Donate"
 msgstr ""
 
@@ -347,8 +345,7 @@ msgid ""
 "Add one below!"
 msgstr ""
 
-#: ../src/Pages/SelectionPage.vala:117
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:82
+#: ../src/Pages/SelectionPage.vala:117 ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:82
 msgid "Add list"
 msgstr ""
 
@@ -368,15 +365,15 @@ msgstr ""
 msgid "Couldn't write to %s: %s"
 msgstr ""
 
-#: ../src/Services/SettingsManager.vala:608
+#: ../src/Services/SettingsManager.vala:629
 msgid "Light"
 msgstr ""
 
-#: ../src/Services/SettingsManager.vala:610
+#: ../src/Services/SettingsManager.vala:631
 msgid "Dark"
 msgstr ""
 
-#: ../src/Services/SettingsManager.vala:612
+#: ../src/Services/SettingsManager.vala:633
 msgid "Default"
 msgstr ""
 
@@ -384,43 +381,43 @@ msgstr ""
 msgid "disabled"
 msgstr ""
 
-#: ../src/Services/Shortcuts.vala:151
+#: ../src/Services/Shortcuts.vala:153
 msgid "Filter tasks"
 msgstr ""
 
-#: ../src/Services/Shortcuts.vala:152
+#: ../src/Services/Shortcuts.vala:154
 msgid "Add new task/list"
 msgstr ""
 
-#: ../src/Services/Shortcuts.vala:153
+#: ../src/Services/Shortcuts.vala:155
 msgid "Start/Stop the timer"
 msgstr ""
 
-#: ../src/Services/Shortcuts.vala:154
+#: ../src/Services/Shortcuts.vala:156 ../src/Widgets/TimerView.vala:280
 msgid "Mark the task as complete"
 msgstr ""
 
-#: ../src/Services/Shortcuts.vala:155
+#: ../src/Services/Shortcuts.vala:157
 msgid "Move selected row up"
 msgstr ""
 
-#: ../src/Services/Shortcuts.vala:156
+#: ../src/Services/Shortcuts.vala:158
 msgid "Move selected row down"
 msgstr ""
 
-#: ../src/Services/Shortcuts.vala:158
+#: ../src/Services/Shortcuts.vala:160
 msgid "Move to next task/row"
 msgstr ""
 
-#: ../src/Services/Shortcuts.vala:159
+#: ../src/Services/Shortcuts.vala:161
 msgid "Move to previous task/row"
 msgstr ""
 
-#: ../src/Services/Shortcuts.vala:160
+#: ../src/Services/Shortcuts.vala:162
 msgid "Move to right screen"
 msgstr ""
 
-#: ../src/Services/Shortcuts.vala:161
+#: ../src/Services/Shortcuts.vala:163
 msgid "Move to left screen"
 msgstr ""
 
@@ -446,14 +443,14 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid ""
-"Task list location has been changed to \"%s\" (was \"%s\"), but this file "
-"already exists."
+"Task list location has been changed to \"%s\" (was \"%s\"), but this file already "
+"exists."
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid ""
-"The location to store completed tasks in has been changed to \"%s\" (was \"%s"
-"\"), but this file already exists."
+"The location to store completed tasks in has been changed to \"%s\" (was \"%s\"), but "
+"this file already exists."
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
@@ -501,8 +498,8 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
 msgid ""
-"Another todo.txt list uses the file chosen to archive completed tasks to to "
-"store its to-do tasks."
+"Another todo.txt list uses the file chosen to archive completed tasks to to store its "
+"to-do tasks."
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:459
@@ -535,8 +532,8 @@ msgstr ""
 
 #: ../src/Todo.txt/TaskManager.vala:54
 msgid ""
-"%s won't save or load from the current todo.txt folder until it is either "
-"restarted or another location is chosen."
+"%s won't save or load from the current todo.txt folder until it is either restarted or "
+"another location is chosen."
 msgstr ""
 
 #: ../src/Todo.txt/TaskManager.vala:55
@@ -549,16 +546,16 @@ msgstr ""
 
 #: ../src/Todo.txt/TaskManager.vala:57
 msgid ""
-"The path to the todo.txt folder does not point to a folder, but to a file or "
-"mountable location. Please change the path in the settings to a suitable "
-"folder or remove this file."
+"The path to the todo.txt folder does not point to a folder, but to a file or mountable "
+"location. Please change the path in the settings to a suitable folder or remove this "
+"file."
 msgstr ""
 
-#: ../src/Todo.txt/TxtList.vala:176
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr ""
 
-#: ../src/Todo.txt/TxtList.vala:180
+#: ../src/Todo.txt/TxtList.vala:179
 msgid "Sort Tasks"
 msgstr ""
 
@@ -570,7 +567,7 @@ msgstr ""
 msgid "Error information: "
 msgstr ""
 
-#: ../src/Todo.txt/TxtListManager.vala:355
+#: ../src/Todo.txt/TxtListManager.vala:358
 msgid "Couldn't create folder: %s"
 msgstr ""
 
@@ -630,31 +627,39 @@ msgstr ""
 msgid "Pau_se"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:145
+#: ../src/Widgets/TimerView.vala:140
+msgid "Stop the timer"
+msgstr ""
+
+#: ../src/Widgets/TimerView.vala:147
 msgid "_Start"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:165
+#: ../src/Widgets/TimerView.vala:149
+msgid "Start the timer"
+msgstr ""
+
+#: ../src/Widgets/TimerView.vala:169
 msgid "Inactive"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:166
+#: ../src/Widgets/TimerView.vala:170
 msgid "No task has been selected"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:257
+#: ../src/Widgets/TimerView.vala:261
 msgid "S_kip"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:258
+#: ../src/Widgets/TimerView.vala:262
 msgid "_Done"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:303
+#: ../src/Widgets/TimerView.vala:310
 msgid "Relax"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:304
+#: ../src/Widgets/TimerView.vala:311
 msgid "You have nothing to do."
 msgstr ""
 
