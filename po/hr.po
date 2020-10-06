@@ -1,22 +1,22 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 20:37+0200\n"
-"PO-Revision-Date: 2020-10-03 12:30+0000\n"
+"POT-Creation-Date: 2020-10-06 15:15+0200\n"
+"PO-Revision-Date: 2020-10-06 15:21+0200\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/"
-"go-for-it/hr/>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/go-"
+"for-it/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:437
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:441
 msgid "About"
 msgstr "Informacije"
 
@@ -68,7 +68,7 @@ msgstr "Zamijeni"
 msgid "Cancel"
 msgstr "Odustani"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:424
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:428
 msgid "Settings"
 msgstr "Postavke"
 
@@ -122,11 +122,11 @@ msgstr "Dizajn"
 msgid "Color scheme"
 msgstr "Shema boja"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
 msgid "%s needs to be restarted for this setting to take effect"
 msgstr "%s se mora ponovo pokrenuti kako bi izmjene stupile na snagu"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
 msgid "Use a header bar"
 msgstr "Koristi jednu traku zaglavlja"
 
@@ -326,11 +326,11 @@ msgstr "Trajanje zadatka je prekoračeno"
 msgid "Consider switching to a different task"
 msgstr "Razmisli o prebacivanju na drugi zadatak"
 
-#: ../src/MainWindow.vala:62
+#: ../src/MainWindow.vala:61
 msgid "Go to overview"
 msgstr "Idi na pregled"
 
-#: ../src/MainWindow.vala:63
+#: ../src/MainWindow.vala:62
 msgid "Go back to the to-do list"
 msgstr "Idi natrag na popis zadataka"
 
@@ -338,7 +338,7 @@ msgstr "Idi natrag na popis zadataka"
 msgid "Menu"
 msgstr "Izbornik"
 
-#: ../src/MainWindow.vala:430
+#: ../src/MainWindow.vala:434
 msgid "Contribute / Donate"
 msgstr "Pridonesi/doniraj"
 
@@ -371,15 +371,15 @@ msgstr "Obavljeno"
 msgid "Couldn't write to %s: %s"
 msgstr "Nije bilo moguće pisati u %s: %s"
 
-#: ../src/Services/SettingsManager.vala:608
+#: ../src/Services/SettingsManager.vala:629
 msgid "Light"
 msgstr "Svijetla"
 
-#: ../src/Services/SettingsManager.vala:610
+#: ../src/Services/SettingsManager.vala:631
 msgid "Dark"
 msgstr "Tamna"
 
-#: ../src/Services/SettingsManager.vala:612
+#: ../src/Services/SettingsManager.vala:633
 msgid "Default"
 msgstr "Standardna"
 
@@ -387,43 +387,43 @@ msgstr "Standardna"
 msgid "disabled"
 msgstr "deaktivirano"
 
-#: ../src/Services/Shortcuts.vala:151
+#: ../src/Services/Shortcuts.vala:153
 msgid "Filter tasks"
 msgstr "Filtriraj zadatke"
 
-#: ../src/Services/Shortcuts.vala:152
+#: ../src/Services/Shortcuts.vala:154
 msgid "Add new task/list"
 msgstr "Dodaj novi filtar/popis"
 
-#: ../src/Services/Shortcuts.vala:153
+#: ../src/Services/Shortcuts.vala:155
 msgid "Start/Stop the timer"
 msgstr "Pokreni/zaustavi štopericu"
 
-#: ../src/Services/Shortcuts.vala:154
+#: ../src/Services/Shortcuts.vala:156 ../src/Widgets/TimerView.vala:280
 msgid "Mark the task as complete"
 msgstr "Označi zadatak kao završen"
 
-#: ../src/Services/Shortcuts.vala:155
+#: ../src/Services/Shortcuts.vala:157
 msgid "Move selected row up"
 msgstr "Premjesti odabrani redak prema gore"
 
-#: ../src/Services/Shortcuts.vala:156
+#: ../src/Services/Shortcuts.vala:158
 msgid "Move selected row down"
 msgstr "Premjesti odabrani redak prema dolje"
 
-#: ../src/Services/Shortcuts.vala:158
+#: ../src/Services/Shortcuts.vala:160
 msgid "Move to next task/row"
 msgstr "Premjesti se na sljedeći zadatak/redak"
 
-#: ../src/Services/Shortcuts.vala:159
+#: ../src/Services/Shortcuts.vala:161
 msgid "Move to previous task/row"
 msgstr "Premjesti se na prethodni zadatak/redak"
 
-#: ../src/Services/Shortcuts.vala:160
+#: ../src/Services/Shortcuts.vala:162
 msgid "Move to right screen"
 msgstr "Premjesti se na desni ekran"
 
-#: ../src/Services/Shortcuts.vala:161
+#: ../src/Services/Shortcuts.vala:163
 msgid "Move to left screen"
 msgstr "Premjesti se na lijevi ekran"
 
@@ -460,8 +460,8 @@ msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
 msgstr ""
-"Mjesto za spremanje završenih zadataka promijenjeno je u „%s” (bilo je „%s”)"
-", ali ta datoteka već postoji."
+"Mjesto za spremanje završenih zadataka promijenjeno je u „%s” (bilo je "
+"„%s”), ali ta datoteka već postoji."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
 msgid "New to-do list"
@@ -567,11 +567,11 @@ msgstr ""
 "Put do todo.txt mape ne upućuje na mapu, već na datoteku ili mjesto za "
 "montiranje. Ispravi putanju mape u postavkama ili ukloni ovu datoteku."
 
-#: ../src/Todo.txt/TxtList.vala:176
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr "Izbriši popis obavljenih"
 
-#: ../src/Todo.txt/TxtList.vala:180
+#: ../src/Todo.txt/TxtList.vala:179
 msgid "Sort Tasks"
 msgstr "Razvrstaj zadatke"
 
@@ -583,7 +583,7 @@ msgstr "Ustanovljen je problem tijekom premještanja jedne datoteke!"
 msgid "Error information: "
 msgstr "Informacije o grešci: "
 
-#: ../src/Todo.txt/TxtListManager.vala:355
+#: ../src/Todo.txt/TxtListManager.vala:358
 msgid "Couldn't create folder: %s"
 msgstr "Nije bilo moguće stvoriti mapu: %s"
 
@@ -645,31 +645,41 @@ msgstr "Aktivni zadatak"
 msgid "Pau_se"
 msgstr "Zau_stavi"
 
-#: ../src/Widgets/TimerView.vala:145
+#: ../src/Widgets/TimerView.vala:140
+#, fuzzy
+msgid "Stop the timer"
+msgstr "zaustavi štopericu"
+
+#: ../src/Widgets/TimerView.vala:147
 msgid "_Start"
 msgstr "_Započni"
 
-#: ../src/Widgets/TimerView.vala:165
+#: ../src/Widgets/TimerView.vala:149
+#, fuzzy
+msgid "Start the timer"
+msgstr "Pokreni štopericu"
+
+#: ../src/Widgets/TimerView.vala:169
 msgid "Inactive"
 msgstr "Neaktivni"
 
-#: ../src/Widgets/TimerView.vala:166
+#: ../src/Widgets/TimerView.vala:170
 msgid "No task has been selected"
 msgstr "Nijedan zadatak nije odabran"
 
-#: ../src/Widgets/TimerView.vala:257
+#: ../src/Widgets/TimerView.vala:261
 msgid "S_kip"
 msgstr "Pres_koči"
 
-#: ../src/Widgets/TimerView.vala:258
+#: ../src/Widgets/TimerView.vala:262
 msgid "_Done"
 msgstr "_Dovršeno"
 
-#: ../src/Widgets/TimerView.vala:303
+#: ../src/Widgets/TimerView.vala:310
 msgid "Relax"
 msgstr "Odmori se"
 
-#: ../src/Widgets/TimerView.vala:304
+#: ../src/Widgets/TimerView.vala:311
 msgid "You have nothing to do."
 msgstr "Nemaš ništa za obaviti."
 
