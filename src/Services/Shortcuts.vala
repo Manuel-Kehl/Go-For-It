@@ -56,28 +56,11 @@ namespace GOFI {
             if (!this.is_valid) {
                 return _("disabled");
             }
-
-            var tmp = "";
-
-            if ((this.modifier & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                tmp += "Ctrl + ";
-            }
-            if ((this.modifier & Gdk.ModifierType.SHIFT_MASK) != 0) {
-                tmp += "Shift + ";
-            }
-            if ((this.modifier & Gdk.ModifierType.MOD1_MASK) != 0) {
-                tmp += "Alt + ";
-            }
-            switch (this.key) {
-                case Gdk.Key.Return:
-                    tmp += "Enter"; // Most keyboards have Enter printed on the key
-                    break;
-                default:
-                    tmp += Gdk.keyval_name (this.key);
-                    break;
-            }
-
-            return tmp;
+#if USE_GRANITE
+            return Granite.accel_to_string (Gtk.accelerator_name (key, modifier));
+#else
+            return Gtk.accelerator_get_label (key, modifier);
+#endif
         }
 
         public bool equals (Shortcut other) {
