@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 20:37+0200\n"
+"POT-Creation-Date: 2020-10-06 15:15+0200\n"
 "PO-Revision-Date: 2020-10-05 17:59+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/"
-"go-for-it/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/go-"
+"for-it/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Weblate 4.3-dev\n"
 "X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:437
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:441
 msgid "About"
 msgstr "このアプリケーションについて"
 
@@ -50,7 +50,8 @@ msgstr "\"%s\" を置き換えますか？"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
-msgstr "このファイルを置き換えるか、古いファイルを維持するかを選択してください。"
+msgstr ""
+"このファイルを置き換えるか、古いファイルを維持するかを選択してください。"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
@@ -68,7 +69,7 @@ msgstr "置き換え"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:424
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:428
 msgid "Settings"
 msgstr "設定"
 
@@ -122,11 +123,11 @@ msgstr "テーマ"
 msgid "Color scheme"
 msgstr "カラースキーム"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
 msgid "%s needs to be restarted for this setting to take effect"
 msgstr "この設定を反映するには、%s を再起動する必要があります"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
 msgid "Use a header bar"
 msgstr "ヘッダーバーを使用"
 
@@ -326,11 +327,11 @@ msgstr "タスクの継続時間を超過しています"
 msgid "Consider switching to a different task"
 msgstr "別のタスクへの切り替えをお考えください"
 
-#: ../src/MainWindow.vala:62
+#: ../src/MainWindow.vala:61
 msgid "Go to overview"
 msgstr "オーバービューに移動"
 
-#: ../src/MainWindow.vala:63
+#: ../src/MainWindow.vala:62
 msgid "Go back to the to-do list"
 msgstr "ToDo リストに戻る"
 
@@ -338,7 +339,7 @@ msgstr "ToDo リストに戻る"
 msgid "Menu"
 msgstr "メニュー"
 
-#: ../src/MainWindow.vala:430
+#: ../src/MainWindow.vala:434
 msgid "Contribute / Donate"
 msgstr "貢献／寄付"
 
@@ -371,15 +372,15 @@ msgstr "完了"
 msgid "Couldn't write to %s: %s"
 msgstr "%s に書き込めませんでした: %s"
 
-#: ../src/Services/SettingsManager.vala:608
+#: ../src/Services/SettingsManager.vala:629
 msgid "Light"
 msgstr "ライト"
 
-#: ../src/Services/SettingsManager.vala:610
+#: ../src/Services/SettingsManager.vala:631
 msgid "Dark"
 msgstr "ダーク"
 
-#: ../src/Services/SettingsManager.vala:612
+#: ../src/Services/SettingsManager.vala:633
 msgid "Default"
 msgstr "デフォルト"
 
@@ -387,43 +388,43 @@ msgstr "デフォルト"
 msgid "disabled"
 msgstr "無効"
 
-#: ../src/Services/Shortcuts.vala:151
+#: ../src/Services/Shortcuts.vala:153
 msgid "Filter tasks"
 msgstr "タスクにフィルターを適用"
 
-#: ../src/Services/Shortcuts.vala:152
+#: ../src/Services/Shortcuts.vala:154
 msgid "Add new task/list"
 msgstr "新しいタスク/リストを追加"
 
-#: ../src/Services/Shortcuts.vala:153
+#: ../src/Services/Shortcuts.vala:155
 msgid "Start/Stop the timer"
 msgstr "タイマーを開始/停止"
 
-#: ../src/Services/Shortcuts.vala:154
+#: ../src/Services/Shortcuts.vala:156 ../src/Widgets/TimerView.vala:280
 msgid "Mark the task as complete"
 msgstr "タスクを完了としてマーク"
 
-#: ../src/Services/Shortcuts.vala:155
+#: ../src/Services/Shortcuts.vala:157
 msgid "Move selected row up"
 msgstr "選択した列を上に移動"
 
-#: ../src/Services/Shortcuts.vala:156
+#: ../src/Services/Shortcuts.vala:158
 msgid "Move selected row down"
 msgstr "選択した列を下に移動"
 
-#: ../src/Services/Shortcuts.vala:158
+#: ../src/Services/Shortcuts.vala:160
 msgid "Move to next task/row"
 msgstr "次のタスク/列に移動"
 
-#: ../src/Services/Shortcuts.vala:159
+#: ../src/Services/Shortcuts.vala:161
 msgid "Move to previous task/row"
 msgstr "前のタスク/列に移動"
 
-#: ../src/Services/Shortcuts.vala:160
+#: ../src/Services/Shortcuts.vala:162
 msgid "Move to right screen"
 msgstr "右の画面に移動"
 
-#: ../src/Services/Shortcuts.vala:161
+#: ../src/Services/Shortcuts.vala:163
 msgid "Move to left screen"
 msgstr "左の画面に移動"
 
@@ -451,13 +452,17 @@ msgstr "ファイルを選択"
 msgid ""
 "Task list location has been changed to \"%s\" (was \"%s\"), but this file "
 "already exists."
-msgstr "タスク一覧の場所が \"%2$s\" から \"%1$s\" に変更されましたが、このファイルはすでに存在します。"
+msgstr ""
+"タスク一覧の場所が \"%2$s\" から \"%1$s\" に変更されましたが、このファイルは"
+"すでに存在します。"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
-msgstr "完了したタスクを保存する場所が \"%2$s\" から \"%1$s\" に変更されましたが、このファイルはすでに存在します。"
+msgstr ""
+"完了したタスクを保存する場所が \"%2$s\" から \"%1$s\" に変更されましたが、こ"
+"のファイルはすでに存在します。"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
 msgid "New to-do list"
@@ -562,11 +567,11 @@ msgstr ""
 "リ以外へのパスになっています。適切なディレクトリへのパスに変更するか、ファイ"
 "ルを削除してください。"
 
-#: ../src/Todo.txt/TxtList.vala:176
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr "完了リストを消去"
 
-#: ../src/Todo.txt/TxtList.vala:180
+#: ../src/Todo.txt/TxtList.vala:179
 msgid "Sort Tasks"
 msgstr "タスクを並べ替え"
 
@@ -578,7 +583,7 @@ msgstr "ファイルの移動中にエラーが発生しました！"
 msgid "Error information: "
 msgstr "エラーの情報: "
 
-#: ../src/Todo.txt/TxtListManager.vala:355
+#: ../src/Todo.txt/TxtListManager.vala:358
 msgid "Couldn't create folder: %s"
 msgstr "ディレクトリを作成できませんでした: %s"
 
@@ -640,31 +645,43 @@ msgstr "アクティブなタスク"
 msgid "Pau_se"
 msgstr "一時停止(_S)"
 
-#: ../src/Widgets/TimerView.vala:145
+#: ../src/Widgets/TimerView.vala:140
+#, fuzzy
+#| msgid "Start/Stop the timer"
+msgid "Stop the timer"
+msgstr "タイマーを開始/停止"
+
+#: ../src/Widgets/TimerView.vala:147
 msgid "_Start"
 msgstr "開始(_S)"
 
-#: ../src/Widgets/TimerView.vala:165
+#: ../src/Widgets/TimerView.vala:149
+#, fuzzy
+#| msgid "Start/Stop the timer"
+msgid "Start the timer"
+msgstr "タイマーを開始/停止"
+
+#: ../src/Widgets/TimerView.vala:169
 msgid "Inactive"
 msgstr "非アクティブ"
 
-#: ../src/Widgets/TimerView.vala:166
+#: ../src/Widgets/TimerView.vala:170
 msgid "No task has been selected"
 msgstr "タスクが選択されていません"
 
-#: ../src/Widgets/TimerView.vala:257
+#: ../src/Widgets/TimerView.vala:261
 msgid "S_kip"
 msgstr "スキップ(_K)"
 
-#: ../src/Widgets/TimerView.vala:258
+#: ../src/Widgets/TimerView.vala:262
 msgid "_Done"
 msgstr "完了(_D)"
 
-#: ../src/Widgets/TimerView.vala:303
+#: ../src/Widgets/TimerView.vala:310
 msgid "Relax"
 msgstr "リラックスしましょう"
 
-#: ../src/Widgets/TimerView.vala:304
+#: ../src/Widgets/TimerView.vala:311
 msgid "You have nothing to do."
 msgstr "することがありません。"
 
