@@ -5,7 +5,8 @@ msgstr ""
 "POT-Creation-Date: 2020-10-06 15:15+0200\n"
 "PO-Revision-Date: 2020-10-06 15:26+0200\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://hosted.weblate.org/projects/go-for-it/go-for-it/mr/>\n"
+"Language-Team: Marathi <https://hosted.weblate.org/projects/go-for-it/go-for-"
+"it/mr/>\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,11 +33,11 @@ msgstr "आधार दिल्याबद्दल धन्यवाद"
 
 #: ../src/Dialogs/ContributeDialog.vala:32
 msgid ""
-"Submitting code, artwork, translations or documentation is a great way of contributing "
-"to the project:"
+"Submitting code, artwork, translations or documentation is a great way of "
+"contributing to the project:"
 msgstr ""
-"कोड, आर्टवर्क, भाषांतरे किंवा दस्तऐवजीकरण सबमिट करणे हा या प्रकल्पात योगदान देण्याचा एक चांगला मार्ग "
-"आहे:"
+"कोड, आर्टवर्क, भाषांतरे किंवा दस्तऐवजीकरण सबमिट करणे हा या प्रकल्पात योगदान देण्याचा एक "
+"चांगला मार्ग आहे:"
 
 #: ../src/Dialogs/ContributeDialog.vala:36
 msgid "If you really like this app, you can buy me a drink:"
@@ -128,8 +129,9 @@ msgstr "ही सेटिंग प्रभावी होण्यासा
 msgid "Use a header bar"
 msgstr "शीर्षलेख बार वापरा"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64 ../src/Pages/TaskListPage.vala:144
-#: ../src/Pages/TaskListPage.vala:236 ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:143
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
+#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:143
 msgid "Timer"
 msgstr "टाइमर"
 
@@ -345,7 +347,8 @@ msgid ""
 "Add one below!"
 msgstr ""
 
-#: ../src/Pages/SelectionPage.vala:117 ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:82
+#: ../src/Pages/SelectionPage.vala:117
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:82
 msgid "Add list"
 msgstr ""
 
@@ -443,14 +446,14 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid ""
-"Task list location has been changed to \"%s\" (was \"%s\"), but this file already "
-"exists."
+"Task list location has been changed to \"%s\" (was \"%s\"), but this file "
+"already exists."
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid ""
-"The location to store completed tasks in has been changed to \"%s\" (was \"%s\"), but "
-"this file already exists."
+"The location to store completed tasks in has been changed to \"%s\" (was \"%s"
+"\"), but this file already exists."
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
@@ -498,8 +501,8 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
 msgid ""
-"Another todo.txt list uses the file chosen to archive completed tasks to to store its "
-"to-do tasks."
+"Another todo.txt list uses the file chosen to archive completed tasks to to "
+"store its to-do tasks."
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:459
@@ -532,8 +535,8 @@ msgstr ""
 
 #: ../src/Todo.txt/TaskManager.vala:54
 msgid ""
-"%s won't save or load from the current todo.txt folder until it is either restarted or "
-"another location is chosen."
+"%s won't save or load from the current todo.txt folder until it is either "
+"restarted or another location is chosen."
 msgstr ""
 
 #: ../src/Todo.txt/TaskManager.vala:55
@@ -546,9 +549,9 @@ msgstr ""
 
 #: ../src/Todo.txt/TaskManager.vala:57
 msgid ""
-"The path to the todo.txt folder does not point to a folder, but to a file or mountable "
-"location. Please change the path in the settings to a suitable folder or remove this "
-"file."
+"The path to the todo.txt folder does not point to a folder, but to a file or "
+"mountable location. Please change the path in the settings to a suitable "
+"folder or remove this file."
 msgstr ""
 
 #: ../src/Todo.txt/TxtList.vala:175

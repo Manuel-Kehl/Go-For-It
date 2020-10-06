@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 20:37+0200\n"
+"POT-Creation-Date: 2020-10-06 15:15+0200\n"
 "PO-Revision-Date: 2020-10-01 20:14+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
-"Language-Team: French (Canada) <https://hosted.weblate.org/projects/"
-"go-for-it/go-for-it/fr_CA/>\n"
+"Language-Team: French (Canada) <https://hosted.weblate.org/projects/go-for-"
+"it/go-for-it/fr_CA/>\n"
 "Language: fr_CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Weblate 4.3-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:437
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:441
 msgid "About"
 msgstr "À propos"
 
@@ -69,7 +69,7 @@ msgstr "Remplacer"
 msgid "Cancel"
 msgstr "Annuler"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:424
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:428
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -123,11 +123,11 @@ msgstr "Thème"
 msgid "Color scheme"
 msgstr "Couleur du thème"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:114
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
 msgid "%s needs to be restarted for this setting to take effect"
 msgstr "%s a besoin d'être redémarré pour que ce paramètre prenne effet"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
 msgid "Use a header bar"
 msgstr "Utiliser la barre de titre"
 
@@ -327,11 +327,11 @@ msgstr "Durée de la tâche dépassée"
 msgid "Consider switching to a different task"
 msgstr "Pensez à changer de tâche"
 
-#: ../src/MainWindow.vala:62
+#: ../src/MainWindow.vala:61
 msgid "Go to overview"
 msgstr "Afficher l'aperçu"
 
-#: ../src/MainWindow.vala:63
+#: ../src/MainWindow.vala:62
 msgid "Go back to the to-do list"
 msgstr "Retourner à liste de choses à faire"
 
@@ -339,7 +339,7 @@ msgstr "Retourner à liste de choses à faire"
 msgid "Menu"
 msgstr "Menu"
 
-#: ../src/MainWindow.vala:430
+#: ../src/MainWindow.vala:434
 msgid "Contribute / Donate"
 msgstr "Contribuer / Faire un don"
 
@@ -372,15 +372,15 @@ msgstr "Terminé"
 msgid "Couldn't write to %s: %s"
 msgstr "Impossible d'écrire à %s : %s"
 
-#: ../src/Services/SettingsManager.vala:608
+#: ../src/Services/SettingsManager.vala:629
 msgid "Light"
 msgstr "Clair"
 
-#: ../src/Services/SettingsManager.vala:610
+#: ../src/Services/SettingsManager.vala:631
 msgid "Dark"
 msgstr "Sombre"
 
-#: ../src/Services/SettingsManager.vala:612
+#: ../src/Services/SettingsManager.vala:633
 msgid "Default"
 msgstr "Par défaut"
 
@@ -388,43 +388,43 @@ msgstr "Par défaut"
 msgid "disabled"
 msgstr "désactivé"
 
-#: ../src/Services/Shortcuts.vala:151
+#: ../src/Services/Shortcuts.vala:153
 msgid "Filter tasks"
 msgstr "Filtrer les tâches"
 
-#: ../src/Services/Shortcuts.vala:152
+#: ../src/Services/Shortcuts.vala:154
 msgid "Add new task/list"
 msgstr "Ajouter une tâche/liste"
 
-#: ../src/Services/Shortcuts.vala:153
+#: ../src/Services/Shortcuts.vala:155
 msgid "Start/Stop the timer"
 msgstr "Démarrer/Arrêter le minuteur"
 
-#: ../src/Services/Shortcuts.vala:154
+#: ../src/Services/Shortcuts.vala:156 ../src/Widgets/TimerView.vala:280
 msgid "Mark the task as complete"
 msgstr "Marquer la tâche comme faite"
 
-#: ../src/Services/Shortcuts.vala:155
+#: ../src/Services/Shortcuts.vala:157
 msgid "Move selected row up"
 msgstr "Déplacer la ligne sélectionnée en-haut"
 
-#: ../src/Services/Shortcuts.vala:156
+#: ../src/Services/Shortcuts.vala:158
 msgid "Move selected row down"
 msgstr "Déplacer la ligne sélectionnée en-bas"
 
-#: ../src/Services/Shortcuts.vala:158
+#: ../src/Services/Shortcuts.vala:160
 msgid "Move to next task/row"
 msgstr "Passer à la tâche/ligne suivante"
 
-#: ../src/Services/Shortcuts.vala:159
+#: ../src/Services/Shortcuts.vala:161
 msgid "Move to previous task/row"
 msgstr "Retourner à la tâche/ligne précédente"
 
-#: ../src/Services/Shortcuts.vala:160
+#: ../src/Services/Shortcuts.vala:162
 msgid "Move to right screen"
 msgstr "Aller à l'écran de droite"
 
-#: ../src/Services/Shortcuts.vala:161
+#: ../src/Services/Shortcuts.vala:163
 msgid "Move to left screen"
 msgstr "Aller à l'écran de gauche"
 
@@ -461,8 +461,8 @@ msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
 msgstr ""
-"L'emplacement dans lequel stocker les tâches terminées a été changé en « %s »"
-" (c'était « %s »), mais ce fichier existe déjà."
+"L'emplacement dans lequel stocker les tâches terminées a été changé en « %s "
+"» (c'était « %s »), mais ce fichier existe déjà."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
 msgid "New to-do list"
@@ -569,11 +569,11 @@ msgstr ""
 "périphérique. Merci de modifier le chemin dans les paramètres pour pointer "
 "vers un répertoire correct, ou de supprimer ce fichier."
 
-#: ../src/Todo.txt/TxtList.vala:176
+#: ../src/Todo.txt/TxtList.vala:175
 msgid "Clear Done List"
 msgstr "Effacer la liste des tâches terminées"
 
-#: ../src/Todo.txt/TxtList.vala:180
+#: ../src/Todo.txt/TxtList.vala:179
 msgid "Sort Tasks"
 msgstr "Trier les tâches"
 
@@ -585,7 +585,7 @@ msgstr "Une erreur est survenue en déplaçant un fichier!"
 msgid "Error information: "
 msgstr "Information sur l'erreur : "
 
-#: ../src/Todo.txt/TxtListManager.vala:355
+#: ../src/Todo.txt/TxtListManager.vala:358
 msgid "Couldn't create folder: %s"
 msgstr "Impossible de créer le répertoire : %s"
 
@@ -647,31 +647,43 @@ msgstr "Tâche active"
 msgid "Pau_se"
 msgstr "Pau_se"
 
-#: ../src/Widgets/TimerView.vala:145
+#: ../src/Widgets/TimerView.vala:140
+#, fuzzy
+#| msgid "Start/Stop the timer"
+msgid "Stop the timer"
+msgstr "Démarrer/Arrêter le minuteur"
+
+#: ../src/Widgets/TimerView.vala:147
 msgid "_Start"
 msgstr "_Démarrer"
 
-#: ../src/Widgets/TimerView.vala:165
+#: ../src/Widgets/TimerView.vala:149
+#, fuzzy
+#| msgid "Start/Stop the timer"
+msgid "Start the timer"
+msgstr "Démarrer/Arrêter le minuteur"
+
+#: ../src/Widgets/TimerView.vala:169
 msgid "Inactive"
 msgstr "Inactive"
 
-#: ../src/Widgets/TimerView.vala:166
+#: ../src/Widgets/TimerView.vala:170
 msgid "No task has been selected"
 msgstr "Aucune tâche sélectionnée"
 
-#: ../src/Widgets/TimerView.vala:257
+#: ../src/Widgets/TimerView.vala:261
 msgid "S_kip"
 msgstr "I_gnorer"
 
-#: ../src/Widgets/TimerView.vala:258
+#: ../src/Widgets/TimerView.vala:262
 msgid "_Done"
 msgstr "_Terminée"
 
-#: ../src/Widgets/TimerView.vala:303
+#: ../src/Widgets/TimerView.vala:310
 msgid "Relax"
 msgstr "Relaxez-vous"
 
-#: ../src/Widgets/TimerView.vala:304
+#: ../src/Widgets/TimerView.vala:311
 msgid "You have nothing to do."
 msgstr "Vous n'avez rien à faire."
 
