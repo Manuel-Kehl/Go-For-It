@@ -136,6 +136,8 @@ class GOFI.TimerView : Gtk.Grid {
         done_btn.visible = !timer.break_active;
 
         run_btn.label = _("Pau_se");
+        var sc = kbsettings.get_shortcut (KeyBindingSettings.SCK_TOGGLE_TIMER);
+        run_btn.tooltip_markup = sc.get_accel_markup (_("Stop the timer"));
         run_btn.get_style_context ().remove_class ("suggested-action");
     }
 
@@ -143,6 +145,8 @@ class GOFI.TimerView : Gtk.Grid {
         done_btn.visible = !timer.break_active;
 
         run_btn.label = _("_Start");
+        var sc = kbsettings.get_shortcut (KeyBindingSettings.SCK_TOGGLE_TIMER);
+        run_btn.tooltip_markup = sc.get_accel_markup (_("Start the timer"));
         run_btn.get_style_context ().add_class ("suggested-action");
     }
 
@@ -271,6 +275,9 @@ class GOFI.TimerView : Gtk.Grid {
         done_btn.use_underline = true;
         skip_btn.use_underline = true;
         run_btn.use_underline = true;
+
+        var sc = kbsettings.get_shortcut (KeyBindingSettings.SCK_MARK_TASK_DONE);
+        done_btn.tooltip_markup = sc.get_accel_markup (_("Mark the task as complete"));
 
         /* Action Handling */
         skip_btn.clicked.connect ((e) => {

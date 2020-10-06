@@ -63,6 +63,25 @@ namespace GOFI {
 #endif
         }
 
+        public string get_accel_markup (string description) {
+            if (!this.is_valid) {
+                return description;
+            }
+#if USE_GRANITE
+            if (this.is_valid) {
+                return Granite.markup_accel_tooltip ({this.to_string ()}, description);
+            } else {
+                return Granite.markup_accel_tooltip ({}, description);
+            }
+#else
+            if (this.is_valid) {
+                return description;
+            } else {
+                return "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (description, this.to_readable ());
+            }
+#endif
+        }
+
         public bool equals (Shortcut other) {
             return other.key == key && other.modifier == modifier;
         }
