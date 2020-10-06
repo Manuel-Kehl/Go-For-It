@@ -31,6 +31,9 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
     private Gtk.MenuItem task_descr_item;
     private Gtk.MenuItem show_item;
     private Gtk.MenuItem start_timer_item;
+    private Gtk.MenuItem mark_done_item;
+    private Gtk.MenuItem next_task_item;
+    private Gtk.MenuItem prev_task_item;
 
     /**
      * The plugin interface.
@@ -61,12 +64,31 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
         separator_item.show ();
         menu.append (separator_item);
 
-        task_descr_item = new Gtk.MenuItem.with_label("No task selected");
+        task_descr_item = new Gtk.MenuItem.with_label ("No task selected");
         task_descr_item.sensitive = false;
         task_descr_item.show ();
         menu.append (task_descr_item);
 
-        start_timer_item = new Gtk.MenuItem.with_label("Start timer");
+        separator_item = new Gtk.SeparatorMenuItem ();
+        separator_item.show ();
+        menu.append (separator_item);
+
+        mark_done_item = new Gtk.MenuItem.with_label (_("Mark the task as complete"));
+        mark_done_item.sensitive = false;
+        mark_done_item.show ();
+        menu.append (mark_done_item);
+
+        next_task_item = new Gtk.MenuItem.with_label ("Next task");
+        next_task_item.sensitive = false;
+        next_task_item.show ();
+        menu.append (next_task_item);
+
+        prev_task_item = new Gtk.MenuItem.with_label ("Previous task");
+        prev_task_item.sensitive = false;
+        prev_task_item.show ();
+        menu.append (prev_task_item);
+
+        start_timer_item = new Gtk.MenuItem.with_label (_("Start the timer"));
         start_timer_item.sensitive = false;
         start_timer_item.show ();
         start_timer_item.activate.connect (toggle_timer);
@@ -126,16 +148,23 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
             task_descr_item.label = "No task selected";
             active_task_description = null;
             start_timer_item.sensitive = false;
+            mark_done_item.sensitive = false;
         } else {
             active_task_description = task.description;
-            task_descr_item.label = active_task_description;
+            var timer = iface.get_timer ();
+            if (timer.break_active) {
+                task_descr_item.label = _("Take a Break") + "!";
+            } else {
+                task_descr_item.label = active_task_description;
+            }
             start_timer_item.sensitive = true;
+            mark_done_item.sensitive = true;
         }
     }
 
     private void on_timer_started () {
         timer_running = true;
-        start_timer_item.label = "Stop timer";
+        start_timer_item.label = _("Stop the timer");
     }
 
     private void on_timer_stopped () {
@@ -144,7 +173,7 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
         shown_hours = 0;
         shown_minutes = 0;
         shown_seconds = 0;
-        start_timer_item.label = "Start timer";
+        start_timer_item.label = _("Start the timer");
     }
 
     private void connect_timer_signals () {
@@ -170,9 +199,13 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
     public void deactivate () {
         disconnect_timer_signals ();
         indicator = null;
+
         task_descr_item = null;
         show_item = null;
         start_timer_item = null;
+        mark_done_item = null;
+        next_task_item = null;
+        prev_task_item = null;
     }
 
     public void update_state () {}
