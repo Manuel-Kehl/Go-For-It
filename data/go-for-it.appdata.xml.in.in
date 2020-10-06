@@ -35,6 +35,19 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
+    <release version="1.8.4" date="2020-10-04">
+      <description>
+        <p>Bugfixes:</p>
+        <ul>
+          <li>The shortcuts for moving tasks up or down now work correctly.</li>
+        </ul>
+        <p>Improvements:</p>
+        <ul>
+          <li>A symbolic icon variant has been added for both the logo and the checkmark icons.</li>
+          <li>Various translations have been updated (Arabic, Croatian, Dutch, French, German, Italian, Norwegian Bokmål, Slovak, Turkish). (Most of the changes will not apply to this version, however.)</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.8.3" date="2020-09-26">
       <description>
         <p>Bugfixes:</p>
