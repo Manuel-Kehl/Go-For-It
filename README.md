@@ -57,7 +57,7 @@ Stable releases are hosted on [Flathub](https://flathub.org):
 
 #### FreeBSD
 
-_Go For It!_ is avaiable in the [FreeBSD Ports Collection](freshports.org/deskutils/go-for-it):
+_Go For It!_ is avaiable in the [FreeBSD Ports Collection](https://freshports.org/deskutils/go-for-it):
 
     pkg install go-for-it
 
