@@ -1,6 +1,14 @@
 # Change Log
 
-## [1.8.4](https://github.com/JMoerman/Go-For-It/tree/1.8.4) (2020-10-24)
+## [1.8.6](https://github.com/JMoerman/Go-For-It/tree/1.8.6) (2020-10-07)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.4...1.8.6)
+
+**Implemented enhancements:**
+
+- The option to pick themes is no longer shown when using the elementary Gtk3 theme as the "Inherit from GTK theme" application theme doesn't look right in combination with this.
+- Arabic translations have been updated.
+
+## [1.8.4](https://github.com/JMoerman/Go-For-It/tree/1.8.4) (2020-10-04)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.3...1.8.4)
 
 **Fixed bugs:**

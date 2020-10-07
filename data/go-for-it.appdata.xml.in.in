@@ -35,6 +35,15 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
+    <release version="1.8.6" date="2020-10-07">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>The option to pick themes is no longer shown when using the elementary Gtk3 theme as the "Inherit from GTK theme" application theme doesn't look right in combination with this.</li>
+          <li>Arabic translations have been updated.</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.8.4" date="2020-10-04">
       <description>
         <p>Bugfixes:</p>
