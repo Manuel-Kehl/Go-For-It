@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 17:26+0200\n"
+"POT-Creation-Date: 2020-10-11 17:31+0200\n"
 "PO-Revision-Date: 2020-10-09 21:26+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/go-"
@@ -401,7 +401,7 @@ msgid "Start/Stop the timer"
 msgstr "Pokreni/zaustavi štopericu"
 
 #: ../src/Services/Shortcuts.vala:158
-msgid "Edit the properties of list or task"
+msgid "Edit the properties of a list or task"
 msgstr ""
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64

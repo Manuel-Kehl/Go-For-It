@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 17:26+0200\n"
+"POT-Creation-Date: 2020-10-11 17:31+0200\n"
 "PO-Revision-Date: 2020-06-05 04:41+0000\n"
 "Last-Translator: Nguyễn Công Dũng <dung.dev.gramer@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/go-for-it/go-"
@@ -399,7 +399,7 @@ msgid "Start/Stop the timer"
 msgstr "Bắt đầu / Kết thúc bộ đếm thời gian"
 
 #: ../src/Services/Shortcuts.vala:158
-msgid "Edit the properties of list or task"
+msgid "Edit the properties of a list or task"
 msgstr ""
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
