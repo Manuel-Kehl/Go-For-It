@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 15:15+0200\n"
+"POT-Creation-Date: 2020-10-11 17:26+0200\n"
 "PO-Revision-Date: 2020-06-05 04:41+0000\n"
 "Last-Translator: Nguyễn Công Dũng <dung.dev.gramer@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/go-for-it/go-"
@@ -341,7 +341,7 @@ msgstr ""
 msgid "Contribute / Donate"
 msgstr "Đóng góp / Ủng hộ"
 
-#: ../src/Pages/SelectionPage.vala:107
+#: ../src/Pages/SelectionPage.vala:123
 msgid ""
 "Currently, no lists are configured.\n"
 "Add one below!"
@@ -349,7 +349,7 @@ msgstr ""
 "Hiện tại không có danh sách được cấu hình.\n"
 "Thêm mới dưới đây!"
 
-#: ../src/Pages/SelectionPage.vala:117
+#: ../src/Pages/SelectionPage.vala:133 ../src/Pages/SelectionPage.vala:136
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:82
 msgid "Add list"
 msgstr "Thêm danh sách"
@@ -386,43 +386,48 @@ msgstr ""
 msgid "disabled"
 msgstr "Vô hiệu hoá"
 
-#: ../src/Services/Shortcuts.vala:153
+#: ../src/Services/Shortcuts.vala:155
 msgid "Filter tasks"
 msgstr "Lọc nhiệm vụ"
 
-#: ../src/Services/Shortcuts.vala:154
+#: ../src/Services/Shortcuts.vala:156
 msgid "Add new task/list"
 msgstr "Thêm mới nhiệm vụ / danh sách"
 
-#: ../src/Services/Shortcuts.vala:155
+#: ../src/Services/Shortcuts.vala:157
 msgid "Start/Stop the timer"
 msgstr "Bắt đầu / Kết thúc bộ đếm thời gian"
 
-#: ../src/Services/Shortcuts.vala:156 ../src/Widgets/TimerView.vala:280
+#: ../src/Services/Shortcuts.vala:158
+msgid "Edit the properties of list or task"
+msgstr ""
+
+#: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
+#: ../src/Widgets/TimerView.vala:282
 msgid "Mark the task as complete"
 msgstr "Đánh dấu là hoàn tất"
 
-#: ../src/Services/Shortcuts.vala:157
+#: ../src/Services/Shortcuts.vala:161
 msgid "Move selected row up"
 msgstr "Di chuyển hàng đã chọn lên trên"
 
-#: ../src/Services/Shortcuts.vala:158
+#: ../src/Services/Shortcuts.vala:162
 msgid "Move selected row down"
 msgstr "Di chuyển hàng đã chọn xuống dưới"
 
-#: ../src/Services/Shortcuts.vala:160
+#: ../src/Services/Shortcuts.vala:164
 msgid "Move to next task/row"
 msgstr "Di chuyển đến hàng / nhiệm vụ tiếp theo"
 
-#: ../src/Services/Shortcuts.vala:161
+#: ../src/Services/Shortcuts.vala:165
 msgid "Move to previous task/row"
 msgstr "Di chuyển đến hàng / nhiệm vụ trước đó"
 
-#: ../src/Services/Shortcuts.vala:162
+#: ../src/Services/Shortcuts.vala:166
 msgid "Move to right screen"
 msgstr "Di chuyển về bên phải màn hình"
 
-#: ../src/Services/Shortcuts.vala:163
+#: ../src/Services/Shortcuts.vala:167
 msgid "Move to left screen"
 msgstr "Di chuyển về bên tráimàn hình"
 
@@ -513,15 +518,15 @@ msgstr ""
 msgid "Please assign a name to the list."
 msgstr "Hãy gán một tên vào danh sách."
 
-#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:380
+#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:382
 msgid "project"
 msgstr "dự án"
 
-#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:376
+#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:378
 msgid "context"
 msgstr "bối cảnh"
 
-#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:342
+#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:344
 msgid "priority"
 msgstr "ưu tiên"
 
@@ -603,21 +608,22 @@ msgstr ""
 msgid "You finished all tasks, good job!"
 msgstr "Bạn đã hoàn thành tất cả các nhiệm vụ, tốt lắm!"
 
-#: ../src/Todo.txt/Widgets/TaskListWidget.vala:191
+#: ../src/Todo.txt/Widgets/TaskListWidget.vala:200
+#: ../src/Todo.txt/Widgets/TaskListWidget.vala:219
 msgid "Add new task"
 msgstr "Thêm nhiệm vụ mới"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
-#: ../src/Todo.txt/Widgets/TaskRow.vala:317
+#: ../src/Todo.txt/Widgets/TaskRow.vala:319
 msgid "%Y-%m-%d"
 msgstr ""
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:321
+#: ../src/Todo.txt/Widgets/TaskRow.vala:323
 msgid "Task completed at %s, created at %s"
 msgstr ""
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:328
+#: ../src/Todo.txt/Widgets/TaskRow.vala:330
 msgid "Task created at %s"
 msgstr ""
 
@@ -633,58 +639,70 @@ msgstr "%u phút"
 msgid "%u hours and %u minutes"
 msgstr "%u giờ và %u phút"
 
-#: ../src/Widgets/TimerView.vala:94
+#: ../src/Widgets/DragList.vala:714
+msgid "Click and drag to reorder rows"
+msgstr ""
+
+#: ../src/Widgets/TimerView.vala:93
+msgid "Skip the remainder of the break"
+msgstr ""
+
+#: ../src/Widgets/TimerView.vala:95
 msgid "Active Task"
 msgstr "Kích hoạt nhiệm vụ"
 
-#: ../src/Widgets/TimerView.vala:138
-msgid "Pau_se"
+#: ../src/Widgets/TimerView.vala:99
+msgid "Skip to the break"
 msgstr ""
 
 #: ../src/Widgets/TimerView.vala:140
+msgid "Pau_se"
+msgstr ""
+
+#: ../src/Widgets/TimerView.vala:142
 #, fuzzy
 #| msgid "Start/Stop the timer"
 msgid "Stop the timer"
 msgstr "Bắt đầu / Kết thúc bộ đếm thời gian"
 
-#: ../src/Widgets/TimerView.vala:147
+#: ../src/Widgets/TimerView.vala:149
 msgid "_Start"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:149
+#: ../src/Widgets/TimerView.vala:151
 #, fuzzy
 #| msgid "Start/Stop the timer"
 msgid "Start the timer"
 msgstr "Bắt đầu / Kết thúc bộ đếm thời gian"
 
-#: ../src/Widgets/TimerView.vala:169
+#: ../src/Widgets/TimerView.vala:171
 msgid "Inactive"
 msgstr "Không hoạt động"
 
-#: ../src/Widgets/TimerView.vala:170
+#: ../src/Widgets/TimerView.vala:172
 msgid "No task has been selected"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:261
+#: ../src/Widgets/TimerView.vala:263
 msgid "S_kip"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:262
+#: ../src/Widgets/TimerView.vala:264
 msgid "_Done"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:310
+#: ../src/Widgets/TimerView.vala:312
 msgid "Relax"
 msgstr "Thư giãn"
 
-#: ../src/Widgets/TimerView.vala:311
+#: ../src/Widgets/TimerView.vala:313
 msgid "You have nothing to do."
 msgstr "Bạn không có gì để làm."
 
-#: ../src/Widgets/TodoListInfoRow.vala:95
+#: ../src/Widgets/TodoListInfoRow.vala:96
 msgid "Delete"
 msgstr "Xoá"
 
-#: ../src/Widgets/TodoListInfoRow.vala:96
+#: ../src/Widgets/TodoListInfoRow.vala:97
 msgid "Edit"
 msgstr "Sửa"
