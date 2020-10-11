@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 15:15+0200\n"
+"POT-Creation-Date: 2020-10-11 17:26+0200\n"
 "PO-Revision-Date: 2020-10-06 15:25+0200\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
@@ -341,7 +341,7 @@ msgstr "Menu"
 msgid "Contribute / Donate"
 msgstr "Contribute / Donate"
 
-#: ../src/Pages/SelectionPage.vala:107
+#: ../src/Pages/SelectionPage.vala:123
 msgid ""
 "Currently, no lists are configured.\n"
 "Add one below!"
@@ -349,7 +349,7 @@ msgstr ""
 "Currently, no lists are configured.\n"
 "Add one below!"
 
-#: ../src/Pages/SelectionPage.vala:117
+#: ../src/Pages/SelectionPage.vala:133 ../src/Pages/SelectionPage.vala:136
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:82
 msgid "Add list"
 msgstr "Add list"
@@ -386,43 +386,48 @@ msgstr ""
 msgid "disabled"
 msgstr "disabled"
 
-#: ../src/Services/Shortcuts.vala:153
+#: ../src/Services/Shortcuts.vala:155
 msgid "Filter tasks"
 msgstr "Filter tasks"
 
-#: ../src/Services/Shortcuts.vala:154
+#: ../src/Services/Shortcuts.vala:156
 msgid "Add new task/list"
 msgstr "Add new task/list"
 
-#: ../src/Services/Shortcuts.vala:155
+#: ../src/Services/Shortcuts.vala:157
 msgid "Start/Stop the timer"
 msgstr "Start/Stop the timer"
 
-#: ../src/Services/Shortcuts.vala:156 ../src/Widgets/TimerView.vala:280
+#: ../src/Services/Shortcuts.vala:158
+msgid "Edit the properties of list or task"
+msgstr ""
+
+#: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
+#: ../src/Widgets/TimerView.vala:282
 msgid "Mark the task as complete"
 msgstr "Mark the task as complete"
 
-#: ../src/Services/Shortcuts.vala:157
+#: ../src/Services/Shortcuts.vala:161
 msgid "Move selected row up"
 msgstr "Move selected row up"
 
-#: ../src/Services/Shortcuts.vala:158
+#: ../src/Services/Shortcuts.vala:162
 msgid "Move selected row down"
 msgstr "Move selected row down"
 
-#: ../src/Services/Shortcuts.vala:160
+#: ../src/Services/Shortcuts.vala:164
 msgid "Move to next task/row"
 msgstr "Move to next task/row"
 
-#: ../src/Services/Shortcuts.vala:161
+#: ../src/Services/Shortcuts.vala:165
 msgid "Move to previous task/row"
 msgstr "Move to previous task/row"
 
-#: ../src/Services/Shortcuts.vala:162
+#: ../src/Services/Shortcuts.vala:166
 msgid "Move to right screen"
 msgstr "Move to right screen"
 
-#: ../src/Services/Shortcuts.vala:163
+#: ../src/Services/Shortcuts.vala:167
 msgid "Move to left screen"
 msgstr "Move to left screen"
 
@@ -513,15 +518,15 @@ msgstr ""
 msgid "Please assign a name to the list."
 msgstr "Please assign a name to the list."
 
-#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:380
+#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:382
 msgid "project"
 msgstr "project"
 
-#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:376
+#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:378
 msgid "context"
 msgstr "context"
 
-#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:342
+#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:344
 msgid "priority"
 msgstr "priority"
 
@@ -603,21 +608,22 @@ msgstr "You don't have any completed tasks stored."
 msgid "You finished all tasks, good job!"
 msgstr "You've finished all tasks, good job!"
 
-#: ../src/Todo.txt/Widgets/TaskListWidget.vala:191
+#: ../src/Todo.txt/Widgets/TaskListWidget.vala:200
+#: ../src/Todo.txt/Widgets/TaskListWidget.vala:219
 msgid "Add new task"
 msgstr "Add new task"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
-#: ../src/Todo.txt/Widgets/TaskRow.vala:317
+#: ../src/Todo.txt/Widgets/TaskRow.vala:319
 msgid "%Y-%m-%d"
 msgstr "%d/%m/%Y"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:321
+#: ../src/Todo.txt/Widgets/TaskRow.vala:323
 msgid "Task completed at %s, created at %s"
 msgstr "Task completed at %s, created at %s"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:328
+#: ../src/Todo.txt/Widgets/TaskRow.vala:330
 msgid "Task created at %s"
 msgstr "Task created at %s"
 
@@ -633,54 +639,66 @@ msgstr "%u minutes"
 msgid "%u hours and %u minutes"
 msgstr "%u hours and %u minutes"
 
-#: ../src/Widgets/TimerView.vala:94
+#: ../src/Widgets/DragList.vala:714
+msgid "Click and drag to reorder rows"
+msgstr ""
+
+#: ../src/Widgets/TimerView.vala:93
+msgid "Skip the remainder of the break"
+msgstr ""
+
+#: ../src/Widgets/TimerView.vala:95
 msgid "Active Task"
 msgstr "Active task"
 
-#: ../src/Widgets/TimerView.vala:138
+#: ../src/Widgets/TimerView.vala:99
+msgid "Skip to the break"
+msgstr ""
+
+#: ../src/Widgets/TimerView.vala:140
 msgid "Pau_se"
 msgstr "Pau_se"
 
-#: ../src/Widgets/TimerView.vala:140
+#: ../src/Widgets/TimerView.vala:142
 msgid "Stop the timer"
 msgstr "Stop the timer"
 
-#: ../src/Widgets/TimerView.vala:147
+#: ../src/Widgets/TimerView.vala:149
 msgid "_Start"
 msgstr "_Start"
 
-#: ../src/Widgets/TimerView.vala:149
+#: ../src/Widgets/TimerView.vala:151
 msgid "Start the timer"
 msgstr "Start the timer"
 
-#: ../src/Widgets/TimerView.vala:169
+#: ../src/Widgets/TimerView.vala:171
 msgid "Inactive"
 msgstr "Inactive"
 
-#: ../src/Widgets/TimerView.vala:170
+#: ../src/Widgets/TimerView.vala:172
 msgid "No task has been selected"
 msgstr "No task has been selected"
 
-#: ../src/Widgets/TimerView.vala:261
+#: ../src/Widgets/TimerView.vala:263
 msgid "S_kip"
 msgstr "S_kip"
 
-#: ../src/Widgets/TimerView.vala:262
+#: ../src/Widgets/TimerView.vala:264
 msgid "_Done"
 msgstr "_Done"
 
-#: ../src/Widgets/TimerView.vala:310
+#: ../src/Widgets/TimerView.vala:312
 msgid "Relax"
 msgstr "Relax"
 
-#: ../src/Widgets/TimerView.vala:311
+#: ../src/Widgets/TimerView.vala:313
 msgid "You have nothing to do."
 msgstr "You have nothing to do."
 
-#: ../src/Widgets/TodoListInfoRow.vala:95
+#: ../src/Widgets/TodoListInfoRow.vala:96
 msgid "Delete"
 msgstr "Delete"
 
-#: ../src/Widgets/TodoListInfoRow.vala:96
+#: ../src/Widgets/TodoListInfoRow.vala:97
 msgid "Edit"
 msgstr "Edit"

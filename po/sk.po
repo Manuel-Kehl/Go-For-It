@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 15:15+0200\n"
+"POT-Creation-Date: 2020-10-11 17:26+0200\n"
 "PO-Revision-Date: 2020-10-07 05:43+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/go-for-it/"
-"go-for-it/sk/>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/go-for-it/go-for-"
+"it/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -342,7 +342,7 @@ msgstr "Menu"
 msgid "Contribute / Donate"
 msgstr "Prispejte/Darujte"
 
-#: ../src/Pages/SelectionPage.vala:107
+#: ../src/Pages/SelectionPage.vala:123
 msgid ""
 "Currently, no lists are configured.\n"
 "Add one below!"
@@ -350,7 +350,7 @@ msgstr ""
 "Momentálne nie sú nakonfigurované žiadne zoznamy.\n"
 "Pridajte jeden nižšie!"
 
-#: ../src/Pages/SelectionPage.vala:117
+#: ../src/Pages/SelectionPage.vala:133 ../src/Pages/SelectionPage.vala:136
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:82
 msgid "Add list"
 msgstr "Pridať zoznam"
@@ -387,43 +387,48 @@ msgstr "Predvolené"
 msgid "disabled"
 msgstr "vypnuté"
 
-#: ../src/Services/Shortcuts.vala:153
+#: ../src/Services/Shortcuts.vala:155
 msgid "Filter tasks"
 msgstr "Filtrovať úlohy"
 
-#: ../src/Services/Shortcuts.vala:154
+#: ../src/Services/Shortcuts.vala:156
 msgid "Add new task/list"
 msgstr "Pridať novú úlohu/zoznam"
 
-#: ../src/Services/Shortcuts.vala:155
+#: ../src/Services/Shortcuts.vala:157
 msgid "Start/Stop the timer"
 msgstr "Spustiť/Zastaviť časovač"
 
-#: ../src/Services/Shortcuts.vala:156 ../src/Widgets/TimerView.vala:280
+#: ../src/Services/Shortcuts.vala:158
+msgid "Edit the properties of list or task"
+msgstr ""
+
+#: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
+#: ../src/Widgets/TimerView.vala:282
 msgid "Mark the task as complete"
 msgstr "Označiť úlohu ako dokončenú"
 
-#: ../src/Services/Shortcuts.vala:157
+#: ../src/Services/Shortcuts.vala:161
 msgid "Move selected row up"
 msgstr "Posunúť vybraté o riadok vyššie"
 
-#: ../src/Services/Shortcuts.vala:158
+#: ../src/Services/Shortcuts.vala:162
 msgid "Move selected row down"
 msgstr "Posunúť vybraté o riadok nižšie"
 
-#: ../src/Services/Shortcuts.vala:160
+#: ../src/Services/Shortcuts.vala:164
 msgid "Move to next task/row"
 msgstr "Presun na ďalšiu úlohu/riadok"
 
-#: ../src/Services/Shortcuts.vala:161
+#: ../src/Services/Shortcuts.vala:165
 msgid "Move to previous task/row"
 msgstr "Presun na predchádzajúcu úlohu/riadok"
 
-#: ../src/Services/Shortcuts.vala:162
+#: ../src/Services/Shortcuts.vala:166
 msgid "Move to right screen"
 msgstr "Presunúť na pravú stranu"
 
-#: ../src/Services/Shortcuts.vala:163
+#: ../src/Services/Shortcuts.vala:167
 msgid "Move to left screen"
 msgstr "Presunúť na ľavú stranu"
 
@@ -518,15 +523,15 @@ msgstr ""
 msgid "Please assign a name to the list."
 msgstr "Pomenujte prosím zoznam."
 
-#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:380
+#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:382
 msgid "project"
 msgstr "projekt"
 
-#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:376
+#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:378
 msgid "context"
 msgstr "kontext"
 
-#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:342
+#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:344
 msgid "priority"
 msgstr "priorita"
 
@@ -608,21 +613,22 @@ msgstr "Nemáte uložené žiadne dokončené úlohy."
 msgid "You finished all tasks, good job!"
 msgstr "Dokončili ste všetky úlohy, dobrá práca!"
 
-#: ../src/Todo.txt/Widgets/TaskListWidget.vala:191
+#: ../src/Todo.txt/Widgets/TaskListWidget.vala:200
+#: ../src/Todo.txt/Widgets/TaskListWidget.vala:219
 msgid "Add new task"
 msgstr "Pridať novú úlohu"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
-#: ../src/Todo.txt/Widgets/TaskRow.vala:317
+#: ../src/Todo.txt/Widgets/TaskRow.vala:319
 msgid "%Y-%m-%d"
 msgstr "%R-%m-%d"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:321
+#: ../src/Todo.txt/Widgets/TaskRow.vala:323
 msgid "Task completed at %s, created at %s"
 msgstr "Úloha dokončená o %s, vytvorená o %s"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:328
+#: ../src/Todo.txt/Widgets/TaskRow.vala:330
 msgid "Task created at %s"
 msgstr "Úloha bola vytvorená o %s"
 
@@ -638,54 +644,66 @@ msgstr "%u minút"
 msgid "%u hours and %u minutes"
 msgstr "%u hodín a %u minút"
 
-#: ../src/Widgets/TimerView.vala:94
+#: ../src/Widgets/DragList.vala:714
+msgid "Click and drag to reorder rows"
+msgstr ""
+
+#: ../src/Widgets/TimerView.vala:93
+msgid "Skip the remainder of the break"
+msgstr ""
+
+#: ../src/Widgets/TimerView.vala:95
 msgid "Active Task"
 msgstr "Aktívna úloha"
 
-#: ../src/Widgets/TimerView.vala:138
+#: ../src/Widgets/TimerView.vala:99
+msgid "Skip to the break"
+msgstr ""
+
+#: ../src/Widgets/TimerView.vala:140
 msgid "Pau_se"
 msgstr "Po_zastaviť"
 
-#: ../src/Widgets/TimerView.vala:140
+#: ../src/Widgets/TimerView.vala:142
 msgid "Stop the timer"
 msgstr "Zastaviť časovač"
 
-#: ../src/Widgets/TimerView.vala:147
+#: ../src/Widgets/TimerView.vala:149
 msgid "_Start"
 msgstr "_Spustiť"
 
-#: ../src/Widgets/TimerView.vala:149
+#: ../src/Widgets/TimerView.vala:151
 msgid "Start the timer"
 msgstr "Spustiť časovač"
 
-#: ../src/Widgets/TimerView.vala:169
+#: ../src/Widgets/TimerView.vala:171
 msgid "Inactive"
 msgstr "Neaktívne"
 
-#: ../src/Widgets/TimerView.vala:170
+#: ../src/Widgets/TimerView.vala:172
 msgid "No task has been selected"
 msgstr "Žiadne úlohy neboli vybraté"
 
-#: ../src/Widgets/TimerView.vala:261
+#: ../src/Widgets/TimerView.vala:263
 msgid "S_kip"
 msgstr "Pres_kočiť"
 
-#: ../src/Widgets/TimerView.vala:262
+#: ../src/Widgets/TimerView.vala:264
 msgid "_Done"
 msgstr "_Hotovo"
 
-#: ../src/Widgets/TimerView.vala:310
+#: ../src/Widgets/TimerView.vala:312
 msgid "Relax"
 msgstr "Relaxujte"
 
-#: ../src/Widgets/TimerView.vala:311
+#: ../src/Widgets/TimerView.vala:313
 msgid "You have nothing to do."
 msgstr "Nemáte žiadnu úlohu."
 
-#: ../src/Widgets/TodoListInfoRow.vala:95
+#: ../src/Widgets/TodoListInfoRow.vala:96
 msgid "Delete"
 msgstr "Vymazať"
 
-#: ../src/Widgets/TodoListInfoRow.vala:96
+#: ../src/Widgets/TodoListInfoRow.vala:97
 msgid "Edit"
 msgstr "Upraviť"
