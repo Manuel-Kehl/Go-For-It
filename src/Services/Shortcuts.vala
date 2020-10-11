@@ -155,7 +155,7 @@ namespace GOFI {
             ConfigurableShortcut (SCK_FILTER,         _("Filter tasks")),
             ConfigurableShortcut (SCK_ADD_NEW,        _("Add new task/list")),
             ConfigurableShortcut (SCK_TOGGLE_TIMER,   _("Start/Stop the timer")),
-            ConfigurableShortcut (SCK_EDIT_PROPERTIES,_("Edit the properties of list or task")),
+            ConfigurableShortcut (SCK_EDIT_PROPERTIES,_("Edit the properties of a list or task")),
 
             ConfigurableShortcut (SCK_MARK_TASK_DONE, _("Mark the task as complete")),
             ConfigurableShortcut (SCK_MOVE_ROW_UP,    _("Move selected row up")),
