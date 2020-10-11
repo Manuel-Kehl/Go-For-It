@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 17:26+0200\n"
+"POT-Creation-Date: 2020-10-11 17:31+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -385,7 +385,7 @@ msgid "Start/Stop the timer"
 msgstr ""
 
 #: ../src/Services/Shortcuts.vala:158
-msgid "Edit the properties of list or task"
+msgid "Edit the properties of a list or task"
 msgstr ""
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
