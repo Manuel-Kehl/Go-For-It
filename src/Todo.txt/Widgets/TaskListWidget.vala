@@ -47,6 +47,14 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
         is_filtering = !is_filtering;
     }
 
+    [Signal (action = true)]
+    public virtual signal void task_edit_action () {
+        var selected_row = task_view.get_selected_row () as TaskRow;
+        if (selected_row != null) {
+            selected_row.edit (false);
+        }
+    }
+
     public bool is_filtering {
         public get {
             return search_bar.search_mode_enabled;

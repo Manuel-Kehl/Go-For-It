@@ -68,7 +68,7 @@ class GOFI.TodoListInfoRow: DragListRow {
     private void connect_signals () {
         info.notify["name"].connect (update);
 
-        options_button.toggled.connect (on_options_button_toggled);
+        options_button.toggled.connect (show_menu);
 
         event_box.enter_notify_event.connect ( (event) => {
             option_revealer.reveal_child = true;
@@ -82,10 +82,11 @@ class GOFI.TodoListInfoRow: DragListRow {
         });
     }
 
-    private void on_options_button_toggled () {
+    public void show_menu () {
         if (showing_menu) {
             return;
         }
+        option_revealer.reveal_child = true;
         showing_menu = true;
         popover = new Gtk.Popover (options_button);
         popover.position = Gtk.PositionType.BOTTOM;

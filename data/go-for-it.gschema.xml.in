@@ -186,6 +186,11 @@
       <summary>Mark the current task as completed.</summary>
       <description></description>
     </key>
+    <key name="edit-properties" type="s">
+      <default><![CDATA['space']]></default>
+      <summary>Edit the properties of a list or a task.</summary>
+      <description></description>
+    </key>
   </schema>
 
   <schema path="@SCHEMA_PATH@/backends/todo-txt/" id="@APP_ID@.todo-txt">

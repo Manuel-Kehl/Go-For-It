@@ -147,12 +147,16 @@ namespace GOFI {
         public const string SCK_PREV_TASK = "prev-task";
         public const string SCK_CYCLE_PAGE = "cycle-page";
         public const string SCK_CYCLE_PAGE_REV = "cycle-page-reverse";
-        public const string[] SC_KEYS = {SCK_FILTER, SCK_ADD_NEW, SCK_TOGGLE_TIMER, SCK_MARK_TASK_DONE, SCK_MOVE_ROW_UP, SCK_MOVE_ROW_DOWN, SCK_NEXT_TASK, SCK_PREV_TASK, SCK_CYCLE_PAGE, SCK_CYCLE_PAGE_REV};
+        public const string SCK_EDIT_PROPERTIES = "edit-properties";
+        public const string SCK_DELETE = "delete";
+        public const string[] SC_KEYS = {SCK_FILTER, SCK_ADD_NEW, SCK_TOGGLE_TIMER, SCK_EDIT_PROPERTIES, SCK_MARK_TASK_DONE, SCK_MOVE_ROW_UP, SCK_MOVE_ROW_DOWN, SCK_NEXT_TASK, SCK_PREV_TASK, SCK_CYCLE_PAGE, SCK_CYCLE_PAGE_REV};
 
         public static ConfigurableShortcut[] known_shortcuts = {
             ConfigurableShortcut (SCK_FILTER,         _("Filter tasks")),
             ConfigurableShortcut (SCK_ADD_NEW,        _("Add new task/list")),
             ConfigurableShortcut (SCK_TOGGLE_TIMER,   _("Start/Stop the timer")),
+            ConfigurableShortcut (SCK_EDIT_PROPERTIES,_("Edit the properties of list or task")),
+
             ConfigurableShortcut (SCK_MARK_TASK_DONE, _("Mark the task as complete")),
             ConfigurableShortcut (SCK_MOVE_ROW_UP,    _("Move selected row up")),
             ConfigurableShortcut (SCK_MOVE_ROW_DOWN,  _("Move selected row down")),
@@ -172,6 +176,7 @@ namespace GOFI {
 
         static KeyBinding[] TaskListBindings = {
             KeyBinding(SCK_FILTER, "toggle-filtering", {}),
+            KeyBinding(SCK_EDIT_PROPERTIES, "task_edit_action", {}),
         };
 
         static KeyBinding[] WindowBindings = {
@@ -184,6 +189,11 @@ namespace GOFI {
             KeyBinding(SCK_MARK_TASK_DONE, "mark_task_done", {}),
         };
 
+        static KeyBinding[] SelectionPageBindings = {
+            KeyBinding(SCK_EDIT_PROPERTIES, "list_edit_action", {}),
+            KeyBinding(SCK_DELETE, "list_delete_action", {}),
+        };
+
         public KeyBindingSettings () {
             shortcuts = new HashTable<string, Shortcut> (str_hash, str_equal);
 
@@ -192,6 +202,7 @@ namespace GOFI {
             foreach (var key in SC_KEYS) {
                 shortcuts[key] = new Shortcut.from_string (settings_backend.get_string (key));
             }
+            shortcuts[SCK_DELETE] = new Shortcut.from_string ("Delete");
             install_bindings_for_class (
                 typeof (DragList),
                 DragListBindings
@@ -203,6 +214,10 @@ namespace GOFI {
             install_bindings_for_class (
                 typeof (TaskListPage),
                 TaskListPageBindings
+            );
+            install_bindings_for_class (
+                typeof (SelectionPage),
+                SelectionPageBindings
             );
             install_bindings_for_class (
                 typeof (MainWindow),
@@ -234,6 +249,9 @@ namespace GOFI {
 
             if (old_sc == null) {
                 warning ("No shortcut with id \"%s\" is known", shortcut_id);
+                return;
+            }
+            if (shortcut_id == "delete") {
                 return;
             }
 

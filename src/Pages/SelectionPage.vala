@@ -32,6 +32,22 @@ class GOFI.SelectionPage : Gtk.Grid {
     public signal void selection_changed (TodoListInfo selected_info);
     public signal void list_chosen (TodoListInfo selected_info);
 
+    [Signal (action = true)]
+    public virtual signal void list_edit_action () {
+        var selected_row = todolist_view.get_selected_row () as TodoListInfoRow;
+        if (selected_row != null) {
+            on_row_edit_clicked (selected_row.info);
+        }
+    }
+
+    [Signal (action = true)]
+    public virtual signal void list_delete_action () {
+        var selected_row = todolist_view.get_selected_row () as TodoListInfoRow;
+        if (selected_row != null) {
+            on_row_delete_clicked (selected_row.info);
+        }
+    }
+
     /**
      * Constructor of the SelectionPage class.
      */
