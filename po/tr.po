@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-11 17:31+0200\n"
-"PO-Revision-Date: 2020-10-06 14:39+0000\n"
+"PO-Revision-Date: 2020-10-12 17:03+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/tr/>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -404,7 +404,7 @@ msgstr "Zamanlayıcıyı Başlat/Durdur"
 
 #: ../src/Services/Shortcuts.vala:158
 msgid "Edit the properties of a list or task"
-msgstr ""
+msgstr "Bir listenin veya görevin özelliklerini düzenle"
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
@@ -651,11 +651,11 @@ msgstr "%u saat, %u dakika"
 
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
-msgstr ""
+msgstr "Satırları yeniden sıralamak için tıkla ve sürükle"
 
 #: ../src/Widgets/TimerView.vala:93
 msgid "Skip the remainder of the break"
-msgstr ""
+msgstr "Aranın geri kalanını atla"
 
 #: ../src/Widgets/TimerView.vala:95
 msgid "Active Task"
@@ -663,7 +663,7 @@ msgstr "Etkin Görev"
 
 #: ../src/Widgets/TimerView.vala:99
 msgid "Skip to the break"
-msgstr ""
+msgstr "Araya git"
 
 #: ../src/Widgets/TimerView.vala:140
 msgid "Pau_se"
