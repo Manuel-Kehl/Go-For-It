@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-11 17:31+0200\n"
-"PO-Revision-Date: 2020-10-09 21:26+0000\n"
+"PO-Revision-Date: 2020-10-12 17:03+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -402,7 +402,7 @@ msgstr "タイマーを開始/停止"
 
 #: ../src/Services/Shortcuts.vala:158
 msgid "Edit the properties of a list or task"
-msgstr ""
+msgstr "一覧やタスクのプロパティーを編集"
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
@@ -645,11 +645,11 @@ msgstr "%u 時間 %u 分"
 
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
-msgstr ""
+msgstr "行を並べ替えるには、クリックしてドラッグしてください"
 
 #: ../src/Widgets/TimerView.vala:93
 msgid "Skip the remainder of the break"
-msgstr ""
+msgstr "休憩時間のリマインダーをスキップ"
 
 #: ../src/Widgets/TimerView.vala:95
 msgid "Active Task"
@@ -657,7 +657,7 @@ msgstr "アクティブなタスク"
 
 #: ../src/Widgets/TimerView.vala:99
 msgid "Skip to the break"
-msgstr ""
+msgstr "休憩時間にスキップ"
 
 #: ../src/Widgets/TimerView.vala:140
 msgid "Pau_se"
