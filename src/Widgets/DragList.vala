@@ -711,6 +711,7 @@ public class GOFI.DragListRow : Gtk.ListBoxRow {
 
         handle = new Gtk.EventBox ();
         image = new Gtk.Image.from_icon_name ("drag-handle-symbolic", Gtk.IconSize.MENU);
+        image.tooltip_text = _("Click and drag to reorder rows");
         handle.add (image);
         layout.set_end_widget (handle);
 

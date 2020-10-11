@@ -147,6 +147,7 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
 
     private void add_placeholder () {
         placeholder = new Gtk.Label (placeholder_text);
+        placeholder.margin = 10;
         placeholder.wrap = true;
         placeholder.justify = Gtk.Justification.CENTER;
         placeholder.wrap_mode = Pango.WrapMode.WORD_CHAR;
@@ -213,6 +214,9 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
         add_new_txt.activate.connect (on_entry_activate);
 
         add_new_grid.add (add_new_txt);
+
+        var sc = kbsettings.get_shortcut (KeyBindingSettings.SCK_ADD_NEW);
+        add_new_grid.tooltip_markup = sc.get_accel_markup (_("Add new task"));
 
         // Add to the main widget
         this.add (add_new_grid);

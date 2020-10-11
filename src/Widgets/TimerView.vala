@@ -90,11 +90,13 @@ class GOFI.TimerView : Gtk.Grid {
             task_status_lbl.label = _("Take a Break") + "!";
             style.remove_class ("task_active");
             style.add_class ("task_break");
+            skip_btn.tooltip_markup = _("Skip the remainder of the break");
         } else {
             task_status_lbl.label = _("Active Task") + ":";
             style.remove_class ("task_break");
             style.add_class ("task_active");
             done_btn.visible = true;
+            skip_btn.tooltip_markup = _("Skip to the break");
         }
     }
 
