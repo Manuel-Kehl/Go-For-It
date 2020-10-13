@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-11 17:31+0200\n"
-"PO-Revision-Date: 2020-10-06 15:16+0200\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/de/>\n"
+"PO-Revision-Date: 2020-10-14 13:25+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Weblate 4.3-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:441
@@ -403,7 +403,7 @@ msgstr "Schaltuhr starten/anhalten"
 
 #: ../src/Services/Shortcuts.vala:158
 msgid "Edit the properties of a list or task"
-msgstr ""
+msgstr "Eigenschaften einer Liste oder Aufgabe bearbeiten"
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
@@ -656,11 +656,11 @@ msgstr "%u Uhr und %u Minuten"
 
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
-msgstr ""
+msgstr "Klicken und ziehen, um Zeilen neu anzuordnen"
 
 #: ../src/Widgets/TimerView.vala:93
 msgid "Skip the remainder of the break"
-msgstr ""
+msgstr "Überspringe den Rest der Pause"
 
 #: ../src/Widgets/TimerView.vala:95
 msgid "Active Task"
@@ -668,7 +668,7 @@ msgstr "Aktive Aufgaben"
 
 #: ../src/Widgets/TimerView.vala:99
 msgid "Skip to the break"
-msgstr ""
+msgstr "Springe zur Pause"
 
 #: ../src/Widgets/TimerView.vala:140
 msgid "Pau_se"
