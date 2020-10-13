@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-11 17:31+0200\n"
-"PO-Revision-Date: 2020-10-09 21:26+0000\n"
+"PO-Revision-Date: 2020-10-14 13:25+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/hr/>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -305,7 +305,7 @@ msgstr "Opusti se i za neko vrijeme prestani razmišljati o trenutačnom zadatku
 
 #: ../src/Main.vala:332
 msgid "The Break is Over"
-msgstr "Odmor je gotov"
+msgstr "Pauza je gotova"
 
 #: ../src/Main.vala:333
 msgid "Your current task is"
@@ -313,7 +313,7 @@ msgstr "Tvoj trenutačni zadatak je"
 
 #: ../src/Main.vala:352
 msgid "Prepare for your break"
-msgstr "Pripremi se za tvoj odmor"
+msgstr "Pripremi se za tvoju pauzu"
 
 #: ../src/Main.vala:353
 msgid "You have %s seconds left"
@@ -402,7 +402,7 @@ msgstr "Pokreni/zaustavi štopericu"
 
 #: ../src/Services/Shortcuts.vala:158
 msgid "Edit the properties of a list or task"
-msgstr ""
+msgstr "Uredi svojstva popisa ili zadatka"
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
@@ -646,11 +646,11 @@ msgstr "%u h i %u min"
 
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
-msgstr ""
+msgstr "Pritisni-i-povuci za mijenjanje redoslijeda redaka"
 
 #: ../src/Widgets/TimerView.vala:93
 msgid "Skip the remainder of the break"
-msgstr ""
+msgstr "Preskoči ostatak pauze"
 
 #: ../src/Widgets/TimerView.vala:95
 msgid "Active Task"
@@ -658,7 +658,7 @@ msgstr "Aktivni zadatak"
 
 #: ../src/Widgets/TimerView.vala:99
 msgid "Skip to the break"
-msgstr ""
+msgstr "Preskoči do pauze"
 
 #: ../src/Widgets/TimerView.vala:140
 msgid "Pau_se"
