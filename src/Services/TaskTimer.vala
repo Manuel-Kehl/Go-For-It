@@ -39,7 +39,6 @@ public class GOFI.TaskTimer {
      * convenient way to get the remaining duration in seconds;
      */
     public uint remaining_duration {
-        // owned, so that it returns a strong reference
         get {
             int64 total_runtime;
             if (running) {

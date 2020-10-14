@@ -17,9 +17,6 @@
 
 using AppIndicator;
 
-/**
- * The main window of Go For It!.
- */
 class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
 
     private Indicator indicator;
@@ -149,8 +146,7 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
                 }
             }
             seconds = 0;
-        }
-         else if (shown_seconds != seconds) {
+        } else if (shown_seconds != seconds) {
             indicator.label = "%us".printf(seconds);
         }
         shown_minutes = minutes;
@@ -183,6 +179,7 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
 
     private void on_timer_started () {
         timer_running = true;
+        update_timer_label (iface.get_timer ().remaining_duration);
         start_timer_item.label = _("Stop the timer");
     }
 

@@ -1,0 +1,6 @@
+[Plugin]
+Module=launcherindicator
+Loader=C
+Name=Launcher indicator
+Description=Launcher indicator plugin (libunity) for use in Pantheon, Unity and possibly Gnome if a plugin is available.
+Authors=JMoerman
