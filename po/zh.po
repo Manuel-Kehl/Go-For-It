@@ -3,59 +3,59 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-11 17:31+0200\n"
-"PO-Revision-Date: 2019-08-01 05:14+0000\n"
-"Last-Translator: Elizabeth Sherrock <lizzyd710@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/go-"
-"for-it/go-for-it/zh_Hans/>\n"
+"PO-Revision-Date: 2020-10-14 13:25+0000\n"
+"Last-Translator: Clay Stan <claystan97@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"go-for-it/go-for-it/zh_Hans/>\n"
 "Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.8-dev\n"
+"X-Generator: Weblate 4.3-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:441
 msgid "About"
-msgstr ""
+msgstr "关于"
 
 #: ../src/Dialogs/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
-msgstr ""
+msgstr "一款时尚的，自带生产力计时器的任务列表软件。"
 
 #: ../src/Dialogs/ContributeDialog.vala:28
 msgid "Contributions and Donations"
-msgstr ""
+msgstr "贡献和捐赠"
 
 #: ../src/Dialogs/ContributeDialog.vala:31
 msgid "Thank you for supporting"
-msgstr ""
+msgstr "感谢支持"
 
 #: ../src/Dialogs/ContributeDialog.vala:32
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
-msgstr ""
+msgstr "为该项目贡献，提交代码，插图，翻译或文档都是很不错的方式："
 
 #: ../src/Dialogs/ContributeDialog.vala:36
 msgid "If you really like this app, you can buy me a drink:"
-msgstr ""
+msgstr "如果喜欢该软件，可以在此捐赠："
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr ""
+msgstr "替换 \"%s\"?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
-msgstr ""
+msgstr "要替换该文件还是使用旧文件？"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
-msgstr ""
+msgstr "保留旧的"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "替换"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:81
@@ -71,57 +71,57 @@ msgstr "设置"
 
 #: ../src/Dialogs/SettingsDialog.vala:48
 msgid "Close"
-msgstr ""
+msgstr "关闭"
 
 #: ../src/Dialogs/SettingsDialog.vala:71
 msgid "Behavior"
-msgstr ""
+msgstr "行为"
 
 #: ../src/Dialogs/SettingsDialog.vala:72
 msgid "Appearance"
-msgstr ""
+msgstr "首选项"
 
 #: ../src/Dialogs/SettingsDialog.vala:73
 msgid "Shortcuts"
-msgstr ""
+msgstr "快捷键"
 
 #: ../src/Dialogs/SettingsDialog.vala:75
 msgid "Plugins"
-msgstr ""
+msgstr "插件"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:142
 msgid "General"
-msgstr ""
+msgstr "基本"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
 msgid "Use small toolbar icons"
-msgstr ""
+msgstr "使用小工具栏图标"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:42
 msgid "Appearance of the activity switcher"
-msgstr ""
+msgstr "活动窗口显示方式的首选项"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:48
 msgid "Icons"
-msgstr ""
+msgstr "图标"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:49
 msgid "Text"
-msgstr ""
+msgstr "文本"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:80
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:82
 msgid "Theme"
-msgstr ""
+msgstr "主题"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
 msgid "Color scheme"
-msgstr ""
+msgstr "主题颜色"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
 msgid "%s needs to be restarted for this setting to take effect"
-msgstr ""
+msgstr "%s 要重新启动才能生效"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
 msgid "Use a header bar"
