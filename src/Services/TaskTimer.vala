@@ -266,7 +266,12 @@ class GOFI.TaskTimer {
         }
 
         timer_updated (us_to_s (remaining_us));
-        double progress = ((double) total_runtime) / ((double) iteration_duration);
+        double progress;
+        if (iteration_duration != 0) {
+            progress = ((double) total_runtime) / ((double) iteration_duration);
+        } else {
+            progress = 1.0;
+        }
         timer_updated_relative (progress);
 
         if (!running || break_active) {
