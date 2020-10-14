@@ -23,12 +23,11 @@ class GOFI.PluginManager : GLib.Object {
 
     private Peas.Engine engine;
     private Peas.ExtensionSet exts;
-    private PluginInterface plugin_iface;
+    public PluginInterface plugin_iface;
 
     private GLib.Settings plugin_settings;
     const string ID_PLUGINS = GOFI.APP_ID + ".plugins";
     const string KEY_PLUGINS = "enabled-plugins";
-
     /**
      * Constructor of PluginManager
      */
@@ -45,13 +44,12 @@ class GOFI.PluginManager : GLib.Object {
 
         exts = new Peas.ExtensionSet (engine, typeof (Peas.Activatable),
             "object", plugin_iface, null);
-        load_plugins ();
     }
 
     /**
      * Activates the found plugins.
      */
-    private void load_plugins () {
+    public void load_plugins () {
         exts.foreach (on_extension_foreach);
         exts.extension_added.connect (on_extension_added);
         exts.extension_removed.connect (on_extension_removed);

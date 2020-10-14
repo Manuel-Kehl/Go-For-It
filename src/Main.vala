@@ -120,6 +120,7 @@ class GOFI.Main : Gtk.Application {
             win.present ();
             return;
         }
+        plugin_manager.load_plugins ();
 
         kbsettings = new KeyBindingSettings ();
 
