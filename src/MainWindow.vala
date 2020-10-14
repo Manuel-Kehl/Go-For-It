@@ -98,6 +98,11 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         load_initial (initial_list);
 
         list_manager.list_removed.connect (on_list_removed);
+
+        var plugin_iface = plugin_manager.plugin_iface;
+        plugin_iface.next_task.connect (() => task_page.switch_to_next ());
+        plugin_iface.previous_task.connect (() => task_page.switch_to_prev ());
+        plugin_iface.mark_task_as_done.connect (() => task_page.mark_task_done ());
     }
 
     ~MainWindow () {

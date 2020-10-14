@@ -76,16 +76,19 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
         mark_done_item = new Gtk.MenuItem.with_label (_("Mark the task as complete"));
         mark_done_item.sensitive = false;
         mark_done_item.show ();
+        mark_done_item.activate.connect (mark_done);
         menu.append (mark_done_item);
 
         next_task_item = new Gtk.MenuItem.with_label ("Next task");
         next_task_item.sensitive = false;
         next_task_item.show ();
+        next_task_item.activate.connect (switch_to_next);
         menu.append (next_task_item);
 
         prev_task_item = new Gtk.MenuItem.with_label ("Previous task");
         prev_task_item.sensitive = false;
         prev_task_item.show ();
+        prev_task_item.activate.connect (switch_to_previous);
         menu.append (prev_task_item);
 
         start_timer_item = new Gtk.MenuItem.with_label (_("Start the timer"));
@@ -97,6 +100,18 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
         indicator.set_menu(menu);
         indicator.set_secondary_activate_target(show_item);
         connect_timer_signals ();
+    }
+
+    private void switch_to_next () {
+        iface.next_task ();
+    }
+
+    private void switch_to_previous () {
+        iface.previous_task ();
+    }
+
+    private void mark_done () {
+        iface.mark_task_as_done ();
     }
 
     private void toggle_timer () {
@@ -149,6 +164,8 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
             active_task_description = null;
             start_timer_item.sensitive = false;
             mark_done_item.sensitive = false;
+            next_task_item.sensitive = false;
+            prev_task_item.sensitive = false;
         } else {
             active_task_description = task.description;
             var timer = iface.get_timer ();
@@ -158,6 +175,8 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
                 task_descr_item.label = active_task_description;
             }
             start_timer_item.sensitive = true;
+            next_task_item.sensitive = true;
+            prev_task_item.sensitive = true;
             mark_done_item.sensitive = true;
         }
     }

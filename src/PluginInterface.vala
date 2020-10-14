@@ -18,16 +18,25 @@
 #if !NO_PLUGINS
 /**
  * Interface to be used by plugins.
+ * This interface is unfinished (things are currently added in an add hoc
+ * fashion). External plugins WILL break.
  */
 public class GOFI.PluginInterface : GLib.Object {
 
     private unowned PluginManager plugin_manager;
     private TaskTimer timer;
 
+    public signal void next_task ();
+    public signal void previous_task ();
+    public signal void mark_task_as_done ();
+
     public TaskTimer get_timer () {
         return timer;
     }
 
+    /**
+     * Returns the main application window.
+     */
     public Gtk.Window get_window () {
         return win;
     }
