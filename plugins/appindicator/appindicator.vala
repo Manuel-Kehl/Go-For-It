@@ -17,13 +17,14 @@
 
 using AppIndicator;
 
-class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
+class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
 
     private Indicator indicator;
     private uint shown_hours = 0;
     private uint shown_minutes = 0;
     private uint shown_seconds = 0;
     private bool timer_running = false;
+    private bool showing_break = false;
     private string? active_task_description = null;
     private Gtk.MenuItem task_descr_item;
     private Gtk.MenuItem show_item;
@@ -47,7 +48,8 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
         if (indicator != null) {
             return;
         }
-        indicator = new Indicator(GOFI.APP_ID, GOFI.ICON_NAME+"-symbolic", IndicatorCategory.APPLICATION_STATUS);
+        indicator = new Indicator(GOFI.APP_ID, "status-task-symbolic", IndicatorCategory.APPLICATION_STATUS);
+        indicator.set_icon_theme_path (GLib.Path.build_filename (this.data_dir, "icons"));
         indicator.set_status(IndicatorStatus.ACTIVE);
 
         var menu = new Gtk.Menu();
@@ -166,8 +168,16 @@ class GOFI.Plugins.PanelIndicator : GLib.Object, Peas.Activatable {
             active_task_description = task.description;
             var timer = iface.get_timer ();
             if (timer.break_active) {
-                task_descr_item.label = _("Take a Break") + "!";
+                if (!showing_break) {
+                    indicator.set_icon ("status-break-symbolic");
+                    task_descr_item.label = _("Take a Break") + "!";
+                    showing_break = true;
+                }
             } else {
+                if (showing_break) {
+                    indicator.set_icon ("status-task-symbolic");
+                    showing_break = false;
+                }
                 task_descr_item.label = active_task_description;
             }
             start_timer_item.sensitive = true;

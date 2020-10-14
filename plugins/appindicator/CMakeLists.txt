@@ -31,7 +31,8 @@ if (PLUGIN_DEPS_FOUND)
 
     install(TARGETS ${PLUGIN_NAME} DESTINATION ${PLUGINDIR}/${PLUGIN_NAME})
     install(FILES ${PLUGIN_NAME}.plugin DESTINATION ${PLUGINDIR}/${PLUGIN_NAME})
-
+    install(FILES "icons/status-break-symbolic.svg" DESTINATION ${PLUGINDIR}/${PLUGIN_NAME}/icons/)
+    install(FILES "icons/status-task-symbolic.svg" DESTINATION ${PLUGINDIR}/${PLUGIN_NAME}/icons/)
     message("-- Ayatana indicator plugin will be compiled")
 else ()
     message("-- Ayatana indicator plugin will not be compiled")
