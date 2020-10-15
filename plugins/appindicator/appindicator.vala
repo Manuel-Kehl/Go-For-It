@@ -56,7 +56,7 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
 
         var menu = new Gtk.Menu();
 
-        show_item = new Gtk.MenuItem.with_label ("Open %s".printf (GOFI.APP_NAME));
+        show_item = new Gtk.MenuItem.with_label (_("Open %s").printf (GOFI.APP_NAME));
         show_item.activate.connect (show_application_window);
         show_item.show ();
         menu.append (show_item);
@@ -85,13 +85,13 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
         mark_done_item.activate.connect (mark_done);
         menu.append (mark_done_item);
 
-        next_task_item = new Gtk.MenuItem.with_label ("Next task");
+        next_task_item = new Gtk.MenuItem.with_label (_("Switch to next task"));
         next_task_item.sensitive = false;
         next_task_item.show ();
         next_task_item.activate.connect (switch_to_next);
         menu.append (next_task_item);
 
-        prev_task_item = new Gtk.MenuItem.with_label ("Previous task");
+        prev_task_item = new Gtk.MenuItem.with_label (_("Switch to the previous task"));
         prev_task_item.sensitive = false;
         prev_task_item.show ();
         prev_task_item.activate.connect (switch_to_previous);
