@@ -198,7 +198,12 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
                     indicator.icon_name = "status-task-symbolic";
                     showing_break = false;
                 }
-                task_descr_item.label = active_task_description;
+                var description = active_task_description;
+                if (description.char_count () > 30) {
+                    task_descr_item.label = description.substring (0, 27) + "...";
+                } else {
+                    task_descr_item.label = description;
+                }
             }
             start_timer_item.sensitive = true;
             next_task_item.sensitive = true;
