@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 13:19+0200\n"
+"POT-Creation-Date: 2020-10-15 14:44+0200\n"
 "PO-Revision-Date: 2019-08-30 16:00+0200\n"
 "Last-Translator: Babitha Siddula <siddulababithasiddu@gmail.com>\n"
 "Language-Team: Telugu <https://hosted.weblate.org/projects/go-for-it/go-for-"
@@ -296,7 +296,6 @@ msgid "LIST-ID"
 msgstr ""
 
 #: ../src/Main.vala:329 ../src/Widgets/TimerView.vala:90
-#: ../plugins/appindicator/appindicator.vala:193
 msgid "Take a Break"
 msgstr "విరామం"
 
@@ -672,7 +671,7 @@ msgid "Pau_se"
 msgstr "పాజ్"
 
 #: ../src/Widgets/TimerView.vala:142
-#: ../plugins/appindicator/appindicator.vala:213
+#: ../plugins/appindicator/appindicator.vala:218
 msgid "Stop the timer"
 msgstr ""
 
@@ -682,7 +681,7 @@ msgstr "ప్రారంభం"
 
 #: ../src/Widgets/TimerView.vala:151
 #: ../plugins/appindicator/appindicator.vala:100
-#: ../plugins/appindicator/appindicator.vala:222
+#: ../plugins/appindicator/appindicator.vala:227
 msgid "Start the timer"
 msgstr ""
 

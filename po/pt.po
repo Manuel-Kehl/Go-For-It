@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 13:19+0200\n"
+"POT-Creation-Date: 2020-10-15 14:44+0200\n"
 "PO-Revision-Date: 2020-10-06 15:23+0200\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/go-for-it/go-"
@@ -296,7 +296,6 @@ msgid "LIST-ID"
 msgstr "ID-LISTA"
 
 #: ../src/Main.vala:329 ../src/Widgets/TimerView.vala:90
-#: ../plugins/appindicator/appindicator.vala:193
 msgid "Take a Break"
 msgstr "Fazer um intervalo"
 
@@ -643,6 +642,11 @@ msgstr "%u minutos"
 msgid "%u hours and %u minutes"
 msgstr "%u horas e %u minutos"
 
+#. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
+#: ../src/Utils.vala:234
+msgid "%s!"
+msgstr ""
+
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
 msgstr ""
@@ -664,7 +668,7 @@ msgid "Pau_se"
 msgstr "Pau_sa"
 
 #: ../src/Widgets/TimerView.vala:142
-#: ../plugins/appindicator/appindicator.vala:213
+#: ../plugins/appindicator/appindicator.vala:218
 #, fuzzy
 msgid "Stop the timer"
 msgstr "Parar o temporizador"
@@ -675,7 +679,7 @@ msgstr "_Iniciar"
 
 #: ../src/Widgets/TimerView.vala:151
 #: ../plugins/appindicator/appindicator.vala:100
-#: ../plugins/appindicator/appindicator.vala:222
+#: ../plugins/appindicator/appindicator.vala:227
 #, fuzzy
 msgid "Start the timer"
 msgstr "Iniciar o temporizador"

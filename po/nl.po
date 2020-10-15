@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 13:19+0200\n"
+"POT-Creation-Date: 2020-10-15 14:44+0200\n"
 "PO-Revision-Date: 2020-10-12 17:03+0000\n"
 "Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/go-for-"
@@ -296,7 +296,6 @@ msgid "LIST-ID"
 msgstr "LIJST-ID"
 
 #: ../src/Main.vala:329 ../src/Widgets/TimerView.vala:90
-#: ../plugins/appindicator/appindicator.vala:193
 msgid "Take a Break"
 msgstr "Neem even pauze"
 
@@ -673,7 +672,7 @@ msgid "Pau_se"
 msgstr "_Pauzeer"
 
 #: ../src/Widgets/TimerView.vala:142
-#: ../plugins/appindicator/appindicator.vala:213
+#: ../plugins/appindicator/appindicator.vala:218
 msgid "Stop the timer"
 msgstr "Stop de timer"
 
@@ -683,7 +682,7 @@ msgstr "_Start"
 
 #: ../src/Widgets/TimerView.vala:151
 #: ../plugins/appindicator/appindicator.vala:100
-#: ../plugins/appindicator/appindicator.vala:222
+#: ../plugins/appindicator/appindicator.vala:227
 msgid "Start the timer"
 msgstr "Start de timer"
 

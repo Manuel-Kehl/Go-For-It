@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 13:19+0200\n"
+"POT-Creation-Date: 2020-10-15 14:44+0200\n"
 "PO-Revision-Date: 2020-10-14 13:25+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/go-"
@@ -297,7 +297,6 @@ msgid "LIST-ID"
 msgstr "ID-POPISA"
 
 #: ../src/Main.vala:329 ../src/Widgets/TimerView.vala:90
-#: ../plugins/appindicator/appindicator.vala:193
 msgid "Take a Break"
 msgstr "Odmori se"
 
@@ -647,6 +646,11 @@ msgstr "%u min"
 msgid "%u hours and %u minutes"
 msgstr "%u h i %u min"
 
+#. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
+#: ../src/Utils.vala:234
+msgid "%s!"
+msgstr ""
+
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
 msgstr "Pritisni-i-povuci za mijenjanje redoslijeda redaka"
@@ -668,7 +672,7 @@ msgid "Pau_se"
 msgstr "Zau_stavi"
 
 #: ../src/Widgets/TimerView.vala:142
-#: ../plugins/appindicator/appindicator.vala:213
+#: ../plugins/appindicator/appindicator.vala:218
 msgid "Stop the timer"
 msgstr "Zaustavi štopericu"
 
@@ -678,7 +682,7 @@ msgstr "_Započni"
 
 #: ../src/Widgets/TimerView.vala:151
 #: ../plugins/appindicator/appindicator.vala:100
-#: ../plugins/appindicator/appindicator.vala:222
+#: ../plugins/appindicator/appindicator.vala:227
 msgid "Start the timer"
 msgstr "Pokreni štopericu"
 

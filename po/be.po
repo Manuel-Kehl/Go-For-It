@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 13:19+0200\n"
+"POT-Creation-Date: 2020-10-15 14:44+0200\n"
 "PO-Revision-Date: 2016-11-18 19:57+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -291,7 +291,6 @@ msgid "LIST-ID"
 msgstr ""
 
 #: ../src/Main.vala:329 ../src/Widgets/TimerView.vala:90
-#: ../plugins/appindicator/appindicator.vala:193
 msgid "Take a Break"
 msgstr ""
 
@@ -627,6 +626,11 @@ msgstr ""
 msgid "%u hours and %u minutes"
 msgstr ""
 
+#. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
+#: ../src/Utils.vala:234
+msgid "%s!"
+msgstr ""
+
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
 msgstr ""
@@ -648,7 +652,7 @@ msgid "Pau_se"
 msgstr ""
 
 #: ../src/Widgets/TimerView.vala:142
-#: ../plugins/appindicator/appindicator.vala:213
+#: ../plugins/appindicator/appindicator.vala:218
 msgid "Stop the timer"
 msgstr ""
 
@@ -658,7 +662,7 @@ msgstr ""
 
 #: ../src/Widgets/TimerView.vala:151
 #: ../plugins/appindicator/appindicator.vala:100
-#: ../plugins/appindicator/appindicator.vala:222
+#: ../plugins/appindicator/appindicator.vala:227
 msgid "Start the timer"
 msgstr ""
 
