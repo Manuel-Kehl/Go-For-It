@@ -28,6 +28,7 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
     private string? active_task_description = null;
     private Gtk.MenuItem task_descr_item;
     private Gtk.MenuItem show_item;
+    private Gtk.MenuItem quit_item;
     private Gtk.MenuItem start_timer_item;
     private Gtk.MenuItem mark_done_item;
     private Gtk.MenuItem next_task_item;
@@ -48,16 +49,22 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
         if (indicator != null) {
             return;
         }
-        indicator = new Indicator(GOFI.APP_ID, "status-task-symbolic", IndicatorCategory.APPLICATION_STATUS);
-        indicator.set_icon_theme_path (GLib.Path.build_filename (this.data_dir, "icons"));
+        var icon_theme_path = GLib.Path.build_filename (this.data_dir, "icons");
+        var category = IndicatorCategory.APPLICATION_STATUS;
+        indicator = new Indicator.with_path (GOFI.APP_ID, "status-task-symbolic", category, icon_theme_path);
         indicator.set_status(IndicatorStatus.ACTIVE);
 
         var menu = new Gtk.Menu();
 
-        show_item = new Gtk.MenuItem.with_label("Open %s".printf (GOFI.APP_NAME));
-        show_item.activate.connect(show_application_window);
+        show_item = new Gtk.MenuItem.with_label ("Open %s".printf (GOFI.APP_NAME));
+        show_item.activate.connect (show_application_window);
         show_item.show ();
         menu.append (show_item);
+
+        quit_item = new Gtk.MenuItem.with_label (_("Close"));
+        quit_item.activate.connect (queue_close);
+        quit_item.show ();
+        menu.append (quit_item);
 
         var separator_item = new Gtk.SeparatorMenuItem ();
         separator_item.show ();
@@ -96,8 +103,8 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
         start_timer_item.activate.connect (toggle_timer);
         menu.append (start_timer_item);
 
-        indicator.set_menu(menu);
-        indicator.set_secondary_activate_target(show_item);
+        indicator.set_menu (menu);
+        indicator.set_secondary_activate_target (show_item);
         connect_timer_signals ();
     }
 
@@ -122,6 +129,19 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
         var win = iface.get_window ();
         win.show ();
         win.present ();
+    }
+
+    private void queue_close () {
+        GLib.Idle.add (close_application_window_source_func);
+    }
+
+    private bool close_application_window_source_func () {
+        close_application_window ();
+        return GLib.Source.REMOVE;
+    }
+
+    private void close_application_window () {
+        iface.quit_application ();
     }
 
     private void update_timer_label (uint timer_value) {
@@ -169,13 +189,13 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
             var timer = iface.get_timer ();
             if (timer.break_active) {
                 if (!showing_break) {
-                    indicator.set_icon ("status-break-symbolic");
+                    indicator.icon_name = "status-break-symbolic";
                     task_descr_item.label = _("Take a Break") + "!";
                     showing_break = true;
                 }
             } else {
                 if (showing_break) {
-                    indicator.set_icon ("status-task-symbolic");
+                    indicator.icon_name = "status-task-symbolic";
                     showing_break = false;
                 }
                 task_descr_item.label = active_task_description;
@@ -228,6 +248,7 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
 
         task_descr_item = null;
         show_item = null;
+        quit_item = null;
         start_timer_item = null;
         mark_done_item = null;
         next_task_item = null;

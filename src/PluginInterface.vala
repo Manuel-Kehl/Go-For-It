@@ -29,6 +29,7 @@ public class GOFI.PluginInterface : GLib.Object {
     public signal void next_task ();
     public signal void previous_task ();
     public signal void mark_task_as_done ();
+    public signal void quit_application ();
 
     public TaskTimer get_timer () {
         return timer;

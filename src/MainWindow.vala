@@ -103,6 +103,10 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         plugin_iface.next_task.connect (() => task_page.switch_to_next ());
         plugin_iface.previous_task.connect (() => task_page.switch_to_prev ());
         plugin_iface.mark_task_as_done.connect (() => task_page.mark_task_done ());
+        plugin_iface.quit_application.connect (() => {
+            task_timer.stop ();
+            this.close ();
+        });
 #endif
     }
 
