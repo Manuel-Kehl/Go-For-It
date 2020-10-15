@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 17:31+0200\n"
+"POT-Creation-Date: 2020-10-15 13:19+0200\n"
 "PO-Revision-Date: 2020-10-06 15:25+0200\n"
 "Last-Translator: Youssef Mohamed <youssef11bc@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/go-for-it/go-for-"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:36+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:441
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:451
 msgid "About"
 msgstr "حول"
 
@@ -68,11 +68,12 @@ msgstr "استبدال"
 msgid "Cancel"
 msgstr "إلغاء"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:428
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:438
 msgid "Settings"
 msgstr "إعدادات"
 
 #: ../src/Dialogs/SettingsDialog.vala:48
+#: ../plugins/appindicator/appindicator.vala:64
 msgid "Close"
 msgstr "أغلاق"
 
@@ -254,75 +255,76 @@ msgstr "تعذر استيراد الإعدادات بشكل صحيح من٪ s:٪
 msgid "Not a known list: %s"
 msgstr "قائمة غير معروفة: ٪ s"
 
-#: ../src/Main.vala:237
+#: ../src/Main.vala:240
 msgid "%s: Error: %s"
 msgstr "٪ s: خطأ:٪ s"
 
-#: ../src/Main.vala:249
+#: ../src/Main.vala:252
 msgid "Lists (List type : List ID - List name)"
 msgstr "القوائم (نوع القائمة: معرف القائمة - اسم القائمة)"
 
-#: ../src/Main.vala:274
+#: ../src/Main.vala:277
 msgid "Print version info and exit"
 msgstr "طباعة معلومات الإصدار والخروج"
 
-#: ../src/Main.vala:275
+#: ../src/Main.vala:278
 msgid "Show about dialog"
 msgstr "اظهر موضوع الحوار"
 
-#: ../src/Main.vala:276
+#: ../src/Main.vala:279
 msgid "CSV file to log activities to."
 msgstr "ملف CSV لتسجيل الأنشطة إليه."
 
-#: ../src/Main.vala:276
+#: ../src/Main.vala:279
 msgid "FILE"
 msgstr "ملف"
 
-#: ../src/Main.vala:277
+#: ../src/Main.vala:280
 msgid "Show configured lists and exit"
 msgstr "إظهار القوائم التي تم تكوينها والخروج"
 
-#: ../src/Main.vala:281
+#: ../src/Main.vala:284
 msgid "Load the list specified by the list type and ID"
 msgstr "قم بتحميل القائمة المحددة بواسطة نوع القائمة والمعرف"
 
-#: ../src/Main.vala:282
+#: ../src/Main.vala:285
 msgid "LIST-TYPE"
 msgstr "نوع-القائمة"
 
-#: ../src/Main.vala:282
+#: ../src/Main.vala:285
 msgid "LIST-ID"
 msgstr "معرف-القائمة"
 
-#: ../src/Main.vala:326 ../src/Widgets/TimerView.vala:90
+#: ../src/Main.vala:329 ../src/Widgets/TimerView.vala:90
+#: ../plugins/appindicator/appindicator.vala:193
 msgid "Take a Break"
 msgstr "خذ استراحة"
 
-#: ../src/Main.vala:327
+#: ../src/Main.vala:330
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "استرخ وتوقف عن التفكير في مهمتك الحالية لفترة"
 
-#: ../src/Main.vala:332
+#: ../src/Main.vala:335
 msgid "The Break is Over"
 msgstr "انتهت الاستراحة"
 
-#: ../src/Main.vala:333
+#: ../src/Main.vala:336
 msgid "Your current task is"
 msgstr "مهمتك الحالية هي"
 
-#: ../src/Main.vala:352
+#: ../src/Main.vala:355
 msgid "Prepare for your break"
 msgstr "استعد لراحتك"
 
-#: ../src/Main.vala:353
+#: ../src/Main.vala:356
 msgid "You have %s seconds left"
 msgstr "لديك٪ s ثواني متبقية"
 
-#: ../src/Main.vala:369
+#: ../src/Main.vala:372
 msgid "Task duration exceeded"
 msgstr "مدة المهمة تجاوزت"
 
-#: ../src/Main.vala:370
+#: ../src/Main.vala:373
 msgid "Consider switching to a different task"
 msgstr "فكر في التبديل إلى مهمة مختلفة"
 
@@ -334,11 +336,11 @@ msgstr "انتقل إلى نظرة عامة"
 msgid "Go back to the to-do list"
 msgstr "ارجع إلى قائمة المهام"
 
-#: ../src/MainWindow.vala:319
+#: ../src/MainWindow.vala:329
 msgid "Menu"
 msgstr "القائمة"
 
-#: ../src/MainWindow.vala:434
+#: ../src/MainWindow.vala:444
 msgid "Contribute / Donate"
 msgstr "ساهم / تبرع"
 
@@ -405,6 +407,7 @@ msgstr ""
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
+#: ../plugins/appindicator/appindicator.vala:82
 msgid "Mark the task as complete"
 msgstr "ضع علامة على المهمة كمكتملة"
 
@@ -656,6 +659,7 @@ msgid "Pau_se"
 msgstr ""
 
 #: ../src/Widgets/TimerView.vala:142
+#: ../plugins/appindicator/appindicator.vala:213
 #, fuzzy
 msgid "Stop the timer"
 msgstr "إيقاف الموقت"
@@ -665,6 +669,8 @@ msgid "_Start"
 msgstr ""
 
 #: ../src/Widgets/TimerView.vala:151
+#: ../plugins/appindicator/appindicator.vala:100
+#: ../plugins/appindicator/appindicator.vala:222
 #, fuzzy
 msgid "Start the timer"
 msgstr "بدء الموقت"
@@ -700,3 +706,19 @@ msgstr ""
 #: ../src/Widgets/TodoListInfoRow.vala:97
 msgid "Edit"
 msgstr ""
+
+#: ../plugins/appindicator/appindicator.vala:59
+msgid "Open %s"
+msgstr ""
+
+#: ../plugins/appindicator/appindicator.vala:88
+#, fuzzy
+#| msgid "Move to next task/row"
+msgid "Switch to next task"
+msgstr "الانتقال إلى المهمة / الصف التالي"
+
+#: ../plugins/appindicator/appindicator.vala:94
+#, fuzzy
+#| msgid "Move to previous task/row"
+msgid "Switch to the previous task"
+msgstr "الانتقال إلى المهمة / الصف السابق"

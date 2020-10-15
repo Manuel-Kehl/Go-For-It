@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 17:31+0200\n"
+"POT-Creation-Date: 2020-10-15 13:19+0200\n"
 "PO-Revision-Date: 2020-06-05 04:41+0000\n"
 "Last-Translator: Nguyễn Công Dũng <dung.dev.gramer@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/go-for-it/go-"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Weblate 4.1-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:441
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:451
 msgid "About"
 msgstr "Thông tin"
 
@@ -66,11 +66,12 @@ msgstr ""
 msgid "Cancel"
 msgstr "Huỷ"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:428
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:438
 msgid "Settings"
 msgstr "Cài đặt"
 
 #: ../src/Dialogs/SettingsDialog.vala:48
+#: ../plugins/appindicator/appindicator.vala:64
 msgid "Close"
 msgstr "Đóng"
 
@@ -252,76 +253,77 @@ msgstr "Không thể nhập từ cài đặt %s: %s"
 msgid "Not a known list: %s"
 msgstr ""
 
-#: ../src/Main.vala:237
+#: ../src/Main.vala:240
 msgid "%s: Error: %s"
 msgstr "%s: Lỗi: %s"
 
-#: ../src/Main.vala:249
+#: ../src/Main.vala:252
 msgid "Lists (List type : List ID - List name)"
 msgstr ""
 
-#: ../src/Main.vala:274
+#: ../src/Main.vala:277
 msgid "Print version info and exit"
 msgstr "In thông tin phiên bản và thoát"
 
-#: ../src/Main.vala:275
+#: ../src/Main.vala:278
 msgid "Show about dialog"
 msgstr "Hiển thị hộp thoại"
 
-#: ../src/Main.vala:276
+#: ../src/Main.vala:279
 msgid "CSV file to log activities to."
 msgstr "tập tin CSV để ghi lại hoạt động."
 
-#: ../src/Main.vala:276
+#: ../src/Main.vala:279
 msgid "FILE"
 msgstr ""
 
-#: ../src/Main.vala:277
+#: ../src/Main.vala:280
 msgid "Show configured lists and exit"
 msgstr "Hiển thị danh sách cấu hình và thoát"
 
-#: ../src/Main.vala:281
+#: ../src/Main.vala:284
 msgid "Load the list specified by the list type and ID"
 msgstr "Tải danh sách theo quy định của loại danh sách và ID"
 
-#: ../src/Main.vala:282
+#: ../src/Main.vala:285
 msgid "LIST-TYPE"
 msgstr ""
 
-#: ../src/Main.vala:282
+#: ../src/Main.vala:285
 msgid "LIST-ID"
 msgstr ""
 
-#: ../src/Main.vala:326 ../src/Widgets/TimerView.vala:90
+#: ../src/Main.vala:329 ../src/Widgets/TimerView.vala:90
+#: ../plugins/appindicator/appindicator.vala:193
 msgid "Take a Break"
 msgstr "Nghỉ ngơi một lát"
 
-#: ../src/Main.vala:327
+#: ../src/Main.vala:330
 msgid "Relax and stop thinking about your current task for a while"
 msgstr ""
 "Thư giãn và dừng suy nghĩ về công việc hiện tại của bạn trong một thời gian"
 
-#: ../src/Main.vala:332
+#: ../src/Main.vala:335
 msgid "The Break is Over"
 msgstr "Đã hết giờ nghỉ ngơi"
 
-#: ../src/Main.vala:333
+#: ../src/Main.vala:336
 msgid "Your current task is"
 msgstr "Nhiệm vụ hiện tại của bạn là"
 
-#: ../src/Main.vala:352
+#: ../src/Main.vala:355
 msgid "Prepare for your break"
 msgstr "Chuẩn bị nghỉ ngơi"
 
-#: ../src/Main.vala:353
+#: ../src/Main.vala:356
 msgid "You have %s seconds left"
 msgstr "Bạn còn %s giây"
 
-#: ../src/Main.vala:369
+#: ../src/Main.vala:372
 msgid "Task duration exceeded"
 msgstr ""
 
-#: ../src/Main.vala:370
+#: ../src/Main.vala:373
 msgid "Consider switching to a different task"
 msgstr "Xem xét chuyển sang một công việc khác"
 
@@ -333,11 +335,11 @@ msgstr "Tới tổng quan"
 msgid "Go back to the to-do list"
 msgstr "Quay trở lại danh sách công việc"
 
-#: ../src/MainWindow.vala:319
+#: ../src/MainWindow.vala:329
 msgid "Menu"
 msgstr ""
 
-#: ../src/MainWindow.vala:434
+#: ../src/MainWindow.vala:444
 msgid "Contribute / Donate"
 msgstr "Đóng góp / Ủng hộ"
 
@@ -404,6 +406,7 @@ msgstr ""
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
+#: ../plugins/appindicator/appindicator.vala:82
 msgid "Mark the task as complete"
 msgstr "Đánh dấu là hoàn tất"
 
@@ -660,6 +663,7 @@ msgid "Pau_se"
 msgstr ""
 
 #: ../src/Widgets/TimerView.vala:142
+#: ../plugins/appindicator/appindicator.vala:213
 #, fuzzy
 #| msgid "Start/Stop the timer"
 msgid "Stop the timer"
@@ -670,6 +674,8 @@ msgid "_Start"
 msgstr ""
 
 #: ../src/Widgets/TimerView.vala:151
+#: ../plugins/appindicator/appindicator.vala:100
+#: ../plugins/appindicator/appindicator.vala:222
 #, fuzzy
 #| msgid "Start/Stop the timer"
 msgid "Start the timer"
@@ -706,3 +712,19 @@ msgstr "Xoá"
 #: ../src/Widgets/TodoListInfoRow.vala:97
 msgid "Edit"
 msgstr "Sửa"
+
+#: ../plugins/appindicator/appindicator.vala:59
+msgid "Open %s"
+msgstr ""
+
+#: ../plugins/appindicator/appindicator.vala:88
+#, fuzzy
+#| msgid "Move to next task/row"
+msgid "Switch to next task"
+msgstr "Di chuyển đến hàng / nhiệm vụ tiếp theo"
+
+#: ../plugins/appindicator/appindicator.vala:94
+#, fuzzy
+#| msgid "Move to previous task/row"
+msgid "Switch to the previous task"
+msgstr "Di chuyển đến hàng / nhiệm vụ trước đó"

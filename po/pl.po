@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 17:31+0200\n"
+"POT-Creation-Date: 2020-10-15 13:19+0200\n"
 "PO-Revision-Date: 2020-10-06 15:24+0200\n"
 "Last-Translator: WaldiS <sto@tutanota.de>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/go-for-it/go-for-"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:441
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:451
 msgid "About"
 msgstr "O aplikacji"
 
@@ -68,11 +68,12 @@ msgstr ""
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:428
+#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:438
 msgid "Settings"
 msgstr "Ustawienia"
 
 #: ../src/Dialogs/SettingsDialog.vala:48
+#: ../plugins/appindicator/appindicator.vala:64
 msgid "Close"
 msgstr "Zamknij"
 
@@ -254,75 +255,76 @@ msgstr "Nie można poprawnie zaimportować ustawień z %s: %s"
 msgid "Not a known list: %s"
 msgstr "Nieznana lista: %s"
 
-#: ../src/Main.vala:237
+#: ../src/Main.vala:240
 msgid "%s: Error: %s"
 msgstr "%s: Błąd: %s"
 
-#: ../src/Main.vala:249
+#: ../src/Main.vala:252
 msgid "Lists (List type : List ID - List name)"
 msgstr "Listy (Typ listy: Identyfikator listy - Nazwa listy)"
 
-#: ../src/Main.vala:274
+#: ../src/Main.vala:277
 msgid "Print version info and exit"
 msgstr "Wydrukuj informacje o wersji i wyjdź"
 
-#: ../src/Main.vala:275
+#: ../src/Main.vala:278
 msgid "Show about dialog"
 msgstr "Pokaż okno dialogowe"
 
-#: ../src/Main.vala:276
+#: ../src/Main.vala:279
 msgid "CSV file to log activities to."
 msgstr "Plik CSV do rejestrowania działań."
 
-#: ../src/Main.vala:276
+#: ../src/Main.vala:279
 msgid "FILE"
 msgstr "PLIK"
 
-#: ../src/Main.vala:277
+#: ../src/Main.vala:280
 msgid "Show configured lists and exit"
 msgstr "Pokaż skonfigurowane listy i zakończ"
 
-#: ../src/Main.vala:281
+#: ../src/Main.vala:284
 msgid "Load the list specified by the list type and ID"
 msgstr "Załaduj listę określoną przez typ listy i identyfikator"
 
-#: ../src/Main.vala:282
+#: ../src/Main.vala:285
 msgid "LIST-TYPE"
 msgstr "TYP LISTY"
 
-#: ../src/Main.vala:282
+#: ../src/Main.vala:285
 msgid "LIST-ID"
 msgstr "Identyfikator listy"
 
-#: ../src/Main.vala:326 ../src/Widgets/TimerView.vala:90
+#: ../src/Main.vala:329 ../src/Widgets/TimerView.vala:90
+#: ../plugins/appindicator/appindicator.vala:193
 msgid "Take a Break"
 msgstr "Zrób sobie przerwę"
 
-#: ../src/Main.vala:327
+#: ../src/Main.vala:330
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "Zrelaksuj się i przestań myśleć o swoim bieżącym zadaniu na chwilę"
 
-#: ../src/Main.vala:332
+#: ../src/Main.vala:335
 msgid "The Break is Over"
 msgstr "Przerwa się skończyła"
 
-#: ../src/Main.vala:333
+#: ../src/Main.vala:336
 msgid "Your current task is"
 msgstr "Twoje obecne zadanie to"
 
-#: ../src/Main.vala:352
+#: ../src/Main.vala:355
 msgid "Prepare for your break"
 msgstr "Przygotuj się na przerwę"
 
-#: ../src/Main.vala:353
+#: ../src/Main.vala:356
 msgid "You have %s seconds left"
 msgstr "Zostało Ci %s sekund"
 
-#: ../src/Main.vala:369
+#: ../src/Main.vala:372
 msgid "Task duration exceeded"
 msgstr "Przekroczono czas trwania zadania"
 
-#: ../src/Main.vala:370
+#: ../src/Main.vala:373
 msgid "Consider switching to a different task"
 msgstr "Rozważ przejście do innego zadania"
 
@@ -334,11 +336,11 @@ msgstr "Wróć do przeglądu"
 msgid "Go back to the to-do list"
 msgstr "Powrót do listy zadań do wykonania"
 
-#: ../src/MainWindow.vala:319
+#: ../src/MainWindow.vala:329
 msgid "Menu"
 msgstr "Meni"
 
-#: ../src/MainWindow.vala:434
+#: ../src/MainWindow.vala:444
 msgid "Contribute / Donate"
 msgstr "Wkład / Darowizna"
 
@@ -405,6 +407,7 @@ msgstr ""
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
+#: ../plugins/appindicator/appindicator.vala:82
 msgid "Mark the task as complete"
 msgstr "Oznacz zadanie jako zakończone"
 
@@ -661,6 +664,7 @@ msgid "Pau_se"
 msgstr "Pau_za"
 
 #: ../src/Widgets/TimerView.vala:142
+#: ../plugins/appindicator/appindicator.vala:213
 #, fuzzy
 msgid "Stop the timer"
 msgstr "Zatrzymaj zegar"
@@ -670,6 +674,8 @@ msgid "_Start"
 msgstr "_Uruchom"
 
 #: ../src/Widgets/TimerView.vala:151
+#: ../plugins/appindicator/appindicator.vala:100
+#: ../plugins/appindicator/appindicator.vala:222
 #, fuzzy
 msgid "Start the timer"
 msgstr "Uruchom zegar"
@@ -705,3 +711,19 @@ msgstr "Usuń"
 #: ../src/Widgets/TodoListInfoRow.vala:97
 msgid "Edit"
 msgstr "Edytuj"
+
+#: ../plugins/appindicator/appindicator.vala:59
+msgid "Open %s"
+msgstr ""
+
+#: ../plugins/appindicator/appindicator.vala:88
+#, fuzzy
+#| msgid "Move to next task/row"
+msgid "Switch to next task"
+msgstr "Przejdź do następnego zadania/wiersza"
+
+#: ../plugins/appindicator/appindicator.vala:94
+#, fuzzy
+#| msgid "Move to previous task/row"
+msgid "Switch to the previous task"
+msgstr "Przejdź do poprzedniego zadania/wiersza"
