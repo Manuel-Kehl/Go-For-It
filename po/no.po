@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-15 14:44+0200\n"
-"PO-Revision-Date: 2020-10-14 13:25+0000\n"
+"PO-Revision-Date: 2020-10-16 11:21+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/go-for-"
-"it/go-for-it/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"go-for-it/go-for-it/nb_NO/>\n"
 "Language: no\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.3.1-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:451
@@ -515,10 +515,8 @@ msgid "Use default settings"
 msgstr "Bruk forvalgte innstillinger"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:423
-#, fuzzy
-#| msgid "The configured folder is already in use by another list."
 msgid "The configured to-do file is already in use by another list."
-msgstr "Oppsatt mappe er i bruk av en annen liste."
+msgstr "Oppsatt gjøremålsfil er i bruk av en annen liste."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
 #, fuzzy
@@ -683,10 +681,8 @@ msgstr "Pau_se"
 
 #: ../src/Widgets/TimerView.vala:142
 #: ../plugins/appindicator/appindicator.vala:218
-#, fuzzy
-#| msgid "Start/Stop the timer"
 msgid "Stop the timer"
-msgstr "Start/stopp tidsuret"
+msgstr "Stopp tidsuret"
 
 #: ../src/Widgets/TimerView.vala:149
 msgid "_Start"
@@ -695,10 +691,8 @@ msgstr "_Start"
 #: ../src/Widgets/TimerView.vala:151
 #: ../plugins/appindicator/appindicator.vala:100
 #: ../plugins/appindicator/appindicator.vala:227
-#, fuzzy
-#| msgid "Start/Stop the timer"
 msgid "Start the timer"
-msgstr "Start/stopp tidsuret"
+msgstr "Start tidsuret"
 
 #: ../src/Widgets/TimerView.vala:171
 msgid "Inactive"
@@ -734,19 +728,15 @@ msgstr "Rediger"
 
 #: ../plugins/appindicator/appindicator.vala:59
 msgid "Open %s"
-msgstr ""
+msgstr "Åpne %s"
 
 #: ../plugins/appindicator/appindicator.vala:88
-#, fuzzy
-#| msgid "Move to next task/row"
 msgid "Switch to next task"
-msgstr "Flytt til neste gjøremål/rad"
+msgstr "Bytt til neste gjøremål"
 
 #: ../plugins/appindicator/appindicator.vala:94
-#, fuzzy
-#| msgid "Move to previous task/row"
 msgid "Switch to the previous task"
-msgstr "Flytt til forrige gjøremål/rad"
+msgstr "Bytt til forrige gjøremål"
 
 #, fuzzy
 #~ msgid "The search operation did not return any tasks."
