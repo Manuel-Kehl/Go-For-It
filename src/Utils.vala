@@ -228,5 +228,10 @@ namespace GOFI {
             popover.show_all ();
 #endif
         }
+
+        public static string string_to_exclamation (string str) {
+            /// In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
+            return _("%s!").printf (str);
+        }
     }
 }

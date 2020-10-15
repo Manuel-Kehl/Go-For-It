@@ -506,10 +506,8 @@ msgid "Use default settings"
 msgstr "Use default settings"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:423
-#, fuzzy
-#| msgid "The configured folder is already in use by another list."
 msgid "The configured to-do file is already in use by another list."
-msgstr "The configured folder is already in use by another list."
+msgstr "The configured to-do file is already in use by another list."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
 msgid ""
@@ -642,6 +640,11 @@ msgstr "%u minutes"
 msgid "%u hours and %u minutes"
 msgstr "%u hours and %u minutes"
 
+#. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
+#: ../src/Utils.vala:234
+msgid "%s!"
+msgstr "%s!"
+
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
 msgstr ""
@@ -714,13 +717,9 @@ msgid "Open %s"
 msgstr ""
 
 #: ../plugins/appindicator/appindicator.vala:88
-#, fuzzy
-#| msgid "Move to next task/row"
 msgid "Switch to next task"
-msgstr "Move to next task/row"
+msgstr "Switch to next task"
 
 #: ../plugins/appindicator/appindicator.vala:94
-#, fuzzy
-#| msgid "Move to previous task/row"
 msgid "Switch to the previous task"
-msgstr "Move to previous task/row"
+msgstr "Switch to the previous task"

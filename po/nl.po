@@ -647,6 +647,11 @@ msgstr "%u minuten"
 msgid "%u hours and %u minutes"
 msgstr "%u uur en %u minuten"
 
+#. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
+#: ../src/Utils.vala:234
+msgid "%s!"
+msgstr "%s!"
+
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
 msgstr "Klik en sleep om rijen te herordenen"
@@ -719,16 +724,12 @@ msgid "Open %s"
 msgstr ""
 
 #: ../plugins/appindicator/appindicator.vala:88
-#, fuzzy
-#| msgid "Move to next task/row"
 msgid "Switch to next task"
-msgstr "Ga naar volgende taak/rij"
+msgstr "Ga naar volgende taak"
 
 #: ../plugins/appindicator/appindicator.vala:94
-#, fuzzy
-#| msgid "Move to previous task/row"
 msgid "Switch to the previous task"
-msgstr "Ga naar de vorige taak/rij"
+msgstr "Ga naar de vorige taak"
 
 #~ msgid "The search operation did not return any tasks."
 #~ msgstr "De zoekactie leverde geen taken op."

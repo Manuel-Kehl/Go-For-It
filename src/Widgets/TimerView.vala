@@ -87,7 +87,7 @@ class GOFI.TimerView : Gtk.Grid {
 
         // Append correct class according to break status
         if (timer.break_active) {
-            task_status_lbl.label = _("Take a Break") + "!";
+            task_status_lbl.label = Utils.string_to_exclamation (_("Take a Break"));
             style.remove_class ("task_active");
             style.add_class ("task_break");
             skip_btn.tooltip_markup = _("Skip the remainder of the break");

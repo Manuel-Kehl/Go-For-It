@@ -190,7 +190,7 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
             if (timer.break_active) {
                 if (!showing_break) {
                     indicator.icon_name = "status-break-symbolic";
-                    task_descr_item.label = _("Take a Break") + "!";
+                    task_descr_item.label = GOFI.Utils.string_to_exclamation (("Take a Break"));
                     showing_break = true;
                 }
             } else {

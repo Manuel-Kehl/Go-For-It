@@ -577,10 +577,8 @@ msgid "Clear Done List"
 msgstr ""
 
 #: ../src/Todo.txt/TxtList.vala:179
-#, fuzzy
-#| msgid "Your next task is"
 msgid "Sort Tasks"
-msgstr "మీ తదుపరి పని"
+msgstr ""
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
@@ -645,6 +643,11 @@ msgstr "%u నిమిషాలు"
 
 #: ../src/Utils.vala:190
 msgid "%u hours and %u minutes"
+msgstr ""
+
+#. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
+#: ../src/Utils.vala:234
+msgid "%s!"
 msgstr ""
 
 #: ../src/Widgets/DragList.vala:714

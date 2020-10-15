@@ -572,10 +572,8 @@ msgid "Clear Done List"
 msgstr "Очистить список Сделано"
 
 #: ../src/Todo.txt/TxtList.vala:179
-#, fuzzy
-#| msgid "Your current task is"
 msgid "Sort Tasks"
-msgstr "Ваша текущая задача"
+msgstr ""
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
@@ -638,6 +636,11 @@ msgstr ""
 msgid "%u hours and %u minutes"
 msgstr ""
 
+#. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
+#: ../src/Utils.vala:234
+msgid "%s!"
+msgstr "%s!"
+
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
 msgstr ""
@@ -670,10 +673,8 @@ msgstr ""
 #: ../src/Widgets/TimerView.vala:151
 #: ../plugins/appindicator/appindicator.vala:100
 #: ../plugins/appindicator/appindicator.vala:222
-#, fuzzy
-#| msgid "Dark theme"
 msgid "Start the timer"
-msgstr "Тёмная тема"
+msgstr ""
 
 #: ../src/Widgets/TimerView.vala:171
 msgid "Inactive"

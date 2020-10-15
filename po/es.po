@@ -641,6 +641,11 @@ msgstr "%u minutos"
 msgid "%u hours and %u minutes"
 msgstr ""
 
+#. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
+#: ../src/Utils.vala:234
+msgid "%s!"
+msgstr "¡%s!"
+
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
 msgstr ""
@@ -673,10 +678,8 @@ msgstr "_Iniciar"
 #: ../src/Widgets/TimerView.vala:151
 #: ../plugins/appindicator/appindicator.vala:100
 #: ../plugins/appindicator/appindicator.vala:222
-#, fuzzy
-#| msgid "Dark theme"
 msgid "Start the timer"
-msgstr "Tema oscuro"
+msgstr ""
 
 #: ../src/Widgets/TimerView.vala:171
 msgid "Inactive"
