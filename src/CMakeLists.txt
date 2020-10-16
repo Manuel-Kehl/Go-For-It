@@ -20,10 +20,7 @@ else ()
 endif ()
 
 set (VALA_PACKAGES
-    gtk+-3.0
-    libnotify
-    libpeas-1.0
-    libpeas-gtk-1.0)
+    gtk+-3.0)
 
 if (USE_GRANITE)
     set (VALAC_OPTIONS ${VALAC_OPTIONS} -D USE_GRANITE)

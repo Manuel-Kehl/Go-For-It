@@ -97,7 +97,6 @@ To build *Go For It!* you need to have the following software installed:
     intltool
     gtk+-3.0 (libgtk-3-0, libgtk-3-dev) (>= 3.14)
     glib-2.0 (libglib2.0-0, libglib2.0-dev)
-    libnotify (libnotify-dev)
     libpeas (libpeas-1.0-0, libpeas-dev)
 
 Use the following commands in this order to build *Go For It!*:

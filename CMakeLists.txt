@@ -47,7 +47,6 @@ find_package (PkgConfig)
 pkg_check_modules (CORE_DEPS REQUIRED
     gtk+-3.0>=3.14.0
     glib-2.0>=2.40
-    libnotify
 )
 
 set (DEPS_CFLAGS ${CORE_DEPS_CFLAGS})

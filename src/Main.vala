@@ -44,6 +44,7 @@ class GOFI.Main : Gtk.Application {
     private static bool list_lists = false;
     private static string? logfile = null;
     private static string[] load_list = null;
+    private const string TIMER_NOTIFY_ID = "timer-notification";
 
     private void load_settings () {
         if (settings == null) {
@@ -69,7 +70,6 @@ class GOFI.Main : Gtk.Application {
         if (task_timer == null) {
             task_timer = new TaskTimer ();
             // Enable Notifications for the App
-            Notify.init (GOFI.APP_NAME);
             setup_notifications ();
         }
     }
@@ -148,7 +148,7 @@ class GOFI.Main : Gtk.Application {
         if (dont_exit == false) {
             win = null;
             task_timer = null;
-            Notify.uninit ();
+            withdraw_notification (TIMER_NOTIFY_ID);
         }
 
         return dont_exit;
@@ -322,60 +322,39 @@ class GOFI.Main : Gtk.Application {
         }
         var break_active = task_timer.break_active;
         if (break_previously_active != break_active) {
-            Notify.Notification notification;
-
+            GLib.Notification notification;
             if (break_active) {
-                notification = new Notify.Notification (
-                    _("Take a Break"),
+                notification = new GLib.Notification (_("Take a Break"));
+                notification.set_body (
                     _("Relax and stop thinking about your current task for a while")
-                    + " :-)",
-                    GOFI.EXEC_NAME);
+                    + " :-)"
+                );
             } else {
-                notification = new Notify.Notification (
-                    _("The Break is Over"),
-                    _("Your current task is") + ": " + task.description,
-                    GOFI.EXEC_NAME);
+                notification = new GLib.Notification (_("The Break is Over"));
+                notification.set_body (
+                    _("Your current task is") + ": " + task.description
+                );
             }
-            notification.set_hint (
-                "desktop-entry", new Variant.string (GOFI.APP_ID)
-            );
-
-            try {
-                notification.show ();
-            } catch (GLib.Error err){
-                GLib.stderr.printf (
-                    "Error in notify! (break_active notification)\n");
-            }
+            notification.set_priority (NotificationPriority.HIGH);
+            notification.set_icon (new ThemedIcon(GOFI.ICON_NAME));
+            send_notification (TIMER_NOTIFY_ID, notification);
         }
         break_previously_active = break_active;
     }
 
     private void display_almost_over_notification (uint remaining_time) {
-        Notify.Notification notification = new Notify.Notification (
-            _("Prepare for your break"),
-            _("You have %s seconds left").printf (remaining_time.to_string ()),
-            GOFI.EXEC_NAME
+        var notification = new GLib.Notification (_("Prepare for your break"));
+        notification.set_body (
+            _("You have %s seconds left").printf (remaining_time.to_string ())
         );
-        notification.set_hint (
-            "desktop-entry", new Variant.string (GOFI.APP_ID)
-        );
-        try {
-            notification.show ();
-        } catch (GLib.Error err){
-            GLib.stderr.printf (
-                "Error in notify! (remaining_time notification)\n");
-        }
+        notification.set_icon (new ThemedIcon(GOFI.ICON_NAME));
+        send_notification (TIMER_NOTIFY_ID, notification);
     }
 
     private void display_duration_exceeded () {
-        Notify.Notification notification = new Notify.Notification (
-            _("Task duration exceeded"),
-            _("Consider switching to a different task"), GOFI.EXEC_NAME);
-        try {
-            notification.show ();
-        } catch (GLib.Error err){
-            GLib.stderr.printf (
-                "Error in notify! (remaining_time notification)\n");
-        }
+        var notification = new GLib.Notification ( _("Task duration exceeded"));
+        notification.set_body (_("Consider switching to a different task"));
+        notification.set_icon (new ThemedIcon(GOFI.ICON_NAME));
+        send_notification (TIMER_NOTIFY_ID, notification);
     }
 }
