@@ -32,7 +32,7 @@ class GOFI.Plugins.LauncherIndicator : GLib.Object, Peas.Activatable {
     }
 
     public void activate () {
-        launcher_entry = Unity.LauncherEntry.get_for_desktop_id (GOFI.APP_SYSTEM_NAME + ".desktop");
+        launcher_entry = Unity.LauncherEntry.get_for_desktop_id (GOFI.APP_ID + ".desktop");
         displayed_count = -1;
         connect_timer_signals ();
     }

@@ -11,16 +11,16 @@ Exec=${EXEC_NAME} --about"
 else ()
 
 endif ()
-configure_file (go-for-it.desktop.in.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.desktop.in)
-configure_file_translation (${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.desktop ${CMAKE_SOURCE_DIR}/po/)
-configure_file (go-for-it.appdata.xml.in.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.appdata.xml.in)
-configure_file_translation (${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.appdata.xml.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.appdata.xml ${CMAKE_SOURCE_DIR}/po/)
+configure_file (go-for-it.desktop.in.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.desktop.in)
+configure_file_translation (${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.desktop ${CMAKE_SOURCE_DIR}/po/)
+configure_file (go-for-it.appdata.xml.in.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.appdata.xml.in)
+configure_file_translation (${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.appdata.xml.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.appdata.xml ${CMAKE_SOURCE_DIR}/po/)
 
 # install .desktop file so the Applications menu will display it
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.desktop DESTINATION ${DATADIR}/applications/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.desktop DESTINATION ${DATADIR}/applications/)
 
 # install appdata file which provides metadata for software centers
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${APP_SYSTEM_NAME}.appdata.xml DESTINATION ${DATADIR}/metainfo/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.appdata.xml DESTINATION ${DATADIR}/metainfo/)
 
 # install the application's icons
 set (SYSTEM_DEFAULT_THEME ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor)

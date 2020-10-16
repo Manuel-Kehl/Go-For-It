@@ -337,7 +337,7 @@ class GOFI.Main : Gtk.Application {
                     GOFI.EXEC_NAME);
             }
             notification.set_hint (
-                "desktop-entry", new Variant.string (GOFI.APP_SYSTEM_NAME)
+                "desktop-entry", new Variant.string (GOFI.APP_ID)
             );
 
             try {
@@ -357,7 +357,7 @@ class GOFI.Main : Gtk.Application {
             GOFI.EXEC_NAME
         );
         notification.set_hint (
-            "desktop-entry", new Variant.string (GOFI.APP_SYSTEM_NAME)
+            "desktop-entry", new Variant.string (GOFI.APP_ID)
         );
         try {
             notification.show ();

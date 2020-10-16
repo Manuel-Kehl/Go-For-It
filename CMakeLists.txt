@@ -10,7 +10,7 @@ set (DATADIR "${INSTALL_PREFIX}/share")
 
 set (RESOURCE_PATH "/go-for-it")
 set (APP_ID "com.github.jmoerman.go-for-it" CACHE STRING "The application id.")
-set (APP_SYSTEM_NAME ${APP_ID} CACHE STRING "Name to used for file names. For example the file name of the .desktop file.")
+set (APP_SYSTEM_NAME ${APP_ID} CACHE STRING "Name to used for the executable and data directories. (This option used to affect the base name of the .desktop file, icons and appstream metadata)")
 set (SCHEMA_PATH "/com/github/jmoerman/go-for-it" CACHE STRING "The gsettings schema path.")
 
 set (PKGDATADIR ${DATADIR}/${APP_SYSTEM_NAME})
@@ -20,10 +20,10 @@ set (FILE_CONF ${PROJECT_NAME}.conf)
 set (EXEC_NAME ${APP_SYSTEM_NAME})
 set (APP_NAME "Go For It!")
 set (RELEASE_NAME "A stylish to-do list with built-in productivity timer")
-set (VERSION "1.8.3")
-set (VERSION_INFO "Release")
-set (ICON_NAME ${APP_SYSTEM_NAME})
-set (GETTEXT_PACKAGE ${APP_SYSTEM_NAME})
+set (VERSION "1.8.99")
+set (VERSION_INFO "Development snapshot")
+set (ICON_NAME ${APP_ID})
+set (GETTEXT_PACKAGE ${APP_ID})
 set (APIVERSION 0)
 set (LIBNAME ${APP_SYSTEM_NAME}-${APIVERSION})
 set (LIBVERSION "0")
@@ -72,7 +72,7 @@ endif ()
 
 option (ENABLE_PLUGINS "Compile with plugin support" ON)
 if (ENABLE_PLUGINS)
-    pkg_check_modules (PEAS 
+    pkg_check_modules (PEAS
         libpeas-1.0
         libpeas-gtk-1.0
     )
