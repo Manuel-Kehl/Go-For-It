@@ -27,20 +27,22 @@ class GOFI.ActivityLog {
         this.log_file = log_file;
     }
 
-    public void log_task (string list_name, string task_description, DateTime start_time, uint runtime) {
+    public void log_task (string list_name, string task_description, DateTime start_time, uint runtime, DateTime stop_time) {
         if (log_file == null) {
             return;
         }
 
+        log_task_in_file (log_file, list_name, task_description, start_time, runtime, stop_time);
+    }
+
+    public void log_task_in_file (File file, string list_name, string task_description, DateTime start_time, uint runtime, DateTime stop_time) {
         var start_time_local = start_time.to_local ();
+        var stop_time_local = stop_time.to_local ();
 
         try {
-            if (!log_file.query_exists ()) {
-                DirUtils.create_with_parents (log_file.get_parent ().get_path (), 0700);
-                log_file.create (FileCreateFlags.NONE);
-            }
+            Utils.ensure_file_exists (file, FileCreateFlags.NONE);
             var file_out_stream =
-                log_file.append_to (FileCreateFlags.NONE, null);
+                file.append_to (FileCreateFlags.NONE, null);
             var stream_out =
                 new DataOutputStream (file_out_stream);
 
@@ -49,10 +51,10 @@ class GOFI.ActivityLog {
                 task_description.replace ("\"", "\"\""),
                 runtime,
                 start_time_local.to_string (),
-                start_time_local.add (((int64)runtime)*1000000).to_string ()
+                stop_time_local.to_string ()
             ));
         } catch (Error e) {
-            warning (_("Couldn't write to %s: %s"), log_file.get_path (), e.message);
+            warning (_("Couldn't write to %s: %s"), file.get_uri (), e.message);
         }
     }
 }

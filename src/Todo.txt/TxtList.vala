@@ -86,6 +86,15 @@ class GOFI.TXT.TxtList : GOFI.TaskList, Object {
         );
     }
 
+    public File? get_log_file () {
+        var uri = list_settings.activity_log_uri;
+        if (uri == null || uri == "") {
+            return null;
+        }
+        var file = File.new_for_uri (uri);
+        return file;
+    }
+
     /**
      * Returns the next task relative to active_task.
      */

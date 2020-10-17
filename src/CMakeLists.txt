@@ -60,6 +60,7 @@ vala_precompile (VALA_C ${LIBNAME}
     Widgets/ViewSwitcher.vala
     Widgets/TimerScheduleWidget.vala
     Widgets/TimerView.vala
+    Widgets/FileChooserWidget.vala
     Pages/TaskListPage.vala
     Pages/SelectionPage.vala
     Dialogs/FileConflictDialog.vala

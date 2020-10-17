@@ -47,6 +47,13 @@ public interface GOFI.TaskList : Object{
     }
 
     /**
+     * Returns file in which to log the timer activity for the active_task
+     */
+    public virtual File? get_log_file () {
+        return null;
+    }
+
+    /**
      * Returns the next task relative to active_task.
      */
     public abstract TodoTask? get_next ();

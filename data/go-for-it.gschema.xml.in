@@ -234,6 +234,11 @@
       <summary>Task/break duration schedule</summary>
       <description>Task and break duration schedule given as list of (task duration, break duration) pears, both in seconds.</description>
     </key>
+    <key name="activity-log-uri" type="s">
+      <default>''</default>
+      <summary>File in which to log activity</summary>
+      <description>URI of file in which the timer activity is logged.</description>
+    </key>
   </schema>
 
   <schema path="@SCHEMA_PATH@/plugins/" id="@APP_ID@.plugins">

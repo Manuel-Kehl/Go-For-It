@@ -233,5 +233,18 @@ namespace GOFI {
             /// In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
             return _("%s!").printf (str);
         }
+
+        /**
+         * Create file with its parent directory if it doesn't currently exist
+         */
+        public static void ensure_file_exists (File file, FileCreateFlags flags) throws Error {
+            if (!file.query_exists ()) {
+                var parent_dir = file.get_parent ();
+                if (parent_dir != null && !parent_dir.query_exists ()) {
+                    parent_dir.make_directory_with_parents ();
+                }
+                file.create (flags);
+            }
+        }
     }
 }

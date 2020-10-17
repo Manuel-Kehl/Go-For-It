@@ -357,15 +357,9 @@ class GOFI.TXT.TaskManager {
         }
     }
 
+    // Create file with its parent directory if it doesn't currently exist
     private void ensure_file_exists (File file) throws Error {
-        // Create file with its parent directory if it doesn't currently exist
-        if (!file.query_exists ()) {
-            var parent_dir = file.get_parent ();
-            if (parent_dir != null && !parent_dir.query_exists ()) {
-                parent_dir.make_directory_with_parents ();
-            }
-            file.create (FileCreateFlags.NONE);
-        }
+        Utils.ensure_file_exists (file, FileCreateFlags.NONE);
     }
 
     string remove_carriage_return (string line) {

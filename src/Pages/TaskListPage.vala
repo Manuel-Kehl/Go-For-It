@@ -336,12 +336,25 @@ class GOFI.TaskListPage : Gtk.Grid {
             return;
         }
         var active_task = task_timer.active_task;
+        var stop_time = new DateTime.now_utc ();
         activity_log.log_task (
             _active_list.list_info.name,
             active_task.description,
             start_time,
-            runtime
+            runtime,
+            stop_time
         );
+        var active_list_log_file = _active_list.get_log_file ();
+        if (active_list_log_file != null) {
+            activity_log.log_task_in_file (
+                active_list_log_file,
+                _active_list.list_info.name,
+                active_task.description,
+                start_time,
+                runtime,
+                stop_time
+            );
+        }
     }
 
     private void on_icon_size_changed (Gtk.IconSize size) {

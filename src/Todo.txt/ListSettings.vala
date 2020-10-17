@@ -27,6 +27,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
     const string KEY_DONE_URI = "done-list-uri";
     const string KEY_LOG_TIMER = "log-timer-in-txt";
     const string KEY_NAME = "name";
+    const string KEY_LOG_URI = "activity-log-uri";
 
     public GLib.Settings stored_settings {
         construct set;
@@ -54,6 +55,11 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         set;
     }
     public string done_uri {
+        get;
+        set;
+    }
+
+    public string activity_log_uri {
         get;
         set;
     }
@@ -106,6 +112,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         this.todo_uri = todo_uri;
         this.done_uri = done_uri;
         this.schedule = null;
+        this.activity_log_uri = null;
     }
 
     public static string construct_schema_path (string id) {
@@ -128,6 +135,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         this.todo_uri = null;
         this.done_uri = null;
         this.schedule = null;
+        this.activity_log_uri = null;
     }
 
     public ListSettings copy (string? new_id = null) {
@@ -138,6 +146,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         copied.reminder_time = reminder_time;
         copied.add_default_todos = add_default_todos;
         copied.log_timer_in_txt = log_timer_in_txt;
+        copied.activity_log_uri = activity_log_uri;
         if (schedule != null) {
             copied.schedule = new Schedule ();
             copied.schedule.import_raw (this.schedule.export_raw ());
@@ -149,6 +158,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         this.name = lsettings.name;
         this.todo_uri = lsettings.todo_uri;
         this.done_uri = lsettings.done_uri;
+        this.activity_log_uri = lsettings.activity_log_uri;
 
         if (lsettings.schedule == null) {
             this.schedule = null;
@@ -174,6 +184,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         stored_settings.bind (KEY_REMINDER_TIME, this, "reminder_time", sbf);
         stored_settings.bind (KEY_LOG_TIMER, this, "log_timer_in_txt", sbf);
         stored_settings.bind (KEY_NAME, this, "name", sbf);
+        stored_settings.bind (KEY_LOG_URI, this, "activity_log_uri", sbf);
     }
 
     public void unbind () {
@@ -182,6 +193,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         GLib.Settings.unbind (this, "reminder_time");
         GLib.Settings.unbind (this, "log_timer_in_txt");
         GLib.Settings.unbind (this, "name");
+        GLib.Settings.unbind (this, "activity_log_uri");
     }
 
     private void load_schedule () {
