@@ -40,13 +40,22 @@ class GOFI.ActivityLog {
         var stop_time_local = stop_time.to_local ();
 
         try {
-            Utils.ensure_file_exists (file, FileCreateFlags.NONE);
-            var file_out_stream =
-                file.append_to (FileCreateFlags.NONE, null);
-            var stream_out =
-                new DataOutputStream (file_out_stream);
+            bool append_header =
+                Utils.ensure_file_exists (file, FileCreateFlags.NONE);
+            var file_out_stream = file.append_to (FileCreateFlags.NONE, null);
+            var stream_out = new DataOutputStream (file_out_stream);
 
-            stream_out.put_string ("\"%s\", \"%s\", %u, %s, %s\r\n".printf (
+            if (append_header) {
+                stream_out.put_string ("%s,%s,%s,%s,%s\r\n".printf (
+                    "list name",
+                    "task description",
+                    "run time",
+                    "timer started",
+                    "timer stopped"
+                ));
+            }
+
+            stream_out.put_string ("\"%s\",\"%s\",%u,%s,%s\r\n".printf (
                 list_name.replace ("\"", "\"\""),
                 task_description.replace ("\"", "\"\""),
                 runtime,
