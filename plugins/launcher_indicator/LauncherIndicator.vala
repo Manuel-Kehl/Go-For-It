@@ -33,7 +33,7 @@ class GOFI.Plugins.LauncherIndicator : GLib.Object, Peas.Activatable {
 
     public void activate () {
         launcher_entry = Unity.LauncherEntry.get_for_desktop_id (GOFI.APP_ID + ".desktop");
-        displayed_count = -1;
+        displayed_count = 0;
         connect_timer_signals ();
     }
 
@@ -59,8 +59,9 @@ class GOFI.Plugins.LauncherIndicator : GLib.Object, Peas.Activatable {
 
     private void on_timer_started () {
         timer_running = true;
-        update_timer_count (iface.get_timer ().remaining_duration);
+        displayed_count = 0;
         launcher_entry.count_visible = true;
+        update_timer_count (iface.get_timer ().remaining_duration);
     }
 
     private void on_timer_stopped () {
@@ -70,7 +71,9 @@ class GOFI.Plugins.LauncherIndicator : GLib.Object, Peas.Activatable {
 
     private void connect_timer_signals () {
         var timer = iface.get_timer ();
-        launcher_entry.count_visible = timer.running;
+        if (timer.running) {
+            on_timer_started ();
+        }
         timer.timer_updated.connect (update_timer_count);
         timer.timer_started.connect (on_timer_started);
         timer.timer_stopped.connect (on_timer_stopped);
