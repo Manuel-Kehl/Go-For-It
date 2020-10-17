@@ -193,6 +193,11 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
 
         activity_logging_lbl = new Gtk.Label (_("Log timer usage") + ":");
         activity_logging_switch = new Gtk.Switch ();
+        var activity_logging_expl_widget = DialogUtils.get_explanation_widget (
+            _("Keep track of when you used the timer and what tasks you worked on while doing this.") +
+            "\n" +
+            _("This log will be saved as a comma separated file.")
+        );
 
         log_file_lbl = new Gtk.Label (_("Log file") + ":");
         var log_uri = lsettings.activity_log_uri;
@@ -227,7 +232,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         log_file_chooser_revealer.add (log_file_chooser);
 
         add_option (grid, name_lbl, name_entry, ref row);
-        add_option (grid, activity_logging_lbl, activity_logging_switch, ref row);
+        add_option (grid, activity_logging_lbl, activity_logging_switch, ref row, 1, activity_logging_expl_widget);
         add_option (grid, log_file_lbl_revealer, log_file_chooser_revealer, ref row);
 
         reveal_log_widgets (activity_log_file != null);
@@ -270,7 +275,11 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         done_uri_lbl = new Gtk.Label (done_uri_text);
 
         log_timer_lbl = new Gtk.Label (_("Log the time spent working on each task") + ":");
-        log_timer_expl_widget = DialogUtils.get_explanation_widget (_("This information will be stored in the todo.txt files."));
+        log_timer_expl_widget = DialogUtils.get_explanation_widget (
+            _("Log the total time spent working on a task using the timer.") +
+            "\n" +
+            _("This information will be stored in the todo.txt files.")
+        );
         log_timer_switch = new Gtk.Switch ();
 
         /* Configuration */
@@ -368,10 +377,6 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
 
         /* Add widgets */
         add_option (grid, timer_default_lbl, timer_default_switch, ref row, 0);
-
-        // reminder_lbl* and reminder_spin are not added to a Gtk.Revealer as
-        // this messes up the horizontal allignment. During testing it somehow
-        // also caused an increase in the required minimum width of the dialog.
         add_option (grid, reminder_lbl1, reminder_spin, ref row, 0, reminder_lbl2);
 
         grid.attach (sched_widget, 0, row, 3, 1);
