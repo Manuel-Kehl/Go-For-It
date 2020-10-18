@@ -38,8 +38,8 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private Gtk.Label timer_default_lbl;
     private TimerScheduleWidget sched_widget;
 
-    private Gtk.Label log_timer_lbl;
-    private Gtk.Switch log_timer_switch;
+    private Gtk.Label log_total_timer_lbl;
+    private Gtk.Switch log_total_timer_switch;
 
     private Gtk.Label name_lbl;
     private Gtk.Entry name_entry;
@@ -223,7 +223,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         /* Signal Handling */
         name_entry.notify["text"].connect (on_name_entry_update);
         activity_logging_switch.notify["active"].connect (
-            () => reveal_log_widgets (activity_logging_switch.active)
+            () => enable_timer_logging (activity_logging_switch.active)
         );
         log_file_chooser.notify["selected-file"].connect (on_log_file_changed);
 
@@ -235,7 +235,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         add_option (grid, activity_logging_lbl, activity_logging_switch, ref row, 1, activity_logging_expl_widget);
         add_option (grid, log_file_lbl_revealer, log_file_chooser_revealer, ref row);
 
-        reveal_log_widgets (activity_log_file != null);
+        enable_timer_logging (activity_log_file != null);
     }
 
     private void on_log_file_changed () {
@@ -247,15 +247,20 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         }
     }
 
-    private void reveal_log_widgets (bool reveal) {
-        log_file_lbl_revealer.set_reveal_child (reveal);
-        log_file_chooser_revealer.set_reveal_child (reveal);
+    private void enable_timer_logging (bool enable) {
+        log_file_lbl_revealer.set_reveal_child (enable);
+        log_file_chooser_revealer.set_reveal_child (enable);
+        if (enable) {
+            on_log_file_changed ();
+        } else {
+            lsettings.activity_log_uri = "";
+        }
     }
 
     private void setup_txt_settings_widgets (Gtk.Grid grid, ref int row) {
         /* Declaration */
         Gtk.Label txt_sect_lbl;
-        Gtk.Widget log_timer_expl_widget;
+        Gtk.Widget log_total_timer_expl_widget;
 
         /* Instantiation */
         txt_sect_lbl = new Gtk.Label ("Todo.txt");
@@ -274,13 +279,13 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         done_uri_chooser = new FileChooserWidget (todo_file, _("Select file to store completed tasks in"), "done.txt");
         done_uri_lbl = new Gtk.Label (done_uri_text);
 
-        log_timer_lbl = new Gtk.Label (_("Log the time spent working on each task") + ":");
-        log_timer_expl_widget = DialogUtils.get_explanation_widget (
+        log_total_timer_lbl = new Gtk.Label (_("Log the time spent working on each task") + ":");
+        log_total_timer_expl_widget = DialogUtils.get_explanation_widget (
             _("Log the total time spent working on a task using the timer.") +
             "\n" +
             _("This information will be stored in the todo.txt files.")
         );
-        log_timer_switch = new Gtk.Switch ();
+        log_total_timer_switch = new Gtk.Switch ();
 
         /* Configuration */
         todo_uri_lbl.set_line_wrap (false);
@@ -288,20 +293,20 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         done_uri_lbl.set_line_wrap (false);
         done_uri_lbl.set_use_markup (true);
 
-        log_timer_switch.active = lsettings.log_timer_in_txt;
+        log_total_timer_switch.active = lsettings.log_timer_in_txt;
 
         /* Signal Handling */
         todo_uri_chooser.notify["selected-file"].connect (on_todo_file_changed);
         done_uri_chooser.notify["selected-file"].connect (on_done_file_changed);
-        log_timer_switch.notify["active"].connect (() => {
-            lsettings.log_timer_in_txt = log_timer_switch.active;
+        log_total_timer_switch.notify["active"].connect (() => {
+            lsettings.log_timer_in_txt = log_total_timer_switch.active;
         });
 
         /* Placement */
         add_section (grid, txt_sect_lbl, ref row);
         add_option (grid, todo_uri_lbl, todo_uri_chooser, ref row);
         add_option (grid, done_uri_lbl, done_uri_chooser, ref row);
-        add_option (grid, log_timer_lbl, log_timer_switch, ref row, 1, log_timer_expl_widget);
+        add_option (grid, log_total_timer_lbl, log_total_timer_switch, ref row, 1, log_total_timer_expl_widget);
     }
 
     private void on_todo_file_changed () {
