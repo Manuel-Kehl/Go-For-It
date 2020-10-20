@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-20 12:13+0200\n"
-"PO-Revision-Date: 2020-10-16 11:21+0000\n"
+"PO-Revision-Date: 2020-10-21 17:35+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.3.1-dev\n"
+"X-Generator: Weblate 4.3.1\n"
 "X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:451
@@ -263,22 +263,22 @@ msgstr "%s: エラー: %s"
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
 #: ../src/Main.vala:255
 msgid "Lists (List type : List ID - List name)"
-msgstr ""
+msgstr "リスト (リストの種類 : リスト ID - リスト名)"
 
 #. / Translators: give translation of FILE in "--logfile=FILE" command line argument
 #: ../src/Main.vala:280
 msgid "FILE"
-msgstr ""
+msgstr "ファイル"
 
 #. / Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
 #: ../src/Main.vala:283
 msgid "LIST-TYPE"
-msgstr ""
+msgstr "リストの種類"
 
 #. / Translators: give translation of LIST-ID in "--load LIST-TYPE LIST-ID" command line argument
 #: ../src/Main.vala:285
 msgid "LIST-ID"
-msgstr ""
+msgstr "リスト ID"
 
 #: ../src/Main.vala:288
 msgid "Print version info and exit"
@@ -486,25 +486,25 @@ msgstr "適用"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:194
 msgid "Log timer usage"
-msgstr ""
+msgstr "タイマーの使用状況のログを作成"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
 msgid ""
 "Keep track of when you used the timer and what tasks you worked on while "
 "doing this."
-msgstr ""
+msgstr "タイマーをいつ使用したのかや、タイマー使用時にどんなタスクを実行したかを記録します。"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
 msgid "This log will be saved as a CSV file."
-msgstr ""
+msgstr "このログは CSV ファイルに保存されます。"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
 msgid "Log file"
-msgstr ""
+msgstr "ログファイル"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
 msgid "Select file to log timer usage in"
-msgstr ""
+msgstr "タイマーの使用状況を記録するファイルを選択"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:272
 msgid "Select file to store to-do tasks in"
@@ -519,10 +519,8 @@ msgid "Log the time spent working on each task"
 msgstr "それぞれのタスクにかかった時間を記録"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
-#, fuzzy
-#| msgid "Log the time spent working on each task"
 msgid "Log the total time spent working on a task using the timer."
-msgstr "それぞれのタスクにかかった時間を記録"
+msgstr "タイマーを使ってタスク1つにかかった合計時間を記録"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:286
 msgid "This information will be stored in the todo.txt files."
@@ -539,7 +537,7 @@ msgstr "設定された ToDo ファイルは、すでに別のリストで使用
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:435
 msgid ""
 "Another todo.txt list archives its completed tasks to the selected file."
-msgstr ""
+msgstr "完了したタスクをアーカイブするもう一つの todo.txt ファイルです。"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:455
 msgid "Please assign a name to the list."
