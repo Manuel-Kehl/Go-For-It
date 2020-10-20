@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-20 11:27+0200\n"
-"PO-Revision-Date: 2020-10-16 11:21+0000\n"
+"PO-Revision-Date: 2020-10-20 10:14+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/tr/>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -275,7 +275,7 @@ msgstr "Hakkında iletişim penceresini göster"
 
 #: ../src/Main.vala:279
 msgid "CSV file to log activities to."
-msgstr "Etkinliklerin kayıt altına alınacağı CVS dosyası."
+msgstr "Etkinliklerin kayıt altına alınacağı CSV dosyası."
 
 #: ../src/Main.vala:279
 msgid "FILE"
@@ -401,7 +401,7 @@ msgstr "Yeni görev/liste ekle"
 
 #: ../src/Services/Shortcuts.vala:157
 msgid "Start/Stop the timer"
-msgstr "Zamanlayıcıyı Başlat/Durdur"
+msgstr "Zamanlayıcıyı başlat/durdur"
 
 #: ../src/Services/Shortcuts.vala:158
 msgid "Edit the properties of a list or task"
@@ -483,25 +483,27 @@ msgstr "Uygula"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:194
 msgid "Log timer usage"
-msgstr ""
+msgstr "Zamanlayıcı kullanımını kayıt altına al"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
 msgid ""
 "Keep track of when you used the timer and what tasks you worked on while "
 "doing this."
 msgstr ""
+"Zamanlayıcıyı ne zaman kullandığınızı ve bunu yaparken hangi görevler "
+"üzerinde çalıştığınızı takip edin."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
 msgid "This log will be saved as a CSV file."
-msgstr ""
+msgstr "Bu, bir CSV dosyası olarak kayıt altına alınacaktır."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
 msgid "Log file"
-msgstr ""
+msgstr "Kayıt dosyası"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
 msgid "Select file to log timer usage in"
-msgstr ""
+msgstr "Zamanlayıcı kullanımını kayıt altına almak için dosya seçin"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:272
 msgid "Select file to store to-do tasks in"
@@ -516,10 +518,10 @@ msgid "Log the time spent working on each task"
 msgstr "Her görev için zaman kullanımını kayıt altına al"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
-#, fuzzy
-#| msgid "Log the time spent working on each task"
 msgid "Log the total time spent working on a task using the timer."
-msgstr "Her görev için zaman kullanımını kayıt altına al"
+msgstr ""
+"Zamanlayıcıyı kullanarak bir görev üzerinde çalışırken harcanan toplam "
+"süreyi kayıt altına alın."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:286
 msgid "This information will be stored in the todo.txt files."
