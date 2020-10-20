@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-20 10:52+0200\n"
+"POT-Creation-Date: 2020-10-20 11:27+0200\n"
 "PO-Revision-Date: 2020-10-16 11:21+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/go-for-it/go-for-"
@@ -489,7 +489,7 @@ msgid ""
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
-msgid "This log will be saved as a comma separated file."
+msgid "This log will be saved as a CSV file."
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202

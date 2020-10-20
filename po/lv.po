@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-20 10:52+0200\n"
+"POT-Creation-Date: 2020-10-20 11:27+0200\n"
 "PO-Revision-Date: 2019-11-14 12:04+0000\n"
 "Last-Translator: Oto Zars <otozars@yahoo.com>\n"
 "Language-Team: Latvian <https://hosted.weblate.org/projects/go-for-it/go-for-"
@@ -481,7 +481,7 @@ msgid ""
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
-msgid "This log will be saved as a comma separated file."
+msgid "This log will be saved as a CSV file."
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
