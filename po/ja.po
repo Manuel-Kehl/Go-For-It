@@ -498,10 +498,8 @@ msgid "Log file"
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
-#, fuzzy
-#| msgid "Select file to store to-do tasks in"
 msgid "Select file to log timer usage in"
-msgstr "ToDo タスクを保存するファイルを選択"
+msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:272
 msgid "Select file to store to-do tasks in"
