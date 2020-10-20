@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-20 11:27+0200\n"
+"POT-Creation-Date: 2020-10-20 12:13+0200\n"
 "PO-Revision-Date: 2020-10-06 15:20+0200\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/go-for-it/go-for-"
@@ -260,72 +260,77 @@ msgstr "Elenco non noto: %s"
 msgid "%s: Error: %s"
 msgstr "%s: Errore: %s"
 
-#: ../src/Main.vala:252
+#. / Describes format of printed table (table contains the known lists)
+#. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
+#: ../src/Main.vala:255
 msgid "Lists (List type : List ID - List name)"
 msgstr "Liste (Tipo di lista: ID lista — Nome della lista)"
 
-#: ../src/Main.vala:277
-msgid "Print version info and exit"
-msgstr "Stampa ed esci"
-
-#: ../src/Main.vala:278
-msgid "Show about dialog"
-msgstr "Visualizza la finestra \"Informazioni\""
-
-#: ../src/Main.vala:279
-msgid "CSV file to log activities to."
-msgstr "File CSV su cui verranno registrate le Attività."
-
-#: ../src/Main.vala:279
+#. / Translators: give translation of FILE in "--logfile=FILE" command line argument
+#: ../src/Main.vala:280
 msgid "FILE"
 msgstr "FILE"
 
-#: ../src/Main.vala:280
-msgid "Show configured lists and exit"
-msgstr "Mostra gli elenchi configurati ed esci"
-
-#: ../src/Main.vala:284
-msgid "Load the list specified by the list type and ID"
-msgstr "Carica l'elenco specificato dal tipo di elenco e dall'ID"
-
-#: ../src/Main.vala:285
+#. / Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
+#: ../src/Main.vala:283
 msgid "LIST-TYPE"
 msgstr "TIPO DI LISTA"
 
+#. / Translators: give translation of LIST-ID in "--load LIST-TYPE LIST-ID" command line argument
 #: ../src/Main.vala:285
 msgid "LIST-ID"
 msgstr "ID LISTA"
 
-#: ../src/Main.vala:327 ../src/Widgets/TimerView.vala:90
+#: ../src/Main.vala:288
+msgid "Print version info and exit"
+msgstr "Stampa ed esci"
+
+#: ../src/Main.vala:289
+msgid "Show about dialog"
+msgstr "Visualizza la finestra \"Informazioni\""
+
+#: ../src/Main.vala:290
+msgid "CSV file to log activities to."
+msgstr "File CSV su cui verranno registrate le Attività."
+
+#: ../src/Main.vala:291
+msgid "Show configured lists and exit"
+msgstr "Mostra gli elenchi configurati ed esci"
+
+#: ../src/Main.vala:295
+msgid "Load the list specified by the list type and ID"
+msgstr "Carica l'elenco specificato dal tipo di elenco e dall'ID"
+
+#: ../src/Main.vala:338 ../src/Widgets/TimerView.vala:90
 #: ../plugins/appindicator/appindicator.vala:193
 msgid "Take a Break"
 msgstr "Prenditi una pausa"
 
-#: ../src/Main.vala:329
+#: ../src/Main.vala:340
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "Smetti di pensare a ciò che stai facendo e rilassati"
 
-#: ../src/Main.vala:333
+#: ../src/Main.vala:344
 msgid "The Break is Over"
 msgstr "Fine della pausa"
 
-#: ../src/Main.vala:335
+#: ../src/Main.vala:346
 msgid "Your current task is"
 msgstr "Ora devi fare"
 
-#: ../src/Main.vala:346
+#: ../src/Main.vala:357
 msgid "Prepare for your break"
 msgstr "A breve potrai riposarti"
 
-#: ../src/Main.vala:348
+#: ../src/Main.vala:359
 msgid "You have %s seconds left"
 msgstr "Hai ancora %s secondi a tua disposizione"
 
-#: ../src/Main.vala:355
+#: ../src/Main.vala:366
 msgid "Task duration exceeded"
 msgstr "Tempo limite per l'attività superato"
 
-#: ../src/Main.vala:356
+#: ../src/Main.vala:367
 msgid "Consider switching to a different task"
 msgstr "Considera l'idea di passare ad una nuova attività"
 
@@ -533,9 +538,12 @@ msgid "The configured to-do file is already in use by another list."
 msgstr "Il file da-fare configurato è già in uso da un'altra lista."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:435
+#, fuzzy
+#| msgid ""
+#| "Another todo.txt list uses the file chosen to archive completed tasks to "
+#| "to store its to-do tasks."
 msgid ""
-"Another todo.txt list uses the file chosen to archive completed tasks to to "
-"store its to-do tasks."
+"Another todo.txt list archives its completed tasks to the selected file."
 msgstr ""
 "Un'altra lista todo.txt utilizza il file scelto per archiviare le attività "
 "completate per memorizzare le attività da fare."

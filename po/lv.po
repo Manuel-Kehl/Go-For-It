@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-20 11:27+0200\n"
+"POT-Creation-Date: 2020-10-20 12:13+0200\n"
 "PO-Revision-Date: 2019-11-14 12:04+0000\n"
 "Last-Translator: Oto Zars <otozars@yahoo.com>\n"
 "Language-Team: Latvian <https://hosted.weblate.org/projects/go-for-it/go-for-"
@@ -256,72 +256,77 @@ msgstr ""
 msgid "%s: Error: %s"
 msgstr ""
 
-#: ../src/Main.vala:252
+#. / Describes format of printed table (table contains the known lists)
+#. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
+#: ../src/Main.vala:255
 msgid "Lists (List type : List ID - List name)"
 msgstr ""
 
-#: ../src/Main.vala:277
-msgid "Print version info and exit"
-msgstr ""
-
-#: ../src/Main.vala:278
-msgid "Show about dialog"
-msgstr ""
-
-#: ../src/Main.vala:279
-msgid "CSV file to log activities to."
-msgstr ""
-
-#: ../src/Main.vala:279
+#. / Translators: give translation of FILE in "--logfile=FILE" command line argument
+#: ../src/Main.vala:280
 msgid "FILE"
 msgstr ""
 
-#: ../src/Main.vala:280
-msgid "Show configured lists and exit"
-msgstr ""
-
-#: ../src/Main.vala:284
-msgid "Load the list specified by the list type and ID"
-msgstr ""
-
-#: ../src/Main.vala:285
+#. / Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
+#: ../src/Main.vala:283
 msgid "LIST-TYPE"
 msgstr ""
 
+#. / Translators: give translation of LIST-ID in "--load LIST-TYPE LIST-ID" command line argument
 #: ../src/Main.vala:285
 msgid "LIST-ID"
 msgstr ""
 
-#: ../src/Main.vala:327 ../src/Widgets/TimerView.vala:90
+#: ../src/Main.vala:288
+msgid "Print version info and exit"
+msgstr ""
+
+#: ../src/Main.vala:289
+msgid "Show about dialog"
+msgstr ""
+
+#: ../src/Main.vala:290
+msgid "CSV file to log activities to."
+msgstr ""
+
+#: ../src/Main.vala:291
+msgid "Show configured lists and exit"
+msgstr ""
+
+#: ../src/Main.vala:295
+msgid "Load the list specified by the list type and ID"
+msgstr ""
+
+#: ../src/Main.vala:338 ../src/Widgets/TimerView.vala:90
 #: ../plugins/appindicator/appindicator.vala:193
 msgid "Take a Break"
 msgstr ""
 
-#: ../src/Main.vala:329
+#: ../src/Main.vala:340
 msgid "Relax and stop thinking about your current task for a while"
 msgstr ""
 
-#: ../src/Main.vala:333
+#: ../src/Main.vala:344
 msgid "The Break is Over"
 msgstr ""
 
-#: ../src/Main.vala:335
+#: ../src/Main.vala:346
 msgid "Your current task is"
 msgstr ""
 
-#: ../src/Main.vala:346
+#: ../src/Main.vala:357
 msgid "Prepare for your break"
 msgstr ""
 
-#: ../src/Main.vala:348
+#: ../src/Main.vala:359
 msgid "You have %s seconds left"
 msgstr ""
 
-#: ../src/Main.vala:355
+#: ../src/Main.vala:366
 msgid "Task duration exceeded"
 msgstr ""
 
-#: ../src/Main.vala:356
+#: ../src/Main.vala:367
 msgid "Consider switching to a different task"
 msgstr ""
 
@@ -522,8 +527,7 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:435
 msgid ""
-"Another todo.txt list uses the file chosen to archive completed tasks to to "
-"store its to-do tasks."
+"Another todo.txt list archives its completed tasks to the selected file."
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:455
