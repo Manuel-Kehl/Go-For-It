@@ -196,7 +196,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         var activity_logging_expl_widget = DialogUtils.get_explanation_widget (
             _("Keep track of when you used the timer and what tasks you worked on while doing this.") +
             "\n" +
-            _("This log will be saved as a comma separated file.")
+            _("This log will be saved as a CSV file.")
         );
 
         log_file_lbl = new Gtk.Label (_("Log file") + ":");
