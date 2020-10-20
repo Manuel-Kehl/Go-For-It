@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 14:44+0200\n"
+"POT-Creation-Date: 2020-10-20 10:52+0200\n"
 "PO-Revision-Date: 2020-10-16 11:21+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
-"go-for-it/go-for-it/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/go-for-"
+"it/go-for-it/nb_NO/>\n"
 "Language: no\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,10 +61,9 @@ msgid "Replace"
 msgstr "Erstatt"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:81
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:88
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:270
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:300
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:86
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
+#: ../src/Widgets/FileChooserWidget.vala:85
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -94,7 +93,7 @@ msgid "Plugins"
 msgstr "Programtillegg"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:142
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:147
 msgid "General"
 msgstr "Generelt"
 
@@ -133,7 +132,7 @@ msgstr "Bruk topptekstfelt"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
 #: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:143
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
 msgid "Timer"
 msgstr "Tidsur"
 
@@ -295,35 +294,36 @@ msgstr "LISTE-TYPE"
 msgid "LIST-ID"
 msgstr "LISTE-ID"
 
-#: ../src/Main.vala:329 ../src/Widgets/TimerView.vala:90
+#: ../src/Main.vala:327 ../src/Widgets/TimerView.vala:90
+#: ../plugins/appindicator/appindicator.vala:193
 msgid "Take a Break"
 msgstr "Ta en pause"
 
-#: ../src/Main.vala:330
+#: ../src/Main.vala:329
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "Slapp av og slutt å tenke på gjøremålet en stund"
 
-#: ../src/Main.vala:335
+#: ../src/Main.vala:333
 msgid "The Break is Over"
 msgstr "Pausen er over"
 
-#: ../src/Main.vala:336
+#: ../src/Main.vala:335
 msgid "Your current task is"
 msgstr "Ditt nåværende gjøremål er"
 
-#: ../src/Main.vala:355
+#: ../src/Main.vala:346
 msgid "Prepare for your break"
 msgstr "Forbered deg på pause"
 
-#: ../src/Main.vala:356
+#: ../src/Main.vala:348
 msgid "You have %s seconds left"
 msgstr "Du har %s sekunder igjen"
 
-#: ../src/Main.vala:372
+#: ../src/Main.vala:355
 msgid "Task duration exceeded"
 msgstr "Gjøremålsvarighet overskredet"
 
-#: ../src/Main.vala:373
+#: ../src/Main.vala:356
 msgid "Consider switching to a different task"
 msgstr "Overvei å bytte til et annet gjøremål"
 
@@ -352,7 +352,7 @@ msgstr ""
 "Legg til en nedenfor!"
 
 #: ../src/Pages/SelectionPage.vala:133 ../src/Pages/SelectionPage.vala:136
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:82
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
 msgid "Add list"
 msgstr "Legg til liste"
 
@@ -368,7 +368,7 @@ msgstr "Gjøremål"
 msgid "Done"
 msgstr "Ferdig"
 
-#: ../src/Services/ActivityLog.vala:55
+#: ../src/Services/ActivityLog.vala:66
 msgid "Couldn't write to %s: %s"
 msgstr "Kunne ikke skrive til %s: %s"
 
@@ -439,24 +439,20 @@ msgstr "Flytt til venstre skjerm"
 msgid "Inherit from GTK theme"
 msgstr "Bruk fra GTK-drakt"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:61
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 #, fuzzy
 msgid "Store to-do tasks in"
 msgstr "Lagre gjøremål i"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:62
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid "Store completed tasks in"
 msgstr "Lagre fullførte gjøremål i"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:68
 msgid "List name"
 msgstr "Listenavn"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
-msgid "Choose a file"
-msgstr "Velg en fil"
-
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 #, fuzzy
 msgid ""
 "Task list location has been changed to \"%s\" (was \"%s\"), but this file "
@@ -465,7 +461,7 @@ msgstr ""
 "Gjøremålslisteplassering endret til «%s» (fra «%s»), men denne filen finnes "
 "allerede."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 #, fuzzy
 msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
@@ -474,51 +470,73 @@ msgstr ""
 "Plassering å lagre fullførte gjøremål endret til «%s» (fra «%s»), men denne "
 "filen finnes allerede."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
 msgstr "Ny gjøremålsliste"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:92
 msgid "Edit to-do list properties"
 msgstr "Rediger gjøremållisteegenskaper"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:89
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:94
 msgid "Apply"
 msgstr "Bruk"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:219
-msgid "Log the time spent working on each task"
-msgstr "Loggfør tid forbrukt på hvert gjøremål"
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:194
+msgid "Log timer usage"
+msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:220
-msgid "This information will be stored in the todo.txt files."
-msgstr "Denne informasjonen vil bli lagret i todo.txt-filene."
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
+msgid ""
+"Keep track of when you used the timer and what tasks you worked on while "
+"doing this."
+msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
+msgid "This log will be saved as a comma separated file."
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
+msgid "Log file"
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
+#, fuzzy
+msgid "Select file to log timer usage in"
+msgstr "Velg fil å lagre gjøremål i"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:272
 #, fuzzy
 msgid "Select file to store to-do tasks in"
 msgstr "Velg fil å lagre gjøremål i"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:265
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:271
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:301
-msgid "_Select"
-msgstr "_Velg"
-
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:279
 msgid "Select file to store completed tasks in"
 msgstr "Velg fil å lagre fullførte gjøremål i"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:282
+msgid "Log the time spent working on each task"
+msgstr "Loggfør tid forbrukt på hvert gjøremål"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
+#, fuzzy
+#| msgid "Log the time spent working on each task"
+msgid "Log the total time spent working on a task using the timer."
+msgstr "Loggfør tid forbrukt på hvert gjøremål"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:286
+msgid "This information will be stored in the todo.txt files."
+msgstr "Denne informasjonen vil bli lagret i todo.txt-filene."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:350
 msgid "Use default settings"
 msgstr "Bruk forvalgte innstillinger"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:423
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:419
 msgid "The configured to-do file is already in use by another list."
 msgstr "Oppsatt gjøremålsfil er i bruk av en annen liste."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:435
 #, fuzzy
 msgid ""
 "Another todo.txt list uses the file chosen to archive completed tasks to to "
@@ -527,7 +545,7 @@ msgstr ""
 "En annen todo.txt-liste bruker filen valgt til å arkivere fullførte gjøremål "
 "for å lagre sine gjøremålsoppgaver."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:459
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:455
 msgid "Please assign a name to the list."
 msgstr "Gi listen et navn."
 
@@ -581,11 +599,11 @@ msgstr ""
 "monterbar plassering. Endre stien i innstillingene til en passende mappe, "
 "eller fjern denne filen."
 
-#: ../src/Todo.txt/TxtList.vala:175
+#: ../src/Todo.txt/TxtList.vala:184
 msgid "Clear Done List"
 msgstr "Tøm \"Ferdig\"-liste"
 
-#: ../src/Todo.txt/TxtList.vala:179
+#: ../src/Todo.txt/TxtList.vala:188
 msgid "Sort Tasks"
 msgstr "Sorter gjøremål"
 
@@ -662,6 +680,15 @@ msgstr ""
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
 msgstr "Klikk og dra for å omorganisere rader"
+
+#: ../src/Widgets/FileChooserWidget.vala:22
+msgid "Choose a file"
+msgstr "Velg en fil"
+
+#: ../src/Widgets/FileChooserWidget.vala:80
+#: ../src/Widgets/FileChooserWidget.vala:86
+msgid "_Select"
+msgstr "_Velg"
 
 #: ../src/Widgets/TimerView.vala:93
 msgid "Skip the remainder of the break"

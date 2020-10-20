@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 14:44+0200\n"
+"POT-Creation-Date: 2020-10-20 10:52+0200\n"
 "PO-Revision-Date: 2020-10-06 15:20+0200\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/go-for-it/go-for-"
@@ -63,10 +63,9 @@ msgid "Replace"
 msgstr "Sostituisci"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:81
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:88
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:270
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:300
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:86
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
+#: ../src/Widgets/FileChooserWidget.vala:85
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -96,7 +95,7 @@ msgid "Plugins"
 msgstr "Estensioni"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:142
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:147
 msgid "General"
 msgstr "Generali"
 
@@ -135,7 +134,7 @@ msgstr "Usa la barra del menù"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
 #: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:143
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
 msgid "Timer"
 msgstr "Timer"
 
@@ -297,35 +296,36 @@ msgstr "TIPO DI LISTA"
 msgid "LIST-ID"
 msgstr "ID LISTA"
 
-#: ../src/Main.vala:329 ../src/Widgets/TimerView.vala:90
+#: ../src/Main.vala:327 ../src/Widgets/TimerView.vala:90
+#: ../plugins/appindicator/appindicator.vala:193
 msgid "Take a Break"
 msgstr "Prenditi una pausa"
 
-#: ../src/Main.vala:330
+#: ../src/Main.vala:329
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "Smetti di pensare a ciò che stai facendo e rilassati"
 
-#: ../src/Main.vala:335
+#: ../src/Main.vala:333
 msgid "The Break is Over"
 msgstr "Fine della pausa"
 
-#: ../src/Main.vala:336
+#: ../src/Main.vala:335
 msgid "Your current task is"
 msgstr "Ora devi fare"
 
-#: ../src/Main.vala:355
+#: ../src/Main.vala:346
 msgid "Prepare for your break"
 msgstr "A breve potrai riposarti"
 
-#: ../src/Main.vala:356
+#: ../src/Main.vala:348
 msgid "You have %s seconds left"
 msgstr "Hai ancora %s secondi a tua disposizione"
 
-#: ../src/Main.vala:372
+#: ../src/Main.vala:355
 msgid "Task duration exceeded"
 msgstr "Tempo limite per l'attività superato"
 
-#: ../src/Main.vala:373
+#: ../src/Main.vala:356
 msgid "Consider switching to a different task"
 msgstr "Considera l'idea di passare ad una nuova attività"
 
@@ -354,7 +354,7 @@ msgstr ""
 "Creane una!"
 
 #: ../src/Pages/SelectionPage.vala:133 ../src/Pages/SelectionPage.vala:136
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:82
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
 msgid "Add list"
 msgstr "Crea Lista"
 
@@ -370,7 +370,7 @@ msgstr "Da fare"
 msgid "Done"
 msgstr "Fatto"
 
-#: ../src/Services/ActivityLog.vala:55
+#: ../src/Services/ActivityLog.vala:66
 msgid "Couldn't write to %s: %s"
 msgstr "Impossibile scrivere a %s: %s"
 
@@ -440,23 +440,19 @@ msgstr "Sposta a sinistra"
 msgid "Inherit from GTK theme"
 msgstr "Eredita tema GTK"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:61
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid "Store to-do tasks in"
 msgstr "Archivia le attività da svolgere in"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:62
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid "Store completed tasks in"
 msgstr "Archivia le attività completate in"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:68
 msgid "List name"
 msgstr "nome Lista"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
-msgid "Choose a file"
-msgstr "Scegli un file"
-
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 msgid ""
 "Task list location has been changed to \"%s\" (was \"%s\"), but this file "
 "already exists."
@@ -464,7 +460,7 @@ msgstr ""
 "La posizione della lista delle attività è stata modificata in «%s» (era "
 "«%s»), ma questo file esiste già."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
@@ -472,50 +468,73 @@ msgstr ""
 "La posizione in cui archiviare le attività completate è stata modificata in "
 "«%s» (era «%s»), ma questo file esiste già."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
 msgstr "Nuova Lista"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:92
 msgid "Edit to-do list properties"
 msgstr "Modifica proprietà della Lista"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:89
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:94
 msgid "Apply"
 msgstr "Applica"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:219
-msgid "Log the time spent working on each task"
-msgstr "Registra il tempo impiegato per ogni Attività"
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:194
+msgid "Log timer usage"
+msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:220
-msgid "This information will be stored in the todo.txt files."
-msgstr "Questa informazione verrà salvata nel file todo.txt."
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
+msgid ""
+"Keep track of when you used the timer and what tasks you worked on while "
+"doing this."
+msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
+msgid "This log will be saved as a comma separated file."
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
+msgid "Log file"
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
+#, fuzzy
+#| msgid "Select file to store to-do tasks in"
+msgid "Select file to log timer usage in"
+msgstr "Seleziona il file in cui archiviare le attività da fare"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:272
 msgid "Select file to store to-do tasks in"
 msgstr "Seleziona il file in cui archiviare le attività da fare"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:265
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:271
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:301
-msgid "_Select"
-msgstr "_Seleziona"
-
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:279
 msgid "Select file to store completed tasks in"
 msgstr "Seleziona il file in cui archiviare le attività da fare"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:282
+msgid "Log the time spent working on each task"
+msgstr "Registra il tempo impiegato per ogni Attività"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
+#, fuzzy
+#| msgid "Log the time spent working on each task"
+msgid "Log the total time spent working on a task using the timer."
+msgstr "Registra il tempo impiegato per ogni Attività"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:286
+msgid "This information will be stored in the todo.txt files."
+msgstr "Questa informazione verrà salvata nel file todo.txt."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:350
 msgid "Use default settings"
 msgstr "Usa le impostazioni di default"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:423
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:419
 msgid "The configured to-do file is already in use by another list."
 msgstr "Il file da-fare configurato è già in uso da un'altra lista."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:435
 msgid ""
 "Another todo.txt list uses the file chosen to archive completed tasks to to "
 "store its to-do tasks."
@@ -523,7 +542,7 @@ msgstr ""
 "Un'altra lista todo.txt utilizza il file scelto per archiviare le attività "
 "completate per memorizzare le attività da fare."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:459
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:455
 msgid "Please assign a name to the list."
 msgstr "La Lista necessita di un nome."
 
@@ -577,11 +596,11 @@ msgstr ""
 "bensì un file o una periferica removibile. Si consiglia di modificare il "
 "percorso del file o di rimuoverlo."
 
-#: ../src/Todo.txt/TxtList.vala:175
+#: ../src/Todo.txt/TxtList.vala:184
 msgid "Clear Done List"
 msgstr "Elimina Liste completate"
 
-#: ../src/Todo.txt/TxtList.vala:179
+#: ../src/Todo.txt/TxtList.vala:188
 msgid "Sort Tasks"
 msgstr "Ordina attività"
 
@@ -656,6 +675,15 @@ msgstr ""
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
 msgstr ""
+
+#: ../src/Widgets/FileChooserWidget.vala:22
+msgid "Choose a file"
+msgstr "Scegli un file"
+
+#: ../src/Widgets/FileChooserWidget.vala:80
+#: ../src/Widgets/FileChooserWidget.vala:86
+msgid "_Select"
+msgstr "_Seleziona"
 
 #: ../src/Widgets/TimerView.vala:93
 msgid "Skip the remainder of the break"

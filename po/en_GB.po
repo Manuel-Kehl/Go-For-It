@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 14:44+0200\n"
+"POT-Creation-Date: 2020-10-20 10:52+0200\n"
 "PO-Revision-Date: 2020-10-06 15:25+0200\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
@@ -60,10 +60,9 @@ msgid "Replace"
 msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:81
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:88
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:270
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:300
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:86
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
+#: ../src/Widgets/FileChooserWidget.vala:85
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -93,7 +92,7 @@ msgid "Plugins"
 msgstr ""
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:142
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:147
 msgid "General"
 msgstr "General"
 
@@ -132,7 +131,7 @@ msgstr "Use a header bar"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
 #: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:143
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
 msgid "Timer"
 msgstr "Timer"
 
@@ -294,35 +293,36 @@ msgstr ""
 msgid "LIST-ID"
 msgstr ""
 
-#: ../src/Main.vala:329 ../src/Widgets/TimerView.vala:90
+#: ../src/Main.vala:327 ../src/Widgets/TimerView.vala:90
+#: ../plugins/appindicator/appindicator.vala:193
 msgid "Take a Break"
 msgstr "Take a break"
 
-#: ../src/Main.vala:330
+#: ../src/Main.vala:329
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "Relax and stop thinking about your current task for a while"
 
-#: ../src/Main.vala:335
+#: ../src/Main.vala:333
 msgid "The Break is Over"
 msgstr "The break is over"
 
-#: ../src/Main.vala:336
+#: ../src/Main.vala:335
 msgid "Your current task is"
 msgstr "Your current task is"
 
-#: ../src/Main.vala:355
+#: ../src/Main.vala:346
 msgid "Prepare for your break"
 msgstr "Prepare for your break"
 
-#: ../src/Main.vala:356
+#: ../src/Main.vala:348
 msgid "You have %s seconds left"
 msgstr "You have %s seconds left"
 
-#: ../src/Main.vala:372
+#: ../src/Main.vala:355
 msgid "Task duration exceeded"
 msgstr "Task duration exceeded"
 
-#: ../src/Main.vala:373
+#: ../src/Main.vala:356
 msgid "Consider switching to a different task"
 msgstr "Consider switching to a different task"
 
@@ -351,7 +351,7 @@ msgstr ""
 "Add one below!"
 
 #: ../src/Pages/SelectionPage.vala:133 ../src/Pages/SelectionPage.vala:136
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:82
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
 msgid "Add list"
 msgstr "Add list"
 
@@ -367,7 +367,7 @@ msgstr "To-Do"
 msgid "Done"
 msgstr "Done"
 
-#: ../src/Services/ActivityLog.vala:55
+#: ../src/Services/ActivityLog.vala:66
 msgid "Couldn't write to %s: %s"
 msgstr "Couldn't write to %s: %s"
 
@@ -437,84 +437,103 @@ msgstr "Move to left screen"
 msgid "Inherit from GTK theme"
 msgstr "Inherit from GTK theme"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:61
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid "Store to-do tasks in"
 msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:62
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid "Store completed tasks in"
 msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:68
 msgid "List name"
 msgstr "List name"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
-msgid "Choose a file"
-msgstr ""
-
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 msgid ""
 "Task list location has been changed to \"%s\" (was \"%s\"), but this file "
 "already exists."
 msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
 msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
 msgstr "New to-do list"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:92
 msgid "Edit to-do list properties"
 msgstr "Edit to-do list properties"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:89
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:94
 msgid "Apply"
 msgstr "Apply"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:219
-msgid "Log the time spent working on each task"
-msgstr "Log the time spent working on each task"
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:194
+msgid "Log timer usage"
+msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:220
-msgid "This information will be stored in the todo.txt files."
-msgstr "This information will be stored in the todo.txt files."
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
+msgid ""
+"Keep track of when you used the timer and what tasks you worked on while "
+"doing this."
+msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
+msgid "This log will be saved as a comma separated file."
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
+msgid "Log file"
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
+#, fuzzy
+#| msgid "CSV file to log activities to."
+msgid "Select file to log timer usage in"
+msgstr "CSV file to log activities to."
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:272
 msgid "Select file to store to-do tasks in"
 msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:265
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:271
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:301
-msgid "_Select"
-msgstr ""
-
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:279
 msgid "Select file to store completed tasks in"
 msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:282
+msgid "Log the time spent working on each task"
+msgstr "Log the time spent working on each task"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
+#, fuzzy
+#| msgid "Log the time spent working on each task"
+msgid "Log the total time spent working on a task using the timer."
+msgstr "Log the time spent working on each task"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:286
+msgid "This information will be stored in the todo.txt files."
+msgstr "This information will be stored in the todo.txt files."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:350
 msgid "Use default settings"
 msgstr "Use default settings"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:423
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:419
 msgid "The configured to-do file is already in use by another list."
 msgstr "The configured to-do file is already in use by another list."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:435
 msgid ""
 "Another todo.txt list uses the file chosen to archive completed tasks to to "
 "store its to-do tasks."
 msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:459
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:455
 msgid "Please assign a name to the list."
 msgstr "Please assign a name to the list."
 
@@ -568,11 +587,11 @@ msgstr ""
 "mountable location. Please change the path in the settings to a suitable "
 "folder or remove this file."
 
-#: ../src/Todo.txt/TxtList.vala:175
+#: ../src/Todo.txt/TxtList.vala:184
 msgid "Clear Done List"
 msgstr "Clear done list"
 
-#: ../src/Todo.txt/TxtList.vala:179
+#: ../src/Todo.txt/TxtList.vala:188
 msgid "Sort Tasks"
 msgstr ""
 
@@ -646,6 +665,15 @@ msgstr "%s!"
 
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
+msgstr ""
+
+#: ../src/Widgets/FileChooserWidget.vala:22
+msgid "Choose a file"
+msgstr ""
+
+#: ../src/Widgets/FileChooserWidget.vala:80
+#: ../src/Widgets/FileChooserWidget.vala:86
+msgid "_Select"
 msgstr ""
 
 #: ../src/Widgets/TimerView.vala:93

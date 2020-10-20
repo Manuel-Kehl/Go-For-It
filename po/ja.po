@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 14:44+0200\n"
+"POT-Creation-Date: 2020-10-20 10:52+0200\n"
 "PO-Revision-Date: 2020-10-16 11:21+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/"
-"go-for-it/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/go-"
+"for-it/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,10 +62,9 @@ msgid "Replace"
 msgstr "置き換え"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:81
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:88
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:270
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:300
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:86
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
+#: ../src/Widgets/FileChooserWidget.vala:85
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -95,7 +94,7 @@ msgid "Plugins"
 msgstr "プラグイン"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:142
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:147
 msgid "General"
 msgstr "一般"
 
@@ -134,7 +133,7 @@ msgstr "ヘッダーバーを使用"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
 #: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:143
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
 msgid "Timer"
 msgstr "タイマー"
 
@@ -296,35 +295,36 @@ msgstr ""
 msgid "LIST-ID"
 msgstr ""
 
-#: ../src/Main.vala:329 ../src/Widgets/TimerView.vala:90
+#: ../src/Main.vala:327 ../src/Widgets/TimerView.vala:90
+#: ../plugins/appindicator/appindicator.vala:193
 msgid "Take a Break"
 msgstr "休憩する"
 
-#: ../src/Main.vala:330
+#: ../src/Main.vala:329
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "しばらくの間、現在のタスクについて考えるのをやめてリラックスしましょう"
 
-#: ../src/Main.vala:335
+#: ../src/Main.vala:333
 msgid "The Break is Over"
 msgstr "休憩終了"
 
-#: ../src/Main.vala:336
+#: ../src/Main.vala:335
 msgid "Your current task is"
 msgstr "現在のタスクは"
 
-#: ../src/Main.vala:355
+#: ../src/Main.vala:346
 msgid "Prepare for your break"
 msgstr "休憩の準備をしましょう"
 
-#: ../src/Main.vala:356
+#: ../src/Main.vala:348
 msgid "You have %s seconds left"
 msgstr "残りあと %s 秒"
 
-#: ../src/Main.vala:372
+#: ../src/Main.vala:355
 msgid "Task duration exceeded"
 msgstr "タスクの継続時間を超過しています"
 
-#: ../src/Main.vala:373
+#: ../src/Main.vala:356
 msgid "Consider switching to a different task"
 msgstr "別のタスクへの切り替えをお考えください"
 
@@ -353,7 +353,7 @@ msgstr ""
 "以下から追加しましょう！"
 
 #: ../src/Pages/SelectionPage.vala:133 ../src/Pages/SelectionPage.vala:136
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:82
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
 msgid "Add list"
 msgstr "リストを追加"
 
@@ -369,7 +369,7 @@ msgstr "ToDo"
 msgid "Done"
 msgstr "完了"
 
-#: ../src/Services/ActivityLog.vala:55
+#: ../src/Services/ActivityLog.vala:66
 msgid "Couldn't write to %s: %s"
 msgstr "%s に書き込めませんでした: %s"
 
@@ -439,23 +439,19 @@ msgstr "左の画面に移動"
 msgid "Inherit from GTK theme"
 msgstr "GTK テーマを継承"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:61
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid "Store to-do tasks in"
 msgstr "以下のファイルに ToDo タスクを保存:"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:62
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid "Store completed tasks in"
 msgstr "以下のファイルに完了したタスクを保存:"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:68
 msgid "List name"
 msgstr "リストの名前"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
-msgid "Choose a file"
-msgstr "ファイルを選択"
-
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 msgid ""
 "Task list location has been changed to \"%s\" (was \"%s\"), but this file "
 "already exists."
@@ -463,7 +459,7 @@ msgstr ""
 "タスク一覧の場所が \"%2$s\" から \"%1$s\" に変更されましたが、このファイルは"
 "すでに存在します。"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
@@ -471,56 +467,79 @@ msgstr ""
 "完了したタスクを保存する場所が \"%2$s\" から \"%1$s\" に変更されましたが、こ"
 "のファイルはすでに存在します。"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
 msgstr "新しい ToDo リスト"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:92
 msgid "Edit to-do list properties"
 msgstr "ToDo リストのプロパティーを編集"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:89
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:94
 msgid "Apply"
 msgstr "適用"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:219
-msgid "Log the time spent working on each task"
-msgstr "それぞれのタスクにかかった時間を記録"
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:194
+msgid "Log timer usage"
+msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:220
-msgid "This information will be stored in the todo.txt files."
-msgstr "この情報は todo.txt ファイルに保存されます。"
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
+msgid ""
+"Keep track of when you used the timer and what tasks you worked on while "
+"doing this."
+msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
+msgid "This log will be saved as a comma separated file."
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
+msgid "Log file"
+msgstr ""
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
+#, fuzzy
+#| msgid "Select file to store to-do tasks in"
+msgid "Select file to log timer usage in"
+msgstr "ToDo タスクを保存するファイルを選択"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:272
 msgid "Select file to store to-do tasks in"
 msgstr "ToDo タスクを保存するファイルを選択"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:265
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:271
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:301
-msgid "_Select"
-msgstr "選択(_S)"
-
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:279
 msgid "Select file to store completed tasks in"
 msgstr "完了したタスクを保存するファイルを選択"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:282
+msgid "Log the time spent working on each task"
+msgstr "それぞれのタスクにかかった時間を記録"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
+#, fuzzy
+#| msgid "Log the time spent working on each task"
+msgid "Log the total time spent working on a task using the timer."
+msgstr "それぞれのタスクにかかった時間を記録"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:286
+msgid "This information will be stored in the todo.txt files."
+msgstr "この情報は todo.txt ファイルに保存されます。"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:350
 msgid "Use default settings"
 msgstr "デフォルト設定を使う"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:423
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:419
 msgid "The configured to-do file is already in use by another list."
 msgstr "設定された ToDo ファイルは、すでに別のリストで使用されています。"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:435
 msgid ""
 "Another todo.txt list uses the file chosen to archive completed tasks to to "
 "store its to-do tasks."
 msgstr ""
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:459
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:455
 msgid "Please assign a name to the list."
 msgstr "リストに名前を付けてください。"
 
@@ -574,11 +593,11 @@ msgstr ""
 "リ以外へのパスになっています。適切なディレクトリへのパスに変更するか、ファイ"
 "ルを削除してください。"
 
-#: ../src/Todo.txt/TxtList.vala:175
+#: ../src/Todo.txt/TxtList.vala:184
 msgid "Clear Done List"
 msgstr "完了リストを消去"
 
-#: ../src/Todo.txt/TxtList.vala:179
+#: ../src/Todo.txt/TxtList.vala:188
 msgid "Sort Tasks"
 msgstr "タスクを並べ替え"
 
@@ -653,6 +672,15 @@ msgstr ""
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
 msgstr "行を並べ替えるには、クリックしてドラッグしてください"
+
+#: ../src/Widgets/FileChooserWidget.vala:22
+msgid "Choose a file"
+msgstr "ファイルを選択"
+
+#: ../src/Widgets/FileChooserWidget.vala:80
+#: ../src/Widgets/FileChooserWidget.vala:86
+msgid "_Select"
+msgstr "選択(_S)"
 
 #: ../src/Widgets/TimerView.vala:93
 msgid "Skip the remainder of the break"
