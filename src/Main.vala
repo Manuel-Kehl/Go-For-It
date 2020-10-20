@@ -277,12 +277,12 @@ class GOFI.Main : Gtk.Application {
     }
 
     /// Translators: give translation of FILE in "--logfile=FILE" command line argument
-    const string ENTRY_FILE_ARG = N_("FILE");
+    private const string ENTRY_FILE_ARG = N_("FILE");
 
     /// Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
-    string ENTRY_LIST_TYPE_ARG = _("LIST-TYPE");
+    private static string ENTRY_LIST_TYPE_ARG = _("LIST-TYPE");
     /// Translators: give translation of LIST-ID in "--load LIST-TYPE LIST-ID" command line argument
-    string ENTRY_LIST_ID_ARG = _("LIST-ID");
+    private static string ENTRY_LIST_ID_ARG = _("LIST-ID");
 
     const OptionEntry[] entries = {
         { "version", 'v', 0, OptionArg.NONE, out print_version, N_("Print version info and exit"), null },
