@@ -249,6 +249,9 @@ class GOFI.Main : Gtk.Application {
         } else if (list_lists) {
             load_settings ();
             load_list_manager ();
+
+            /// Describes format of printed table (table contains the known lists)
+            /// The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
             stdout.printf (_("Lists (List type : List ID - List name)") + ":\n");
             foreach (var info in list_manager.get_list_infos ()) {
                 stdout.printf ("\"%s\" : \"%s\" - \"%s\"\n", info.provider_name, info.id, info.name);
@@ -273,16 +276,24 @@ class GOFI.Main : Gtk.Application {
         return 0;
     }
 
+    /// Translators: give translation of FILE in "--logfile=FILE" command line argument
+    const string ENTRY_FILE_ARG = N_("FILE");
+
+    /// Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
+    string ENTRY_LIST_TYPE_ARG = _("LIST-TYPE");
+    /// Translators: give translation of LIST-ID in "--load LIST-TYPE LIST-ID" command line argument
+    string ENTRY_LIST_ID_ARG = _("LIST-ID");
+
     const OptionEntry[] entries = {
         { "version", 'v', 0, OptionArg.NONE, out print_version, N_("Print version info and exit"), null },
         { "about",   'a', 0, OptionArg.NONE, out show_about_dialog, N_("Show about dialog"), null },
-        { "logfile",   0, 0, OptionArg.FILENAME, out logfile, N_("CSV file to log activities to."), N_("FILE") },
+        { "logfile",   0, 0, OptionArg.FILENAME, out logfile, N_("CSV file to log activities to."), ENTRY_FILE_ARG },
         { "list",      0, 0, OptionArg.NONE, out list_lists, N_("Show configured lists and exit"), null},
         { null }
     };
 
     private const string load_entry_descr = N_("Load the list specified by the list type and ID");
-    private string load_entry_name = "load" + " " + _("LIST-TYPE") + " " + _("LIST-ID");
+    private string load_entry_name = "load" + " " + ENTRY_LIST_TYPE_ARG + " " + ENTRY_LIST_ID_ARG;
 
     private OptionEntry[] get_dynamic_entries () {
         return {

@@ -432,7 +432,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             if (!list_manager.done_uri_available (lsettings)) {
                 // The user has selected an invalid directory, so we show an error.
                 error_msgs += gen_error_markup (
-                    _("Another todo.txt list uses the file chosen to archive completed tasks to to store its to-do tasks.")
+                    _("Another todo.txt list archives its completed tasks to the selected file.")
                 );
                 is_valid = false;
                 if (!showing_done_uri_error) {
