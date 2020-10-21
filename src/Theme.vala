@@ -21,14 +21,34 @@ namespace GOFI {
         ELEMENTARY,
         MINIMAL;
 
+        private static Theme determine_from_desktop_theme () {
+            var desktop_theme_name = Gtk.Settings.get_default ().gtk_theme_name;
+            if (desktop_theme_name == "elementary" || desktop_theme_name == "Adwaita") {
+                return ELEMENTARY;
+            }
+            return MINIMAL;
+        }
+
         public static Theme from_string (string str) {
             switch (str) {
                 case "elementary":
                     return ELEMENTARY;
                 case "minimal":
                     return MINIMAL;
+                case "":
+                    return determine_from_desktop_theme ();
                 default:
                     return INVALID;
+            }
+        }
+
+        public static Theme from_string_safe (string str) {
+            var parsed = from_string (str);
+            switch (parsed) {
+                case INVALID:
+                    return determine_from_desktop_theme ();
+                default:
+                    return parsed;
             }
         }
 

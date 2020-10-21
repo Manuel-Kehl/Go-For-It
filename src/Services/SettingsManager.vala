@@ -179,7 +179,7 @@ private class GOFI.SettingsManager : Object {
             }
 
             warning ("Unknown theme setting: %s", theme_str);
-            return Theme.from_string (
+            return Theme.from_string_safe (
                 _settings.get_default_value (KEY_THEME).get_string ()
             );
         }
