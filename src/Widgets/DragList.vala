@@ -718,10 +718,15 @@ public class GOFI.DragListRow : Gtk.ListBoxRow {
         handle.drag_begin.connect (handle_drag_begin);
         handle.drag_end.connect (handle_drag_end);
         handle.drag_data_get.connect (handle_drag_data_get);
+        handle.realize.connect_after (set_handle_hover_cursor);
 
         layout.show ();
         handle.show ();
         image.show ();
+    }
+
+    private void set_handle_hover_cursor () {
+        handle.get_window ().set_cursor (new Gdk.Cursor.from_name (handle.get_display (), "grab"));
     }
 
     public override void size_allocate (Gtk.Allocation allocation) {
