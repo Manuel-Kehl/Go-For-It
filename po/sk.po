@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-20 12:13+0200\n"
-"PO-Revision-Date: 2020-10-16 11:21+0000\n"
+"PO-Revision-Date: 2020-10-21 17:35+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/sk/>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.3.1-dev\n"
+"X-Generator: Weblate 4.3.1\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:451
@@ -485,25 +485,26 @@ msgstr "Vykonať"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:194
 msgid "Log timer usage"
-msgstr ""
+msgstr "Zaznamenávať využitie časovača"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
 msgid ""
 "Keep track of when you used the timer and what tasks you worked on while "
 "doing this."
 msgstr ""
+"Sledovať, kedy ste použili časovač a na akých úlohách ste pri tom pracovali."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
 msgid "This log will be saved as a CSV file."
-msgstr ""
+msgstr "Tento záznam sa uloží ako súbor CSV."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
 msgid "Log file"
-msgstr ""
+msgstr "Súbor záznamu"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
 msgid "Select file to log timer usage in"
-msgstr ""
+msgstr "Vyberte súbor, do ktorého sa má zaznamenávať použitie časovača"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:272
 msgid "Select file to store to-do tasks in"
@@ -518,10 +519,8 @@ msgid "Log the time spent working on each task"
 msgstr "Zaznamenať čas strávený prácou na každej úlohe"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
-#, fuzzy
-#| msgid "Log the time spent working on each task"
 msgid "Log the total time spent working on a task using the timer."
-msgstr "Zaznamenať čas strávený prácou na každej úlohe"
+msgstr "Zaznamenať celkový čas strávený prácou na úlohe použitím časovača."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:286
 msgid "This information will be stored in the todo.txt files."
@@ -536,15 +535,9 @@ msgid "The configured to-do file is already in use by another list."
 msgstr "Nastavený súbor úloh je už používaný iným zoznamom."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:435
-#, fuzzy
-#| msgid ""
-#| "Another todo.txt list uses the file chosen to archive completed tasks to "
-#| "to store its to-do tasks."
 msgid ""
 "Another todo.txt list archives its completed tasks to the selected file."
-msgstr ""
-"Iný zoznam todo.txt už používa súbor vybraný na archiváciu dokončených úloh "
-"na ukladanie úloh."
+msgstr "Iný zoznam todo.txt archivuje dokončené úlohy do vybratého súboru."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:455
 msgid "Please assign a name to the list."
