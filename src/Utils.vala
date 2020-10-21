@@ -120,7 +120,7 @@ namespace GOFI {
                     case "plasma":
                         return FeatureStatus.UNCOMMON;
                     case "xfce4":
-                        return FeatureStatus.UNCOMMON;
+                        return FeatureStatus.COMMON;
                     case "cinnamon":
                         return FeatureStatus.UNCOMMON;
                     case "mate":
