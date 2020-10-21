@@ -31,11 +31,6 @@ GtkLabel.task_duration_exceeded {
     background: @gofi_main_layout_background;
 }
 
-.main_layout .list-row {
-    border-top: 1px solid @gofi_row_border_top;
-    border-bottom: 1px solid @gofi_row_border_bottom;
-}
-
 .main_layout .list-row.drag-icon,
 .main_layout .list-row.drag-icon:selected,
 .main_layout .list-row.drag-icon:selected:focus {
@@ -46,14 +41,6 @@ GtkLabel.task_duration_exceeded {
 
 .list-row.drag-icon label {
     color: @gofi_row_fg;
-}
-
-.list-row.drag-hover-top {
-    border-bottom: 1px solid @gofi_row_drag_highlight_bottom;
-}
-
-.list-row.drag-hover-bottom {
-    border-top: 1px solid @gofi_row_drag_highlight_top;
 }
 
 .no_margin {

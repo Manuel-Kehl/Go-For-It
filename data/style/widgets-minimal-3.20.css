@@ -31,11 +31,6 @@ label.task_duration_exceeded {
     background: @gofi_main_layout_background;
 }
 
-.main_layout row {
-    border-top: 1px solid @gofi_row_border_top;
-    border-bottom: 1px solid @gofi_row_border_bottom;
-}
-
 .main_layout row.drag-icon,
 .main_layout row.drag-icon:selected,
 .main_layout row.drag-icon:selected:focus {
@@ -46,14 +41,6 @@ label.task_duration_exceeded {
 
 row.drag-icon label {
     color: @gofi_row_fg;
-}
-
-row.drag-hover-top {
-    border-bottom: 1px solid @gofi_row_drag_highlight_bottom;
-}
-
-row.drag-hover-bottom {
-    border-top: 1px solid @gofi_row_drag_highlight_top;
 }
 
 .no_margin {
