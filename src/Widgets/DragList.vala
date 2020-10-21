@@ -44,6 +44,8 @@ public class GOFI.DragList : Gtk.Bin {
     private const int SCROLL_DISTANCE = 30;
     private const int SCROLL_DELAY = 50;
 
+    private DragListFilterFunc? filter_func = null;
+
     // To block recursively emitting and calling signals
     private bool internal_signal;
     // Do not emit row_selected if a row can be selected
@@ -444,6 +446,7 @@ public class GOFI.DragList : Gtk.Bin {
      * @param filter_func callback that lets you filter which rows to show
      */
     public void set_filter_func (DragListFilterFunc? filter_func) {
+        this.filter_func = filter_func;
         listbox.set_filter_func ((row) => {
             return filter_func ((DragListRow) row);
         });
@@ -525,6 +528,9 @@ public class GOFI.DragList : Gtk.Bin {
                 return;
             }
             var row = (DragListRow) _row;
+            if (!_row.visible || (filter_func != null && !filter_func (row))) {
+                return;
+            }
             var current_y = height_accumulator;
             height_accumulator += row.marginless_height;
             if (center_row == null) {
