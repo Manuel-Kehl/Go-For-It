@@ -132,6 +132,7 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
     }
 
     private void queue_close () {
+        this.deactivate ();
         GLib.Idle.add (close_application_window_source_func);
     }
 
