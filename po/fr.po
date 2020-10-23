@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-20 12:13+0200\n"
-"PO-Revision-Date: 2020-10-06 15:20+0200\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/fr/>\n"
+"PO-Revision-Date: 2020-10-24 11:26+0000\n"
+"Last-Translator: mate <mate+hostedweblate@e.email>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Weblate 4.3.2-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:451
@@ -413,7 +413,7 @@ msgstr "Démarrer/Arrêter le minuteur"
 
 #: ../src/Services/Shortcuts.vala:158
 msgid "Edit the properties of a list or task"
-msgstr ""
+msgstr "Éditer les propriétés d’une liste ou d’une tâche"
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
@@ -491,25 +491,27 @@ msgstr "Appliquer"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:194
 msgid "Log timer usage"
-msgstr ""
+msgstr "Enregistrer l’utilisation du minuteur"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
 msgid ""
 "Keep track of when you used the timer and what tasks you worked on while "
 "doing this."
 msgstr ""
+"Gardez une trace de votre utilisation du minuteur et des tâches effectuées "
+"en même temps."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
 msgid "This log will be saved as a CSV file."
-msgstr ""
+msgstr "Cet enregistrement sera sauvegardé dans un fichier CSV."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
 msgid "Log file"
-msgstr ""
+msgstr "Fichier de journalisation"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
 msgid "Select file to log timer usage in"
-msgstr ""
+msgstr "Sélectionner le fichier où enregistrer l’utilisation du minuteur"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:272
 msgid "Select file to store to-do tasks in"
@@ -524,10 +526,8 @@ msgid "Log the time spent working on each task"
 msgstr "Enregistrer le temps passé sur chaque tâche"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
-#, fuzzy
-#| msgid "Log the time spent working on each task"
 msgid "Log the total time spent working on a task using the timer."
-msgstr "Enregistrer le temps passé sur chaque tâche"
+msgstr "Enregistrer le temps passé sur une tâche."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:286
 msgid "This information will be stored in the todo.txt files."
@@ -542,15 +542,11 @@ msgid "The configured to-do file is already in use by another list."
 msgstr "Le fichier à-faire configuré est déjà utilisé par une autre liste."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:435
-#, fuzzy
-#| msgid ""
-#| "Another todo.txt list uses the file chosen to archive completed tasks to "
-#| "to store its to-do tasks."
 msgid ""
 "Another todo.txt list archives its completed tasks to the selected file."
 msgstr ""
-"Une autre liste todo.txt utilise le fichier choisi pour archiver les tâches "
-"terminées pour stocker ses tâches à faire."
+"Une autre liste todo.txt archive les tâches effectuées dans le fichier "
+"sélectionné."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:455
 msgid "Please assign a name to the list."
@@ -680,11 +676,11 @@ msgstr "%u heures et %u minutes"
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234
 msgid "%s!"
-msgstr ""
+msgstr "%s!"
 
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
-msgstr ""
+msgstr "Cliquer et faire glisser pour réorganiser les lignes"
 
 #: ../src/Widgets/FileChooserWidget.vala:22
 msgid "Choose a file"
@@ -697,7 +693,7 @@ msgstr "_Sélectionner"
 
 #: ../src/Widgets/TimerView.vala:93
 msgid "Skip the remainder of the break"
-msgstr ""
+msgstr "Passer le reste de la pause"
 
 #: ../src/Widgets/TimerView.vala:95
 msgid "Active Task"
@@ -705,7 +701,7 @@ msgstr "Tâche active"
 
 #: ../src/Widgets/TimerView.vala:99
 msgid "Skip to the break"
-msgstr ""
+msgstr "Aller à la pause"
 
 #: ../src/Widgets/TimerView.vala:140
 msgid "Pau_se"
@@ -713,7 +709,6 @@ msgstr "Pau_se"
 
 #: ../src/Widgets/TimerView.vala:142
 #: ../plugins/appindicator/appindicator.vala:218
-#, fuzzy
 msgid "Stop the timer"
 msgstr "Arrêter le minuteur"
 
@@ -724,7 +719,6 @@ msgstr "_Démarrer"
 #: ../src/Widgets/TimerView.vala:151
 #: ../plugins/appindicator/appindicator.vala:100
 #: ../plugins/appindicator/appindicator.vala:227
-#, fuzzy
 msgid "Start the timer"
 msgstr "Démarrer le minuteur"
 
@@ -762,19 +756,15 @@ msgstr "Modifier"
 
 #: ../plugins/appindicator/appindicator.vala:59
 msgid "Open %s"
-msgstr ""
+msgstr "Ouvrir %s"
 
 #: ../plugins/appindicator/appindicator.vala:88
-#, fuzzy
-#| msgid "Move to next task/row"
 msgid "Switch to next task"
-msgstr "Passer à la tâche/ligne suivante"
+msgstr "Passer à la tâche suivante"
 
 #: ../plugins/appindicator/appindicator.vala:94
-#, fuzzy
-#| msgid "Move to previous task/row"
 msgid "Switch to the previous task"
-msgstr "Retourner à la tâche/ligne précédente"
+msgstr "Retourner à la tâche précédente"
 
 #~ msgid ""
 #~ "If no appropriate folder was found, Go For It! defaults to creating a "
