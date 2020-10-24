@@ -445,10 +445,10 @@ public class GOFI.DragList : Gtk.Bin {
      *
      * @param filter_func callback that lets you filter which rows to show
      */
-    public void set_filter_func (DragListFilterFunc? filter_func) {
-        this.filter_func = filter_func;
+    public void set_filter_func (owned DragListFilterFunc? filter_func) {
+        this.filter_func = (owned) filter_func;
         listbox.set_filter_func ((row) => {
-            return filter_func ((DragListRow) row);
+            return this.filter_func ((DragListRow) row);
         });
     }
 
