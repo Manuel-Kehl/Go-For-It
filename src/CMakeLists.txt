@@ -19,8 +19,7 @@ else ()
     message ("-- No recent Gtk+-3.0 found... Using pre 3.22 features.")
 endif ()
 
-set (VALA_PACKAGES
-    gtk+-3.0)
+set (VALA_PACKAGES ${DEPS_VALA_PACKAGES})
 
 if (USE_GRANITE)
     set (VALAC_OPTIONS ${VALAC_OPTIONS} -D USE_GRANITE)

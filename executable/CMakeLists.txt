@@ -1,12 +1,12 @@
 # files we want to compile
 include (ValaPrecompile)
+
 vala_precompile (VALA_C ${EXEC_NAME}
     go-for-it.vala
 
 # tell what libraries to use when compiling
 PACKAGES
-    gtk+-3.0
-    libnotify
+    ${DEPS_VALA_PACKAGES}
 OPTIONS
     ${VALAC_OPTIONS}
 CUSTOM_VAPIS
