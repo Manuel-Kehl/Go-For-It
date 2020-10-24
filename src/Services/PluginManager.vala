@@ -28,6 +28,13 @@ class GOFI.PluginManager : GLib.Object {
     private GLib.Settings plugin_settings;
     const string ID_PLUGINS = GOFI.APP_ID + ".plugins";
     const string KEY_PLUGINS = "enabled-plugins";
+
+    internal bool show_on_timer_elapsed {
+        get {
+            return plugin_iface.show_on_timer_elapsed;
+        }
+    }
+
     /**
      * Constructor of PluginManager
      */

@@ -25,6 +25,13 @@ public class GOFI.PluginInterface : GLib.Object {
 
     private unowned PluginManager plugin_manager;
     private TaskTimer timer;
+    private int timer_control_c;
+
+    internal bool show_on_timer_elapsed {
+        get {
+            return timer_control_c > 0;
+        }
+    }
 
     public signal void next_task ();
     public signal void previous_task ();
@@ -45,6 +52,23 @@ public class GOFI.PluginInterface : GLib.Object {
     internal PluginInterface (PluginManager plugin_manager, TaskTimer timer) {
         this.plugin_manager = plugin_manager;
         this.timer = timer;
+        this.timer_control_c = 0;
+    }
+
+    /**
+     * Call if this plugin provides means to start/stop the timer, show the
+     * current task and allows the user to quit the application.
+     */
+    public void set_provides_timer_controls (Peas.Activatable plugin) {
+        timer_control_c++;
+    }
+
+    public void unset_provides_timer_controls (Peas.Activatable plugin) {
+        timer_control_c--;
+
+        if (timer_control_c < 0) {
+            timer_control_c = 0;
+        }
     }
 }
 #endif

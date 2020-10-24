@@ -71,6 +71,7 @@ class GOFI.Main : Gtk.Application {
             task_timer = new TaskTimer ();
             // Enable Notifications for the App
             setup_notifications ();
+            task_timer.timer_finished.connect (on_timer_elapsed);
         }
     }
 
@@ -316,6 +317,22 @@ class GOFI.Main : Gtk.Application {
                 arg_description = null
             }
         };
+    }
+
+    private void on_timer_elapsed () {
+#if !NO_PLUGINS
+        bool show_window = plugin_manager.show_on_timer_elapsed;
+#else
+        bool show_window = true;
+#endif
+        if (show_window) {
+            if (!win.visible) {
+                win.show ();
+                win.restore_win_geometry ();
+            }
+
+            win.present ();
+        }
     }
 
     /**

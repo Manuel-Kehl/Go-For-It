@@ -33,6 +33,7 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
     private Gtk.MenuItem mark_done_item;
     private Gtk.MenuItem next_task_item;
     private Gtk.MenuItem prev_task_item;
+    private Gtk.Menu menu;
 
     /**
      * The plugin interface.
@@ -54,7 +55,21 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
         indicator = new Indicator.with_path (GOFI.APP_ID, "status-task-symbolic", category, icon_theme_path);
         indicator.set_status(IndicatorStatus.ACTIVE);
 
-        var menu = new Gtk.Menu();
+        build_menu ();
+        indicator.connection_changed.connect (on_connection_changed);
+    }
+
+    private void on_connection_changed (bool connected) {
+        stdout.printf ("connection changed! connected: %s\n", connected ? "true" : "false");
+        if (connected) {
+            iface.set_provides_timer_controls (this);
+        } else if (!connected) {
+            iface.unset_provides_timer_controls (this);
+        }
+    }
+
+    private void build_menu () {
+        menu = new Gtk.Menu();
 
         show_item = new Gtk.MenuItem.with_label (_("Open %s").printf (GOFI.APP_NAME));
         show_item.activate.connect (show_application_window);
@@ -70,7 +85,7 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
         separator_item.show ();
         menu.append (separator_item);
 
-        task_descr_item = new Gtk.MenuItem.with_label ("No task selected");
+        task_descr_item = new Gtk.MenuItem.with_label (_("No task has been selected"));
         task_descr_item.sensitive = false;
         task_descr_item.show ();
         menu.append (task_descr_item);
@@ -179,7 +194,7 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
 
     private void on_active_task_updated (TodoTask? task) {
         if (task == null) {
-            task_descr_item.label = "No task selected";
+            task_descr_item.label = _("No task has been selected");
             active_task_description = null;
             start_timer_item.sensitive = false;
             mark_done_item.sensitive = false;
@@ -248,10 +263,9 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
         timer.active_task_description_changed.disconnect (on_active_task_updated);
     }
 
-    public void deactivate () {
+    private void free_menu () {
         disconnect_timer_signals ();
-        indicator = null;
-
+        menu = null;
         task_descr_item = null;
         show_item = null;
         quit_item = null;
@@ -259,6 +273,14 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
         mark_done_item = null;
         next_task_item = null;
         prev_task_item = null;
+    }
+
+    public void deactivate () {
+        if (indicator.connected) {
+            iface.unset_provides_timer_controls (this);
+        }
+        free_menu ();
+        indicator = null;
     }
 
     public void update_state () {}
