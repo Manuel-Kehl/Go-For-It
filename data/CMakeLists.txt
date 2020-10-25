@@ -41,6 +41,20 @@ install (
 )
 endif (ICON_UPDATE)
 
+# configure and install the gsettings schemas
 configure_file (go-for-it.gschema.xml.in ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.gschema.xml)
 include(GSettings)
 add_schema("${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.gschema.xml")
+
+# install notification sounds
+set (SOUND_FOLDER ${PKGDATADIR}/sounds)
+set (SOUND_SOURCE_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}/sounds)
+install (
+FILES
+    ${SOUND_SOURCE_FOLDER}/bell.ogg
+    ${SOUND_SOURCE_FOLDER}/loud-bell.ogg
+    ${SOUND_SOURCE_FOLDER}/singing-bowl.ogg
+    ${SOUND_SOURCE_FOLDER}/steel-bell.ogg
+DESTINATION
+    ${SOUND_FOLDER}
+)
