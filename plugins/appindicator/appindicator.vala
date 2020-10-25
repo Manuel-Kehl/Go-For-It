@@ -60,7 +60,6 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
     }
 
     private void on_connection_changed (bool connected) {
-        stdout.printf ("connection changed! connected: %s\n", connected ? "true" : "false");
         if (connected) {
             iface.set_provides_timer_controls (this);
         } else if (!connected) {
