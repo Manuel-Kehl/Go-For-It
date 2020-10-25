@@ -151,6 +151,11 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         }
     }
 
+    public void present_timer () {
+        task_page.show_timer ();
+        this.present ();
+    }
+
     private void load_initial (TodoListInfo? initial_list) {
         if (initial_list == null) {
             list_menu_container.hide ();

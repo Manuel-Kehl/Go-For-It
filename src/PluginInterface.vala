@@ -29,7 +29,7 @@ public class GOFI.PluginInterface : GLib.Object {
 
     internal bool show_on_timer_elapsed {
         get {
-            return timer_control_c > 0;
+            return timer_control_c <= 0;
         }
     }
 

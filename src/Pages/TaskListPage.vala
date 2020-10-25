@@ -365,6 +365,10 @@ class GOFI.TaskListPage : Gtk.Grid {
         activity_switcher.show_icons = show_icons;
     }
 
+    public void show_timer () {
+        activity_switcher.selected_item = "timer";
+    }
+
     /**
      * Changes which task list is shown.
      * If the timer is currently running the previous list will remain active

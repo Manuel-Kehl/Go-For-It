@@ -331,7 +331,7 @@ class GOFI.Main : Gtk.Application {
                 win.restore_win_geometry ();
             }
 
-            win.present ();
+            win.present_timer ();
         }
     }
 
