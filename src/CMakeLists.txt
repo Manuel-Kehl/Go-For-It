@@ -53,6 +53,7 @@ vala_precompile (VALA_C ${LIBNAME}
     Services/Shortcuts.vala
     Services/ActivityLog.vala
     Services/SoundPlayer.vala
+    Services/Notifications.vala
     Widgets/TodoListInfoRow.vala
     Widgets/DragListModel.vala
     Widgets/DragListRowBox.vala
