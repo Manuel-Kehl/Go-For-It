@@ -3,17 +3,17 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-20 12:13+0200\n"
-"PO-Revision-Date: 2020-10-14 13:25+0000\n"
+"PO-Revision-Date: 2020-10-28 22:26+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/hr/>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.3.2-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:451
@@ -39,7 +39,7 @@ msgid ""
 "contributing to the project:"
 msgstr ""
 "Slanje koda, umjetničkih djela, prijevoda ili dokumentacije su odlični "
-"načini doprinosa projektu:"
+"načini doprinošenja projektu:"
 
 #: ../src/Dialogs/ContributeDialog.vala:36
 msgid "If you really like this app, you can buy me a drink:"
@@ -55,7 +55,7 @@ msgstr "Želiš li zamijeniti ovu datoteku ili koristiti ovu staru datoteku?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
-msgstr "Zadrži stare"
+msgstr "Zadrži staru"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
@@ -117,7 +117,7 @@ msgstr "Tekst"
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:80
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:82
 msgid "Theme"
-msgstr "Dizajn"
+msgstr "Tema"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
 msgid "Color scheme"
@@ -125,7 +125,7 @@ msgstr "Shema boja"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
 msgid "%s needs to be restarted for this setting to take effect"
-msgstr "%s se mora ponovo pokrenuti kako bi izmjene stupile na snagu"
+msgstr "%s se mora ponovo pokrenuti kako bi se postavka primijenila"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
 msgid "Use a header bar"
@@ -219,7 +219,7 @@ msgstr "Zadnji na popisu"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
-msgstr "%s se mora ponovo pokrenuti kako bi promjene stupile na snagu."
+msgstr "%s se mora ponovo pokrenuti kako bi se promjene primijenile."
 
 #: ../src/LegacyStrings.vala:2
 msgid "Todo.txt files were found in the destination folder."
@@ -237,15 +237,15 @@ msgstr "Prepiši"
 
 #: ../src/LegacyStrings.vala:5
 msgid "The configured folder is already in use by another list."
-msgstr "Jedan drugi popis već koristi konfigurirani direktorij."
+msgstr "Jedan drugi popis već koristi konfiguriranu mapu."
 
 #: ../src/LegacyStrings.vala:6
 msgid "folder"
-msgstr "direktorij"
+msgstr "mapa"
 
 #: ../src/LegacyStrings.vala:7
 msgid "Dark theme"
-msgstr "Tamni dizajn"
+msgstr "Tamna tema"
 
 #: ../src/LegacyStrings.vala:8
 msgid "Couldn't properly import settings from %s: %s"
@@ -323,7 +323,7 @@ msgstr "Pripremi se za tvoju pauzu"
 
 #: ../src/Main.vala:359
 msgid "You have %s seconds left"
-msgstr "Preostalih sekundi: %s"
+msgstr "Imaš još %s s"
 
 #: ../src/Main.vala:366
 msgid "Task duration exceeded"
@@ -442,7 +442,7 @@ msgstr "Premjesti se na lijevi ekran"
 
 #: ../src/Theme.vala:54
 msgid "Inherit from GTK theme"
-msgstr "Naslijedi od GTK dizajna"
+msgstr "Naslijedi od GTK teme"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid "Store to-do tasks in"
@@ -486,25 +486,25 @@ msgstr "Primijeni"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:194
 msgid "Log timer usage"
-msgstr ""
+msgstr "Zapiši upotrebu štoperice"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
 msgid ""
 "Keep track of when you used the timer and what tasks you worked on while "
 "doing this."
-msgstr ""
+msgstr "Prati kada i za koje zadatke koristiš štopericu za ovu radnju."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
 msgid "This log will be saved as a CSV file."
-msgstr ""
+msgstr "Ovaj se zapis sprema kao CSV datoteka."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
 msgid "Log file"
-msgstr ""
+msgstr "Datoteka zapisa"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
 msgid "Select file to log timer usage in"
-msgstr ""
+msgstr "Odaberi datoteku za zapisivanje korištenja štoperice"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:272
 msgid "Select file to store to-do tasks in"
@@ -519,10 +519,8 @@ msgid "Log the time spent working on each task"
 msgstr "Zapiši utrošeno vrijeme za svaki zadatak"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
-#, fuzzy
-#| msgid "Log the time spent working on each task"
 msgid "Log the total time spent working on a task using the timer."
-msgstr "Zapiši utrošeno vrijeme za svaki zadatak"
+msgstr "Zapiši ukupno vrijeme utrošeno na zadatak koristeći štopericu."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:286
 msgid "This information will be stored in the todo.txt files."
@@ -537,15 +535,10 @@ msgid "The configured to-do file is already in use by another list."
 msgstr "Jedan drugi popis već koristi konfiguriranu datoteku zadataka."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:435
-#, fuzzy
-#| msgid ""
-#| "Another todo.txt list uses the file chosen to archive completed tasks to "
-#| "to store its to-do tasks."
 msgid ""
 "Another todo.txt list archives its completed tasks to the selected file."
 msgstr ""
-"Jedan drugi popis todo.txt koristi odabranu datoteku koja je odabrana za "
-"arhiviranje završenih zadataka, za spremanje zadataka."
+"Jedan drugi „todo.txt” popis arhivira završene zadatke u odabranu datoteku."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:455
 msgid "Please assign a name to the list."
@@ -561,7 +554,7 @@ msgstr "kontekst"
 
 #: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:344
 msgid "priority"
-msgstr "važnost"
+msgstr "prioritet"
 
 #: ../src/Todo.txt/TaskManager.vala:49
 msgid "Spread the word about \"%s\""
@@ -674,7 +667,7 @@ msgstr "%u h i %u min"
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234
 msgid "%s!"
-msgstr ""
+msgstr "%s!"
 
 #: ../src/Widgets/DragList.vala:714
 msgid "Click and drag to reorder rows"
@@ -754,16 +747,12 @@ msgstr "Uredi"
 
 #: ../plugins/appindicator/appindicator.vala:59
 msgid "Open %s"
-msgstr ""
+msgstr "Otvori %s"
 
 #: ../plugins/appindicator/appindicator.vala:88
-#, fuzzy
-#| msgid "Move to next task/row"
 msgid "Switch to next task"
-msgstr "Premjesti se na sljedeći zadatak/redak"
+msgstr "Prijeđi na sljedeći zadatak"
 
 #: ../plugins/appindicator/appindicator.vala:94
-#, fuzzy
-#| msgid "Move to previous task/row"
 msgid "Switch to the previous task"
-msgstr "Premjesti se na prethodni zadatak/redak"
+msgstr "Prijeđi na prethodni zadatak"
