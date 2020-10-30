@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-20 12:13+0200\n"
-"PO-Revision-Date: 2019-12-11 16:54+0000\n"
-"Last-Translator: justperez <lorenzo.justperez@gmail.com>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/es/>\n"
+"PO-Revision-Date: 2020-10-31 08:26+0000\n"
+"Last-Translator: Marc Bria <marc.bria@uab.es>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10-dev\n"
+"X-Generator: Weblate 4.3.2-dev\n"
 "X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:451
@@ -47,26 +47,26 @@ msgstr "Si te gusta esta app, podrias comprarme una bebida:"
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr ""
+msgstr "Replazar \"%s\"?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
-msgstr ""
+msgstr "¿Debería reemplazarse este archivo o debe usar el viejo?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
-msgstr ""
+msgstr "Mantener el viejo"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "Remplazar"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:86
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
 #: ../src/Widgets/FileChooserWidget.vala:85
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:438
 msgid "Settings"
@@ -91,7 +91,7 @@ msgstr "Atajos"
 
 #: ../src/Dialogs/SettingsDialog.vala:75
 msgid "Plugins"
-msgstr ""
+msgstr "Módulos"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:147
@@ -105,28 +105,28 @@ msgstr "Iconos pequeños en la barra de herramientas"
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:42
 #, fuzzy
 msgid "Appearance of the activity switcher"
-msgstr "Apariencia del activity switcher"
+msgstr "Apariencia del selector de actividades"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:48
 msgid "Icons"
-msgstr ""
+msgstr "Iconos"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:49
 msgid "Text"
-msgstr ""
+msgstr "Texto"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:80
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:82
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
 msgid "Color scheme"
-msgstr ""
+msgstr "Esquema de color"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
 msgid "%s needs to be restarted for this setting to take effect"
-msgstr ""
+msgstr "%s debe reiniciarse para que esta configuración surta efecto"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
 msgid "Use a header bar"
@@ -156,7 +156,7 @@ msgstr "Duración del descanso"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:69
 msgid "Long break duration"
-msgstr ""
+msgstr "Descanso de larga duración"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
@@ -169,58 +169,61 @@ msgid "seconds"
 msgstr "segundos"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
+#, fuzzy
 msgid "Resume task after the break"
-msgstr ""
+msgstr "Reanudar la tarea después del descanso"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:74
 msgid "Reset timer after switching tasks"
-msgstr ""
+msgstr "Reiniciar el temporizador después de cambiar de tarea"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
 msgid "Have a long break after"
-msgstr ""
+msgstr "Hacer un descanso largo después"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:79
 msgid "short breaks"
-msgstr ""
+msgstr "Descansos cortos"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
+#, fuzzy
 msgid "Timer mode"
-msgstr ""
+msgstr "Modo temporizador"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:108
 msgid "Simple"
-msgstr ""
+msgstr "Simple"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:109
 msgid "Pomodoro"
-msgstr ""
+msgstr "Pomodoro"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:110
+#, fuzzy
 msgid "Custom"
-msgstr ""
+msgstr "Personalizado"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:169
 msgid "Tasks"
-msgstr ""
+msgstr "Tareas"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:170
 msgid "Placement of new tasks"
-msgstr ""
+msgstr "Ubuicación de las nuevas tareas"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:173
 msgid "Top of the list"
-msgstr ""
+msgstr "Cabeza de la lista"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:174
 msgid "Bottom of the list"
-msgstr ""
+msgstr "Pie de la lista"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
-msgstr ""
+msgstr "%s necesita ser reiniciado para que los cambios surtan efecto."
 
 #: ../src/LegacyStrings.vala:2
 msgid "Todo.txt files were found in the destination folder."
