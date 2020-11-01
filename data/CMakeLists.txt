@@ -54,7 +54,7 @@ FILES
     ${SOUND_SOURCE_FOLDER}/bell.ogg
     ${SOUND_SOURCE_FOLDER}/loud-bell.ogg
     ${SOUND_SOURCE_FOLDER}/singing-bowl.ogg
-    ${SOUND_SOURCE_FOLDER}/steel-bell.ogg
+    ${SOUND_SOURCE_FOLDER}/aluminium-bowl.ogg
 DESTINATION
     ${SOUND_FOLDER}
 )
