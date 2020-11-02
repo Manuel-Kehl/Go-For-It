@@ -108,8 +108,8 @@ class GOFI.NotificationsPage : Gtk.Grid {
         // More than ten minutes would not make much sense
         reminder_spin = new Gtk.SpinButton.with_range (0, 600, 1);
 
-        break_start_sound_lbl = new Gtk.Label (_("Start of break sound" + ":"));
-        break_end_sound_lbl = new Gtk.Label (_("End of break sound" + ":"));
+        break_start_sound_lbl = new Gtk.Label (_("Start of break sound") + ":");
+        break_end_sound_lbl = new Gtk.Label (_("End of break sound") + ":");
 
         break_start_sound_cbox = new Gtk.ComboBoxText ();
         break_end_sound_cbox = new Gtk.ComboBoxText ();
@@ -209,13 +209,9 @@ class GOFI.NotificationsPage : Gtk.Grid {
         player.play ();
     }
 
-    // private void file_combobox_set_custom (Gtk.) {
-    //
-    // }
-
     private GLib.File? get_custom_sound_file () {
         var window = this.get_toplevel () as Gtk.Window;
-        var dialog_title = _("Select notification sound");
+        var dialog_title = _("Select notification sound file");
 #if HAS_GTK322
         var file_chooser = new Gtk.FileChooserNative (
             dialog_title, window, Gtk.FileChooserAction.OPEN,
