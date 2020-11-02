@@ -52,6 +52,8 @@ vala_precompile (VALA_C ${LIBNAME}
     Services/TaskTimer.vala
     Services/Shortcuts.vala
     Services/ActivityLog.vala
+    Services/SoundPlayer.vala
+    Services/Notifications.vala
     Widgets/TodoListInfoRow.vala
     Widgets/DragListModel.vala
     Widgets/DragListRowBox.vala
@@ -67,6 +69,7 @@ vala_precompile (VALA_C ${LIBNAME}
     Dialogs/SettingsDialog.vala
     Dialogs/SettingsPages/AppearancePage.vala
     Dialogs/SettingsPages/BehaviorPage.vala
+    Dialogs/SettingsPages/NotificationsPage.vala
     Dialogs/SettingsPages/ShortcutsPage.vala
     Dialogs/AboutDialog.vala
     Dialogs/ContributeDialog.vala

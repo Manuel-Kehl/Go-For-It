@@ -58,6 +58,8 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     public const string ACTION_SWITCH_PAGE_LEFT = "switch_page_left";
     public const string ACTION_SWITCH_PAGE_RIGHT = "switch_page_right";
 
+    public const string SOUND_ACTION_PREFIX = "sound";
+
     private const string switch_btn_overview_text = _("Go to overview");
     private const string switch_btn_list_text = _("Go back to the to-do list");
 
@@ -271,6 +273,12 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             ACTION_PREFIX + "." + ACTION_SWITCH_PAGE_RIGHT,
             {kbsettings.get_shortcut ("cycle-page").to_string ()}
         );
+
+        actions = new SimpleActionGroup ();
+        foreach (var action in notification_service.create_actions ()) {
+            actions.add_action (action);
+        }
+        insert_action_group (SOUND_ACTION_PREFIX, actions);
     }
 
     [Signal (action = true)]
@@ -432,7 +440,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         /* Initialization */
         menu_container = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         list_menu_container = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        var config_item = new Gtk.ModelButton ();
+
 
         list_menu_container.pack_end (
             new Gtk.Separator (Gtk.Orientation.HORIZONTAL)
@@ -440,6 +448,13 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
         menu_container.add (list_menu_container);
 
+        var mute_item = new Gtk.ModelButton ();
+        mute_item.text = _("Mute sounds");
+        mute_item.action_name =
+            SOUND_ACTION_PREFIX + "." + Notifications.KEY_MUTE_SOUND;
+        menu_container.add (mute_item);
+
+        var config_item = new Gtk.ModelButton ();
         config_item.text = _("Settings");
         config_item.action_name = ACTION_PREFIX + "." + ACTION_SETTINGS;
         menu_container.add (config_item);

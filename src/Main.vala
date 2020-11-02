@@ -25,6 +25,7 @@ namespace GOFI {
 #endif
     private TaskTimer task_timer;
     private MainWindow win;
+    private Notifications notification_service;
 }
 
 errordomain GOFIParseError {
@@ -44,7 +45,6 @@ class GOFI.Main : Gtk.Application {
     private static bool list_lists = false;
     private static string? logfile = null;
     private static string[] load_list = null;
-    private const string TIMER_NOTIFY_ID = "timer-notification";
 
     private void load_settings () {
         if (settings == null) {
@@ -70,15 +70,10 @@ class GOFI.Main : Gtk.Application {
         if (task_timer == null) {
             task_timer = new TaskTimer ();
             // Enable Notifications for the App
-            setup_notifications ();
+            notification_service = new Notifications (this);
             task_timer.timer_finished.connect (on_timer_elapsed);
         }
     }
-
-    /**
-     * Used to determine if a notification should be sent.
-     */
-    private bool break_previously_active { get; set; default = false; }
 
     /**
      * Constructor of the Application class.
@@ -149,7 +144,7 @@ class GOFI.Main : Gtk.Application {
         if (dont_exit == false) {
             win = null;
             task_timer = null;
-            withdraw_notification (TIMER_NOTIFY_ID);
+            notification_service = null;
         }
 
         return dont_exit;
@@ -333,56 +328,5 @@ class GOFI.Main : Gtk.Application {
 
             win.present_timer ();
         }
-    }
-
-    /**
-     * Configures the emission of notifications when tasks/breaks are over
-     */
-    private void setup_notifications () {
-        task_timer.active_task_changed.connect (task_timer_activated);
-        task_timer.timer_almost_over.connect (display_almost_over_notification);
-        task_timer.task_duration_exceeded.connect (display_duration_exceeded);
-    }
-
-    private void task_timer_activated (TodoTask? task) {
-        if (task == null) {
-            return;
-        }
-        var break_active = task_timer.break_active;
-        if (break_previously_active != break_active) {
-            GLib.Notification notification;
-            if (break_active) {
-                notification = new GLib.Notification (_("Take a Break"));
-                notification.set_body (
-                    _("Relax and stop thinking about your current task for a while")
-                    + " :-)"
-                );
-            } else {
-                notification = new GLib.Notification (_("The Break is Over"));
-                notification.set_body (
-                    _("Your current task is") + ": " + task.description
-                );
-            }
-            notification.set_priority (NotificationPriority.HIGH);
-            notification.set_icon (new ThemedIcon(GOFI.ICON_NAME));
-            send_notification (TIMER_NOTIFY_ID, notification);
-        }
-        break_previously_active = break_active;
-    }
-
-    private void display_almost_over_notification (uint remaining_time) {
-        var notification = new GLib.Notification (_("Prepare for your break"));
-        notification.set_body (
-            _("You have %s seconds left").printf (remaining_time.to_string ())
-        );
-        notification.set_icon (new ThemedIcon(GOFI.ICON_NAME));
-        send_notification (TIMER_NOTIFY_ID, notification);
-    }
-
-    private void display_duration_exceeded () {
-        var notification = new GLib.Notification ( _("Task duration exceeded"));
-        notification.set_body (_("Consider switching to a different task"));
-        notification.set_icon (new ThemedIcon(GOFI.ICON_NAME));
-        send_notification (TIMER_NOTIFY_ID, notification);
     }
 }

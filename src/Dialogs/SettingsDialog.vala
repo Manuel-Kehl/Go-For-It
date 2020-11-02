@@ -24,6 +24,7 @@ class GOFI.SettingsDialog : Gtk.Dialog {
     /* GTK Widgets */
     private Gtk.Grid main_layout;
     private BehaviorPage timer_page;
+    private NotificationsPage notifications_page;
     private AppearancePage appearance_page;
     private ShortcutsPage shortcuts_page;
     private Gtk.StackSwitcher stack_switcher;
@@ -55,6 +56,7 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         });
 
         this.show_all ();
+        this.resizable = false;
     }
 
     private void setup_settings_widgets () {
@@ -65,10 +67,12 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         stack_switcher.halign = Gtk.Align.CENTER;
 
         timer_page = new BehaviorPage ();
+        notifications_page = new NotificationsPage ();
         appearance_page = new AppearancePage ();
         shortcuts_page = new ShortcutsPage ();
 
         settings_stack.add_titled (timer_page, "behavior_page", _("Behavior"));
+        settings_stack.add_titled (notifications_page, "notifications_page", _("Notifications"));
         settings_stack.add_titled (appearance_page, "appearance_page", _("Appearance"));
         settings_stack.add_titled (shortcuts_page, "shortcuts_page", _("Shortcuts"));
 #if !NO_PLUGINS

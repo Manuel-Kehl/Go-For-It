@@ -61,12 +61,6 @@
       <summary></summary>
       <description>This value determines when a long break should be scheduled. For value n (n-1) normal breaks are scheduled followed by a long break, after which the cycle repeats.</description>
     </key>
-    <key name="reminder-time" type="i">
-      <range min="0" max="600"/>
-      <default>60</default>
-      <summary></summary>
-      <description>When to show a reminder. Value is number of seconds from the end of the task duration.</description>
-    </key>
     <key name="timer-mode" enum="@APP_ID@.timer-mode">
       <default>'simple'</default>
       <summary></summary>
@@ -76,6 +70,13 @@
       <default>[]</default>
       <summary>Task/break duration schedule</summary>
       <description>Task and break duration schedule given as list of (task duration, break duration) pears, both in seconds.</description>
+    </key>
+
+    <key name="reminder-time" type="i">
+      <range min="0" max="600"/>
+      <default>60</default>
+      <summary></summary>
+      <description>When to show a reminder. Value is number of seconds from the end of the task duration.</description>
     </key>
 
     <key name="resume-tasks-after-break" type="b">
@@ -132,6 +133,36 @@
       <default>true</default>
       <summary></summary>
       <description></description>
+    </key>
+  </schema>
+
+  <schema path="@SCHEMA_PATH@/settings/sounds/" id="@APP_ID@.settings.sounds">
+    <key name="break-start-sound-volume" type="d">
+      <range min="0.0" max="1.0"/>
+      <default>1.0</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="break-start-sound-file" type="s">
+      <default>'singing-bowl.ogg'</default>
+      <summary>Sound to play at the start of the break</summary>
+      <description>For custom sound files specify a file:/// uri.</description>
+    </key>
+    <key name="break-end-sound-volume" type="d">
+      <range min="0.0" max="1.0"/>
+      <default>1.0</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="break-end-sound-file" type="s">
+      <default>'aluminium-bowl.ogg'</default>
+      <summary>Sound to play at the end of the break</summary>
+      <description>For custom sound files specify a file:/// uri.</description>
+    </key>
+    <key name="mute" type="b">
+      <default>false</default>
+      <summary>Whether notification sounds should be muted</summary>
+      <description>If set to true notification sounds played by the application itself will be muted.</description>
     </key>
   </schema>
 
