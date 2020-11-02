@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-20 12:13+0200\n"
+"POT-Creation-Date: 2020-11-02 14:53+0100\n"
 "PO-Revision-Date: 2020-06-05 04:41+0000\n"
 "Last-Translator: Nguyễn Công Dũng <dung.dev.gramer@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/go-for-it/go-"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Weblate 4.1-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:451
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
 msgid "About"
 msgstr "Thông tin"
 
@@ -59,34 +59,39 @@ msgid "Replace"
 msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:227
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:86
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
 #: ../src/Widgets/FileChooserWidget.vala:85
 msgid "Cancel"
 msgstr "Huỷ"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:438
+#: ../src/Dialogs/SettingsDialog.vala:47 ../src/MainWindow.vala:458
 msgid "Settings"
 msgstr "Cài đặt"
 
-#: ../src/Dialogs/SettingsDialog.vala:48
-#: ../plugins/appindicator/appindicator.vala:64
+#: ../src/Dialogs/SettingsDialog.vala:49
+#: ../plugins/appindicator/appindicator.vala:78
 msgid "Close"
 msgstr "Đóng"
 
-#: ../src/Dialogs/SettingsDialog.vala:71
+#: ../src/Dialogs/SettingsDialog.vala:74
 msgid "Behavior"
 msgstr "Hành vi"
 
-#: ../src/Dialogs/SettingsDialog.vala:72
+#: ../src/Dialogs/SettingsDialog.vala:75
+msgid "Notifications"
+msgstr ""
+
+#: ../src/Dialogs/SettingsDialog.vala:76
 msgid "Appearance"
 msgstr ""
 
-#: ../src/Dialogs/SettingsDialog.vala:73
+#: ../src/Dialogs/SettingsDialog.vala:77
 msgid "Shortcuts"
 msgstr "Lối tắt"
 
-#: ../src/Dialogs/SettingsDialog.vala:75
+#: ../src/Dialogs/SettingsDialog.vala:79
 msgid "Plugins"
 msgstr ""
 
@@ -128,91 +133,137 @@ msgstr "%s cần được khởi động lại để áp dụng"
 msgid "Use a header bar"
 msgstr ""
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:60
 #: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
 msgid "Timer"
 msgstr "Thời gian"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:61
 #: ../src/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
 msgstr ""
 
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:62
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:66
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:70
 msgid "minutes"
 msgstr "phút"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:63
 #: ../src/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
 msgstr "Thời gian nghỉ ngơi"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:69
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
 msgid "Long break duration"
 msgstr "thời gian nghỉ dài"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
-msgid "Reminder before task ends"
-msgstr "Nhắc nhở trước khi nhiệm vụ kết thúc"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:72
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
-msgid "seconds"
-msgstr "giây"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
 msgid "Resume task after the break"
 msgstr "Tiếp tục công việc sau giờ nghỉ"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:74
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
 msgid "Reset timer after switching tasks"
 msgstr "Khởi động lại thời gian khi chuyển công việc"
 
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
 msgid "Have a long break after"
 msgstr "Có một thời gian nghỉ dài sau"
 
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:79
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "short breaks"
 msgstr "nghỉ ngắn"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
 msgid "Timer mode"
 msgstr "Chế độ hẹn giờ"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:108
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:99
 msgid "Simple"
 msgstr "Đơn giản"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:109
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:100
 msgid "Pomodoro"
 msgstr ""
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:110
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:101
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:132
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:133
 msgid "Custom"
 msgstr "Tuỳ chỉnh"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:169
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:156
 msgid "Tasks"
 msgstr "Nhiệm vụ"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:170
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:157
 msgid "Placement of new tasks"
 msgstr "Vị trí của nhiệm vụ mới"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:173
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:160
 msgid "Top of the list"
 msgstr "Đầu danh sách"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:174
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:161
 msgid "Bottom of the list"
 msgstr "Cuối danh sách"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
+msgid "Aluminium bowl"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:37
+msgid "Singing bowl"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
+msgid "Bell"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:41
+msgid "Loud bell"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:105
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
+msgid "Reminder before task ends"
+msgstr "Nhắc nhở trước khi nhiệm vụ kết thúc"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:106
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
+msgid "seconds"
+msgstr "giây"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
+msgid "Start of break sound"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:112
+msgid "End of break sound"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:134
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:135
+msgid "Silent"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:169
+msgid "Notification sounds"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:218
+msgid "Select notification sound file"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:222
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:228
+#: ../src/Widgets/FileChooserWidget.vala:80
+#: ../src/Widgets/FileChooserWidget.vala:86
+msgid "_Select"
+msgstr ""
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
@@ -248,102 +299,72 @@ msgstr "Giao diện tối"
 msgid "Couldn't properly import settings from %s: %s"
 msgstr "Không thể nhập từ cài đặt %s: %s"
 
-#: ../src/Main.vala:101
+#: ../src/Main.vala:97
 msgid "Not a known list: %s"
 msgstr ""
 
-#: ../src/Main.vala:240
+#: ../src/Main.vala:236
 msgid "%s: Error: %s"
 msgstr "%s: Lỗi: %s"
 
 #. / Describes format of printed table (table contains the known lists)
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
-#: ../src/Main.vala:255
+#: ../src/Main.vala:251
 msgid "Lists (List type : List ID - List name)"
 msgstr ""
 
 #. / Translators: give translation of FILE in "--logfile=FILE" command line argument
-#: ../src/Main.vala:280
+#: ../src/Main.vala:276
 msgid "FILE"
 msgstr ""
 
 #. / Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
-#: ../src/Main.vala:283
+#: ../src/Main.vala:279
 msgid "LIST-TYPE"
 msgstr ""
 
 #. / Translators: give translation of LIST-ID in "--load LIST-TYPE LIST-ID" command line argument
-#: ../src/Main.vala:285
+#: ../src/Main.vala:281
 msgid "LIST-ID"
 msgstr ""
 
-#: ../src/Main.vala:288
+#: ../src/Main.vala:284
 msgid "Print version info and exit"
 msgstr "In thông tin phiên bản và thoát"
 
-#: ../src/Main.vala:289
+#: ../src/Main.vala:285
 msgid "Show about dialog"
 msgstr "Hiển thị hộp thoại"
 
-#: ../src/Main.vala:290
+#: ../src/Main.vala:286
 msgid "CSV file to log activities to."
 msgstr "tập tin CSV để ghi lại hoạt động."
 
-#: ../src/Main.vala:291
+#: ../src/Main.vala:287
 msgid "Show configured lists and exit"
 msgstr "Hiển thị danh sách cấu hình và thoát"
 
-#: ../src/Main.vala:295
+#: ../src/Main.vala:291
 msgid "Load the list specified by the list type and ID"
 msgstr "Tải danh sách theo quy định của loại danh sách và ID"
 
-#: ../src/Main.vala:338 ../src/Widgets/TimerView.vala:90
-#: ../plugins/appindicator/appindicator.vala:193
-msgid "Take a Break"
-msgstr "Nghỉ ngơi một lát"
-
-#: ../src/Main.vala:340
-msgid "Relax and stop thinking about your current task for a while"
-msgstr ""
-"Thư giãn và dừng suy nghĩ về công việc hiện tại của bạn trong một thời gian"
-
-#: ../src/Main.vala:344
-msgid "The Break is Over"
-msgstr "Đã hết giờ nghỉ ngơi"
-
-#: ../src/Main.vala:346
-msgid "Your current task is"
-msgstr "Nhiệm vụ hiện tại của bạn là"
-
-#: ../src/Main.vala:357
-msgid "Prepare for your break"
-msgstr "Chuẩn bị nghỉ ngơi"
-
-#: ../src/Main.vala:359
-msgid "You have %s seconds left"
-msgstr "Bạn còn %s giây"
-
-#: ../src/Main.vala:366
-msgid "Task duration exceeded"
-msgstr ""
-
-#: ../src/Main.vala:367
-msgid "Consider switching to a different task"
-msgstr "Xem xét chuyển sang một công việc khác"
-
-#: ../src/MainWindow.vala:61
+#: ../src/MainWindow.vala:63
 msgid "Go to overview"
 msgstr "Tới tổng quan"
 
-#: ../src/MainWindow.vala:62
+#: ../src/MainWindow.vala:64
 msgid "Go back to the to-do list"
 msgstr "Quay trở lại danh sách công việc"
 
-#: ../src/MainWindow.vala:329
+#: ../src/MainWindow.vala:342
 msgid "Menu"
 msgstr ""
 
-#: ../src/MainWindow.vala:444
+#: ../src/MainWindow.vala:452
+msgid "Mute sounds"
+msgstr ""
+
+#: ../src/MainWindow.vala:464
 msgid "Contribute / Donate"
 msgstr "Đóng góp / Ủng hộ"
 
@@ -375,6 +396,40 @@ msgstr "Hoàn thành"
 #: ../src/Services/ActivityLog.vala:66
 msgid "Couldn't write to %s: %s"
 msgstr "không thể ghi vào %s: %s"
+
+#: ../src/Services/Notifications.vala:89 ../src/Widgets/TimerView.vala:90
+#: ../plugins/appindicator/appindicator.vala:208
+msgid "Take a Break"
+msgstr "Nghỉ ngơi một lát"
+
+#: ../src/Services/Notifications.vala:91
+msgid "Relax and stop thinking about your current task for a while"
+msgstr ""
+"Thư giãn và dừng suy nghĩ về công việc hiện tại của bạn trong một thời gian"
+
+#: ../src/Services/Notifications.vala:95
+msgid "The Break is Over"
+msgstr "Đã hết giờ nghỉ ngơi"
+
+#: ../src/Services/Notifications.vala:97
+msgid "Your current task is"
+msgstr "Nhiệm vụ hiện tại của bạn là"
+
+#: ../src/Services/Notifications.vala:115
+msgid "Prepare for your break"
+msgstr "Chuẩn bị nghỉ ngơi"
+
+#: ../src/Services/Notifications.vala:117
+msgid "You have %s seconds left"
+msgstr "Bạn còn %s giây"
+
+#: ../src/Services/Notifications.vala:124
+msgid "Task duration exceeded"
+msgstr ""
+
+#: ../src/Services/Notifications.vala:125
+msgid "Consider switching to a different task"
+msgstr "Xem xét chuyển sang một công việc khác"
 
 #: ../src/Services/SettingsManager.vala:629
 msgid "Light"
@@ -410,7 +465,7 @@ msgstr ""
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
-#: ../plugins/appindicator/appindicator.vala:82
+#: ../plugins/appindicator/appindicator.vala:96
 msgid "Mark the task as complete"
 msgstr "Đánh dấu là hoàn tất"
 
@@ -438,7 +493,7 @@ msgstr "Di chuyển về bên phải màn hình"
 msgid "Move to left screen"
 msgstr "Di chuyển về bên tráimàn hình"
 
-#: ../src/Theme.vala:54
+#: ../src/Theme.vala:74
 msgid "Inherit from GTK theme"
 msgstr "Kế thừa từ chủ đề GTK"
 
@@ -669,17 +724,12 @@ msgstr "%u giờ và %u phút"
 msgid "%s!"
 msgstr ""
 
-#: ../src/Widgets/DragList.vala:714
+#: ../src/Widgets/DragList.vala:722
 msgid "Click and drag to reorder rows"
 msgstr ""
 
 #: ../src/Widgets/FileChooserWidget.vala:22
 msgid "Choose a file"
-msgstr ""
-
-#: ../src/Widgets/FileChooserWidget.vala:80
-#: ../src/Widgets/FileChooserWidget.vala:86
-msgid "_Select"
 msgstr ""
 
 #: ../src/Widgets/TimerView.vala:93
@@ -699,7 +749,7 @@ msgid "Pau_se"
 msgstr ""
 
 #: ../src/Widgets/TimerView.vala:142
-#: ../plugins/appindicator/appindicator.vala:218
+#: ../plugins/appindicator/appindicator.vala:233
 #, fuzzy
 #| msgid "Start/Stop the timer"
 msgid "Stop the timer"
@@ -710,8 +760,8 @@ msgid "_Start"
 msgstr ""
 
 #: ../src/Widgets/TimerView.vala:151
-#: ../plugins/appindicator/appindicator.vala:100
-#: ../plugins/appindicator/appindicator.vala:227
+#: ../plugins/appindicator/appindicator.vala:114
+#: ../plugins/appindicator/appindicator.vala:242
 #, fuzzy
 #| msgid "Start/Stop the timer"
 msgid "Start the timer"
@@ -722,6 +772,8 @@ msgid "Inactive"
 msgstr "Không hoạt động"
 
 #: ../src/Widgets/TimerView.vala:172
+#: ../plugins/appindicator/appindicator.vala:87
+#: ../plugins/appindicator/appindicator.vala:196
 msgid "No task has been selected"
 msgstr ""
 
@@ -749,17 +801,17 @@ msgstr "Xoá"
 msgid "Edit"
 msgstr "Sửa"
 
-#: ../plugins/appindicator/appindicator.vala:59
+#: ../plugins/appindicator/appindicator.vala:73
 msgid "Open %s"
 msgstr ""
 
-#: ../plugins/appindicator/appindicator.vala:88
+#: ../plugins/appindicator/appindicator.vala:102
 #, fuzzy
 #| msgid "Move to next task/row"
 msgid "Switch to next task"
 msgstr "Di chuyển đến hàng / nhiệm vụ tiếp theo"
 
-#: ../plugins/appindicator/appindicator.vala:94
+#: ../plugins/appindicator/appindicator.vala:108
 #, fuzzy
 #| msgid "Move to previous task/row"
 msgid "Switch to the previous task"

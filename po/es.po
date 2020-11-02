@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Weblate 4.3.2-dev\n"
 "X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:451
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
 msgid "About"
 msgstr "Sobre"
 
@@ -62,34 +62,39 @@ msgid "Replace"
 msgstr "Remplazar"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:227
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:86
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
 #: ../src/Widgets/FileChooserWidget.vala:85
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:438
+#: ../src/Dialogs/SettingsDialog.vala:47 ../src/MainWindow.vala:458
 msgid "Settings"
 msgstr "Ajustes"
 
-#: ../src/Dialogs/SettingsDialog.vala:48
-#: ../plugins/appindicator/appindicator.vala:64
+#: ../src/Dialogs/SettingsDialog.vala:49
+#: ../plugins/appindicator/appindicator.vala:78
 msgid "Close"
 msgstr "Cerrar"
 
-#: ../src/Dialogs/SettingsDialog.vala:71
+#: ../src/Dialogs/SettingsDialog.vala:74
 msgid "Behavior"
 msgstr "Comportamiento"
 
-#: ../src/Dialogs/SettingsDialog.vala:72
+#: ../src/Dialogs/SettingsDialog.vala:75
+msgid "Notifications"
+msgstr "Notificaciones"
+
+#: ../src/Dialogs/SettingsDialog.vala:76
 msgid "Appearance"
 msgstr "Apariencia"
 
-#: ../src/Dialogs/SettingsDialog.vala:73
+#: ../src/Dialogs/SettingsDialog.vala:77
 msgid "Shortcuts"
 msgstr "Atajos"
 
-#: ../src/Dialogs/SettingsDialog.vala:75
+#: ../src/Dialogs/SettingsDialog.vala:79
 msgid "Plugins"
 msgstr "Módulos"
 
@@ -132,92 +137,84 @@ msgstr "%s debe reiniciarse para que esta configuración surta efecto"
 msgid "Use a header bar"
 msgstr "Usar una barra de encabezado"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:60
 #: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
 msgid "Timer"
 msgstr "Temporizador"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:61
 #: ../src/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
 msgstr "Duración de la tarea"
 
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:62
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:66
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:70
 msgid "minutes"
 msgstr "minutos"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:63
 #: ../src/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
 msgstr "Duración del descanso"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:69
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
 msgid "Long break duration"
 msgstr "Descanso de larga duración"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
-msgid "Reminder before task ends"
-msgstr "Recordatorio antes de finalizar la tarea"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:72
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
-msgid "seconds"
-msgstr "segundos"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
 #, fuzzy
 msgid "Resume task after the break"
 msgstr "Reanudar la tarea después del descanso"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:74
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
 msgid "Reset timer after switching tasks"
 msgstr "Reiniciar el temporizador después de cambiar de tarea"
 
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
 msgid "Have a long break after"
 msgstr "Hacer un descanso largo después"
 
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:79
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "short breaks"
 msgstr "Descansos cortos"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
 #, fuzzy
 msgid "Timer mode"
 msgstr "Modo temporizador"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:108
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:99
 msgid "Simple"
 msgstr "Simple"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:109
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:100
 msgid "Pomodoro"
 msgstr "Pomodoro"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:110
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:101
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:132
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:133
 #, fuzzy
 msgid "Custom"
 msgstr "Personalizado"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:169
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:156
 msgid "Tasks"
 msgstr "Tareas"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:170
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:157
 msgid "Placement of new tasks"
 msgstr "Ubuicación de las nuevas tareas"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:173
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:160
 msgid "Top of the list"
 msgstr "Cabeza de la lista"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:174
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:161
 msgid "Bottom of the list"
 msgstr "Pie de la lista"
 
@@ -236,6 +233,16 @@ msgstr "Alarma"
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:41
 msgid "Loud bell"
 msgstr "Alarma fuerte"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:105
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
+msgid "Reminder before task ends"
+msgstr "Recordatorio antes de finalizar la tarea"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:106
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
+msgid "seconds"
+msgstr "segundos"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
 msgid "Start of break sound"
@@ -258,13 +265,12 @@ msgstr ""
 msgid "Select notification sound file"
 msgstr ""
 
-#: ../src/MainWindow.vala:452
-msgid "Mute sounds"
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:222
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:228
+#: ../src/Widgets/FileChooserWidget.vala:80
+#: ../src/Widgets/FileChooserWidget.vala:86
+msgid "_Select"
 msgstr ""
-
-#: ../src/MainWindow.vala:452
-msgid "Notifications"
-msgstr "Notificaciones"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
@@ -300,105 +306,72 @@ msgstr "Tema oscuro"
 msgid "Couldn't properly import settings from %s: %s"
 msgstr ""
 
-#: ../src/Main.vala:101
+#: ../src/Main.vala:97
 msgid "Not a known list: %s"
 msgstr ""
 
-#: ../src/Main.vala:240
+#: ../src/Main.vala:236
 msgid "%s: Error: %s"
 msgstr ""
 
 #. / Describes format of printed table (table contains the known lists)
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
-#: ../src/Main.vala:255
+#: ../src/Main.vala:251
 msgid "Lists (List type : List ID - List name)"
 msgstr ""
 
 #. / Translators: give translation of FILE in "--logfile=FILE" command line argument
-#: ../src/Main.vala:280
+#: ../src/Main.vala:276
 msgid "FILE"
 msgstr ""
 
 #. / Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
-#: ../src/Main.vala:283
+#: ../src/Main.vala:279
 msgid "LIST-TYPE"
 msgstr ""
 
 #. / Translators: give translation of LIST-ID in "--load LIST-TYPE LIST-ID" command line argument
-#: ../src/Main.vala:285
+#: ../src/Main.vala:281
 msgid "LIST-ID"
 msgstr ""
 
-#: ../src/Main.vala:288
+#: ../src/Main.vala:284
 msgid "Print version info and exit"
 msgstr "Mostrar información de la versión y salir"
 
-#: ../src/Main.vala:289
+#: ../src/Main.vala:285
 msgid "Show about dialog"
 msgstr "Mostrar diálogo «Sobre»"
 
-#: ../src/Main.vala:290
+#: ../src/Main.vala:286
 msgid "CSV file to log activities to."
 msgstr ""
 
-#: ../src/Main.vala:291
+#: ../src/Main.vala:287
 msgid "Show configured lists and exit"
 msgstr ""
 
-#: ../src/Main.vala:295
+#: ../src/Main.vala:291
 msgid "Load the list specified by the list type and ID"
 msgstr ""
 
-#: ../src/Main.vala:338 ../src/Widgets/TimerView.vala:90
-#: ../plugins/appindicator/appindicator.vala:193
-msgid "Take a Break"
-msgstr "Tomar un descanso"
-
-#: ../src/Main.vala:340
-msgid "Relax and stop thinking about your current task for a while"
-msgstr "Relájese y deje de pensar en su tarea actual por un tiempo"
-
-#: ../src/Main.vala:344
-msgid "The Break is Over"
-msgstr "El Descanso ha terminado"
-
-#: ../src/Main.vala:346
-#, fuzzy
-#| msgid "Your next task is"
-msgid "Your current task is"
-msgstr "Su siguiente tarea es"
-
-#: ../src/Main.vala:357
-msgid "Prepare for your break"
-msgstr "Prepárese para su descanso"
-
-#: ../src/Main.vala:359
-msgid "You have %s seconds left"
-msgstr "Le quedan %s segundos"
-
-#: ../src/Main.vala:366
-#, fuzzy
-#| msgid "Task duration"
-msgid "Task duration exceeded"
-msgstr "Duración de la tarea"
-
-#: ../src/Main.vala:367
-msgid "Consider switching to a different task"
-msgstr ""
-
-#: ../src/MainWindow.vala:61
+#: ../src/MainWindow.vala:63
 msgid "Go to overview"
 msgstr ""
 
-#: ../src/MainWindow.vala:62
+#: ../src/MainWindow.vala:64
 msgid "Go back to the to-do list"
 msgstr ""
 
-#: ../src/MainWindow.vala:329
+#: ../src/MainWindow.vala:342
 msgid "Menu"
 msgstr "Menú"
 
-#: ../src/MainWindow.vala:444
+#: ../src/MainWindow.vala:452
+msgid "Mute sounds"
+msgstr ""
+
+#: ../src/MainWindow.vala:464
 msgid "Contribute / Donate"
 msgstr "Contribuir / Donar"
 
@@ -427,6 +400,43 @@ msgstr "Completado"
 
 #: ../src/Services/ActivityLog.vala:66
 msgid "Couldn't write to %s: %s"
+msgstr ""
+
+#: ../src/Services/Notifications.vala:89 ../src/Widgets/TimerView.vala:90
+#: ../plugins/appindicator/appindicator.vala:208
+msgid "Take a Break"
+msgstr "Tomar un descanso"
+
+#: ../src/Services/Notifications.vala:91
+msgid "Relax and stop thinking about your current task for a while"
+msgstr "Relájese y deje de pensar en su tarea actual por un tiempo"
+
+#: ../src/Services/Notifications.vala:95
+msgid "The Break is Over"
+msgstr "El Descanso ha terminado"
+
+#: ../src/Services/Notifications.vala:97
+#, fuzzy
+#| msgid "Your next task is"
+msgid "Your current task is"
+msgstr "Su siguiente tarea es"
+
+#: ../src/Services/Notifications.vala:115
+msgid "Prepare for your break"
+msgstr "Prepárese para su descanso"
+
+#: ../src/Services/Notifications.vala:117
+msgid "You have %s seconds left"
+msgstr "Le quedan %s segundos"
+
+#: ../src/Services/Notifications.vala:124
+#, fuzzy
+#| msgid "Task duration"
+msgid "Task duration exceeded"
+msgstr "Duración de la tarea"
+
+#: ../src/Services/Notifications.vala:125
+msgid "Consider switching to a different task"
 msgstr ""
 
 #: ../src/Services/SettingsManager.vala:629
@@ -464,7 +474,7 @@ msgstr ""
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
-#: ../plugins/appindicator/appindicator.vala:82
+#: ../plugins/appindicator/appindicator.vala:96
 msgid "Mark the task as complete"
 msgstr ""
 
@@ -492,7 +502,7 @@ msgstr ""
 msgid "Move to left screen"
 msgstr ""
 
-#: ../src/Theme.vala:54
+#: ../src/Theme.vala:74
 msgid "Inherit from GTK theme"
 msgstr ""
 
@@ -712,17 +722,12 @@ msgstr ""
 msgid "%s!"
 msgstr "¡%s!"
 
-#: ../src/Widgets/DragList.vala:714
+#: ../src/Widgets/DragList.vala:722
 msgid "Click and drag to reorder rows"
 msgstr ""
 
 #: ../src/Widgets/FileChooserWidget.vala:22
 msgid "Choose a file"
-msgstr ""
-
-#: ../src/Widgets/FileChooserWidget.vala:80
-#: ../src/Widgets/FileChooserWidget.vala:86
-msgid "_Select"
 msgstr ""
 
 #: ../src/Widgets/TimerView.vala:93
@@ -742,7 +747,7 @@ msgid "Pau_se"
 msgstr "Pau_sar"
 
 #: ../src/Widgets/TimerView.vala:142
-#: ../plugins/appindicator/appindicator.vala:218
+#: ../plugins/appindicator/appindicator.vala:233
 msgid "Stop the timer"
 msgstr ""
 
@@ -751,8 +756,8 @@ msgid "_Start"
 msgstr "_Iniciar"
 
 #: ../src/Widgets/TimerView.vala:151
-#: ../plugins/appindicator/appindicator.vala:100
-#: ../plugins/appindicator/appindicator.vala:227
+#: ../plugins/appindicator/appindicator.vala:114
+#: ../plugins/appindicator/appindicator.vala:242
 msgid "Start the timer"
 msgstr ""
 
@@ -761,6 +766,8 @@ msgid "Inactive"
 msgstr "Inactivo"
 
 #: ../src/Widgets/TimerView.vala:172
+#: ../plugins/appindicator/appindicator.vala:87
+#: ../plugins/appindicator/appindicator.vala:196
 msgid "No task has been selected"
 msgstr "No se ha seleccionado ninguna tarea"
 
@@ -788,15 +795,15 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: ../plugins/appindicator/appindicator.vala:59
+#: ../plugins/appindicator/appindicator.vala:73
 msgid "Open %s"
 msgstr ""
 
-#: ../plugins/appindicator/appindicator.vala:88
+#: ../plugins/appindicator/appindicator.vala:102
 msgid "Switch to next task"
 msgstr ""
 
-#: ../plugins/appindicator/appindicator.vala:94
+#: ../plugins/appindicator/appindicator.vala:108
 msgid "Switch to the previous task"
 msgstr ""
 

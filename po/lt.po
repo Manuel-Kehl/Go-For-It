@@ -16,7 +16,7 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "X-Launchpad-Export-Date: 2018-04-05 05:31+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:451
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
 msgid "About"
 msgstr "Apie"
 
@@ -61,34 +61,39 @@ msgid "Replace"
 msgstr "Pakeisti"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:227
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:86
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
 #: ../src/Widgets/FileChooserWidget.vala:85
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:438
+#: ../src/Dialogs/SettingsDialog.vala:47 ../src/MainWindow.vala:458
 msgid "Settings"
 msgstr "Nustatymai"
 
-#: ../src/Dialogs/SettingsDialog.vala:48
-#: ../plugins/appindicator/appindicator.vala:64
+#: ../src/Dialogs/SettingsDialog.vala:49
+#: ../plugins/appindicator/appindicator.vala:78
 msgid "Close"
 msgstr "Užverti"
 
-#: ../src/Dialogs/SettingsDialog.vala:71
+#: ../src/Dialogs/SettingsDialog.vala:74
 msgid "Behavior"
 msgstr "Elgsena"
 
-#: ../src/Dialogs/SettingsDialog.vala:72
+#: ../src/Dialogs/SettingsDialog.vala:75
+msgid "Notifications"
+msgstr "Pranešimai"
+
+#: ../src/Dialogs/SettingsDialog.vala:76
 msgid "Appearance"
 msgstr "Išvaizda"
 
-#: ../src/Dialogs/SettingsDialog.vala:73
+#: ../src/Dialogs/SettingsDialog.vala:77
 msgid "Shortcuts"
 msgstr "Trumpiniai"
 
-#: ../src/Dialogs/SettingsDialog.vala:75
+#: ../src/Dialogs/SettingsDialog.vala:79
 msgid "Plugins"
 msgstr ""
 
@@ -130,89 +135,81 @@ msgstr "Tam, kad šis nustatymas įsigaliotų, %s turi būti paleista iš naujo"
 msgid "Use a header bar"
 msgstr "Naudoti antraštės juostą"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:60
 #: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
 msgid "Timer"
 msgstr "Laikmatis"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:61
 #: ../src/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
 msgstr "Užduoties trukmė"
 
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:62
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:66
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:70
 msgid "minutes"
 msgstr "minučių"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:63
 #: ../src/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
 msgstr "Pertraukos trukmė"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:69
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
 msgid "Long break duration"
 msgstr "Ilgos pertraukos trukmė"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
-msgid "Reminder before task ends"
-msgstr "Priminimas prieš pasibaigiant užduočiai"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:72
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
-msgid "seconds"
-msgstr "sekundžių"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
 msgid "Resume task after the break"
 msgstr "Pratęsti užduotį po pertraukos"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:74
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
 msgid "Reset timer after switching tasks"
 msgstr "Atstatyti laikmatį, perjungus užduotis"
 
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
 msgid "Have a long break after"
 msgstr "Daryti ilgą pertrauką po"
 
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:79
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "short breaks"
 msgstr "trumpų pertraukų"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
 msgid "Timer mode"
 msgstr "Laikmačio veiksena"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:108
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:99
 msgid "Simple"
 msgstr "Paprasta"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:109
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:100
 msgid "Pomodoro"
 msgstr "Pomodoro"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:110
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:101
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:132
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:133
 msgid "Custom"
 msgstr "Tinkinta"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:169
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:156
 msgid "Tasks"
 msgstr "Užduotys"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:170
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:157
 msgid "Placement of new tasks"
 msgstr "Naujų užduočių išdėstymas"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:173
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:160
 msgid "Top of the list"
 msgstr "Sąrašo viršus"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:174
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:161
 msgid "Bottom of the list"
 msgstr "Sąrašo apačia"
 
@@ -231,6 +228,16 @@ msgstr "Varpelis"
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:41
 msgid "Loud bell"
 msgstr "Garsus varpas"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:105
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
+msgid "Reminder before task ends"
+msgstr "Priminimas prieš pasibaigiant užduočiai"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:106
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
+msgid "seconds"
+msgstr "sekundžių"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
 msgid "Start of break sound"
@@ -253,13 +260,12 @@ msgstr ""
 msgid "Select notification sound file"
 msgstr ""
 
-#: ../src/MainWindow.vala:452
-msgid "Mute sounds"
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:222
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:228
+#: ../src/Widgets/FileChooserWidget.vala:80
+#: ../src/Widgets/FileChooserWidget.vala:86
+msgid "_Select"
 msgstr ""
-
-#: ../src/MainWindow.vala:452
-msgid "Notifications"
-msgstr "Pranešimai"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
@@ -295,101 +301,72 @@ msgstr "Tamsi tema"
 msgid "Couldn't properly import settings from %s: %s"
 msgstr "Nepavyko tinkamai importuoti nustatymus iš %s: %s"
 
-#: ../src/Main.vala:101
+#: ../src/Main.vala:97
 msgid "Not a known list: %s"
 msgstr "Nežinomas sąrašas: %s"
 
-#: ../src/Main.vala:240
+#: ../src/Main.vala:236
 msgid "%s: Error: %s"
 msgstr "%s: Klaida: %s"
 
 #. / Describes format of printed table (table contains the known lists)
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
-#: ../src/Main.vala:255
+#: ../src/Main.vala:251
 msgid "Lists (List type : List ID - List name)"
 msgstr ""
 
 #. / Translators: give translation of FILE in "--logfile=FILE" command line argument
-#: ../src/Main.vala:280
+#: ../src/Main.vala:276
 msgid "FILE"
 msgstr ""
 
 #. / Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
-#: ../src/Main.vala:283
+#: ../src/Main.vala:279
 msgid "LIST-TYPE"
 msgstr ""
 
 #. / Translators: give translation of LIST-ID in "--load LIST-TYPE LIST-ID" command line argument
-#: ../src/Main.vala:285
+#: ../src/Main.vala:281
 msgid "LIST-ID"
 msgstr ""
 
-#: ../src/Main.vala:288
+#: ../src/Main.vala:284
 msgid "Print version info and exit"
 msgstr "Rodyti versijos informaciją ir išeiti"
 
-#: ../src/Main.vala:289
+#: ../src/Main.vala:285
 msgid "Show about dialog"
 msgstr "Rodyti dialogą apie programą"
 
-#: ../src/Main.vala:290
+#: ../src/Main.vala:286
 msgid "CSV file to log activities to."
 msgstr "CSV failas, į kurį registruoti veiklą."
 
-#: ../src/Main.vala:291
+#: ../src/Main.vala:287
 msgid "Show configured lists and exit"
 msgstr "Rodyti sukonfigūruotus sąrašus ir išeiti"
 
-#: ../src/Main.vala:295
+#: ../src/Main.vala:291
 msgid "Load the list specified by the list type and ID"
 msgstr "Įkelti sąrašą, nurodytą pagal sąrašo tipą ir ID"
 
-#: ../src/Main.vala:338 ../src/Widgets/TimerView.vala:90
-#: ../plugins/appindicator/appindicator.vala:193
-msgid "Take a Break"
-msgstr "Padaryti pertrauką"
-
-#: ../src/Main.vala:340
-msgid "Relax and stop thinking about your current task for a while"
-msgstr "Atsipalaiduokite ir kurį laiką nebegalvokite apie esamą užduotį"
-
-#: ../src/Main.vala:344
-msgid "The Break is Over"
-msgstr "Pertrauka pasibaigė"
-
-#: ../src/Main.vala:346
-msgid "Your current task is"
-msgstr "Jūsų dabartinė užduotis yra"
-
-#: ../src/Main.vala:357
-msgid "Prepare for your break"
-msgstr "Pasiruoškite pertraukai"
-
-#: ../src/Main.vala:359
-msgid "You have %s seconds left"
-msgstr "Jums liko %s sekundžių"
-
-#: ../src/Main.vala:366
-msgid "Task duration exceeded"
-msgstr "Viršyta užduoties trukmė"
-
-#: ../src/Main.vala:367
-msgid "Consider switching to a different task"
-msgstr "Apsvarstykite galimybę pereiti prie kitos užduoties"
-
-#: ../src/MainWindow.vala:61
+#: ../src/MainWindow.vala:63
 msgid "Go to overview"
 msgstr "Pereiti į apžvalgą"
 
-#: ../src/MainWindow.vala:62
+#: ../src/MainWindow.vala:64
 msgid "Go back to the to-do list"
 msgstr "Grįžti į užduočių sąrašą"
 
-#: ../src/MainWindow.vala:329
+#: ../src/MainWindow.vala:342
 msgid "Menu"
 msgstr "Meniu"
 
-#: ../src/MainWindow.vala:444
+#: ../src/MainWindow.vala:452
+msgid "Mute sounds"
+msgstr ""
+
+#: ../src/MainWindow.vala:464
 msgid "Contribute / Donate"
 msgstr "Talkinti / Paremti"
 
@@ -421,6 +398,39 @@ msgstr "Atlikta"
 #: ../src/Services/ActivityLog.vala:66
 msgid "Couldn't write to %s: %s"
 msgstr "Nepavyko rašyti į %s: %s"
+
+#: ../src/Services/Notifications.vala:89 ../src/Widgets/TimerView.vala:90
+#: ../plugins/appindicator/appindicator.vala:208
+msgid "Take a Break"
+msgstr "Padaryti pertrauką"
+
+#: ../src/Services/Notifications.vala:91
+msgid "Relax and stop thinking about your current task for a while"
+msgstr "Atsipalaiduokite ir kurį laiką nebegalvokite apie esamą užduotį"
+
+#: ../src/Services/Notifications.vala:95
+msgid "The Break is Over"
+msgstr "Pertrauka pasibaigė"
+
+#: ../src/Services/Notifications.vala:97
+msgid "Your current task is"
+msgstr "Jūsų dabartinė užduotis yra"
+
+#: ../src/Services/Notifications.vala:115
+msgid "Prepare for your break"
+msgstr "Pasiruoškite pertraukai"
+
+#: ../src/Services/Notifications.vala:117
+msgid "You have %s seconds left"
+msgstr "Jums liko %s sekundžių"
+
+#: ../src/Services/Notifications.vala:124
+msgid "Task duration exceeded"
+msgstr "Viršyta užduoties trukmė"
+
+#: ../src/Services/Notifications.vala:125
+msgid "Consider switching to a different task"
+msgstr "Apsvarstykite galimybę pereiti prie kitos užduoties"
 
 #: ../src/Services/SettingsManager.vala:629
 msgid "Light"
@@ -456,7 +466,7 @@ msgstr ""
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
-#: ../plugins/appindicator/appindicator.vala:82
+#: ../plugins/appindicator/appindicator.vala:96
 msgid "Mark the task as complete"
 msgstr "Žymėti užduotį kaip užbaigtą"
 
@@ -484,7 +494,7 @@ msgstr "Perkelti į dešinįjį ekraną"
 msgid "Move to left screen"
 msgstr "Perkelti į kairįjį ekraną"
 
-#: ../src/Theme.vala:54
+#: ../src/Theme.vala:74
 msgid "Inherit from GTK theme"
 msgstr "Paveldėti iš GTK temos"
 
@@ -715,17 +725,12 @@ msgstr "%u val. ir %u min."
 msgid "%s!"
 msgstr ""
 
-#: ../src/Widgets/DragList.vala:714
+#: ../src/Widgets/DragList.vala:722
 msgid "Click and drag to reorder rows"
 msgstr ""
 
 #: ../src/Widgets/FileChooserWidget.vala:22
 msgid "Choose a file"
-msgstr ""
-
-#: ../src/Widgets/FileChooserWidget.vala:80
-#: ../src/Widgets/FileChooserWidget.vala:86
-msgid "_Select"
 msgstr ""
 
 #: ../src/Widgets/TimerView.vala:93
@@ -745,7 +750,7 @@ msgid "Pau_se"
 msgstr "Pri_stabdyti"
 
 #: ../src/Widgets/TimerView.vala:142
-#: ../plugins/appindicator/appindicator.vala:218
+#: ../plugins/appindicator/appindicator.vala:233
 #, fuzzy
 msgid "Stop the timer"
 msgstr "Stabdyti laikmatį"
@@ -755,8 +760,8 @@ msgid "_Start"
 msgstr "_Pradėti"
 
 #: ../src/Widgets/TimerView.vala:151
-#: ../plugins/appindicator/appindicator.vala:100
-#: ../plugins/appindicator/appindicator.vala:227
+#: ../plugins/appindicator/appindicator.vala:114
+#: ../plugins/appindicator/appindicator.vala:242
 #, fuzzy
 msgid "Start the timer"
 msgstr "Paleisti laikmatį"
@@ -766,6 +771,8 @@ msgid "Inactive"
 msgstr "Neaktyvi"
 
 #: ../src/Widgets/TimerView.vala:172
+#: ../plugins/appindicator/appindicator.vala:87
+#: ../plugins/appindicator/appindicator.vala:196
 msgid "No task has been selected"
 msgstr "Nebuvo pasirinkta jokia užduotis"
 
@@ -793,17 +800,17 @@ msgstr "Ištrinti"
 msgid "Edit"
 msgstr "Taisyti"
 
-#: ../plugins/appindicator/appindicator.vala:59
+#: ../plugins/appindicator/appindicator.vala:73
 msgid "Open %s"
 msgstr ""
 
-#: ../plugins/appindicator/appindicator.vala:88
+#: ../plugins/appindicator/appindicator.vala:102
 #, fuzzy
 #| msgid "Move to next task/row"
 msgid "Switch to next task"
 msgstr "Perkelti į kitą užduotį/eilutę"
 
-#: ../plugins/appindicator/appindicator.vala:94
+#: ../plugins/appindicator/appindicator.vala:108
 #, fuzzy
 #| msgid "Move to previous task/row"
 msgid "Switch to the previous task"

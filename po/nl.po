@@ -5,8 +5,8 @@ msgstr ""
 "POT-Creation-Date: 2020-11-02 14:53+0100\n"
 "PO-Revision-Date: 2020-11-02 14:53+0100\n"
 "Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/"
-"go-for-it/nl/>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/go-for-"
+"it/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Weblate 4.3.1-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:451
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
 msgid "About"
 msgstr "Over"
 
@@ -61,34 +61,39 @@ msgid "Replace"
 msgstr "Vervang"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:227
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:86
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
 #: ../src/Widgets/FileChooserWidget.vala:85
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:438
+#: ../src/Dialogs/SettingsDialog.vala:47 ../src/MainWindow.vala:458
 msgid "Settings"
 msgstr "Instellingen"
 
-#: ../src/Dialogs/SettingsDialog.vala:48
-#: ../plugins/appindicator/appindicator.vala:64
+#: ../src/Dialogs/SettingsDialog.vala:49
+#: ../plugins/appindicator/appindicator.vala:78
 msgid "Close"
 msgstr "Sluiten"
 
-#: ../src/Dialogs/SettingsDialog.vala:71
+#: ../src/Dialogs/SettingsDialog.vala:74
 msgid "Behavior"
 msgstr "Gedrag"
 
-#: ../src/Dialogs/SettingsDialog.vala:72
+#: ../src/Dialogs/SettingsDialog.vala:75
+msgid "Notifications"
+msgstr "Meldingen"
+
+#: ../src/Dialogs/SettingsDialog.vala:76
 msgid "Appearance"
 msgstr "Vormgeving"
 
-#: ../src/Dialogs/SettingsDialog.vala:73
+#: ../src/Dialogs/SettingsDialog.vala:77
 msgid "Shortcuts"
 msgstr "Sneltoetsen"
 
-#: ../src/Dialogs/SettingsDialog.vala:75
+#: ../src/Dialogs/SettingsDialog.vala:79
 msgid "Plugins"
 msgstr "Plugins"
 
@@ -130,89 +135,81 @@ msgstr "%s moet worden herstart voor deze instelling effect heeft"
 msgid "Use a header bar"
 msgstr "Gebruik een 'header bar'"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:60
 #: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
 msgid "Timer"
 msgstr "Timer"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:61
 #: ../src/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
 msgstr "Duur van de taak"
 
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:62
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:66
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:70
 msgid "minutes"
 msgstr "minuten"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:63
 #: ../src/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
 msgstr "Duur van de pauze"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:69
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
 msgid "Long break duration"
 msgstr "Duur van de lange pauze"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
-msgid "Reminder before task ends"
-msgstr "Herinnering voordat de taak eindigt"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:72
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
-msgid "seconds"
-msgstr "seconden"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
 msgid "Resume task after the break"
 msgstr "Ga verder met de taak na de pauze"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:74
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
 msgid "Reset timer after switching tasks"
 msgstr "Reset de timer na het wisselen tussen taken"
 
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
 msgid "Have a long break after"
 msgstr "Houd een lange pauze na"
 
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:79
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "short breaks"
 msgstr "korte pauzes"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
 msgid "Timer mode"
 msgstr "Timer modus"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:108
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:99
 msgid "Simple"
 msgstr "Simpel"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:109
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:100
 msgid "Pomodoro"
 msgstr "Pomodoro"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:110
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:101
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:132
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:133
 msgid "Custom"
 msgstr "Aangepast"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:169
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:156
 msgid "Tasks"
 msgstr "Taken"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:170
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:157
 msgid "Placement of new tasks"
 msgstr "Plaatsing van nieuwe taken"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:173
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:160
 msgid "Top of the list"
 msgstr "Bovenkant van de lijst"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:174
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:161
 msgid "Bottom of the list"
 msgstr "onderkant van de lijst"
 
@@ -231,6 +228,16 @@ msgstr "Bel"
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:41
 msgid "Loud bell"
 msgstr "Luide bel"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:105
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
+msgid "Reminder before task ends"
+msgstr "Herinnering voordat de taak eindigt"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:106
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
+msgid "seconds"
+msgstr "seconden"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
 msgid "Start of break sound"
@@ -253,13 +260,12 @@ msgstr "Meldingsgeluiden"
 msgid "Select notification sound file"
 msgstr "Selecteer geluidsbestand voor melding melding"
 
-#: ../src/MainWindow.vala:452
-msgid "Mute sounds"
-msgstr "Demp geluid"
-
-#: ../src/MainWindow.vala:452
-msgid "Notifications"
-msgstr "Meldingen"
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:222
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:228
+#: ../src/Widgets/FileChooserWidget.vala:80
+#: ../src/Widgets/FileChooserWidget.vala:86
+msgid "_Select"
+msgstr "_Selecteer"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
@@ -295,101 +301,72 @@ msgstr "Donker thema"
 msgid "Couldn't properly import settings from %s: %s"
 msgstr "Kon instellingen niet goed importeren vanuit %s: %s"
 
-#: ../src/Main.vala:101
+#: ../src/Main.vala:97
 msgid "Not a known list: %s"
 msgstr "Niet een bekende lijst: %s"
 
-#: ../src/Main.vala:240
+#: ../src/Main.vala:236
 msgid "%s: Error: %s"
 msgstr "%s: Fout: %s"
 
 #. / Describes format of printed table (table contains the known lists)
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
-#: ../src/Main.vala:255
+#: ../src/Main.vala:251
 msgid "Lists (List type : List ID - List name)"
 msgstr "Lijst (Type van lijst : ID van lijst - Naam van lijst)"
 
 #. / Translators: give translation of FILE in "--logfile=FILE" command line argument
-#: ../src/Main.vala:280
+#: ../src/Main.vala:276
 msgid "FILE"
 msgstr "BESTAND"
 
 #. / Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
-#: ../src/Main.vala:283
+#: ../src/Main.vala:279
 msgid "LIST-TYPE"
 msgstr "LIJST-TYPE"
 
 #. / Translators: give translation of LIST-ID in "--load LIST-TYPE LIST-ID" command line argument
-#: ../src/Main.vala:285
+#: ../src/Main.vala:281
 msgid "LIST-ID"
 msgstr "LIJST-ID"
 
-#: ../src/Main.vala:288
+#: ../src/Main.vala:284
 msgid "Print version info and exit"
 msgstr "Toon versie informatie en verlaat applicatie"
 
-#: ../src/Main.vala:289
+#: ../src/Main.vala:285
 msgid "Show about dialog"
 msgstr "Toon info-dialoogvenster"
 
-#: ../src/Main.vala:290
+#: ../src/Main.vala:286
 msgid "CSV file to log activities to."
 msgstr "CSV bestand om activiteiten in bij te houden."
 
-#: ../src/Main.vala:291
+#: ../src/Main.vala:287
 msgid "Show configured lists and exit"
 msgstr "Geef de geconfigureerde lijsten weer en sluit"
 
-#: ../src/Main.vala:295
+#: ../src/Main.vala:291
 msgid "Load the list specified by the list type and ID"
 msgstr "Laad de lijst die gespecificeerd is met het lijst type en ID"
 
-#: ../src/Main.vala:338 ../src/Widgets/TimerView.vala:90
-#: ../plugins/appindicator/appindicator.vala:193
-msgid "Take a Break"
-msgstr "Neem even pauze"
-
-#: ../src/Main.vala:340
-msgid "Relax and stop thinking about your current task for a while"
-msgstr "Ontspan en denk even niet aan uw huidige taak"
-
-#: ../src/Main.vala:344
-msgid "The Break is Over"
-msgstr "De pauze is voorbij"
-
-#: ../src/Main.vala:346
-msgid "Your current task is"
-msgstr "Uw huidige taak is"
-
-#: ../src/Main.vala:357
-msgid "Prepare for your break"
-msgstr "Bereid u voor op uw pauze"
-
-#: ../src/Main.vala:359
-msgid "You have %s seconds left"
-msgstr "U heeft nog %s seconden"
-
-#: ../src/Main.vala:366
-msgid "Task duration exceeded"
-msgstr "Duur van de taak overschreden"
-
-#: ../src/Main.vala:367
-msgid "Consider switching to a different task"
-msgstr "Overweeg om aan een andere taak te werken"
-
-#: ../src/MainWindow.vala:61
+#: ../src/MainWindow.vala:63
 msgid "Go to overview"
 msgstr "Ga naar het overzicht"
 
-#: ../src/MainWindow.vala:62
+#: ../src/MainWindow.vala:64
 msgid "Go back to the to-do list"
 msgstr "Ga terug naar de takenlijst"
 
-#: ../src/MainWindow.vala:329
+#: ../src/MainWindow.vala:342
 msgid "Menu"
 msgstr "Menu"
 
-#: ../src/MainWindow.vala:444
+#: ../src/MainWindow.vala:452
+msgid "Mute sounds"
+msgstr "Demp geluid"
+
+#: ../src/MainWindow.vala:464
 msgid "Contribute / Donate"
 msgstr "Draag bij / Doneer"
 
@@ -421,6 +398,39 @@ msgstr "Gedaan"
 #: ../src/Services/ActivityLog.vala:66
 msgid "Couldn't write to %s: %s"
 msgstr "Kon map niet schrijven naar %s: %s"
+
+#: ../src/Services/Notifications.vala:89 ../src/Widgets/TimerView.vala:90
+#: ../plugins/appindicator/appindicator.vala:208
+msgid "Take a Break"
+msgstr "Neem even pauze"
+
+#: ../src/Services/Notifications.vala:91
+msgid "Relax and stop thinking about your current task for a while"
+msgstr "Ontspan en denk even niet aan uw huidige taak"
+
+#: ../src/Services/Notifications.vala:95
+msgid "The Break is Over"
+msgstr "De pauze is voorbij"
+
+#: ../src/Services/Notifications.vala:97
+msgid "Your current task is"
+msgstr "Uw huidige taak is"
+
+#: ../src/Services/Notifications.vala:115
+msgid "Prepare for your break"
+msgstr "Bereid u voor op uw pauze"
+
+#: ../src/Services/Notifications.vala:117
+msgid "You have %s seconds left"
+msgstr "U heeft nog %s seconden"
+
+#: ../src/Services/Notifications.vala:124
+msgid "Task duration exceeded"
+msgstr "Duur van de taak overschreden"
+
+#: ../src/Services/Notifications.vala:125
+msgid "Consider switching to a different task"
+msgstr "Overweeg om aan een andere taak te werken"
 
 #: ../src/Services/SettingsManager.vala:629
 msgid "Light"
@@ -456,7 +466,7 @@ msgstr "Pas de eigenschappen van een lijst of taak aan"
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
-#: ../plugins/appindicator/appindicator.vala:82
+#: ../plugins/appindicator/appindicator.vala:96
 msgid "Mark the task as complete"
 msgstr "Markeer de taak als voldaan"
 
@@ -484,7 +494,7 @@ msgstr "Ga naar het rechter scherm"
 msgid "Move to left screen"
 msgstr "Ga naar het linker scherm"
 
-#: ../src/Theme.vala:54
+#: ../src/Theme.vala:74
 msgid "Inherit from GTK theme"
 msgstr "Baseer op GTK thema"
 
@@ -717,18 +727,13 @@ msgstr "%u uur en %u minuten"
 msgid "%s!"
 msgstr "%s!"
 
-#: ../src/Widgets/DragList.vala:714
+#: ../src/Widgets/DragList.vala:722
 msgid "Click and drag to reorder rows"
 msgstr "Klik en sleep om rijen te herordenen"
 
 #: ../src/Widgets/FileChooserWidget.vala:22
 msgid "Choose a file"
 msgstr "Kies een bestand"
-
-#: ../src/Widgets/FileChooserWidget.vala:80
-#: ../src/Widgets/FileChooserWidget.vala:86
-msgid "_Select"
-msgstr "_Selecteer"
 
 #: ../src/Widgets/TimerView.vala:93
 msgid "Skip the remainder of the break"
@@ -747,7 +752,7 @@ msgid "Pau_se"
 msgstr "_Pauzeer"
 
 #: ../src/Widgets/TimerView.vala:142
-#: ../plugins/appindicator/appindicator.vala:218
+#: ../plugins/appindicator/appindicator.vala:233
 msgid "Stop the timer"
 msgstr "Stop de timer"
 
@@ -756,8 +761,8 @@ msgid "_Start"
 msgstr "_Start"
 
 #: ../src/Widgets/TimerView.vala:151
-#: ../plugins/appindicator/appindicator.vala:100
-#: ../plugins/appindicator/appindicator.vala:227
+#: ../plugins/appindicator/appindicator.vala:114
+#: ../plugins/appindicator/appindicator.vala:242
 msgid "Start the timer"
 msgstr "Start de timer"
 
@@ -766,6 +771,8 @@ msgid "Inactive"
 msgstr "Inactief"
 
 #: ../src/Widgets/TimerView.vala:172
+#: ../plugins/appindicator/appindicator.vala:87
+#: ../plugins/appindicator/appindicator.vala:196
 msgid "No task has been selected"
 msgstr "Er is geen taak geselecteerd"
 
@@ -793,15 +800,15 @@ msgstr "Verwijderen"
 msgid "Edit"
 msgstr "Bewerken"
 
-#: ../plugins/appindicator/appindicator.vala:59
+#: ../plugins/appindicator/appindicator.vala:73
 msgid "Open %s"
 msgstr "Open %s"
 
-#: ../plugins/appindicator/appindicator.vala:88
+#: ../plugins/appindicator/appindicator.vala:102
 msgid "Switch to next task"
 msgstr "Ga naar volgende taak"
 
-#: ../plugins/appindicator/appindicator.vala:94
+#: ../plugins/appindicator/appindicator.vala:108
 msgid "Switch to the previous task"
 msgstr "Ga naar de vorige taak"
 
