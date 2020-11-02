@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-20 12:13+0200\n"
-"PO-Revision-Date: 2020-10-21 17:35+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"POT-Creation-Date: 2020-11-02 14:53+0100\n"
+"PO-Revision-Date: 2020-11-02 14:53+0100\n"
+"Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "go-for-it/go-for-it/nb_NO/>\n"
 "Language: no\n"
@@ -215,6 +215,56 @@ msgstr "Toppen av listen"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:174
 msgid "Bottom of the list"
 msgstr "Bunnen av listen"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
+msgid "Aluminium bowl"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:37
+msgid "Singing bowl"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
+#, fuzzy
+msgid "Bell"
+msgstr "Bjelle"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:41
+#, fuzzy
+msgid "Loud bell"
+msgstr "Kraftig bjelle"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
+#, fuzzy
+msgid "Start of break sound"
+msgstr "Lyd ved start på pause"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:112
+#, fuzzy
+msgid "End of break sound"
+msgstr "Lyd ved slutt på pause"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:134
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:135
+msgid "Silent"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:169
+msgid "Notification sounds"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:218
+msgid "Select notification sound file"
+msgstr ""
+
+#: ../src/MainWindow.vala:452
+msgid "Mute sounds"
+msgstr ""
+
+#: ../src/MainWindow.vala:452
+#, fuzzy
+msgid "Notifications"
+msgstr "Varsler"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
