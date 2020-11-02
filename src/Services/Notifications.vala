@@ -23,10 +23,12 @@ class GOFI.Notifications : GLib.Object {
     private const string KEY_BREAK_END_SOUND_FILE = "break-end-sound-file";
     private const string KEY_BREAK_START_SOUND_VOLUME = "break-start-sound-volume";
     private const string KEY_BREAK_END_SOUND_VOLUME = "break-end-sound-volume";
+    public const string KEY_MUTE_SOUND = "mute";
     private GLib.Settings sound_settings;
 
     public SoundPlayer break_start_player { get; private set; }
     public SoundPlayer break_end_player { get; private set; }
+    public bool mute_sounds { get; set; default = false; }
 
     /**
      * Used to determine if a notification should be sent.
@@ -56,10 +58,15 @@ class GOFI.Notifications : GLib.Object {
         sound_settings.bind (KEY_BREAK_END_SOUND_FILE, break_end_player.model, "file_str", sbf);
         sound_settings.bind (KEY_BREAK_START_SOUND_VOLUME, break_start_player.model, "volume", sbf);
         sound_settings.bind (KEY_BREAK_END_SOUND_VOLUME, break_end_player.model, "volume", sbf);
+        sound_settings.bind (KEY_MUTE_SOUND, this, "mute_sounds", sbf);
     }
 
     ~Notifications () {
         app.withdraw_notification (TIMER_NOTIFY_ID);
+    }
+
+    public Action[] create_actions () {
+        return {sound_settings.create_action (KEY_MUTE_SOUND)};
     }
 
     /**
@@ -93,10 +100,12 @@ class GOFI.Notifications : GLib.Object {
             notification.set_priority (NotificationPriority.HIGH);
             notification.set_icon (new ThemedIcon(GOFI.ICON_NAME));
             app.send_notification (TIMER_NOTIFY_ID, notification);
-            if (break_active) {
-                break_start_player.play ();
-            } else {
-                break_end_player.play ();
+            if (!mute_sounds) {
+                if (break_active) {
+                    break_start_player.play ();
+                } else {
+                    break_end_player.play ();
+                }
             }
         }
         break_previously_active = break_active;
