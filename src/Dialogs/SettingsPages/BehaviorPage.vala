@@ -28,10 +28,6 @@ class GOFI.BehaviorPage : Gtk.Grid {
     Gtk.Label break_lbl2;
     Gtk.SpinButton break_spin;
 
-    Gtk.Label reminder_lbl1;
-    Gtk.Label reminder_lbl2;
-    Gtk.SpinButton reminder_spin;
-
     Gtk.Label long_break_lbl1;
     Gtk.Label long_break_lbl2;
     Gtk.SpinButton long_break_spin;
@@ -68,8 +64,6 @@ class GOFI.BehaviorPage : Gtk.Grid {
         break_lbl2 = new Gtk.Label (_("minutes"));
         long_break_lbl1 = new Gtk.Label (_("Long break duration") + ":");
         long_break_lbl2 = new Gtk.Label (_("minutes"));
-        reminder_lbl1 = new Gtk.Label (_("Reminder before task ends") +":");
-        reminder_lbl2 = new Gtk.Label (_("seconds"));
         resume_task_lbl = new Gtk.Label (_("Resume task after the break") + ":");
         reset_on_switch_lbl = new Gtk.Label (_("Reset timer after switching tasks") + ":");
 
@@ -91,8 +85,6 @@ class GOFI.BehaviorPage : Gtk.Grid {
         task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         long_break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
-        // More than ten minutes would not make much sense
-        reminder_spin = new Gtk.SpinButton.with_range (0, 600, 1);
 
         long_break_period_spin = new Gtk.SpinButton.with_range (1, 99, 1);
 
@@ -102,7 +94,6 @@ class GOFI.BehaviorPage : Gtk.Grid {
         task_spin.value = settings.task_duration / 60;
         break_spin.value = settings.break_duration / 60;
         long_break_spin.value = settings.long_break_duration / 60;
-        reminder_spin.value = settings.reminder_time;
         long_break_period_spin.value = settings.pomodoro_period - 1;
 
         timer_mode_cbox.append (TimerMode.STR_SIMPLE, _("Simple"));
@@ -126,9 +117,6 @@ class GOFI.BehaviorPage : Gtk.Grid {
         long_break_period_spin.value_changed.connect ((e) => {
             settings.pomodoro_period = long_break_period_spin.get_value_as_int () + 1;
         });
-        reminder_spin.value_changed.connect ((e) => {
-            settings.reminder_time = reminder_spin.get_value_as_int ();
-        });
         timer_mode_cbox.changed.connect ( () => {
             var timer_mode = TimerMode.from_string (timer_mode_cbox.active_id);
             settings.timer_mode = timer_mode;
@@ -149,7 +137,6 @@ class GOFI.BehaviorPage : Gtk.Grid {
         add_option (this, timer_mode_lbl, timer_mode_cbox, ref row);
         add_option (this, resume_task_lbl, resume_task_switch, ref row);
         add_option (this, reset_on_switch_lbl, reset_on_switch_switch, ref row);
-        add_option (this, reminder_lbl1, reminder_spin, ref row, 1, reminder_lbl2);
         this.attach (sched_widget, 0, row, 3, 1);
         row++;
         add_option (this, task_lbl1, task_spin, ref row, 1, task_lbl2);

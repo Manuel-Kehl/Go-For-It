@@ -18,34 +18,83 @@
 
 namespace GOFI
 {
-    public errordomain SoundPlayerError {
+    errordomain SoundPlayerError {
         FAILED_TO_INITIALIZE
     }
 
-    /**
-     * Preset sounds are defined relative to data directory,
-     * and used URIs are not particulary valid.
-     */
-    private string get_absolute_uri (string uri) {
-        var scheme = GLib.Uri.parse_scheme (uri);
+    class SoundPlayerModel : GLib.Object {
+        public GLib.File? file {
+            get {
+                return _file;
+            }
+            set {
+                _file = value;
 
-        if (scheme == null && uri != "") {
-            var path = GLib.Path.build_filename (GOFI.DATADIR, "sounds", uri);
-
-            try {
-                return GLib.Filename.to_uri (path);
-            } catch (GLib.ConvertError error) {
-                warning ("Failed to convert \"%s\" to uri: %s", path, error.message);
+                if (internal_update) {
+                    return;
+                }
+                internal_update = true;
+                if (_file != null) {
+                    file_str = _file.get_uri ();
+                } else {
+                    file_str = "";
+                }
+                internal_update = false;
             }
         }
+        private GLib.File? _file;
 
-        return uri;
+        public string file_str {
+            get {
+                return _file_str;
+            }
+            set {
+                _file_str = value;
+
+                string uri = _file_str;
+
+                if (internal_update) {
+                    return;
+                }
+                internal_update = true;
+
+                // Check if string needs to be interpreted as preset
+                if (_file_str != "") {
+                    var scheme = GLib.Uri.parse_scheme (_file_str);
+                    if (scheme == null) {
+                        var path = GLib.Path.build_filename (GOFI.DATADIR, "sounds", _file_str);
+                        try {
+                            uri = GLib.Filename.to_uri (path);
+                        } catch (GLib.ConvertError error) {
+                            warning ("Failed to convert \"%s\" to uri: %s", path, error.message);
+                            uri = _file_str = "";
+                        }
+                    }
+                }
+
+                if (uri == "") {
+                    file = null;
+                } else {
+                    file = File.new_for_uri (uri);
+                }
+                internal_update = false;
+            }
+        }
+        private string _file_str;
+
+        private bool internal_update;
+
+        public double volume { get; set; default = 1.0; }
+
+        public SoundPlayerModel () {
+            _file_str = "";
+            _file = null;
+            internal_update = false;
+        }
     }
 
-    public interface SoundPlayer : GLib.Object {
-        public abstract GLib.File? file { get; set; }
-
-        public abstract double volume { get; set; }
+    interface SoundPlayer : GLib.Object {
+        public abstract SoundPlayerModel model { get; set; }
 
         public abstract void play ();
 
@@ -61,30 +110,28 @@ namespace GOFI
     }
 
     private class CanberraPlayer : GLib.Object, SoundPlayer {
-        public GLib.File? file {
+        public SoundPlayerModel model {
             get {
-                return this._file;
+                return this._model;
             }
             set {
-                this._file = value != null
-                        ? GLib.File.new_for_uri (get_absolute_uri (value.get_uri ()))
-                        : null;
-
-                if (this.is_cached) {
-                    /* there is no way to invalidate old value, so at least refresh cache */
-                    this.cache_file ();
+                if (this._model != null) {
+                    this._model.notify["file"].disconnect (on_file_changed);
                 }
+                this._model = value;
+                this._model.notify["file"].connect (on_file_changed);
+                on_file_changed ();
             }
         }
+        SoundPlayerModel _model;
 
-        public string event_id { get; private construct set; }
-        public double volume { get; set; default = 1.0; }
+        public string? event_id { get; construct set; }
 
-        private GLib.File _file;
         private Canberra.Context context;
         private bool is_cached = false;
 
         public CanberraPlayer (string? event_id) throws SoundPlayerError {
+            Object (event_id: event_id);
             Canberra.Context context;
 
             /* Create context */
@@ -116,23 +163,30 @@ namespace GOFI
             }
 
             this.context = (owned) context;
-            this.event_id = event_id;
+            this.model = new SoundPlayerModel ();
         }
 
-        ~CanberraPlayer ()
-        {
+        ~CanberraPlayer () {
             if (this.context != null) {
                 this.stop ();
             }
         }
 
-        private static double amplitude_to_decibels (double amplitude)
-        {
+        private void on_file_changed () {
+            if (this.is_cached) {
+                /* there is no way to invalidate old value, so at least refresh cache */
+                this.cache_file ();
+            }
+        }
+
+        private static double amplitude_to_decibels (double amplitude) {
             return 20.0 * Math.log10 (amplitude);
         }
 
         public void play () requires (this.context != null) {
-            if (this._file != null)
+            var file = this._model.file;
+            var volume = this._model.volume;
+            if (file != null)
             {
                 if (this.context != null)
                 {
@@ -140,9 +194,9 @@ namespace GOFI
 
                     var status = Canberra.Proplist.create (out properties);
                     properties.sets (Canberra.PROP_MEDIA_ROLE, "alert");
-                    properties.sets (Canberra.PROP_MEDIA_FILENAME, this._file.get_path ());
+                    properties.sets (Canberra.PROP_MEDIA_FILENAME, file.get_path ());
                     properties.sets (Canberra.PROP_CANBERRA_VOLUME,
-                                     ((float) amplitude_to_decibels (this.volume)).to_string ());
+                                     ((float) amplitude_to_decibels (volume)).to_string ());
 
                     if (this.event_id != null) {
                         properties.sets (Canberra.PROP_EVENT_ID, this.event_id);
@@ -152,20 +206,18 @@ namespace GOFI
                         }
                     }
 
-                    status = this.context.play_full (
-                        0, properties, this.on_play_callback
-                    );
+                    status = this.context.play_full (0, properties, null);
 
                     if (status != Canberra.SUCCESS) {
                         warning ("Couldn't play sound '%s' - %s",
-                            this._file.get_uri (),
+                            file.get_uri (),
                             Canberra.strerror (status)
                         );
                     }
                 }
                 else {
                     warning ("Couldn't play sound '%s'",
-                        this._file.get_uri ()
+                        this.model.file.get_uri ()
                     );
                 }
             }
@@ -186,14 +238,15 @@ namespace GOFI
 
         private void cache_file () {
             Canberra.Proplist properties = null;
+            var file = this._model.file;
 
             if (this.context != null &&
                 this.event_id != null &&
-                this._file != null
+                file != null
             ) {
                 var status = Canberra.Proplist.create (out properties);
                 properties.sets (Canberra.PROP_EVENT_ID, this.event_id);
-                properties.sets (Canberra.PROP_MEDIA_FILENAME, this._file.get_path ());
+                properties.sets (Canberra.PROP_MEDIA_FILENAME, file.get_path ());
 
                 status = this.context.cache_full (properties);
 
@@ -207,34 +260,17 @@ namespace GOFI
                 }
             }
         }
-
-        private void on_play_callback (Canberra.Context context,
-                                       uint32           id,
-                                       int              code)
-        {
-        }
     }
 
     private class DummyPlayer : GLib.Object, SoundPlayer {
-        public GLib.File? file {
-            get {
-                return this._file;
-            }
-            set {
-                this._file = value != null
-                        ? GLib.File.new_for_uri (get_absolute_uri (value.get_uri ()))
-                        : null;
-            }
+        public SoundPlayerModel model { get; set; }
+
+        public DummyPlayer () {
+            this.model = new SoundPlayerModel ();
         }
 
-        public double volume { get; set; default = 1.0; }
+        public void play () {}
 
-        private GLib.File _file;
-
-        public void play () {
-        }
-
-        public void stop () {
-        }
+        public void stop () {}
     }
 }

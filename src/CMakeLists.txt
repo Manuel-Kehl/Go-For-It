@@ -69,6 +69,7 @@ vala_precompile (VALA_C ${LIBNAME}
     Dialogs/SettingsDialog.vala
     Dialogs/SettingsPages/AppearancePage.vala
     Dialogs/SettingsPages/BehaviorPage.vala
+    Dialogs/SettingsPages/NotificationsPage.vala
     Dialogs/SettingsPages/ShortcutsPage.vala
     Dialogs/AboutDialog.vala
     Dialogs/ContributeDialog.vala

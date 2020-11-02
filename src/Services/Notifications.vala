@@ -17,25 +17,16 @@
 
 class GOFI.Notifications : GLib.Object {
     private const string TIMER_NOTIFY_ID = "timer-notification";
-    private SoundPlayer break_timer_elapsed_player;
-    private SoundPlayer task_timer_elapsed_player;
     private unowned Application app;
 
-    private const string KEY_TIMER_TASK_SOUND_FILE = "task-elapsed-sound-file";
-    private const string KEY_TIMER_BREAK_SOUND_FILE = "break-elapsed-sound-file";
-    private const string KEY_TIMER_TASK_SOUND_VOLUME = "task-elapsed-sound-volume";
-    private const string KEY_TIMER_BREAK_SOUND_VOLUME = "break-elapsed-sound-volume";
+    private const string KEY_BREAK_START_SOUND_FILE = "break-start-sound-file";
+    private const string KEY_BREAK_END_SOUND_FILE = "break-end-sound-file";
+    private const string KEY_BREAK_START_SOUND_VOLUME = "break-start-sound-volume";
+    private const string KEY_BREAK_END_SOUND_VOLUME = "break-end-sound-volume";
     private GLib.Settings sound_settings;
 
-    public string task_sound_file_str {
-        get;
-        set;
-    }
-
-    public string break_sound_file_str {
-        get;
-        set;
-    }
+    public SoundPlayer break_start_player { get; private set; }
+    public SoundPlayer break_end_player { get; private set; }
 
     /**
      * Used to determine if a notification should be sent.
@@ -47,48 +38,24 @@ class GOFI.Notifications : GLib.Object {
         setup_notifications ();
 
         try {
-            break_timer_elapsed_player = new CanberraPlayer (null);
+            break_end_player = new CanberraPlayer ("gofi-break-end");
         } catch (SoundPlayerError e) {
             warning (e.message);
-            break_timer_elapsed_player = new DummyPlayer ();
+            break_end_player = new DummyPlayer ();
         }
         try {
-            task_timer_elapsed_player = new CanberraPlayer (null);
+            break_start_player = new CanberraPlayer ("gofi-break-start");
         } catch (SoundPlayerError e) {
             warning (e.message);
-            task_timer_elapsed_player = new DummyPlayer ();
+            break_start_player = new DummyPlayer ();
         }
 
         sound_settings = new GLib.Settings (GOFI.APP_ID + ".settings.sounds");
         var sbf = GLib.SettingsBindFlags.DEFAULT;
-        sound_settings.bind (KEY_TIMER_TASK_SOUND_FILE, this, "task_sound_file_str", sbf);
-        sound_settings.bind (KEY_TIMER_BREAK_SOUND_FILE, this, "break_sound_file_str", sbf);
-        sound_settings.bind (KEY_TIMER_TASK_SOUND_VOLUME, task_timer_elapsed_player, "volume", sbf);
-        sound_settings.bind (KEY_TIMER_BREAK_SOUND_VOLUME, break_timer_elapsed_player, "volume", sbf);
-
-        this.notify["task_sound_file_str"].connect (refresh_task_elapsed_sound_file);
-        this.notify["break_sound_file_str"].connect (refresh_break_elapsed_sound_file);
-
-        refresh_task_elapsed_sound_file ();
-        refresh_break_elapsed_sound_file ();
-    }
-
-    private void refresh_task_elapsed_sound_file () {
-        var file_str = task_sound_file_str;
-        File? file = null;
-        if (file_str != "") {
-            file = File.new_for_uri (get_absolute_uri (file_str));
-        }
-        task_timer_elapsed_player.file = file;
-    }
-
-    private void refresh_break_elapsed_sound_file () {
-        var file_str = break_sound_file_str;
-        File? file = null;
-        if (file_str != "") {
-            file = File.new_for_uri (get_absolute_uri (file_str));
-        }
-        break_timer_elapsed_player.file = file;
+        sound_settings.bind (KEY_BREAK_START_SOUND_FILE, break_start_player.model, "file_str", sbf);
+        sound_settings.bind (KEY_BREAK_END_SOUND_FILE, break_end_player.model, "file_str", sbf);
+        sound_settings.bind (KEY_BREAK_START_SOUND_VOLUME, break_start_player.model, "volume", sbf);
+        sound_settings.bind (KEY_BREAK_END_SOUND_VOLUME, break_end_player.model, "volume", sbf);
     }
 
     ~Notifications () {
@@ -127,9 +94,9 @@ class GOFI.Notifications : GLib.Object {
             notification.set_icon (new ThemedIcon(GOFI.ICON_NAME));
             app.send_notification (TIMER_NOTIFY_ID, notification);
             if (break_active) {
-                task_timer_elapsed_player.play ();
+                break_start_player.play ();
             } else {
-                break_timer_elapsed_player.play ();
+                break_end_player.play ();
             }
         }
         break_previously_active = break_active;

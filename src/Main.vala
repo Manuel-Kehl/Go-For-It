@@ -25,6 +25,7 @@ namespace GOFI {
 #endif
     private TaskTimer task_timer;
     private MainWindow win;
+    private Notifications notification_service;
 }
 
 errordomain GOFIParseError {
@@ -44,7 +45,6 @@ class GOFI.Main : Gtk.Application {
     private static bool list_lists = false;
     private static string? logfile = null;
     private static string[] load_list = null;
-    private Notifications notification_service;
 
     private void load_settings () {
         if (settings == null) {
