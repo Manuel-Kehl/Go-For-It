@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-02 14:53+0100\n"
-"PO-Revision-Date: 2020-11-02 14:53+0100\n"
-"Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/fr/>\n"
+"PO-Revision-Date: 2020-11-04 19:27+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -221,11 +221,11 @@ msgstr "En-bas de la liste"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
-msgstr ""
+msgstr "Bol en aluminium"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:37
 msgid "Singing bowl"
-msgstr ""
+msgstr "Bol chantant"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
 msgid "Bell"
@@ -256,15 +256,15 @@ msgstr "Son de fin de pause"
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:134
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:135
 msgid "Silent"
-msgstr ""
+msgstr "Silencieux"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:169
 msgid "Notification sounds"
-msgstr ""
+msgstr "Sons de notification"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:218
 msgid "Select notification sound file"
-msgstr ""
+msgstr "Sélectionnez le fichier son de notification"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:222
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:228
@@ -370,7 +370,7 @@ msgstr "Menu"
 
 #: ../src/MainWindow.vala:452
 msgid "Mute sounds"
-msgstr ""
+msgstr "Couper les sons"
 
 #: ../src/MainWindow.vala:464
 msgid "Contribute / Donate"
@@ -468,7 +468,7 @@ msgstr "Démarrer/Arrêter le minuteur"
 
 #: ../src/Services/Shortcuts.vala:158
 msgid "Edit the properties of a list or task"
-msgstr "Éditer les propriétés d’une liste ou d’une tâche"
+msgstr "Modifier les propriétés d’une liste ou d’une tâche"
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
@@ -582,7 +582,8 @@ msgstr "Enregistrer le temps passé sur chaque tâche"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
 msgid "Log the total time spent working on a task using the timer."
-msgstr "Enregistrer le temps passé sur une tâche."
+msgstr ""
+"Enregistrer le temps total passé sur une tâche en utilisant le minuteur."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:286
 msgid "This information will be stored in the todo.txt files."
