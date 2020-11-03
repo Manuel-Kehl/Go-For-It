@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-02 14:53+0100\n"
-"PO-Revision-Date: 2020-11-02 14:53+0100\n"
-"Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/it/>\n"
+"PO-Revision-Date: 2020-11-04 19:27+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Weblate 4.3.2-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
@@ -217,11 +217,11 @@ msgstr "In fondo alla lista"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
-msgstr ""
+msgstr "Ciotola di alluminio"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:37
 msgid "Singing bowl"
-msgstr ""
+msgstr "Ciotola di canto"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
 msgid "Bell"
@@ -252,15 +252,15 @@ msgstr "Suono fine pausa"
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:134
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:135
 msgid "Silent"
-msgstr ""
+msgstr "Silenzioso"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:169
 msgid "Notification sounds"
-msgstr ""
+msgstr "Suoni di notifica"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:218
 msgid "Select notification sound file"
-msgstr ""
+msgstr "Seleziona il file audio di notifica"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:222
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:228
@@ -366,7 +366,7 @@ msgstr "Menu"
 
 #: ../src/MainWindow.vala:452
 msgid "Mute sounds"
-msgstr ""
+msgstr "Silenzia audio"
 
 #: ../src/MainWindow.vala:464
 msgid "Contribute / Donate"
@@ -464,7 +464,7 @@ msgstr "Attiva/disattiva il timer"
 
 #: ../src/Services/Shortcuts.vala:158
 msgid "Edit the properties of a list or task"
-msgstr ""
+msgstr "Modifica le proprietà di un elenco o di un'attività"
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
@@ -542,25 +542,27 @@ msgstr "Applica"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:194
 msgid "Log timer usage"
-msgstr ""
+msgstr "Registra l'utilizzo del temporizzatore"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
 msgid ""
 "Keep track of when you used the timer and what tasks you worked on while "
 "doing this."
 msgstr ""
+"Tieni traccia di quando hai usato il temporizzatore e su quali attività hai "
+"lavorato mentre lo facevi."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
 msgid "This log will be saved as a CSV file."
-msgstr ""
+msgstr "Questo registro verrà salvato come file CSV."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
 msgid "Log file"
-msgstr ""
+msgstr "File di registro"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
 msgid "Select file to log timer usage in"
-msgstr ""
+msgstr "Seleziona il file per registrare l'utilizzo del temporizzatore"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:272
 msgid "Select file to store to-do tasks in"
@@ -575,10 +577,10 @@ msgid "Log the time spent working on each task"
 msgstr "Registra il tempo impiegato per ogni Attività"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
-#, fuzzy
-#| msgid "Log the time spent working on each task"
 msgid "Log the total time spent working on a task using the timer."
-msgstr "Registra il tempo impiegato per ogni Attività"
+msgstr ""
+"Registra il tempo totale impiegato a lavorare su un'attività utilizzando il "
+"temporizzatore."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:286
 msgid "This information will be stored in the todo.txt files."
@@ -593,15 +595,11 @@ msgid "The configured to-do file is already in use by another list."
 msgstr "Il file da-fare configurato è già in uso da un'altra lista."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:435
-#, fuzzy
-#| msgid ""
-#| "Another todo.txt list uses the file chosen to archive completed tasks to "
-#| "to store its to-do tasks."
 msgid ""
 "Another todo.txt list archives its completed tasks to the selected file."
 msgstr ""
-"Un'altra lista todo.txt utilizza il file scelto per archiviare le attività "
-"completate per memorizzare le attività da fare."
+"Un altro elenco todo.txt archivia le attività completate nel file "
+"selezionato."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:455
 msgid "Please assign a name to the list."
@@ -731,11 +729,11 @@ msgstr "%u ore e %u minuti"
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234
 msgid "%s!"
-msgstr ""
+msgstr "%s!"
 
 #: ../src/Widgets/DragList.vala:722
 msgid "Click and drag to reorder rows"
-msgstr ""
+msgstr "Fai clic e trascina per riordinare le righe"
 
 #: ../src/Widgets/FileChooserWidget.vala:22
 msgid "Choose a file"
@@ -743,7 +741,7 @@ msgstr "Scegli un file"
 
 #: ../src/Widgets/TimerView.vala:93
 msgid "Skip the remainder of the break"
-msgstr ""
+msgstr "Salta il resto della pausa"
 
 #: ../src/Widgets/TimerView.vala:95
 msgid "Active Task"
@@ -751,7 +749,7 @@ msgstr "Attività in corso"
 
 #: ../src/Widgets/TimerView.vala:99
 msgid "Skip to the break"
-msgstr ""
+msgstr "Passa alla pausa"
 
 #: ../src/Widgets/TimerView.vala:140
 msgid "Pau_se"
@@ -759,9 +757,8 @@ msgstr "Interrompi(_S)"
 
 #: ../src/Widgets/TimerView.vala:142
 #: ../plugins/appindicator/appindicator.vala:233
-#, fuzzy
 msgid "Stop the timer"
-msgstr "Disattiva il timer"
+msgstr "Disattiva il temporizzatore"
 
 #: ../src/Widgets/TimerView.vala:149
 msgid "_Start"
@@ -770,9 +767,8 @@ msgstr "Inizia(_S)"
 #: ../src/Widgets/TimerView.vala:151
 #: ../plugins/appindicator/appindicator.vala:114
 #: ../plugins/appindicator/appindicator.vala:242
-#, fuzzy
 msgid "Start the timer"
-msgstr "Attiva il timer"
+msgstr "Attiva il temporizzatore"
 
 #: ../src/Widgets/TimerView.vala:171
 msgid "Inactive"
@@ -810,16 +806,12 @@ msgstr "Modifica"
 
 #: ../plugins/appindicator/appindicator.vala:73
 msgid "Open %s"
-msgstr ""
+msgstr "Apri %s"
 
 #: ../plugins/appindicator/appindicator.vala:102
-#, fuzzy
-#| msgid "Move to next task/row"
 msgid "Switch to next task"
-msgstr "Passa alla prossima riga/attività"
+msgstr "Passa all'attività successiva"
 
 #: ../plugins/appindicator/appindicator.vala:108
-#, fuzzy
-#| msgid "Move to previous task/row"
 msgid "Switch to the previous task"
-msgstr "Torna alla riga/attività precedente"
+msgstr "Passa all'attività precedente"
