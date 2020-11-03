@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-02 14:53+0100\n"
-"PO-Revision-Date: 2020-10-28 22:26+0000\n"
+"PO-Revision-Date: 2020-11-04 19:27+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/hr/>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,7 +84,7 @@ msgstr "Ponašanje"
 
 #: ../src/Dialogs/SettingsDialog.vala:75
 msgid "Notifications"
-msgstr ""
+msgstr "Obavijesti"
 
 #: ../src/Dialogs/SettingsDialog.vala:76
 msgid "Appearance"
@@ -216,19 +216,19 @@ msgstr "Zadnji na popisu"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
-msgstr ""
+msgstr "Aluminijski zvuk"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:37
 msgid "Singing bowl"
-msgstr ""
+msgstr "Pjevanje"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
 msgid "Bell"
-msgstr ""
+msgstr "Zvono"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:41
 msgid "Loud bell"
-msgstr ""
+msgstr "Glasno zvono"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:105
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
@@ -242,24 +242,24 @@ msgstr "sekunde"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
 msgid "Start of break sound"
-msgstr ""
+msgstr "Zvuk početka pauze"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:112
 msgid "End of break sound"
-msgstr ""
+msgstr "Zvuk kraja pauze"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:134
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:135
 msgid "Silent"
-msgstr ""
+msgstr "Bezvučno"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:169
 msgid "Notification sounds"
-msgstr ""
+msgstr "Zvukovi za obavijesti"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:218
 msgid "Select notification sound file"
-msgstr ""
+msgstr "Odaberi datoteku sa zvukovima za obavijesti"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:222
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:228
@@ -365,7 +365,7 @@ msgstr "Izbornik"
 
 #: ../src/MainWindow.vala:452
 msgid "Mute sounds"
-msgstr ""
+msgstr "Ugasi zvukove"
 
 #: ../src/MainWindow.vala:464
 msgid "Contribute / Donate"
