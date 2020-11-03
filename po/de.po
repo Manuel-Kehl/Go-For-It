@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-02 14:53+0100\n"
-"PO-Revision-Date: 2020-11-02 14:53+0100\n"
-"Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/de/>\n"
+"PO-Revision-Date: 2020-11-04 19:27+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.3.2-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
@@ -21,7 +21,8 @@ msgstr "Info"
 
 #: ../src/Dialogs/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
-msgstr "Eine stilvolle Aufgabenliste mit eingebautem Produktivitätsmesser."
+msgstr ""
+"Eine stilvolle Aufgabenliste mit eingebauter Zeitmessung der Produktivität."
 
 #: ../src/Dialogs/ContributeDialog.vala:28
 msgid "Contributions and Donations"
@@ -140,7 +141,7 @@ msgstr "Eine Kopfzeile benutzen"
 #: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
 msgid "Timer"
-msgstr "Schaltuhr"
+msgstr "Stopp­uhr"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:61
 #: ../src/Widgets/TimerScheduleWidget.vala:132
@@ -168,7 +169,7 @@ msgstr "Aufgabe nach der Pause fortführen"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
 msgid "Reset timer after switching tasks"
-msgstr "Schaltuhr nach Aufgabenwechsel zurücksetzen"
+msgstr "Stopp­uhr nach Aufgabenwechsel zurücksetzen"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
@@ -182,7 +183,7 @@ msgstr "kurzen Pausen"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
 msgid "Timer mode"
-msgstr "Schaltuhr-Modus"
+msgstr "Stopp­uhr-Modus"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:99
 msgid "Simple"
@@ -216,11 +217,11 @@ msgstr "Ende der Liste"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
-msgstr ""
+msgstr "Aluminiumschale"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:37
 msgid "Singing bowl"
-msgstr ""
+msgstr "Klangschale"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
 msgid "Bell"
@@ -251,15 +252,15 @@ msgstr "Ende des Pausenklangs"
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:134
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:135
 msgid "Silent"
-msgstr ""
+msgstr "Lautlos"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:169
 msgid "Notification sounds"
-msgstr ""
+msgstr "Benachrichtigungstöne"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:218
 msgid "Select notification sound file"
-msgstr ""
+msgstr "Benachrichtigungs-Tondatei auswählen"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:222
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:228
@@ -366,7 +367,7 @@ msgstr "Menü"
 
 #: ../src/MainWindow.vala:452
 msgid "Mute sounds"
-msgstr ""
+msgstr "Stummschalten"
 
 #: ../src/MainWindow.vala:464
 msgid "Contribute / Donate"
@@ -460,7 +461,7 @@ msgstr "Neue Aufgabe/Aufgabenliste hinzufügen"
 
 #: ../src/Services/Shortcuts.vala:157
 msgid "Start/Stop the timer"
-msgstr "Schaltuhr starten/anhalten"
+msgstr "Stopp­uhr starten/anhalten"
 
 #: ../src/Services/Shortcuts.vala:158
 msgid "Edit the properties of a list or task"
@@ -542,25 +543,27 @@ msgstr "Anwenden"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:194
 msgid "Log timer usage"
-msgstr ""
+msgstr "Benutzung der Stopp­uhr protokolieren"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
 msgid ""
 "Keep track of when you used the timer and what tasks you worked on while "
 "doing this."
 msgstr ""
+"Verfolge die Benutztung der Stopp­uhr, sowie die Aufgaben, bei denen du sie "
+"benutzt hast."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
 msgid "This log will be saved as a CSV file."
-msgstr ""
+msgstr "Dieses Protokoll wird als CSV-Datei gespeichert."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
 msgid "Log file"
-msgstr ""
+msgstr "Protokolldatei"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
 msgid "Select file to log timer usage in"
-msgstr ""
+msgstr "Datei auswählen, um die Benutztung der Stopp­uhr zu speichern"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:272
 msgid "Select file to store to-do tasks in"
@@ -579,10 +582,8 @@ msgid "Log the time spent working on each task"
 msgstr "Protokolliere den Zeitaufwand pro Aufgabe"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
-#, fuzzy
-#| msgid "Log the time spent working on each task"
 msgid "Log the total time spent working on a task using the timer."
-msgstr "Protokolliere den Zeitaufwand pro Aufgabe"
+msgstr "Protokolliere den Zeitaufwand pro Aufgabe, gemessen mit der Stopp­uhr."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:286
 msgid "This information will be stored in the todo.txt files."
@@ -599,16 +600,11 @@ msgstr ""
 "verwendet."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:435
-#, fuzzy
-#| msgid ""
-#| "Another todo.txt list uses the file chosen to archive completed tasks to "
-#| "to store its to-do tasks."
 msgid ""
 "Another todo.txt list archives its completed tasks to the selected file."
 msgstr ""
-"Eine andere todo.txt-Liste verwendet die Datei, die zum Archivieren "
-"abgeschlossener Aufgaben ausgewählt wurde, um die zu erledigenden Aufgaben "
-"zu speichern."
+"Eine andere todo.txt-Liste archiviert abgeschlossene Aufgaben in die "
+"ausgewählte Datei."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:455
 msgid "Please assign a name to the list."
@@ -739,7 +735,7 @@ msgstr "%u Uhr und %u Minuten"
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234
 msgid "%s!"
-msgstr ""
+msgstr "%s!"
 
 #: ../src/Widgets/DragList.vala:722
 msgid "Click and drag to reorder rows"
@@ -768,7 +764,7 @@ msgstr "Paus_e"
 #: ../src/Widgets/TimerView.vala:142
 #: ../plugins/appindicator/appindicator.vala:233
 msgid "Stop the timer"
-msgstr "Schaltuhr anhalten"
+msgstr "Stopp­uhr anhalten"
 
 #: ../src/Widgets/TimerView.vala:149
 msgid "_Start"
@@ -778,7 +774,7 @@ msgstr "_Starten"
 #: ../plugins/appindicator/appindicator.vala:114
 #: ../plugins/appindicator/appindicator.vala:242
 msgid "Start the timer"
-msgstr "Schaltuhr starten"
+msgstr "Stopp­uhr starten"
 
 #: ../src/Widgets/TimerView.vala:171
 msgid "Inactive"
@@ -816,19 +812,15 @@ msgstr "Bearbeiten"
 
 #: ../plugins/appindicator/appindicator.vala:73
 msgid "Open %s"
-msgstr ""
+msgstr "Offene %s"
 
 #: ../plugins/appindicator/appindicator.vala:102
-#, fuzzy
-#| msgid "Move to next task/row"
 msgid "Switch to next task"
-msgstr "Zur nächsten Aufgabe/Zeile springen"
+msgstr "Zur nächsten Aufgabe springen"
 
 #: ../plugins/appindicator/appindicator.vala:108
-#, fuzzy
-#| msgid "Move to previous task/row"
 msgid "Switch to the previous task"
-msgstr "Zur vorherigen Aufgabe/Zeile springen"
+msgstr "Zur vorherigen Aufgabe springen"
 
 #~ msgid "The search operation did not return any tasks."
 #~ msgstr "Der Suchvorgang lieferte keine Aufgaben zurück."
