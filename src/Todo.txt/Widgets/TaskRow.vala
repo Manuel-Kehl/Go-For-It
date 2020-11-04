@@ -304,7 +304,6 @@ class GOFI.TXT.TaskRow: DragListRow {
             // Workaround for: "undefined symbol: gtk_label_set_xalign"
             ((Gtk.Misc) this).xalign = 0f;
 #endif
-            update_tooltip ();
 
             connect_signals ();
             show_all ();
@@ -326,11 +325,16 @@ class GOFI.TXT.TaskRow: DragListRow {
                     )
                 );
             } else if (creation_date != null) {
-                set_tooltip_text (
-                    _("Task created at %s").printf (
+                var timer_value = task.timer_value;
+                var new_tooltip_text = _("Task created at %s").printf (
                         creation_date.format (date_format)
-                    )
                 );
+
+                if (timer_value >= 60) {
+                  var timer_value_str = Utils.seconds_to_pretty_string (timer_value);
+                  new_tooltip_text += "\n%s: %s".printf (_("Timer"), timer_value_str);
+                }
+                this.tooltip_text = new_tooltip_text;
             }
         }
 
@@ -399,6 +403,7 @@ class GOFI.TXT.TaskRow: DragListRow {
         private void update () {
             gen_markup ();
             set_markup (markup_string);
+            update_tooltip ();
         }
 
         private void connect_signals () {
