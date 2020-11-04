@@ -21,7 +21,8 @@ enum TxtPartType {
     TAG,
     WORD,
     PROJECT,
-    CONTEXT;
+    CONTEXT,
+    URI;
 }
 
 [Compact]
@@ -49,6 +50,12 @@ class TxtPart {
     public TxtPart.project (string project) {
         this.part_type = TxtPartType.PROJECT;
         this.content = project;
+    }
+
+    public TxtPart.uri (string? uri_scheme, string uri_content) {
+        this.part_type = TxtPartType.URI;
+        this.content = uri_content;
+        this.tag_name = uri_scheme;
     }
 }
 
@@ -183,18 +190,24 @@ class GOFI.TXT.TxtTask : TodoTask {
             return new TxtPart.context (p.offset(1));
         } else {
             var colon_pos = p.index_of_char (':');
-            if (colon_pos > 0 &&
-                p.get_char (colon_pos+1).isgraph () &&
-                p.index_of_char (':', colon_pos+1) == -1
-            ) {
-                return new TxtPart.tag (
-                    p.slice (0, colon_pos), // key
-                    p.offset (colon_pos+1)  // value
-                );
-            } else {
-                return new TxtPart.word (p);
+            if (colon_pos > 0 && p.get_char (colon_pos+1).isgraph ()) {
+                var tag_key = p.slice (0, colon_pos);
+                var tag_value = p.offset (colon_pos+1);
+                if (is_common_uri_tag (tag_key)) {
+                    return new TxtPart.uri (tag_key, tag_value);
+                }
+                if (tag_value.data[0] == '/' &&
+                    tag_value.data[1] == '/' &&
+                    tag_value.data[2] != 0
+                ) {
+                    return new TxtPart.uri (tag_key, tag_value);
+                }
+                if (tag_value.index_of_char (':') == -1) {
+                    return new TxtPart.tag (tag_key, tag_value);
+                }
             }
         }
+        return new TxtPart.word (p);
     }
 
     private TxtPart[] parse_description (string[] unparsed, uint offset) {
@@ -252,6 +265,13 @@ class GOFI.TXT.TxtTask : TodoTask {
                     break;
                 case TxtPartType.CONTEXT:
                     descr += "@" + p.content;
+                    break;
+                case TxtPartType.URI:
+                    if (p.tag_name != null && p.tag_name != "") {
+                        descr += p.tag_name + ":" + p.content;
+                    } else {
+                        descr += p.content;
+                    }
                     break;
                 default:
                     descr += p.content;

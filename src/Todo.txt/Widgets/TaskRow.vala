@@ -26,6 +26,7 @@ class GOFI.TXT.TaskRow: DragListRow {
     private TaskEditEntry edit_entry;
     private bool editing;
     private bool focus_cooldown_active;
+    private const string filter_prefix = "gofi:";
 
     public bool is_editing {
         get {
@@ -212,8 +213,11 @@ class GOFI.TXT.TaskRow: DragListRow {
     }
 
     private bool on_activate_link (string uri) {
-        link_clicked (uri);
-        return true;
+        if (uri.has_prefix (filter_prefix)) {
+            link_clicked (uri.offset (filter_prefix.length));
+            return true;
+        }
+        return false;
     }
 
     private void on_set_focus_child (Gtk.Widget? widget) {
@@ -318,12 +322,11 @@ class GOFI.TXT.TaskRow: DragListRow {
             string date_format = _("%Y-%m-%d");
 
             if(task.done && completion_date != null) {
-                set_tooltip_text (
+                this.tooltip_text =
                     _("Task completed at %s, created at %s").printf (
                         completion_date.format (date_format),
                         creation_date.format (date_format)
-                    )
-                );
+                    );
             } else if (creation_date != null) {
                 var timer_value = task.timer_value;
                 var new_tooltip_text = _("Task created at %s").printf (
@@ -386,6 +389,18 @@ class GOFI.TXT.TaskRow: DragListRow {
                         prefix = _("project");
                         delimiter = "+";
                         break;
+                    case TxtPartType.URI:
+                        string uri, display_uri;
+                        if (part.tag_name == null || part.tag_name == "") {
+                            uri = part.content;
+                            display_uri = val;
+                        } else {
+                            uri = part.tag_name + ":" + part.content;
+                            display_uri = part.tag_name + ":" + val;
+                        }
+                        markup_parts[i] =
+                            @"<a href=\"$uri\" title=\"$display_uri\">$display_uri</a>";
+                        continue;
                     case TxtPartType.TAG:
                         markup_parts[i] = part.tag_name + ":" + val;
                         continue;
@@ -393,7 +408,7 @@ class GOFI.TXT.TaskRow: DragListRow {
                         markup_parts[i] = val;
                         continue;
                 }
-                markup_parts[i] = @" <a href=\"$prefix:$val\" title=\"$val\">" +
+                markup_parts[i] = @" <a href=\"$filter_prefix$prefix:$val\" title=\"$val\">" +
                                   @"$delimiter$val</a>";
             }
 

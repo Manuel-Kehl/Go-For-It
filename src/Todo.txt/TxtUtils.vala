@@ -45,6 +45,17 @@ namespace GOFI.TXT.TxtUtils {
         return token.get (0) == '@' && token.get_char (1).isgraph ();
     }
 
+    public static bool is_common_uri_tag (string str) {
+        switch (str) {
+            case "mailto":
+            case "tel":
+            case "sms":
+              return true;
+            default:
+              return false;
+        }
+    }
+
     public static bool is_timer_value (string token) {
         MatchInfo info;
         return /([0-9]+)h-([0-9]+)m-([0-9]+)s/.match(token, 0, out info);
