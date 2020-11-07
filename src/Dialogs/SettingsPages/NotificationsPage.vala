@@ -225,6 +225,7 @@ class GOFI.NotificationsPage : Gtk.Grid {
         );
 #endif
         file_chooser.select_multiple = false;
+        file_chooser.local_only = true;
 
         var filter = new Gtk.FileFilter ();
         filter.add_mime_type ("audio/x-vorbis+ogg");
