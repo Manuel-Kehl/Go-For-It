@@ -274,7 +274,7 @@
 
   <schema path="@SCHEMA_PATH@/plugins/" id="@APP_ID@.plugins">
     <key name="enabled-plugins" type="as">
-      <default>[]</default>
+      <default>@DEFAULT_PLUGINS@</default>
       <summary>Enabled plugins</summary>
       <description>List of enabled plugins. Plugin support must be enabled at compile time.</description>
     </key>

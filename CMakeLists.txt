@@ -71,6 +71,7 @@ if (ENABLE_PLUGINS)
 else ()
     message ("-- plugin support is disabled")
 endif ()
+set (DEFAULT_PLUGINS "[]" CACHE STRING "Plugins to load by default. (= if plugin is present, it will be loaded)")
 
 set (DEPS_CFLAGS ${CORE_DEPS_CFLAGS})
 set (DEPS_LIBRARY_DIRS ${CORE_DEPS_LIBRARY_DIRS})
