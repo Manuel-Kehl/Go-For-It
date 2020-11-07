@@ -2,9 +2,23 @@ include_directories(${CMAKE_BINARY_DIR} ${CMAKE_BINARY_DIR}/src/lib/)
 
 set (PLUGIN_NAME "appindicator")
 
+set (VALA_PACKAGES
+    gtk+-3.0
+    libpeas-1.0
+)
+
 pkg_check_modules (PLUGIN_DEPS
     ayatana-appindicator3-0.1
 )
+
+if (PLUGIN_DEPS_FOUND)
+    set (VALA_PACKAGES ${VALA_PACKAGES} ayatana-appindicator3-0.1)
+else ()
+    pkg_check_modules (PLUGIN_DEPS
+        appindicator3-0.1
+    )
+    set (VALA_PACKAGES ${VALA_PACKAGES} appindicator3-0.1)
+endif ()
 
 if (PLUGIN_DEPS_FOUND)
     include(ValaPrecompile)
@@ -13,9 +27,7 @@ if (PLUGIN_DEPS_FOUND)
 
     # tell what libraries to use when compiling
     PACKAGES
-        gtk+-3.0
-        libpeas-1.0
-        ayatana-appindicator3-0.1
+        ${VALA_PACKAGES}
 
     CUSTOM_VAPIS
         ${CMAKE_BINARY_DIR}/src/${LIBNAME}.vapi
