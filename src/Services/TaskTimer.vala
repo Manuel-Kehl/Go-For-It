@@ -64,7 +64,6 @@ public class GOFI.TaskTimer {
     public TodoTask? active_task {
         get { return _active_task; }
         internal set {
-            bool was_running = running;
             stop ();
             if (settings.reset_timer_on_task_switch) {
                 reset ();
@@ -87,10 +86,6 @@ public class GOFI.TaskTimer {
 
             // Emit the corresponding notifier signal
             update_active_task ();
-
-            if (was_running && _active_task != null && !settings.reset_timer_on_task_switch) {
-                start ();
-            }
         }
     }
     private bool almost_over_sent_already { get; set; default = false; }
