@@ -77,7 +77,7 @@ namespace GOFI {
             if (this.is_valid) {
                 return description;
             } else {
-                return "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (description, this.to_readable ());
+                return "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%%\">%s</span>".printf (description, this.to_readable ());
             }
 #endif
         }
