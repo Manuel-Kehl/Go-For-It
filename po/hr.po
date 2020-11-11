@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-02 14:53+0100\n"
+"POT-Creation-Date: 2020-11-11 21:24+0100\n"
 "PO-Revision-Date: 2020-11-04 19:27+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/"
-"go-for-it/hr/>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/go-"
+"for-it/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,7 +62,7 @@ msgid "Replace"
 msgstr "Zamijeni"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:227
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:258
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:86
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
 #: ../src/Widgets/FileChooserWidget.vala:85
@@ -98,121 +98,122 @@ msgstr "Prečaci"
 msgid "Plugins"
 msgstr "Dodaci"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:29
+msgid "Use small toolbar icons"
+msgstr "Koristi male ikone u alatnoj traci"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:36
+msgid "Appearance of the activity switcher"
+msgstr "Izgled prekidača za aktiviranje"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:38
+msgid "Icons"
+msgstr "Ikone"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
+msgid "Text"
+msgstr "Tekst"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:52
+msgid "%s needs to be restarted for this setting to take effect"
+msgstr "%s se mora ponovo pokrenuti kako bi se postavka primijenila"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:53
+msgid "Use a header bar"
+msgstr "Koristi jednu traku zaglavlja"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:68
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:125
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:147
 msgid "General"
 msgstr "Opće"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
-msgid "Use small toolbar icons"
-msgstr "Koristi male ikone u alatnoj traci"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:42
-msgid "Appearance of the activity switcher"
-msgstr "Izgled prekidača za aktiviranje"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:48
-msgid "Icons"
-msgstr "Ikone"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:49
-msgid "Text"
-msgstr "Tekst"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:80
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:82
-msgid "Theme"
-msgstr "Tema"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:72
 msgid "Color scheme"
 msgstr "Shema boja"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
-msgid "%s needs to be restarted for this setting to take effect"
-msgstr "%s se mora ponovo pokrenuti kako bi se postavka primijenila"
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:87
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:99
+msgid "Theme"
+msgstr "Tema"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
-msgid "Use a header bar"
-msgstr "Koristi jednu traku zaglavlja"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:55
+msgid "Timer mode"
+msgstr "Modus štoperice"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:60
-#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
-msgid "Timer"
-msgstr "Štoperica"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:57
+msgid "Simple"
+msgstr "Jednostavno"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:61
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:58
+msgid "Pomodoro"
+msgstr "Pomodoro"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:59
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:205
+msgid "Custom"
+msgstr "Prilagođeno"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
 #: ../src/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
 msgstr "Trajanje zadatka"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:62
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:66
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:76
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:84
 msgid "minutes"
 msgstr "minute"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:63
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:75
 #: ../src/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
 msgstr "Trajanje pauze"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
 msgid "Long break duration"
 msgstr "Trajanje duge pauze"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
-msgid "Resume task after the break"
-msgstr "Nastavi sa zadatkom nakon pauze"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
-msgid "Reset timer after switching tasks"
-msgstr "Resetiraj štopericu nakon zamjene zadataka"
-
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:92
 msgid "Have a long break after"
 msgstr "Napravi dugu pauzu nakon"
 
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:94
 msgid "short breaks"
 msgstr "kratkih pauza"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
-msgid "Timer mode"
-msgstr "Modus štoperice"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:117
+msgid "Resume task after the break"
+msgstr "Nastavi sa zadatkom nakon pauze"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:99
-msgid "Simple"
-msgstr "Jednostavno"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:124
+msgid "Reset timer after switching tasks"
+msgstr "Resetiraj štopericu nakon zamjene zadataka"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:100
-msgid "Pomodoro"
-msgstr "Pomodoro"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:142
+#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
+#: ../src/Todo.txt/Widgets/TaskRow.vala:338
+msgid "Timer"
+msgstr "Štoperica"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:101
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:132
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:133
-msgid "Custom"
-msgstr "Prilagođeno"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:156
-msgid "Tasks"
-msgstr "Zadaci"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:157
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:146
 msgid "Placement of new tasks"
 msgstr "Smještaj novih zadataka"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:160
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:149
 msgid "Top of the list"
 msgstr "Prvi na popisu"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:161
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:150
 msgid "Bottom of the list"
 msgstr "Zadnji na popisu"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:162
+msgid "Tasks"
+msgstr "Zadaci"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
@@ -230,39 +231,44 @@ msgstr "Zvono"
 msgid "Loud bell"
 msgstr "Glasno zvono"
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:105
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:110
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
 msgid "Reminder before task ends"
 msgstr "Podsjetnik prije nego što zadatak završi"
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:106
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
 msgid "seconds"
 msgstr "sekunde"
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:129
+#, fuzzy
+#| msgid "Reminder before task ends"
+msgid "Reminder sound"
+msgstr "Podsjetnik prije nego što zadatak završi"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:139
 msgid "Start of break sound"
 msgstr "Zvuk početka pauze"
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:112
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:149
 msgid "End of break sound"
 msgstr "Zvuk kraja pauze"
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:134
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:135
-msgid "Silent"
-msgstr "Bezvučno"
-
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:169
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:201
 msgid "Notification sounds"
 msgstr "Zvukovi za obavijesti"
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:218
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:206
+msgid "Silent"
+msgstr "Bezvučno"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:249
 msgid "Select notification sound file"
 msgstr "Odaberi datoteku sa zvukovima za obavijesti"
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:222
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:228
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:253
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:259
 #: ../src/Widgets/FileChooserWidget.vala:80
 #: ../src/Widgets/FileChooserWidget.vala:86
 msgid "_Select"
@@ -400,36 +406,36 @@ msgstr "Obavljeno"
 msgid "Couldn't write to %s: %s"
 msgstr "Nije bilo moguće pisati u %s: %s"
 
-#: ../src/Services/Notifications.vala:89 ../src/Widgets/TimerView.vala:90
+#: ../src/Services/Notifications.vala:100 ../src/Widgets/TimerView.vala:97
 #: ../plugins/appindicator/appindicator.vala:208
 msgid "Take a Break"
 msgstr "Odmori se"
 
-#: ../src/Services/Notifications.vala:91
+#: ../src/Services/Notifications.vala:102
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "Opusti se i za neko vrijeme prestani razmišljati o trenutačnom zadatku"
 
-#: ../src/Services/Notifications.vala:95
+#: ../src/Services/Notifications.vala:106
 msgid "The Break is Over"
 msgstr "Pauza je gotova"
 
-#: ../src/Services/Notifications.vala:97
+#: ../src/Services/Notifications.vala:108
 msgid "Your current task is"
 msgstr "Tvoj trenutačni zadatak je"
 
-#: ../src/Services/Notifications.vala:115
+#: ../src/Services/Notifications.vala:132
 msgid "Prepare for your break"
 msgstr "Pripremi se za tvoju pauzu"
 
-#: ../src/Services/Notifications.vala:117
+#: ../src/Services/Notifications.vala:134
 msgid "You have %s seconds left"
 msgstr "Imaš još %s s"
 
-#: ../src/Services/Notifications.vala:124
+#: ../src/Services/Notifications.vala:142
 msgid "Task duration exceeded"
 msgstr "Trajanje zadatka je prekoračeno"
 
-#: ../src/Services/Notifications.vala:125
+#: ../src/Services/Notifications.vala:143
 msgid "Consider switching to a different task"
 msgstr "Razmisli o prebacivanju na drugi zadatak"
 
@@ -449,49 +455,59 @@ msgstr "Standardna"
 msgid "disabled"
 msgstr "deaktivirano"
 
-#: ../src/Services/Shortcuts.vala:155
+#: ../src/Services/Shortcuts.vala:157
 msgid "Filter tasks"
 msgstr "Filtriraj zadatke"
 
-#: ../src/Services/Shortcuts.vala:156
+#: ../src/Services/Shortcuts.vala:158 ../src/Todo.txt/TxtList.vala:188
+msgid "Sort Tasks"
+msgstr "Razvrstaj zadatke"
+
+#: ../src/Services/Shortcuts.vala:159
 msgid "Add new task/list"
 msgstr "Dodaj novi filtar/popis"
 
-#: ../src/Services/Shortcuts.vala:157
+#: ../src/Services/Shortcuts.vala:160
 msgid "Start/Stop the timer"
 msgstr "Pokreni/zaustavi štopericu"
 
-#: ../src/Services/Shortcuts.vala:158
+#: ../src/Services/Shortcuts.vala:161
+#, fuzzy
+#| msgid "Skip the remainder of the break"
+msgid "Skip the break or skip to the break"
+msgstr "Preskoči ostatak pauze"
+
+#: ../src/Services/Shortcuts.vala:162
 msgid "Edit the properties of a list or task"
 msgstr "Uredi svojstva popisa ili zadatka"
 
-#: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
-#: ../src/Widgets/TimerView.vala:282
+#: ../src/Services/Shortcuts.vala:164 ../src/Todo.txt/Widgets/TaskRow.vala:65
+#: ../src/Widgets/TimerView.vala:289
 #: ../plugins/appindicator/appindicator.vala:96
 msgid "Mark the task as complete"
 msgstr "Označi zadatak kao završen"
 
-#: ../src/Services/Shortcuts.vala:161
+#: ../src/Services/Shortcuts.vala:165
 msgid "Move selected row up"
 msgstr "Premjesti odabrani redak prema gore"
 
-#: ../src/Services/Shortcuts.vala:162
+#: ../src/Services/Shortcuts.vala:166
 msgid "Move selected row down"
 msgstr "Premjesti odabrani redak prema dolje"
 
-#: ../src/Services/Shortcuts.vala:164
+#: ../src/Services/Shortcuts.vala:168
 msgid "Move to next task/row"
 msgstr "Premjesti se na sljedeći zadatak/redak"
 
-#: ../src/Services/Shortcuts.vala:165
+#: ../src/Services/Shortcuts.vala:169
 msgid "Move to previous task/row"
 msgstr "Premjesti se na prethodni zadatak/redak"
 
-#: ../src/Services/Shortcuts.vala:166
+#: ../src/Services/Shortcuts.vala:170
 msgid "Move to right screen"
 msgstr "Premjesti se na desni ekran"
 
-#: ../src/Services/Shortcuts.vala:167
+#: ../src/Services/Shortcuts.vala:171
 msgid "Move to left screen"
 msgstr "Premjesti se na lijevi ekran"
 
@@ -599,15 +615,15 @@ msgstr ""
 msgid "Please assign a name to the list."
 msgstr "Dodijeli popisu ime."
 
-#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:382
+#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:389
 msgid "project"
 msgstr "projekt"
 
-#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:378
+#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:385
 msgid "context"
 msgstr "kontekst"
 
-#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:344
+#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:351
 msgid "priority"
 msgstr "prioritet"
 
@@ -652,10 +668,6 @@ msgstr ""
 msgid "Clear Done List"
 msgstr "Izbriši popis obavljenih"
 
-#: ../src/Todo.txt/TxtList.vala:188
-msgid "Sort Tasks"
-msgstr "Razvrstaj zadatke"
-
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
 msgstr "Ustanovljen je problem tijekom premještanja jedne datoteke!"
@@ -688,22 +700,22 @@ msgstr "Nemaš spremljenih dovršenih zadataka."
 msgid "You finished all tasks, good job!"
 msgstr "Svi zadaci su dovršeni, bravo!"
 
-#: ../src/Todo.txt/Widgets/TaskListWidget.vala:200
-#: ../src/Todo.txt/Widgets/TaskListWidget.vala:219
+#: ../src/Todo.txt/Widgets/TaskListWidget.vala:205
+#: ../src/Todo.txt/Widgets/TaskListWidget.vala:224
 msgid "Add new task"
 msgstr "Dodaj novi zadatak"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
-#: ../src/Todo.txt/Widgets/TaskRow.vala:319
+#: ../src/Todo.txt/Widgets/TaskRow.vala:322
 msgid "%Y-%m-%d"
 msgstr "%d. %m. %Y."
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:323
+#: ../src/Todo.txt/Widgets/TaskRow.vala:326
 msgid "Task completed at %s, created at %s"
 msgstr "Zadatak dovršen %s, stvoren %s"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:330
+#: ../src/Todo.txt/Widgets/TaskRow.vala:332
 msgid "Task created at %s"
 msgstr "Zadatak stvoren %s"
 
@@ -732,60 +744,60 @@ msgstr "Pritisni-i-povuci za mijenjanje redoslijeda redaka"
 msgid "Choose a file"
 msgstr "Odaberi datoteku"
 
-#: ../src/Widgets/TimerView.vala:93
+#: ../src/Widgets/TimerView.vala:100
 msgid "Skip the remainder of the break"
 msgstr "Preskoči ostatak pauze"
 
-#: ../src/Widgets/TimerView.vala:95
+#: ../src/Widgets/TimerView.vala:102
 msgid "Active Task"
 msgstr "Aktivni zadatak"
 
-#: ../src/Widgets/TimerView.vala:99
+#: ../src/Widgets/TimerView.vala:106
 msgid "Skip to the break"
 msgstr "Preskoči do pauze"
 
-#: ../src/Widgets/TimerView.vala:140
+#: ../src/Widgets/TimerView.vala:147
 msgid "Pau_se"
 msgstr "Zau_stavi"
 
-#: ../src/Widgets/TimerView.vala:142
+#: ../src/Widgets/TimerView.vala:149
 #: ../plugins/appindicator/appindicator.vala:233
 msgid "Stop the timer"
 msgstr "Zaustavi štopericu"
 
-#: ../src/Widgets/TimerView.vala:149
+#: ../src/Widgets/TimerView.vala:156
 msgid "_Start"
 msgstr "_Započni"
 
-#: ../src/Widgets/TimerView.vala:151
+#: ../src/Widgets/TimerView.vala:158
 #: ../plugins/appindicator/appindicator.vala:114
 #: ../plugins/appindicator/appindicator.vala:242
 msgid "Start the timer"
 msgstr "Pokreni štopericu"
 
-#: ../src/Widgets/TimerView.vala:171
+#: ../src/Widgets/TimerView.vala:178
 msgid "Inactive"
 msgstr "Neaktivni"
 
-#: ../src/Widgets/TimerView.vala:172
+#: ../src/Widgets/TimerView.vala:179
 #: ../plugins/appindicator/appindicator.vala:87
 #: ../plugins/appindicator/appindicator.vala:196
 msgid "No task has been selected"
 msgstr "Nijedan zadatak nije odabran"
 
-#: ../src/Widgets/TimerView.vala:263
+#: ../src/Widgets/TimerView.vala:270
 msgid "S_kip"
 msgstr "Pres_koči"
 
-#: ../src/Widgets/TimerView.vala:264
+#: ../src/Widgets/TimerView.vala:271
 msgid "_Done"
 msgstr "_Dovršeno"
 
-#: ../src/Widgets/TimerView.vala:312
+#: ../src/Widgets/TimerView.vala:315
 msgid "Relax"
 msgstr "Odmori se"
 
-#: ../src/Widgets/TimerView.vala:313
+#: ../src/Widgets/TimerView.vala:316
 msgid "You have nothing to do."
 msgstr "Nemaš ništa za obaviti."
 

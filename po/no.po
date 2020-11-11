@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-02 14:53+0100\n"
+"POT-Creation-Date: 2020-11-11 21:24+0100\n"
 "PO-Revision-Date: 2020-11-02 14:53+0100\n"
 "Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/go-for-"
@@ -61,7 +61,7 @@ msgid "Replace"
 msgstr "Erstatt"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:227
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:258
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:86
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
 #: ../src/Widgets/FileChooserWidget.vala:85
@@ -98,121 +98,122 @@ msgstr "Snarveier"
 msgid "Plugins"
 msgstr "Programtillegg"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:29
+msgid "Use small toolbar icons"
+msgstr "Bruk små verktøyslinjeikoner"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:36
+msgid "Appearance of the activity switcher"
+msgstr "Utseende for aktivitetsveksleren"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:38
+msgid "Icons"
+msgstr "Ikoner"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
+msgid "Text"
+msgstr "Tekst"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:52
+msgid "%s needs to be restarted for this setting to take effect"
+msgstr "%s må startes på ny for at denne innstillingen skal tre i effekt"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:53
+msgid "Use a header bar"
+msgstr "Bruk topptekstfelt"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:68
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:125
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:147
 msgid "General"
 msgstr "Generelt"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
-msgid "Use small toolbar icons"
-msgstr "Bruk små verktøyslinjeikoner"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:42
-msgid "Appearance of the activity switcher"
-msgstr "Utseende for aktivitetsveksleren"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:48
-msgid "Icons"
-msgstr "Ikoner"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:49
-msgid "Text"
-msgstr "Tekst"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:80
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:82
-msgid "Theme"
-msgstr "Drakt"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:72
 msgid "Color scheme"
 msgstr "Fargepalett"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
-msgid "%s needs to be restarted for this setting to take effect"
-msgstr "%s må startes på ny for at denne innstillingen skal tre i effekt"
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:87
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:99
+msgid "Theme"
+msgstr "Drakt"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
-msgid "Use a header bar"
-msgstr "Bruk topptekstfelt"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:55
+msgid "Timer mode"
+msgstr "Tidsursmodus"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:60
-#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
-msgid "Timer"
-msgstr "Tidsur"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:57
+msgid "Simple"
+msgstr "Enkelt"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:61
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:58
+msgid "Pomodoro"
+msgstr "Pomodoro-teknikk"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:59
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:205
+msgid "Custom"
+msgstr "Egendefinert"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
 #: ../src/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
 msgstr "Gjøremålsvarighet"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:62
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:66
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:76
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:84
 msgid "minutes"
 msgstr "minutter"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:63
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:75
 #: ../src/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
 msgstr "Pausevarighet"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
 msgid "Long break duration"
 msgstr "Varighet for lang pause"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
-msgid "Resume task after the break"
-msgstr "Gjenoppta gjøremål etter pausen"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
-msgid "Reset timer after switching tasks"
-msgstr "Tilbakestill tidsuret etter bytting av gjøremål"
-
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:92
 msgid "Have a long break after"
 msgstr "Ta en lang pause etter"
 
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:94
 msgid "short breaks"
 msgstr "korte pauser"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
-msgid "Timer mode"
-msgstr "Tidsursmodus"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:117
+msgid "Resume task after the break"
+msgstr "Gjenoppta gjøremål etter pausen"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:99
-msgid "Simple"
-msgstr "Enkelt"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:124
+msgid "Reset timer after switching tasks"
+msgstr "Tilbakestill tidsuret etter bytting av gjøremål"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:100
-msgid "Pomodoro"
-msgstr "Pomodoro-teknikk"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:142
+#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
+#: ../src/Todo.txt/Widgets/TaskRow.vala:338
+msgid "Timer"
+msgstr "Tidsur"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:101
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:132
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:133
-msgid "Custom"
-msgstr "Egendefinert"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:156
-msgid "Tasks"
-msgstr "Gjøremål"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:157
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:146
 msgid "Placement of new tasks"
 msgstr "Plassering for nye gjøremål"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:160
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:149
 msgid "Top of the list"
 msgstr "Toppen av listen"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:161
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:150
 msgid "Bottom of the list"
 msgstr "Bunnen av listen"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:162
+msgid "Tasks"
+msgstr "Gjøremål"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
@@ -232,41 +233,46 @@ msgstr "Bjelle"
 msgid "Loud bell"
 msgstr "Kraftig bjelle"
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:105
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:110
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
 msgid "Reminder before task ends"
 msgstr "Påminnelse før gjøremål sluttføres"
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:106
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
 msgid "seconds"
 msgstr "sekunder"
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:129
+#, fuzzy
+#| msgid "Reminder before task ends"
+msgid "Reminder sound"
+msgstr "Påminnelse før gjøremål sluttføres"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:139
 #, fuzzy
 msgid "Start of break sound"
 msgstr "Lyd ved start på pause"
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:112
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:149
 #, fuzzy
 msgid "End of break sound"
 msgstr "Lyd ved slutt på pause"
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:134
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:135
-msgid "Silent"
-msgstr ""
-
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:169
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:201
 msgid "Notification sounds"
 msgstr ""
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:218
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:206
+msgid "Silent"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:249
 msgid "Select notification sound file"
 msgstr ""
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:222
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:228
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:253
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:259
 #: ../src/Widgets/FileChooserWidget.vala:80
 #: ../src/Widgets/FileChooserWidget.vala:86
 msgid "_Select"
@@ -404,36 +410,36 @@ msgstr "Ferdig"
 msgid "Couldn't write to %s: %s"
 msgstr "Kunne ikke skrive til %s: %s"
 
-#: ../src/Services/Notifications.vala:89 ../src/Widgets/TimerView.vala:90
+#: ../src/Services/Notifications.vala:100 ../src/Widgets/TimerView.vala:97
 #: ../plugins/appindicator/appindicator.vala:208
 msgid "Take a Break"
 msgstr "Ta en pause"
 
-#: ../src/Services/Notifications.vala:91
+#: ../src/Services/Notifications.vala:102
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "Slapp av og slutt å tenke på gjøremålet en stund"
 
-#: ../src/Services/Notifications.vala:95
+#: ../src/Services/Notifications.vala:106
 msgid "The Break is Over"
 msgstr "Pausen er over"
 
-#: ../src/Services/Notifications.vala:97
+#: ../src/Services/Notifications.vala:108
 msgid "Your current task is"
 msgstr "Ditt nåværende gjøremål er"
 
-#: ../src/Services/Notifications.vala:115
+#: ../src/Services/Notifications.vala:132
 msgid "Prepare for your break"
 msgstr "Forbered deg på pause"
 
-#: ../src/Services/Notifications.vala:117
+#: ../src/Services/Notifications.vala:134
 msgid "You have %s seconds left"
 msgstr "Du har %s sekunder igjen"
 
-#: ../src/Services/Notifications.vala:124
+#: ../src/Services/Notifications.vala:142
 msgid "Task duration exceeded"
 msgstr "Gjøremålsvarighet overskredet"
 
-#: ../src/Services/Notifications.vala:125
+#: ../src/Services/Notifications.vala:143
 msgid "Consider switching to a different task"
 msgstr "Overvei å bytte til et annet gjøremål"
 
@@ -453,49 +459,59 @@ msgstr "Forvalg"
 msgid "disabled"
 msgstr "avskrudd"
 
-#: ../src/Services/Shortcuts.vala:155
+#: ../src/Services/Shortcuts.vala:157
 msgid "Filter tasks"
 msgstr "Filtrer gjøremål"
 
-#: ../src/Services/Shortcuts.vala:156
+#: ../src/Services/Shortcuts.vala:158 ../src/Todo.txt/TxtList.vala:188
+msgid "Sort Tasks"
+msgstr "Sorter gjøremål"
+
+#: ../src/Services/Shortcuts.vala:159
 msgid "Add new task/list"
 msgstr "Legg til nytt gjøremål/liste"
 
-#: ../src/Services/Shortcuts.vala:157
+#: ../src/Services/Shortcuts.vala:160
 msgid "Start/Stop the timer"
 msgstr "Start/stopp tidsuret"
 
-#: ../src/Services/Shortcuts.vala:158
+#: ../src/Services/Shortcuts.vala:161
+#, fuzzy
+#| msgid "Skip the remainder of the break"
+msgid "Skip the break or skip to the break"
+msgstr "Hopp over pausepåminnelsen"
+
+#: ../src/Services/Shortcuts.vala:162
 msgid "Edit the properties of a list or task"
 msgstr "Rediger egenskapene for en liste eller et gjøremål"
 
-#: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
-#: ../src/Widgets/TimerView.vala:282
+#: ../src/Services/Shortcuts.vala:164 ../src/Todo.txt/Widgets/TaskRow.vala:65
+#: ../src/Widgets/TimerView.vala:289
 #: ../plugins/appindicator/appindicator.vala:96
 msgid "Mark the task as complete"
 msgstr "Marker gjøremålet som fullført"
 
-#: ../src/Services/Shortcuts.vala:161
+#: ../src/Services/Shortcuts.vala:165
 msgid "Move selected row up"
 msgstr "Flytt valgt rad oppover"
 
-#: ../src/Services/Shortcuts.vala:162
+#: ../src/Services/Shortcuts.vala:166
 msgid "Move selected row down"
 msgstr "Flytt valgt rad nedover"
 
-#: ../src/Services/Shortcuts.vala:164
+#: ../src/Services/Shortcuts.vala:168
 msgid "Move to next task/row"
 msgstr "Flytt til neste gjøremål/rad"
 
-#: ../src/Services/Shortcuts.vala:165
+#: ../src/Services/Shortcuts.vala:169
 msgid "Move to previous task/row"
 msgstr "Flytt til forrige gjøremål/rad"
 
-#: ../src/Services/Shortcuts.vala:166
+#: ../src/Services/Shortcuts.vala:170
 msgid "Move to right screen"
 msgstr "Flytt til høyre skjerm"
 
-#: ../src/Services/Shortcuts.vala:167
+#: ../src/Services/Shortcuts.vala:171
 msgid "Move to left screen"
 msgstr "Flytt til venstre skjerm"
 
@@ -615,15 +631,15 @@ msgstr ""
 msgid "Please assign a name to the list."
 msgstr "Gi listen et navn."
 
-#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:382
+#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:389
 msgid "project"
 msgstr "prosjekt"
 
-#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:378
+#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:385
 msgid "context"
 msgstr "kontekst"
 
-#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:344
+#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:351
 msgid "priority"
 msgstr "prioritet"
 
@@ -669,10 +685,6 @@ msgstr ""
 msgid "Clear Done List"
 msgstr "Tøm \"Ferdig\"-liste"
 
-#: ../src/Todo.txt/TxtList.vala:188
-msgid "Sort Tasks"
-msgstr "Sorter gjøremål"
-
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
 msgstr "En feil inntraff under flytting av en fil!"
@@ -707,22 +719,22 @@ msgstr "Du har ingen fullførte gjøremål lagret."
 msgid "You finished all tasks, good job!"
 msgstr "Du har fullført alle gjøremålene, godt jobbet!"
 
-#: ../src/Todo.txt/Widgets/TaskListWidget.vala:200
-#: ../src/Todo.txt/Widgets/TaskListWidget.vala:219
+#: ../src/Todo.txt/Widgets/TaskListWidget.vala:205
+#: ../src/Todo.txt/Widgets/TaskListWidget.vala:224
 msgid "Add new task"
 msgstr "Legg til nytt gjøremål"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
-#: ../src/Todo.txt/Widgets/TaskRow.vala:319
+#: ../src/Todo.txt/Widgets/TaskRow.vala:322
 msgid "%Y-%m-%d"
 msgstr "%d.%m.%Y"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:323
+#: ../src/Todo.txt/Widgets/TaskRow.vala:326
 msgid "Task completed at %s, created at %s"
 msgstr "Gjøremål fullført %s, opprettet %s"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:330
+#: ../src/Todo.txt/Widgets/TaskRow.vala:332
 msgid "Task created at %s"
 msgstr "Gjøremål opprettet %s"
 
@@ -751,60 +763,60 @@ msgstr "Klikk og dra for å omorganisere rader"
 msgid "Choose a file"
 msgstr "Velg en fil"
 
-#: ../src/Widgets/TimerView.vala:93
+#: ../src/Widgets/TimerView.vala:100
 msgid "Skip the remainder of the break"
 msgstr "Hopp over pausepåminnelsen"
 
-#: ../src/Widgets/TimerView.vala:95
+#: ../src/Widgets/TimerView.vala:102
 msgid "Active Task"
 msgstr "Aktivt gjøremål"
 
-#: ../src/Widgets/TimerView.vala:99
+#: ../src/Widgets/TimerView.vala:106
 msgid "Skip to the break"
 msgstr "Hopp til pausen"
 
-#: ../src/Widgets/TimerView.vala:140
+#: ../src/Widgets/TimerView.vala:147
 msgid "Pau_se"
 msgstr "Pau_se"
 
-#: ../src/Widgets/TimerView.vala:142
+#: ../src/Widgets/TimerView.vala:149
 #: ../plugins/appindicator/appindicator.vala:233
 msgid "Stop the timer"
 msgstr "Stopp tidsuret"
 
-#: ../src/Widgets/TimerView.vala:149
+#: ../src/Widgets/TimerView.vala:156
 msgid "_Start"
 msgstr "_Start"
 
-#: ../src/Widgets/TimerView.vala:151
+#: ../src/Widgets/TimerView.vala:158
 #: ../plugins/appindicator/appindicator.vala:114
 #: ../plugins/appindicator/appindicator.vala:242
 msgid "Start the timer"
 msgstr "Start tidsuret"
 
-#: ../src/Widgets/TimerView.vala:171
+#: ../src/Widgets/TimerView.vala:178
 msgid "Inactive"
 msgstr "Inaktiv"
 
-#: ../src/Widgets/TimerView.vala:172
+#: ../src/Widgets/TimerView.vala:179
 #: ../plugins/appindicator/appindicator.vala:87
 #: ../plugins/appindicator/appindicator.vala:196
 msgid "No task has been selected"
 msgstr "Inget gjøremål valgt"
 
-#: ../src/Widgets/TimerView.vala:263
+#: ../src/Widgets/TimerView.vala:270
 msgid "S_kip"
 msgstr "H_opp over"
 
-#: ../src/Widgets/TimerView.vala:264
+#: ../src/Widgets/TimerView.vala:271
 msgid "_Done"
 msgstr "_Ferdig"
 
-#: ../src/Widgets/TimerView.vala:312
+#: ../src/Widgets/TimerView.vala:315
 msgid "Relax"
 msgstr "Slapp av"
 
-#: ../src/Widgets/TimerView.vala:313
+#: ../src/Widgets/TimerView.vala:316
 msgid "You have nothing to do."
 msgstr "Du har ingenting å gjøre."
 

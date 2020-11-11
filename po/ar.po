@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-02 14:53+0100\n"
+"POT-Creation-Date: 2020-11-11 21:24+0100\n"
 "PO-Revision-Date: 2020-10-06 15:25+0200\n"
 "Last-Translator: Youssef Mohamed <youssef11bc@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/go-for-it/go-for-"
@@ -61,7 +61,7 @@ msgid "Replace"
 msgstr "استبدال"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:227
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:258
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:86
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
 #: ../src/Widgets/FileChooserWidget.vala:85
@@ -97,121 +97,122 @@ msgstr "الاختصارات"
 msgid "Plugins"
 msgstr "الإضافات"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:29
+msgid "Use small toolbar icons"
+msgstr "استخدم أيقونات شريط أدوات صغير"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:36
+msgid "Appearance of the activity switcher"
+msgstr "‮مظهور مبدل النشاط‮‮‮‮"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:38
+msgid "Icons"
+msgstr "أيقونات"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
+msgid "Text"
+msgstr "نص"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:52
+msgid "%s needs to be restarted for this setting to take effect"
+msgstr "٪ s يحتاج إلى إعادة التشغيل حتى يسري هذا الإعداد"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:53
+msgid "Use a header bar"
+msgstr "استخدم شريط الرأس"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:68
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:125
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:147
 msgid "General"
 msgstr "الرئيسية"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
-msgid "Use small toolbar icons"
-msgstr "استخدم أيقونات شريط أدوات صغير"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:42
-msgid "Appearance of the activity switcher"
-msgstr "‮مظهور مبدل النشاط‮‮‮‮"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:48
-msgid "Icons"
-msgstr "أيقونات"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:49
-msgid "Text"
-msgstr "نص"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:80
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:82
-msgid "Theme"
-msgstr "اللون"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:72
 msgid "Color scheme"
 msgstr "نظام الألوان"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
-msgid "%s needs to be restarted for this setting to take effect"
-msgstr "٪ s يحتاج إلى إعادة التشغيل حتى يسري هذا الإعداد"
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:87
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:99
+msgid "Theme"
+msgstr "اللون"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
-msgid "Use a header bar"
-msgstr "استخدم شريط الرأس"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:55
+msgid "Timer mode"
+msgstr "وضع المؤقت"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:60
-#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
-msgid "Timer"
-msgstr "المؤقت"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:57
+msgid "Simple"
+msgstr "بسيط"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:61
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:58
+msgid "Pomodoro"
+msgstr "بومودورو"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:59
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:205
+msgid "Custom"
+msgstr "مخصص"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
 #: ../src/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
 msgstr "مدة المهمة"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:62
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:66
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:76
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:84
 msgid "minutes"
 msgstr "الدقائق"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:63
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:75
 #: ../src/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
 msgstr "مدة استراحة"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
 msgid "Long break duration"
 msgstr "مدة استراحة طويلة"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
-msgid "Resume task after the break"
-msgstr "استئناف المهمة بعد الاستراحة"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
-msgid "Reset timer after switching tasks"
-msgstr "إعادة ضبط المؤقت بعد تبديل المهام"
-
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:92
 msgid "Have a long break after"
 msgstr "خذ استراحة طويلة بعد"
 
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:94
 msgid "short breaks"
 msgstr "استراحات قصيرة"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
-msgid "Timer mode"
-msgstr "وضع المؤقت"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:117
+msgid "Resume task after the break"
+msgstr "استئناف المهمة بعد الاستراحة"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:99
-msgid "Simple"
-msgstr "بسيط"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:124
+msgid "Reset timer after switching tasks"
+msgstr "إعادة ضبط المؤقت بعد تبديل المهام"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:100
-msgid "Pomodoro"
-msgstr "بومودورو"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:142
+#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
+#: ../src/Todo.txt/Widgets/TaskRow.vala:338
+msgid "Timer"
+msgstr "المؤقت"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:101
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:132
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:133
-msgid "Custom"
-msgstr "مخصص"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:156
-msgid "Tasks"
-msgstr "المهام"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:157
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:146
 msgid "Placement of new tasks"
 msgstr "تحديد المهام الجديدة"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:160
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:149
 msgid "Top of the list"
 msgstr "أعلى القائمة"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:161
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:150
 msgid "Bottom of the list"
 msgstr "أسفل القائمة"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:162
+msgid "Tasks"
+msgstr "المهام"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
@@ -229,39 +230,44 @@ msgstr ""
 msgid "Loud bell"
 msgstr ""
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:105
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:110
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
 msgid "Reminder before task ends"
 msgstr "تذكير قبل انتهاء المهمة"
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:106
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
 msgid "seconds"
 msgstr "ثواني"
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:129
+#, fuzzy
+#| msgid "Reminder before task ends"
+msgid "Reminder sound"
+msgstr "تذكير قبل انتهاء المهمة"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:139
 msgid "Start of break sound"
 msgstr ""
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:112
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:149
 msgid "End of break sound"
 msgstr ""
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:134
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:135
-msgid "Silent"
-msgstr ""
-
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:169
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:201
 msgid "Notification sounds"
 msgstr ""
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:218
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:206
+msgid "Silent"
+msgstr ""
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:249
 msgid "Select notification sound file"
 msgstr ""
 
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:222
-#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:228
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:253
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:259
 #: ../src/Widgets/FileChooserWidget.vala:80
 #: ../src/Widgets/FileChooserWidget.vala:86
 msgid "_Select"
@@ -399,36 +405,36 @@ msgstr "تم"
 msgid "Couldn't write to %s: %s"
 msgstr "تعذر الكتابة إلى٪ s:٪ s"
 
-#: ../src/Services/Notifications.vala:89 ../src/Widgets/TimerView.vala:90
+#: ../src/Services/Notifications.vala:100 ../src/Widgets/TimerView.vala:97
 #: ../plugins/appindicator/appindicator.vala:208
 msgid "Take a Break"
 msgstr "خذ استراحة"
 
-#: ../src/Services/Notifications.vala:91
+#: ../src/Services/Notifications.vala:102
 msgid "Relax and stop thinking about your current task for a while"
 msgstr "استرخ وتوقف عن التفكير في مهمتك الحالية لفترة"
 
-#: ../src/Services/Notifications.vala:95
+#: ../src/Services/Notifications.vala:106
 msgid "The Break is Over"
 msgstr "انتهت الاستراحة"
 
-#: ../src/Services/Notifications.vala:97
+#: ../src/Services/Notifications.vala:108
 msgid "Your current task is"
 msgstr "مهمتك الحالية هي"
 
-#: ../src/Services/Notifications.vala:115
+#: ../src/Services/Notifications.vala:132
 msgid "Prepare for your break"
 msgstr "استعد لراحتك"
 
-#: ../src/Services/Notifications.vala:117
+#: ../src/Services/Notifications.vala:134
 msgid "You have %s seconds left"
 msgstr "لديك٪ s ثواني متبقية"
 
-#: ../src/Services/Notifications.vala:124
+#: ../src/Services/Notifications.vala:142
 msgid "Task duration exceeded"
 msgstr "مدة المهمة تجاوزت"
 
-#: ../src/Services/Notifications.vala:125
+#: ../src/Services/Notifications.vala:143
 msgid "Consider switching to a different task"
 msgstr "فكر في التبديل إلى مهمة مختلفة"
 
@@ -448,49 +454,57 @@ msgstr "إفتراضي"
 msgid "disabled"
 msgstr "غير ممكن"
 
-#: ../src/Services/Shortcuts.vala:155
+#: ../src/Services/Shortcuts.vala:157
 msgid "Filter tasks"
 msgstr "تصفية المهام"
 
-#: ../src/Services/Shortcuts.vala:156
+#: ../src/Services/Shortcuts.vala:158 ../src/Todo.txt/TxtList.vala:188
+msgid "Sort Tasks"
+msgstr ""
+
+#: ../src/Services/Shortcuts.vala:159
 msgid "Add new task/list"
 msgstr "إضافة مهمة / قائمة جديدة"
 
-#: ../src/Services/Shortcuts.vala:157
+#: ../src/Services/Shortcuts.vala:160
 msgid "Start/Stop the timer"
 msgstr "بدء / إيقاف الموقت"
 
-#: ../src/Services/Shortcuts.vala:158
+#: ../src/Services/Shortcuts.vala:161
+msgid "Skip the break or skip to the break"
+msgstr ""
+
+#: ../src/Services/Shortcuts.vala:162
 msgid "Edit the properties of a list or task"
 msgstr ""
 
-#: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
-#: ../src/Widgets/TimerView.vala:282
+#: ../src/Services/Shortcuts.vala:164 ../src/Todo.txt/Widgets/TaskRow.vala:65
+#: ../src/Widgets/TimerView.vala:289
 #: ../plugins/appindicator/appindicator.vala:96
 msgid "Mark the task as complete"
 msgstr "ضع علامة على المهمة كمكتملة"
 
-#: ../src/Services/Shortcuts.vala:161
+#: ../src/Services/Shortcuts.vala:165
 msgid "Move selected row up"
 msgstr "نقل الصف المحدد لأعلى"
 
-#: ../src/Services/Shortcuts.vala:162
+#: ../src/Services/Shortcuts.vala:166
 msgid "Move selected row down"
 msgstr "نقل الصف المحدد لأسفل"
 
-#: ../src/Services/Shortcuts.vala:164
+#: ../src/Services/Shortcuts.vala:168
 msgid "Move to next task/row"
 msgstr "الانتقال إلى المهمة / الصف التالي"
 
-#: ../src/Services/Shortcuts.vala:165
+#: ../src/Services/Shortcuts.vala:169
 msgid "Move to previous task/row"
 msgstr "الانتقال إلى المهمة / الصف السابق"
 
-#: ../src/Services/Shortcuts.vala:166
+#: ../src/Services/Shortcuts.vala:170
 msgid "Move to right screen"
 msgstr "الانتقال إلى الشاشة اليمنى"
 
-#: ../src/Services/Shortcuts.vala:167
+#: ../src/Services/Shortcuts.vala:171
 msgid "Move to left screen"
 msgstr "الانتقال إلى الشاشة اليسرى"
 
@@ -599,15 +613,15 @@ msgstr ""
 msgid "Please assign a name to the list."
 msgstr ""
 
-#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:382
+#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:389
 msgid "project"
 msgstr ""
 
-#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:378
+#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:385
 msgid "context"
 msgstr ""
 
-#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:344
+#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:351
 msgid "priority"
 msgstr ""
 
@@ -648,10 +662,6 @@ msgstr ""
 msgid "Clear Done List"
 msgstr ""
 
-#: ../src/Todo.txt/TxtList.vala:188
-msgid "Sort Tasks"
-msgstr ""
-
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
 msgstr ""
@@ -682,22 +692,22 @@ msgstr ""
 msgid "You finished all tasks, good job!"
 msgstr ""
 
-#: ../src/Todo.txt/Widgets/TaskListWidget.vala:200
-#: ../src/Todo.txt/Widgets/TaskListWidget.vala:219
+#: ../src/Todo.txt/Widgets/TaskListWidget.vala:205
+#: ../src/Todo.txt/Widgets/TaskListWidget.vala:224
 msgid "Add new task"
 msgstr ""
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
-#: ../src/Todo.txt/Widgets/TaskRow.vala:319
+#: ../src/Todo.txt/Widgets/TaskRow.vala:322
 msgid "%Y-%m-%d"
 msgstr ""
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:323
+#: ../src/Todo.txt/Widgets/TaskRow.vala:326
 msgid "Task completed at %s, created at %s"
 msgstr ""
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:330
+#: ../src/Todo.txt/Widgets/TaskRow.vala:332
 msgid "Task created at %s"
 msgstr ""
 
@@ -726,62 +736,62 @@ msgstr ""
 msgid "Choose a file"
 msgstr "اختيار ملف"
 
-#: ../src/Widgets/TimerView.vala:93
+#: ../src/Widgets/TimerView.vala:100
 msgid "Skip the remainder of the break"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:95
+#: ../src/Widgets/TimerView.vala:102
 msgid "Active Task"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:99
+#: ../src/Widgets/TimerView.vala:106
 msgid "Skip to the break"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:140
+#: ../src/Widgets/TimerView.vala:147
 msgid "Pau_se"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:142
+#: ../src/Widgets/TimerView.vala:149
 #: ../plugins/appindicator/appindicator.vala:233
 #, fuzzy
 msgid "Stop the timer"
 msgstr "إيقاف الموقت"
 
-#: ../src/Widgets/TimerView.vala:149
+#: ../src/Widgets/TimerView.vala:156
 msgid "_Start"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:151
+#: ../src/Widgets/TimerView.vala:158
 #: ../plugins/appindicator/appindicator.vala:114
 #: ../plugins/appindicator/appindicator.vala:242
 #, fuzzy
 msgid "Start the timer"
 msgstr "بدء الموقت"
 
-#: ../src/Widgets/TimerView.vala:171
+#: ../src/Widgets/TimerView.vala:178
 msgid "Inactive"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:172
+#: ../src/Widgets/TimerView.vala:179
 #: ../plugins/appindicator/appindicator.vala:87
 #: ../plugins/appindicator/appindicator.vala:196
 msgid "No task has been selected"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:263
+#: ../src/Widgets/TimerView.vala:270
 msgid "S_kip"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:264
+#: ../src/Widgets/TimerView.vala:271
 msgid "_Done"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:312
+#: ../src/Widgets/TimerView.vala:315
 msgid "Relax"
 msgstr ""
 
-#: ../src/Widgets/TimerView.vala:313
+#: ../src/Widgets/TimerView.vala:316
 msgid "You have nothing to do."
 msgstr ""
 
