@@ -17,121 +17,85 @@
 
 using GOFI.DialogUtils;
 
-class GOFI.AppearancePage : Gtk.Grid {
+class GOFI.AppearancePage : Gtk.Box {
 
     public AppearancePage () {
-        int row = 0;
-        add_general_appearance_sect (ref row);
-        add_theme_section (ref row);
-        apply_grid_spacing (this);
+        Object (orientation: Gtk.Orientation.VERTICAL, spacing: 12);
+        this.add (create_general_appearance_sect ());
+        this.add (create_theme_section ());
     }
 
-    private void add_general_appearance_sect (ref int row) {
-        Gtk.Label general_sect_lbl;
-        Gtk.Label small_icons_lbl;
-        Gtk.Switch small_icons_switch;
-        Gtk.Label switch_app_lbl;
-        Gtk.ComboBoxText switch_app_selector;
-
-        /* Instantiation */
-        general_sect_lbl = new Gtk.Label (_("General"));
-
-        small_icons_lbl = new Gtk.Label (_("Use small toolbar icons") + ":");
-        small_icons_switch = new Gtk.Switch ();
-
-        switch_app_lbl = new Gtk.Label (_("Appearance of the activity switcher") + ":");
-        switch_app_selector = new Gtk.ComboBoxText ();
-
-        /* Configuration */
+    private Gtk.Widget create_general_appearance_sect () {
+        var small_icons_lbl = new Gtk.Label (_("Use small toolbar icons") + ":");
+        var small_icons_switch = new Gtk.Switch ();
         small_icons_switch.active = settings.use_small_toolbar_icons;
+        small_icons_switch.notify["active"].connect ( () => {
+            settings.use_small_toolbar_icons = small_icons_switch.active;
+        });
 
+        var switch_app_lbl = new Gtk.Label (_("Appearance of the activity switcher") + ":");
+        var switch_app_selector = new Gtk.ComboBoxText ();
         switch_app_selector.append ("icons", _("Icons"));
         switch_app_selector.append ("text", _("Text"));
         switch_app_selector.active_id =
             settings.switcher_use_icons ? "icons" : "text";
-
-        /* Signal Handling */
         switch_app_selector.changed.connect ( () => {
             settings.switcher_use_icons =
                 switch_app_selector.active_id == "icons";
         });
 
-        small_icons_switch.notify["active"].connect ( () => {
-            settings.use_small_toolbar_icons = small_icons_switch.active;
-        });
-
-        /* Add widgets */
-        add_section (this, general_sect_lbl, ref row);
-        add_option (this, small_icons_lbl, small_icons_switch, ref row);
-        add_option (this, switch_app_lbl, switch_app_selector, ref row);
+        int pos = 0;
+        var general_grid = create_page_grid ();
+        add_option2 (general_grid, ref pos, small_icons_lbl, small_icons_switch);
+        add_option2 (general_grid, ref pos, switch_app_lbl, switch_app_selector);
         if (GOFI.Utils.desktop_hb_status.config_useful ()) {
-            add_csd_settings_widgets (this, ref row);
+            string restart_info = _("%s needs to be restarted for this setting to take effect").printf (APP_NAME);
+            var headerbar_lbl = new Gtk.Label (_("Use a header bar") + ":");
+            var restart_info_widget = get_explanation_widget (restart_info);
+            var headerbar_switch = new Gtk.Switch ();
+
+            /* Configuration */
+            headerbar_switch.active = settings.use_header_bar;
+
+            /* Signal Handling */
+            headerbar_switch.notify["active"].connect ( () => {
+                settings.use_header_bar = headerbar_switch.active;
+            });
+
+            /* Add widgets */
+            add_option2 (general_grid, ref pos, headerbar_lbl, headerbar_switch, restart_info_widget);
         }
+        return create_section_box (_("General"), general_grid);
     }
 
-    private void add_theme_section (ref int row) {
-        Gtk.Label theme_sect_lbl;
-        Gtk.Label color_scheme_lbl;
-        Gtk.Label theme_lbl;
-        Gtk.ComboBoxText color_scheme_selector;
-        Gtk.ComboBoxText theme_selector;
-
-        /* Instantiation */
-        theme_sect_lbl = new Gtk.Label (_("Theme"));
-        color_scheme_lbl = new Gtk.Label (_("Color scheme") + ":");
-        theme_lbl = new Gtk.Label (_("Theme") + ":");
-        color_scheme_selector = new Gtk.ComboBoxText ();
-        theme_selector = new Gtk.ComboBoxText ();
-
-        /* Configuration */
+    private Gtk.Widget create_theme_section () {
+        var color_scheme_lbl = new Gtk.Label (_("Color scheme") + ":");
+        var color_scheme_selector = new Gtk.ComboBoxText ();
         foreach (ColorScheme cs in ColorScheme.all ()) {
             color_scheme_selector.append (cs.to_string (), cs.get_description ());
         }
         color_scheme_selector.active_id = settings.color_scheme.to_string ();
-        foreach (Theme theme in Theme.all ()) {
-            theme_selector.append (theme.to_string (), theme.to_theme_description ());
-        }
-        theme_selector.active_id = settings.theme.to_string ();
-
-        /* Signal Handling */
         color_scheme_selector.changed.connect ( () => {
             settings.color_scheme = ColorScheme.from_string (color_scheme_selector.active_id);
         });
-        theme_selector.changed.connect ( () => {
-            settings.theme = Theme.from_string (theme_selector.active_id);
-        });
 
-        add_section (this, theme_sect_lbl, ref row);
-        // Remove once we have more themes
-        if (!(Gtk.Settings.get_default ().gtk_theme_name == "elementary") || theme_selector.active_id != "elementary") {
-            add_option (this, theme_lbl, theme_selector, ref row);
+        int pos = 0;
+        var theme_grid = create_page_grid ();
+        add_option2 (theme_grid, ref pos, color_scheme_lbl, color_scheme_selector);
+
+        if (!(Gtk.Settings.get_default ().gtk_theme_name == "elementary") || settings.theme != Theme.ELEMENTARY) {
+            var theme_lbl = new Gtk.Label (_("Theme") + ":");
+            var theme_selector = new Gtk.ComboBoxText ();
+            foreach (Theme theme in Theme.all ()) {
+                theme_selector.append (theme.to_string (), theme.to_theme_description ());
+            }
+            theme_selector.active_id = settings.theme.to_string ();
+            theme_selector.changed.connect ( () => {
+                settings.theme = Theme.from_string (theme_selector.active_id);
+            });
+
+            add_option2 (theme_grid, ref pos, theme_lbl, theme_selector);
         }
-        add_option (this, color_scheme_lbl, color_scheme_selector, ref row);
-    }
-
-    private void add_csd_settings_widgets (Gtk.Grid grid, ref int row) {
-        Gtk.Label headerbar_lbl;
-        Gtk.Label restart_info_lbl;
-        Gtk.Switch headerbar_switch;
-
-        string restart_info = _("%s needs to be restarted for this setting to take effect").printf (APP_NAME);
-
-        /* Instantiation */
-        headerbar_lbl = new Gtk.Label (_("Use a header bar") + ":");
-        restart_info_lbl = new Gtk.Label (@"<i>$restart_info</i>:");
-        headerbar_switch = new Gtk.Switch ();
-
-        /* Configuration */
-        headerbar_switch.active = settings.use_header_bar;
-        restart_info_lbl.use_markup = true;
-
-        /* Signal Handling */
-        headerbar_switch.notify["active"].connect ( () => {
-            settings.use_header_bar = headerbar_switch.active;
-        });
-
-        /* Add widgets */
-        add_explanation (grid, restart_info_lbl, ref row);
-        add_option (grid, headerbar_lbl, headerbar_switch, ref row, 2);
+        return create_section_box (_("Theme"), theme_grid);
     }
 }
