@@ -26,51 +26,27 @@ namespace GOFI.DialogUtils {
         row++;
     }
 
-    internal static void add_option (Gtk.Grid grid, Gtk.Widget label,
-                            Gtk.Widget switcher, ref int row, int indent=1, Gtk.Widget? label2 = null)
-    {
-        label.margin_start = indent * 12; // indentation relative to the section label
-        label.halign = Gtk.Align.END;
-
-        grid.attach (label, 0, row, 1, 1);
-        if (label2 != null) {
-            var box = new  Gtk.Box (Gtk.Orientation.HORIZONTAL, 10);
-            box.add (switcher);
-            box.add (label2);
-            label2.halign = Gtk.Align.START;
-            grid.attach (box, 1, row, 2, 1);
-        } else {
-            grid.attach (switcher, 1, row, 2, 1);
-            switcher.hexpand = true;
-
-            if (switcher is Gtk.Switch || switcher is Gtk.Entry) {
-                switcher.halign = Gtk.Align.START;
-            } else {
-                switcher.halign = Gtk.Align.FILL;
-            }
-        }
-        row++;
-    }
-
-    internal static void add_option2 (Gtk.Grid grid, ref int row, Gtk.Widget label,
+    internal static void add_option (Gtk.Grid grid, ref int row, Gtk.Widget label,
                             Gtk.Widget switcher, Gtk.Widget? label2 = null)
     {
         label.halign = Gtk.Align.END;
 
         grid.attach (label, 0, row, 1, 1);
+
+        if (switcher is Gtk.Switch || switcher is Gtk.Entry) {
+            switcher.halign = Gtk.Align.START;
+        } else {
+            switcher.halign = Gtk.Align.FILL;
+        }
+
         if (label2 != null) {
             label2.halign = Gtk.Align.START;
+            label2.hexpand = true;
             grid.attach (switcher, 1, row, 1, 1);
             grid.attach (label2, 2, row, 1, 1);
         } else {
             grid.attach (switcher, 1, row, 2, 1);
             switcher.hexpand = true;
-
-            if (switcher is Gtk.Switch || switcher is Gtk.Entry) {
-                switcher.halign = Gtk.Align.START;
-            } else {
-                switcher.halign = Gtk.Align.FILL;
-            }
         }
         row++;
     }

@@ -107,11 +107,11 @@ class GOFI.BehaviorPage : Gtk.Box {
 
         var schedule_grid = create_page_grid ();
         int pos = 0;
-        add_option2 (schedule_grid, ref pos, timer_mode_lbl, timer_mode_cbox);
-        add_option2 (schedule_grid, ref pos, task_lbl1, task_spin, task_lbl2);
-        add_option2 (schedule_grid, ref pos, break_lbl1, break_spin, break_lbl2);
-        add_option2 (schedule_grid, ref pos, long_break_lbl1, long_break_spin, long_break_lbl2);
-        add_option2 (schedule_grid, ref pos, long_break_period_lbl1, long_break_period_spin, long_break_period_lbl2);
+        add_option (schedule_grid, ref pos, timer_mode_lbl, timer_mode_cbox);
+        add_option (schedule_grid, ref pos, task_lbl1, task_spin, task_lbl2);
+        add_option (schedule_grid, ref pos, break_lbl1, break_spin, break_lbl2);
+        add_option (schedule_grid, ref pos, long_break_lbl1, long_break_spin, long_break_lbl2);
+        add_option (schedule_grid, ref pos, long_break_period_lbl1, long_break_period_spin, long_break_period_lbl2);
         schedule_grid.attach (cust_sched_widget, 0, pos, 3, 1);
 
         resume_task_lbl = new Gtk.Label (_("Resume task after the break") + ":");
@@ -131,10 +131,10 @@ class GOFI.BehaviorPage : Gtk.Box {
         var misc_grid = create_page_grid ();
         pos = 0;
 
-        add_option2 (misc_grid, ref pos, resume_task_lbl, resume_task_switch);
-        add_option2 (misc_grid, ref pos, reset_on_switch_lbl, reset_on_switch_switch);
+        add_option (misc_grid, ref pos, resume_task_lbl, resume_task_switch);
+        add_option (misc_grid, ref pos, reset_on_switch_lbl, reset_on_switch_switch);
 
-        var timer_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+        var timer_box = new Gtk.Box (Gtk.Orientation.VERTICAL, SPACING_SETTINGS_ROW);
         timer_box.add (schedule_grid);
         timer_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
         timer_box.add (misc_grid);
@@ -158,7 +158,7 @@ class GOFI.BehaviorPage : Gtk.Box {
 
         int pos = 0;
         var task_grid = create_page_grid ();
-        add_option2 (task_grid, ref pos, placement_lbl, placement_cbox);
+        add_option (task_grid, ref pos, placement_lbl, placement_cbox);
         return create_section_box (_("Tasks"), task_grid);
     }
 

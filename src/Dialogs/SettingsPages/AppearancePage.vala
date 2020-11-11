@@ -46,8 +46,8 @@ class GOFI.AppearancePage : Gtk.Box {
 
         int pos = 0;
         var general_grid = create_page_grid ();
-        add_option2 (general_grid, ref pos, small_icons_lbl, small_icons_switch);
-        add_option2 (general_grid, ref pos, switch_app_lbl, switch_app_selector);
+        add_option (general_grid, ref pos, small_icons_lbl, small_icons_switch);
+        add_option (general_grid, ref pos, switch_app_lbl, switch_app_selector);
         if (GOFI.Utils.desktop_hb_status.config_useful ()) {
             string restart_info = _("%s needs to be restarted for this setting to take effect").printf (APP_NAME);
             var headerbar_lbl = new Gtk.Label (_("Use a header bar") + ":");
@@ -63,7 +63,7 @@ class GOFI.AppearancePage : Gtk.Box {
             });
 
             /* Add widgets */
-            add_option2 (general_grid, ref pos, headerbar_lbl, headerbar_switch, restart_info_widget);
+            add_option (general_grid, ref pos, headerbar_lbl, headerbar_switch, restart_info_widget);
         }
         return create_section_box (_("General"), general_grid);
     }
@@ -81,7 +81,7 @@ class GOFI.AppearancePage : Gtk.Box {
 
         int pos = 0;
         var theme_grid = create_page_grid ();
-        add_option2 (theme_grid, ref pos, color_scheme_lbl, color_scheme_selector);
+        add_option (theme_grid, ref pos, color_scheme_lbl, color_scheme_selector);
 
         if (!(Gtk.Settings.get_default ().gtk_theme_name == "elementary") || settings.theme != Theme.ELEMENTARY) {
             var theme_lbl = new Gtk.Label (_("Theme") + ":");
@@ -94,7 +94,7 @@ class GOFI.AppearancePage : Gtk.Box {
                 settings.theme = Theme.from_string (theme_selector.active_id);
             });
 
-            add_option2 (theme_grid, ref pos, theme_lbl, theme_selector);
+            add_option (theme_grid, ref pos, theme_lbl, theme_selector);
         }
         return create_section_box (_("Theme"), theme_grid);
     }

@@ -121,7 +121,7 @@ class GOFI.NotificationsPage : Gtk.Box {
         var sound_grid = create_page_grid ();
         int row = 0;
 
-        add_option2 (sound_grid, ref row, reminder_lbl1, reminder_spin, reminder_lbl2);
+        add_option (sound_grid, ref row, reminder_lbl1, reminder_spin, reminder_lbl2);
         return create_section_box (_("General"), sound_grid);
     }
 
@@ -195,9 +195,9 @@ class GOFI.NotificationsPage : Gtk.Box {
         var sound_grid = create_page_grid ();
         int row = 0;
 
-        add_option2 (sound_grid, ref row, reminder_sound_lbl, reminder_sound_cbox, reminder_sound_volume_button);
-        add_option2 (sound_grid, ref row, break_start_sound_lbl, break_start_sound_cbox, break_start_sound_volume_button);
-        add_option2 (sound_grid, ref row, break_end_sound_lbl, break_end_sound_cbox, break_end_sound_volume_button);
+        add_option (sound_grid, ref row, reminder_sound_lbl, reminder_sound_cbox, reminder_sound_volume_button);
+        add_option (sound_grid, ref row, break_start_sound_lbl, break_start_sound_cbox, break_start_sound_volume_button);
+        add_option (sound_grid, ref row, break_end_sound_lbl, break_end_sound_cbox, break_end_sound_volume_button);
         return create_section_box (_("Notification sounds"), sound_grid);
     }
 

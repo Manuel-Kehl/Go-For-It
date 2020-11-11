@@ -231,9 +231,9 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         log_file_lbl_revealer.add (log_file_lbl);
         log_file_chooser_revealer.add (log_file_chooser);
 
-        add_option (grid, name_lbl, name_entry, ref row);
-        add_option (grid, activity_logging_lbl, activity_logging_switch, ref row, 1, activity_logging_expl_widget);
-        add_option (grid, log_file_lbl_revealer, log_file_chooser_revealer, ref row);
+        add_option (grid, ref row ,name_lbl, name_entry);
+        add_option (grid, ref row ,activity_logging_lbl, activity_logging_switch, activity_logging_expl_widget);
+        add_option (grid, ref row, log_file_lbl_revealer, log_file_chooser_revealer);
 
         enable_timer_logging (activity_log_file != null);
     }
@@ -304,9 +304,9 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
 
         /* Placement */
         add_section (grid, txt_sect_lbl, ref row);
-        add_option (grid, todo_uri_lbl, todo_uri_chooser, ref row);
-        add_option (grid, done_uri_lbl, done_uri_chooser, ref row);
-        add_option (grid, log_total_timer_lbl, log_total_timer_switch, ref row, 1, log_total_timer_expl_widget);
+        add_option (grid, ref row, todo_uri_lbl, todo_uri_chooser);
+        add_option (grid, ref row, done_uri_lbl, done_uri_chooser);
+        add_option (grid, ref row, log_total_timer_lbl, log_total_timer_switch, log_total_timer_expl_widget);
     }
 
     private void on_todo_file_changed () {
@@ -381,8 +381,8 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         });
 
         /* Add widgets */
-        add_option (grid, timer_default_lbl, timer_default_switch, ref row, 0);
-        add_option (grid, reminder_lbl1, reminder_spin, ref row, 0, reminder_lbl2);
+        add_option (grid, ref row, timer_default_lbl, timer_default_switch);
+        add_option (grid, ref row, reminder_lbl1, reminder_spin, reminder_lbl2);
 
         grid.attach (sched_widget, 0, row, 3, 1);
         row++;
