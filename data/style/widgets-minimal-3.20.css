@@ -52,3 +52,7 @@ row.drag-icon label {
 .gofi_main_window {
     -gtk-icon-style: symbolic
 }
+
+.settings-frame {
+    background-color: @theme_base_color
+}

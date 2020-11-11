@@ -70,3 +70,7 @@ row.drag-icon link {
     padding: 0;
     border: 0px;
 }
+
+.settings-frame {
+    background-color: @theme_base_color
+}

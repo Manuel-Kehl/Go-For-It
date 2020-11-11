@@ -59,3 +59,7 @@ GtkLabel.task_duration_exceeded {
     padding: 0;
     border: 0px;
 }
+
+.settings-frame {
+    background-color: @theme_base_color
+}

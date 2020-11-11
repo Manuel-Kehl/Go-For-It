@@ -52,3 +52,7 @@ GtkLabel.task_duration_exceeded {
 .gofi_main_window {
     -gtk-icon-style: symbolic
 }
+
+.settings-frame {
+    background-color: @theme_base_color
+}
