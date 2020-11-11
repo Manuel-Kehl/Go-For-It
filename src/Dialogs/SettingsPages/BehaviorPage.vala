@@ -105,8 +105,7 @@ class GOFI.BehaviorPage : Gtk.Box {
             settings.schedule = sched;
         });
 
-        var schedule_grid = new Gtk.Grid ();
-        apply_grid_spacing (schedule_grid);
+        var schedule_grid = create_page_grid ();
         int pos = 0;
         add_option2 (schedule_grid, ref pos, timer_mode_lbl, timer_mode_cbox);
         add_option2 (schedule_grid, ref pos, task_lbl1, task_spin, task_lbl2);
@@ -129,8 +128,7 @@ class GOFI.BehaviorPage : Gtk.Box {
             settings.reset_timer_on_task_switch = reset_on_switch_switch.active;
         });
 
-        var misc_grid = new Gtk.Grid ();
-        apply_grid_spacing (misc_grid);
+        var misc_grid = create_page_grid ();
         pos = 0;
 
         add_option2 (misc_grid, ref pos, resume_task_lbl, resume_task_switch);
@@ -159,8 +157,7 @@ class GOFI.BehaviorPage : Gtk.Box {
         });
 
         int pos = 0;
-        var task_grid = new Gtk.Grid ();
-        apply_grid_spacing (task_grid);
+        var task_grid = create_page_grid ();
         add_option2 (task_grid, ref pos, placement_lbl, placement_cbox);
         return create_section_box (_("Tasks"), task_grid);
     }
