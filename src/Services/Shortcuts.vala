@@ -116,7 +116,7 @@ namespace GOFI {
         string shortcut_id;
         string signal_name;
         KeyBindingParam[] params;
-        public KeyBinding(string sc, string s, KeyBindingParam[] p) {
+        public KeyBinding (string sc, string s, KeyBindingParam[] p) {
             this.shortcut_id = sc;
             this.signal_name = s;
             this.params = p;
@@ -137,24 +137,28 @@ namespace GOFI {
             }
         }
 
-        public const string SCK_FILTER = "filter";
         public const string SCK_ADD_NEW = "add-new";
-        public const string SCK_TOGGLE_TIMER = "toggle-timer";
-        public const string SCK_MARK_TASK_DONE = "mark-task-done";
-        public const string SCK_MOVE_ROW_UP = "move-row-up";
-        public const string SCK_MOVE_ROW_DOWN = "move-row-down";
-        public const string SCK_NEXT_TASK = "next-task";
-        public const string SCK_PREV_TASK = "prev-task";
         public const string SCK_CYCLE_PAGE = "cycle-page";
         public const string SCK_CYCLE_PAGE_REV = "cycle-page-reverse";
+        public const string SCK_DELETE = "delete"; // Not configurable
         public const string SCK_EDIT_PROPERTIES = "edit-properties";
-        public const string SCK_DELETE = "delete";
-        public const string[] SC_KEYS = {SCK_FILTER, SCK_ADD_NEW, SCK_TOGGLE_TIMER, SCK_EDIT_PROPERTIES, SCK_MARK_TASK_DONE, SCK_MOVE_ROW_UP, SCK_MOVE_ROW_DOWN, SCK_NEXT_TASK, SCK_PREV_TASK, SCK_CYCLE_PAGE, SCK_CYCLE_PAGE_REV};
+        public const string SCK_FILTER = "filter";
+        public const string SCK_MARK_TASK_DONE = "mark-task-done";
+        public const string SCK_MOVE_ROW_DOWN = "move-row-down";
+        public const string SCK_MOVE_ROW_UP = "move-row-up";
+        public const string SCK_NEXT_TASK = "next-task";
+        public const string SCK_PREV_TASK = "prev-task";
+        public const string SCK_SORT = "sort";
+        public const string SCK_SKIP = "skip";
+        public const string SCK_TOGGLE_TIMER = "toggle-timer";
+        public const string[] SC_KEYS = {SCK_ADD_NEW, SCK_CYCLE_PAGE, SCK_CYCLE_PAGE_REV, SCK_EDIT_PROPERTIES, SCK_FILTER, SCK_MARK_TASK_DONE, SCK_MOVE_ROW_DOWN, SCK_MOVE_ROW_UP, SCK_NEXT_TASK, SCK_PREV_TASK, SCK_SORT, SCK_SKIP, SCK_TOGGLE_TIMER};
 
         public static ConfigurableShortcut[] known_shortcuts = {
             ConfigurableShortcut (SCK_FILTER,         _("Filter tasks")),
+            ConfigurableShortcut (SCK_SORT,           _("Sort Tasks")),
             ConfigurableShortcut (SCK_ADD_NEW,        _("Add new task/list")),
             ConfigurableShortcut (SCK_TOGGLE_TIMER,   _("Start/Stop the timer")),
+            ConfigurableShortcut (SCK_SKIP,           _("Skip the break or skip to the break")),
             ConfigurableShortcut (SCK_EDIT_PROPERTIES,_("Edit the properties of a list or task")),
 
             ConfigurableShortcut (SCK_MARK_TASK_DONE, _("Mark the task as complete")),
@@ -168,30 +172,35 @@ namespace GOFI {
         };
 
         static KeyBinding[] DragListBindings = {
-            KeyBinding(SCK_NEXT_TASK, "move-cursor", MoveKeyParams(Gtk.MovementStep.DISPLAY_LINES, 1).params),
-            KeyBinding(SCK_PREV_TASK, "move-cursor", MoveKeyParams(Gtk.MovementStep.DISPLAY_LINES, -1).params),
-            KeyBinding(SCK_MOVE_ROW_UP, "move-selected-row", {KeyBindingParam<long>(1, typeof(long))}),
-            KeyBinding(SCK_MOVE_ROW_DOWN, "move-selected-row", {KeyBindingParam<long>(-1, typeof(long))}),
+            KeyBinding (SCK_NEXT_TASK, "move-cursor", MoveKeyParams(Gtk.MovementStep.DISPLAY_LINES, 1).params),
+            KeyBinding (SCK_PREV_TASK, "move-cursor", MoveKeyParams(Gtk.MovementStep.DISPLAY_LINES, -1).params),
+            KeyBinding (SCK_MOVE_ROW_UP, "move-selected-row", {KeyBindingParam<long>(1, typeof(long))}),
+            KeyBinding (SCK_MOVE_ROW_DOWN, "move-selected-row", {KeyBindingParam<long>(-1, typeof(long))}),
         };
 
         static KeyBinding[] TaskListBindings = {
-            KeyBinding(SCK_FILTER, "toggle-filtering", {}),
-            KeyBinding(SCK_EDIT_PROPERTIES, "task_edit_action", {}),
+            KeyBinding (SCK_FILTER, "toggle-filtering", {}),
+            KeyBinding (SCK_SORT, "sort-tasks", {}),
+            KeyBinding (SCK_EDIT_PROPERTIES, "task_edit_action", {}),
         };
 
         static KeyBinding[] WindowBindings = {
-            KeyBinding(SCK_FILTER, "filter-fallback-action", {}),
+            KeyBinding (SCK_FILTER, "filter-fallback-action", {}),
         };
 
         static KeyBinding[] TaskListPageBindings = {
-            KeyBinding(SCK_NEXT_TASK, "switch_to_next", {}),
-            KeyBinding(SCK_PREV_TASK, "switch_to_prev", {}),
-            KeyBinding(SCK_MARK_TASK_DONE, "mark_task_done", {}),
+            KeyBinding (SCK_NEXT_TASK, "switch_to_next", {}),
+            KeyBinding (SCK_PREV_TASK, "switch_to_prev", {}),
+            KeyBinding (SCK_MARK_TASK_DONE, "mark_task_done", {}),
         };
 
         static KeyBinding[] SelectionPageBindings = {
-            KeyBinding(SCK_EDIT_PROPERTIES, "list_edit_action", {}),
-            KeyBinding(SCK_DELETE, "list_delete_action", {}),
+            KeyBinding (SCK_EDIT_PROPERTIES, "list_edit_action", {}),
+            KeyBinding (SCK_DELETE, "list_delete_action", {}),
+        };
+
+        static KeyBinding[] TimerViewBindings = {
+            KeyBinding (SCK_SKIP, "skip", {}),
         };
 
         public KeyBindingSettings () {
@@ -218,6 +227,10 @@ namespace GOFI {
             install_bindings_for_class (
                 typeof (SelectionPage),
                 SelectionPageBindings
+            );
+            install_bindings_for_class (
+                typeof (TimerView),
+                TimerViewBindings
             );
             install_bindings_for_class (
                 typeof (MainWindow),

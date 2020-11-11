@@ -48,6 +48,11 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
     }
 
     [Signal (action = true)]
+    public virtual signal void sort_tasks () {
+        model.sort ();
+    }
+
+    [Signal (action = true)]
     public virtual signal void task_edit_action () {
         var selected_row = task_view.get_selected_row () as TaskRow;
         if (selected_row != null) {

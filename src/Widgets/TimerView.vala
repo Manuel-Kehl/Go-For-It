@@ -40,6 +40,11 @@ class GOFI.TimerView : Gtk.Grid {
 
     public signal void done_btn_clicked ();
 
+    [Signal (action = true)]
+    public virtual signal void skip () {
+        timer.end_iteration ();
+    }
+
     public TimerView (TaskTimer timer) {
         this.timer = timer;
 
@@ -85,18 +90,20 @@ class GOFI.TimerView : Gtk.Grid {
         update_description (task);
         var style = task_description_lbl.get_style_context ();
 
+        var sc = kbsettings.get_shortcut (KeyBindingSettings.SCK_SKIP);
+
         // Append correct class according to break status
         if (timer.break_active) {
             task_status_lbl.label = Utils.string_to_exclamation (_("Take a Break"));
             style.remove_class ("task_active");
             style.add_class ("task_break");
-            skip_btn.tooltip_markup = _("Skip the remainder of the break");
+            skip_btn.tooltip_markup = sc.get_accel_markup (_("Skip the remainder of the break"));
         } else {
             task_status_lbl.label = _("Active Task") + ":";
             style.remove_class ("task_break");
             style.add_class ("task_active");
             done_btn.visible = true;
-            skip_btn.tooltip_markup = _("Skip to the break");
+            skip_btn.tooltip_markup = sc.get_accel_markup (_("Skip to the break"));
         }
     }
 
@@ -282,12 +289,8 @@ class GOFI.TimerView : Gtk.Grid {
         done_btn.tooltip_markup = sc.get_accel_markup (_("Mark the task as complete"));
 
         /* Action Handling */
-        skip_btn.clicked.connect ((e) => {
-            timer.end_iteration ();
-        });
-        done_btn.clicked.connect ((e) => {
-            done_btn_clicked ();
-        });
+        skip_btn.clicked.connect ((e) => skip ());
+        done_btn.clicked.connect ((e) => done_btn_clicked ());
         run_btn.clicked.connect (on_run_btn_clicked);
 
         /* Add Widgets */

@@ -213,6 +213,11 @@
       <summary>Filter/search shortcut.</summary>
       <description></description>
     </key>
+    <key name="sort" type="s">
+      <default><![CDATA['']]></default>
+      <summary>Sort shortcut.</summary>
+      <description></description>
+    </key>
     <key name="add-new" type="s">
       <default><![CDATA['<Control>n']]></default>
       <summary>Add a new task or list.</summary>
@@ -221,6 +226,11 @@
     <key name="toggle-timer" type="s">
       <default><![CDATA['<Control>p']]></default>
       <summary>Stop or start the timer.</summary>
+      <description></description>
+    </key>
+    <key name="skip" type="s">
+      <default><![CDATA['']]></default>
+      <summary>Skip the break or the task.</summary>
       <description></description>
     </key>
     <key name="mark-task-done" type="s">
