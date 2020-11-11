@@ -93,6 +93,10 @@ class GOFI.NotificationsPage : Gtk.Grid {
     Gtk.ComboBoxText break_end_sound_cbox;
     Gtk.VolumeButton break_end_sound_volume_button;
 
+    Gtk.Label reminder_sound_lbl;
+    Gtk.ComboBoxText reminder_sound_cbox;
+    Gtk.VolumeButton reminder_sound_volume_button;
+
     public NotificationsPage () {
         int row = 0;
         setup_notification_settings_widgets (ref row);
@@ -108,32 +112,40 @@ class GOFI.NotificationsPage : Gtk.Grid {
         // More than ten minutes would not make much sense
         reminder_spin = new Gtk.SpinButton.with_range (0, 600, 1);
 
+        reminder_sound_lbl = new Gtk.Label (_("Reminder sound") + ":");
         break_start_sound_lbl = new Gtk.Label (_("Start of break sound") + ":");
         break_end_sound_lbl = new Gtk.Label (_("End of break sound") + ":");
 
+        reminder_sound_cbox = new Gtk.ComboBoxText ();
         break_start_sound_cbox = new Gtk.ComboBoxText ();
         break_end_sound_cbox = new Gtk.ComboBoxText ();
 
+        reminder_sound_volume_button = new Gtk.VolumeButton ();
         break_start_sound_volume_button = new Gtk.VolumeButton ();
         break_end_sound_volume_button = new Gtk.VolumeButton ();
 
         /* Configuration */
         reminder_spin.value = settings.reminder_time;
 
+        reminder_sound_volume_button.value =
+            notification_service.reminder_player.model.volume;
         break_start_sound_volume_button.value =
             notification_service.break_start_player.model.volume;
         break_end_sound_volume_button.value =
             notification_service.break_end_player.model.volume;
 
         foreach (var preset in NotificationSoundPreset.presets ()) {
+            reminder_sound_cbox.append (preset.get_file_str (), preset.get_name ());
             break_start_sound_cbox.append (preset.get_file_str (), preset.get_name ());
             break_end_sound_cbox.append (preset.get_file_str (), preset.get_name ());
         }
-        break_start_sound_cbox.append ("custom", _("Custom"));
-        break_end_sound_cbox.append ("custom", _("Custom"));
-        break_start_sound_cbox.append ("silent", _("Silent"));
-        break_end_sound_cbox.append ("silent", _("Silent"));
+        add_misc_presets (reminder_sound_cbox);
+        add_misc_presets (break_start_sound_cbox);
+        add_misc_presets (break_end_sound_cbox);
 
+        set_sound_cbox_active_id (
+            reminder_sound_cbox, notification_service.reminder_player
+        );
         set_sound_cbox_active_id (
             break_start_sound_cbox, notification_service.break_start_player
         );
@@ -145,6 +157,10 @@ class GOFI.NotificationsPage : Gtk.Grid {
         reminder_spin.value_changed.connect (() =>
             settings.reminder_time = reminder_spin.get_value_as_int ()
         );
+        reminder_sound_volume_button.value_changed.connect (() => {
+            notification_service.reminder_player.model.volume =
+                reminder_sound_volume_button.value;
+        });
         break_start_sound_volume_button.value_changed.connect (() => {
             notification_service.break_start_player.model.volume =
                 break_start_sound_volume_button.value;
@@ -153,6 +169,11 @@ class GOFI.NotificationsPage : Gtk.Grid {
             notification_service.break_end_player.model.volume =
                 break_end_sound_volume_button.value;
         });
+        reminder_sound_cbox.changed.connect (() =>
+            update_sound_file_from_cbox (
+                reminder_sound_cbox, notification_service.reminder_player
+            )
+        );
         break_start_sound_cbox.changed.connect (() =>
             update_sound_file_from_cbox (
                 break_start_sound_cbox, notification_service.break_start_player
@@ -167,8 +188,14 @@ class GOFI.NotificationsPage : Gtk.Grid {
         /* Add widgets */
         add_option (this, reminder_lbl1, reminder_spin, ref row, 1, reminder_lbl2);
         add_section (this, new Gtk.Label (_("Notification sounds")), ref row);
+        add_option (this, reminder_sound_lbl, reminder_sound_cbox, ref row, 1, reminder_sound_volume_button);
         add_option (this, break_start_sound_lbl, break_start_sound_cbox, ref row, 1, break_start_sound_volume_button);
         add_option (this, break_end_sound_lbl, break_end_sound_cbox, ref row, 1, break_end_sound_volume_button);
+    }
+
+    private void add_misc_presets (Gtk.ComboBoxText cbox) {
+        cbox.append ("custom", _("Custom"));
+        cbox.append ("", _("Silent"));
     }
 
     private void set_sound_cbox_active_id (Gtk.ComboBoxText cbox, SoundPlayer player) {
@@ -176,10 +203,10 @@ class GOFI.NotificationsPage : Gtk.Grid {
         var preset = NotificationSoundPreset.from_preset_basename (file_str);
         if (preset == NotificationSoundPreset.INVALID) {
             var basename = File.new_for_uri (file_str).get_basename ();
-            if (basename != null) {
+            if (basename != null && basename != "") {
                 cbox.prepend (file_str, basename);
             } else {
-                file_str = "silent";
+                file_str = "";
             }
         }
         cbox.active_id = file_str;
@@ -199,7 +226,7 @@ class GOFI.NotificationsPage : Gtk.Grid {
                 }
 
                 return;
-            case "silent":
+            case "":
                 player.model.file_str = "";
                 break;
             default:

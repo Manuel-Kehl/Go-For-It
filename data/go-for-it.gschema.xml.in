@@ -137,6 +137,17 @@
   </schema>
 
   <schema path="@SCHEMA_PATH@/settings/sounds/" id="@APP_ID@.settings.sounds">
+    <key name="reminder-sound-volume" type="d">
+      <range min="0.0" max="1.0"/>
+      <default>1.0</default>
+      <summary></summary>
+      <description></description>
+    </key>
+    <key name="reminder-sound-file" type="s">
+      <default>''</default>
+      <summary></summary>
+      <description></description>
+    </key>
     <key name="break-start-sound-volume" type="d">
       <range min="0.0" max="1.0"/>
       <default>1.0</default>
@@ -146,7 +157,7 @@
     <key name="break-start-sound-file" type="s">
       <default>'singing-bowl.ogg'</default>
       <summary>Sound to play at the start of the break</summary>
-      <description>For custom sound files specify a file:/// uri.</description>
+      <description>Sound to play at the start of the break. For custom sound files specify a file:/// uri.</description>
     </key>
     <key name="break-end-sound-volume" type="d">
       <range min="0.0" max="1.0"/>
@@ -157,7 +168,7 @@
     <key name="break-end-sound-file" type="s">
       <default>'aluminium-bowl.ogg'</default>
       <summary>Sound to play at the end of the break</summary>
-      <description>For custom sound files specify a file:/// uri.</description>
+      <description>Sound to play at the end of the break. For custom sound files specify a file:/// uri.</description>
     </key>
     <key name="mute" type="b">
       <default>false</default>
