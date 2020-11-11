@@ -78,6 +78,9 @@ class GOFI.SettingsDialog : Gtk.Dialog {
 #if !NO_PLUGINS
         settings_stack.add_titled (plugin_manager.get_settings_widget (), "plugins_page", _("Plugins"));
 #endif
+        settings_stack.set_transition_type (
+            Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
+        );
 
         main_layout.add(stack_switcher);
         main_layout.add(settings_stack);
