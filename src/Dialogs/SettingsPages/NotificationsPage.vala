@@ -97,6 +97,9 @@ class GOFI.NotificationsPage : Gtk.Grid {
     Gtk.ComboBoxText reminder_sound_cbox;
     Gtk.VolumeButton reminder_sound_volume_button;
 
+    const string CUSTOM_ID = "custom\x07";
+    const string SILENT_ID = "";
+
     public NotificationsPage () {
         int row = 0;
         setup_notification_settings_widgets (ref row);
@@ -194,8 +197,8 @@ class GOFI.NotificationsPage : Gtk.Grid {
     }
 
     private void add_misc_presets (Gtk.ComboBoxText cbox) {
-        cbox.append ("custom", _("Custom"));
-        cbox.append ("", _("Silent"));
+        cbox.append (CUSTOM_ID, _("Custom"));
+        cbox.append (SILENT_ID, _("Silent"));
     }
 
     private void set_sound_cbox_active_id (Gtk.ComboBoxText cbox, SoundPlayer player) {
@@ -215,7 +218,7 @@ class GOFI.NotificationsPage : Gtk.Grid {
     private void update_sound_file_from_cbox (Gtk.ComboBoxText cbox, SoundPlayer player) {
         var active_id = cbox.active_id;
         switch (active_id) {
-            case "custom":
+            case CUSTOM_ID:
                 var file = get_custom_sound_file ();
                 if (file == null) {
                     cbox.active_id = player.model.file_str;
@@ -226,7 +229,7 @@ class GOFI.NotificationsPage : Gtk.Grid {
                 }
 
                 return;
-            case "":
+            case SILENT_ID:
                 player.model.file_str = "";
                 break;
             default:
