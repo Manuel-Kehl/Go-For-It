@@ -3,19 +3,21 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-02 14:53+0100\n"
-"PO-Revision-Date: 2016-11-18 19:57+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2020-11-11 20:26+0000\n"
+"Last-Translator: Stan M <stan.hd@hotmail.com>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/bg/>\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.4-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
-"X-Generator: Launchpad (build 18505)\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
 msgid "About"
-msgstr ""
+msgstr "За"
 
 #: ../src/Dialogs/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
@@ -23,37 +25,39 @@ msgstr ""
 
 #: ../src/Dialogs/ContributeDialog.vala:28
 msgid "Contributions and Donations"
-msgstr ""
+msgstr "Контрибуции и Дарения"
 
 #: ../src/Dialogs/ContributeDialog.vala:31
 msgid "Thank you for supporting"
-msgstr ""
+msgstr "Благодарим ви да подкрепата"
 
 #: ../src/Dialogs/ContributeDialog.vala:32
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
 msgstr ""
+"Предоставянето на произведения на изкуството, преводи или документация са "
+"добър начин да направите контрибуция за проекта:"
 
 #: ../src/Dialogs/ContributeDialog.vala:36
 msgid "If you really like this app, you can buy me a drink:"
-msgstr ""
+msgstr "Ако сте доволни от приложението, може де ми купите питие:"
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr ""
+msgstr "Замени \"%s\"?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
-msgstr ""
+msgstr "Да бъде ли заменен файлът или старият файл да бъде използван отново?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
-msgstr ""
+msgstr "Запази старият"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "Замени"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:227
@@ -61,431 +65,433 @@ msgstr ""
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
 #: ../src/Widgets/FileChooserWidget.vala:85
 msgid "Cancel"
-msgstr ""
+msgstr "Отказ"
 
 #: ../src/Dialogs/SettingsDialog.vala:47 ../src/MainWindow.vala:458
 msgid "Settings"
-msgstr ""
+msgstr "Настройки"
 
 #: ../src/Dialogs/SettingsDialog.vala:49
 #: ../plugins/appindicator/appindicator.vala:78
 msgid "Close"
-msgstr ""
+msgstr "Затвори"
 
 #: ../src/Dialogs/SettingsDialog.vala:74
 msgid "Behavior"
-msgstr ""
+msgstr "Поведение"
 
 #: ../src/Dialogs/SettingsDialog.vala:75
 msgid "Notifications"
-msgstr ""
+msgstr "Известия"
 
 #: ../src/Dialogs/SettingsDialog.vala:76
 msgid "Appearance"
-msgstr ""
+msgstr "Външен вид"
 
 #: ../src/Dialogs/SettingsDialog.vala:77
 msgid "Shortcuts"
-msgstr ""
+msgstr "Шорткъти"
 
 #: ../src/Dialogs/SettingsDialog.vala:79
 msgid "Plugins"
-msgstr ""
+msgstr "Добавки"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:147
 msgid "General"
-msgstr ""
+msgstr "Основни настройки"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
 msgid "Use small toolbar icons"
-msgstr ""
+msgstr "Малки иконки в лентата"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:42
 msgid "Appearance of the activity switcher"
-msgstr ""
+msgstr "Облик превключвател на дейности"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:48
 msgid "Icons"
-msgstr ""
+msgstr "Икони"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:49
 msgid "Text"
-msgstr ""
+msgstr "Текст"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:80
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:82
 msgid "Theme"
-msgstr ""
+msgstr "Тема"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
 msgid "Color scheme"
-msgstr ""
+msgstr "Цветови модел"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
 msgid "%s needs to be restarted for this setting to take effect"
-msgstr ""
+msgstr "За да влязат в сила тези настройки, %s трябва да се рестартира"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
 msgid "Use a header bar"
-msgstr ""
+msgstr "Използвай заглавна лента"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:60
 #: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
 msgid "Timer"
-msgstr ""
+msgstr "Таймер"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:61
 #: ../src/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
-msgstr ""
+msgstr "Продължителност на задачата"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:62
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:66
 msgid "minutes"
-msgstr ""
+msgstr "минути"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:63
 #: ../src/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
-msgstr ""
+msgstr "Продължителност на почивката"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
 msgid "Long break duration"
-msgstr ""
+msgstr "Продължителност на дълга почивка"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
 msgid "Resume task after the break"
-msgstr ""
+msgstr "Продължи задачата след почивката"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
 msgid "Reset timer after switching tasks"
-msgstr ""
+msgstr "Нулиране таймера след смяна на задачите"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
 msgid "Have a long break after"
-msgstr ""
+msgstr "Направи дълга почивка след"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
 msgid "short breaks"
-msgstr ""
+msgstr "кратки почивки"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
 msgid "Timer mode"
-msgstr ""
+msgstr "Режим на таймера"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:99
 msgid "Simple"
-msgstr ""
+msgstr "Обикновен"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:100
 msgid "Pomodoro"
-msgstr ""
+msgstr "Помодоро"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:101
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:132
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:133
 msgid "Custom"
-msgstr ""
+msgstr "Персонализиран"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:156
 msgid "Tasks"
-msgstr ""
+msgstr "Задачи"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:157
 msgid "Placement of new tasks"
-msgstr ""
+msgstr "Поставяне на нови задачи"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:160
 msgid "Top of the list"
-msgstr ""
+msgstr "Най-горе в списъка"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:161
 msgid "Bottom of the list"
-msgstr ""
+msgstr "Най-долу в списъка"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
-msgstr ""
+msgstr "Алуминиева купа"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:37
 msgid "Singing bowl"
-msgstr ""
+msgstr "Пееща купа"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
 msgid "Bell"
-msgstr ""
+msgstr "Звънец"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:41
 msgid "Loud bell"
-msgstr ""
+msgstr "Силен звънец"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:105
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
 msgid "Reminder before task ends"
-msgstr ""
+msgstr "Напомняне преди задачата да приключи"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:106
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
 msgid "seconds"
-msgstr ""
+msgstr "секунди"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
 msgid "Start of break sound"
-msgstr ""
+msgstr "Звук за начало на почивката"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:112
 msgid "End of break sound"
-msgstr ""
+msgstr "Звук за край на почивката"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:134
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:135
 msgid "Silent"
-msgstr ""
+msgstr "Тих"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:169
 msgid "Notification sounds"
-msgstr ""
+msgstr "Звуци за известяване"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:218
 msgid "Select notification sound file"
-msgstr ""
+msgstr "Изберете звуков файл за известия"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:222
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:228
 #: ../src/Widgets/FileChooserWidget.vala:80
 #: ../src/Widgets/FileChooserWidget.vala:86
 msgid "_Select"
-msgstr ""
+msgstr "_Избери"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
-msgstr ""
+msgstr "За да влязат в сила тези промени, %s трябва да се рестартира."
 
 #: ../src/LegacyStrings.vala:2
 msgid "Todo.txt files were found in the destination folder."
-msgstr ""
+msgstr "Todo.txt файлове бяха намерени в целевата папка."
 
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:3
 msgid "What should be done with these files?"
-msgstr ""
+msgstr "Какво да стане с тези файлове?"
 
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:4
 msgid "Overwrite"
-msgstr ""
+msgstr "Презапис"
 
 #: ../src/LegacyStrings.vala:5
 msgid "The configured folder is already in use by another list."
-msgstr ""
+msgstr "Конфигурираната папка вече се използва от друг списък."
 
 #: ../src/LegacyStrings.vala:6
 msgid "folder"
-msgstr ""
+msgstr "папка"
 
 #: ../src/LegacyStrings.vala:7
 msgid "Dark theme"
-msgstr ""
+msgstr "Тъмна тема"
 
 #: ../src/LegacyStrings.vala:8
 msgid "Couldn't properly import settings from %s: %s"
-msgstr ""
+msgstr "Настройките не могат да се импортират правилно от % s:% s"
 
 #: ../src/Main.vala:97
 msgid "Not a known list: %s"
-msgstr ""
+msgstr "Не е познат списък: %s"
 
 #: ../src/Main.vala:236
 msgid "%s: Error: %s"
-msgstr ""
+msgstr "%s: Грешка: %s"
 
 #. / Describes format of printed table (table contains the known lists)
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
 #: ../src/Main.vala:251
 msgid "Lists (List type : List ID - List name)"
-msgstr ""
+msgstr "Списъци (Тип списък: Списък ID - Име на списъка)"
 
 #. / Translators: give translation of FILE in "--logfile=FILE" command line argument
 #: ../src/Main.vala:276
 msgid "FILE"
-msgstr ""
+msgstr "ФАЙЛ"
 
 #. / Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
 #: ../src/Main.vala:279
 msgid "LIST-TYPE"
-msgstr ""
+msgstr "СПИСЪК-ТИП"
 
 #. / Translators: give translation of LIST-ID in "--load LIST-TYPE LIST-ID" command line argument
 #: ../src/Main.vala:281
 msgid "LIST-ID"
-msgstr ""
+msgstr "Списък ID"
 
 #: ../src/Main.vala:284
 msgid "Print version info and exit"
-msgstr ""
+msgstr "Покажи информация за версията и изход"
 
 #: ../src/Main.vala:285
 msgid "Show about dialog"
-msgstr ""
+msgstr "Покажи диалога \"За нас\""
 
 #: ../src/Main.vala:286
 msgid "CSV file to log activities to."
-msgstr ""
+msgstr "CSV файл за регистриране на дейности."
 
 #: ../src/Main.vala:287
 msgid "Show configured lists and exit"
-msgstr ""
+msgstr "Покажи конфигурирани списъци и изход"
 
 #: ../src/Main.vala:291
 msgid "Load the list specified by the list type and ID"
-msgstr ""
+msgstr "Заредете списъка, посочен от типа и ID на списъка"
 
 #: ../src/MainWindow.vala:63
 msgid "Go to overview"
-msgstr ""
+msgstr "Отвори цялостен преглед"
 
 #: ../src/MainWindow.vala:64
 msgid "Go back to the to-do list"
-msgstr ""
+msgstr "Обратно към списъка със задачи"
 
 #: ../src/MainWindow.vala:342
 msgid "Menu"
-msgstr ""
+msgstr "Меню"
 
 #: ../src/MainWindow.vala:452
 msgid "Mute sounds"
-msgstr ""
+msgstr "Без звуци"
 
 #: ../src/MainWindow.vala:464
 msgid "Contribute / Donate"
-msgstr ""
+msgstr "Доприноси / Дари"
 
 #: ../src/Pages/SelectionPage.vala:123
 msgid ""
 "Currently, no lists are configured.\n"
 "Add one below!"
 msgstr ""
+"Няма налични списъци.\n"
+"Добавете списък по-долу!"
 
 #: ../src/Pages/SelectionPage.vala:133 ../src/Pages/SelectionPage.vala:136
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
 msgid "Add list"
-msgstr ""
+msgstr "Добави списък"
 
 #: ../src/Pages/TaskListPage.vala:137
 msgid "Lists"
-msgstr ""
+msgstr "Списъци"
 
 #: ../src/Pages/TaskListPage.vala:143 ../src/Pages/TaskListPage.vala:228
 msgid "To-Do"
-msgstr ""
+msgstr "Списък със задачи"
 
 #: ../src/Pages/TaskListPage.vala:145 ../src/Pages/TaskListPage.vala:231
 msgid "Done"
-msgstr ""
+msgstr "Свършен"
 
 #: ../src/Services/ActivityLog.vala:66
 msgid "Couldn't write to %s: %s"
-msgstr ""
+msgstr "Не може да се запише в %s: %s"
 
 #: ../src/Services/Notifications.vala:89 ../src/Widgets/TimerView.vala:90
 #: ../plugins/appindicator/appindicator.vala:208
 msgid "Take a Break"
-msgstr ""
+msgstr "Направи почивка"
 
 #: ../src/Services/Notifications.vala:91
 msgid "Relax and stop thinking about your current task for a while"
-msgstr ""
+msgstr "Отпуснете се и не мислите за текущата си задача за известно време"
 
 #: ../src/Services/Notifications.vala:95
 msgid "The Break is Over"
-msgstr ""
+msgstr "Почивката свърши"
 
 #: ../src/Services/Notifications.vala:97
 msgid "Your current task is"
-msgstr ""
+msgstr "Текущата ви задача е"
 
 #: ../src/Services/Notifications.vala:115
 msgid "Prepare for your break"
-msgstr ""
+msgstr "Подгответе се за почивката си"
 
 #: ../src/Services/Notifications.vala:117
 msgid "You have %s seconds left"
-msgstr ""
+msgstr "Остават ви %s секунди"
 
 #: ../src/Services/Notifications.vala:124
 msgid "Task duration exceeded"
-msgstr ""
+msgstr "Продължителността на задачата е надвишена"
 
 #: ../src/Services/Notifications.vala:125
 msgid "Consider switching to a different task"
-msgstr ""
+msgstr "Обмислете да преминете към различна задача"
 
 #: ../src/Services/SettingsManager.vala:629
 msgid "Light"
-msgstr ""
+msgstr "Светло"
 
 #: ../src/Services/SettingsManager.vala:631
 msgid "Dark"
-msgstr ""
+msgstr "Тъмно"
 
 #: ../src/Services/SettingsManager.vala:633
 msgid "Default"
-msgstr ""
+msgstr "По подразбиране"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
-msgstr ""
+msgstr "изключено"
 
 #: ../src/Services/Shortcuts.vala:155
 msgid "Filter tasks"
-msgstr ""
+msgstr "Филтрирайте задачи"
 
 #: ../src/Services/Shortcuts.vala:156
 msgid "Add new task/list"
-msgstr ""
+msgstr "Добавяне на нова задача / списък"
 
 #: ../src/Services/Shortcuts.vala:157
 msgid "Start/Stop the timer"
-msgstr ""
+msgstr "Старт / Стоп на таймер"
 
 #: ../src/Services/Shortcuts.vala:158
 msgid "Edit the properties of a list or task"
-msgstr ""
+msgstr "Редактирайте свойствата на списък или задача"
 
 #: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
 #: ../src/Widgets/TimerView.vala:282
 #: ../plugins/appindicator/appindicator.vala:96
 msgid "Mark the task as complete"
-msgstr ""
+msgstr "Маркиране задачата като завършена"
 
 #: ../src/Services/Shortcuts.vala:161
 msgid "Move selected row up"
-msgstr ""
+msgstr "Преместване на избрания ред нагоре"
 
 #: ../src/Services/Shortcuts.vala:162
 msgid "Move selected row down"
-msgstr ""
+msgstr "Преместване на избрания ред надолу"
 
 #: ../src/Services/Shortcuts.vala:164
 msgid "Move to next task/row"
-msgstr ""
+msgstr "Преминаване към следващата задача / ред"
 
 #: ../src/Services/Shortcuts.vala:165
 msgid "Move to previous task/row"
-msgstr ""
+msgstr "Преминаване към предишната задача / ред"
 
 #: ../src/Services/Shortcuts.vala:166
 msgid "Move to right screen"
-msgstr ""
+msgstr "Преместване на десен екран"
 
 #: ../src/Services/Shortcuts.vala:167
 msgid "Move to left screen"
-msgstr ""
+msgstr "Преместване на ляв екран"
 
 #: ../src/Theme.vala:74
 msgid "Inherit from GTK theme"
