@@ -3,27 +3,27 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-11 21:24+0100\n"
-"PO-Revision-Date: 2020-11-04 19:27+0000\n"
+"PO-Revision-Date: 2020-11-14 09:28+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/it/>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2-dev\n"
+"X-Generator: Weblate 4.4-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
 msgid "About"
-msgstr "Informazioni sull'applicazione"
+msgstr "Informazioni"
 
 #: ../src/Dialogs/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
 msgstr ""
-"Un brillante programma di Task Managing, con timer incorporato per una "
-"migliore organizzazione."
+"Un elegante elenco di cose da fare con temporizzatore di produttività "
+"integrato."
 
 #: ../src/Dialogs/ContributeDialog.vala:28
 msgid "Contributions and Donations"
@@ -140,7 +140,7 @@ msgstr "Tema"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:55
 msgid "Timer mode"
-msgstr "Modalità Timer"
+msgstr "Modalità temporizzatore"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:57
 msgid "Simple"
@@ -191,14 +191,14 @@ msgstr "Riprendi l'attività dopo la pausa breve"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:124
 msgid "Reset timer after switching tasks"
-msgstr "Resetta il timer dopo il cambio di attività"
+msgstr "Ripristina il temporizzatore dopo il cambio di attività"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:142
 #: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
 #: ../src/Todo.txt/Widgets/TaskRow.vala:338
 msgid "Timer"
-msgstr "Timer"
+msgstr "Temporizzatore"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:146
 msgid "Placement of new tasks"
@@ -243,10 +243,8 @@ msgid "seconds"
 msgstr "secondi"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:129
-#, fuzzy
-#| msgid "Reminder before task ends"
 msgid "Reminder sound"
-msgstr "Promemoria prima del completamento dell'attività"
+msgstr "Suono di promemoria"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:139
 msgid "Start of break sound"
@@ -470,13 +468,11 @@ msgstr "Crea nuova lista/attività"
 
 #: ../src/Services/Shortcuts.vala:160
 msgid "Start/Stop the timer"
-msgstr "Attiva/disattiva il timer"
+msgstr "Attiva/disattiva il temporizzatore"
 
 #: ../src/Services/Shortcuts.vala:161
-#, fuzzy
-#| msgid "Skip the remainder of the break"
 msgid "Skip the break or skip to the break"
-msgstr "Salta il resto della pausa"
+msgstr "Salta la pausa o vai alla pausa"
 
 #: ../src/Services/Shortcuts.vala:162
 msgid "Edit the properties of a list or task"
