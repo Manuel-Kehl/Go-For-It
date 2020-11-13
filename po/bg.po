@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-11 21:24+0100\n"
-"PO-Revision-Date: 2020-11-11 20:26+0000\n"
+"PO-Revision-Date: 2020-11-14 09:28+0000\n"
 "Last-Translator: Stan M <stan.hd@hotmail.com>\n"
-"Language-Team: Bulgarian <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/bg/>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +21,7 @@ msgstr "За"
 
 #: ../src/Dialogs/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
-msgstr ""
+msgstr "Стилен списък със задачи с вграден таймер за продуктивност."
 
 #: ../src/Dialogs/ContributeDialog.vala:28
 msgid "Contributions and Donations"
@@ -459,7 +459,7 @@ msgstr "Филтрирайте задачи"
 
 #: ../src/Services/Shortcuts.vala:158 ../src/Todo.txt/TxtList.vala:188
 msgid "Sort Tasks"
-msgstr ""
+msgstr "Сортиране"
 
 #: ../src/Services/Shortcuts.vala:159
 msgid "Add new task/list"
