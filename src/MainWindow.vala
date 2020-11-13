@@ -44,6 +44,9 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     private Gtk.Box menu_container;
     private Gtk.Box list_menu_container;
 
+    private Gtk.Button mute_item;
+    private Gtk.Button filter_item;
+
     private Gtk.Settings gtk_settings;
 
     private Gtk.Widget? list_menu;
@@ -383,6 +386,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             task_page.show_switcher (false);
             list_menu_container.hide ();
             list_menu_container.hide ();
+            filter_item.sensitive = false;
         } else if (task_page.ready) {
             var current_list_info = task_page.shown_list.list_info;
             top_stack.set_visible_child (task_page);
@@ -396,6 +400,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             }
             task_page.show_switcher (true);
             list_menu_container.show ();
+            filter_item.sensitive = true;
         }
     }
 
@@ -439,20 +444,18 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     private void setup_menu () {
         /* Initialization */
         menu_container = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        list_menu_container = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
 
+        menu_container.add (create_menu_action_section ());
+
+        menu_container.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
+
+        list_menu_container = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
 
         list_menu_container.pack_end (
             new Gtk.Separator (Gtk.Orientation.HORIZONTAL)
         );
 
         menu_container.add (list_menu_container);
-
-        var mute_item = new Gtk.ModelButton ();
-        mute_item.text = _("Mute sounds");
-        mute_item.action_name =
-            SOUND_ACTION_PREFIX + "." + Notifications.KEY_MUTE_SOUND;
-        menu_container.add (mute_item);
 
         var config_item = new Gtk.ModelButton ();
         config_item.text = _("Settings");
@@ -474,6 +477,60 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 #endif
 
         menu_container.show_all ();
+    }
+
+    /**
+     * This part of the menu might not comply with the elementary or Gnome HIGs.
+     * It at least doesn't look too strange so it will do for now.
+     * If anyone has a better idea I'll be glad to hear it.
+     */
+    private Gtk.Widget create_menu_action_section () {
+        var action_container = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+
+        // Button to mute/unmute notification sounds
+        mute_item = new Gtk.Button ();
+        mute_item.tooltip_text = _("Mute sounds");
+        mute_item.action_name =
+            SOUND_ACTION_PREFIX + "." + Notifications.KEY_MUTE_SOUND;
+        mute_item_update_image ();
+        mute_item.clicked.connect_after (mute_item_update_image);
+
+        // Button to show/hide the search bar
+        filter_item = new Gtk.Button ();
+        var sc = kbsettings.get_shortcut (KeyBindingSettings.SCK_FILTER);
+        filter_item.tooltip_markup = sc.get_accel_markup (_("Filter tasks"));
+        filter_item.image = GOFI.Utils.load_image_fallback (
+            Gtk.IconSize.MENU, "edit-find-symbolic", "edit-find"
+        );
+        filter_item.clicked.connect (() => filter_fallback_action ());
+
+        action_container.add (filter_item);
+        action_container.add (mute_item);
+
+        // Apply linked button styling
+        mute_item.hexpand = true;
+        filter_item.hexpand = true;
+        action_container.get_style_context ().add_class ("linked");
+
+#if USE_GRANITE
+        action_container.margin = 12;
+#else
+        action_container.margin_bottom = 10;
+#endif
+
+        return action_container;
+    }
+
+    private void mute_item_update_image () {
+        if (notification_service.mute_sounds) {
+            mute_item.image = GOFI.Utils.load_image_fallback (
+                Gtk.IconSize.MENU, "audio-volume-muted-symbolic", "audio-volume-muted"
+            );
+        } else {
+            mute_item.image = GOFI.Utils.load_image_fallback (
+                Gtk.IconSize.MENU, "audio-volume-high-symbolic", "audio-volume-high"
+            );
+        }
     }
 
     private void show_about_dialog () {
