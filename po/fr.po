@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-11 21:24+0100\n"
-"PO-Revision-Date: 2020-11-04 19:27+0000\n"
+"PO-Revision-Date: 2020-11-14 09:28+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.3.2-dev\n"
+"X-Generator: Weblate 4.4-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
@@ -247,10 +247,8 @@ msgid "seconds"
 msgstr "secondes"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:129
-#, fuzzy
-#| msgid "Reminder before task ends"
 msgid "Reminder sound"
-msgstr "Rappel de fin de tâche"
+msgstr "Son de rappel"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:139
 msgid "Start of break sound"
@@ -477,10 +475,8 @@ msgid "Start/Stop the timer"
 msgstr "Démarrer/Arrêter le minuteur"
 
 #: ../src/Services/Shortcuts.vala:161
-#, fuzzy
-#| msgid "Skip the remainder of the break"
 msgid "Skip the break or skip to the break"
-msgstr "Passer le reste de la pause"
+msgstr "Passer la pause ou aller en pause"
 
 #: ../src/Services/Shortcuts.vala:162
 msgid "Edit the properties of a list or task"
