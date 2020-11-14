@@ -2,20 +2,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 17:31+0200\n"
-"PO-Revision-Date: 2020-10-01 20:14+0000\n"
+"POT-Creation-Date: 2020-11-11 21:24+0100\n"
+"PO-Revision-Date: 2020-11-14 09:28+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
-"Language-Team: French (Canada) <https://hosted.weblate.org/projects/go-for-"
-"it/go-for-it/fr_CA/>\n"
+"Language-Team: French (Canada) <https://hosted.weblate.org/projects/"
+"go-for-it/go-for-it/fr_CA/>\n"
 "Language: fr_CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.4-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
 
-#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:441
+#: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
 msgid "About"
 msgstr "À propos"
 
@@ -62,160 +62,215 @@ msgid "Replace"
 msgstr "Remplacer"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:81
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:88
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:270
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:300
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:258
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:86
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
+#: ../src/Widgets/FileChooserWidget.vala:85
 msgid "Cancel"
 msgstr "Annuler"
 
-#: ../src/Dialogs/SettingsDialog.vala:46 ../src/MainWindow.vala:428
+#: ../src/Dialogs/SettingsDialog.vala:47 ../src/MainWindow.vala:458
 msgid "Settings"
 msgstr "Paramètres"
 
-#: ../src/Dialogs/SettingsDialog.vala:48
+#: ../src/Dialogs/SettingsDialog.vala:49
+#: ../plugins/appindicator/appindicator.vala:78
 msgid "Close"
 msgstr "Fermer"
 
-#: ../src/Dialogs/SettingsDialog.vala:71
+#: ../src/Dialogs/SettingsDialog.vala:74
 msgid "Behavior"
 msgstr "Comportement"
 
-#: ../src/Dialogs/SettingsDialog.vala:72
+#: ../src/Dialogs/SettingsDialog.vala:75
+msgid "Notifications"
+msgstr "Notifications"
+
+#: ../src/Dialogs/SettingsDialog.vala:76
 msgid "Appearance"
 msgstr "Apparence"
 
-#: ../src/Dialogs/SettingsDialog.vala:73
+#: ../src/Dialogs/SettingsDialog.vala:77
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
-#: ../src/Dialogs/SettingsDialog.vala:75
+#: ../src/Dialogs/SettingsDialog.vala:79
 msgid "Plugins"
 msgstr "Extensions"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:142
-msgid "General"
-msgstr "Général"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:29
 msgid "Use small toolbar icons"
 msgstr "Utiliser des icônes réduites"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:42
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:36
 msgid "Appearance of the activity switcher"
 msgstr "Apparence de l'interrupteur d'activité"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:48
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:38
 msgid "Icons"
 msgstr "Icônes"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:49
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
 msgid "Text"
 msgstr "Texte"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:80
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:82
-msgid "Theme"
-msgstr "Thème"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:81
-msgid "Color scheme"
-msgstr "Couleur du thème"
-
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:117
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:52
 msgid "%s needs to be restarted for this setting to take effect"
 msgstr "%s a besoin d'être redémarré pour que ce paramètre prenne effet"
 
-#: ../src/Dialogs/SettingsPages/AppearancePage.vala:120
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:53
 msgid "Use a header bar"
 msgstr "Utiliser la barre de titre"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:64
-#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:143
-msgid "Timer"
-msgstr "Minuteur"
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:68
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:125
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:147
+msgid "General"
+msgstr "Général"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:65
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:72
+msgid "Color scheme"
+msgstr "Couleur du thème"
+
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:87
+#: ../src/Dialogs/SettingsPages/AppearancePage.vala:99
+msgid "Theme"
+msgstr "Thème"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:55
+msgid "Timer mode"
+msgstr "Mode minuteur"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:57
+msgid "Simple"
+msgstr "Simple"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:58
+msgid "Pomodoro"
+msgstr "Pomodoro"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:59
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:205
+msgid "Custom"
+msgstr "Personnalisé"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
 #: ../src/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
 msgstr "Durée de tâche"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:66
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:70
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:76
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:84
 msgid "minutes"
 msgstr "minutes"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:75
 #: ../src/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
 msgstr "Durée de pause"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:69
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
 msgid "Long break duration"
 msgstr "Durée de la pause longue"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:71
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
-msgid "Reminder before task ends"
-msgstr "Rappel de fin de tâche"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:72
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
-msgid "seconds"
-msgstr "secondes"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:73
-msgid "Resume task after the break"
-msgstr "Reprendre la tâche après la pause"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:74
-msgid "Reset timer after switching tasks"
-msgstr "Réinitialiser le minuteur après le changement d'activité"
-
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:92
 msgid "Have a long break after"
 msgstr "Longue pause après"
 
 #. / Part of "Have a long break after # short breaks"
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:79
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:94
 msgid "short breaks"
 msgstr "courtes pauses"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
-msgid "Timer mode"
-msgstr "Mode minuteur"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:117
+msgid "Resume task after the break"
+msgstr "Reprendre la tâche après la pause"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:108
-msgid "Simple"
-msgstr "Simple"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:124
+msgid "Reset timer after switching tasks"
+msgstr "Réinitialiser le minuteur après le changement d'activité"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:109
-msgid "Pomodoro"
-msgstr "Pomodoro"
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:142
+#: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
+#: ../src/Todo.txt/Widgets/TaskRow.vala:338
+msgid "Timer"
+msgstr "Minuteur"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:110
-msgid "Custom"
-msgstr "Personnalisé"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:169
-msgid "Tasks"
-msgstr "Tâches"
-
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:170
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:146
 msgid "Placement of new tasks"
 msgstr "Placement des nouvelles tâches"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:173
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:149
 msgid "Top of the list"
 msgstr "En-haut de la liste"
 
-#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:174
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:150
 msgid "Bottom of the list"
 msgstr "En-bas de la liste"
+
+#: ../src/Dialogs/SettingsPages/BehaviorPage.vala:162
+msgid "Tasks"
+msgstr "Tâches"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
+msgid "Aluminium bowl"
+msgstr "Bol en aluminium"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:37
+msgid "Singing bowl"
+msgstr "Bol chantant"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
+msgid "Bell"
+msgstr "Cloche"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:41
+msgid "Loud bell"
+msgstr "Cloche forte"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:110
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
+msgid "Reminder before task ends"
+msgstr "Rappel de fin de tâche"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
+msgid "seconds"
+msgstr "secondes"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:129
+msgid "Reminder sound"
+msgstr "Son de rappel"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:139
+msgid "Start of break sound"
+msgstr "Son de début de pause"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:149
+msgid "End of break sound"
+msgstr "Son de fin de pause"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:201
+msgid "Notification sounds"
+msgstr "Sons de notification"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:206
+msgid "Silent"
+msgstr "Silencieux"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:249
+msgid "Select notification sound file"
+msgstr "Sélectionnez le fichier son de notification"
+
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:253
+#: ../src/Dialogs/SettingsPages/NotificationsPage.vala:259
+#: ../src/Widgets/FileChooserWidget.vala:80
+#: ../src/Widgets/FileChooserWidget.vala:86
+msgid "_Select"
+msgstr "_Sélectionner"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
@@ -251,95 +306,72 @@ msgstr "Thème sombre"
 msgid "Couldn't properly import settings from %s: %s"
 msgstr "Impossible d'importer les paramètres depuis %s : %s"
 
-#: ../src/Main.vala:101
+#: ../src/Main.vala:97
 msgid "Not a known list: %s"
 msgstr "Pas une liste connue : %s"
 
-#: ../src/Main.vala:237
+#: ../src/Main.vala:236
 msgid "%s: Error: %s"
 msgstr "%s : Erreur : %s"
 
-#: ../src/Main.vala:249
+#. / Describes format of printed table (table contains the known lists)
+#. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
+#: ../src/Main.vala:251
 msgid "Lists (List type : List ID - List name)"
 msgstr "Listes (Type de liste : ID de liste – Nom de la liste)"
 
-#: ../src/Main.vala:274
-msgid "Print version info and exit"
-msgstr "Afficher les informations de version et sortir"
-
-#: ../src/Main.vala:275
-msgid "Show about dialog"
-msgstr "Afficher la boîte de dialogue À propos"
-
-#: ../src/Main.vala:276
-msgid "CSV file to log activities to."
-msgstr "Fichier CSV dans lequel enregistrer les activités."
-
+#. / Translators: give translation of FILE in "--logfile=FILE" command line argument
 #: ../src/Main.vala:276
 msgid "FILE"
 msgstr "FICHIER"
 
-#: ../src/Main.vala:277
-msgid "Show configured lists and exit"
-msgstr "Afficher les listes configurées et quitter"
-
-#: ../src/Main.vala:281
-msgid "Load the list specified by the list type and ID"
-msgstr "Charger la liste spécifiée par le type de liste et l'identifiant"
-
-#: ../src/Main.vala:282
+#. / Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
+#: ../src/Main.vala:279
 msgid "LIST-TYPE"
 msgstr "TYPE DE LISTE"
 
-#: ../src/Main.vala:282
+#. / Translators: give translation of LIST-ID in "--load LIST-TYPE LIST-ID" command line argument
+#: ../src/Main.vala:281
 msgid "LIST-ID"
 msgstr "ID DE LISTE"
 
-#: ../src/Main.vala:326 ../src/Widgets/TimerView.vala:90
-msgid "Take a Break"
-msgstr "Faire une pause"
+#: ../src/Main.vala:284
+msgid "Print version info and exit"
+msgstr "Afficher les informations de version et sortir"
 
-#: ../src/Main.vala:327
-msgid "Relax and stop thinking about your current task for a while"
-msgstr "Relaxez-vous et oubliez vos tâches en cours pendant un moment"
+#: ../src/Main.vala:285
+msgid "Show about dialog"
+msgstr "Afficher la boîte de dialogue À propos"
 
-#: ../src/Main.vala:332
-msgid "The Break is Over"
-msgstr "La pause est terminée"
+#: ../src/Main.vala:286
+msgid "CSV file to log activities to."
+msgstr "Fichier CSV dans lequel enregistrer les activités."
 
-#: ../src/Main.vala:333
-msgid "Your current task is"
-msgstr "Votre tâche actuelle est"
+#: ../src/Main.vala:287
+msgid "Show configured lists and exit"
+msgstr "Afficher les listes configurées et quitter"
 
-#: ../src/Main.vala:352
-msgid "Prepare for your break"
-msgstr "Préparez-vous pour votre pause"
+#: ../src/Main.vala:291
+msgid "Load the list specified by the list type and ID"
+msgstr "Charger la liste spécifiée par le type de liste et l'identifiant"
 
-#: ../src/Main.vala:353
-msgid "You have %s seconds left"
-msgstr "Il vous reste %s secondes"
-
-#: ../src/Main.vala:369
-msgid "Task duration exceeded"
-msgstr "Durée de la tâche dépassée"
-
-#: ../src/Main.vala:370
-msgid "Consider switching to a different task"
-msgstr "Pensez à changer de tâche"
-
-#: ../src/MainWindow.vala:61
+#: ../src/MainWindow.vala:63
 msgid "Go to overview"
 msgstr "Afficher l'aperçu"
 
-#: ../src/MainWindow.vala:62
+#: ../src/MainWindow.vala:64
 msgid "Go back to the to-do list"
 msgstr "Retourner à liste de choses à faire"
 
-#: ../src/MainWindow.vala:319
+#: ../src/MainWindow.vala:342
 msgid "Menu"
 msgstr "Menu"
 
-#: ../src/MainWindow.vala:434
+#: ../src/MainWindow.vala:452
+msgid "Mute sounds"
+msgstr "Couper les sons"
+
+#: ../src/MainWindow.vala:464
 msgid "Contribute / Donate"
 msgstr "Contribuer / Faire un don"
 
@@ -352,7 +384,7 @@ msgstr ""
 "Ajoutez-en-une en-dessous!"
 
 #: ../src/Pages/SelectionPage.vala:133 ../src/Pages/SelectionPage.vala:136
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:82
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
 msgid "Add list"
 msgstr "Ajouter une liste"
 
@@ -368,9 +400,42 @@ msgstr "À faire"
 msgid "Done"
 msgstr "Terminé"
 
-#: ../src/Services/ActivityLog.vala:55
+#: ../src/Services/ActivityLog.vala:66
 msgid "Couldn't write to %s: %s"
 msgstr "Impossible d'écrire à %s : %s"
+
+#: ../src/Services/Notifications.vala:100 ../src/Widgets/TimerView.vala:97
+#: ../plugins/appindicator/appindicator.vala:208
+msgid "Take a Break"
+msgstr "Faire une pause"
+
+#: ../src/Services/Notifications.vala:102
+msgid "Relax and stop thinking about your current task for a while"
+msgstr "Relaxez-vous et oubliez vos tâches en cours pendant un moment"
+
+#: ../src/Services/Notifications.vala:106
+msgid "The Break is Over"
+msgstr "La pause est terminée"
+
+#: ../src/Services/Notifications.vala:108
+msgid "Your current task is"
+msgstr "Votre tâche actuelle est"
+
+#: ../src/Services/Notifications.vala:132
+msgid "Prepare for your break"
+msgstr "Préparez-vous pour votre pause"
+
+#: ../src/Services/Notifications.vala:134
+msgid "You have %s seconds left"
+msgstr "Il vous reste %s secondes"
+
+#: ../src/Services/Notifications.vala:142
+msgid "Task duration exceeded"
+msgstr "Durée de la tâche dépassée"
+
+#: ../src/Services/Notifications.vala:143
+msgid "Consider switching to a different task"
+msgstr "Pensez à changer de tâche"
 
 #: ../src/Services/SettingsManager.vala:629
 msgid "Light"
@@ -388,72 +453,77 @@ msgstr "Par défaut"
 msgid "disabled"
 msgstr "désactivé"
 
-#: ../src/Services/Shortcuts.vala:155
+#: ../src/Services/Shortcuts.vala:157
 msgid "Filter tasks"
 msgstr "Filtrer les tâches"
 
-#: ../src/Services/Shortcuts.vala:156
+#: ../src/Services/Shortcuts.vala:158 ../src/Todo.txt/TxtList.vala:188
+msgid "Sort Tasks"
+msgstr "Trier les tâches"
+
+#: ../src/Services/Shortcuts.vala:159
 msgid "Add new task/list"
 msgstr "Ajouter une tâche/liste"
 
-#: ../src/Services/Shortcuts.vala:157
+#: ../src/Services/Shortcuts.vala:160
 msgid "Start/Stop the timer"
 msgstr "Démarrer/Arrêter le minuteur"
 
-#: ../src/Services/Shortcuts.vala:158
-msgid "Edit the properties of a list or task"
-msgstr ""
+#: ../src/Services/Shortcuts.vala:161
+msgid "Skip the break or skip to the break"
+msgstr "Passer la pause ou aller en pause"
 
-#: ../src/Services/Shortcuts.vala:160 ../src/Todo.txt/Widgets/TaskRow.vala:64
-#: ../src/Widgets/TimerView.vala:282
+#: ../src/Services/Shortcuts.vala:162
+msgid "Edit the properties of a list or task"
+msgstr "Modifier les propriétés d’une liste ou d’une tâche"
+
+#: ../src/Services/Shortcuts.vala:164 ../src/Todo.txt/Widgets/TaskRow.vala:65
+#: ../src/Widgets/TimerView.vala:289
+#: ../plugins/appindicator/appindicator.vala:96
 msgid "Mark the task as complete"
 msgstr "Marquer la tâche comme faite"
 
-#: ../src/Services/Shortcuts.vala:161
+#: ../src/Services/Shortcuts.vala:165
 msgid "Move selected row up"
 msgstr "Déplacer la ligne sélectionnée en-haut"
 
-#: ../src/Services/Shortcuts.vala:162
+#: ../src/Services/Shortcuts.vala:166
 msgid "Move selected row down"
 msgstr "Déplacer la ligne sélectionnée en-bas"
 
-#: ../src/Services/Shortcuts.vala:164
+#: ../src/Services/Shortcuts.vala:168
 msgid "Move to next task/row"
 msgstr "Passer à la tâche/ligne suivante"
 
-#: ../src/Services/Shortcuts.vala:165
+#: ../src/Services/Shortcuts.vala:169
 msgid "Move to previous task/row"
 msgstr "Retourner à la tâche/ligne précédente"
 
-#: ../src/Services/Shortcuts.vala:166
+#: ../src/Services/Shortcuts.vala:170
 msgid "Move to right screen"
 msgstr "Aller à l'écran de droite"
 
-#: ../src/Services/Shortcuts.vala:167
+#: ../src/Services/Shortcuts.vala:171
 msgid "Move to left screen"
 msgstr "Aller à l'écran de gauche"
 
-#: ../src/Theme.vala:54
+#: ../src/Theme.vala:74
 msgid "Inherit from GTK theme"
 msgstr "Hériter du thème GTK"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:61
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid "Store to-do tasks in"
 msgstr "Stocker les tâches à effectuer dans"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:62
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid "Store completed tasks in"
 msgstr "Stocker les tâches terminées dans"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:63
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:68
 msgid "List name"
 msgstr "Nom de la liste"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:64
-msgid "Choose a file"
-msgstr "Choisir un fichier"
-
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 msgid ""
 "Task list location has been changed to \"%s\" (was \"%s\"), but this file "
 "already exists."
@@ -461,7 +531,7 @@ msgstr ""
 "L'emplacement de la liste des tâches a été remplacé par « %s » (c'était « %s "
 "»), mais ce fichier existe déjà."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
@@ -469,70 +539,91 @@ msgstr ""
 "L'emplacement dans lequel stocker les tâches terminées a été changé en « %s "
 "» (c'était « %s »), mais ce fichier existe déjà."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:80
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
 msgstr "Nouvelle liste À faire"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:92
 msgid "Edit to-do list properties"
 msgstr "Modifier les propriétés de la liste À faire"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:89
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:94
 msgid "Apply"
 msgstr "Appliquer"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:219
-msgid "Log the time spent working on each task"
-msgstr "Enregistrer le temps passé sur chaque tâche"
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:194
+msgid "Log timer usage"
+msgstr "Enregistrer l’utilisation du minuteur"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:220
-msgid "This information will be stored in the todo.txt files."
-msgstr "Ces informations seront stockées dans les fichiers todo.txt."
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
+msgid ""
+"Keep track of when you used the timer and what tasks you worked on while "
+"doing this."
+msgstr ""
+"Gardez une trace de votre utilisation du minuteur et des tâches effectuées "
+"en même temps."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:261
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
+msgid "This log will be saved as a CSV file."
+msgstr "Cet enregistrement sera sauvegardé dans un fichier CSV."
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
+msgid "Log file"
+msgstr "Fichier de journalisation"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
+msgid "Select file to log timer usage in"
+msgstr "Sélectionner le fichier où enregistrer l’utilisation du minuteur"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:272
 msgid "Select file to store to-do tasks in"
 msgstr "Sélectionnez le fichier dans lequel stocker les tâches à effectuer"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:265
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:271
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:301
-msgid "_Select"
-msgstr "_Sélectionner"
-
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:279
 msgid "Select file to store completed tasks in"
 msgstr "Sélectionnez le fichier dans lequel stocker les tâches terminées"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:282
+msgid "Log the time spent working on each task"
+msgstr "Enregistrer le temps passé sur chaque tâche"
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
+msgid "Log the total time spent working on a task using the timer."
+msgstr ""
+"Enregistrer le temps total passé sur une tâche en utilisant le minuteur."
+
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:286
+msgid "This information will be stored in the todo.txt files."
+msgstr "Ces informations seront stockées dans les fichiers todo.txt."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:350
 msgid "Use default settings"
 msgstr "Utiliser les paramètres par défaut"
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:423
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:419
 msgid "The configured to-do file is already in use by another list."
 msgstr "Le fichier à-faire configuré est déjà utilisé par une autre liste."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:439
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:435
 msgid ""
-"Another todo.txt list uses the file chosen to archive completed tasks to to "
-"store its to-do tasks."
+"Another todo.txt list archives its completed tasks to the selected file."
 msgstr ""
-"Une autre liste todo.txt utilise le fichier choisi pour archiver les tâches "
-"terminées pour stocker ses tâches à faire."
+"Une autre liste todo.txt archive les tâches effectuées dans le fichier "
+"sélectionné."
 
-#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:459
+#: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:455
 msgid "Please assign a name to the list."
 msgstr "Veuillez assigner un nom à la liste."
 
-#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:382
+#: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:389
 msgid "project"
 msgstr "projet"
 
-#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:378
+#: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:385
 msgid "context"
 msgstr "contexte"
 
-#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:344
+#: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:351
 msgid "priority"
 msgstr "priorité"
 
@@ -574,13 +665,9 @@ msgstr ""
 "périphérique. Merci de modifier le chemin dans les paramètres pour pointer "
 "vers un répertoire correct, ou de supprimer ce fichier."
 
-#: ../src/Todo.txt/TxtList.vala:175
+#: ../src/Todo.txt/TxtList.vala:184
 msgid "Clear Done List"
 msgstr "Effacer la liste des tâches terminées"
-
-#: ../src/Todo.txt/TxtList.vala:179
-msgid "Sort Tasks"
-msgstr "Trier les tâches"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
@@ -614,22 +701,22 @@ msgstr "Vous n'avez aucune tâche complétée enregistrée."
 msgid "You finished all tasks, good job!"
 msgstr "Vous avez fini toutes les tâches, bon travail!"
 
-#: ../src/Todo.txt/Widgets/TaskListWidget.vala:200
-#: ../src/Todo.txt/Widgets/TaskListWidget.vala:219
+#: ../src/Todo.txt/Widgets/TaskListWidget.vala:205
+#: ../src/Todo.txt/Widgets/TaskListWidget.vala:224
 msgid "Add new task"
 msgstr "Ajouter une tâche"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
-#: ../src/Todo.txt/Widgets/TaskRow.vala:319
+#: ../src/Todo.txt/Widgets/TaskRow.vala:322
 msgid "%Y-%m-%d"
 msgstr "%Y-%m-%d"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:323
+#: ../src/Todo.txt/Widgets/TaskRow.vala:326
 msgid "Task completed at %s, created at %s"
 msgstr "Tâche complétée à %s, créée à %s"
 
-#: ../src/Todo.txt/Widgets/TaskRow.vala:330
+#: ../src/Todo.txt/Widgets/TaskRow.vala:332
 msgid "Task created at %s"
 msgstr "Tâche créée le %s"
 
@@ -645,63 +732,73 @@ msgstr "%u minutes"
 msgid "%u hours and %u minutes"
 msgstr "%u heures et %u minutes"
 
-#: ../src/Widgets/DragList.vala:714
+#. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
+#: ../src/Utils.vala:234
+msgid "%s!"
+msgstr "%s!"
+
+#: ../src/Widgets/DragList.vala:722
 msgid "Click and drag to reorder rows"
-msgstr ""
+msgstr "Cliquer et faire glisser pour réorganiser les lignes"
 
-#: ../src/Widgets/TimerView.vala:93
+#: ../src/Widgets/FileChooserWidget.vala:22
+msgid "Choose a file"
+msgstr "Choisir un fichier"
+
+#: ../src/Widgets/TimerView.vala:100
 msgid "Skip the remainder of the break"
-msgstr ""
+msgstr "Passer le reste de la pause"
 
-#: ../src/Widgets/TimerView.vala:95
+#: ../src/Widgets/TimerView.vala:102
 msgid "Active Task"
 msgstr "Tâche active"
 
-#: ../src/Widgets/TimerView.vala:99
+#: ../src/Widgets/TimerView.vala:106
 msgid "Skip to the break"
-msgstr ""
+msgstr "Aller à la pause"
 
-#: ../src/Widgets/TimerView.vala:140
+#: ../src/Widgets/TimerView.vala:147
 msgid "Pau_se"
 msgstr "Pau_se"
 
-#: ../src/Widgets/TimerView.vala:142
-#, fuzzy
-#| msgid "Start/Stop the timer"
-msgid "Stop the timer"
-msgstr "Démarrer/Arrêter le minuteur"
-
 #: ../src/Widgets/TimerView.vala:149
+#: ../plugins/appindicator/appindicator.vala:233
+msgid "Stop the timer"
+msgstr "Arrêter le minuteur"
+
+#: ../src/Widgets/TimerView.vala:156
 msgid "_Start"
 msgstr "_Démarrer"
 
-#: ../src/Widgets/TimerView.vala:151
-#, fuzzy
-#| msgid "Start/Stop the timer"
+#: ../src/Widgets/TimerView.vala:158
+#: ../plugins/appindicator/appindicator.vala:114
+#: ../plugins/appindicator/appindicator.vala:242
 msgid "Start the timer"
-msgstr "Démarrer/Arrêter le minuteur"
+msgstr "Démarrer le minuteur"
 
-#: ../src/Widgets/TimerView.vala:171
+#: ../src/Widgets/TimerView.vala:178
 msgid "Inactive"
 msgstr "Inactive"
 
-#: ../src/Widgets/TimerView.vala:172
+#: ../src/Widgets/TimerView.vala:179
+#: ../plugins/appindicator/appindicator.vala:87
+#: ../plugins/appindicator/appindicator.vala:196
 msgid "No task has been selected"
 msgstr "Aucune tâche sélectionnée"
 
-#: ../src/Widgets/TimerView.vala:263
+#: ../src/Widgets/TimerView.vala:270
 msgid "S_kip"
 msgstr "I_gnorer"
 
-#: ../src/Widgets/TimerView.vala:264
+#: ../src/Widgets/TimerView.vala:271
 msgid "_Done"
 msgstr "_Terminée"
 
-#: ../src/Widgets/TimerView.vala:312
+#: ../src/Widgets/TimerView.vala:315
 msgid "Relax"
 msgstr "Relaxez-vous"
 
-#: ../src/Widgets/TimerView.vala:313
+#: ../src/Widgets/TimerView.vala:316
 msgid "You have nothing to do."
 msgstr "Vous n'avez rien à faire."
 
@@ -712,3 +809,15 @@ msgstr "Supprimer"
 #: ../src/Widgets/TodoListInfoRow.vala:97
 msgid "Edit"
 msgstr "Modifier"
+
+#: ../plugins/appindicator/appindicator.vala:73
+msgid "Open %s"
+msgstr "Ouvrir %s"
+
+#: ../plugins/appindicator/appindicator.vala:102
+msgid "Switch to next task"
+msgstr "Passer à la tâche suivante"
+
+#: ../plugins/appindicator/appindicator.vala:108
+msgid "Switch to the previous task"
+msgstr "Retourner à la tâche précédente"
