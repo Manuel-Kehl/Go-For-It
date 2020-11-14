@@ -140,20 +140,18 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         stack_switcher.stack = settings_stack;
         stack_switcher.halign = Gtk.Align.CENTER;
 
-        var txt_page = DialogUtils.create_page_grid ();
-        txt_page.halign = Gtk.Align.START;
-        var timer_page = DialogUtils.create_page_grid ();
+        var txt_page = new Gtk.Box (Gtk.Orientation.VERTICAL, DialogUtils.SPACING_SETTINGS_ROW * 2);
+        txt_page.halign = Gtk.Align.CENTER;
+        var timer_page = new Gtk.Box (Gtk.Orientation.VERTICAL, DialogUtils.SPACING_SETTINGS_ROW * 2);
 
         settings_stack.add_titled (txt_page, "txt_page", _("General"));
         settings_stack.add_titled (timer_page, "timer_page", _("Timer"));
 
-        int row = 0;
-        setup_general_settings_widgets (txt_page, ref row);
-        setup_txt_settings_widgets (txt_page, ref row);
-        setup_error_widgets (txt_page, ref row);
+        txt_page.add (create_general_settings_section ());
+        txt_page.add (create_txt_settings_section ());
+        txt_page.add (create_error_widget ());
 
-        row = 0;
-        setup_timer_settings_widgets (timer_page, ref row);
+        timer_page.add (create_timer_settings_section ());
 
         main_layout.add(stack_switcher);
         main_layout.add(settings_stack);
@@ -166,7 +164,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         return @"<span foreground=\"red\">$error*</span>";
     }
 
-    private void setup_error_widgets (Gtk.Grid grid, ref int row) {
+    private Gtk.Widget create_error_widget () {
         showing_todo_uri_error = false;
         showing_name_error = false;
         error_label = new Gtk.Label ("");
@@ -182,11 +180,10 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         error_revealer.add (error_label);
         error_revealer.set_reveal_child (false);
 
-        grid.attach (error_revealer, 0, row, 3, 1);
-        row++;
+        return error_revealer;
     }
 
-    private void setup_general_settings_widgets (Gtk.Grid grid, ref int row) {
+    private Gtk.Widget create_general_settings_section () {
         /* Instantiation */
         name_lbl = new Gtk.Label (name_lbl_text);
         name_entry = new Gtk.Entry ();
@@ -231,11 +228,15 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         log_file_lbl_revealer.add (log_file_lbl);
         log_file_chooser_revealer.add (log_file_chooser);
 
+        enable_timer_logging (activity_log_file != null);
+
+        var grid = create_page_grid ();
+        int row = 0;
         add_option (grid, ref row ,name_lbl, name_entry);
         add_option (grid, ref row ,activity_logging_lbl, activity_logging_switch, activity_logging_expl_widget);
         add_option (grid, ref row, log_file_lbl_revealer, log_file_chooser_revealer);
-
-        enable_timer_logging (activity_log_file != null);
+        grid.halign = Gtk.Align.CENTER;
+        return create_section_box (_("General"), grid);
     }
 
     private void on_log_file_changed () {
@@ -257,14 +258,11 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         }
     }
 
-    private void setup_txt_settings_widgets (Gtk.Grid grid, ref int row) {
+    private Gtk.Widget create_txt_settings_section () {
         /* Declaration */
-        Gtk.Label txt_sect_lbl;
         Gtk.Widget log_total_timer_expl_widget;
 
         /* Instantiation */
-        txt_sect_lbl = new Gtk.Label ("Todo.txt");
-
         File todo_file = null;
         if (old_todo_uri != null && old_todo_uri != "") {
             todo_file = File.new_for_uri (old_todo_uri);
@@ -303,10 +301,12 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         });
 
         /* Placement */
-        add_section (grid, txt_sect_lbl, ref row);
+        var grid = create_page_grid ();
+        int row = 0;
         add_option (grid, ref row, todo_uri_lbl, todo_uri_chooser);
         add_option (grid, ref row, done_uri_lbl, done_uri_chooser);
         add_option (grid, ref row, log_total_timer_lbl, log_total_timer_switch, log_total_timer_expl_widget);
+        return create_section_box ("Todo.txt", grid);
     }
 
     private void on_todo_file_changed () {
@@ -345,7 +345,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         }
     }
 
-    private void setup_timer_settings_widgets (Gtk.Grid grid, ref int row) {
+    private Gtk.Widget create_timer_settings_section () {
         /* Instantiation */
         timer_default_lbl = new Gtk.Label (_("Use default settings") + (":"));
         reminder_lbl1 = new Gtk.Label (_("Reminder before task ends") +":");
@@ -381,11 +381,12 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         });
 
         /* Add widgets */
+        var grid = create_page_grid ();
+        int row = 0;
         add_option (grid, ref row, timer_default_lbl, timer_default_switch);
         add_option (grid, ref row, reminder_lbl1, reminder_spin, reminder_lbl2);
-
         grid.attach (sched_widget, 0, row, 3, 1);
-        row++;
+        return create_section_box (null, grid);
     }
 
     private void on_reminder_value_changed () {
