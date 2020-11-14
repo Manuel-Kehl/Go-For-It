@@ -9,11 +9,19 @@ namespace GOFI.DialogUtils {
         section_frame.add (contents);
         section_frame.get_style_context ().add_class ("settings-frame");
 
-        var section_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+#if USE_GRANITE
+        var section_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+
+        if (sect_title != null) {
+            var sect_lbl = new Gtk.Label (sect_title);
+            sect_lbl.get_style_context ().add_class ("h4");
+#else
+        var section_box = new Gtk.Box (Gtk.Orientation.VERTICAL, SPACING_SETTINGS_ROW);
 
         if (sect_title != null) {
             var sect_lbl = new Gtk.Label ("<b>%s</b>".printf (sect_title));
             sect_lbl.use_markup = true;
+#endif
             sect_lbl.halign = Gtk.Align.START;
             section_box.add (sect_lbl);
         }
