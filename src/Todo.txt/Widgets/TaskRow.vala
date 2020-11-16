@@ -50,14 +50,17 @@ class GOFI.TXT.TaskRow: DragListRow {
         focus_cooldown_active = false;
         markup_label = new TaskMarkupLabel (task);
         markup_label.halign = Gtk.Align.START;
+        markup_label.valign = Gtk.Align.BASELINE;
         status_label = new Gtk.Label (null);
         status_label.halign = Gtk.Align.END;
+        status_label.valign = Gtk.Align.BASELINE;
         status_label.use_markup = true;
         update_status_label ();
 
         label_box = new DynOrientationBox (2, 0);
         label_box.set_primary_widget (markup_label);
         label_box.set_secondary_widget (status_label);
+        label_box.valign = Gtk.Align.BASELINE;
 
         check_button = new Gtk.CheckButton ();
         check_button.active = task.done;

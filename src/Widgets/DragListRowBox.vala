@@ -17,12 +17,15 @@
 
 // This basic horizontal box as Gtk.Box has some undesirable behavior when using
 // a height-for-width child.
+// This container also aligns the start and end widgets above the baseline of
+// the center widget, if the space is available.
 class GOFI.DragListRowBox : Gtk.Container {
     private Gtk.Widget start_widget;
     private Gtk.Widget center_widget;
     private Gtk.Widget end_widget;
+    private int requested_edge_height;
 
-   public int h_spacing {
+    public int h_spacing {
         get {
             return _h_spacing;
         }
@@ -169,24 +172,27 @@ class GOFI.DragListRowBox : Gtk.Container {
         }
     }
 
-    private void get_edge_height (int width, out int height) {
+    private void get_edge_height (int width, out int height, out int nat_height) {
         height = 0;
+        nat_height = 0;
 
         if (start_widget != null && start_widget.visible) {
-            start_widget.get_preferred_height_for_width (width, out height, null);
+            start_widget.get_preferred_height_for_width (width, out height, out nat_height);
         }
         if (end_widget != null && end_widget.visible) {
             int end_min;
-            end_widget.get_preferred_height_for_width (width, out end_min, null);
+            int end_nat;
+            end_widget.get_preferred_height_for_width (width, out end_min, out end_nat);
 
             height = int.max (end_min, height);
+            nat_height = int.max (end_nat, nat_height);
         }
     }
 
     public override void size_allocate (Gtk.Allocation allocation) {
         int edge_width, edge_height;
         get_edge_width (out edge_width);
-        get_edge_height (edge_width, out edge_height);
+        get_edge_height (edge_width, out edge_height, null);
 
         int child_height = allocation.height;
 
@@ -200,6 +206,7 @@ class GOFI.DragListRowBox : Gtk.Container {
             left = end_widget;
             right = start_widget;
         }
+        int baseline = 0;
 
         if (center_widget != null && center_widget.visible) {
             Gtk.Allocation center_alloc = Gtk.Allocation ();
@@ -212,17 +219,34 @@ class GOFI.DragListRowBox : Gtk.Container {
             if (right != null && right.visible) {
                 center_alloc.width -= _h_spacing + edge_width;
             }
+            int min_height, nat_height, baseline_min;
+            center_widget.get_preferred_height_and_baseline_for_width (
+                center_alloc.width, out min_height, out nat_height,
+                out baseline_min, out baseline
+            );
+            if (nat_height < child_height) {
+                baseline = baseline_min;
+            }
             center_alloc.y = allocation.y;
             center_alloc.height = child_height;
 
             center_widget.size_allocate (center_alloc);
         }
 
+        int edge_y = allocation.y;
+        int edge_wid_height = child_height;
+
+        if (requested_edge_height <= child_height && baseline > 0) {
+            edge_wid_height = requested_edge_height;
+            int y_offset = baseline - requested_edge_height;
+            edge_y = int.max (edge_y, edge_y + y_offset);
+        }
+
         if (left != null && left.visible) {
             Gtk.Allocation start_alloc = Gtk.Allocation ();
             start_alloc.x = allocation.x;
-            start_alloc.y = allocation.y;
-            start_alloc.height = child_height;
+            start_alloc.y = edge_y;
+            start_alloc.height = edge_wid_height;
             start_alloc.width = edge_width;
 
             left.size_allocate (start_alloc);
@@ -231,8 +255,8 @@ class GOFI.DragListRowBox : Gtk.Container {
         if (right != null && right.visible) {
             Gtk.Allocation end_alloc = Gtk.Allocation ();
             end_alloc.x = allocation.x + allocation.width - edge_width;
-            end_alloc.y = allocation.y;
-            end_alloc.height = child_height;
+            end_alloc.y = edge_y;
+            end_alloc.height = edge_wid_height;
             end_alloc.width = edge_width;
 
             right.size_allocate (end_alloc);
@@ -245,22 +269,18 @@ class GOFI.DragListRowBox : Gtk.Container {
         if (width < 0) {
             get_preferred_width (out width, null);
         }
-        int edge_width, edge_height;
+        int edge_width;
         get_edge_width (out edge_width);
-        get_edge_height (width, out edge_height);
-
-        minimum_height = 0;
+        get_edge_height (edge_width, out minimum_height, out requested_edge_height);
+        natural_height = requested_edge_height;
         int edge_taken = 0;
 
         if (start_widget != null && start_widget.visible) {
-            minimum_height = edge_height;
             edge_taken += edge_width + _h_spacing;
         }
         if (end_widget != null && end_widget.visible) {
-            minimum_height = edge_height;
             edge_taken += edge_width + _h_spacing;
         }
-        natural_height = minimum_height;
 
         if (center_widget != null && center_widget.visible) {
             int center_min, center_nat;

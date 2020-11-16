@@ -147,7 +147,23 @@ class GOFI.TXT.DynOrientationBox : Gtk.Container {
         child_allocation.y = allocation.y;
         child_allocation.width = allocation.width;
         child_allocation.height = allocation.height;
-        child.size_allocate (child_allocation);
+        int baseline = get_baseline (allocation);
+        child.size_allocate_with_baseline (child_allocation, baseline);
+    }
+
+    private int get_baseline (Gtk.Allocation allocation) {
+        int baseline = this.get_allocated_baseline ();
+        if (baseline < 0) {
+            int min_height, nat_height, baseline_min;
+            get_preferred_height_and_baseline_for_width (
+                allocation.width, out min_height, out nat_height,
+                out baseline_min, out baseline
+            );
+            if (allocation.height < nat_height) {
+                baseline = baseline_min;
+            }
+        }
+        return baseline;
     }
 
     public override void size_allocate (Gtk.Allocation allocation) {
@@ -172,6 +188,7 @@ class GOFI.TXT.DynOrientationBox : Gtk.Container {
         int pri_natural;
         pri_widget.get_preferred_width (null, out pri_natural);
         var sec_minimum = get_minimum_width (sec_widget);
+        int baseline = get_baseline (allocation);
 
         if (available_width >= pri_natural + sec_minimum) {
 
@@ -190,7 +207,8 @@ class GOFI.TXT.DynOrientationBox : Gtk.Container {
                 pri_allocation.x  = allocation.x;
                 sec_allocation.x = allocation.x + _h_spacing + pri_allocation.width;
             }
-
+            pri_widget.size_allocate_with_baseline (pri_allocation, baseline);
+            sec_widget.size_allocate_with_baseline (sec_allocation, baseline);
         } else {
             int sec_height;
             available_width += _h_spacing;
@@ -205,12 +223,14 @@ class GOFI.TXT.DynOrientationBox : Gtk.Container {
             sec_allocation.y = allocation.y + pri_allocation.height + _v_spacing;
             sec_allocation.width = available_width;
             sec_allocation.height = sec_height;
+            pri_widget.size_allocate_with_baseline (pri_allocation, baseline);
+            sec_widget.size_allocate (sec_allocation);
         }
-        pri_widget.size_allocate (pri_allocation);
-        sec_widget.size_allocate (sec_allocation);
+
         base.size_allocate (allocation);
     }
 
+/*
     public override void get_preferred_height_for_width (int width, out int minimum_height, out int natural_height) {
         if (width < 0) {
             width = get_minimum_width (this);
@@ -266,6 +286,99 @@ class GOFI.TXT.DynOrientationBox : Gtk.Container {
 
             pri_widget.get_preferred_height_for_width (
                 available_width, out pri_min, out pri_nat
+            );
+            sec_widget.get_preferred_height_for_width (
+                available_width, out sec_min, out sec_nat
+            );
+            minimum_height = pri_min + _v_spacing + sec_min;
+            natural_height = pri_nat + _v_spacing + sec_nat;
+        }
+    }
+*/
+    public override void get_preferred_height_and_baseline_for_width (
+        int width, out int minimum_height, out int natural_height,
+        out int minimum_baseline, out int natural_baseline
+    ) {
+        if (width < 0) {
+            width = get_minimum_width (this);
+        }
+
+        if (pri_widget == null || !pri_widget.visible) {
+            if (sec_widget == null || !sec_widget.visible) {
+                minimum_height = 0;
+                natural_height = 0;
+                minimum_baseline = -1;
+                natural_baseline = -1;
+                return;
+            }
+
+            sec_widget.get_preferred_height_and_baseline_for_width (
+                width,
+                out minimum_height, out natural_height,
+                out minimum_baseline, out natural_baseline
+            );
+            return;
+        } else if (sec_widget == null || !sec_widget.visible) {
+            pri_widget.get_preferred_height_and_baseline_for_width (
+                width,
+                out minimum_height, out natural_height,
+                out minimum_baseline, out natural_baseline
+            );
+            return;
+        }
+
+        int pri_natural;
+        pri_widget.get_preferred_width (null, out pri_natural);
+        var sec_minimum = get_minimum_width (sec_widget);
+
+        int pri_min;
+        int pri_nat;
+        int sec_min;
+        int sec_nat;
+
+        var available_width = width - _h_spacing;
+
+        if (available_width >= pri_natural + sec_minimum) {
+            // we can place the widgets next to eachother;
+            var pri_width  = available_width - sec_minimum;
+            var sec_width = available_width - pri_width;
+            int pri_base_min;
+            int pri_base_nat;
+            int sec_base_min;
+            int sec_base_nat;
+
+            pri_widget.get_preferred_height_and_baseline_for_width (
+                pri_width, out pri_min, out pri_nat, out pri_base_min, out pri_base_nat
+            );
+            sec_widget.get_preferred_height_and_baseline_for_width (
+                sec_width, out sec_min, out sec_nat, out sec_base_min, out sec_base_nat
+            );
+
+            minimum_baseline = int.max (pri_base_min, sec_base_min);
+            natural_baseline = int.max (pri_base_nat, sec_base_nat);
+
+            if (minimum_baseline > 0) {
+                int min_below = int.max (
+                    pri_min - int.max (0, pri_base_min),
+                    sec_min - int.max (0, sec_base_min)
+                );
+                int nat_below = int.max (
+                    pri_nat - int.max (0, pri_base_nat),
+                    sec_nat - int.max (0, sec_base_nat)
+                );
+                minimum_height = minimum_baseline + min_below;
+                natural_height = natural_baseline + nat_below;
+            } else {
+                minimum_height = int.max (pri_min, sec_min);
+                natural_height = int.max (pri_nat, sec_nat);
+            }
+        } else {
+            // we must place the widgets below eachother
+            available_width += _h_spacing;
+
+            pri_widget.get_preferred_height_and_baseline_for_width (
+                available_width, out pri_min, out pri_nat,
+                out minimum_baseline, out natural_baseline
             );
             sec_widget.get_preferred_height_for_width (
                 available_width, out sec_min, out sec_nat
