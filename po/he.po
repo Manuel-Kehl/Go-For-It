@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-11 21:24+0100\n"
-"PO-Revision-Date: 2020-11-14 09:28+0000\n"
+"PO-Revision-Date: 2020-11-17 06:28+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/he/>\n"
@@ -30,33 +30,33 @@ msgstr "התנדבות ותרומות"
 
 #: ../src/Dialogs/ContributeDialog.vala:31
 msgid "Thank you for supporting"
-msgstr ""
+msgstr "תודה לך על התמיכה"
 
 #: ../src/Dialogs/ContributeDialog.vala:32
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
-msgstr ""
+msgstr "הגשת קוד, גרפיקה, תרגומים או תיעוד היא דרך נפלאה לתרום למיזם:"
 
 #: ../src/Dialogs/ContributeDialog.vala:36
 msgid "If you really like this app, you can buy me a drink:"
-msgstr ""
+msgstr "אם היישומון נושא חן בעיניך, אפשר להזמין אותי לשתות משהו:"
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr ""
+msgstr "להחליף את „%s”?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
-msgstr ""
+msgstr "האם להחליף את הקובץ הזה או להשתמש בקובץ הישן הזה?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
-msgstr ""
+msgstr "להשאיר את הישן"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "להחליף"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:258
@@ -64,277 +64,277 @@ msgstr ""
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
 #: ../src/Widgets/FileChooserWidget.vala:85
 msgid "Cancel"
-msgstr ""
+msgstr "ביטול"
 
 #: ../src/Dialogs/SettingsDialog.vala:47 ../src/MainWindow.vala:458
 msgid "Settings"
-msgstr ""
+msgstr "הגדרות"
 
 #: ../src/Dialogs/SettingsDialog.vala:49
 #: ../plugins/appindicator/appindicator.vala:78
 msgid "Close"
-msgstr ""
+msgstr "סגירה"
 
 #: ../src/Dialogs/SettingsDialog.vala:74
 msgid "Behavior"
-msgstr ""
+msgstr "התנהגות"
 
 #: ../src/Dialogs/SettingsDialog.vala:75
 msgid "Notifications"
-msgstr ""
+msgstr "התראות"
 
 #: ../src/Dialogs/SettingsDialog.vala:76
 msgid "Appearance"
-msgstr ""
+msgstr "מראה"
 
 #: ../src/Dialogs/SettingsDialog.vala:77
 msgid "Shortcuts"
-msgstr ""
+msgstr "קיצורי דרך"
 
 #: ../src/Dialogs/SettingsDialog.vala:79
 msgid "Plugins"
-msgstr ""
+msgstr "תוספים"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:29
 msgid "Use small toolbar icons"
-msgstr ""
+msgstr "להשתמש בסמלים קטנים בסרגל הכלים"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:36
 msgid "Appearance of the activity switcher"
-msgstr ""
+msgstr "מראה מחליף הפעילויות"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:38
 msgid "Icons"
-msgstr ""
+msgstr "סמלים"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
 msgid "Text"
-msgstr ""
+msgstr "טקסט"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:52
 msgid "%s needs to be restarted for this setting to take effect"
-msgstr ""
+msgstr "יש להפעיל את %s מחדש כדי שההגדרות תיכנסנה לתוקף"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:53
 msgid "Use a header bar"
-msgstr ""
+msgstr "להשתמש בשורת כותרת"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:68
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:125
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:147
 msgid "General"
-msgstr ""
+msgstr "כללי"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:72
 msgid "Color scheme"
-msgstr ""
+msgstr "ערכת צבעים"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:87
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:99
 msgid "Theme"
-msgstr ""
+msgstr "ערכת עיצוב"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:55
 msgid "Timer mode"
-msgstr ""
+msgstr "מצב מתזמן"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:57
 msgid "Simple"
-msgstr ""
+msgstr "פשוט"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:58
 msgid "Pomodoro"
-msgstr ""
+msgstr "פומודורו"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:59
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:205
 msgid "Custom"
-msgstr ""
+msgstr "מותאם אישית"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
 #: ../src/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
-msgstr ""
+msgstr "משך המשימה"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:76
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:84
 msgid "minutes"
-msgstr ""
+msgstr "דקות"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:75
 #: ../src/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
-msgstr ""
+msgstr "משך הפסקה"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
 msgid "Long break duration"
-msgstr ""
+msgstr "משך הפסקה ארוכה"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:92
 msgid "Have a long break after"
-msgstr ""
+msgstr "לקחת הפסקה ארוכה לאחר"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:94
 msgid "short breaks"
-msgstr ""
+msgstr "הפסקות קצרות"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:117
 msgid "Resume task after the break"
-msgstr ""
+msgstr "להמשיך את המשימה לאחר ההפסקה"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:124
 msgid "Reset timer after switching tasks"
-msgstr ""
+msgstr "לאפס את המתזמן לאחר מעבר בין משימות"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:142
 #: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
 #: ../src/Todo.txt/Widgets/TaskRow.vala:338
 msgid "Timer"
-msgstr ""
+msgstr "מתזמן"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:146
 msgid "Placement of new tasks"
-msgstr ""
+msgstr "מיקום משימות חדשות"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:149
 msgid "Top of the list"
-msgstr ""
+msgstr "בראש הרשימה"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:150
 msgid "Bottom of the list"
-msgstr ""
+msgstr "בתחתית הרשימה"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:162
 msgid "Tasks"
-msgstr ""
+msgstr "משימות"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
-msgstr ""
+msgstr "קערת אלומיניום"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:37
 msgid "Singing bowl"
-msgstr ""
+msgstr "קערה טיבטית"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
 msgid "Bell"
-msgstr ""
+msgstr "פעמון"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:41
 msgid "Loud bell"
-msgstr ""
+msgstr "פעמון חזק"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:110
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
 msgid "Reminder before task ends"
-msgstr ""
+msgstr "תזכורת לפני סיום המשימה"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
 msgid "seconds"
-msgstr ""
+msgstr "שניות"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:129
 msgid "Reminder sound"
-msgstr ""
+msgstr "צליל תזכורת"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:139
 msgid "Start of break sound"
-msgstr ""
+msgstr "צליל תחילת הפסקה"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:149
 msgid "End of break sound"
-msgstr ""
+msgstr "צליל סיום הפסקה"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:201
 msgid "Notification sounds"
-msgstr ""
+msgstr "צלילי התראות"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:206
 msgid "Silent"
-msgstr ""
+msgstr "שקט"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:249
 msgid "Select notification sound file"
-msgstr ""
+msgstr "בחירת קובץ שמע להתראה"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:253
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:259
 #: ../src/Widgets/FileChooserWidget.vala:80
 #: ../src/Widgets/FileChooserWidget.vala:86
 msgid "_Select"
-msgstr ""
+msgstr "_בחירה"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
-msgstr ""
+msgstr "יש להפעיל את %s מחדש כדי שהשינויים ייכנסו לתוקף."
 
 #: ../src/LegacyStrings.vala:2
 msgid "Todo.txt files were found in the destination folder."
-msgstr ""
+msgstr "נמצאו קובצי Todo.txt בתיקיית היעד."
 
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:3
 msgid "What should be done with these files?"
-msgstr ""
+msgstr "מה לעשות עם הקבצים האלה?"
 
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:4
 msgid "Overwrite"
-msgstr ""
+msgstr "לשכתב"
 
 #: ../src/LegacyStrings.vala:5
 msgid "The configured folder is already in use by another list."
-msgstr ""
+msgstr "התיקייה המוגדרת כבר משמשת רשימה אחרת."
 
 #: ../src/LegacyStrings.vala:6
 msgid "folder"
-msgstr ""
+msgstr "תיקייה"
 
 #: ../src/LegacyStrings.vala:7
 msgid "Dark theme"
-msgstr ""
+msgstr "ערכת עיצוב כהה"
 
 #: ../src/LegacyStrings.vala:8
 msgid "Couldn't properly import settings from %s: %s"
-msgstr ""
+msgstr "לא ניתן לייבא הגדרות מתוך %s כמו שצריך: %s"
 
 #: ../src/Main.vala:97
 msgid "Not a known list: %s"
-msgstr ""
+msgstr "רשימה בלתי מוכרת: %s"
 
 #: ../src/Main.vala:236
 msgid "%s: Error: %s"
-msgstr ""
+msgstr "%s: שגיאה: %s"
 
 #. / Describes format of printed table (table contains the known lists)
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
 #: ../src/Main.vala:251
 msgid "Lists (List type : List ID - List name)"
-msgstr ""
+msgstr "רשימות (סוג הרשימה : מזהה הרשימה - שם הרשימה)"
 
 #. / Translators: give translation of FILE in "--logfile=FILE" command line argument
 #: ../src/Main.vala:276
 msgid "FILE"
-msgstr ""
+msgstr "FILE"
 
 #. / Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
 #: ../src/Main.vala:279
 msgid "LIST-TYPE"
-msgstr ""
+msgstr "LIST-TYPE"
 
 #. / Translators: give translation of LIST-ID in "--load LIST-TYPE LIST-ID" command line argument
 #: ../src/Main.vala:281
 msgid "LIST-ID"
-msgstr ""
+msgstr "LIST-ID"
 
 #: ../src/Main.vala:284
 msgid "Print version info and exit"
-msgstr ""
+msgstr "Print version info and exit"
 
 #: ../src/Main.vala:285
 msgid "Show about dialog"
@@ -763,40 +763,40 @@ msgstr ""
 #: ../plugins/appindicator/appindicator.vala:87
 #: ../plugins/appindicator/appindicator.vala:196
 msgid "No task has been selected"
-msgstr ""
+msgstr "לא נבחרה אף משימה"
 
 #: ../src/Widgets/TimerView.vala:270
 msgid "S_kip"
-msgstr ""
+msgstr "_דילוג"
 
 #: ../src/Widgets/TimerView.vala:271
 msgid "_Done"
-msgstr ""
+msgstr "_סיום"
 
 #: ../src/Widgets/TimerView.vala:315
 msgid "Relax"
-msgstr ""
+msgstr "אפשר לנוח"
 
 #: ../src/Widgets/TimerView.vala:316
 msgid "You have nothing to do."
-msgstr ""
+msgstr "אין לך משימות."
 
 #: ../src/Widgets/TodoListInfoRow.vala:96
 msgid "Delete"
-msgstr ""
+msgstr "מחיקה"
 
 #: ../src/Widgets/TodoListInfoRow.vala:97
 msgid "Edit"
-msgstr ""
+msgstr "עריכה"
 
 #: ../plugins/appindicator/appindicator.vala:73
 msgid "Open %s"
-msgstr ""
+msgstr "לפתוח את %s"
 
 #: ../plugins/appindicator/appindicator.vala:102
 msgid "Switch to next task"
-msgstr ""
+msgstr "מעבר למשימה הבאה"
 
 #: ../plugins/appindicator/appindicator.vala:108
 msgid "Switch to the previous task"
-msgstr ""
+msgstr "מעבר למשימה הקודמת"
