@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=@APP_NAME@
 GenericName=@APP_NAME@
-_Comment=@RELEASE_NAME@
+Comment=@RELEASE_NAME@
 Categories=GTK;Utility;
 Exec=@EXEC_NAME@
 Icon=@ICON_NAME@
@@ -10,6 +10,6 @@ Type=Application
 StartupWMClass=@EXEC_NAME@
 X-GNOME-UsesNotifications=true
 X-GNOME-Gettext-Domain=@GETTEXT_PACKAGE@
-_Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
-_X-GNOME-Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
+Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
+X-GNOME-Keywords=Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;
 @ABOUT_ACTION@

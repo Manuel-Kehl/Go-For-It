@@ -1,13 +1,21 @@
 # Translations.cmake, CMake macros written for Marlin, feel free to re-use them
 include(CMakeParseArguments)
+include(FindGettext)
 # be sure that all languages are present
 # Using all usual languages code from https://www.gnu.org/software/gettext/manual/html_node/Language-Codes.html#Language-Codes
 # Rare language codes should be added on-demand.
 set (LANGUAGES_NEEDED aa ab ae af ak am an ar as ast av ay az ba be bg bh bi bm bn bo br bs ca ce ch ckb co cr cs cu cv cy da de dv dz ee el en_AU en_CA en_GB eo es et eu fa ff fi fj fo fr fr_CA fy ga gd gl gn gu gv ha he hi ho hr ht hu hy hz ia id ie ig ii ik io is it iu ja jv ka kg ki kj kk kl km kn ko kr ks ku kv kw ky la lb lg li ln lo lt lu lv mg mh mi mk ml mn mo mr ms mt my na nd ne ng nl nn no nr nv ny oc oj om or os pa pi pl ps pt pt_BR qu rm rn ro ru rue rw sa sc sd se sg si sk sl sm sma sn so sq sr ss st su sv sw ta te tg th ti tk tl tn to tr ts tt tw ty ug uk ur uz ve vi vo wa wo xh yi yo za zh zh_HK zh_TW zu)
 
+macro (create_linguas_file DIRECTORY)
+    set(LINGUAS_FILE ${DIRECTORY}/LINGUAS)
+    if (NOT EXISTS ${LINGUAS_FILE})
+        STRING(REGEX REPLACE ";" "\n" LANGUAGES_NEEDED_LINGUAS "${LANGUAGES_NEEDED}")
+        file(APPEND ${LINGUAS_FILE} ${LANGUAGES_NEEDED_LINGUAS})
+    endif ()
+endmacro (create_linguas_file)
+
 macro (add_translations_directory NLS_PACKAGE)
     add_custom_target (i18n ALL COMMENT “Building i18n messages.”)
-    find_program (MSGFMT_EXECUTABLE msgfmt)
     foreach (LANGUAGE_NEEDED ${LANGUAGES_NEEDED})
         create_po_file (${LANGUAGE_NEEDED} ${CMAKE_CURRENT_SOURCE_DIR})
     endforeach (LANGUAGE_NEEDED ${LANGUAGES_NEEDED})
@@ -16,7 +24,7 @@ macro (add_translations_directory NLS_PACKAGE)
     foreach (PO_INPUT ${PO_FILES})
         get_filename_component (PO_INPUT_BASE ${PO_INPUT} NAME_WE)
         set (MO_OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${PO_INPUT_BASE}.mo)
-        add_custom_command (TARGET i18n COMMAND ${MSGFMT_EXECUTABLE} -o ${MO_OUTPUT} ${PO_INPUT})
+        add_custom_command (TARGET i18n COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${MO_OUTPUT} ${PO_INPUT})
 
         install (FILES ${MO_OUTPUT} DESTINATION
             share/locale/${PO_INPUT_BASE}/LC_MESSAGES
@@ -86,32 +94,46 @@ macro (create_po_file LANGUAGE_NEEDED DIRECTORY)
     endif ()
 endmacro (create_po_file)
 
+set(DESKTOP_KEYWORDS "--keyword=Name" "--keyword=Comment" "--keyword=Keywords" "--keyword=X-GNOME-Keywords")
+set(PLUGIN_KEYWORDS "--keyword=Name" "--keyword=Description")
+
 macro (configure_file_translation SOURCE RESULT PO_DIR)
-    find_program (INTLTOOL_MERGE_EXECUTABLE intltool-merge)
     set(EXTRA_PO_DIR ${PO_DIR}/extra/)
+    create_linguas_file (${EXTRA_PO_DIR})
     get_filename_component(EXTRA_PO_DIR ${EXTRA_PO_DIR} ABSOLUTE)
 
-    # Intltool can't create a new directory.
     get_filename_component(RESULT_DIRECTORY ${RESULT} DIRECTORY)
     file(MAKE_DIRECTORY ${RESULT_DIRECTORY})
 
-    set (INTLTOOL_FLAG "")
-    if (${SOURCE} MATCHES ".desktop")
-        set (INTLTOOL_FLAG "--desktop-style")
-    elseif (${SOURCE} MATCHES ".gschema")
-        set (INTLTOOL_FLAG "--schemas-style")
-    elseif (${SOURCE} MATCHES ".xml")
-        set (INTLTOOL_FLAG "--xml-style")
+    if (GETTEXT_VERSION_STRING VERSION_GREATER 0.19.7 OR GETTEXT_VERSION_STRING VERSION_EQUAL 0.19.7)
+        set (MSG_FMT_FLAGS "")
+        if (${SOURCE} MATCHES ".desktop")
+            set (MSG_FMT_FLAGS "--desktop" ${DESKTOP_KEYWORDS})
+        elseif (${SOURCE} MATCHES ".plugin")
+            set (MSG_FMT_FLAGS "--desktop" ${PLUGIN_KEYWORDS})
+        elseif (${SOURCE} MATCHES ".xml")
+            set (MSG_FMT_FLAGS "--xml")
+        endif ()
+        execute_process (
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            COMMAND ${GETTEXT_MSGFMT_EXECUTABLE}
+                ${MSG_FMT_FLAGS} -d ${EXTRA_PO_DIR} --template=${SOURCE} -o ${RESULT}
+        )
+    else ()
+        message (WARNING "gettext-tools are too old: ${GETTEXT_VERSION_STRING}, upgrade to at least 0.19.7")
+        get_filename_component(RESULT_NAME ${RESULT} NAME)
+        install (
+            FILES ${SOURCE}
+            DESTINATION ${RESULT_DIRECTORY}
+            RENAME ${RESULT_NAME}
+        )
     endif ()
-    execute_process (WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} COMMAND ${INTLTOOL_MERGE_EXECUTABLE} --quiet ${INTLTOOL_FLAG} ${EXTRA_PO_DIR} ${SOURCE} ${RESULT})
 endmacro ()
 
 macro (add_translations_catalog NLS_PACKAGE)
-    cmake_parse_arguments (ARGS "" "" "DESKTOP_FILES;APPDATA_FILES;SCHEMA_FILES" ${ARGN})
+    cmake_parse_arguments (ARGS "" "" "DESKTOP_FILES;APPDATA_FILES;SCHEMA_FILES;PLUGIN_FILES" ${ARGN})
     add_custom_target (pot COMMENT “Building translation catalog.”)
     find_program (XGETTEXT_EXECUTABLE xgettext)
-    find_program (INTLTOOL_EXTRACT_EXECUTABLE intltool-extract)
-    find_program (MSG_MERGE msgmerge)
 
     set(EXTRA_PO_DIR ${CMAKE_CURRENT_SOURCE_DIR}/extra)
 
@@ -153,10 +175,7 @@ macro (add_translations_catalog NLS_PACKAGE)
 
     set(EXTRA_XGETTEXT_COMMAND
         ${XGETTEXT_EXECUTABLE} -d extra
-        -o ${EXTRA_TEMPLATE} --no-location --from-code=UTF-8)
-
-    set (INTLTOOL_EXTRACT_COMMAND
-        ${INTLTOOL_EXTRACT_EXECUTABLE} --local --srcdir=/)
+        -o ${EXTRA_TEMPLATE} --from-code=UTF-8)
 
     set(CONTINUE_FLAG "")
 
@@ -179,7 +198,7 @@ macro (add_translations_catalog NLS_PACKAGE)
     file (GLOB PO_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.po)
     foreach (PO_INPUT ${PO_FILES})
         get_filename_component (PO_INPUT_BASE ${PO_INPUT} NAME)
-        add_custom_command (TARGET po WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} COMMAND ${MSG_MERGE} --update ${PO_INPUT_BASE} ${TEMPLATE} --force-po)
+        add_custom_command (TARGET po WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --update ${PO_INPUT_BASE} ${TEMPLATE} --force-po)
     endforeach (PO_INPUT ${PO_FILES})
 
 
@@ -194,32 +213,49 @@ macro (add_translations_catalog NLS_PACKAGE)
     set(CONTINUE_FLAG "")
 
     foreach(DESKTOP_SOURCE ${ARGS_DESKTOP_FILES})
-        get_filename_component(DESKTOP_SOURCE ${DESKTOP_SOURCE} ABSOLUTE)
-        add_custom_command(TARGET pot WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} COMMAND ${INTLTOOL_EXTRACT_COMMAND} --type=gettext/keys ${DESKTOP_SOURCE})
-        get_filename_component(DESKTOP_SOURCE_NAME ${DESKTOP_SOURCE} NAME)
-        add_custom_command(TARGET pot WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} COMMAND ${EXTRA_XGETTEXT_COMMAND} ${CONTINUE_FLAG} ${XGETTEXT_C_ARGS} ${CMAKE_CURRENT_BINARY_DIR}/tmp/${DESKTOP_SOURCE_NAME}.h)
+        add_custom_command(
+            TARGET pot
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            COMMAND ${EXTRA_XGETTEXT_COMMAND}
+                --add-comments --keyword="" ${DESKTOP_KEYWORDS} ${CONTINUE_FLAG} ${DESKTOP_SOURCE}
+        )
+        set(CONTINUE_FLAG "-j")
+    endforeach()
+
+    foreach(PLUGIN_SOURCE ${ARGS_PLUGIN_FILES})
+        add_custom_command(
+            TARGET pot
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            COMMAND ${EXTRA_XGETTEXT_COMMAND}
+                --add-comments --keyword="" ${PLUGIN_KEYWORDS} ${CONTINUE_FLAG} -LDesktop ${PLUGIN_SOURCE}
+        )
         set(CONTINUE_FLAG "-j")
     endforeach()
 
     foreach(APPDATA_SOURCE ${ARGS_APPDATA_FILES})
-        get_filename_component(APPDATA_SOURCE ${APPDATA_SOURCE} ABSOLUTE)
-        add_custom_command(TARGET pot WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} COMMAND ${INTLTOOL_EXTRACT_COMMAND} --type=gettext/xml ${APPDATA_SOURCE})
-        get_filename_component(APPDATA_SOURCE_NAME ${APPDATA_SOURCE} NAME)
-        add_custom_command(TARGET pot WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} COMMAND ${EXTRA_XGETTEXT_COMMAND} ${CONTINUE_FLAG} ${XGETTEXT_C_ARGS} ${CMAKE_CURRENT_BINARY_DIR}/tmp/${APPDATA_SOURCE_NAME}.h)
+        add_custom_command(
+            TARGET pot
+            WORKING_DIRECTORY
+            ${CMAKE_CURRENT_SOURCE_DIR}
+            COMMAND ${EXTRA_XGETTEXT_COMMAND}
+                --add-comments ${CONTINUE_FLAG} ${APPDATA_SOURCE}
+        )
         set(CONTINUE_FLAG "-j")
     endforeach()
 
     foreach(SCHEMA_SOURCE ${ARGS_SCHEMA_FILES})
-        get_filename_component(SCHEMA_SOURCE ${SCHEMA_SOURCE} ABSOLUTE)
-        add_custom_command(TARGET pot WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} COMMAND ${INTLTOOL_EXTRACT_COMMAND} --type=gettext/schemas ${SCHEMA_SOURCE})
-        get_filename_component(SCHEMA_SOURCE_NAME ${SCHEMA_SOURCE} NAME)
-        add_custom_command(TARGET pot WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} COMMAND ${EXTRA_XGETTEXT_COMMAND} ${CONTINUE_FLAG} ${XGETTEXT_C_ARGS} ${CMAKE_CURRENT_BINARY_DIR}/tmp/${SCHEMA_SOURCE_NAME}.h)
+        add_custom_command(
+            TARGET pot
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            COMMAND ${EXTRA_XGETTEXT_COMMAND}
+                --add-comments ${CONTINUE_FLAG} ${SCHEMA_SOURCE}
+        )
         set(CONTINUE_FLAG "-j")
     endforeach()
 
     file (GLOB PO_FILES ${EXTRA_PO_DIR}/*.po)
     foreach (PO_INPUT ${PO_FILES})
         get_filename_component (PO_INPUT_BASE ${PO_INPUT} NAME)
-        add_custom_command (TARGET po COMMAND WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} ${MSG_MERGE} --update ${PO_INPUT_BASE} ${EXTRA_TEMPLATE})
+        add_custom_command (TARGET po COMMAND WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} ${GETTEXT_MSGMERGE_EXECUTABLE} --update ${PO_INPUT_BASE} ${EXTRA_TEMPLATE})
     endforeach (PO_INPUT ${PO_FILES})
 endmacro ()

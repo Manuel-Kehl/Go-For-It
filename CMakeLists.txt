@@ -98,11 +98,6 @@ add_definitions(${DEPS_CFLAGS})
 link_directories(${DEPS_LIBRARY_DIRS})
 include_directories(${CMAKE_BINARY_DIR}/src)
 
-find_program (INTLTOOL_MERGE_EXECUTABLE intltool-merge)
-if (NOT INTLTOOL_MERGE_EXECUTABLE)
-    message ( FATAL_ERROR "Couldn't find the intltool-merge executable. Please make sure intltool is installed and try again")
-endif ()
-
 # disable some c compiler warnings
 add_definitions (-Wno-incompatible-pointer-types -Wno-discarded-qualifiers -Werror=implicit-function-declaration)
 add_definitions (-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")

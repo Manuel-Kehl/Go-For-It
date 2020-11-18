@@ -94,7 +94,7 @@ To build *Go For It!* you need to have the following software installed:
 
     valac >= 0.36
     cmake >= 2.8.9
-    intltool
+    gettext >= 1.9.7
     gtk+-3.0 (libgtk-3-0, libgtk-3-dev) (>= 3.14)
     glib-2.0 (libglib2.0-0, libglib2.0-dev)
     libpeas (libpeas-1.0-0, libpeas-dev)

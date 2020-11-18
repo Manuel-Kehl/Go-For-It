@@ -5,18 +5,18 @@
   <name>@APP_NAME@</name>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
-  <_summary>@RELEASE_NAME@</_summary>
+  <summary>@RELEASE_NAME@</summary>
   <developer_name>The Go For It! developers</developer_name>
   <description>
-    <_p>
+    <p>
 Go For It! is a simple and stylish productivity app, featuring a to-do list, merged with a timer that keeps your focus on the current task.
-    </_p>
-    <_p>
+    </p>
+    <p>
 To-do lists are stored in the Todo.txt format. This simplifies synchronization with mobile devices and makes it possible to edit tasks using other front-ends.
-    </_p>
-    <_p>
+    </p>
+    <p>
 If you already use Todo.txt, beware of the fact, that Go For It! automatically archives completed tasks to the done list!
-    </_p>
+    </p>
   </description>
   <screenshots>
     <screenshot type="default">
