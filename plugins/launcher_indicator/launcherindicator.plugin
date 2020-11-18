@@ -2,5 +2,7 @@
 Module=launcherindicator
 Loader=C
 Name=Launcher indicator
-Description=Launcher indicator plugin (libunity) for use in Pantheon, Unity and Gnome if dash to dock is used.
-Authors=JMoerman
+Description=Show the timer in the launcher. Works with the Plank dock, the Unity dash and the dash to dock Gnome extension.
+Copyright=Copyright © 2020 Jonathan Moerman
+Authors=Jonathan Moerman <jonathanmoerman@gmail.com>
+Website=https://github.com/JMoerman/Go-For-It

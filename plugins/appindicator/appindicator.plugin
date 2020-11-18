@@ -2,5 +2,7 @@
 Module=appindicator
 Loader=C
 Name=Panel indicator
-Description=Ayatana appindicator plugin for Go For It!
-Authors=JMoerman
+Description=Show and control the timer from a panel supporting ayatana appindicators.
+Copyright=Copyright © 2020 Jonathan Moerman
+Authors=Jonathan Moerman <jonathanmoerman@gmail.com>
+Website=https://github.com/JMoerman/Go-For-It
