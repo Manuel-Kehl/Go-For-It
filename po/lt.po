@@ -3,17 +3,17 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-11 21:24+0100\n"
-"PO-Revision-Date: 2020-11-02 14:53+0100\n"
-"Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
-"Language-Team: Lithuanian <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/lt/>\n"
+"PO-Revision-Date: 2020-11-19 20:29+0000\n"
+"Last-Translator: Moo <hazap@hotmail.com>\n"
+"Language-Team: Lithuanian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Weblate 4.4-dev\n"
 "X-Launchpad-Export-Date: 2018-04-05 05:31+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
@@ -95,7 +95,7 @@ msgstr "Trumpiniai"
 
 #: ../src/Dialogs/SettingsDialog.vala:79
 msgid "Plugins"
-msgstr ""
+msgstr "Įskiepiai"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:29
 msgid "Use small toolbar icons"
@@ -241,10 +241,8 @@ msgid "seconds"
 msgstr "sekundžių"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:129
-#, fuzzy
-#| msgid "Reminder before task ends"
 msgid "Reminder sound"
-msgstr "Priminimas prieš pasibaigiant užduočiai"
+msgstr "Priminimo garsas"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:139
 msgid "Start of break sound"
@@ -256,7 +254,7 @@ msgstr "Petraukos pabaigos garsas"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:201
 msgid "Notification sounds"
-msgstr ""
+msgstr "Pranešimų garsai"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:206
 msgid "Silent"
@@ -324,17 +322,17 @@ msgstr ""
 #. / Translators: give translation of FILE in "--logfile=FILE" command line argument
 #: ../src/Main.vala:276
 msgid "FILE"
-msgstr ""
+msgstr "FAILAS"
 
 #. / Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
 #: ../src/Main.vala:279
 msgid "LIST-TYPE"
-msgstr ""
+msgstr "SĄRAŠO-TIPAS"
 
 #. / Translators: give translation of LIST-ID in "--load LIST-TYPE LIST-ID" command line argument
 #: ../src/Main.vala:281
 msgid "LIST-ID"
-msgstr ""
+msgstr "SĄRAŠO-ID"
 
 #: ../src/Main.vala:284
 msgid "Print version info and exit"
@@ -370,7 +368,7 @@ msgstr "Meniu"
 
 #: ../src/MainWindow.vala:452
 msgid "Mute sounds"
-msgstr ""
+msgstr "Nutildyti garsus"
 
 #: ../src/MainWindow.vala:464
 msgid "Contribute / Donate"
@@ -460,7 +458,7 @@ msgstr "Filtruoti užduotis"
 
 #: ../src/Services/Shortcuts.vala:158 ../src/Todo.txt/TxtList.vala:188
 msgid "Sort Tasks"
-msgstr ""
+msgstr "Rikiuoti užduotis"
 
 #: ../src/Services/Shortcuts.vala:159
 msgid "Add new task/list"
@@ -476,7 +474,7 @@ msgstr ""
 
 #: ../src/Services/Shortcuts.vala:162
 msgid "Edit the properties of a list or task"
-msgstr ""
+msgstr "Taisyti sąrašo ar užduoties savybes"
 
 #: ../src/Services/Shortcuts.vala:164 ../src/Todo.txt/Widgets/TaskRow.vala:65
 #: ../src/Widgets/TimerView.vala:289
@@ -560,11 +558,11 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:199
 msgid "This log will be saved as a CSV file."
-msgstr ""
+msgstr "Šis žurnalas bus įrašytas kaip CSV failas."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
 msgid "Log file"
-msgstr ""
+msgstr "Žurnalo failas"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:211
 #, fuzzy
