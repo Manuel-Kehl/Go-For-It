@@ -53,6 +53,7 @@ pkg_check_modules (CORE_DEPS REQUIRED
 set (CORE_DEPS_VALA_PACKAGES gtk+-3.0 libcanberra)
 
 option (ENABLE_PLUGINS "Compile with plugin support" ON)
+option (BUILD_PLUGINS "Compile plugins" ON)
 if (ENABLE_PLUGINS)
     pkg_check_modules (PEAS
         libpeas-1.0
@@ -119,9 +120,9 @@ option (SHOW_ABOUT "Show the about action in the .desktop and menu." ON)
 
 add_subdirectory (src)
 add_subdirectory (executable)
-if (ENABLE_PLUGINS)
+if (ENABLE_PLUGINS AND BUILD_PLUGINS)
 add_subdirectory (plugins)
-endif (ENABLE_PLUGINS)
+endif (ENABLE_PLUGINS AND BUILD_PLUGINS)
 if (BUILD_TESTS)
     add_subdirectory (tests)
 endif (BUILD_TESTS)
