@@ -7,4 +7,7 @@ add_translations_catalog (${GETTEXT_PACKAGE}
         ${CMAKE_BINARY_DIR}/data/${APP_ID}.desktop.in
     APPDATA_FILES
         ${CMAKE_BINARY_DIR}/data/${APP_ID}.appdata.xml.in
+    PLUGIN_FILES
+        ../plugins/appindicator/appindicator.plugin
+        ../plugins/launcher_indicator/launcherindicator.plugin
 )

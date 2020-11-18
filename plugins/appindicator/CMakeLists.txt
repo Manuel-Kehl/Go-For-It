@@ -1,3 +1,4 @@
+include (Translations)
 include_directories(${CMAKE_BINARY_DIR} ${CMAKE_BINARY_DIR}/src/lib/)
 
 set (PLUGIN_NAME "appindicator")
@@ -41,8 +42,10 @@ if (APPINDICATOR_PLUGIN_DEPS_FOUND)
     add_library(${PLUGIN_NAME} MODULE ${VALA_C})
     target_link_libraries(${PLUGIN_NAME} ${LIBNAME} ${APPINDICATOR_PLUGIN_DEPS_LIBRARIES})
 
+    configure_file_translation (${PLUGIN_NAME}.plugin ${CMAKE_CURRENT_BINARY_DIR}/${PLUGIN_NAME}.plugin ${CMAKE_SOURCE_DIR}/po/)
+
     install(TARGETS ${PLUGIN_NAME} DESTINATION ${PLUGINDIR}/${PLUGIN_NAME})
-    install(FILES ${PLUGIN_NAME}.plugin DESTINATION ${PLUGINDIR}/${PLUGIN_NAME})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PLUGIN_NAME}.plugin DESTINATION ${PLUGINDIR}/${PLUGIN_NAME})
     install(FILES "icons/status-break-symbolic.svg" DESTINATION ${PLUGINDIR}/${PLUGIN_NAME}/icons/)
     install(FILES "icons/status-task-symbolic.svg" DESTINATION ${PLUGINDIR}/${PLUGIN_NAME}/icons/)
     message("-- Ayatana indicator plugin will be compiled")

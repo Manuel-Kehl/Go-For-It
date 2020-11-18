@@ -1,3 +1,4 @@
+include (Translations)
 include_directories(${CMAKE_BINARY_DIR} ${CMAKE_BINARY_DIR}/src/lib/)
 
 set (PLUGIN_NAME "launcherindicator")
@@ -29,8 +30,10 @@ if (LAUNCHER_PLUGIN_DEPS_FOUND)
     add_library(${PLUGIN_NAME} MODULE ${VALA_C})
     target_link_libraries(${PLUGIN_NAME} ${LIBNAME} ${LAUNCHER_PLUGIN_DEPS_LIBRARIES})
 
+    configure_file_translation (${PLUGIN_NAME}.plugin ${CMAKE_CURRENT_BINARY_DIR}/${PLUGIN_NAME}.plugin ${CMAKE_SOURCE_DIR}/po/)
+
     install(TARGETS ${PLUGIN_NAME} DESTINATION ${PLUGINDIR}/${PLUGIN_NAME})
-    install(FILES ${PLUGIN_NAME}.plugin DESTINATION ${PLUGINDIR}/${PLUGIN_NAME})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PLUGIN_NAME}.plugin DESTINATION ${PLUGINDIR}/${PLUGIN_NAME})
 
     message("-- Launcher inidicator plugin (libunity) will be compiled")
 else ()
