@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-10 20:48+0100\n"
+"POT-Creation-Date: 2020-11-18 15:53+0100\n"
 "PO-Revision-Date: 2020-10-09 21:26+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/extra/"
@@ -23,6 +23,27 @@ msgstr ""
 msgid "Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;"
 msgstr ""
 "Produktivnsot;Todo.txt;Todo;Tjmer;Štoperica;Zadatak;PIM;Upravljanje vremenom;"
+
+msgid "About Go For It!"
+msgstr ""
+
+msgid "Panel indicator"
+msgstr ""
+
+msgid ""
+"Show and control the timer from a panel supporting ayatana appindicators."
+msgstr ""
+
+msgid "Launcher indicator"
+msgstr ""
+
+msgid ""
+"Show the timer in the launcher. Works with the Plank dock, the Unity dash "
+"and the dash to dock Gnome extension."
+msgstr ""
+
+msgid "The Go For It! developers"
+msgstr ""
 
 msgid ""
 "Go For It! is a simple and stylish productivity app, featuring a to-do list, "

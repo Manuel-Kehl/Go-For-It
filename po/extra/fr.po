@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-10 20:48+0100\n"
+"POT-Creation-Date: 2020-11-18 15:53+0100\n"
 "PO-Revision-Date: 2020-06-11 17:41+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/go-for-it/extra/"
@@ -21,12 +21,34 @@ msgstr "Une liste de tâches élégante avec chronomètre de productivité inté
 msgid "Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;"
 msgstr "Productivité;Todo.txt;A faire;Chronomètre;Tâche;PIM;Gestion du temps;"
 
+msgid "About Go For It!"
+msgstr ""
+
+msgid "Panel indicator"
+msgstr ""
+
+msgid ""
+"Show and control the timer from a panel supporting ayatana appindicators."
+msgstr ""
+
+msgid "Launcher indicator"
+msgstr ""
+
+msgid ""
+"Show the timer in the launcher. Works with the Plank dock, the Unity dash "
+"and the dash to dock Gnome extension."
+msgstr ""
+
+msgid "The Go For It! developers"
+msgstr ""
+
 msgid ""
 "Go For It! is a simple and stylish productivity app, featuring a to-do list, "
 "merged with a timer that keeps your focus on the current task."
 msgstr ""
-"Go For It ! est une application de productivité simple et élégante, dotée d'une liste de tâches à faire, "
-"fusionnée avec un chronomètre qui maintiendra votre concentration sur la tâche en cours."
+"Go For It ! est une application de productivité simple et élégante, dotée "
+"d'une liste de tâches à faire, fusionnée avec un chronomètre qui maintiendra "
+"votre concentration sur la tâche en cours."
 
 msgid ""
 "To-do lists are stored in the Todo.txt format. This simplifies "
