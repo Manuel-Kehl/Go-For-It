@@ -8,19 +8,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-26 18:03+0200\n"
+"POT-Creation-Date: 2020-11-18 15:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "A stylish to-do list with built-in productivity timer"
 msgstr ""
 
 msgid "Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;"
+msgstr ""
+
+msgid "About Go For It!"
+msgstr ""
+
+msgid "Panel indicator"
+msgstr ""
+
+msgid ""
+"Show and control the timer from a panel supporting ayatana appindicators."
+msgstr ""
+
+msgid "Launcher indicator"
+msgstr ""
+
+msgid ""
+"Show the timer in the launcher. Works with the Plank dock, the Unity dash "
+"and the dash to dock Gnome extension."
+msgstr ""
+
+msgid "The Go For It! developers"
 msgstr ""
 
 msgid ""

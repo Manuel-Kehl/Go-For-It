@@ -175,7 +175,7 @@ macro (add_translations_catalog NLS_PACKAGE)
 
     set(EXTRA_XGETTEXT_COMMAND
         ${XGETTEXT_EXECUTABLE} -d extra
-        -o ${EXTRA_TEMPLATE} --from-code=UTF-8)
+        -o ${EXTRA_TEMPLATE} --no-location --from-code=UTF-8)
 
     set(CONTINUE_FLAG "")
 
