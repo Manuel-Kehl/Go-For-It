@@ -15,8 +15,7 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-public class FileChooserWidget : Gtk.Box {
-    private Gtk.Button uri_btn;
+public class FileChooserWidget : Gtk.Button {
     private Gtk.Label uri_lbl;
 
     private string choose_file_text = _("Choose a file");
@@ -52,24 +51,28 @@ public class FileChooserWidget : Gtk.Box {
     }
 
     public FileChooserWidget (File? file, string dialog_title, string? default_filename = null) {
-        Object (orientation: Gtk.Orientation.HORIZONTAL, spacing: 3);
         uri_lbl = new Gtk.Label (null);
         uri_lbl.ellipsize = Pango.EllipsizeMode.START;
         uri_lbl.hexpand = true;
         uri_lbl.halign = Gtk.Align.START;
-        uri_btn = new Gtk.Button.from_icon_name ("document-open-symbolic");
 
-        this.add (uri_lbl);
-        this.add (uri_btn);
+        var image = new Gtk.Image.from_icon_name ("document-open-symbolic", Gtk.IconSize.BUTTON);
+
+        var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3);
+        box.add (uri_lbl);
+        box.add (image);
+
+        this.add (box);
 
         uri_lbl.show ();
-        uri_btn.show ();
+        image.show ();
+        box.show ();
 
         this.selected_file = file;
         this.dialog_title = dialog_title;
         this.default_filename = default_filename;
 
-        uri_btn.clicked.connect (on_button_clicked);
+        this.clicked.connect (on_button_clicked);
     }
 
     public virtual void on_button_clicked () {
