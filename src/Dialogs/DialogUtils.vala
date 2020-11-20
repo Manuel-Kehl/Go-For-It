@@ -37,11 +37,7 @@ namespace GOFI.DialogUtils {
 
         grid.attach (label, 0, row, 1, 1);
 
-        if (switcher is Gtk.Switch || switcher is Gtk.Entry) {
-            switcher.halign = Gtk.Align.START;
-        } else {
-            switcher.halign = Gtk.Align.FILL;
-        }
+        switcher.halign = Gtk.Align.START;
 
         if (label2 != null) {
             label2.halign = Gtk.Align.START;
