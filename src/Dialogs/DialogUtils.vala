@@ -66,7 +66,14 @@ namespace GOFI.DialogUtils {
      * Restricts the maximum natural_width value in height for width layouts
      */
     private class ConstrWidthBin : Gtk.Bin {
-        int max_width;
+        public int max_width {
+            get { return _max_width; }
+            set {
+                _max_width = value;
+                queue_resize ();
+            }
+        }
+        int _max_width;
 
         public ConstrWidthBin (Gtk.Widget child, int max_width) {
             Object (child: child);
@@ -86,6 +93,9 @@ namespace GOFI.DialogUtils {
     private class ExplanationWidget : Gtk.Button {
         private Gtk.Popover explanation_popover;
 
+        // To avoid clipping
+        private ConstrWidthBin popover_contents;
+
         public ExplanationWidget (string explanation) {
             Object (relief: Gtk.ReliefStyle.NONE, tooltip_text: explanation);
             var image_widget = new Gtk.Image.from_icon_name (
@@ -100,7 +110,9 @@ namespace GOFI.DialogUtils {
             popover_label.wrap_mode = Pango.WrapMode.WORD_CHAR;
             popover_label.margin = 10;
             popover_label.show ();
-            explanation_popover.add (new ConstrWidthBin (popover_label, 200));
+
+            popover_contents = new ConstrWidthBin (popover_label, 200);
+            explanation_popover.add (popover_contents);
 
             this.clicked.connect (on_clicked);
 
@@ -108,6 +120,12 @@ namespace GOFI.DialogUtils {
         }
 
         private void on_clicked () {
+            var window = this.get_toplevel () as Gtk.Window;
+            int max_width = 200;
+            if (window != null) {
+                max_width = window.get_child ().get_allocated_width ();
+            }
+            popover_contents.max_width = max_width;
             Utils.popover_show (explanation_popover);
         }
     }
