@@ -143,6 +143,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         var txt_page = new Gtk.Box (Gtk.Orientation.VERTICAL, DialogUtils.SPACING_SETTINGS_ROW * 2);
         txt_page.halign = Gtk.Align.CENTER;
         var timer_page = new Gtk.Box (Gtk.Orientation.VERTICAL, DialogUtils.SPACING_SETTINGS_ROW * 2);
+        timer_page.halign = Gtk.Align.CENTER;
 
         settings_stack.add_titled (txt_page, "txt_page", _("General"));
         settings_stack.add_titled (timer_page, "timer_page", _("Timer"));
@@ -235,7 +236,6 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         add_option (grid, ref row ,name_lbl, name_entry);
         add_option (grid, ref row ,activity_logging_lbl, activity_logging_switch, activity_logging_expl_widget);
         add_option (grid, ref row, log_file_lbl_revealer, log_file_chooser_revealer);
-        grid.halign = Gtk.Align.CENTER;
         return create_section_box (_("General"), grid);
     }
 
