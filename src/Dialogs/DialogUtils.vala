@@ -62,9 +62,57 @@ namespace GOFI.DialogUtils {
         return grid;
     }
 
+    /**
+     * Restricts the maximum natural_width value in height for width layouts
+     */
+    private class ConstrWidthBin : Gtk.Bin {
+        int max_width;
+
+        public ConstrWidthBin (Gtk.Widget child, int max_width) {
+            Object (child: child);
+            this.max_width = max_width;
+        }
+
+        public override Gtk.SizeRequestMode get_request_mode () {
+            return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
+        }
+
+        public override void get_preferred_width (out int minimum_width, out int natural_width) {
+            base.get_preferred_width (out minimum_width, out natural_width);
+            natural_width = int.min (max_width, natural_width);
+        }
+    }
+
+    private class ExplanationWidget : Gtk.Button {
+        private Gtk.Popover explanation_popover;
+
+        public ExplanationWidget (string explanation) {
+            Object (relief: Gtk.ReliefStyle.NONE, tooltip_text: explanation);
+            var image_widget = new Gtk.Image.from_icon_name (
+                "dialog-information-symbolic", Gtk.IconSize.BUTTON
+            );
+            image_widget.show ();
+            this.add (image_widget);
+
+            explanation_popover = new Gtk.Popover (this);
+            var popover_label = new Gtk.Label (explanation);
+            popover_label.wrap = true;
+            popover_label.wrap_mode = Pango.WrapMode.WORD_CHAR;
+            popover_label.margin = 10;
+            popover_label.show ();
+            explanation_popover.add (new ConstrWidthBin (popover_label, 200));
+
+            this.clicked.connect (on_clicked);
+
+            this.get_style_context ().add_class ("no_margin");
+        }
+
+        private void on_clicked () {
+            Utils.popover_show (explanation_popover);
+        }
+    }
+
     public static Gtk.Widget get_explanation_widget (string explanation) {
-        var image_widget = new Gtk.Image.from_icon_name ("dialog-information-symbolic", Gtk.IconSize.BUTTON);
-        image_widget.tooltip_text = explanation;
-        return image_widget;
+        return new ExplanationWidget (explanation);
     }
 }
