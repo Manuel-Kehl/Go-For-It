@@ -92,6 +92,9 @@ class GOFI.TodoListInfoRow: DragListRow {
         popover.position = Gtk.PositionType.BOTTOM;
 
         var popover_cont = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+#if !USE_GRANITE
+        popover_cont.margin = 10;
+#endif
 
         var menuitem_delete = Utils.create_menu_button (_("Delete"));
         var menuitem_edit = Utils.create_menu_button (_("Edit"));

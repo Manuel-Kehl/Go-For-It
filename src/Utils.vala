@@ -205,8 +205,8 @@ namespace GOFI {
         }
 
         public static Gtk.Button create_menu_button (string label) {
-            var button = new Gtk.Button.with_label (label);
-            button.get_style_context ().add_class ("menuitem");
+            var button = new Gtk.ModelButton ();
+            button.text = label;
             return button;
         }
 
