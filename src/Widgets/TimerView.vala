@@ -95,13 +95,13 @@ class GOFI.TimerView : Gtk.Grid {
         // Append correct class according to break status
         if (timer.break_active) {
             task_status_lbl.label = Utils.string_to_exclamation (_("Take a Break"));
-            style.remove_class ("task_active");
-            style.add_class ("task_break");
+            style.remove_class ("task-active");
+            style.add_class ("task-break");
             skip_btn.tooltip_markup = sc.get_accel_markup (_("Skip the remainder of the break"));
         } else {
             task_status_lbl.label = _("Active Task") + ":";
-            style.remove_class ("task_break");
-            style.add_class ("task_active");
+            style.remove_class ("task-break");
+            style.add_class ("task-active");
             done_btn.visible = true;
             skip_btn.tooltip_markup = sc.get_accel_markup (_("Skip to the break"));
         }
@@ -122,9 +122,9 @@ class GOFI.TimerView : Gtk.Grid {
             );
             var style = task_duration_lbl.get_style_context ();
             if (duration <= timer_value) {
-                style.add_class ("task_duration_exceeded");
+                style.add_class ("task-duration-exceeded");
             } else {
-                style.remove_class ("task_duration_exceeded");
+                style.remove_class ("task-duration-exceeded");
             }
             task_duration_lbl.visible = true;
         } else {
@@ -181,7 +181,7 @@ class GOFI.TimerView : Gtk.Grid {
 
         /* Configuration */
         task_status_lbl.margin_top = 30;
-        task_status_lbl.get_style_context ().add_class ("task_status");
+        task_status_lbl.get_style_context ().add_class ("task-status");
         task_description_lbl.margin = 20;
         task_description_lbl.margin_top = 30;
         task_description_lbl.margin_bottom = 10;

@@ -12,15 +12,15 @@
 
     <file>style/widgets-minimal-3.20.css</file>
     <file>style/widgets-minimal-3.10.css</file>
-    <file>style/widgets-3.20.css</file>
-    <file>style/widgets-3.10.css</file>
-    <file>style/elementary-3.20.css</file>
-    <file>style/elementary-3.10.css</file>
-    <file>style/elementary-dark-3.20.css</file>
-    <file>style/elementary-dark-3.10.css</file>
+    <file>style/safe-colors-3.20.css</file>
+    <file>style/safe-colors-3.10.css</file>
+    <file>style/light-3.20.css</file>
+    <file>style/light-3.10.css</file>
+    <file>style/dark-3.20.css</file>
+    <file>style/dark-3.10.css</file>
 
     <file>style/palettes/theme-based.css</file>
-    <file>style/palettes/elementary-dark.css</file>
-    <file>style/palettes/elementary.css</file>
+    <file>style/palettes/dark.css</file>
+    <file>style/palettes/light.css</file>
   </gresource>
 </gresources>

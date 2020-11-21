@@ -1,0 +1,10 @@
+@define-color gofi_task_active_label_color #ababab;
+@define-color gofi_text_attention @warning_color;
+
+@define-color gofi_main_layout_background @theme_base_color;
+
+@define-color gofi_row_bg @theme_base_color;
+@define-color gofi_row_fg @theme_text_color;
+
+@define-color gofi_row_drag_icon_border @theme_fg_color;
+@define-color gofi_row_drag_icon_background @theme_base_color;

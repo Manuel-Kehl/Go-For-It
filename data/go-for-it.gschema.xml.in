@@ -119,11 +119,6 @@
       <summary></summary>
       <description></description>
     </key>
-    <key name="theme" type="s">
-      <default>'@DEFAULT_THEME@'</default>
-      <summary></summary>
-      <description></description>
-    </key>
     <key name="small-toolbar-icons" type="b">
       <default>false</default>
       <summary></summary>

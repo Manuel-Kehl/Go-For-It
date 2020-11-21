@@ -1,6 +1,0 @@
-@import url("palettes/elementary-dark.css");
-@import url("widgets-3.10.css");
-
-.gofi_main_window {
-    -gtk-icon-style: symbolic
-}

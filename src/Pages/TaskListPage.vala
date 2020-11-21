@@ -122,7 +122,7 @@ class GOFI.TaskListPage : Gtk.Grid {
         this.orientation = Gtk.Orientation.VERTICAL;
         initial_setup ();
         task_timer.timer_stopped.connect (on_timer_stopped);
-        get_style_context ().add_class ("task_layout");
+        get_style_context ().add_class ("task-layout");
     }
 
     /**

@@ -47,7 +47,6 @@ private class GOFI.SettingsManager : Object {
     const string KEY_LISTS = "lists";
     const string KEY_USE_HEADER_BAR = "use-header-bar";
     const string KEY_COLOR_SCHEME = "color-scheme";
-    const string KEY_THEME = "theme";
     const string KEY_SMALL_ICONS = "small-toolbar-icons";
     const string KEY_SWITCHER_USE_ICONS = "switcher-use-icons";
 
@@ -170,24 +169,6 @@ private class GOFI.SettingsManager : Object {
         get;
         set;
     }
-    public Theme theme {
-        get {
-            var theme_str = _settings.get_string (KEY_THEME);
-            var theme_val = Theme.from_string (theme_str);
-            if (theme_val != Theme.INVALID) {
-                return theme_val;
-            }
-
-            warning ("Unknown theme setting: %s", theme_str);
-            return Theme.from_string_safe (
-                _settings.get_default_value (KEY_THEME).get_string ()
-            );
-        }
-        set {
-            _settings.set_string (KEY_THEME, value.to_string ());
-            theme_changed (value);
-        }
-    }
     public Gtk.IconSize toolbar_icon_size {
         get {
             if (use_small_toolbar_icons) {
@@ -267,7 +248,6 @@ private class GOFI.SettingsManager : Object {
     /* Signals */
     public signal void todo_txt_location_changed ();
     public signal void timer_duration_changed ();
-    public signal void theme_changed (Theme theme);
     public signal void use_dark_theme_changed (bool use_dark);
     public signal void toolbar_icon_size_changed (Gtk.IconSize size);
     public signal void switcher_use_icons_changed (bool use_icons);
@@ -516,10 +496,6 @@ class GOFI.KeyFileSettingsImport {
         if (key_file.has_key (GROUP_UI, "switcher_label_type")) {
             settings.switcher_use_icons =
                 key_file.get_value (GROUP_UI, "switcher_label_type") != "text";
-        }
-        if (key_file.has_key (GROUP_UI, "theme")) {
-            settings.theme =
-                Theme.from_string (key_file.get_value (GROUP_UI, "theme"));
         }
         if (key_file.has_key (GROUP_UI, "toolbar_icon_size")) {
             settings.use_small_toolbar_icons =

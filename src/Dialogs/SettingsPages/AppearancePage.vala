@@ -82,20 +82,6 @@ class GOFI.AppearancePage : Gtk.Box {
         int pos = 0;
         var theme_grid = create_page_grid ();
         add_option (theme_grid, ref pos, color_scheme_lbl, color_scheme_selector);
-
-        if (!(Gtk.Settings.get_default ().gtk_theme_name == "elementary") || settings.theme != Theme.ELEMENTARY) {
-            var theme_lbl = new Gtk.Label (_("Theme") + ":");
-            var theme_selector = new Gtk.ComboBoxText ();
-            foreach (Theme theme in Theme.all ()) {
-                theme_selector.append (theme.to_string (), theme.to_theme_description ());
-            }
-            theme_selector.active_id = settings.theme.to_string ();
-            theme_selector.changed.connect ( () => {
-                settings.theme = Theme.from_string (theme_selector.active_id);
-            });
-
-            add_option (theme_grid, ref pos, theme_lbl, theme_selector);
-        }
         return create_section_box (_("Theme"), theme_grid);
     }
 }

@@ -116,7 +116,7 @@ namespace GOFI.DialogUtils {
 
             this.clicked.connect (on_clicked);
 
-            this.get_style_context ().add_class ("no_margin");
+            this.get_style_context ().add_class ("no-margin");
         }
 
         private void on_clicked () {

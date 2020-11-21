@@ -1,20 +1,18 @@
-@import url("palettes/theme-based.css");
-
-label.task_status {
+label.task-status {
     font-size: 200%;
     font-weight: bold;
 }
 
-label.task_break {
+label.task-break {
     font-size: 120%;
     color: @gofi_task_active_label_color;
 }
 
-label.task_active {
+label.task-active {
     font-size: 120%;
 }
 
-label.task_duration_exceeded {
+label.task-duration-exceeded {
     color: @gofi_text_attention;
 }
 
@@ -26,14 +24,14 @@ label.task_duration_exceeded {
     font-size: 250%;
 }
 
-.task_layout,
-.main_layout list {
+.task-layout,
+.main-layout list {
     background: @gofi_main_layout_background;
 }
 
-.main_layout row.drag-icon,
-.main_layout row.drag-icon:selected,
-.main_layout row.drag-icon:selected:focus {
+.main-layout row.drag-icon,
+.main-layout row.drag-icon:selected,
+.main-layout row.drag-icon:selected:focus {
     background: @gofi_row_drag_icon_background;
     border: 1px solid @gofi_row_drag_icon_border;
     color: @gofi_row_fg;
@@ -43,14 +41,10 @@ row.drag-icon label {
     color: @gofi_row_fg;
 }
 
-.no_margin {
+.no-margin {
     margin: 0;
     padding: 0;
     border: 0px;
-}
-
-.gofi_main_window {
-    -gtk-icon-style: symbolic
 }
 
 .settings-frame {

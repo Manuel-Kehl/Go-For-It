@@ -43,7 +43,6 @@ vala_precompile (VALA_C ${LIBNAME}
     TodoTask.vala
     TaskList.vala
     SequentialList.vala
-    Theme.vala
     PluginInterface.vala
     Services/SettingsManager.vala
     Services/PluginManager.vala

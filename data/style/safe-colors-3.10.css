@@ -1,0 +1,6 @@
+@import url("palettes/theme-based.css");
+@import url("widgets-minimal-3.10.css");
+
+.gofi_main_window {
+    -gtk-icon-style: symbolic
+}

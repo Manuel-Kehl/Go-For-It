@@ -180,9 +180,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             gtk_settings.gtk_application_prefer_dark_theme = use_dark_theme;
             load_css ();
         });
-        settings.theme_changed.connect ( (use_dark_theme) => {
-            load_css ();
-        });
+        Gtk.Settings.get_default ().notify["gtk-theme-name"].connect (load_css);
         settings.toolbar_icon_size_changed.connect (on_icon_size_changed);
     }
 
@@ -210,7 +208,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         /* Widget Settings */
         // Main Layout
         main_layout.orientation = Gtk.Orientation.VERTICAL;
-        main_layout.get_style_context ().add_class ("main_layout");
+        main_layout.get_style_context ().add_class ("main-layout");
 
         selection_page = new SelectionPage ();
         task_page = new TaskListPage (task_timer);
@@ -562,17 +560,42 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     }
 
     /**
+     * Is the stylesheet mostly using whites grays and blacks?
+     */
+    private bool has_neutral_stylesheet () {
+        var desktop_theme_name = Gtk.Settings.get_default ().gtk_theme_name;
+        if (desktop_theme_name.has_prefix ("io.elementary.stylesheet")) {
+            return true;
+        }
+        switch (desktop_theme_name) {
+            case "elementary":
+            case "Adwaita":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    /**
      * Load the css style information from the data directory specified at build
      * time.
      */
     private void load_css () {
-        var theme = settings.theme;
-        var use_dark_theme = settings.use_dark_theme;
-
-        string version = (Gtk.get_minor_version () >= 19) ? "3.20" : "3.10";
+        string stylesheet = "safe-colors";
+        if (has_neutral_stylesheet ()) {
+            if (settings.use_dark_theme) {
+                stylesheet = "dark";
+            } else {
+                stylesheet = "light";
+            }
+        }
 
         // Pick the stylesheet that is compatible with the user's Gtk version
-        string stylesheet = @"$(theme.get_stylesheet (use_dark_theme))-$version.css";
+        if (Gtk.get_minor_version () >= 19) {
+            stylesheet = stylesheet + "-3.20.css";
+        } else {
+            stylesheet = stylesheet + "-3.10.css";
+        }
 
         stylesheet_css.load_from_resource (@"$(GOFI.RESOURCE_PATH)/style/$(stylesheet)");
     }

@@ -52,7 +52,7 @@ class GOFI.TodoListInfoRow: DragListRow {
         ));
         options_button.relief = Gtk.ReliefStyle.NONE;
         var style = options_button.get_style_context ();
-        style.add_class ("no_margin");
+        style.add_class ("no-margin");
 
         option_revealer.add (options_button);
         center_box.set_center_widget (name_label);
