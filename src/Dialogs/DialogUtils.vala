@@ -14,7 +14,7 @@ namespace GOFI.DialogUtils {
 
         if (sect_title != null) {
             var sect_lbl = new Gtk.Label (sect_title);
-            sect_lbl.get_style_context ().add_class ("h4");
+            sect_lbl.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 #else
         var section_box = new Gtk.Box (Gtk.Orientation.VERTICAL, SPACING_SETTINGS_ROW);
 
