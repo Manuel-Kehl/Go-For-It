@@ -97,7 +97,13 @@ To build *Go For It!* you need to have the following software installed:
     gettext >= 1.9.7
     gtk+-3.0 (libgtk-3-0, libgtk-3-dev) (>= 3.14)
     glib-2.0 (libglib2.0-0, libglib2.0-dev)
+    libcanberra (libcanberra0, libcanberra-dev)
     libpeas (libpeas-1.0-0, libpeas-dev)
+
+To build all available plugins, the following development files are also necessary:
+
+    libunity-dev
+    libayatana-appindicator3-dev
 
 Use the following commands in this order to build *Go For It!*:
 
