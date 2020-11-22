@@ -110,6 +110,7 @@ class GOFI.TXT.TxtTask : TodoTask {
         completion_date = null;
         _done = done;
         priority = NO_PRIO;
+        set_descr_parts (parse_description (line.split (" "), 0));
     }
 
     public TxtTask.from_simple_txt (string descr, bool done) {
