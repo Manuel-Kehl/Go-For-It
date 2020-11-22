@@ -337,6 +337,11 @@ private class GOFI.SettingsManager : Object {
                 build_schedule ();
                 timer_duration_changed ();
                 break;
+            case "timer-mode":
+                if (timer_mode == TimerMode.CUSTOM) {
+                    save_schedule ();
+                }
+                break;
             case "color-scheme":
                 use_dark_theme_changed (use_dark_theme);
                 break;
