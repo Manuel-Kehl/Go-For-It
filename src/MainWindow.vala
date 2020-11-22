@@ -568,8 +568,12 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             return true;
         }
         switch (desktop_theme_name) {
-            case "elementary":
+            case "Arc":
             case "Adwaita":
+            case "Breeze":
+            case "elementary":
+            case "Pop-light":
+            case "Pop-slim-light":
                 return true;
             default:
                 return false;
