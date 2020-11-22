@@ -1,5 +1,17 @@
 # Change Log
 
+## [1.8.7](https://github.com/JMoerman/Go-For-It/tree/1.8.7) (2020-11-22)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.6...1.8.7)
+
+**Implemented enhancements:**
+
+- The default application stylesheet is now by default determined at runtime. The minimal "Inherit from GTK theme" stylesheet will now be used when a theme other than Adwaita or elementary is used.
+- A large number of translations have been updated. New translations include Danish and Hebrew.
+
+**Fixed bugs:**
+
+- The placeholder tasks shown when creating a new list for the first time are no longer invisible.
+
 ## [1.8.6](https://github.com/JMoerman/Go-For-It/tree/1.8.6) (2020-10-07)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.4...1.8.6)
 
