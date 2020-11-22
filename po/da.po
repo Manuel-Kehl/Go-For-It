@@ -3,31 +3,33 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-11 21:24+0100\n"
-"PO-Revision-Date: 2016-11-18 22:38+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2020-11-20 23:28+0000\n"
+"Last-Translator: Dennis Snitgaard <snitgaard@hotmail.com>\n"
+"Language-Team: Danish <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/da/>\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.4-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
-"X-Generator: Launchpad (build 18505)\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
 msgid "About"
-msgstr ""
+msgstr "Om"
 
 #: ../src/Dialogs/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
-msgstr ""
+msgstr "En stilfuld opgaveliste med indbygget produktivitetstimer."
 
 #: ../src/Dialogs/ContributeDialog.vala:28
 msgid "Contributions and Donations"
-msgstr ""
+msgstr "Bidrag og donationer"
 
 #: ../src/Dialogs/ContributeDialog.vala:31
 msgid "Thank you for supporting"
-msgstr ""
+msgstr "Tak for din støtte"
 
 #: ../src/Dialogs/ContributeDialog.vala:32
 msgid ""
@@ -41,11 +43,11 @@ msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr ""
+msgstr "Erstat \"%s\"?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
-msgstr ""
+msgstr "Skal denne fil erstattes, eller skal denne gamle fil bruges?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
@@ -53,7 +55,7 @@ msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "Erstat"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:258
@@ -61,16 +63,16 @@ msgstr ""
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
 #: ../src/Widgets/FileChooserWidget.vala:85
 msgid "Cancel"
-msgstr ""
+msgstr "Annuller"
 
 #: ../src/Dialogs/SettingsDialog.vala:47 ../src/MainWindow.vala:458
 msgid "Settings"
-msgstr ""
+msgstr "Indstillinger"
 
 #: ../src/Dialogs/SettingsDialog.vala:49
 #: ../plugins/appindicator/appindicator.vala:78
 msgid "Close"
-msgstr ""
+msgstr "Luk"
 
 #: ../src/Dialogs/SettingsDialog.vala:74
 msgid "Behavior"
@@ -78,15 +80,15 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsDialog.vala:75
 msgid "Notifications"
-msgstr ""
+msgstr "Notifikationer"
 
 #: ../src/Dialogs/SettingsDialog.vala:76
 msgid "Appearance"
-msgstr ""
+msgstr "Udseende"
 
 #: ../src/Dialogs/SettingsDialog.vala:77
 msgid "Shortcuts"
-msgstr ""
+msgstr "Genveje"
 
 #: ../src/Dialogs/SettingsDialog.vala:79
 msgid "Plugins"
@@ -94,7 +96,7 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:29
 msgid "Use small toolbar icons"
-msgstr ""
+msgstr "Brug små værktøjslinieikoner"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:36
 msgid "Appearance of the activity switcher"
@@ -102,15 +104,16 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:38
 msgid "Icons"
-msgstr ""
+msgstr "Ikoner"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:52
+#, fuzzy
 msgid "%s needs to be restarted for this setting to take effect"
-msgstr ""
+msgstr "%s skal genstartes, for at denne indstilling kan træde i kraft"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:53
 msgid "Use a header bar"
@@ -120,193 +123,196 @@ msgstr ""
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:125
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:147
 msgid "General"
-msgstr ""
+msgstr "Generelt"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:72
+#, fuzzy
 msgid "Color scheme"
-msgstr ""
+msgstr "Farveskema"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:87
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:99
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:55
+#, fuzzy
 msgid "Timer mode"
-msgstr ""
+msgstr "Timertilstand"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:57
 msgid "Simple"
-msgstr ""
+msgstr "Enkel"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:58
 msgid "Pomodoro"
-msgstr ""
+msgstr "Pomodoro"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:59
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:205
 msgid "Custom"
-msgstr ""
+msgstr "Tilpasset"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:67
 #: ../src/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
-msgstr ""
+msgstr "Opgave varighed"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:76
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:84
 msgid "minutes"
-msgstr ""
+msgstr "minutter"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:75
 #: ../src/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
-msgstr ""
+msgstr "Varighed af pause"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:83
 msgid "Long break duration"
-msgstr ""
+msgstr "Varighed af lang pause"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:92
 msgid "Have a long break after"
-msgstr ""
+msgstr "Hav en lang pause efter"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:94
 msgid "short breaks"
-msgstr ""
+msgstr "korte pauser"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:117
 msgid "Resume task after the break"
-msgstr ""
+msgstr "Genoptag opgaven efter pausen"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:124
 msgid "Reset timer after switching tasks"
-msgstr ""
+msgstr "Nulstil timer efter skift af opgaver"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:142
 #: ../src/Pages/TaskListPage.vala:144 ../src/Pages/TaskListPage.vala:236
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:148
 #: ../src/Todo.txt/Widgets/TaskRow.vala:338
 msgid "Timer"
-msgstr ""
+msgstr "Timer"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:146
 msgid "Placement of new tasks"
-msgstr ""
+msgstr "Placering af nye opgaver"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:149
 msgid "Top of the list"
-msgstr ""
+msgstr "Øverst på listen"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:150
 msgid "Bottom of the list"
-msgstr ""
+msgstr "Nederst på listen"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:162
 msgid "Tasks"
-msgstr ""
+msgstr "Opgaver"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
-msgstr ""
+msgstr "Aluminiumsskål"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:37
 msgid "Singing bowl"
-msgstr ""
+msgstr "Syngende skål"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
 msgid "Bell"
-msgstr ""
+msgstr "Klokke"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:41
 msgid "Loud bell"
-msgstr ""
+msgstr "Høj klokke"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:110
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:351
 msgid "Reminder before task ends"
-msgstr ""
+msgstr "Påmindelse før opgaven slutter"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:352
 msgid "seconds"
-msgstr ""
+msgstr "sekunder"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:129
 msgid "Reminder sound"
-msgstr ""
+msgstr "Påmindelseslyd"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:139
 msgid "Start of break sound"
-msgstr ""
+msgstr "Start på pause"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:149
 msgid "End of break sound"
-msgstr ""
+msgstr "Slut på pause"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:201
 msgid "Notification sounds"
-msgstr ""
+msgstr "Notifikationslyd"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:206
 msgid "Silent"
-msgstr ""
+msgstr "Lydløs"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:249
 msgid "Select notification sound file"
-msgstr ""
+msgstr "Vælg notifikationslydfil"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:253
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:259
 #: ../src/Widgets/FileChooserWidget.vala:80
 #: ../src/Widgets/FileChooserWidget.vala:86
 msgid "_Select"
-msgstr ""
+msgstr "_Vælg"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
-msgstr ""
+msgstr "%s skal genstartes, for at ændringerne kan træde i kraft."
 
 #: ../src/LegacyStrings.vala:2
+#, fuzzy
 msgid "Todo.txt files were found in the destination folder."
-msgstr ""
+msgstr "Todo.txt-filer blev fundet i destinationsmappen."
 
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:3
 msgid "What should be done with these files?"
-msgstr ""
+msgstr "Hvad skal der gøres med disse filer?"
 
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:4
 msgid "Overwrite"
-msgstr ""
+msgstr "Overskriv"
 
 #: ../src/LegacyStrings.vala:5
 msgid "The configured folder is already in use by another list."
-msgstr ""
+msgstr "Den konfigurerede mappe bruges allerede af en anden liste."
 
 #: ../src/LegacyStrings.vala:6
 msgid "folder"
-msgstr ""
+msgstr "mappe"
 
 #: ../src/LegacyStrings.vala:7
 msgid "Dark theme"
-msgstr ""
+msgstr "Mørkt tema"
 
 #: ../src/LegacyStrings.vala:8
 msgid "Couldn't properly import settings from %s: %s"
-msgstr ""
+msgstr "Indstillingerne kunne ikke importeres korrekt fra %s: %s"
 
 #: ../src/Main.vala:97
 msgid "Not a known list: %s"
-msgstr ""
+msgstr "Ikke en kendt liste: %s"
 
 #: ../src/Main.vala:236
 msgid "%s: Error: %s"
-msgstr ""
+msgstr "%s: Fejl: % s"
 
 #. / Describes format of printed table (table contains the known lists)
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
@@ -331,43 +337,43 @@ msgstr ""
 
 #: ../src/Main.vala:284
 msgid "Print version info and exit"
-msgstr ""
+msgstr "Udskriv versionsoplysninger og afslut"
 
 #: ../src/Main.vala:285
 msgid "Show about dialog"
-msgstr ""
+msgstr "Vis om dialogboks"
 
 #: ../src/Main.vala:286
 msgid "CSV file to log activities to."
-msgstr ""
+msgstr "CSV-fil at logge aktiviteter i."
 
 #: ../src/Main.vala:287
 msgid "Show configured lists and exit"
-msgstr ""
+msgstr "Vis konfigurerede lister og afslut"
 
 #: ../src/Main.vala:291
 msgid "Load the list specified by the list type and ID"
-msgstr ""
+msgstr "Indlæs listen specificeret af listetypen og ID"
 
 #: ../src/MainWindow.vala:63
 msgid "Go to overview"
-msgstr ""
+msgstr "Gå til oversigt"
 
 #: ../src/MainWindow.vala:64
 msgid "Go back to the to-do list"
-msgstr ""
+msgstr "Gå tilbage til opgavelisten"
 
 #: ../src/MainWindow.vala:342
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: ../src/MainWindow.vala:452
 msgid "Mute sounds"
-msgstr ""
+msgstr "Slå lyden fra"
 
 #: ../src/MainWindow.vala:464
 msgid "Contribute / Donate"
-msgstr ""
+msgstr "Bidrag / Doner"
 
 #: ../src/Pages/SelectionPage.vala:123
 msgid ""
@@ -378,88 +384,88 @@ msgstr ""
 #: ../src/Pages/SelectionPage.vala:133 ../src/Pages/SelectionPage.vala:136
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
 msgid "Add list"
-msgstr ""
+msgstr "Tilføj liste"
 
 #: ../src/Pages/TaskListPage.vala:137
 msgid "Lists"
-msgstr ""
+msgstr "Lister"
 
 #: ../src/Pages/TaskListPage.vala:143 ../src/Pages/TaskListPage.vala:228
 msgid "To-Do"
-msgstr ""
+msgstr "Opgaver"
 
 #: ../src/Pages/TaskListPage.vala:145 ../src/Pages/TaskListPage.vala:231
 msgid "Done"
-msgstr ""
+msgstr "Udført"
 
 #: ../src/Services/ActivityLog.vala:66
 msgid "Couldn't write to %s: %s"
-msgstr ""
+msgstr "Kunne ikke skrive til %s: %s"
 
 #: ../src/Services/Notifications.vala:100 ../src/Widgets/TimerView.vala:97
 #: ../plugins/appindicator/appindicator.vala:208
 msgid "Take a Break"
-msgstr ""
+msgstr "Tag en pause"
 
 #: ../src/Services/Notifications.vala:102
 msgid "Relax and stop thinking about your current task for a while"
-msgstr ""
+msgstr "Slap af og hold op med at tænke på din nuværende opgave i et stykke tid"
 
 #: ../src/Services/Notifications.vala:106
 msgid "The Break is Over"
-msgstr ""
+msgstr "Pausen er forbi"
 
 #: ../src/Services/Notifications.vala:108
 msgid "Your current task is"
-msgstr ""
+msgstr "Din nuværende opgave er"
 
 #: ../src/Services/Notifications.vala:132
 msgid "Prepare for your break"
-msgstr ""
+msgstr "Forbered dig på din pause"
 
 #: ../src/Services/Notifications.vala:134
 msgid "You have %s seconds left"
-msgstr ""
+msgstr "Du har %s sekunder tilbage"
 
 #: ../src/Services/Notifications.vala:142
 msgid "Task duration exceeded"
-msgstr ""
+msgstr "Opgavens varighed er overskredet"
 
 #: ../src/Services/Notifications.vala:143
 msgid "Consider switching to a different task"
-msgstr ""
+msgstr "Overvej at skifte til en anden opgave"
 
 #: ../src/Services/SettingsManager.vala:629
 msgid "Light"
-msgstr ""
+msgstr "Lyst"
 
 #: ../src/Services/SettingsManager.vala:631
 msgid "Dark"
-msgstr ""
+msgstr "Mørkt"
 
 #: ../src/Services/SettingsManager.vala:633
 msgid "Default"
-msgstr ""
+msgstr "Standard"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
-msgstr ""
+msgstr "deaktiveret"
 
 #: ../src/Services/Shortcuts.vala:157
 msgid "Filter tasks"
-msgstr ""
+msgstr "Filtrer opgaver"
 
 #: ../src/Services/Shortcuts.vala:158 ../src/Todo.txt/TxtList.vala:188
 msgid "Sort Tasks"
-msgstr ""
+msgstr "Sorter opgaver"
 
 #: ../src/Services/Shortcuts.vala:159
 msgid "Add new task/list"
-msgstr ""
+msgstr "Tilføj ny opgave/liste"
 
 #: ../src/Services/Shortcuts.vala:160
 msgid "Start/Stop the timer"
-msgstr ""
+msgstr "Start/stop timeren"
 
 #: ../src/Services/Shortcuts.vala:161
 msgid "Skip the break or skip to the break"
@@ -467,21 +473,21 @@ msgstr ""
 
 #: ../src/Services/Shortcuts.vala:162
 msgid "Edit the properties of a list or task"
-msgstr ""
+msgstr "Rediger egenskaberne for en liste eller opgave"
 
 #: ../src/Services/Shortcuts.vala:164 ../src/Todo.txt/Widgets/TaskRow.vala:65
 #: ../src/Widgets/TimerView.vala:289
 #: ../plugins/appindicator/appindicator.vala:96
 msgid "Mark the task as complete"
-msgstr ""
+msgstr "Marker opgaven som udført"
 
 #: ../src/Services/Shortcuts.vala:165
 msgid "Move selected row up"
-msgstr ""
+msgstr "Flyt den valgte række op"
 
 #: ../src/Services/Shortcuts.vala:166
 msgid "Move selected row down"
-msgstr ""
+msgstr "Flyt den valgte række ned"
 
 #: ../src/Services/Shortcuts.vala:168
 msgid "Move to next task/row"
