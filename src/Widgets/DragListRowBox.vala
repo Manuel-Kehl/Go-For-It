@@ -224,11 +224,19 @@ class GOFI.DragListRowBox : Gtk.Container {
                 center_alloc.width, out min_height, out nat_height,
                 out baseline_min, out baseline
             );
-            if (nat_height < child_height) {
-                baseline = baseline_min;
-            }
             center_alloc.y = allocation.y;
             center_alloc.height = child_height;
+            if (nat_height < child_height) {
+                baseline = baseline_min;
+                if (!center_widget.vexpand) {
+                    int offset = (child_height-nat_height)/2;
+                    center_alloc.y = allocation.y + offset;
+                    center_alloc.height = nat_height;
+                    if (baseline > 0) {
+                        baseline += offset;
+                    }
+                }
+            }
 
             center_widget.size_allocate (center_alloc);
         }
