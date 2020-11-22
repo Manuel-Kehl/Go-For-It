@@ -317,7 +317,7 @@ private class GOFI.SettingsManager {
                 return theme_val;
             }
             warning ("Unknown theme setting: %s", theme_str);
-            return Theme.from_string (DEFAULT_THEME);
+            return Theme.from_string_safe (DEFAULT_THEME);
         }
         set {
             set_value (GROUP_UI, "theme", value.to_string ());

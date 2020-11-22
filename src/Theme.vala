@@ -27,8 +27,26 @@ namespace GOFI {
                     return ELEMENTARY;
                 case "minimal":
                     return MINIMAL;
+                case "":
+                    if (has_neutral_stylesheet ()) {
+                        return ELEMENTARY;
+                    }
+                    return MINIMAL;
                 default:
                     return INVALID;
+            }
+        }
+
+        public static Theme from_string_safe (string str) {
+            var unsafe_result = from_string (str);
+            switch (unsafe_result) {
+                case INVALID:
+                    if (has_neutral_stylesheet ()) {
+                        return ELEMENTARY;
+                    }
+                    return MINIMAL;
+                default:
+                    return unsafe_result;
             }
         }
 
@@ -80,6 +98,23 @@ namespace GOFI {
                     return "widgets-minimal";
                 default:
                     assert_not_reached();
+            }
+        }
+
+        /**
+         * Is the system stylesheet mostly using whites grays and blacks?
+         */
+        private static bool has_neutral_stylesheet () {
+            var desktop_theme_name = Gtk.Settings.get_default ().gtk_theme_name;
+            if (desktop_theme_name.has_prefix ("io.elementary.stylesheet")) {
+                return true;
+            }
+            switch (desktop_theme_name) {
+                case "elementary":
+                case "Adwaita":
+                    return true;
+                default:
+                    return false;
             }
         }
     }
