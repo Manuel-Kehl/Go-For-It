@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-11 21:24+0100\n"
-"PO-Revision-Date: 2020-11-09 11:27+0000\n"
+"PO-Revision-Date: 2020-11-23 23:29+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.4-dev\n"
 "X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
@@ -217,11 +217,11 @@ msgstr "タスク"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
-msgstr ""
+msgstr "アルミボウル"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:37
 msgid "Singing bowl"
-msgstr ""
+msgstr "シンギングボウル"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
 msgid "Bell"
@@ -242,10 +242,8 @@ msgid "seconds"
 msgstr "秒"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:129
-#, fuzzy
-#| msgid "Reminder before task ends"
 msgid "Reminder sound"
-msgstr "タスク終了前の通知"
+msgstr "リマインダーの音"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:139
 msgid "Start of break sound"
@@ -472,10 +470,8 @@ msgid "Start/Stop the timer"
 msgstr "タイマーを開始/停止"
 
 #: ../src/Services/Shortcuts.vala:161
-#, fuzzy
-#| msgid "Skip the remainder of the break"
 msgid "Skip the break or skip to the break"
-msgstr "休憩時間のリマインダーをスキップ"
+msgstr "休憩時間をスキップ、または休憩時間までスキップ"
 
 #: ../src/Services/Shortcuts.vala:162
 msgid "Edit the properties of a list or task"
@@ -736,7 +732,7 @@ msgstr "%u 時間 %u 分"
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234
 msgid "%s!"
-msgstr ""
+msgstr "%s!"
 
 #: ../src/Widgets/DragList.vala:722
 msgid "Click and drag to reorder rows"
