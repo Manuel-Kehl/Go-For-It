@@ -1,4 +1,4 @@
-/* Copyright 2014-2019 Go For It! developers
+/* Copyright 2014-2020 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -18,23 +18,23 @@
 using GOFI.DialogUtils;
 
 class GOFI.BehaviorPage : Gtk.Box {
-    Gtk.Label task_lbl1;
+    SynchronizedWLabel task_lbl1;
     Gtk.Label task_lbl2;
     Gtk.SpinButton task_spin;
 
-    Gtk.Label break_lbl1;
+    SynchronizedWLabel break_lbl1;
     Gtk.Label break_lbl2;
     Gtk.SpinButton break_spin;
 
-    Gtk.Label long_break_lbl1;
+    SynchronizedWLabel long_break_lbl1;
     Gtk.Label long_break_lbl2;
     Gtk.SpinButton long_break_spin;
 
-    Gtk.Label long_break_period_lbl1;
+    SynchronizedWLabel long_break_period_lbl1;
     Gtk.Label long_break_period_lbl2;
     Gtk.SpinButton long_break_period_spin;
 
-    Gtk.Label timer_mode_lbl;
+    SynchronizedWLabel timer_mode_lbl;
     Gtk.ComboBoxText timer_mode_cbox;
 
     Gtk.Label resume_task_lbl;
@@ -47,12 +47,13 @@ class GOFI.BehaviorPage : Gtk.Box {
 
     public BehaviorPage () {
         Object (orientation: Gtk.Orientation.VERTICAL, spacing: 12);
-        this.add (create_task_settings_section ());
-        this.add (create_timer_settings_section ());
+        var wcont = new SynchronizedWCont ();
+        this.add (create_task_settings_section (wcont));
+        this.add (create_timer_settings_section (wcont));
     }
 
-    private Gtk.Widget create_timer_settings_section () {
-        timer_mode_lbl = new Gtk.Label (_("Timer mode") + ":");
+    private Gtk.Widget create_timer_settings_section (SynchronizedWCont wcont) {
+        timer_mode_lbl = new SynchronizedWLabel (wcont, _("Timer mode") + ":");
         timer_mode_cbox = new Gtk.ComboBoxText ();
         timer_mode_cbox.append (TimerMode.STR_SIMPLE, _("Simple"));
         timer_mode_cbox.append (TimerMode.STR_POMODORO, _("Pomodoro"));
@@ -64,7 +65,7 @@ class GOFI.BehaviorPage : Gtk.Box {
             this.show_all ();
         });
 
-        task_lbl1 = new Gtk.Label (_("Task duration") + ":");
+        task_lbl1 = new SynchronizedWLabel (wcont, _("Task duration") + ":");
         task_lbl2 = new Gtk.Label (_("minutes"));
         task_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         task_spin.value = settings.task_duration / 60;
@@ -72,7 +73,7 @@ class GOFI.BehaviorPage : Gtk.Box {
             settings.task_duration = task_spin.get_value_as_int () * 60;
         });
 
-        break_lbl1 = new Gtk.Label (_("Break duration") + ":");
+        break_lbl1 = new SynchronizedWLabel (wcont, _("Break duration") + ":");
         break_lbl2 = new Gtk.Label (_("minutes"));
         break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         break_spin.value = settings.break_duration / 60;
@@ -80,7 +81,7 @@ class GOFI.BehaviorPage : Gtk.Box {
             settings.break_duration = break_spin.get_value_as_int () * 60;
         });
 
-        long_break_lbl1 = new Gtk.Label (_("Long break duration") + ":");
+        long_break_lbl1 = new SynchronizedWLabel (wcont, _("Long break duration") + ":");
         long_break_lbl2 = new Gtk.Label (_("minutes"));
         long_break_spin = new Gtk.SpinButton.with_range (1, 1439, 1);
         long_break_spin.value = settings.long_break_duration / 60;
@@ -92,7 +93,7 @@ class GOFI.BehaviorPage : Gtk.Box {
         var long_break_period_text1 = _("Have a long break after");
         /// Part of "Have a long break after # short breaks"
         var long_break_period_text2 = _("short breaks");
-        long_break_period_lbl1 = new Gtk.Label (long_break_period_text1);
+        long_break_period_lbl1 = new SynchronizedWLabel (wcont, long_break_period_text1);
         long_break_period_lbl2 = new Gtk.Label (long_break_period_text2);
         long_break_period_spin = new Gtk.SpinButton.with_range (1, 99, 1);
         long_break_period_spin.value = settings.pomodoro_period - 1;
@@ -114,7 +115,7 @@ class GOFI.BehaviorPage : Gtk.Box {
         add_option (schedule_grid, ref pos, long_break_period_lbl1, long_break_period_spin, long_break_period_lbl2);
         schedule_grid.attach (cust_sched_widget, 0, pos, 3, 1);
 
-        resume_task_lbl = new Gtk.Label (_("Resume task after the break") + ":");
+        resume_task_lbl = new Gtk.Label ( _("Resume task after the break") + ":");
         resume_task_switch = new Gtk.Switch ();
         resume_task_switch.active = settings.resume_tasks_after_break;
         resume_task_switch.notify["active"].connect (() => {
@@ -142,8 +143,8 @@ class GOFI.BehaviorPage : Gtk.Box {
         return create_section_box (_("Timer"), timer_box);
     }
 
-    private Gtk.Widget create_task_settings_section () {
-        Gtk.Label placement_lbl = new Gtk.Label (_("Placement of new tasks") + ":");
+    private Gtk.Widget create_task_settings_section (SynchronizedWCont wcont) {
+        SynchronizedWLabel placement_lbl = new SynchronizedWLabel (wcont, _("Placement of new tasks") + ":");
         Gtk.ComboBoxText placement_cbox = new Gtk.ComboBoxText ();
 
         placement_cbox.append ("top", _("Top of the list"));

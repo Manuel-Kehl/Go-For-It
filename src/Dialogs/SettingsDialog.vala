@@ -56,7 +56,6 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         });
 
         this.show_all ();
-        this.resizable = false;
     }
 
     private void setup_settings_widgets () {
@@ -67,8 +66,11 @@ class GOFI.SettingsDialog : Gtk.Dialog {
         stack_switcher.halign = Gtk.Align.CENTER;
 
         timer_page = new BehaviorPage ();
+        timer_page.halign = Gtk.Align.CENTER;
         notifications_page = new NotificationsPage ();
+        notifications_page.halign = Gtk.Align.CENTER;
         appearance_page = new AppearancePage ();
+        appearance_page.halign = Gtk.Align.CENTER;
         shortcuts_page = new ShortcutsPage ();
 
         settings_stack.add_titled (timer_page, "behavior_page", _("Behavior"));

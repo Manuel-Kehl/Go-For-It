@@ -1,4 +1,4 @@
-/* Copyright 2014-2019 Go For It! developers
+/* Copyright 2014-2020 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -21,19 +21,20 @@ class GOFI.AppearancePage : Gtk.Box {
 
     public AppearancePage () {
         Object (orientation: Gtk.Orientation.VERTICAL, spacing: 12);
-        this.add (create_general_appearance_sect ());
-        this.add (create_theme_section ());
+        var wcont = new SynchronizedWCont ();
+        this.add (create_general_appearance_sect (wcont));
+        this.add (create_theme_section (wcont));
     }
 
-    private Gtk.Widget create_general_appearance_sect () {
-        var small_icons_lbl = new Gtk.Label (_("Use small toolbar icons") + ":");
+    private Gtk.Widget create_general_appearance_sect (SynchronizedWCont wcont) {
+        var small_icons_lbl = new SynchronizedWLabel (wcont, _("Use small toolbar icons") + ":");
         var small_icons_switch = new Gtk.Switch ();
         small_icons_switch.active = settings.use_small_toolbar_icons;
         small_icons_switch.notify["active"].connect ( () => {
             settings.use_small_toolbar_icons = small_icons_switch.active;
         });
 
-        var switch_app_lbl = new Gtk.Label (_("Appearance of the activity switcher") + ":");
+        var switch_app_lbl = new SynchronizedWLabel (wcont, _("Appearance of the activity switcher") + ":");
         var switch_app_selector = new Gtk.ComboBoxText ();
         switch_app_selector.append ("icons", _("Icons"));
         switch_app_selector.append ("text", _("Text"));
@@ -50,7 +51,7 @@ class GOFI.AppearancePage : Gtk.Box {
         add_option (general_grid, ref pos, switch_app_lbl, switch_app_selector);
         if (GOFI.Utils.desktop_hb_status.config_useful ()) {
             string restart_info = _("%s needs to be restarted for this setting to take effect").printf (APP_NAME);
-            var headerbar_lbl = new Gtk.Label (_("Use a header bar") + ":");
+            var headerbar_lbl = new SynchronizedWLabel (wcont, _("Use a header bar") + ":");
             var restart_info_widget = get_explanation_widget (restart_info);
             var headerbar_switch = new Gtk.Switch ();
 
@@ -68,8 +69,8 @@ class GOFI.AppearancePage : Gtk.Box {
         return create_section_box (_("General"), general_grid);
     }
 
-    private Gtk.Widget create_theme_section () {
-        var color_scheme_lbl = new Gtk.Label (_("Color scheme") + ":");
+    private Gtk.Widget create_theme_section (SynchronizedWCont wcont) {
+        var color_scheme_lbl = new SynchronizedWLabel (wcont, _("Color scheme") + ":");
         var color_scheme_selector = new Gtk.ComboBoxText ();
         foreach (ColorScheme cs in ColorScheme.all ()) {
             color_scheme_selector.append (cs.to_string (), cs.get_description ());

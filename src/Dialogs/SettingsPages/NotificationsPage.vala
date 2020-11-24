@@ -81,19 +81,19 @@ enum NotificationSoundPreset {
 
 class GOFI.NotificationsPage : Gtk.Box {
 
-    Gtk.Label reminder_lbl1;
+    SynchronizedWLabel reminder_lbl1;
     Gtk.Label reminder_lbl2;
     Gtk.SpinButton reminder_spin;
 
-    Gtk.Label break_start_sound_lbl;
+    SynchronizedWLabel break_start_sound_lbl;
     Gtk.ComboBoxText break_start_sound_cbox;
     Gtk.VolumeButton break_start_sound_volume_button;
 
-    Gtk.Label break_end_sound_lbl;
+    SynchronizedWLabel break_end_sound_lbl;
     Gtk.ComboBoxText break_end_sound_cbox;
     Gtk.VolumeButton break_end_sound_volume_button;
 
-    Gtk.Label reminder_sound_lbl;
+    SynchronizedWLabel reminder_sound_lbl;
     Gtk.ComboBoxText reminder_sound_cbox;
     Gtk.VolumeButton reminder_sound_volume_button;
 
@@ -102,12 +102,13 @@ class GOFI.NotificationsPage : Gtk.Box {
 
     public NotificationsPage () {
         Object (orientation: Gtk.Orientation.VERTICAL, spacing: 12);
-        this.add (create_general_settings_section ());
-        this.add (create_sound_section ());
+        var wcont = new SynchronizedWCont ();
+        this.add (create_general_settings_section (wcont));
+        this.add (create_sound_section (wcont));
     }
 
-    private Gtk.Widget create_general_settings_section () {
-        reminder_lbl1 = new Gtk.Label (_("Reminder before task ends") + ":");
+    private Gtk.Widget create_general_settings_section (SynchronizedWCont wcont) {
+        reminder_lbl1 = new SynchronizedWLabel (wcont, _("Reminder before task ends") + ":");
         reminder_lbl2 = new Gtk.Label (_("seconds"));
 
         // More than ten minutes would not make much sense
@@ -125,8 +126,8 @@ class GOFI.NotificationsPage : Gtk.Box {
         return create_section_box (_("General"), sound_grid);
     }
 
-    private Gtk.Widget create_sound_section () {
-        reminder_sound_lbl = new Gtk.Label (_("Reminder sound") + ":");
+    private Gtk.Widget create_sound_section (SynchronizedWCont wcont) {
+        reminder_sound_lbl = new SynchronizedWLabel (wcont, _("Reminder sound") + ":");
         reminder_sound_cbox = new Gtk.ComboBoxText ();
         reminder_sound_volume_button = new Gtk.VolumeButton ();
         reminder_sound_volume_button.value =
@@ -136,7 +137,7 @@ class GOFI.NotificationsPage : Gtk.Box {
                 reminder_sound_volume_button.value;
         });
 
-        break_start_sound_lbl = new Gtk.Label (_("Start of break sound") + ":");
+        break_start_sound_lbl = new SynchronizedWLabel (wcont, _("Start of break sound") + ":");
         break_start_sound_cbox = new Gtk.ComboBoxText ();
         break_start_sound_volume_button = new Gtk.VolumeButton ();
         break_start_sound_volume_button.value =
@@ -146,7 +147,7 @@ class GOFI.NotificationsPage : Gtk.Box {
                 break_start_sound_volume_button.value;
         });
 
-        break_end_sound_lbl = new Gtk.Label (_("End of break sound") + ":");
+        break_end_sound_lbl = new SynchronizedWLabel (wcont, _("End of break sound") + ":");
         break_end_sound_cbox = new Gtk.ComboBoxText ();
         break_end_sound_volume_button = new Gtk.VolumeButton ();
         break_end_sound_volume_button.value =

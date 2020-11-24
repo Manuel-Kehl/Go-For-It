@@ -38,23 +38,23 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private Gtk.Label timer_default_lbl;
     private TimerScheduleWidget sched_widget;
 
-    private Gtk.Label log_total_timer_lbl;
+    private SynchronizedWLabel log_total_timer_lbl;
     private Gtk.Switch log_total_timer_switch;
 
-    private Gtk.Label name_lbl;
+    private SynchronizedWLabel name_lbl;
     private Gtk.Entry name_entry;
 
-    private Gtk.Label activity_logging_lbl;
+    private SynchronizedWLabel activity_logging_lbl;
     private Gtk.Switch activity_logging_switch;
     private Gtk.Revealer log_file_lbl_revealer;
-    private Gtk.Label log_file_lbl;
+    private SynchronizedWLabel log_file_lbl;
     private Gtk.Revealer log_file_chooser_revealer;
     private FileChooserWidget log_file_chooser;
 
-    private Gtk.Label done_uri_lbl;
+    private SynchronizedWLabel done_uri_lbl;
     private FileChooserWidget done_uri_chooser;
 
-    private Gtk.Label todo_uri_lbl;
+    private SynchronizedWLabel todo_uri_lbl;
     private FileChooserWidget todo_uri_chooser;
 
     private FileConflictDialogWrapper conflict_dialog_wrapper;
@@ -140,6 +140,10 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         stack_switcher.stack = settings_stack;
         stack_switcher.halign = Gtk.Align.CENTER;
 
+        settings_stack.set_transition_type (
+            Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
+        );
+
         var txt_page = new Gtk.Box (Gtk.Orientation.VERTICAL, DialogUtils.SPACING_SETTINGS_ROW * 2);
         txt_page.halign = Gtk.Align.CENTER;
         var timer_page = new Gtk.Box (Gtk.Orientation.VERTICAL, DialogUtils.SPACING_SETTINGS_ROW * 2);
@@ -148,8 +152,9 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         settings_stack.add_titled (txt_page, "txt_page", _("General"));
         settings_stack.add_titled (timer_page, "timer_page", _("Timer"));
 
-        txt_page.add (create_general_settings_section ());
-        txt_page.add (create_txt_settings_section ());
+        var wcont = new SynchronizedWCont ();
+        txt_page.add (create_general_settings_section (wcont));
+        txt_page.add (create_txt_settings_section (wcont));
         txt_page.add (create_error_widget ());
 
         timer_page.add (create_timer_settings_section ());
@@ -184,12 +189,12 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         return error_revealer;
     }
 
-    private Gtk.Widget create_general_settings_section () {
+    private Gtk.Widget create_general_settings_section (SynchronizedWCont wcont) {
         /* Instantiation */
-        name_lbl = new Gtk.Label (name_lbl_text);
+        name_lbl = new SynchronizedWLabel (wcont, name_lbl_text);
         name_entry = new Gtk.Entry ();
 
-        activity_logging_lbl = new Gtk.Label (_("Log timer usage") + ":");
+        activity_logging_lbl = new SynchronizedWLabel (wcont, _("Log timer usage") + ":");
         activity_logging_switch = new Gtk.Switch ();
         var activity_logging_expl_widget = DialogUtils.get_explanation_widget (
             _("Keep track of when you used the timer and what tasks you worked on while doing this.") +
@@ -197,7 +202,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             _("This log will be saved as a CSV file.")
         );
 
-        log_file_lbl = new Gtk.Label (_("Log file") + ":");
+        log_file_lbl = new SynchronizedWLabel (wcont, _("Log file") + ":");
         var log_uri = lsettings.activity_log_uri;
         File activity_log_file = null;
         if (log_uri != null && log_uri != "") {
@@ -211,7 +216,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         log_file_chooser_revealer = new Gtk.Revealer ();
 
         /* Configuration */
-        name_lbl.use_markup = true;
+        name_lbl.label.use_markup = true;
         if (lsettings.name == null) {
             name_entry.text = "";
         } else {
@@ -258,7 +263,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         }
     }
 
-    private Gtk.Widget create_txt_settings_section () {
+    private Gtk.Widget create_txt_settings_section (SynchronizedWCont wcont) {
         /* Declaration */
         Gtk.Widget log_total_timer_expl_widget;
 
@@ -268,16 +273,16 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             todo_file = File.new_for_uri (old_todo_uri);
         }
         todo_uri_chooser = new FileChooserWidget (todo_file, _("Select file to store to-do tasks in"), "todo.txt");
-        todo_uri_lbl = new Gtk.Label (todo_uri_text);
+        todo_uri_lbl = new SynchronizedWLabel (wcont, todo_uri_text);
 
         File done_file = null;
         if (old_done_uri != null && old_done_uri != "") {
             done_file = File.new_for_uri (old_done_uri);
         }
         done_uri_chooser = new FileChooserWidget (todo_file, _("Select file to store completed tasks in"), "done.txt");
-        done_uri_lbl = new Gtk.Label (done_uri_text);
+        done_uri_lbl = new SynchronizedWLabel (wcont, done_uri_text);
 
-        log_total_timer_lbl = new Gtk.Label (_("Log the time spent working on each task") + ":");
+        log_total_timer_lbl = new SynchronizedWLabel (wcont, _("Log the time spent working on each task") + ":");
         log_total_timer_expl_widget = DialogUtils.get_explanation_widget (
             _("Log the total time spent working on a task using the timer.") +
             "\n" +
@@ -286,10 +291,10 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         log_total_timer_switch = new Gtk.Switch ();
 
         /* Configuration */
-        todo_uri_lbl.set_line_wrap (false);
-        todo_uri_lbl.set_use_markup (true);
-        done_uri_lbl.set_line_wrap (false);
-        done_uri_lbl.set_use_markup (true);
+        todo_uri_lbl.label.set_line_wrap (false);
+        todo_uri_lbl.label.set_use_markup (true);
+        done_uri_lbl.label.set_line_wrap (false);
+        done_uri_lbl.label.set_use_markup (true);
 
         log_total_timer_switch.active = lsettings.log_timer_in_txt;
 
@@ -421,12 +426,12 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
                 );
                 is_valid = false;
                 if (!showing_todo_uri_error) {
-                    todo_uri_lbl.label = gen_error_markup (todo_uri_text);
+                    todo_uri_lbl.label.label = gen_error_markup (todo_uri_text);
                     showing_todo_uri_error = true;
                 }
             } else if (showing_todo_uri_error) {
                 // Restore the label text
-                todo_uri_lbl.label = todo_uri_text;
+                todo_uri_lbl.label.label = todo_uri_text;
                 showing_todo_uri_error = false;
             }
 
@@ -437,12 +442,12 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
                 );
                 is_valid = false;
                 if (!showing_done_uri_error) {
-                    done_uri_lbl.label = gen_error_markup (done_uri_text);
+                    done_uri_lbl.label.label = gen_error_markup (done_uri_text);
                     showing_done_uri_error = true;
                 }
             } else if (showing_done_uri_error) {
                 // Restore the label text
-                done_uri_lbl.label = done_uri_text;
+                done_uri_lbl.label.label = done_uri_text;
                 showing_done_uri_error = false;
             }
         }
@@ -457,12 +462,12 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             );
             is_valid = false;
             if (!showing_name_error) {
-                name_lbl.label = gen_error_markup (name_lbl_text);
+                name_lbl.label.label = gen_error_markup (name_lbl_text);
                 showing_name_error = true;
             }
         } else if (showing_name_error) {
             // Restore the label text
-            name_lbl.label = name_lbl_text;
+            name_lbl.label.label = name_lbl_text;
             showing_name_error = false;
         }
         error_revealer.set_reveal_child (!is_valid);
