@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-11 21:24+0100\n"
-"PO-Revision-Date: 2020-10-15 07:51+0000\n"
-"Last-Translator: Clay Stan <claystan97@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/go-"
-"for-it/go-for-it/zh_Hans/>\n"
+"PO-Revision-Date: 2020-11-27 07:29+0000\n"
+"Last-Translator: Asteriskers John <johnasteriskers@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"go-for-it/go-for-it/zh_Hans/>\n"
 "Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.4-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
@@ -79,8 +79,9 @@ msgid "Behavior"
 msgstr "行为"
 
 #: ../src/Dialogs/SettingsDialog.vala:75
+#, fuzzy
 msgid "Notifications"
-msgstr ""
+msgstr "通知"
 
 #: ../src/Dialogs/SettingsDialog.vala:76
 msgid "Appearance"
@@ -143,7 +144,7 @@ msgstr "简单"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:58
 msgid "Pomodoro"
-msgstr ""
+msgstr "番茄法"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:59
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:205
@@ -201,11 +202,11 @@ msgstr "新任务的安排"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:149
 msgid "Top of the list"
-msgstr ""
+msgstr "列表顶部"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:150
 msgid "Bottom of the list"
-msgstr ""
+msgstr "底部列表"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:162
 msgid "Tasks"
@@ -213,7 +214,7 @@ msgstr "任务"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
-msgstr ""
+msgstr "铝碗"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:37
 msgid "Singing bowl"
