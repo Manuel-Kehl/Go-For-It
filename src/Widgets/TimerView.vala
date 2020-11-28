@@ -212,6 +212,8 @@ class GOFI.TimerView : Gtk.Grid {
         timer_grid.orientation = Gtk.Orientation.HORIZONTAL;
         timer_grid.halign = Gtk.Align.CENTER;
         timer_grid.valign = Gtk.Align.CENTER;
+        timer_grid.margin_start = 7;
+        timer_grid.margin_end = 7;
         timer_grid.margin_top = 10;
         // Add CSS class
         timer_grid.get_style_context ().add_class ("timerview");
