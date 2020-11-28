@@ -5,22 +5,22 @@ _Go For It!_ has been translated into many languages already. If your language i
 [![Translation status](https://hosted.weblate.org/widgets/go-for-it/-/horizontal-auto.svg)](https://hosted.weblate.org/engage/go-for-it/?utm_source=widget)
 ## Information for End Users
 
-_Go For It!_ is a simple and stylish productivity app, featuring a to-do list, merged with a timer that keeps your focus on the current task. More information for end users can be found [here](http://manuel-kehl.de/projects/go-for-it).
+_Go For It!_ is a simple and stylish productivity app, featuring a to-do list, merged with a timer that keeps your focus on the current task. More information for end users can be found [here](https://jmoerman.github.io/go-for-it/).
 
 ![Screenshot](screenshot.png)
 
 ### How To
 
-The following video explains the workflow of *Go For It!*:
+The original author made the following video explaining the workflow of _Go For It!_:
 
-[![Go For It! Promotion Video](http://img.youtube.com/vi/mnw556C9FZQ/0.jpg)](https://www.youtube.com/watch?v=mnw556C9FZQ)
+[![Go For It! Promotion Video](https://img.youtube.com/vi/mnw556C9FZQ/0.jpg)](https://www.youtube.com/watch?v=mnw556C9FZQ)
+
+This video shows a very old version of _Go For It!_, but most of what is shown still applies to the current version.
 
 ### Storage and Synchronisation
 
 To-do lists are stored in the [Todo.txt](http://todotxt.com/) format. This simplifies synchronization with mobile devices and makes it possible to edit tasks using other Todo.txt front-ends (e.g. the official apps for [Android](https://play.google.com/store/apps/details?id=com.todotxt.todotxttouch&hl=en) or [iOS](https://itunes.apple.com/us/app/todo.txt-touch/id491342186?ls=1&mt=8) or the alternative Android client [Simpletask](https://play.google.com/store/apps/details?id=nl.mpcjanssen.todotxtholo&hl=en)).
 A comprehensive tutorial about setting up *Go For It!* with *Simpletask* can be found [here](http://itsfoss.com/go-for-it-to-do-app-in-linux/).
-
-If you already use Todo.txt, **beware** of the fact, that *Go For It!* automatically archives completed tasks to the done list!
 
 ### Download and Installation
 
@@ -67,7 +67,7 @@ Unfortunately, a recent Windows version isn't available. The https://github.com/
 
 #### Others
 
-It should be fairly straightforward to compile _Go For It!_ on Unix-like platforms as long as Gtk+3, libnotify and cmake are available.
+It should be fairly straightforward to compile _Go For It!_ on Unix-like platforms as long as Gtk+3, libcanberra and cmake are available.
 Should you run into any difficulties feel free to add an [issue](https://github.com/JMoerman/Go-For-It/issues).
 
 ## Information For Nerds
