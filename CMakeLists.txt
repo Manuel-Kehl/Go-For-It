@@ -32,7 +32,7 @@ set (SOVERSION 0)
 # The path where library files should be searched for
 set (LIBRARY_PATH "src")
 
-set (PROJECT_WEBSITE "http://manuel-kehl.de/projects/go-for-it/")
+set (PROJECT_WEBSITE "https://jmoerman.github.io/go-for-it/")
 set (PROJECT_REPO "https://github.com/JMoerman/Go-For-It")
 set (PROJECT_DONATIONS "https://jmoerman.github.io/donate/")
 
