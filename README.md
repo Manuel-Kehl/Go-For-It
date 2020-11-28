@@ -102,7 +102,6 @@ To build *Go For It!* you need to have the following software installed:
 
 To build all available plugins, the following development files are also necessary:
 
-    libunity-dev
     libayatana-appindicator3-dev
 
 Use the following commands in this order to build *Go For It!*:

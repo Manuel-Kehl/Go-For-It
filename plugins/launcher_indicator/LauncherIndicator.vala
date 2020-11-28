@@ -15,8 +15,13 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
+#if USE_GRANITE
+using Granite.Services.Application;
+#else
+using Builtin.Granite.Services.Application;
+#endif
+
 class GOFI.Plugins.LauncherIndicator : GLib.Object, Peas.Activatable {
-    private Unity.LauncherEntry launcher_entry;
     private bool timer_running = false;
     private int64 displayed_count;
 
@@ -32,7 +37,6 @@ class GOFI.Plugins.LauncherIndicator : GLib.Object, Peas.Activatable {
     }
 
     public void activate () {
-        launcher_entry = Unity.LauncherEntry.get_for_desktop_id (GOFI.APP_ID + ".desktop");
         displayed_count = 0;
         connect_timer_signals ();
     }
@@ -52,7 +56,7 @@ class GOFI.Plugins.LauncherIndicator : GLib.Object, Peas.Activatable {
             to_show = minutes;
         }
         if (displayed_count != to_show) {
-            launcher_entry.count = to_show;
+            set_badge.begin (to_show);
             displayed_count = to_show;
         }
     }
@@ -60,13 +64,13 @@ class GOFI.Plugins.LauncherIndicator : GLib.Object, Peas.Activatable {
     private void on_timer_started () {
         timer_running = true;
         displayed_count = 0;
-        launcher_entry.count_visible = true;
+        set_badge_visible.begin (true);
         update_timer_count (iface.get_timer ().remaining_duration);
     }
 
     private void on_timer_stopped () {
         timer_running = false;
-        launcher_entry.count_visible = false;
+        set_badge_visible.begin (false);
     }
 
     private void connect_timer_signals () {
@@ -87,7 +91,7 @@ class GOFI.Plugins.LauncherIndicator : GLib.Object, Peas.Activatable {
     }
 
     public void deactivate () {
-        launcher_entry = null;
+        set_badge_visible.begin (false);
         disconnect_timer_signals ();
     }
 
