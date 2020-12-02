@@ -12,7 +12,7 @@ vala_precompile (VALA_C ${TEST_EXEC_NAME}
 
 # tell what libraries to use when compiling
 PACKAGES
-    gtk+-3.0
+    ${DEPS_VALA_PACKAGES}
 OPTIONS
     ${VALAC_OPTIONS}
 CUSTOM_VAPIS
