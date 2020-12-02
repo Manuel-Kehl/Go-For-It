@@ -1,5 +1,6 @@
 build*
 *~
 src/Constants.vala
+plugins/appindicator/Constants.vala
 .*
 *.mo
