@@ -478,7 +478,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     }
 
     /**
-     * This part of the menu might not comply with the elementary or Gnome HIGs.
+     * This part of the menu might not comply with the elementary or GNOME HIGs.
      * It at least doesn't look too strange so it will do for now.
      * If anyone has a better idea I'll be glad to hear it.
      */

@@ -2,7 +2,7 @@
 Module=appindicator
 Loader=C
 Name=Panel indicator
-Description=Show and control the timer from a panel supporting ayatana appindicators.
+Description=Show and control the timer from a panel supporting Ayatana appindicators.
 Copyright=Copyright © 2020 Jonathan Moerman
 Authors=Jonathan Moerman <jonathanmoerman@gmail.com>
 Website=https://github.com/JMoerman/Go-For-It

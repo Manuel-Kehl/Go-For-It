@@ -2,7 +2,7 @@
 Module=launcherindicator
 Loader=C
 Name=Launcher indicator
-Description=Show the timer in the launcher. Works with the Plank dock, the Unity dash and the dash to dock Gnome extension.
+Description=Show the timer in the launcher. Works with the Plank dock, the Unity dash and the dash to dock GNOME extension.
 Copyright=Copyright © 2020 Jonathan Moerman
 Authors=Jonathan Moerman <jonathanmoerman@gmail.com>
 Website=https://github.com/JMoerman/Go-For-It

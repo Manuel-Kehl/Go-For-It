@@ -18,7 +18,7 @@ msgid "Panel indicator"
 msgstr ""
 
 msgid ""
-"Show and control the timer from a panel supporting ayatana appindicators."
+"Show and control the timer from a panel supporting Ayatana appindicators."
 msgstr ""
 
 msgid "Launcher indicator"
@@ -26,7 +26,7 @@ msgstr ""
 
 msgid ""
 "Show the timer in the launcher. Works with the Plank dock, the Unity dash "
-"and the dash to dock Gnome extension."
+"and the dash to dock GNOME extension."
 msgstr ""
 
 msgid "The Go For It! developers"
