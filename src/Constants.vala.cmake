@@ -1,4 +1,4 @@
-/* Copyright 2014-2016 Go For It! developers
+/* Copyright 2014-2020 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -40,4 +40,16 @@ namespace GOFI {
     const string DEFAULT_THEME = "@DEFAULT_THEME@";
     const string RESOURCE_PATH = "@RESOURCE_PATH@";
     const string SCHEMA_PATH = "@SCHEMA_PATH@";
+
+    public static string get_app_name () {
+        return APP_NAME;
+    }
+
+    public static string get_app_id () {
+        return APP_ID;
+    }
+
+    public static string get_app_version () {
+        return APP_VERSION;
+    }
 }
