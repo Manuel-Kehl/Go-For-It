@@ -37,7 +37,7 @@ class DragListTest : TestCase {
     private DragListRow[] generate_rows (uint start, uint amount) {
         var new_rows = new DragListRow[amount];
         for (uint i = 0; i < amount; i++) {
-            var label = new Gtk.Label ("Task %u".printf (start+i));
+            var label = new Gtk.Label ("Task %u".printf (start + i));
             new_rows[i] = new DragListRow ();
             new_rows[i].set_center_widget (label);
         }
@@ -68,9 +68,9 @@ class DragListTest : TestCase {
 
     private void test_move_row () {
         add_rows ();
-        list.move_row (rows[0], TEST_ROWS_LENGTH/2);
+        list.move_row (rows[0], TEST_ROWS_LENGTH / 2);
         for (int i = 0, j = 1; i < TEST_ROWS_LENGTH; i++, j++) {
-            if (i == TEST_ROWS_LENGTH/2) {
+            if (i == TEST_ROWS_LENGTH / 2) {
                 assert (list.get_row_at_index (i) == rows[0]);
                 j--;
             } else {
@@ -83,9 +83,9 @@ class DragListTest : TestCase {
             assert (list.get_row_at_index (i) == rows[i]);
         }
 
-        list.move_row (rows[TEST_ROWS_LENGTH-1], TEST_ROWS_LENGTH/2);
+        list.move_row (rows[TEST_ROWS_LENGTH - 1], TEST_ROWS_LENGTH / 2);
         for (int i = 0, j = 0; i < TEST_ROWS_LENGTH; i++, j++) {
-            if (i == TEST_ROWS_LENGTH/2) {
+            if (i == TEST_ROWS_LENGTH / 2) {
                 assert (list.get_row_at_index (i) == rows[TEST_ROWS_LENGTH - 1]);
                 j--;
             } else {
@@ -93,7 +93,7 @@ class DragListTest : TestCase {
             }
         }
 
-        list.move_row (rows[TEST_ROWS_LENGTH-1], TEST_ROWS_LENGTH - 1);
+        list.move_row (rows[TEST_ROWS_LENGTH - 1], TEST_ROWS_LENGTH - 1);
         for (int i = 0; i < TEST_ROWS_LENGTH; i++) {
             assert (list.get_row_at_index (i) == rows[i]);
         }
@@ -120,7 +120,7 @@ class DragListTest : TestCase {
         assert (selected_row == signal_selected_row);
 
         for (int i = 0; i < TEST_ROWS_LENGTH - 1; i++) {
-            list.remove_row (rows[i+1]);
+            list.remove_row (rows[i + 1]);
         }
         assert (selected_row == list.get_selected_row ());
         assert (compare_uint (row_selected_emitted, 0));
@@ -217,9 +217,9 @@ class DragListTest : TestCase {
         model.add_rows (rows, TEST_ROWS_LENGTH);
         list.bind_model (model, return_row);
 
-        model.model_move_item (0, TEST_ROWS_LENGTH/2);
+        model.model_move_item (0, TEST_ROWS_LENGTH / 2);
         for (int i = 0, j = 1; i < TEST_ROWS_LENGTH; i++, j++) {
-            if (i == TEST_ROWS_LENGTH/2) {
+            if (i == TEST_ROWS_LENGTH / 2) {
                 assert (list.get_row_at_index (i) == rows[0]);
                 j--;
             } else {
@@ -227,14 +227,14 @@ class DragListTest : TestCase {
             }
         }
 
-        model.model_move_item (TEST_ROWS_LENGTH/2, 0);
+        model.model_move_item (TEST_ROWS_LENGTH / 2, 0);
         for (int i = 0; i < TEST_ROWS_LENGTH; i++) {
             assert (list.get_row_at_index (i) == rows[i]);
         }
 
-        model.model_move_item (TEST_ROWS_LENGTH - 1, TEST_ROWS_LENGTH/2);
+        model.model_move_item (TEST_ROWS_LENGTH - 1, TEST_ROWS_LENGTH / 2);
         for (int i = 0, j = 0; i < TEST_ROWS_LENGTH; i++, j++) {
-            if (i == TEST_ROWS_LENGTH/2) {
+            if (i == TEST_ROWS_LENGTH / 2) {
                 assert (list.get_row_at_index (i) == rows[TEST_ROWS_LENGTH - 1]);
                 j--;
             } else {
@@ -242,7 +242,7 @@ class DragListTest : TestCase {
             }
         }
 
-        model.model_move_item (TEST_ROWS_LENGTH/2, TEST_ROWS_LENGTH - 1);
+        model.model_move_item (TEST_ROWS_LENGTH / 2, TEST_ROWS_LENGTH - 1);
         for (int i = 0; i < TEST_ROWS_LENGTH; i++) {
             assert (list.get_row_at_index (i) == rows[i]);
         }
@@ -263,27 +263,27 @@ class DragListTest : TestCase {
         list.bind_model (model, return_row);
 
         model.move_item_called = 0;
-        list.move_row (rows[0], TEST_ROWS_LENGTH/2);
+        list.move_row (rows[0], TEST_ROWS_LENGTH / 2);
         assert (model.move_item_called == 1);
         assert (model.move_item_old == 0);
-        assert (model.move_item_new == TEST_ROWS_LENGTH/2);
+        assert (model.move_item_new == TEST_ROWS_LENGTH / 2);
 
         model.move_item_called = 0;
         list.move_row (rows[0], 0);
         assert (model.move_item_called == 1);
-        assert (model.move_item_old == TEST_ROWS_LENGTH/2);
+        assert (model.move_item_old == TEST_ROWS_LENGTH / 2);
         assert (model.move_item_new == 0);
 
         model.move_item_called = 0;
-        list.move_row (rows[TEST_ROWS_LENGTH - 1], TEST_ROWS_LENGTH/2);
+        list.move_row (rows[TEST_ROWS_LENGTH - 1], TEST_ROWS_LENGTH / 2);
         assert (model.move_item_called == 1);
         assert (model.move_item_old == TEST_ROWS_LENGTH - 1);
-        assert (model.move_item_new == TEST_ROWS_LENGTH/2);
+        assert (model.move_item_new == TEST_ROWS_LENGTH / 2);
 
         model.move_item_called = 0;
         list.move_row (rows[TEST_ROWS_LENGTH - 1], TEST_ROWS_LENGTH - 1);
         assert (model.move_item_called == 1);
-        assert (model.move_item_old == TEST_ROWS_LENGTH/2);
+        assert (model.move_item_old == TEST_ROWS_LENGTH / 2);
         assert (model.move_item_new == TEST_ROWS_LENGTH - 1);
 
         model.move_item_called = 0;
@@ -428,7 +428,7 @@ class DragListTest : TestCase {
         assert (compare_uint (row_selected_emitted, 1));
         row_selected_emitted = 0;
 
-        uint selected_index = TEST_ROWS_LENGTH/2;
+        uint selected_index = TEST_ROWS_LENGTH / 2;
 
         list.select_row (rows[selected_index]);
         row_selected_emitted = 0;

@@ -58,7 +58,7 @@ class GOFI.Plugins.AyatanaIndicator.PanelIndicator : Peas.ExtensionBase, Peas.Ac
             indicator = new Indicator (GOFI.APP_ID, STATUS_TASK_PANEL_ICON, category);
         }
 
-        indicator.set_status(IndicatorStatus.ACTIVE);
+        indicator.set_status (IndicatorStatus.ACTIVE);
 
         build_menu ();
         indicator.connection_changed.connect (on_connection_changed);
@@ -73,7 +73,7 @@ class GOFI.Plugins.AyatanaIndicator.PanelIndicator : Peas.ExtensionBase, Peas.Ac
     }
 
     private void build_menu () {
-        menu = new Gtk.Menu();
+        menu = new Gtk.Menu ();
 
         show_item = new Gtk.MenuItem.with_label (_("Open %s").printf (GOFI.APP_NAME));
         show_item.activate.connect (show_application_window);
@@ -180,16 +180,16 @@ class GOFI.Plugins.AyatanaIndicator.PanelIndicator : Peas.ExtensionBase, Peas.Ac
             }
             if (hours > 0) {
                 if (hours != shown_hours || minutes != shown_minutes) {
-                    indicator.label = "%uh-%um".printf(hours, minutes);
+                    indicator.label = "%uh-%um".printf (hours, minutes);
                 }
             } else if (minutes > 0) {
                 if (minutes != shown_minutes) {
-                    indicator.label = "%um".printf(minutes);
+                    indicator.label = "%um".printf (minutes);
                 }
             }
             seconds = 0;
         } else if (shown_seconds != seconds) {
-            indicator.label = "%us".printf(seconds);
+            indicator.label = "%us".printf (seconds);
         }
         shown_minutes = minutes;
         shown_seconds = seconds;
@@ -220,7 +220,7 @@ class GOFI.Plugins.AyatanaIndicator.PanelIndicator : Peas.ExtensionBase, Peas.Ac
                 }
                 var description = active_task_description;
                 if (description.char_count () > 30) {
-                    task_descr_item.label = description.substring (0, 27) + "...";
+                    task_descr_item.label = description.substring (0, 27) + "…";
                 } else {
                     task_descr_item.label = description;
                 }
@@ -291,8 +291,7 @@ class GOFI.Plugins.AyatanaIndicator.PanelIndicator : Peas.ExtensionBase, Peas.Ac
 }
 
 [ModuleInit]
-public void peas_register_types (GLib.TypeModule module)
-{
+public void peas_register_types (GLib.TypeModule module) {
     var objmodule = module as Peas.ObjectModule;
     objmodule.register_extension_type (typeof (Peas.Activatable),
                                        typeof (GOFI.Plugins.AyatanaIndicator.PanelIndicator));

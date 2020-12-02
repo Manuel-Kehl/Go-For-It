@@ -57,7 +57,9 @@ namespace Builtin.Granite.Services {
 
                 var local_instance = new UnityLauncherEntry ();
                 local_instance.app_uri = "application://%s.desktop".printf (app.application_id);
-                var object_path = new GLib.ObjectPath ("/com/canonical/unity/launcherentry/%u".printf (local_instance.app_uri.hash ()));
+                var object_path = new GLib.ObjectPath (
+                    "/com/canonical/unity/launcherentry/%u".printf (local_instance.app_uri.hash ())
+                );
                 try {
                     var session_connection = yield GLib.Bus.@get (GLib.BusType.SESSION, null);
                     session_connection.register_object (object_path, local_instance);
