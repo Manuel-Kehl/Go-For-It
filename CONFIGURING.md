@@ -75,3 +75,6 @@ For some of the classes used in *Go For It!* unit tests can be build and run.
 Unit tests can be enabled by appending `-DBUILD_TESTS:BOOL="1"` to the cmake build command.
 
 This will result in a testing binary located in `<build directory>/tests/`.
+
+### Listing all CMake options
+Running `cmake -LAH ..` from the build directory will list all CMake configuration options including their description and current value.
