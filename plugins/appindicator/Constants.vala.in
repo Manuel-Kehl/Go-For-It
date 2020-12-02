@@ -1,0 +1,6 @@
+
+namespace GOFI.Plugins.AyatanaIndicator {
+    const string STATUS_TASK_PANEL_ICON = "@STATUS_TASK_PANEL_ICON@";
+    const string STATUS_BREAK_PANEL_ICON = "@STATUS_BREAK_PANEL_ICON@";
+    const bool ICONS_IN_DATA_DIR = @ICONS_IN_DATA_DIR@;
+}

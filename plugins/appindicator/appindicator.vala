@@ -17,7 +17,7 @@
 
 using AppIndicator;
 
-class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
+class GOFI.Plugins.AyatanaIndicator.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
 
     private Indicator indicator;
     private uint shown_hours = 0;
@@ -50,9 +50,14 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
         if (indicator != null) {
             return;
         }
-        var icon_theme_path = GLib.Path.build_filename (this.data_dir, "icons");
         var category = IndicatorCategory.APPLICATION_STATUS;
-        indicator = new Indicator.with_path (GOFI.APP_ID, "status-task-symbolic", category, icon_theme_path);
+        if (ICONS_IN_DATA_DIR) {
+            var icon_theme_path = GLib.Path.build_filename (this.data_dir, "icons");
+            indicator = new Indicator.with_path (GOFI.APP_ID, STATUS_TASK_PANEL_ICON, category, icon_theme_path);
+        } else {
+            indicator = new Indicator (GOFI.APP_ID, STATUS_TASK_PANEL_ICON, category);
+        }
+
         indicator.set_status(IndicatorStatus.ACTIVE);
 
         build_menu ();
@@ -204,13 +209,13 @@ class GOFI.Plugins.PanelIndicator : Peas.ExtensionBase, Peas.Activatable {
             var timer = iface.get_timer ();
             if (timer.break_active) {
                 if (!showing_break) {
-                    indicator.icon_name = "status-break-symbolic";
+                    indicator.icon_name = STATUS_BREAK_PANEL_ICON;
                     task_descr_item.label = GOFI.Utils.string_to_exclamation (_("Take a Break"));
                     showing_break = true;
                 }
             } else {
                 if (showing_break) {
-                    indicator.icon_name = "status-task-symbolic";
+                    indicator.icon_name = STATUS_TASK_PANEL_ICON;
                     showing_break = false;
                 }
                 var description = active_task_description;
@@ -290,5 +295,5 @@ public void peas_register_types (GLib.TypeModule module)
 {
     var objmodule = module as Peas.ObjectModule;
     objmodule.register_extension_type (typeof (Peas.Activatable),
-                                       typeof (GOFI.Plugins.PanelIndicator));
+                                       typeof (GOFI.Plugins.AyatanaIndicator.PanelIndicator));
 }

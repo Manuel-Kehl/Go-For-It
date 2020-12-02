@@ -53,6 +53,7 @@ set (CORE_DEPS_VALA_PACKAGES gtk+-3.0 libcanberra)
 
 option (ENABLE_PLUGINS "Compile with plugin support" ON)
 option (BUILD_PLUGINS "Compile plugins" ON)
+option (GLOBAL_PLUGIN_ICONS "Store icons used by plugins in \${CMAKE_INSTALL_PREFIX}/share/icons/hicolor in stead of \${PLUGINDIR}/\${PLUGIN_NAME}/icons/" OFF)
 if (ENABLE_PLUGINS)
     pkg_check_modules (PEAS
         libpeas-1.0

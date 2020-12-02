@@ -22,8 +22,25 @@ else ()
 endif ()
 
 if (APPINDICATOR_PLUGIN_DEPS_FOUND)
+
+    if (GLOBAL_PLUGIN_ICONS)
+        set (APPINDICATOR_PLUGIN_ICON_DIR ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/16x16/status)
+        set (ICONS_IN_DATA_DIR "false")
+        set (STATUS_TASK_PANEL_ICON "${APP_ID}-status-task-symbolic")
+        set (STATUS_BREAK_PANEL_ICON "${APP_ID}-status-break-symbolic")
+    else ()
+        set (APPINDICATOR_PLUGIN_ICON_DIR ${PLUGINDIR}/${PLUGIN_NAME}/icons)
+        set (ICONS_IN_DATA_DIR "true")
+        set (STATUS_TASK_PANEL_ICON "status-task-symbolic")
+        set (STATUS_BREAK_PANEL_ICON "status-break-symbolic")
+    endif ()
+
+
+    configure_file (${CMAKE_CURRENT_SOURCE_DIR}/Constants.vala.in ${CMAKE_CURRENT_SOURCE_DIR}/Constants.vala)
+
     include(ValaPrecompile)
     vala_precompile(VALA_C ${PLUGIN_NAME}
+        Constants.vala
         appindicator.vala
 
     # tell what libraries to use when compiling
@@ -46,8 +63,8 @@ if (APPINDICATOR_PLUGIN_DEPS_FOUND)
 
     install(TARGETS ${PLUGIN_NAME} DESTINATION ${PLUGINDIR}/${PLUGIN_NAME})
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PLUGIN_NAME}.plugin DESTINATION ${PLUGINDIR}/${PLUGIN_NAME})
-    install(FILES "icons/status-break-symbolic.svg" DESTINATION ${PLUGINDIR}/${PLUGIN_NAME}/icons/)
-    install(FILES "icons/status-task-symbolic.svg" DESTINATION ${PLUGINDIR}/${PLUGIN_NAME}/icons/)
+    install(FILES "icons/status-break-symbolic.svg" DESTINATION ${APPINDICATOR_PLUGIN_ICON_DIR}/ RENAME ${STATUS_BREAK_PANEL_ICON}.svg)
+    install(FILES "icons/status-task-symbolic.svg" DESTINATION ${APPINDICATOR_PLUGIN_ICON_DIR}/ RENAME ${STATUS_TASK_PANEL_ICON}.svg)
     message("-- Ayatana indicator plugin will be compiled")
 else ()
     message("-- Ayatana indicator plugin will not be compiled")
