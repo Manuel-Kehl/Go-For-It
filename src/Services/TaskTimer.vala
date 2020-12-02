@@ -30,9 +30,9 @@ public class GOFI.TaskTimer {
 
     private int64 iteration_duration;
 
-    private const int64 us_c = 1000000; // μs<->s conversion
+    private const int64 US_C = 1000000; // μs<->s conversion
 
-    public const int64 update_interval = 60 * us_c;
+    public const int64 UPDATE_INTERVAL = 60 * US_C;
 
     /**
      * A proxy attribute, that does not store any data itself, but provides
@@ -52,7 +52,7 @@ public class GOFI.TaskTimer {
         set {
             // Don't change, while timer is running
             if (!running) {
-                iteration_duration = value * us_c + previous_runtime;
+                iteration_duration = value * US_C + previous_runtime;
                 update ();
             }
         }
@@ -74,7 +74,7 @@ public class GOFI.TaskTimer {
             }
             _active_task = value;
             if (_active_task != null) {
-                task_time = _active_task.timer_value * us_c;
+                task_time = _active_task.timer_value * US_C;
                 var task_duration = _active_task.duration;
                 task_duration_exceeded_sent_already =
                     task_duration == 0 || task_duration < _active_task.timer_value;
@@ -157,7 +157,7 @@ public class GOFI.TaskTimer {
     }
 
     private uint us_to_s (int64 us_val) {
-        return (uint) ((us_val + 500000) / us_c);
+        return (uint) ((us_val + 500000) / US_C);
     }
 
     public void toggle_running () {
@@ -219,7 +219,7 @@ public class GOFI.TaskTimer {
         } else {
             default_duration = schedule.get_task_duration (iteration);
         }
-        iteration_duration = default_duration * us_c;
+        iteration_duration = default_duration * US_C;
         previous_runtime = 0;
         update ();
     }
@@ -238,7 +238,7 @@ public class GOFI.TaskTimer {
         now_monotonic = GLib.get_monotonic_time ();
 
         if (running) {
-            if (prev_update_sys_time - now_monotonic > 60 * us_c) {
+            if (prev_update_sys_time - now_monotonic > 60 * US_C) {
                 stdout.printf (
                     "The monotonic system time has jumped by more than a minute!" +
                         " (~0.5s was expected)\n" +
@@ -284,7 +284,7 @@ public class GOFI.TaskTimer {
     // Check if "almost over" signal is to be send
     private void check_almost_over (int64 total_runtime) {
         if (!almost_over_sent_already &&
-            iteration_duration - total_runtime <= reminder_time * us_c ) {
+            iteration_duration - total_runtime <= reminder_time * US_C ) {
             if (settings.reminder_active) {
                 timer_almost_over (remaining_duration);
             }
@@ -295,7 +295,7 @@ public class GOFI.TaskTimer {
     private void update_task_time (int64 now_monotonic, bool force_update) {
         var time_diff = now_monotonic - prev_task_update_sys;
 
-        if (force_update || time_diff >= update_interval) {
+        if (force_update || time_diff >= UPDATE_INTERVAL) {
             prev_task_update_sys = now_monotonic;
             task_time += time_diff;
 
@@ -303,7 +303,7 @@ public class GOFI.TaskTimer {
             task_time_updated (_active_task);
 
             if (!task_duration_exceeded_sent_already &&
-                task_time >= _active_task.duration * us_c) {
+                task_time >= _active_task.duration * US_C) {
                 task_duration_exceeded ();
                 task_duration_exceeded_sent_already = true;
             }

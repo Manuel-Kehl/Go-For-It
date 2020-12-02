@@ -95,7 +95,7 @@ class GOFI.Main : Gtk.Application {
             info = list_manager.get_list_info (load_list[0], load_list[1]);
             if (info == null) {
                 stdout.printf (_("Not a known list: %s"),
-                    new ListIdentifier(
+                    new ListIdentifier (
                         load_list[0],
                         load_list[1]
                     ).to_string ()
@@ -179,12 +179,12 @@ class GOFI.Main : Gtk.Application {
      */
     private static void remove_args (ref string[] args, int pos, int length) {
         for (int i = 0; i < length; i++) {
-            args[pos+i] = null;
+            args[pos + i] = null;
         }
         int to_move = args.length - pos - length;
         int old_length = args.length;
         if (to_move > 0) {
-            args.move (pos+length, pos, to_move);
+            args.move (pos + length, pos, to_move);
         }
         args.length = old_length - length;
     }
@@ -197,23 +197,23 @@ class GOFI.Main : Gtk.Application {
         int i = 0;
         for (; i < args.length; i++) {
             if (args[i] == "--load") {
-                if (i+2 < args.length && args[i+1][0] != '-' && args[i+2][0] != '-') {
-                    if (i+3 != args.length && args[i+3][0] != '-') {
-                        throw new GOFIParseError.TOO_MANY_ARGS(
-                            "Too many arguments for --load: \"%s\"", args[i+3]
+                if (i + 2 < args.length && args[i + 1][0] != '-' && args[i + 2][0] != '-') {
+                    if (i + 3 != args.length && args[i + 3][0] != '-') {
+                        throw new GOFIParseError.TOO_MANY_ARGS (
+                            "Too many arguments for --load: \"%s\"", args[i + 3]
                         );
                     }
-                    load_list = {args[i+1], args[i+2]};
-                    remove_args (ref args, i ,3);
+                    load_list = {args[i + 1], args[i + 2]};
+                    remove_args (ref args, i, 3);
                     break;
                 } else {
-                    throw new GOFIParseError.TOO_FEW_ARGS("Missing arguments for --load");
+                    throw new GOFIParseError.TOO_FEW_ARGS ("Missing arguments for --load");
                 }
             }
         }
         for (; i < args.length; i++) {
             if (args[i] == "--load") {
-                throw new GOFIParseError.PARAM_NOT_UNIQUE(
+                throw new GOFIParseError.PARAM_NOT_UNIQUE (
                     "Second --load parameter encountered!" + "\n" +
                     "Only one list can be loaded at a time"
                 );
@@ -223,7 +223,7 @@ class GOFI.Main : Gtk.Application {
 
     private int _command_line (ApplicationCommandLine command_line) {
         var context = new OptionContext (null);
-        context.add_main_entries (entries, GOFI.EXEC_NAME);
+        context.add_main_entries (ENTRIES, GOFI.EXEC_NAME);
         context.add_main_entries (get_dynamic_entries (), GOFI.EXEC_NAME);
         context.add_group (Gtk.get_option_group (true));
 
@@ -259,8 +259,8 @@ class GOFI.Main : Gtk.Application {
                 // folder called ~)
                 // Doing this is probably non standard, but I think that its
                 // better to be helpful than to confuse the user.
-                if (logfile.get(0) == '~' && logfile.get(1) == '/') {
-                    logfile = Environment.get_home_dir () + logfile.offset(1);
+                if (logfile.get (0) == '~' && logfile.get (1) == '/') {
+                    logfile = Environment.get_home_dir () + logfile.offset (1);
                 }
                 activity_log = new ActivityLog (File.new_for_commandline_arg (logfile));
             } else if (activity_log == null) {
@@ -276,30 +276,30 @@ class GOFI.Main : Gtk.Application {
     private const string ENTRY_FILE_ARG = N_("FILE");
 
     /// Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
-    private static string ENTRY_LIST_TYPE_ARG = _("LIST-TYPE");
+    private static string ENTRY_LIST_TYPE_ARG = _("LIST-TYPE"); // vala-lint=naming-convention
     /// Translators: give translation of LIST-ID in "--load LIST-TYPE LIST-ID" command line argument
-    private static string ENTRY_LIST_ID_ARG = _("LIST-ID");
+    private static string ENTRY_LIST_ID_ARG = _("LIST-ID"); // vala-lint=naming-convention
 
-    const OptionEntry[] entries = {
+    const OptionEntry[] ENTRIES = {
         { "version", 'v', 0, OptionArg.NONE, out print_version, N_("Print version info and exit"), null },
-        { "about",   'a', 0, OptionArg.NONE, out show_about_dialog, N_("Show about dialog"), null },
-        { "logfile",   0, 0, OptionArg.FILENAME, out logfile, N_("CSV file to log activities to."), ENTRY_FILE_ARG },
-        { "list",      0, 0, OptionArg.NONE, out list_lists, N_("Show configured lists and exit"), null},
+        { "about", 'a', 0, OptionArg.NONE, out show_about_dialog, N_("Show about dialog"), null },
+        { "logfile", 0, 0, OptionArg.FILENAME, out logfile, N_("CSV file to log activities to."), ENTRY_FILE_ARG },
+        { "list", 0, 0, OptionArg.NONE, out list_lists, N_("Show configured lists and exit"), null},
         { null }
     };
 
-    private const string load_entry_descr = N_("Load the list specified by the list type and ID");
-    private string load_entry_name = "load" + " " + ENTRY_LIST_TYPE_ARG + " " + ENTRY_LIST_ID_ARG;
+    private const string LOAD_ENTRY_DESCR = N_("Load the list specified by the list type and ID");
+    private static string LOAD_ENTRY_NAME = "load" + " " + ENTRY_LIST_TYPE_ARG + " " + ENTRY_LIST_ID_ARG; // vala-lint=naming-convention
 
     private OptionEntry[] get_dynamic_entries () {
         return {
             OptionEntry () {
-                long_name = load_entry_name,
+                long_name = LOAD_ENTRY_NAME,
                 short_name = 0,
                 flags = 0,
                 arg = OptionArg.NONE,
                 arg_data = null,
-                description = load_entry_descr,
+                description = LOAD_ENTRY_DESCR,
                 arg_description = null
             },
             OptionEntry () { // empty OptionEntry to null terminate list

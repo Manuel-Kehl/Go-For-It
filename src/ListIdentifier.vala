@@ -51,7 +51,7 @@ private class GOFI.ListIdentifier {
     }
 
     private static string[] split_strings (string str) {
-        string[] temp = str.slice(1,-1).split ("\":\"");
+        string[] temp = str.slice (1, -1).split ("\":\"");
         for (int i = 0; i < temp.length; i++) {
             temp[i] = temp[i].replace ("\\:\"", ":\"");
         }

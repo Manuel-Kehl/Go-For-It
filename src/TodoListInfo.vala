@@ -20,7 +20,7 @@
  * to keep track of which list is currently loaded.
  * This interface is subject to change.
  */
-public interface GOFI.TodoListInfo : Object{
+public interface GOFI.TodoListInfo : Object {
 
     /**
      * The id of a to-do list must stay constant over the entire lifetime of

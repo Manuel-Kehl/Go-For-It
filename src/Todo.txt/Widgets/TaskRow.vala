@@ -26,7 +26,7 @@ class GOFI.TXT.TaskRow: DragListRow {
     private TaskEditEntry edit_entry;
     private bool editing;
     private bool focus_cooldown_active;
-    private const string filter_prefix = "gofi:";
+    private const string FILTER_PREFIX = "gofi:";
 
     public bool is_editing {
         get {
@@ -106,7 +106,7 @@ class GOFI.TXT.TaskRow: DragListRow {
             // we want the entry to remain in focus until the user decides
             // otherwise.
             edit_entry.hold_focus = true;
-            GLib.Timeout.add(
+            GLib.Timeout.add (
                 200, release_focus_claim, GLib.Priority.DEFAULT_IDLE
             );
         }
@@ -132,11 +132,11 @@ class GOFI.TXT.TaskRow: DragListRow {
      * this row or the entry has focus.
      */
     private bool on_focus_out () {
-        if(focus_cooldown_active | !editing) {
+        if (focus_cooldown_active | !editing) {
             return false;
         }
         focus_cooldown_active = true;
-        GLib.Timeout.add(
+        GLib.Timeout.add (
             50, focus_cooldown_end, GLib.Priority.DEFAULT_IDLE
         );
         return false;
@@ -170,7 +170,7 @@ class GOFI.TXT.TaskRow: DragListRow {
         edit_entry = null;
         editing = false;
         if (had_focus) {
-            grab_focus();
+            grab_focus ();
         }
     }
 
@@ -216,15 +216,15 @@ class GOFI.TXT.TaskRow: DragListRow {
     }
 
     private bool on_activate_link (string uri) {
-        if (uri.has_prefix (filter_prefix)) {
-            link_clicked (uri.offset (filter_prefix.length));
+        if (uri.has_prefix (FILTER_PREFIX)) {
+            link_clicked (uri.offset (FILTER_PREFIX.length));
             return true;
         }
         return false;
     }
 
     private void on_set_focus_child (Gtk.Widget? widget) {
-        if(widget == null && !has_focus) {
+        if (widget == null && !has_focus) {
             on_focus_out ();
         }
     }
@@ -233,7 +233,7 @@ class GOFI.TXT.TaskRow: DragListRow {
         var timer_value = task.timer_value;
         if (task.done && timer_value >= 60) {
             var timer_value_str = Utils.seconds_to_pretty_string (timer_value);
-            status_label.label = "<i>%s</i>".printf(timer_value_str);
+            status_label.label = "<i>%s</i>".printf (timer_value_str);
             status_label.show ();
         } else if ((task.status & TaskStatus.TIMER_ACTIVE) != 0) {
             status_label.label = "⏰";
@@ -288,7 +288,7 @@ class GOFI.TXT.TaskRow: DragListRow {
         public void edit () {
             show ();
             grab_focus ();
-            activate.connect(stop_editing);
+            activate.connect (stop_editing);
         }
     }
 
@@ -324,7 +324,7 @@ class GOFI.TXT.TaskRow: DragListRow {
             // formatting of DateTime
             string date_format = _("%Y-%m-%d");
 
-            if(task.done && completion_date != null) {
+            if (task.done && completion_date != null) {
                 this.tooltip_text =
                     _("Task completed at %s, created at %s").printf (
                         completion_date.format (date_format),
@@ -350,7 +350,7 @@ class GOFI.TXT.TaskRow: DragListRow {
             var done = task.done;
             var duration = task.duration;
 
-            if(task.priority != TxtTask.NO_PRIO) {
+            if (task.priority != TxtTask.NO_PRIO) {
                 var prefix = _("priority");
                 var priority = task.priority;
                 char prio_char = priority + 65;
@@ -359,9 +359,14 @@ class GOFI.TXT.TaskRow: DragListRow {
             if (duration > 0) {
                 var timer_value = task.timer_value;
                 if (timer_value > 0 && !done) {
-                    markup_string = "%s <i>(%u / %s)</i>".printf (markup_string, timer_value/60, Utils.seconds_to_short_string (duration));
+                    markup_string = "%s <i>(%u / %s)</i>".printf (
+                        markup_string, timer_value / 60,
+                        Utils.seconds_to_short_string (duration)
+                    );
                 } else {
-                    markup_string = "%s <i>(%s)</i>".printf (markup_string, Utils.seconds_to_short_string (duration));
+                    markup_string = "%s <i>(%s)</i>".printf (
+                        markup_string, Utils.seconds_to_short_string (duration)
+                    );
                 }
             }
             if (done) {
@@ -411,7 +416,7 @@ class GOFI.TXT.TaskRow: DragListRow {
                         markup_parts[i] = val;
                         continue;
                 }
-                markup_parts[i] = @" <a href=\"$filter_prefix$prefix:$val\" title=\"$val\">" +
+                markup_parts[i] = @" <a href=\"$FILTER_PREFIX$prefix:$val\" title=\"$val\">" +
                                   @"$delimiter$val</a>";
             }
 

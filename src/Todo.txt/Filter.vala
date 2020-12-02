@@ -23,7 +23,7 @@ class GOFI.TXT.Filter {
         search_parts = new List<TxtPart> ();
     }
 
-    private enum prio_constr_type {
+    private enum PrioConstrType {
         LESS,
         GREATER,
         LESS_OR_EQUAL,
@@ -36,9 +36,9 @@ class GOFI.TXT.Filter {
     private class PrioConstraint {
         public uint8 p1;
         public uint8 p2;
-        public prio_constr_type pc_type;
+        public PrioConstrType pc_type;
 
-        public PrioConstraint (prio_constr_type pc_type, uint8 p1, uint8 p2=0) {
+        public PrioConstraint (PrioConstrType pc_type, uint8 p1, uint8 p2=0) {
             if (p1 > p2) {
                 this.p1 = p1;
                 this.p2 = p2;
@@ -92,25 +92,25 @@ class GOFI.TXT.Filter {
         string? priority = part.split (":", 2)[1];
         if (priority != null && priority[0] != '\0') {
             var offset = 0;
-            var pc_type = prio_constr_type.EQUAL;
+            var pc_type = PrioConstrType.EQUAL;
             if (priority[0] == '>') {
                 if (priority[1] == '=') {
-                    pc_type = prio_constr_type.GREATER_OR_EQUAL;
+                    pc_type = PrioConstrType.GREATER_OR_EQUAL;
                     offset = 2;
                 } else {
-                    pc_type = prio_constr_type.GREATER;
+                    pc_type = PrioConstrType.GREATER;
                     offset = 1;
                 }
             } else if (priority[0] == '<') {
                 if (priority[1] == '=') {
-                    pc_type = prio_constr_type.LESS_OR_EQUAL;
+                    pc_type = PrioConstrType.LESS_OR_EQUAL;
                     offset = 2;
                 } else {
-                    pc_type = prio_constr_type.LESS;
+                    pc_type = PrioConstrType.LESS;
                     offset = 1;
                 }
             }
-            var offset_prio = priority.offset(offset);
+            var offset_prio = priority.offset (offset);
             if (offset_prio[0] < 'a' || offset_prio[0] > 'z') {
                 //TODO: highlight mistake?
                 return;
@@ -119,9 +119,9 @@ class GOFI.TXT.Filter {
 
             if (offset_prio[1] == '\0') {
                 priority_constraint = new PrioConstraint (pc_type, prio1);
-            } else if (pc_type == prio_constr_type.EQUAL && offset_prio[1] == '-') {
+            } else if (pc_type == PrioConstrType.EQUAL && offset_prio[1] == '-') {
                 if (offset_prio[2] >= 'a' && offset_prio[2] <= 'z' && offset_prio[3] == '\0') {
-                    pc_type = prio_constr_type.BETWEEN;
+                    pc_type = PrioConstrType.BETWEEN;
                     uint8 prio2 = offset_prio[2] - 97;
                     priority_constraint = new PrioConstraint (pc_type, prio1, prio2);
                 }
@@ -146,15 +146,15 @@ class GOFI.TXT.Filter {
     private inline bool check_prio (TxtTask task) {
         if (priority_constraint != null) {
             switch (priority_constraint.pc_type) {
-                case prio_constr_type.LESS:
+                case PrioConstrType.LESS:
                     return task.priority > priority_constraint.p1;
-                case prio_constr_type.GREATER:
+                case PrioConstrType.GREATER:
                     return task.priority < priority_constraint.p1;
-                case prio_constr_type.LESS_OR_EQUAL:
+                case PrioConstrType.LESS_OR_EQUAL:
                     return task.priority >= priority_constraint.p1;
-                case prio_constr_type.GREATER_OR_EQUAL:
+                case PrioConstrType.GREATER_OR_EQUAL:
                     return task.priority <= priority_constraint.p1;
-                case prio_constr_type.BETWEEN:
+                case PrioConstrType.BETWEEN:
                     return task.priority <= priority_constraint.p1 && task.priority >= priority_constraint.p2;
                 default:
                     return task.priority == priority_constraint.p1;

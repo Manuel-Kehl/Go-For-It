@@ -50,14 +50,14 @@ class GOFI.ShortcutsPage : Gtk.Grid {
         var cell_desc = new Gtk.CellRendererText ();
         var cell_edit = new Gtk.CellRendererAccel ();
 
-        cell_edit.editable   = true;
+        cell_edit.editable = true;
         cell_edit.accel_mode = Gtk.CellRendererAccelMode.OTHER;
 
         sc_tree.insert_column_with_attributes (-1, null, cell_desc, "text", 0);
         sc_tree.insert_column_with_attributes (-1, null, cell_edit, "text", 1);
 
         sc_tree.headers_visible = false;
-        sc_tree.expand          = true;
+        sc_tree.expand = true;
 
         sc_tree.get_column (0).expand = true;
 
@@ -89,8 +89,8 @@ class GOFI.ShortcutsPage : Gtk.Grid {
 
 
     public void change_shortcut (string path, Shortcut shortcut) {
-        Gtk.TreeIter  iter;
-        GLib.Value    key, name;
+        Gtk.TreeIter iter;
+        GLib.Value key, name;
         string? conflict_id = null;
         var model = sc_tree.model;
 
@@ -135,7 +135,7 @@ class GOFI.ShortcutsPage : Gtk.Grid {
             store.set (
                 iter,
                 0, sc.description,
-                1, shortcut.to_readable(),
+                1, shortcut.to_readable (),
                 2, sc.shortcut_id, -1  // hidden
             );
         }

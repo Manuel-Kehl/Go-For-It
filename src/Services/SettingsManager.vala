@@ -310,7 +310,7 @@ private class GOFI.SettingsManager : Object {
         Granite.Settings.get_default ().notify["prefers-color-scheme"]
             .connect (read_granite_prefers_color_scheme);
 #else
-        var gtk_settings = Gtk.Settings.get_default();
+        var gtk_settings = Gtk.Settings.get_default ();
         system_theme_is_dark = gtk_settings.gtk_application_prefer_dark_theme;
 #endif
     }
@@ -394,7 +394,7 @@ private class GOFI.SettingsManager : Object {
         var durations = new int[arr_size];
         for (int i = 0; i < arr_size - 2; i += 2) {
             durations[i] = task_duration;
-            durations[i+1] = break_duration;
+            durations[i + 1] = break_duration;
         }
         durations[arr_size - 2] = task_duration;
         durations[arr_size - 1] = long_break_duration;
@@ -402,13 +402,13 @@ private class GOFI.SettingsManager : Object {
     }
 
     private void perform_migration () {
-        if (_settings.get_int("settings-version") <= 0) {
+        if (_settings.get_int ("settings-version") <= 0) {
             var settings_importer = new KeyFileSettingsImport (this);
             first_start = !settings_importer.import_settings ();
             performed_migration = true;
         }
 
-        _settings.set_int("settings-version", 1) ;
+        _settings.set_int ("settings-version", 1) ;
     }
 }
 
@@ -583,7 +583,7 @@ class GOFI.KeyFileSettingsImport {
             import_behavior_settings ();
         } catch (Error e) {
             warning ("An error occured while importing the settings from"
-                +" %s: %s", GOFI.Utils.config_file, e.message);
+                + " %s: %s", GOFI.Utils.config_file, e.message);
         }
         return true;
     }
@@ -668,7 +668,7 @@ private enum GOFI.TimerMode {
             case CUSTOM:
                 return STR_CUSTOM;
             default:
-                assert_not_reached();
+                assert_not_reached ();
         }
     }
 }

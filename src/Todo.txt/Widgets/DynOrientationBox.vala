@@ -203,9 +203,9 @@ class GOFI.TXT.DynOrientationBox : Gtk.Container {
 
             if (get_direction () == Gtk.TextDirection.RTL) {
                 sec_allocation.x = allocation.x;
-                pri_allocation.x  = allocation.x + _h_spacing + sec_allocation.width;;
+                pri_allocation.x = allocation.x + _h_spacing + sec_allocation.width;
             } else {
-                pri_allocation.x  = allocation.x;
+                pri_allocation.x = allocation.x;
                 sec_allocation.x = allocation.x + _h_spacing + pri_allocation.width;
             }
             pri_widget.size_allocate_with_baseline (pri_allocation, baseline);
@@ -278,7 +278,7 @@ class GOFI.TXT.DynOrientationBox : Gtk.Container {
         if (available_width >= pri_natural + sec_minimum) {
             // we can place the widgets next to eachother;
             var sec_width = int.min (available_width - pri_natural, sec_natural);
-            var pri_width  = available_width - sec_width;
+            var pri_width = available_width - sec_width;
             int pri_base_min;
             int pri_base_nat;
             int sec_base_min;

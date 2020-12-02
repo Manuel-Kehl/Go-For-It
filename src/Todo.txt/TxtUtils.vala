@@ -20,7 +20,7 @@ namespace GOFI.TXT.TxtUtils {
      */
     public static bool is_date (string token) {
         MatchInfo info;
-        return /\d\d\d\d-\d\d-\d\d/.match(token, 0, out info);
+        return /\d\d\d\d-\d\d-\d\d/.match (token, 0, out info);
     }
 
     /**
@@ -28,7 +28,7 @@ namespace GOFI.TXT.TxtUtils {
      */
     public static bool is_priority (string token) {
         MatchInfo info;
-        return /\([A-Z]\)/.match(token, 0, out info);
+        return /\([A-Z]\)/.match (token, 0, out info); // vala-lint=space-before-paren
     }
 
     /**
@@ -58,13 +58,13 @@ namespace GOFI.TXT.TxtUtils {
 
     public static bool is_timer_value (string token) {
         MatchInfo info;
-        return /([0-9]+)h-([0-9]+)m-([0-9]+)s/.match(token, 0, out info);
+        return /([0-9]+)h-([0-9]+)m-([0-9]+)s/.match (token, 0, out info); // vala-lint=space-before-paren
     }
 
     public static bool match_duration_value (string token, out uint duration) {
         duration = 0;
         MatchInfo info;
-        if (/(([0-9]+)h-)?([0-9]+)(h|m)/.match(token, 0, out info)) {
+        if (/(([0-9]+)h-)?([0-9]+)(h|m)/.match (token, 0, out info)) { // vala-lint=space-before-paren
             var hour_field = info.fetch (2);
             var field2 = info.fetch (3);
             var field2_unit = info.fetch (4);
@@ -91,9 +91,9 @@ namespace GOFI.TXT.TxtUtils {
     public static DateTime string_to_date (string date_txt) {
         string[] date_parts = date_txt.split ("-", 3);
         return new DateTime.local (
-            int.parse(date_parts[0]),
-            int.parse(date_parts[1]),
-            int.parse(date_parts[2]),
+            int.parse (date_parts[0]),
+            int.parse (date_parts[1]),
+            int.parse (date_parts[2]),
             0, 0, 0
         );
     }
@@ -115,11 +115,11 @@ namespace GOFI.TXT.TxtUtils {
     }
 
     public static uint string_to_timer (string timer_str) {
-        string[] parts = timer_str.split("-", 3);
+        string[] parts = timer_str.split ("-", 3);
         return (uint) (
-            uint64.parse(parts[0]) * 3600 +
-            uint64.parse(parts[1]) * 60 +
-            uint64.parse(parts[2])
+            uint64.parse (parts[0]) * 3600 +
+            uint64.parse (parts[1]) * 60 +
+            uint64.parse (parts[2])
         );
     }
 }

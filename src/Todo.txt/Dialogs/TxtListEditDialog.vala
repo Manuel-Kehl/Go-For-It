@@ -68,8 +68,8 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private string name_lbl_text = _("List name") + ":";
 
 
-    string todo_replace_info = _("Task list location has been changed to \"%s\" (was \"%s\"), but this file already exists.");
-    string done_replace_info = _("The location to store completed tasks in has been changed to \"%s\" (was \"%s\"), but this file already exists.");
+    string todo_replace_info = _("Task list location has been changed to \"%s\" (was \"%s\"), but this file already exists."); // vala-lint=line-length
+    string done_replace_info = _("The location to store completed tasks in has been changed to \"%s\" (was \"%s\"), but this file already exists."); // vala-lint=line-length
 
     public signal void add_list_clicked (ListSettings lsettings, ConflictChoices? file_operations);
 
@@ -159,8 +159,8 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
 
         timer_page.add (create_timer_settings_section ());
 
-        main_layout.add(stack_switcher);
-        main_layout.add(settings_stack);
+        main_layout.add (stack_switcher);
+        main_layout.add (settings_stack);
     }
 
     /**
@@ -211,7 +211,9 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         } else {
             activity_logging_switch.active = false;
         }
-        log_file_chooser = new FileChooserWidget (activity_log_file, _("Select file to log timer usage in"), "timer_log.csv");
+        log_file_chooser = new FileChooserWidget (
+            activity_log_file, _("Select file to log timer usage in"), "timer_log.csv"
+        );
         log_file_lbl_revealer = new Gtk.Revealer ();
         log_file_chooser_revealer = new Gtk.Revealer ();
 
@@ -238,8 +240,8 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
 
         var grid = create_page_grid ();
         int row = 0;
-        add_option (grid, ref row ,name_lbl, name_entry);
-        add_option (grid, ref row ,activity_logging_lbl, activity_logging_switch, activity_logging_expl_widget);
+        add_option (grid, ref row, name_lbl, name_entry);
+        add_option (grid, ref row, activity_logging_lbl, activity_logging_switch, activity_logging_expl_widget);
         add_option (grid, ref row, log_file_lbl_revealer, log_file_chooser_revealer);
         return create_section_box (_("General"), grid);
     }
@@ -370,8 +372,8 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
 
     private Gtk.Widget create_timer_settings_section () {
         /* Instantiation */
-        timer_default_lbl = new Gtk.Label (_("Use default settings") + (":"));
-        reminder_lbl1 = new Gtk.Label (_("Reminder before task ends") +":");
+        timer_default_lbl = new Gtk.Label (_("Use default settings") + ":");
+        reminder_lbl1 = new Gtk.Label (_("Reminder before task ends") + ":");
         reminder_lbl2 = new Gtk.Label (_("seconds"));
 
         timer_default_switch = new Gtk.Switch ();

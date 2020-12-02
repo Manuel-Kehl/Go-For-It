@@ -79,7 +79,7 @@ class GOFI.SelectionPage : Gtk.Grid {
     }
 
     public void move_cursor (int amount) {
-        todolist_view.move_cursor(Gtk.MovementStep.DISPLAY_LINES, amount);
+        todolist_view.move_cursor (Gtk.MovementStep.DISPLAY_LINES, amount);
     }
 
     public void select_row (TodoListInfo info) {
@@ -106,7 +106,7 @@ class GOFI.SelectionPage : Gtk.Grid {
         } else {
             new_index += amount;
         }
-        todolist_view.move_row(row, new_index);
+        todolist_view.move_row (row, new_index);
     }
 
     /**

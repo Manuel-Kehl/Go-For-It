@@ -163,8 +163,8 @@ class GOFI.TimerView : Gtk.Grid {
         timer.toggle_running ();
     }
 
-    public uint get_timer_value ()  {
-        var hours   = (uint) h_spin.get_value_as_int ();
+    public uint get_timer_value () {
+        var hours = (uint) h_spin.get_value_as_int ();
         var minutes = (uint) m_spin.get_value_as_int ();
         var seconds = (uint) s_spin.get_value_as_int ();
         return Utils.time_to_uint (hours, minutes, seconds);

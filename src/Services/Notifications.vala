@@ -109,7 +109,7 @@ class GOFI.Notifications : GLib.Object {
                 );
             }
             notification.set_priority (NotificationPriority.HIGH);
-            notification.set_icon (new ThemedIcon(GOFI.ICON_NAME));
+            notification.set_icon (new ThemedIcon (GOFI.ICON_NAME));
             app.send_notification (TIMER_NOTIFY_ID, notification);
             if (!mute_sounds) {
                 if (break_active) {
@@ -133,7 +133,7 @@ class GOFI.Notifications : GLib.Object {
         notification.set_body (
             _("You have %s seconds left").printf (remaining_time.to_string ())
         );
-        notification.set_icon (new ThemedIcon(GOFI.ICON_NAME));
+        notification.set_icon (new ThemedIcon (GOFI.ICON_NAME));
         app.send_notification (TIMER_NOTIFY_ID, notification);
         play_misc_notification_sound ();
     }
@@ -141,7 +141,7 @@ class GOFI.Notifications : GLib.Object {
     private void display_duration_exceeded () {
         var notification = new GLib.Notification ( _("Task duration exceeded"));
         notification.set_body (_("Consider switching to a different task"));
-        notification.set_icon (new ThemedIcon(GOFI.ICON_NAME));
+        notification.set_icon (new ThemedIcon (GOFI.ICON_NAME));
         app.send_notification (TIMER_NOTIFY_ID, notification);
         play_misc_notification_sound ();
     }

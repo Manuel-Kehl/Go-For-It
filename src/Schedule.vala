@@ -44,8 +44,11 @@ public class GOFI.Schedule {
             added_length -= 1;
             warning ("The added durations array has an uneven length, discarding the last entry");
         }
-        this.durations.resize ((int) (2 * _length + added_length));
-        Memory.copy (((int*) this.durations) + _length*2, durations, sizeof(int)*added_length);
+        var real_length = 2 * _length;
+        this.durations.resize ((int) (real_length + added_length));
+        var copy_offset = ((int*) this.durations) + real_length;
+        var copy_size = sizeof (int) * added_length;
+        Memory.copy (copy_offset, durations, copy_size);
         length += added_length;
     }
 
@@ -56,11 +59,11 @@ public class GOFI.Schedule {
     }
 
     public int get_task_duration (uint iteration) {
-        return durations[(iteration % _length)*2].abs ();
+        return durations[(iteration % _length) * 2].abs ();
     }
 
     public int get_break_duration (uint iteration) {
-        return durations[(iteration % _length)*2+1].abs ();
+        return durations[(iteration % _length) * 2 + 1].abs ();
     }
 
     public void import_raw (int[] durations) {
@@ -72,7 +75,8 @@ public class GOFI.Schedule {
         if (new_length != this.durations.length) {
             this.durations.resize ((int) (new_length));
         }
-        Memory.copy (this.durations, durations, sizeof(int)*new_length);
+        var copy_size = sizeof (int) * new_length;
+        Memory.copy (this.durations, durations, copy_size);
         length = new_length / 2;
     }
 
@@ -86,7 +90,7 @@ public class GOFI.Schedule {
      */
     public void load_variant (Variant variant) {
         size_t schedule_length = variant.n_children ();
-        durations = new int[schedule_length*2];
+        durations = new int[schedule_length * 2];
         for (size_t i = 0; i < schedule_length; i++) {
             int t_duration, b_duration;
             variant.get_child (i, "(ii)", out t_duration, out b_duration);
@@ -99,8 +103,10 @@ public class GOFI.Schedule {
                 b_duration = 300;
             }
 
-            durations[2*i]   = t_duration;
-            durations[1+2*i] = b_duration;
+            var offset = 2 * i;
+
+            durations[offset] = t_duration;
+            durations[offset + 1] = b_duration;
         }
         _length = (uint) schedule_length;
     }
@@ -111,9 +117,10 @@ public class GOFI.Schedule {
     public Variant to_variant () {
         Variant[] sched_tuples = new Variant[_length];
         for (uint i = 0; i < _length; i++) {
+            var offset = 2 * i;
             sched_tuples[i] = new Variant.tuple ({
-                new Variant.int32 (durations[2*i]),
-                new Variant.int32 (durations[1+2*i])
+                new Variant.int32 (durations[offset]),
+                new Variant.int32 (durations[offset + 1])
                 }
             );
         }

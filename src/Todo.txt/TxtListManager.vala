@@ -135,7 +135,7 @@ class GOFI.TXT.TxtListManager {
 
     private void perform_file_operations (ConflictChoices? file_operations) {
         string move_err_msg = _("An error was encountered while moving a file!");
-        string move_err_info_msg =  _("Error information: ");
+        string move_err_info_msg = _("Error information: ");
         if (file_operations == null) {
             return;
         }
@@ -164,7 +164,7 @@ class GOFI.TXT.TxtListManager {
     public List<TodoListInfo> get_list_infos () {
         var infos = new List<TodoListInfo> ();
         foreach (var info in list_table.get_values ()) {
-            infos.prepend(info);
+            infos.prepend (info);
         };
         return infos;
     }
@@ -257,7 +257,9 @@ class GOFI.TXT.TxtListManager {
         return dialog;
     }
 
-    private void on_dialog_list_add (TxtListEditDialog dialog, ListSettings lsettings, ConflictChoices? file_operations) {
+    private void on_dialog_list_add (
+        TxtListEditDialog dialog, ListSettings lsettings, ConflictChoices? file_operations
+    ) {
         perform_file_operations (file_operations);
         add_new_from_settings (lsettings);
         dialog.destroy ();
@@ -286,23 +288,23 @@ class GOFI.TXT.TxtListManager {
      * Attempt to reset the given path
      * from https://github.com/solus-project/budgie-desktop/blob/c6751695ffaad199761366efb9180d45a77b58b2/src/panel/manager.vala#L440
      */
-    public void reset_dconf_path(Settings? settings) {
+    public void reset_dconf_path (Settings? settings) {
         if (settings == null) {
             return;
         }
         string path = settings.path;
-        GLib.Settings.sync();
+        GLib.Settings.sync ();
         if (settings.path == null) {
             return;
         }
         string argv[] = { "dconf", "reset", "-f", path};
-        message("Resetting dconf path: %s", path);
+        message ("Resetting dconf path: %s", path);
         try {
-            Process.spawn_command_line_sync(string.joinv(" ", argv), null, null, null);
+            Process.spawn_command_line_sync (string.joinv (" ", argv), null, null, null);
         } catch (Error e) {
-            warning("Failed to reset dconf path %s: %s", path, e.message);
+            warning ("Failed to reset dconf path %s: %s", path, e.message);
         }
-        GLib.Settings.sync();
+        GLib.Settings.sync ();
     }
 
     public void edit_list (string id, Gtk.Window? window) {
@@ -314,7 +316,9 @@ class GOFI.TXT.TxtListManager {
         dialog.show_all ();
     }
 
-    private void on_dialog_list_edit (TxtListEditDialog dialog, ListSettings lsettings, ConflictChoices? file_operations) {
+    private void on_dialog_list_edit (
+        TxtListEditDialog dialog, ListSettings lsettings, ConflictChoices? file_operations
+    ) {
         var info = list_table[lsettings.id];
         assert (info != null);
 
@@ -406,16 +410,20 @@ class GOFI.TXT.LegacyTxtListImport {
                 return null;
             }
         } catch (Error e) {
-            warning ("An error occured while importing list"
-                +" %s: %s", list_group, e.message);
+            warning (
+                "An error occured while importing list" + " %s: %s",
+                list_group, e.message
+            );
             return null;
         }
 
         try {
-            list_settings.log_timer_in_txt = key_file.get_boolean (list_group, "log_timer_in_txt");
+            list_settings.log_timer_in_txt =
+                key_file.get_boolean (list_group, "log_timer_in_txt");
         } catch (Error e) {}
         try {
-            list_settings.reminder_time = key_file.get_integer (list_group, "reminder_time");
+            list_settings.reminder_time =
+                key_file.get_integer (list_group, "reminder_time");
         } catch (Error e) {}
 
 

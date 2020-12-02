@@ -1,4 +1,4 @@
-/* Copyright 2014-2019 Go For It! developers
+/* Copyright 2014-2020 Go For It! developers
 *
 * This file is part of Go For It!.
 *
@@ -84,7 +84,7 @@ class GOFI.SettingsDialog : Gtk.Dialog {
             Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
         );
 
-        main_layout.add(stack_switcher);
-        main_layout.add(settings_stack);
+        main_layout.add (stack_switcher);
+        main_layout.add (settings_stack);
     }
 }

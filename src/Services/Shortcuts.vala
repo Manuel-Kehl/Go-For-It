@@ -31,13 +31,13 @@ namespace GOFI {
             }
         }
 
-        public Shortcut(uint k, Gdk.ModifierType m) {
+        public Shortcut (uint k, Gdk.ModifierType m) {
             this.key = k;
             this.modifier = m;
         }
 
         public Shortcut.from_string (string accelerator) {
-            Gtk.accelerator_parse(accelerator, out this.key, out this.modifier);
+            Gtk.accelerator_parse (accelerator, out this.key, out this.modifier);
         }
 
         public Shortcut.disabled () {
@@ -77,7 +77,9 @@ namespace GOFI {
             if (this.is_valid) {
                 return description;
             } else {
-                return "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%%\">%s</span>".printf (description, this.to_readable ());
+                return "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%%\">%s</span>".printf (
+                    description, this.to_readable ()
+                );
             }
 #endif
         }
@@ -91,7 +93,7 @@ namespace GOFI {
         Gtk.BindingArg arg;
 
         // t should be long, double, or string depending on G
-        public KeyBindingParam(G p, Type t) {
+        public KeyBindingParam (G p, Type t) {
             this.arg.arg_type = t;
             this.arg.string_data = (string) p; // should be large enough
         }
@@ -104,10 +106,10 @@ namespace GOFI {
     public struct MoveKeyParams {
         KeyBindingParam[] params;
 
-        MoveKeyParams(Gtk.MovementStep step, int count) {
+        MoveKeyParams (Gtk.MovementStep step, int count) {
             params = {
-                KeyBindingParam<Gtk.MovementStep>(step, typeof(long)),
-                KeyBindingParam<int>(count, typeof(long))
+                KeyBindingParam<Gtk.MovementStep> (step, typeof (long)),
+                KeyBindingParam<int> (count, typeof (long))
             };
         }
     }
@@ -131,7 +133,7 @@ namespace GOFI {
             string shortcut_id;
             string description;
 
-            public ConfigurableShortcut(string sc_id, string descr) {
+            public ConfigurableShortcut (string sc_id, string descr) {
                 this.shortcut_id = sc_id;
                 this.description = descr;
             }
@@ -151,55 +153,60 @@ namespace GOFI {
         public const string SCK_SORT = "sort";
         public const string SCK_SKIP = "skip";
         public const string SCK_TOGGLE_TIMER = "toggle-timer";
-        public const string[] SC_KEYS = {SCK_ADD_NEW, SCK_CYCLE_PAGE, SCK_CYCLE_PAGE_REV, SCK_EDIT_PROPERTIES, SCK_FILTER, SCK_MARK_TASK_DONE, SCK_MOVE_ROW_DOWN, SCK_MOVE_ROW_UP, SCK_NEXT_TASK, SCK_PREV_TASK, SCK_SORT, SCK_SKIP, SCK_TOGGLE_TIMER};
+        public const string[] SC_KEYS = {
+            SCK_ADD_NEW, SCK_CYCLE_PAGE, SCK_CYCLE_PAGE_REV,
+            SCK_EDIT_PROPERTIES, SCK_FILTER, SCK_MARK_TASK_DONE,
+            SCK_MOVE_ROW_DOWN, SCK_MOVE_ROW_UP, SCK_NEXT_TASK,
+            SCK_PREV_TASK, SCK_SORT, SCK_SKIP, SCK_TOGGLE_TIMER
+        };
 
         public static ConfigurableShortcut[] known_shortcuts = {
-            ConfigurableShortcut (SCK_FILTER,         _("Filter tasks")),
-            ConfigurableShortcut (SCK_SORT,           _("Sort Tasks")),
-            ConfigurableShortcut (SCK_ADD_NEW,        _("Add new task/list")),
-            ConfigurableShortcut (SCK_TOGGLE_TIMER,   _("Start/Stop the timer")),
-            ConfigurableShortcut (SCK_SKIP,           _("Skip the break or skip to the break")),
-            ConfigurableShortcut (SCK_EDIT_PROPERTIES,_("Edit the properties of a list or task")),
+            ConfigurableShortcut (SCK_FILTER,         _("Filter tasks")), // vala-lint=double-spaces
+            ConfigurableShortcut (SCK_SORT,           _("Sort Tasks")), // vala-lint=double-spaces
+            ConfigurableShortcut (SCK_ADD_NEW,        _("Add new task/list")), // vala-lint=double-spaces
+            ConfigurableShortcut (SCK_TOGGLE_TIMER,   _("Start/Stop the timer")), // vala-lint=double-spaces
+            ConfigurableShortcut (SCK_SKIP,           _("Skip the break or skip to the break")), // vala-lint=double-spaces
+            ConfigurableShortcut (SCK_EDIT_PROPERTIES,_("Edit the properties of a list or task")), // vala-lint=no-space
 
-            ConfigurableShortcut (SCK_MARK_TASK_DONE, _("Mark the task as complete")),
-            ConfigurableShortcut (SCK_MOVE_ROW_UP,    _("Move selected row up")),
-            ConfigurableShortcut (SCK_MOVE_ROW_DOWN,  _("Move selected row down")),
+            ConfigurableShortcut (SCK_MARK_TASK_DONE, _("Mark the task as complete")), // vala-lint=double-spaces
+            ConfigurableShortcut (SCK_MOVE_ROW_UP,    _("Move selected row up")), // vala-lint=double-spaces
+            ConfigurableShortcut (SCK_MOVE_ROW_DOWN,  _("Move selected row down")), // vala-lint=double-spaces
 
-            ConfigurableShortcut (SCK_NEXT_TASK,      _("Move to next task/row")),
-            ConfigurableShortcut (SCK_PREV_TASK,      _("Move to previous task/row")),
-            ConfigurableShortcut (SCK_CYCLE_PAGE,     _("Move to right screen")),
-            ConfigurableShortcut (SCK_CYCLE_PAGE_REV, _("Move to left screen")),
+            ConfigurableShortcut (SCK_NEXT_TASK,      _("Move to next task/row")), // vala-lint=double-spaces
+            ConfigurableShortcut (SCK_PREV_TASK,      _("Move to previous task/row")), // vala-lint=double-spaces
+            ConfigurableShortcut (SCK_CYCLE_PAGE,     _("Move to right screen")), // vala-lint=double-spaces
+            ConfigurableShortcut (SCK_CYCLE_PAGE_REV, _("Move to left screen")), // vala-lint=double-spaces
         };
 
-        static KeyBinding[] DragListBindings = {
-            KeyBinding (SCK_NEXT_TASK, "move-cursor", MoveKeyParams(Gtk.MovementStep.DISPLAY_LINES, 1).params),
-            KeyBinding (SCK_PREV_TASK, "move-cursor", MoveKeyParams(Gtk.MovementStep.DISPLAY_LINES, -1).params),
-            KeyBinding (SCK_MOVE_ROW_UP, "move-selected-row", {KeyBindingParam<long>(1, typeof(long))}),
-            KeyBinding (SCK_MOVE_ROW_DOWN, "move-selected-row", {KeyBindingParam<long>(-1, typeof(long))}),
+        static KeyBinding[] drag_list_bindings = {
+            KeyBinding (SCK_NEXT_TASK, "move-cursor", MoveKeyParams (Gtk.MovementStep.DISPLAY_LINES, 1).params),
+            KeyBinding (SCK_PREV_TASK, "move-cursor", MoveKeyParams (Gtk.MovementStep.DISPLAY_LINES, -1).params),
+            KeyBinding (SCK_MOVE_ROW_UP, "move-selected-row", {KeyBindingParam<long> (1, typeof (long))}),
+            KeyBinding (SCK_MOVE_ROW_DOWN, "move-selected-row", {KeyBindingParam<long> (-1, typeof (long))}),
         };
 
-        static KeyBinding[] TaskListBindings = {
+        static KeyBinding[] task_list_bindings = {
             KeyBinding (SCK_FILTER, "toggle-filtering", {}),
             KeyBinding (SCK_SORT, "sort-tasks", {}),
             KeyBinding (SCK_EDIT_PROPERTIES, "task_edit_action", {}),
         };
 
-        static KeyBinding[] WindowBindings = {
+        static KeyBinding[] window_bindings = {
             KeyBinding (SCK_FILTER, "filter-fallback-action", {}),
         };
 
-        static KeyBinding[] TaskListPageBindings = {
+        static KeyBinding[] task_list_page_bindings = {
             KeyBinding (SCK_NEXT_TASK, "switch_to_next", {}),
             KeyBinding (SCK_PREV_TASK, "switch_to_prev", {}),
             KeyBinding (SCK_MARK_TASK_DONE, "mark_task_done", {}),
         };
 
-        static KeyBinding[] SelectionPageBindings = {
+        static KeyBinding[] selection_page_bindings = {
             KeyBinding (SCK_EDIT_PROPERTIES, "list_edit_action", {}),
             KeyBinding (SCK_DELETE, "list_delete_action", {}),
         };
 
-        static KeyBinding[] TimerViewBindings = {
+        static KeyBinding[] timer_view_bindings = {
             KeyBinding (SCK_SKIP, "skip", {}),
         };
 
@@ -214,27 +221,27 @@ namespace GOFI {
             shortcuts[SCK_DELETE] = new Shortcut.from_string ("Delete");
             install_bindings_for_class (
                 typeof (DragList),
-                DragListBindings
+                drag_list_bindings
             );
             install_bindings_for_class (
                 typeof (TXT.TaskListWidget),
-                TaskListBindings
+                task_list_bindings
             );
             install_bindings_for_class (
                 typeof (TaskListPage),
-                TaskListPageBindings
+                task_list_page_bindings
             );
             install_bindings_for_class (
                 typeof (SelectionPage),
-                SelectionPageBindings
+                selection_page_bindings
             );
             install_bindings_for_class (
                 typeof (TimerView),
-                TimerViewBindings
+                timer_view_bindings
             );
             install_bindings_for_class (
                 typeof (MainWindow),
-                WindowBindings
+                window_bindings
             );
         }
 

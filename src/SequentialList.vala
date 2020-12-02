@@ -97,7 +97,7 @@ class GOFI.SequentialList {
         iter_link = null;
         uint i = 0;
         unowned List<Object> iter = items.head;
-        while (iter != null && func(iter.data, data) != 0) {
+        while (iter != null && func (iter.data, data) != 0) {
             iter = iter.next;
             i++;
         }
@@ -123,7 +123,7 @@ class GOFI.SequentialList {
     }
 
     public uint get_item_position (Object item) {
-        int index = items.index(item);
+        int index = items.index (item);
         if (index >= 0) {
             return index;
         } else {

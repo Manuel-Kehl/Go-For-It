@@ -51,10 +51,9 @@ class GOFI.TXT.TaskManager {
         _("Consider contributing to the project")
     };
 
-    const string error_implications = _("%s won't save or load from the current todo.txt folder until it is either restarted or another location is chosen.");
+    const string ERROR_IMPLICATIONS = _("%s won't save or load from the current todo.txt folder until it is either restarted or another location is chosen."); // vala-lint=line-length
     string read_error_message = _("Couldn't read the todo.txt file (%s):") + "\n\n%s\n\n";
     string write_error_message = _("Couldn't save the to-do list (%s):") + "\n\n%s\n\n";
-    const string txt_dir_error = _("The path to the todo.txt folder does not point to a folder, but to a file or mountable location. Please change the path in the settings to a suitable folder or remove this file.");
 
     public signal void active_task_invalid ();
     public signal void refreshing ();
@@ -423,7 +422,9 @@ class GOFI.TXT.TaskManager {
             }
         } catch (Error e) {
             io_failed = true;
-            var error_message = read_error_message.printf (file.get_uri (), e.message) + error_implications.printf (APP_NAME);
+            var error_message =
+                read_error_message.printf (file.get_uri (), e.message) +
+                ERROR_IMPLICATIONS.printf (APP_NAME);
             warning (error_message);
             show_error_dialog (error_message);
         }
@@ -450,7 +451,9 @@ class GOFI.TXT.TaskManager {
             }
         } catch (Error e) {
             io_failed = true;
-            var error_message = write_error_message.printf (file.get_uri (), e.message) + error_implications.printf (APP_NAME);
+            var error_message =
+                write_error_message.printf (file.get_uri (), e.message) +
+                ERROR_IMPLICATIONS.printf (APP_NAME);
             warning (error_message);
             show_error_dialog (error_message);
         }

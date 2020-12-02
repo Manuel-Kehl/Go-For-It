@@ -147,7 +147,7 @@ public class GOFI.DragList : Gtk.Bin {
         listbox.set_activate_on_single_click (false);
         selected_row = null;
         Gtk.drag_dest_set (
-            listbox, Gtk.DestDefaults.ALL, dlb_entries, Gdk.DragAction.MOVE
+            listbox, Gtk.DestDefaults.ALL, DLB_ENTRIES, Gdk.DragAction.MOVE
         );
 
         internal_signal = false;
@@ -563,7 +563,7 @@ public class GOFI.DragList : Gtk.Bin {
             } else {
                 current_hover_range.max = int.MAX;
             }
-        } else if (center_y + center_row.marginless_height/2 > y) {
+        } else if (center_y + center_row.marginless_height / 2 > y) {
             hover_row_top = top_row;
             hover_row_bottom = center_row;
             if (top_row != null) {
@@ -620,7 +620,7 @@ public class GOFI.DragList : Gtk.Bin {
         if (adjustment_min > show_min) {
             should_scroll = true;
             scroll_up = true;
-        } else if (adjustment_max < show_max){
+        } else if (adjustment_max < show_max) {
             should_scroll = true;
             scroll_up = false;
         } else {
@@ -687,7 +687,7 @@ namespace GOFI {
     public delegate bool DragListFilterFunc (DragListRow row);
     public delegate Gtk.Widget DragListCreateWidgetFunc (Object item);
 
-    private const Gtk.TargetEntry[] dlb_entries = {
+    private const Gtk.TargetEntry[] DLB_ENTRIES = {
         {"DRAG_LIST_ROW", Gtk.TargetFlags.SAME_APP, 0}
     };
 
@@ -724,7 +724,7 @@ public class GOFI.DragListRow : Gtk.ListBoxRow {
         layout.set_end_widget (handle);
 
         Gtk.drag_source_set (
-            handle, Gdk.ModifierType.BUTTON1_MASK, dlb_entries, Gdk.DragAction.MOVE
+            handle, Gdk.ModifierType.BUTTON1_MASK, DLB_ENTRIES, Gdk.DragAction.MOVE
         );
         handle.drag_begin.connect (handle_drag_begin);
         handle.drag_end.connect (handle_drag_end);

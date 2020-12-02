@@ -45,8 +45,8 @@ class GOFI.TimerScheduleWidget : Gtk.Frame {
         remove_row_button.clicked.connect (remove_selected);
 
         this.add (layout);
-        layout.attach (scrollwindow,    0, 0, 2, 1);
-        layout.attach (add_row_button,    0, 1, 1, 1);
+        layout.attach (scrollwindow,      0, 0, 2, 1); // vala-lint=double-spaces
+        layout.attach (add_row_button,    0, 1, 1, 1); // vala-lint=double-spaces
         layout.attach (remove_row_button, 1, 1, 1, 1);
     }
 
@@ -91,7 +91,7 @@ class GOFI.TimerScheduleWidget : Gtk.Frame {
 
     private void update_tree_value (string path, string text, int column) {
         Gtk.TreeIter iter;
-        GLib.Value   duration = Value (typeof (int));
+        GLib.Value duration = Value (typeof (int));
 
         sched_model.get_iter (out iter, new Gtk.TreePath.from_string (path));
 
@@ -103,8 +103,8 @@ class GOFI.TimerScheduleWidget : Gtk.Frame {
 
     public Schedule generate_schedule () {
         Gtk.TreeIter iter;
-        Schedule     sched = new Schedule ();
-        int          task_duration, break_duration;
+        Schedule sched = new Schedule ();
+        int task_duration, break_duration;
 
         if (!sched_model.get_iter_first (out iter)) {
             return sched;
@@ -126,7 +126,7 @@ class GOFI.TimerScheduleWidget : Gtk.Frame {
     private void setup_tree () {
         custom_tree = new Gtk.TreeView ();
         custom_tree.expand = true;
-        var cell_task  = new Gtk.CellRendererSpin ();
+        var cell_task = new Gtk.CellRendererSpin ();
         var cell_break = new Gtk.CellRendererSpin ();
 
         custom_tree.insert_column_with_attributes (-1, _("Task duration"), cell_task, "text", 0);
@@ -135,9 +135,9 @@ class GOFI.TimerScheduleWidget : Gtk.Frame {
         custom_tree.get_column (0).expand = true;
         custom_tree.get_column (1).expand = true;
 
-        cell_task.editable  = true;
+        cell_task.editable = true;
         cell_break.editable = true;
-        cell_task.adjustment  = new Gtk.Adjustment (0, 1, 1439, 1, 10, 0);
+        cell_task.adjustment = new Gtk.Adjustment (0, 1, 1439, 1, 10, 0);
         cell_break.adjustment = new Gtk.Adjustment (0, 1, 1439, 1, 10, 0);
 
         cell_task.edited.connect ((path, text) => {

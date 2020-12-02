@@ -71,5 +71,4 @@ public class GOFI.PluginInterface : GLib.Object {
         }
     }
 }
-#endif
-
+#endif // vala-lint=skip

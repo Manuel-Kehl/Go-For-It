@@ -63,14 +63,14 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
     public const string SOUND_ACTION_PREFIX = "sound";
 
-    private const string switch_btn_overview_text = _("Go to overview");
-    private const string switch_btn_list_text = _("Go back to the to-do list");
+    private const string SWITCH_BTN_OVERVIEW_TEXT = _("Go to overview");
+    private const string SWITCH_BTN_LIST_TEXT = _("Go back to the to-do list");
 
-    private const ActionEntry[] action_entries = {
+    private const ActionEntry[] ACTION_ENTRIES = {
         { ACTION_ABOUT, show_about_dialog },
-#if !NO_CONTRIBUTE_DIALOG
+#if !NO_CONTRIBUTE_DIALOG // vala-lint=skip
         { ACTION_CONTRIBUTE, show_contribute_dialog },
-#endif
+#endif // vala-lint=skip
         { ACTION_SETTINGS, show_settings },
         { ACTION_NEW, action_create_new },
         { ACTION_TIMER, action_toggle_timer },
@@ -81,9 +81,9 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     /**
      * The constructor of the MainWindow class.
      */
-    public MainWindow (Gtk.Application app_context, TaskTimer task_timer,
-                       TodoListInfo? initial_list)
-    {
+    public MainWindow (
+        Gtk.Application app_context, TaskTimer task_timer, TodoListInfo? initial_list
+    ) {
         // Pass the applicaiton context via GObject-based construction, because
         // constructor chaining is not possible for Gtk.ApplicationWindow
         Object (application: app_context, title: APP_NAME);
@@ -103,7 +103,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         load_initial (initial_list);
 
         list_manager.list_removed.connect (on_list_removed);
-#if !NO_PLUGINS
+#if !NO_PLUGINS // vala-lint=skip
         var plugin_iface = plugin_manager.plugin_iface;
         plugin_iface.next_task.connect (() => task_page.switch_to_next ());
         plugin_iface.previous_task.connect (() => task_page.switch_to_prev ());
@@ -112,7 +112,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             task_timer.stop ();
             this.close ();
         });
-#endif
+#endif // vala-lint=skip
     }
 
     ~MainWindow () {
@@ -172,7 +172,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     private void apply_settings () {
         this.use_header_bar = settings.use_header_bar;
 
-        gtk_settings = Gtk.Settings.get_default();
+        gtk_settings = Gtk.Settings.get_default ();
 
         gtk_settings.gtk_application_prefer_dark_theme = settings.use_dark_theme;
 
@@ -256,7 +256,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
     private void setup_actions (Gtk.Application app) {
         var actions = new SimpleActionGroup ();
-        actions.add_action_entries (action_entries, this);
+        actions.add_action_entries (ACTION_ENTRIES, this);
         insert_action_group (ACTION_PREFIX, actions);
         app.set_accels_for_action (
             ACTION_PREFIX + "." + ACTION_TIMER,
@@ -355,9 +355,9 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         switch_btn.hexpand = false;
         switch_btn.sensitive = false;
         switch_btn.clicked.connect (toggle_top_stack);
-        switch_btn.tooltip_text = switch_btn_list_text;
+        switch_btn.tooltip_text = SWITCH_BTN_LIST_TEXT;
 
-        if (use_header_bar){
+        if (use_header_bar) {
             add_headerbar ();
         } else {
             add_headerbar_as_toolbar ();
@@ -379,7 +379,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
             var next_icon = GOFI.Utils.get_image_fallback ("go-next-symbolic", "go-next");
             switch_img.set_from_icon_name (next_icon, settings.toolbar_icon_size);
-            switch_btn.tooltip_text = switch_btn_list_text;
+            switch_btn.tooltip_text = SWITCH_BTN_LIST_TEXT;
             settings.list_last_loaded = null;
             task_page.show_switcher (false);
             list_menu_container.hide ();
@@ -390,7 +390,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             top_stack.set_visible_child (task_page);
             var prev_icon = GOFI.Utils.get_image_fallback ("go-previous-symbolic", "go-previous");
             switch_img.set_from_icon_name (prev_icon, settings.toolbar_icon_size);
-            switch_btn.tooltip_text = switch_btn_overview_text;
+            switch_btn.tooltip_text = SWITCH_BTN_OVERVIEW_TEXT;
             if (current_list_info != null) {
                 settings.list_last_loaded = ListIdentifier.from_info (current_list_info);
             } else {

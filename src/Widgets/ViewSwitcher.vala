@@ -97,14 +97,14 @@ class GOFI.ViewSwitcher : Gtk.Box {
 
     public void set_icon_for_name (string name, string? icon_name) {
         var button = buttons[name];
-        assert(button != null);
+        assert (button != null);
 
         button.icon_name = icon_name;
     }
 
     public void set_title_for_name (string name, string title) {
         var button = buttons[name];
-        assert(button != null);
+        assert (button != null);
 
         button.title = title;
     }

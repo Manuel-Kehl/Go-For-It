@@ -177,7 +177,7 @@ namespace GOFI {
 
         //TODO: printing more than 60 minutes is probably not the best way to handle this
         internal static string seconds_to_short_string (uint seconds) {
-            return "%u %s".printf (seconds/60, _("min."));
+            return "%u %s".printf (seconds / 60, _("min."));
         }
 
         public static string seconds_to_pretty_string (uint seconds) {

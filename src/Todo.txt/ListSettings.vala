@@ -139,7 +139,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
     }
 
     public ListSettings copy (string? new_id = null) {
-        if(new_id == null) {
+        if (new_id == null) {
             new_id = id;
         }
         var copied = new ListSettings (new_id, name, todo_uri, done_uri);

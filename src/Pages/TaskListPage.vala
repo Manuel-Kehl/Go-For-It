@@ -115,8 +115,7 @@ class GOFI.TaskListPage : Gtk.Grid {
     /**
      * The constructor of the TaskListPage class.
      */
-    public TaskListPage (TaskTimer task_timer)
-    {
+    public TaskListPage (TaskTimer task_timer) {
         this.task_timer = task_timer;
 
         this.orientation = Gtk.Orientation.VERTICAL;
@@ -224,10 +223,10 @@ class GOFI.TaskListPage : Gtk.Grid {
         first_page = _shown_list.get_primary_page (out first_page_name);
         last_page = _shown_list.get_secondary_page (out second_page_name);
 
-        if(first_page_name == null) {
+        if (first_page_name == null) {
            first_page_name = _("To-Do");
         }
-        if(second_page_name == null) {
+        if (second_page_name == null) {
            second_page_name = _("Done");
         }
 

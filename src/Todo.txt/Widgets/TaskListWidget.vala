@@ -32,10 +32,10 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
     /* Data Model */
     private TaskStore model;
 
-    private const string placeholder_text_todo = _("You currently don't have any tasks.\nAdd some!");
-    private const string filter_text = _("No tasks found.");
-    private const string placeholder_text_done = _("You don't have any completed tasks stored.");
-    private const string placeholder_text_finished = _("You finished all tasks, good job!");
+    private const string PLACEHOLDER_TEXT_TODO = _("You currently don't have any tasks.\nAdd some!");
+    private const string FILTER_TEXT = _("No tasks found.");
+    private const string PLACEHOLDER_TEXT_DONE = _("You don't have any completed tasks stored.");
+    private const string PLACEHOLDER_TEXT_FINISHED = _("You finished all tasks, good job!");
     private string placeholder_text;
 
     /* Signals */
@@ -84,10 +84,10 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
         setup_task_view ();
         if (add_new) {
             setup_add_new ();
-            placeholder_text = placeholder_text_todo;
+            placeholder_text = PLACEHOLDER_TEXT_TODO;
         } else {
             add_new_txt = null;
-            placeholder_text = placeholder_text_done;
+            placeholder_text = PLACEHOLDER_TEXT_DONE;
         }
         add_placeholder ();
     }
@@ -101,7 +101,7 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
     }
 
     public void select_task (TxtTask task) {
-        var pos = model.get_task_position(task);
+        var pos = model.get_task_position (task);
         var row = task_view.get_row_at_index ((int)pos);
         task_view.select_row (row);
     }
@@ -117,7 +117,7 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
         if (selected_row.is_editing) {
             return;
         }
-        task_view.move_cursor(Gtk.MovementStep.DISPLAY_LINES, amount);
+        task_view.move_cursor (Gtk.MovementStep.DISPLAY_LINES, amount);
     }
 
     public void move_selected_task (int amount) {
@@ -131,7 +131,7 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
         } else {
             new_index += amount;
         }
-        task_view.move_row(row, new_index);
+        task_view.move_row (row, new_index);
     }
 
     private Gtk.Widget create_row (Object task) {
@@ -230,8 +230,8 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
     private void on_entry_activate () {
         add_new_task (add_new_txt.text);
         add_new_txt.text = "";
-        placeholder_text = placeholder_text_finished;
-        placeholder.label = placeholder_text_finished;
+        placeholder_text = PLACEHOLDER_TEXT_FINISHED;
+        placeholder.label = PLACEHOLDER_TEXT_FINISHED;
     }
 
     public void entry_focus () {
@@ -240,7 +240,7 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
 
     private void on_search_bar_toggle () {
         if (search_bar.search_mode_enabled) {
-            placeholder.label = filter_text;
+            placeholder.label = FILTER_TEXT;
         } else {
             placeholder.label = placeholder_text;
         }

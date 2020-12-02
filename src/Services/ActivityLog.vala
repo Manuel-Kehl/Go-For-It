@@ -27,7 +27,10 @@ class GOFI.ActivityLog {
         this.log_file = log_file;
     }
 
-    public void log_task (string list_name, string task_description, DateTime start_time, uint runtime, DateTime stop_time) {
+    public void log_task (
+        string list_name, string task_description, DateTime start_time,
+        uint runtime, DateTime stop_time
+    ) {
         if (log_file == null) {
             return;
         }
@@ -35,7 +38,10 @@ class GOFI.ActivityLog {
         log_task_in_file (log_file, list_name, task_description, start_time, runtime, stop_time);
     }
 
-    public void log_task_in_file (File file, string list_name, string task_description, DateTime start_time, uint runtime, DateTime stop_time) {
+    public void log_task_in_file (
+        File file, string list_name, string task_description,
+        DateTime start_time, uint runtime, DateTime stop_time
+    ) {
         var start_time_local = start_time.to_local ();
         var stop_time_local = stop_time.to_local ();
 

@@ -16,8 +16,7 @@
  *
  */
 
-namespace GOFI
-{
+namespace GOFI {
     errordomain SoundPlayerError {
         FAILED_TO_INITIALIZE
     }
@@ -186,10 +185,8 @@ namespace GOFI
         public void play () requires (this.context != null) {
             var file = this._model.file;
             var volume = this._model.volume;
-            if (file != null)
-            {
-                if (this.context != null)
-                {
+            if (file != null) {
+                if (this.context != null) {
                     Canberra.Proplist properties = null;
 
                     var status = Canberra.Proplist.create (out properties);

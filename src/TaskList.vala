@@ -15,7 +15,7 @@
 * with Go For It!. If not, see http://www.gnu.org/licenses/.
 */
 
-public interface GOFI.TaskList : Object{
+public interface GOFI.TaskList : Object {
 
     /**
      * @param sched schedule of task and break durations

@@ -186,14 +186,14 @@ class GOFI.TXT.TxtTask : TodoTask {
 
     private TxtPart tokenize_descr_part (string p) {
         if (is_project_tag (p)) {
-            return new TxtPart.project (p.offset(1));
+            return new TxtPart.project (p.offset (1));
         } else if (is_context_tag (p)) {
-            return new TxtPart.context (p.offset(1));
+            return new TxtPart.context (p.offset (1));
         } else {
             var colon_pos = p.index_of_char (':');
-            if (colon_pos > 0 && p.get_char (colon_pos+1).isgraph ()) {
+            if (colon_pos > 0 && p.get_char (colon_pos + 1).isgraph ()) {
                 var tag_key = p.slice (0, colon_pos);
-                var tag_value = p.offset (colon_pos+1);
+                var tag_value = p.offset (colon_pos + 1);
                 if (is_common_uri_tag (tag_key)) {
                     return new TxtPart.uri (tag_key, tag_value);
                 }
@@ -217,7 +217,7 @@ class GOFI.TXT.TxtTask : TodoTask {
 
         for (p=unparsed[offset]; p != null; offset++, p=unparsed[offset]) {
             var t = tokenize_descr_part (p);
-            if (t.part_type ==TxtPartType.TAG) {
+            if (t.part_type == TxtPartType.TAG) {
                 if (t.tag_name == "timer" && is_timer_value (t.content)) {
                     timer_value = string_to_timer (t.content);
                     continue;
@@ -287,16 +287,16 @@ class GOFI.TXT.TxtTask : TodoTask {
         Utils.uint_to_time (duration, out hours, out minutes, null);
         if (hours > 0) {
             if (minutes > 0) {
-                return "duration:%uh-%um".printf(hours, minutes);
+                return "duration:%uh-%um".printf (hours, minutes);
             }
-            return "duration:%uh".printf(hours);
+            return "duration:%uh".printf (hours);
         } else {
-            return "duration:%um".printf(minutes);
+            return "duration:%um".printf (minutes);
         }
     }
 
     public string to_simple_txt () {
-        string prio_str = (priority != NO_PRIO) ?  @"($((char) (priority + 65))) " : "";
+        string prio_str = (priority != NO_PRIO) ? @"($((char) (priority + 65))) " : "";
         string duration_str = duration != 0 ? " " + duration_to_string () : "";
 
         return prio_str + description + duration_str;

@@ -66,24 +66,18 @@ class GOFI.PluginManager : GLib.Object {
         return new PeasGtk.PluginManager (engine);
     }
 
-    private void on_extension_foreach (Peas.ExtensionSet set,
-                                       Peas.PluginInfo info,
-                                       Peas.Extension extension)
-    {
+    private void on_extension_foreach (
+        Peas.ExtensionSet set, Peas.PluginInfo info, Peas.Extension extension
+    ) {
         ((Peas.Activatable)extension).activate ();
     }
 
-    private void on_extension_added (Peas.PluginInfo info,
-                                     Object extension)
-    {
+    private void on_extension_added (Peas.PluginInfo info, Object extension) {
         ((Peas.Activatable)extension).activate ();
     }
 
-    private void on_extension_removed (Peas.PluginInfo info,
-                                       Object extension)
-    {
+    private void on_extension_removed (Peas.PluginInfo info, Object extension) {
         ((Peas.Activatable) extension).deactivate ();
     }
 }
-
 #endif

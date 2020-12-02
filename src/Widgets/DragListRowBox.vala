@@ -44,9 +44,9 @@ class GOFI.DragListRowBox : Gtk.Container {
 
         this.handle_border_width ();
 
-        this.start_widget  = null;
+        this.start_widget = null;
         this.center_widget = null;
-        this.end_widget    = null;
+        this.end_widget = null;
     }
 
     public override void add (Gtk.Widget widget) {
@@ -229,7 +229,7 @@ class GOFI.DragListRowBox : Gtk.Container {
             if (nat_height < child_height) {
                 baseline = baseline_min;
                 if (!center_widget.vexpand) {
-                    int offset = (child_height-nat_height)/2;
+                    int offset = (child_height - nat_height) / 2;
                     center_alloc.y = allocation.y + offset;
                     center_alloc.height = nat_height;
                     if (baseline > 0) {
