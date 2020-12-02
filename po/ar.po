@@ -537,8 +537,8 @@ msgid ""
 "The location to store completed tasks in has been changed to \"%s\" (was \"%s"
 "\"), but this file already exists."
 msgstr ""
-"تم تغيير موقع تخزين المهام المكتملة إلى \"%s\" (كان \"%s\") ، ولكن هذا "
-"الملف موجود بالفعل."
+"تم تغيير موقع تخزين المهام المكتملة إلى \"%s\" (كان \"%s\") ، ولكن هذا الملف "
+"موجود بالفعل."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
