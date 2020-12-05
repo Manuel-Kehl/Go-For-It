@@ -185,7 +185,19 @@ class GOFI.TXT.TxtList : GOFI.TaskList, Object {
         clear_done_button.clicked.connect (clear_done_list);
 
         var sort_tasks_button = new Gtk.ModelButton ();
-        sort_tasks_button.text = _("Sort Tasks");
+        var sort_tasks_text = _("Sort Tasks");
+#if USE_GRANITE
+        sort_tasks_button.get_child ().destroy ();
+        var sc = kbsettings.get_shortcut (KeyBindingSettings.SCK_SORT);
+        if (sc.is_valid) {
+            sort_tasks_button.add (new Granite.AccelLabel (sort_tasks_text, sc.to_string ()));
+        } else {
+            sort_tasks_button.add (new Granite.AccelLabel (sort_tasks_text));
+        }
+#else
+        // Gtk.AccelLabel is too buggy to use
+        sort_tasks_button.text = sort_tasks_text;
+#endif
         sort_tasks_button.clicked.connect (sort_tasks);
 
         menu_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
