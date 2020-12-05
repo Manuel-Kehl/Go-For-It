@@ -44,6 +44,7 @@ private class GOFI.SettingsManager : Object {
 
     const string ID_GENERAL = GOFI.APP_ID + ".settings";
     const string KEY_TASKS_ON_TOP = "new-tasks-on-top";
+    const string KEY_ADD_DEFAULT_TODOS = "add-default-todos";
     const string KEY_LISTS = "lists";
     const string KEY_USE_HEADER_BAR = "use-header-bar";
     const string KEY_COLOR_SCHEME = "color-scheme";
@@ -65,6 +66,10 @@ private class GOFI.SettingsManager : Object {
     }
     /*---GROUP:Behavior-------------------------------------------------------*/
     public bool new_tasks_on_top {
+        public get;
+        public set;
+    }
+    public bool add_default_todos {
         public get;
         public set;
     }
@@ -283,6 +288,7 @@ private class GOFI.SettingsManager : Object {
     private void bind_settings () {
         var sbf = GLib.SettingsBindFlags.DEFAULT;
         _settings.bind (KEY_TASKS_ON_TOP, this, "new_tasks_on_top", sbf);
+        _settings.bind (KEY_ADD_DEFAULT_TODOS, this, "add_default_todos", sbf);
         _settings.bind (KEY_SWITCHER_USE_ICONS, this, "switcher_use_icons", sbf);
         _settings.bind (KEY_SMALL_ICONS, this, "use_small_toolbar_icons", sbf);
         _settings.bind (KEY_COLOR_SCHEME, this, "color_scheme", sbf);
@@ -406,6 +412,7 @@ private class GOFI.SettingsManager : Object {
             var settings_importer = new KeyFileSettingsImport (this);
             first_start = !settings_importer.import_settings ();
             performed_migration = true;
+            add_default_todos = first_start;
         }
 
         _settings.set_int ("settings-version", 1) ;

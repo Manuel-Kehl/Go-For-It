@@ -45,12 +45,6 @@ class GOFI.TXT.TaskManager {
     private TxtTask active_task;
     private bool active_task_found;
 
-    string[] default_todos = {
-        _("Spread the word about \"%s\"").printf (APP_NAME),
-        _("Consider a donation to help the project"),
-        _("Consider contributing to the project")
-    };
-
     const string ERROR_IMPLICATIONS = _("%s won't save or load from the current todo.txt folder until it is either restarted or another location is chosen."); // vala-lint=line-length
     string read_error_message = _("Couldn't read the todo.txt file (%s):") + "\n\n%s\n\n";
     string write_error_message = _("Couldn't save the to-do list (%s):") + "\n\n%s\n\n";
@@ -252,7 +246,7 @@ class GOFI.TXT.TaskManager {
             read_task_file (this.done_txt, true);
         }
 
-        if (lsettings.add_default_todos) {
+        if (settings.add_default_todos && lsettings.add_default_todos) {
             add_default_todos ();
         }
 
@@ -264,10 +258,12 @@ class GOFI.TXT.TaskManager {
     }
 
     private void add_default_todos () {
+        var default_todos = get_default_todos ();
         for (int i = 0; i < default_todos.length; i++) {
             todo_store.add_task (new TxtTask (default_todos[i], false));
         }
         lsettings.add_default_todos = false;
+        settings.add_default_todos = false;
     }
 
     /**

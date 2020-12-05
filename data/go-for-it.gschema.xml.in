@@ -107,6 +107,11 @@
       <summary></summary>
       <description>If set to true new tasks will be placed at the top of a list, otherwise new tasks will be placed at the end.</description>
     </key>
+    <key name="add-default-todos" type="b">
+      <default>false</default>
+      <summary>Whether the example tasks need to be added</summary>
+      <description>If set to true the examples tasks will be added to the first new (files did not yet exist) list. </description>
+    </key>
 
     <!--ui-->
     <key name="use-header-bar" enum="@APP_ID@.override-bool">

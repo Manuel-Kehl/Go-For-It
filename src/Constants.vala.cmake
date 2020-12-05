@@ -52,4 +52,12 @@ namespace GOFI {
     public static string get_app_version () {
         return APP_VERSION;
     }
+
+    public static string[] get_default_todos () {
+        return {
+            _("Spread the word about \"%s\"").printf (APP_NAME),
+            _("Consider a donation to help the project"),
+            _("Consider contributing to the project")
+        };
+    }
 }
