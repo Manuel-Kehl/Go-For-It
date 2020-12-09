@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-11 21:24+0100\n"
-"PO-Revision-Date: 2020-11-14 09:28+0000\n"
+"PO-Revision-Date: 2020-12-09 16:03+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:471
 msgid "About"
-msgstr "Info"
+msgstr "Über"
 
 #: ../src/Dialogs/AboutDialog.vala:41
 msgid "A stylish to-do list with built-in productivity timer."
