@@ -1,6 +1,55 @@
 # Change Log
 
-## [1.8.4](https://github.com/JMoerman/Go-For-It/tree/1.8.4) (2020-10-24)
+## [1.9.0](https://github.com/JMoerman/Go-For-It/tree/1.9.0) (2020-12-09)
+
+_Go For It!_ now no longer (directly) uses key files to store its settings. GLib.Settings is now used for this purpose (of which the default backend is often DConf). I'm not aware of any project that reads or modifies the old configuation files of _Go For It!_, so I don't expect this to cause any issues. Old settings still get imported into the new version, of course.
+
+The .desktop files, appstream metadata and icon names are now always based on the application ID (`com.github.jmoerman.go-for-it` by default). This means that if `-DAPP_SYSTEM_NAME="something"` was previously used to compile _Go For It!_ you may notice that pinned desktop shortcuts to _Go For It!_ may disappear after upgrading. _Go For It!_ previously used libnotify to send notifications and compensated for cases where the desktop file did not match the application ID by supplying the name of the .desktop file as `desktop-entry` hint. GLib's notification API does not appear to have an option to do something similar.
+
+_Go For It!_ is now split in a library and an application part (with nearly all code in the library part) so make sure that `CMAKE_INSTALL_FULL_LIBDIR` is in your library path. Supplying `-DCMAKE_INSTALL_PREFIX=/usr` as cmake argument will work in most cases.
+
+**Implemented enhancements:**
+
+- It is now possible to manually select todo.txt files for the task lists instead of selecting the folder to store those in. It is now also no longer necessary to have a separate todo.txt file for archiving completed tasks.
+- For each list, it is now possible to select a CSV file to log your activity to.
+- When logging activity to a new CSV file a header describing the column contents is added.
+- _Go For It!_ can now play a sound when it is time to take a break or when it is time to start working again.
+- _Go For It!_ now supports plugins. The plugins that are currently available are 2 plugins to show the remaining time, one for panels supporting Ayatana appindicators and another for docks/launchers supporting the LauncherEntry API. The plugin API is currently fairly limited and subject to change.
+- _Go For It!_ can now use the Granite framework as an optional build-time dependency. The main advantage is that, on elementary OS 6, this will allow _Go For It!_ to follow the global dark style setting.
+- Most tooltips now include the shortcut alternative to clicking the widget.
+- The option to select an application stylesheet has been removed. The automatically selected stylesheet should work for all reasonable Gtk+ 3.0 themes (Raleigh and win32 are examples of broken stylesheets).
+- The layout of the settings dialogs has been improved.
+- Tasks rows are now vertically aligned using the baselines of the widgets.
+- Moving tasks around using drag-and-drop now looks better. The point at which the task would be inserted is now shown by reserving space for that task instead of just showing a stripe between the 2 rows where it would get inserted.
+
+**Fixed bugs:**
+
+- Popovers now use the same margins as GNOME apps unless the Granite dependency is used.
+- Some popover styling issues that occurred when using one of the io.elementary.stylesheet.* Gtk themes have been fixed.
+- CSV output is no longer separated by both a comma and space, but just by commas.
+- The menu entries for sorting tasks or clearing the list of completed tasks is now only shown if a task list is shown.
+
+## [1.8.7](https://github.com/JMoerman/Go-For-It/tree/1.8.7) (2020-11-22)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.6...1.8.7)
+
+**Implemented enhancements:**
+
+- The default application stylesheet is now by default determined at runtime. The minimal "Inherit from GTK theme" stylesheet will now be used when a theme other than Adwaita or elementary is used.
+- A large number of translations have been updated. New translations include Danish and Hebrew.
+
+**Fixed bugs:**
+
+- The placeholder tasks shown when creating a new list for the first time are no longer invisible.
+
+## [1.8.6](https://github.com/JMoerman/Go-For-It/tree/1.8.6) (2020-10-07)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.4...1.8.6)
+
+**Implemented enhancements:**
+
+- The option to pick themes is no longer shown when using the elementary Gtk3 theme as the "Inherit from GTK theme" application theme doesn't look right in combination with this.
+- Arabic translations have been updated.
+
+## [1.8.4](https://github.com/JMoerman/Go-For-It/tree/1.8.4) (2020-10-04)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.3...1.8.4)
 
 **Fixed bugs:**
@@ -14,6 +63,7 @@
 
 ## [1.8.3](https://github.com/JMoerman/Go-For-It/tree/1.8.3) (2020-09-26)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.8.2...1.8.3)
+
 
 **Fixed bugs:**
 
