@@ -238,7 +238,7 @@ class GOFI.Main : Gtk.Application {
         }
 
         if (print_version) {
-            stdout.printf ("%s %s\n", GOFI.APP_NAME, GOFI.APP_VERSION);
+            stdout.printf ("%s %s\n", GOFI.APP_NAME, GOFI.get_version_str ());
             stdout.printf ("Copyright 2014-2020 'Go For it!' Developers.\n");
         } else if (show_about_dialog) {
             show_about ();

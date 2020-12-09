@@ -40,7 +40,7 @@ class GOFI.AboutDialog : Gtk.AboutDialog {
 
         comments = _("A stylish to-do list with built-in productivity timer.");
         website = GOFI.PROJECT_WEBSITE;
-        version = GOFI.APP_VERSION;
+        version = GOFI.get_version_str ();
 
         license_type = Gtk.License.GPL_3_0;
 

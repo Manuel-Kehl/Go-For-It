@@ -27,8 +27,10 @@ namespace GOFI {
     public const string EXEC_NAME = "@EXEC_NAME@";
     public const string APP_SYSTEM_NAME = "@APP_SYSTEM_NAME@";
     public const string APP_ID = "@APP_ID@";
-    public const string APP_VERSION = "@VERSION@";
     public const string ICON_NAME = "@ICON_NAME@";
+    public const int MAJOR_VERSION = @MAJOR_VERSION@;
+    public const int MINOR_VERSION = @MINOR_VERSION@;
+    public const int MICRO_VERSION = @MICRO_VERSION@;
     const string FILE_CONF = "@FILE_CONF@";
     const string PROJECT_WEBSITE = "@PROJECT_WEBSITE@";
     const string PROJECT_REPO = "@PROJECT_REPO@";
@@ -49,8 +51,20 @@ namespace GOFI {
         return APP_ID;
     }
 
-    public static string get_app_version () {
-        return APP_VERSION;
+    public static int get_major_version () {
+        return MAJOR_VERSION;
+    }
+
+    public static int get_minor_version () {
+        return MINOR_VERSION;
+    }
+
+    public static int get_micro_version () {
+        return MICRO_VERSION;
+    }
+
+    public static string get_version_str () {
+        return "%i.%i.%i".printf (MAJOR_VERSION, MINOR_VERSION, MICRO_VERSION);
     }
 
     public static string[] get_default_todos () {
