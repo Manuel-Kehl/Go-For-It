@@ -120,7 +120,11 @@ class GOFI.SelectionPage : Gtk.Grid {
         todolist_view.vadjustment = scroll_view.vadjustment;
         todolist_view.row_activated.connect (on_todolist_view_row_activated);
 
-        placeholder = new Gtk.Label (_("Currently, no lists are configured.\nAdd one below!"));
+        var placeholder_lbl = new Gtk.Label (_("Currently, no lists are configured.\nAdd one below!"));
+        placeholder_lbl.margin = 10;
+        placeholder_lbl.wrap = true;
+        placeholder_lbl.wrap_mode = Pango.WrapMode.WORD_CHAR;
+        placeholder = placeholder_lbl;
         placeholder.show ();
         todolist_view.set_placeholder (placeholder);
 
