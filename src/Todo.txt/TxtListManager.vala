@@ -354,14 +354,7 @@ class GOFI.TXT.LegacyTxtListImport {
         key_file = new KeyFile ();
         first_run = true;
 
-        if (!FileUtils.test (list_file, FileTest.EXISTS)) {
-            int dir_exists = DirUtils.create_with_parents (
-                config_dir, 0775
-            );
-            if (dir_exists != 0) {
-                error (_("Couldn't create folder: %s"), config_dir);
-            }
-        } else {
+        if (FileUtils.test (list_file, FileTest.EXISTS)) {
             // If it does exist, read existing values
             first_run = false;
             try {
