@@ -157,6 +157,17 @@ class GOFI.Plugins.LauncherIndicator : GLib.Object, Peas.Activatable {
 
 [ModuleInit]
 public void peas_register_types (GLib.TypeModule module) {
+    if (
+        GOFI.MAJOR_VERSION != GOFI.get_major_version () ||
+        GOFI.MINOR_VERSION != GOFI.get_minor_version ()
+    ) {
+        warning (
+            "This plugin was not compiled for this version of Go For It!" +
+            "\n" +
+            "Not loading because of the unfinished API!"
+        );
+        return;
+    }
     var objmodule = module as Peas.ObjectModule;
     objmodule.register_extension_type (typeof (Peas.Activatable),
                                        typeof (GOFI.Plugins.LauncherIndicator));
