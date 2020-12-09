@@ -103,6 +103,19 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         load_initial (initial_list);
 
         list_manager.list_removed.connect (on_list_removed);
+
+        task_page.notify["showing-timer"].connect (() => {
+            if (top_stack.visible_child != task_page) {
+                return;
+            }
+            if (task_page.showing_timer) {
+                list_menu_container.hide ();
+                filter_item.sensitive = false;
+            } else {
+                list_menu_container.show ();
+                filter_item.sensitive = true;
+            }
+        });
 #if !NO_PLUGINS // vala-lint=skip
         var plugin_iface = plugin_manager.plugin_iface;
         plugin_iface.next_task.connect (() => task_page.switch_to_next ());
@@ -383,7 +396,6 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             settings.list_last_loaded = null;
             task_page.show_switcher (false);
             list_menu_container.hide ();
-            list_menu_container.hide ();
             filter_item.sensitive = false;
         } else if (task_page.ready) {
             var current_list_info = task_page.shown_list.list_info;
@@ -397,8 +409,10 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
                 settings.list_last_loaded = null;
             }
             task_page.show_switcher (true);
-            list_menu_container.show ();
-            filter_item.sensitive = true;
+            if (!task_page.showing_timer) {
+                list_menu_container.show ();
+                filter_item.sensitive = true;
+            }
         }
     }
 

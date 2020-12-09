@@ -48,6 +48,12 @@ class GOFI.TaskListPage : Gtk.Grid {
         }
     }
 
+    public bool showing_timer {
+        get;
+        private set;
+        default = false;
+    }
+
     public signal void removing_list ();
 
     [Signal (action = true)]
@@ -156,6 +162,9 @@ class GOFI.TaskListPage : Gtk.Grid {
             activity_stack.set_visible_child_name (selected);
             if (selected == "timer") {
                 timer_view.set_focus ();
+                showing_timer = true;
+            } else {
+                showing_timer = false;
             }
         });
         settings.toolbar_icon_size_changed.connect (on_icon_size_changed);
