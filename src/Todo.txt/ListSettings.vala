@@ -26,6 +26,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
     const string KEY_TODO_URI = "todo-list-uri";
     const string KEY_DONE_URI = "done-list-uri";
     const string KEY_LOG_TIMER = "log-timer-in-txt";
+    const string KEY_ADD_CREATION_DATES = "add-creation-dates";
     const string KEY_NAME = "name";
     const string KEY_LOG_URI = "activity-log-uri";
 
@@ -95,6 +96,12 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         default = false;
     }
 
+    public bool add_creation_dates {
+        get;
+        set;
+        default = true;
+    }
+
     public string? schema_path {
         owned get {
             if (id == null) {
@@ -146,6 +153,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         copied.reminder_time = reminder_time;
         copied.add_default_todos = add_default_todos;
         copied.log_timer_in_txt = log_timer_in_txt;
+        copied.add_creation_dates = add_creation_dates;
         copied.activity_log_uri = activity_log_uri;
         if (schedule != null) {
             copied.schedule = new Schedule ();
@@ -159,6 +167,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         this.todo_uri = lsettings.todo_uri;
         this.done_uri = lsettings.done_uri;
         this.activity_log_uri = lsettings.activity_log_uri;
+        this.add_creation_dates = lsettings.add_creation_dates;
 
         if (lsettings.schedule == null) {
             this.schedule = null;
@@ -183,6 +192,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         stored_settings.bind (KEY_DONE_URI, this, "done_uri", sbf);
         stored_settings.bind (KEY_REMINDER_TIME, this, "reminder_time", sbf);
         stored_settings.bind (KEY_LOG_TIMER, this, "log_timer_in_txt", sbf);
+        stored_settings.bind (KEY_ADD_CREATION_DATES, this, "add_creation_dates", sbf);
         stored_settings.bind (KEY_NAME, this, "name", sbf);
         stored_settings.bind (KEY_LOG_URI, this, "activity_log_uri", sbf);
     }
@@ -194,6 +204,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         GLib.Settings.unbind (this, "log_timer_in_txt");
         GLib.Settings.unbind (this, "name");
         GLib.Settings.unbind (this, "activity_log_uri");
+        GLib.Settings.unbind (this, "add_creation_dates");
     }
 
     private void load_schedule () {

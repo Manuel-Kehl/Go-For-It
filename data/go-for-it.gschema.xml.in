@@ -275,6 +275,11 @@
       <summary>Log total time per task in todo.txt files</summary>
       <description></description>
     </key>
+    <key name="add-creation-dates" type="b">
+      <default>true</default>
+      <summary>Store the creation dates of tasks in the todo.txt files</summary>
+      <description></description>
+    </key>
     <key name="reminder-time" type="i">
       <range min="-1" max="600"/>
       <default>-1</default>

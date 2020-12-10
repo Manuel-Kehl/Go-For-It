@@ -122,6 +122,9 @@ class GOFI.TXT.TaskManager {
             if (!todo_task.valid) {
                 return;
             }
+            if (!lsettings.add_creation_dates) {
+                todo_task.creation_date = null;
+            }
             if (settings.new_tasks_on_top) {
                 todo_store.prepend_task (todo_task);
             } else {
