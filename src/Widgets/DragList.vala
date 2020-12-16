@@ -491,7 +491,7 @@ public class GOFI.DragList : Gtk.Box {
         }
         this.filter_func = (owned) filter_func;
         listbox.set_filter_func ((row) => {
-            return row != drag_row && this.filter_func ((DragListRow) row);
+            return this.filter_func ((DragListRow) row);
         });
     }
 
