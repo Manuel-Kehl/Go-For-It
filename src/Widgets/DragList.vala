@@ -22,8 +22,9 @@
  *
  * Row headers are not supported.
  */
-public class GOFI.DragList : Gtk.Bin {
+public class GOFI.DragList : Gtk.Box {
     private Gtk.ListBox listbox;
+    private Gtk.Revealer bottom_dnd_margin_widget;
 
     internal DragListModel? model;
     private DragListCreateWidgetFunc? create_widget_func;
@@ -64,10 +65,26 @@ public class GOFI.DragList : Gtk.Bin {
     }
 
     public int dnd_drop_height {
-        get;
-        set;
-        default = 20;
+        get {
+            return _dnd_drop_height;
+        }
+        set {
+            _dnd_drop_height = value;
+            foreach (var child in listbox.get_children ()) {
+                var row = child as Gtk.ListBoxRow;
+                if (row == null) {
+                    continue;
+                }
+                var header = row.get_header () as Gtk.Revealer;
+                if (header == null) {
+                    continue;
+                }
+                header.get_child ().margin = _dnd_drop_height;
+            }
+            bottom_dnd_margin_widget.get_child ().margin = _dnd_drop_height;
+        }
     }
+    private int _dnd_drop_height = 10;
 
     /**
      * Activates the currently selected row.
@@ -142,6 +159,7 @@ public class GOFI.DragList : Gtk.Bin {
     }
 
     public DragList () {
+        Object (orientation: Gtk.Orientation.VERTICAL, spacing: 0);
         listbox = new Gtk.ListBox ();
         listbox.set_selection_mode (Gtk.SelectionMode.BROWSE);
         listbox.set_activate_on_single_click (false);
@@ -149,12 +167,32 @@ public class GOFI.DragList : Gtk.Bin {
         Gtk.drag_dest_set (
             listbox, Gtk.DestDefaults.ALL, DLB_ENTRIES, Gdk.DragAction.MOVE
         );
+        listbox.set_header_func (header_func);
 
         internal_signal = false;
         block_row_selected = false;
 
         add (listbox);
+        bottom_dnd_margin_widget = create_dnd_placement_widget ();
+        add (bottom_dnd_margin_widget);
         connect_signals ();
+    }
+
+    private Gtk.Revealer create_dnd_placement_widget () {
+        var dnd_placement_placeholder = new Gtk.Grid ();
+        dnd_placement_placeholder.margin = dnd_drop_height;
+        var dnd_placement_revealer = new Gtk.Revealer ();
+        dnd_placement_revealer.add (dnd_placement_placeholder);
+        dnd_placement_placeholder.show ();
+        dnd_placement_revealer.show ();
+        dnd_placement_revealer.reveal_child = false;
+        return dnd_placement_revealer;
+    }
+
+    private void header_func (Gtk.ListBoxRow row, Gtk.ListBoxRow? before) {
+        if (row.get_header () == null) {
+            row.set_header (create_dnd_placement_widget ());
+        }
     }
 
     private void connect_signals () {
@@ -453,7 +491,7 @@ public class GOFI.DragList : Gtk.Bin {
         }
         this.filter_func = (owned) filter_func;
         listbox.set_filter_func ((row) => {
-            return this.filter_func ((DragListRow) row);
+            return row != drag_row && this.filter_func ((DragListRow) row);
         });
     }
 
@@ -532,7 +570,10 @@ public class GOFI.DragList : Gtk.Bin {
             if (_row == drag_row) {
                 return;
             }
-            var row = (DragListRow) _row;
+            var row = _row as DragListRow;
+            if (row == null) {
+                return;
+            }
             if (!_row.visible || (filter_func != null && !filter_func (row))) {
                 return;
             }
@@ -586,19 +627,17 @@ public class GOFI.DragList : Gtk.Bin {
 
         // Apply margins
         if (hover_row_bottom != null) {
-            hover_row_bottom.margin_top = dnd_drop_height;
+            hover_row_bottom.apply_dnd_margin ();
         } else if (hover_row_top != null) {
-            hover_row_top.margin_bottom = dnd_drop_height;
+            bottom_dnd_margin_widget.reveal_child = true;
         }
     }
 
     internal void reset_hover_margins () {
-        if (hover_row_top != null) {
-            hover_row_top.margin_bottom = 0;
-        }
         if (hover_row_bottom != null) {
-            hover_row_bottom.margin_top = 0;
+            hover_row_bottom.remove_dnd_margin ();
         }
+        bottom_dnd_margin_widget.reveal_child = false;
     }
 
     private void on_list_drag_leave (Gdk.DragContext context, uint time_) {
@@ -706,6 +745,7 @@ public class GOFI.DragListRow : Gtk.ListBoxRow {
     private Gtk.Image image;
     private Gtk.Widget start_widget;
     private Gtk.Widget center_widget;
+    private Gtk.Revealer layout_revealer;
 
     internal int marginless_height;
 
@@ -715,7 +755,9 @@ public class GOFI.DragListRow : Gtk.ListBoxRow {
         layout.margin_end = 5;
         layout.margin_top = 1;
         layout.margin_bottom = 1;
-        add (layout);
+        layout_revealer = new Gtk.Revealer ();
+        layout_revealer.add (layout);
+        add (layout_revealer);
 
         handle = new Gtk.EventBox ();
         image = new Gtk.Image.from_icon_name ("drag-handle-symbolic", Gtk.IconSize.MENU);
@@ -734,6 +776,21 @@ public class GOFI.DragListRow : Gtk.ListBoxRow {
         layout.show ();
         handle.show ();
         image.show ();
+        layout_revealer.show ();
+        layout_revealer.reveal_child = true;
+        layout_revealer.notify["child-revealed"].connect (() => {
+            if (!layout_revealer.child_revealed) {
+                this.hide ();
+            }
+        });
+    }
+
+    internal void apply_dnd_margin () {
+        ((Gtk.Revealer) this.get_header ()).reveal_child = true;
+    }
+
+    internal void remove_dnd_margin () {
+        ((Gtk.Revealer) this.get_header ()).reveal_child = false;
     }
 
     private void set_handle_hover_cursor () {
@@ -797,7 +854,7 @@ public class GOFI.DragListRow : Gtk.ListBoxRow {
         if (draglist != null) {
             draglist.drag_row = this;
             draglist.reset_hover_margins ();
-            this.hide ();
+            layout_revealer.reveal_child = false;
         }
 
         handle.translate_coordinates (this, 0, 0, out x, out y);
@@ -807,6 +864,7 @@ public class GOFI.DragListRow : Gtk.ListBoxRow {
 
     private void handle_drag_end () {
         this.show ();
+        layout_revealer.reveal_child = true;
     }
 
     private void handle_drag_data_get (
