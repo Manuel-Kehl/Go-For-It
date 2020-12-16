@@ -125,22 +125,19 @@ class GOFI.DragListRowBox : Gtk.Container {
         int center_min = 0;
         int center_nat = 0;
 
-        if (start_widget != null && start_widget.visible) {
-            start_widget.get_preferred_width (out edge_min, null);
-        }
-        if (end_widget != null && end_widget.visible) {
-            int end_min;
-            end_widget.get_preferred_width (out end_min, null);
-
-            if (edge_min > 0) {
-                edge_min = int.max (end_min, edge_min);
-                edge_min += 2 * h_spacing;
+        get_edge_width (out edge_min);
+        if (edge_min > 0) {
+            if (
+                start_widget == null || !start_widget.visible ||
+                end_widget == null || !end_widget.visible
+            ) {
+                edge_min += _h_spacing;
+            } else {
+                edge_min += edge_min + 2 * _h_spacing;
             }
-        } else if (edge_min > 0) {
-            edge_min += h_spacing;
         }
 
-        if (center_widget != null || center_widget.visible) {
+        if (center_widget != null && center_widget.visible) {
             center_widget.get_preferred_width (out center_min, out center_nat);
         }
 
