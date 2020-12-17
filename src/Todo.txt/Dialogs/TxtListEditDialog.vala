@@ -292,6 +292,9 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         );
         log_total_timer_switch = new Gtk.Switch ();
 
+        var log_creation_date_lbl = new SynchronizedWLabel (wcont, _("Log the creation date of tasks") + ":");
+        var log_creation_date_switch = new Gtk.Switch ();
+
         /* Configuration */
         todo_uri_lbl.label.set_line_wrap (false);
         todo_uri_lbl.label.set_use_markup (true);
@@ -299,12 +302,16 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         done_uri_lbl.label.set_use_markup (true);
 
         log_total_timer_switch.active = lsettings.log_timer_in_txt;
+        log_creation_date_switch.active = lsettings.add_creation_dates;
 
         /* Signal Handling */
         todo_uri_chooser.notify["selected-file"].connect (on_todo_file_changed);
         done_uri_chooser.notify["selected-file"].connect (on_done_file_changed);
         log_total_timer_switch.notify["active"].connect (() => {
             lsettings.log_timer_in_txt = log_total_timer_switch.active;
+        });
+        log_creation_date_switch.notify["active"].connect (() => {
+            lsettings.add_creation_dates = log_creation_date_switch.active;
         });
 
         /* Placement */
@@ -313,6 +320,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         add_option (grid, ref row, todo_uri_lbl, todo_uri_chooser);
         add_option (grid, ref row, done_uri_lbl, done_uri_chooser);
         add_option (grid, ref row, log_total_timer_lbl, log_total_timer_switch, log_total_timer_expl_widget);
+        add_option (grid, ref row, log_creation_date_lbl, log_creation_date_switch);
         return create_section_box ("Todo.txt", grid);
     }
 
