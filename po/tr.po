@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2020-11-14 09:28+0000\n"
+"PO-Revision-Date: 2020-12-19 00:29+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/tr/>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,7 +37,7 @@ msgstr "Yerleşik zamanlayıcılı şık bir yapılacaklar listesi."
 
 #: ../src/Dialogs/ContributeDialog.vala:28
 msgid "Contributions and Donations"
-msgstr "Katkı Vermek ve Bağış Yapmak"
+msgstr "Katkıda Bulunma ve Bağış Yapma"
 
 #: ../src/Dialogs/ContributeDialog.vala:31
 msgid "Thank you for supporting"
@@ -53,7 +53,7 @@ msgstr ""
 
 #: ../src/Dialogs/ContributeDialog.vala:36
 msgid "If you really like this app, you can buy me a drink:"
-msgstr "Uygulamayı cidden beğendiyseniz, bana bir içercek ısmarlayabilirsiniz:"
+msgstr "Uygulamayı gerçekten beğendiyseniz bana bir içecek ısmarlayabilirsiniz:"
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
@@ -623,10 +623,8 @@ msgid "This information will be stored in the todo.txt files."
 msgstr "Bu bilgi todo.txt dosyasında depolanır."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
-#, fuzzy
-#| msgid "Skip the remainder of the break"
 msgid "Log the creation date of tasks"
-msgstr "Aranın geri kalanını atla"
+msgstr "Görevlerin oluşturulma tarihini günlüğe kaydet"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:383
 msgid "Use default settings"
