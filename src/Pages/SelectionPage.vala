@@ -61,6 +61,9 @@ class GOFI.SelectionPage : Gtk.Grid {
 
         /* Setup the widget's children */
         setup_todolist_view ();
+
+        // TODO: It is probably better to create a style class specific to this widget
+        get_style_context ().add_class ("task-layout");
     }
 
     private Gtk.Widget create_row (Object info) {
