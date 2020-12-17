@@ -264,7 +264,9 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             list_menu_container.remove (list_menu);
         }
         list_menu = list.get_menu ();
-        list_menu_container.pack_start (list_menu);
+        if (list_menu != null) {
+            list_menu_container.pack_start (list_menu);
+        }
     }
 
     private void setup_actions (Gtk.Application app) {
