@@ -163,6 +163,7 @@ public class GOFI.DragList : Gtk.Box {
         listbox = new Gtk.ListBox ();
         listbox.set_selection_mode (Gtk.SelectionMode.BROWSE);
         listbox.set_activate_on_single_click (false);
+        listbox.vexpand = true;
         selected_row = null;
         Gtk.drag_dest_set (
             listbox, Gtk.DestDefaults.ALL, DLB_ENTRIES, Gdk.DragAction.MOVE
