@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2020-11-14 09:28+0000\n"
+"PO-Revision-Date: 2020-12-20 14:29+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -625,10 +625,8 @@ msgid "This information will be stored in the todo.txt files."
 msgstr "Ces informations seront stockées dans les fichiers todo.txt."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
-#, fuzzy
-#| msgid "Skip the remainder of the break"
 msgid "Log the creation date of tasks"
-msgstr "Passer le reste de la pause"
+msgstr "Enregistrer la date de création des tâches"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:383
 msgid "Use default settings"
