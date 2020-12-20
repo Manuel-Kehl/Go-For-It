@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2020-11-17 06:28+0000\n"
+"PO-Revision-Date: 2020-12-22 13:29+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/he/>\n"
+"Language-Team: Hebrew <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,15 +18,15 @@ msgstr ""
 
 #: ../src/Constants.vala:72
 msgid "Spread the word about \"%s\""
-msgstr ""
+msgstr "להפיץ את „%s” ברבים"
 
 #: ../src/Constants.vala:73
 msgid "Consider a donation to help the project"
-msgstr ""
+msgstr "מומלץ לתרום כדי לסייע למיזם"
 
 #: ../src/Constants.vala:74
 msgid "Consider contributing to the project"
-msgstr ""
+msgstr "כדי להתנדב למיזם"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:488
 msgid "About"
@@ -309,7 +309,7 @@ msgstr "תיקייה"
 
 #: ../src/LegacyStrings.vala:8
 msgid "Inherit from GTK theme"
-msgstr ""
+msgstr "ירושה מערכת עיצוב GTK"
 
 #: ../src/LegacyStrings.vala:9
 msgid "Dark theme"
@@ -438,59 +438,59 @@ msgstr ""
 
 #: ../src/Services/Notifications.vala:106
 msgid "The Break is Over"
-msgstr ""
+msgstr "ההפסקה נגמרה"
 
 #: ../src/Services/Notifications.vala:108
 msgid "Your current task is"
-msgstr ""
+msgstr "המשימה הנוכחית שלך היא"
 
 #: ../src/Services/Notifications.vala:132
 msgid "Prepare for your break"
-msgstr ""
+msgstr "אפשר להתכונן להפסקה"
 
 #: ../src/Services/Notifications.vala:134
 msgid "You have %s seconds left"
-msgstr ""
+msgstr "נותרו לך עוד %s שניות"
 
 #: ../src/Services/Notifications.vala:142
 msgid "Task duration exceeded"
-msgstr ""
+msgstr "חרגת מהזמן שהוקצה למשימה"
 
 #: ../src/Services/Notifications.vala:143
 msgid "Consider switching to a different task"
-msgstr ""
+msgstr "אולי כדאי לעבור למשימה אחרת"
 
 #: ../src/Services/SettingsManager.vala:617
 msgid "Light"
-msgstr ""
+msgstr "בהיר"
 
 #: ../src/Services/SettingsManager.vala:619
 msgid "Dark"
-msgstr ""
+msgstr "כהה"
 
 #: ../src/Services/SettingsManager.vala:621
 msgid "Default"
-msgstr ""
+msgstr "בררת מחדל"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
-msgstr ""
+msgstr "מושבת"
 
 #: ../src/Services/Shortcuts.vala:165 ../src/Todo.txt/TxtList.vala:188
 msgid "Sort Tasks"
-msgstr ""
+msgstr "מיון משימות"
 
 #: ../src/Services/Shortcuts.vala:166
 msgid "Add new task/list"
-msgstr ""
+msgstr "הוספת משימה/רשימה חדשה"
 
 #: ../src/Services/Shortcuts.vala:167
 msgid "Start/Stop the timer"
-msgstr ""
+msgstr "התחלת/עצירת המתזמן"
 
 #: ../src/Services/Shortcuts.vala:168
 msgid "Skip the break or skip to the break"
-msgstr ""
+msgstr "לדלג על ההפסקה או לדלג אל ההפסקה"
 
 #: ../src/Services/Shortcuts.vala:169
 msgid "Edit the properties of a list or task"
@@ -754,11 +754,11 @@ msgstr ""
 #: ../plugins/appindicator/appindicator.vala:119
 #: ../plugins/appindicator/appindicator.vala:247
 msgid "Start the timer"
-msgstr ""
+msgstr "התחלת המתזמן"
 
 #: ../src/Widgets/TimerView.vala:178
 msgid "Inactive"
-msgstr ""
+msgstr "בלתי פעיל"
 
 #: ../src/Widgets/TimerView.vala:179
 #: ../plugins/appindicator/appindicator.vala:92
