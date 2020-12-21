@@ -277,34 +277,24 @@ class GOFI.TXT.TxtListManager {
         lists_removed (removed);
         sync_list_ids ();
 
-        var dconf_settings = lsettings.stored_settings;
+        var gsettings_settings = lsettings.stored_settings;
         lsettings.unbind ();
         lsettings = null;
 
-        reset_dconf_path (dconf_settings);
+        gsettings_reset_recursively (gsettings_settings);
     }
 
-    /**
-     * Attempt to reset the given path
-     * from https://github.com/solus-project/budgie-desktop/blob/c6751695ffaad199761366efb9180d45a77b58b2/src/panel/manager.vala#L440
-     */
-    public void reset_dconf_path (Settings? settings) {
+    private void gsettings_reset_recursively (Settings? settings) {
         if (settings == null) {
             return;
         }
-        string path = settings.path;
-        GLib.Settings.sync ();
-        if (settings.path == null) {
-            return;
+        var settings_schema = settings.settings_schema;
+        foreach (var settings_child in settings_schema.list_children ()) {
+            gsettings_reset_recursively (settings.get_child (settings_child));
         }
-        string argv[] = { "dconf", "reset", "-f", path};
-        message ("Resetting dconf path: %s", path);
-        try {
-            Process.spawn_command_line_sync (string.joinv (" ", argv), null, null, null);
-        } catch (Error e) {
-            warning ("Failed to reset dconf path %s: %s", path, e.message);
+        foreach (var settings_key in settings_schema.list_keys ()) {
+            settings.reset (settings_key);
         }
-        GLib.Settings.sync ();
     }
 
     public void edit_list (string id, Gtk.Window? window) {
