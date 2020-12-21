@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2020-11-19 20:29+0000\n"
+"PO-Revision-Date: 2020-12-22 13:29+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/hr/>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -616,10 +616,8 @@ msgid "This information will be stored in the todo.txt files."
 msgstr "Ove informacije će se spremati u todo.txt datoteke."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
-#, fuzzy
-#| msgid "Skip the remainder of the break"
 msgid "Log the creation date of tasks"
-msgstr "Preskoči ostatak pauze"
+msgstr "Zapiši datum stvaranja zadataka"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:383
 msgid "Use default settings"
