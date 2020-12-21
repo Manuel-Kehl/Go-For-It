@@ -157,16 +157,9 @@ class GOFI.TaskListPage : Gtk.Grid {
         activity_switcher.icon_size = settings.toolbar_icon_size;
         activity_switcher.show_icons = settings.switcher_use_icons;
 
-        activity_switcher.notify["selected-item"].connect (() => {
-            var selected = activity_switcher.selected_item;
-            activity_stack.set_visible_child_name (selected);
-            if (selected == "timer") {
-                timer_view.set_focus ();
-                showing_timer = true;
-            } else {
-                showing_timer = false;
-            }
-        });
+        activity_switcher.notify["selected-item"].connect (
+            on_activity_switcher_selected_item_changed
+        );
         settings.toolbar_icon_size_changed.connect (on_icon_size_changed);
         settings.switcher_use_icons_changed.connect (on_switcher_use_icons);
         timer_view.done_btn_clicked.connect (on_task_done);
@@ -174,6 +167,17 @@ class GOFI.TaskListPage : Gtk.Grid {
         switcher_stack.add_named (activity_switcher, "switcher");
         switcher_stack.add_named (activity_label, "label");
         this.add (activity_stack);
+    }
+
+    private void on_activity_switcher_selected_item_changed () {
+        var selected = activity_switcher.selected_item;
+        activity_stack.set_visible_child_name (selected);
+        if (selected == "timer") {
+            timer_view.set_focus ();
+            showing_timer = true;
+        } else {
+            showing_timer = false;
+        }
     }
 
     public Gtk.Widget get_switcher () {

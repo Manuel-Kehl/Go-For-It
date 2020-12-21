@@ -779,11 +779,13 @@ public class GOFI.DragListRow : Gtk.ListBoxRow {
         image.show ();
         layout_revealer.show ();
         layout_revealer.reveal_child = true;
-        layout_revealer.notify["child-revealed"].connect (() => {
-            if (!layout_revealer.child_revealed) {
-                this.hide ();
-            }
-        });
+        layout_revealer.notify["child-revealed"].connect (on_layout_revealer_child_revealed);
+    }
+
+    private void on_layout_revealer_child_revealed () {
+        if (!layout_revealer.child_revealed) {
+            this.hide ();
+        }
     }
 
     internal void apply_dnd_margin () {

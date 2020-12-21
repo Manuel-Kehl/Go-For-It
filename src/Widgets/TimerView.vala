@@ -68,14 +68,16 @@ class GOFI.TimerView : Gtk.Grid {
         timer.timer_started.connect (on_timer_started);
         timer.timer_stopped.connect (on_timer_stopped);
         timer.active_task_changed.connect (timer_active_task_changed);
-        timer.timer_updated_relative.connect ((s, p) => {
-            progress.set_fraction (p);
-        });
+        timer.timer_updated_relative.connect (on_timer_updated_relative);
         timer.task_time_updated.connect (update_task_duration);
         timer.active_task_description_changed.connect (update_description);
 
         // Update timer, to refresh the view
         timer.update ();
+    }
+
+    private void on_timer_updated_relative (double p) {
+        progress.set_fraction (p);
     }
 
     private void timer_active_task_changed (TodoTask? task) {
@@ -159,6 +161,14 @@ class GOFI.TimerView : Gtk.Grid {
         run_btn.get_style_context ().add_class ("suggested-action");
     }
 
+    private void on_skip_btn_clicked () {
+        skip ();
+    }
+
+    private void on_done_btn_clicked () {
+        done_btn_clicked ();
+    }
+
     private void on_run_btn_clicked () {
         timer.toggle_running ();
     }
@@ -226,15 +236,9 @@ class GOFI.TimerView : Gtk.Grid {
         use_leading_zeros (s_spin);
 
         /* Signal Handling */
-        h_spin.value_changed.connect (() => {
-            timer.remaining_duration = get_timer_value ();
-        });
-        m_spin.value_changed.connect (() => {
-            timer.remaining_duration = get_timer_value ();
-        });
-        s_spin.value_changed.connect (() => {
-            timer.remaining_duration = get_timer_value ();
-        });
+        h_spin.value_changed.connect (on_spin_value_changed);
+        m_spin.value_changed.connect (on_spin_value_changed);
+        s_spin.value_changed.connect (on_spin_value_changed);
 
         /* Add Widgets */
         timer_grid.add (h_spin);
@@ -245,19 +249,24 @@ class GOFI.TimerView : Gtk.Grid {
         this.add (timer_grid);
     }
 
+    private void on_spin_value_changed () {
+        timer.remaining_duration = get_timer_value ();
+    }
+
     /**
      * Makes the passed Gtk.SpinButton fill the display with a leading zero.
      */
     private void use_leading_zeros (Gtk.SpinButton spin) {
-        spin.output.connect ((s) => {
-            var val = spin.get_value_as_int ();
-            // If val <= 10, it's a single digit, so a leading zero is necessary
-            if (val < 10) {
-                spin.text = "0" + val.to_string ();
-                return true;
-            }
-            return false;
-        });
+        spin.output.connect (use_leading_zeros_on_spin_output);
+    }
+    private bool use_leading_zeros_on_spin_output (Gtk.SpinButton spin) {
+        var val = spin.get_value_as_int ();
+        // If val <= 10, it's a single digit, so a leading zero is necessary
+        if (val < 10) {
+            spin.text = "0" + val.to_string ();
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -291,8 +300,8 @@ class GOFI.TimerView : Gtk.Grid {
         done_btn.tooltip_markup = sc.get_accel_markup (_("Mark the task as complete"));
 
         /* Action Handling */
-        skip_btn.clicked.connect ((e) => skip ());
-        done_btn.clicked.connect ((e) => done_btn_clicked ());
+        skip_btn.clicked.connect (on_skip_btn_clicked);
+        done_btn.clicked.connect (on_done_btn_clicked);
         run_btn.clicked.connect (on_run_btn_clicked);
 
         /* Add Widgets */
@@ -303,6 +312,7 @@ class GOFI.TimerView : Gtk.Grid {
         action_grid.add (action_timer_grid);
         this.add (action_grid);
     }
+
 
     private void setup_progress_bar () {
         progress = new Gtk.ProgressBar ();

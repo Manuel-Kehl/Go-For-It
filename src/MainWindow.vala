@@ -104,28 +104,43 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
         list_manager.list_removed.connect (on_list_removed);
 
-        task_page.notify["showing-timer"].connect (() => {
-            if (top_stack.visible_child != task_page) {
-                return;
-            }
-            if (task_page.showing_timer) {
-                list_menu_container.hide ();
-                filter_item.sensitive = false;
-            } else {
-                list_menu_container.show ();
-                filter_item.sensitive = true;
-            }
-        });
+        task_page.notify["showing-timer"].connect (on_showing_timer_changed);
 #if !NO_PLUGINS // vala-lint=skip
         var plugin_iface = plugin_manager.plugin_iface;
-        plugin_iface.next_task.connect (() => task_page.switch_to_next ());
-        plugin_iface.previous_task.connect (() => task_page.switch_to_prev ());
-        plugin_iface.mark_task_as_done.connect (() => task_page.mark_task_done ());
-        plugin_iface.quit_application.connect (() => {
-            task_timer.stop ();
-            this.close ();
-        });
+        plugin_iface.next_task.connect (on_plugin_iface_next_task);
+        plugin_iface.previous_task.connect (on_plugin_iface_previous_task);
+        plugin_iface.mark_task_as_done.connect (on_plugin_iface_mark_task_as_done);
+        plugin_iface.quit_application.connect (on_plugin_iface_quit_application);
 #endif // vala-lint=skip
+    }
+
+#if !NO_PLUGINS // vala-lint=skip
+    private void on_plugin_iface_next_task () {
+        task_page.switch_to_next ();
+    }
+    private void on_plugin_iface_previous_task () {
+        task_page.switch_to_prev ();
+    }
+    private void on_plugin_iface_mark_task_as_done () {
+        task_page.mark_task_done ();
+    }
+    private void on_plugin_iface_quit_application () {
+        task_timer.stop ();
+        this.close ();
+    }
+#endif // vala-lint=skip
+
+    private void on_showing_timer_changed () {
+        if (top_stack.visible_child != task_page) {
+            return;
+        }
+        if (task_page.showing_timer) {
+            list_menu_container.hide ();
+            filter_item.sensitive = false;
+        } else {
+            list_menu_container.show ();
+            filter_item.sensitive = true;
+        }
     }
 
     ~MainWindow () {
@@ -189,12 +204,15 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
         gtk_settings.gtk_application_prefer_dark_theme = settings.use_dark_theme;
 
-        settings.use_dark_theme_changed.connect ( (use_dark_theme) => {
-            gtk_settings.gtk_application_prefer_dark_theme = use_dark_theme;
-            load_css ();
-        });
+        settings.use_dark_theme_changed.connect (on_use_dark_theme_changed);
         Gtk.Settings.get_default ().notify["gtk-theme-name"].connect (load_css);
         settings.toolbar_icon_size_changed.connect (on_icon_size_changed);
+    }
+
+    private void on_use_dark_theme_changed (bool use_dark_theme) {
+        gtk_settings = Gtk.Settings.get_default ();
+        gtk_settings.gtk_application_prefer_dark_theme = use_dark_theme;
+        load_css ();
     }
 
     private void on_icon_size_changed (Gtk.IconSize size) {
@@ -516,7 +534,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         filter_item.image = GOFI.Utils.load_image_fallback (
             Gtk.IconSize.MENU, "edit-find-symbolic", "edit-find"
         );
-        filter_item.clicked.connect (() => filter_fallback_action ());
+        filter_item.clicked.connect (on_filter_item_clicked);
 
         action_container.add (filter_item);
         action_container.add (mute_item);
@@ -533,6 +551,10 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 #endif
 
         return action_container;
+    }
+
+    private void on_filter_item_clicked () {
+        filter_fallback_action ();
     }
 
     private void mute_item_update_image () {

@@ -140,12 +140,16 @@ class GOFI.TimerScheduleWidget : Gtk.Frame {
         cell_task.adjustment = new Gtk.Adjustment (0, 1, 1439, 1, 10, 0);
         cell_break.adjustment = new Gtk.Adjustment (0, 1, 1439, 1, 10, 0);
 
-        cell_task.edited.connect ((path, text) => {
-            update_tree_value (path, text, 0);
-        });
-        cell_break.edited.connect ((path, text) => {
-            update_tree_value (path, text, 1);
-        });
+        cell_task.edited.connect (on_cell_task_edited);
+        cell_break.edited.connect (on_cell_break_task_edited);
+    }
+
+    private void on_cell_task_edited (string path, string text) {
+        update_tree_value (path, text, 0);
+    }
+
+    private void on_cell_break_task_edited (string path, string text) {
+        update_tree_value (path, text, 1);
     }
 
     public void load_schedule (Schedule sched) {

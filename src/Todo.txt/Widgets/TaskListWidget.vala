@@ -210,11 +210,7 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
 
         /* Action and Signal Handling */
         // Handle clicks on the icon
-        add_new_txt.icon_press.connect ((pos, event) => {
-            if (pos == Gtk.EntryIconPosition.SECONDARY) {
-                on_entry_activate ();
-            }
-        });
+        add_new_txt.icon_press.connect (on_add_new_txt_icon_press);
         // Handle "activate" signals (Enter Key presses)
         add_new_txt.activate.connect (on_entry_activate);
 
@@ -225,6 +221,12 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
 
         // Add to the main widget
         this.add (add_new_grid);
+    }
+
+    private void on_add_new_txt_icon_press (Gtk.EntryIconPosition pos, Gdk.Event event) {
+        if (pos == Gtk.EntryIconPosition.SECONDARY) {
+            on_entry_activate ();
+        }
     }
 
     private void on_entry_activate () {
@@ -251,15 +253,17 @@ class GOFI.TXT.TaskListWidget : Gtk.Grid {
         filter_entry = new Gtk.SearchEntry ();
         filter = new Filter ();
 
-        filter_entry.search_changed.connect (() => {
-            filter.parse (filter_entry.text);
-            task_view.invalidate_filter ();
-        });
+        filter_entry.search_changed.connect (on_filter_entry_search_changed);
         search_bar.notify["search-mode-enabled"].connect (on_search_bar_toggle);
 
         search_bar.add (filter_entry);
         search_bar.set_show_close_button (true);
 
         this.add (search_bar);
+    }
+
+    private void on_filter_entry_search_changed () {
+        filter.parse (filter_entry.text);
+        task_view.invalidate_filter ();
     }
 }

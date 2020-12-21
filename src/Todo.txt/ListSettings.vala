@@ -205,6 +205,7 @@ class GOFI.TXT.ListSettings : Object, TodoListInfo {
         GLib.Settings.unbind (this, "name");
         GLib.Settings.unbind (this, "activity_log_uri");
         GLib.Settings.unbind (this, "add_creation_dates");
+        stored_settings = null;
     }
 
     private void load_schedule () {

@@ -147,13 +147,15 @@ public class GOFI.TaskTimer {
         _schedule = settings.schedule;
 
         /* Signal Handling*/
-        settings.timer_duration_changed.connect ((e) => {
-            if (!running) {
-                reset ();
-            }
-        });
+        settings.timer_duration_changed.connect (on_timer_duration_changed);
 
         reset ();
+    }
+
+    private void on_timer_duration_changed () {
+        if (!running) {
+            reset ();
+        }
     }
 
     private uint us_to_s (int64 us_val) {

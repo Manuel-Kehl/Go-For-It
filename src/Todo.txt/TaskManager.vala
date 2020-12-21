@@ -68,18 +68,27 @@ class GOFI.TXT.TaskManager {
         connect_store_signals ();
 
         /* Signal processing */
-        lsettings.notify["todo-uri"].connect ( () => {
-            // this property sometimes gets updated multiple times without
-            // actually changing, which could cause 1-6 extra reloads
-            if (lsettings.todo_uri != todo_txt.get_uri ()) {
-                load_task_stores ();
-            }
-        });
-        lsettings.notify["done-uri"].connect ( () => {
-            if (lsettings.done_uri != done_txt.get_uri ()) {
-                load_task_stores ();
-            }
-        });
+
+        // these properties sometimes get updated multiple times without
+        // actually changing, which could cause 1-6 extra reloads
+        lsettings.notify["todo-uri"].connect (on_todo_uri_changed);
+        lsettings.notify["done-uri"].connect (on_done_uri_changed);
+    }
+
+    public void prepare_free () {
+        lsettings.notify["todo-uri"].disconnect (on_todo_uri_changed);
+        lsettings.notify["done-uri"].disconnect (on_done_uri_changed);
+    }
+
+    private void on_todo_uri_changed () {
+        if (lsettings.todo_uri != todo_txt.get_uri ()) {
+            load_task_stores ();
+        }
+    }
+    private void on_done_uri_changed () {
+        if (lsettings.done_uri != done_txt.get_uri ()) {
+            load_task_stores ();
+        }
     }
 
     public void set_active_task (TxtTask? task) {

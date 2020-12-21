@@ -70,16 +70,20 @@ class GOFI.TodoListInfoRow: DragListRow {
 
         options_button.toggled.connect (show_menu);
 
-        event_box.enter_notify_event.connect ( (event) => {
-            option_revealer.reveal_child = true;
-            return false;
-        });
-        event_box.leave_notify_event.connect ( (event) => {
-            if (event.detail != Gdk.NotifyType.INFERIOR && !showing_menu) {
-                option_revealer.reveal_child = false;
-            }
-            return false;
-        });
+        event_box.enter_notify_event.connect (on_event_box_enter_notify_event);
+        event_box.leave_notify_event.connect (on_event_box_leave_notify_event);
+    }
+
+    private bool on_event_box_enter_notify_event (Gdk.EventCrossing event) {
+        option_revealer.reveal_child = true;
+        return false;
+    }
+
+    private bool on_event_box_leave_notify_event (Gdk.EventCrossing event) {
+        if (event.detail != Gdk.NotifyType.INFERIOR && !showing_menu) {
+            option_revealer.reveal_child = false;
+        }
+        return false;
     }
 
     public void show_menu () {
