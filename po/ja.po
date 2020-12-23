@@ -338,8 +338,8 @@ msgid "Not a known list: %s"
 msgstr "既知のリストではありません: %s"
 
 #: ../src/Main.vala:236
-msgid "%s: Error: %s"
-msgstr "%s: エラー: %s"
+msgid "%1$s: Error: %2$s"
+msgstr "%1$s: エラー: %2$s"
 
 #. / Describes format of printed table (table contains the known lists)
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
@@ -432,8 +432,8 @@ msgid "Done"
 msgstr "完了"
 
 #: ../src/Services/ActivityLog.vala:72
-msgid "Couldn't write to %s: %s"
-msgstr "%s に書き込めませんでした: %s"
+msgid "Couldn't write to %1$s: %2$s"
+msgstr "%1$s に書き込めませんでした: %2$s"
 
 #: ../src/Services/Notifications.vala:100 ../src/Widgets/TimerView.vala:97
 #: ../plugins/appindicator/appindicator.vala:213
@@ -548,7 +548,7 @@ msgstr "リストの名前"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 msgid ""
-"Task list location has been changed to \"%s\" (was \"%s\"), but this file "
+"Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this file "
 "already exists."
 msgstr ""
 "タスク一覧の場所が \"%2$s\" から \"%1$s\" に変更されましたが、このファイルは"
@@ -556,7 +556,7 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
-"The location to store completed tasks in has been changed to \"%s\" (was \"%s"
+"The location to store completed tasks in has been changed to \"%1$s\" (was \"%2$s"
 "\"), but this file already exists."
 msgstr ""
 "完了したタスクを保存する場所が \"%2$s\" から \"%1$s\" に変更されましたが、こ"
@@ -711,7 +711,7 @@ msgid "%Y-%m-%d"
 msgstr "%Y-%m-%d"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:329
-msgid "Task completed at %s, created at %s"
+msgid "Task completed at %1$s, created at %2$s"
 msgstr "タスクは %2$s に作成され、%1$s に完了しました"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:335
@@ -727,8 +727,8 @@ msgid "%u minutes"
 msgstr "%u 分"
 
 #: ../src/Utils.vala:190
-msgid "%u hours and %u minutes"
-msgstr "%u 時間 %u 分"
+msgid "%1$u hours and %2$u minutes"
+msgstr "%1$u 時間 %2$u 分"
 
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234

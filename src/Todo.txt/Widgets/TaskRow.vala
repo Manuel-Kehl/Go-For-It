@@ -326,7 +326,7 @@ class GOFI.TXT.TaskRow: DragListRow {
 
             if (task.done && completion_date != null) {
                 this.tooltip_text =
-                    _("Task completed at %s, created at %s").printf (
+                    _("Task completed at %1$s, created at %2$s").printf (
                         completion_date.format (date_format),
                         creation_date.format (date_format)
                     );

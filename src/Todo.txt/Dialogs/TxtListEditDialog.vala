@@ -68,8 +68,8 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     private string name_lbl_text = _("List name") + ":";
 
 
-    string todo_replace_info = _("Task list location has been changed to \"%s\" (was \"%s\"), but this file already exists."); // vala-lint=line-length
-    string done_replace_info = _("The location to store completed tasks in has been changed to \"%s\" (was \"%s\"), but this file already exists."); // vala-lint=line-length
+    string todo_replace_info = _("Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this file already exists."); // vala-lint=line-length
+    string done_replace_info = _("The location to store completed tasks in has been changed to \"%1$s\" (was \"%2$s\"), but this file already exists."); // vala-lint=line-length
 
     public signal void add_list_clicked (ListSettings lsettings, ConflictChoices? file_operations);
 

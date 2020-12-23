@@ -233,7 +233,7 @@ class GOFI.Main : Gtk.Application {
             multi_arg_parse (ref args);
             context.parse_strv (ref args);
         } catch (Error e) {
-            stdout.printf (_("%s: Error: %s") + "\n", GOFI.APP_NAME, e.message);
+            stdout.printf (_("%1$s: Error: %2$s") + "\n", GOFI.APP_NAME, e.message);
             return 0;
         }
 

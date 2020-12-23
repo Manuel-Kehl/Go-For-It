@@ -336,8 +336,8 @@ msgid "Not a known list: %s"
 msgstr "Not a known list: %s"
 
 #: ../src/Main.vala:236
-msgid "%s: Error: %s"
-msgstr "%s: Error: %s"
+msgid "%1$s: Error: %2$s"
+msgstr "%1$s: Error: %2$s"
 
 #. / Describes format of printed table (table contains the known lists)
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
@@ -430,8 +430,8 @@ msgid "Done"
 msgstr "Done"
 
 #: ../src/Services/ActivityLog.vala:72
-msgid "Couldn't write to %s: %s"
-msgstr "Couldn't write to %s: %s"
+msgid "Couldn't write to %1$s: %2$s"
+msgstr "Couldn't write to %1$s: %2$s"
 
 #: ../src/Services/Notifications.vala:100 ../src/Widgets/TimerView.vala:97
 #: ../plugins/appindicator/appindicator.vala:213
@@ -546,7 +546,7 @@ msgstr "List name"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 msgid ""
-"Task list location has been changed to \"%s\" (was \"%s\"), but this file "
+"Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this file "
 "already exists."
 msgstr ""
 "Task list location has been changed to “%s” (was “%s”), but this file "
@@ -554,7 +554,7 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
-"The location to store completed tasks in has been changed to \"%s\" (was \"%s"
+"The location to store completed tasks in has been changed to \"%1$s\" (was \"%2$s"
 "\"), but this file already exists."
 msgstr ""
 "The location to store completed tasks in has been changed to “%s” (was "
@@ -710,8 +710,8 @@ msgid "%Y-%m-%d"
 msgstr "%Y-%m-%d"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:329
-msgid "Task completed at %s, created at %s"
-msgstr "Task completed at %s, created at %s"
+msgid "Task completed at %1$s, created at %2$s"
+msgstr "Task completed at %1$s, created at %2$s"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:335
 msgid "Task created at %s"
@@ -726,8 +726,8 @@ msgid "%u minutes"
 msgstr "%u minutes"
 
 #: ../src/Utils.vala:190
-msgid "%u hours and %u minutes"
-msgstr "%u hours and %u minutes"
+msgid "%1$u hours and %2$u minutes"
+msgstr "%1$u hours and %2$u minutes"
 
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234

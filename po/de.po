@@ -341,8 +341,8 @@ msgid "Not a known list: %s"
 msgstr "Keine bekannte Liste: %s"
 
 #: ../src/Main.vala:236
-msgid "%s: Error: %s"
-msgstr "%s: Fehler: %s"
+msgid "%1$s: Error: %2$s"
+msgstr "%1$s: Fehler: %2$s"
 
 #. / Describes format of printed table (table contains the known lists)
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
@@ -435,8 +435,8 @@ msgid "Done"
 msgstr "Erledigt"
 
 #: ../src/Services/ActivityLog.vala:72
-msgid "Couldn't write to %s: %s"
-msgstr "Konnte nicht in %s schreiben: %s"
+msgid "Couldn't write to %1$s: %2$s"
+msgstr "Konnte nicht in %1$s schreiben: %2$s"
 
 #: ../src/Services/Notifications.vala:100 ../src/Widgets/TimerView.vala:97
 #: ../plugins/appindicator/appindicator.vala:213
@@ -551,19 +551,19 @@ msgstr "Listenname"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 msgid ""
-"Task list location has been changed to \"%s\" (was \"%s\"), but this file "
+"Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this file "
 "already exists."
 msgstr ""
-"Der Speicherort der Aufgabenliste wurde in „%s“ geändert (war „%s“), aber "
+"Der Speicherort der Aufgabenliste wurde in „%1$s“ geändert (war „%2$s“), aber "
 "diese Datei ist bereits vorhanden."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
-"The location to store completed tasks in has been changed to \"%s\" (was \"%s"
+"The location to store completed tasks in has been changed to \"%1$s\" (was \"%2$s"
 "\"), but this file already exists."
 msgstr ""
-"Der Speicherort für abgeschlossene Aufgaben wurde in „%s“ geändert (war "
-"„%s“), aber diese Datei ist bereits vorhanden."
+"Der Speicherort für abgeschlossene Aufgaben wurde in „%1$s“ geändert (war "
+"„%2$s“), aber diese Datei ist bereits vorhanden."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
@@ -722,8 +722,8 @@ msgid "%Y-%m-%d"
 msgstr "%d.%m.%Y"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:329
-msgid "Task completed at %s, created at %s"
-msgstr "Aufgabe abgeschlossen um %s, angelegt um %s"
+msgid "Task completed at %1$s, created at %2$s"
+msgstr "Aufgabe abgeschlossen um %1$s, angelegt um %2$s"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:335
 msgid "Task created at %s"
@@ -738,8 +738,8 @@ msgid "%u minutes"
 msgstr "%u Minuten"
 
 #: ../src/Utils.vala:190
-msgid "%u hours and %u minutes"
-msgstr "%u Uhr und %u Minuten"
+msgid "%1$u hours and %2$u minutes"
+msgstr "%1$u Uhr und %2$u Minuten"
 
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234

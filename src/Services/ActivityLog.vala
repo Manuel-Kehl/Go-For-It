@@ -69,7 +69,7 @@ class GOFI.ActivityLog {
                 stop_time_local.to_string ()
             ));
         } catch (Error e) {
-            warning (_("Couldn't write to %s: %s"), file.get_uri (), e.message);
+            warning (_("Couldn't write to %1$s: %2$s"), file.get_uri (), e.message);
         }
     }
 }

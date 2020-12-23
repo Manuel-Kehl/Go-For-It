@@ -187,7 +187,7 @@ namespace GOFI {
             if (hours == 0) {
                 return _("%u minutes").printf (minutes);
             }
-            return _("%u hours and %u minutes").printf (hours, minutes);
+            return _("%1$u hours and %2$u minutes").printf (hours, minutes);
         }
 
         public static void uint_to_time (uint time_val, out uint hours, out uint minutes, out uint seconds) {

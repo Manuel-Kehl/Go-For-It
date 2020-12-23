@@ -337,8 +337,8 @@ msgid "Not a known list: %s"
 msgstr "Niet een bekende lijst: %s"
 
 #: ../src/Main.vala:236
-msgid "%s: Error: %s"
-msgstr "%s: Fout: %s"
+msgid "%1$s: Error: %2$s"
+msgstr "%1$s: Fout: %2$s"
 
 #. / Describes format of printed table (table contains the known lists)
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
@@ -431,8 +431,8 @@ msgid "Done"
 msgstr "Gedaan"
 
 #: ../src/Services/ActivityLog.vala:72
-msgid "Couldn't write to %s: %s"
-msgstr "Kon map niet schrijven naar %s: %s"
+msgid "Couldn't write to %1$s: %2$s"
+msgstr "Kon map niet schrijven naar %1$s: %2$s"
 
 #: ../src/Services/Notifications.vala:100 ../src/Widgets/TimerView.vala:97
 #: ../plugins/appindicator/appindicator.vala:213
@@ -547,18 +547,18 @@ msgstr "Lijst naam"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 msgid ""
-"Task list location has been changed to \"%s\" (was \"%s\"), but this file "
+"Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this file "
 "already exists."
 msgstr ""
-"De locatie van de takenlijst is gewijzigd naar \"%s\" (was \"%s\"), maar dit "
+"De locatie van de takenlijst is gewijzigd naar \"%1$s\" (was \"%2$s\"), maar dit "
 "bestand bestaat al."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
-"The location to store completed tasks in has been changed to \"%s\" (was \"%s"
+"The location to store completed tasks in has been changed to \"%1$s\" (was \"%2$s"
 "\"), but this file already exists."
 msgstr ""
-"Het bestand met voltooide taken is veranderd naar \"%s\" (was \"%s\"), maar "
+"Het bestand met voltooide taken is veranderd naar \"%1$s\" (was \"%2$s\"), maar "
 "dit bestand bestaat al."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
@@ -712,8 +712,8 @@ msgid "%Y-%m-%d"
 msgstr "%Y-%m-%d"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:329
-msgid "Task completed at %s, created at %s"
-msgstr "Taak was voltooid op %s en aangemaakt op %s"
+msgid "Task completed at %1$s, created at %2$s"
+msgstr "Taak was voltooid op %1$s en aangemaakt op %2$s"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:335
 msgid "Task created at %s"
@@ -728,8 +728,8 @@ msgid "%u minutes"
 msgstr "%u minuten"
 
 #: ../src/Utils.vala:190
-msgid "%u hours and %u minutes"
-msgstr "%u uur en %u minuten"
+msgid "%1$u hours and %2$u minutes"
+msgstr "%1$u uur en %2$u minuten"
 
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234

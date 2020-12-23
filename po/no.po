@@ -343,8 +343,8 @@ msgid "Not a known list: %s"
 msgstr "Ikke en kjent liste: %s"
 
 #: ../src/Main.vala:236
-msgid "%s: Error: %s"
-msgstr "%s: Feil: %s"
+msgid "%1$s: Error: %2$s"
+msgstr "%1$s: Feil: %2$s"
 
 #. / Describes format of printed table (table contains the known lists)
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
@@ -437,8 +437,8 @@ msgid "Done"
 msgstr "Ferdig"
 
 #: ../src/Services/ActivityLog.vala:72
-msgid "Couldn't write to %s: %s"
-msgstr "Kunne ikke skrive til %s: %s"
+msgid "Couldn't write to %1$s: %2$s"
+msgstr "Kunne ikke skrive til %1$s: %2$s"
 
 #: ../src/Services/Notifications.vala:100 ../src/Widgets/TimerView.vala:97
 #: ../plugins/appindicator/appindicator.vala:213
@@ -555,19 +555,19 @@ msgstr "Listenavn"
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 #, fuzzy
 msgid ""
-"Task list location has been changed to \"%s\" (was \"%s\"), but this file "
+"Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this file "
 "already exists."
 msgstr ""
-"Gjøremålslisteplassering endret til «%s» (fra «%s»), men denne filen finnes "
+"Gjøremålslisteplassering endret til «%1$s» (fra «%2$s»), men denne filen finnes "
 "allerede."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 #, fuzzy
 msgid ""
-"The location to store completed tasks in has been changed to \"%s\" (was \"%s"
+"The location to store completed tasks in has been changed to \"%1$s\" (was \"%2$s"
 "\"), but this file already exists."
 msgstr ""
-"Plassering å lagre fullførte gjøremål endret til «%s» (fra «%s»), men denne "
+"Plassering å lagre fullførte gjøremål endret til «%1$s» (fra «%2$s»), men denne "
 "filen finnes allerede."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
@@ -727,8 +727,8 @@ msgid "%Y-%m-%d"
 msgstr "%d.%m.%Y"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:329
-msgid "Task completed at %s, created at %s"
-msgstr "Gjøremål fullført %s, opprettet %s"
+msgid "Task completed at %1$s, created at %2$s"
+msgstr "Gjøremål fullført %1$s, opprettet %2$s"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:335
 msgid "Task created at %s"
@@ -743,8 +743,8 @@ msgid "%u minutes"
 msgstr "%u minutter"
 
 #: ../src/Utils.vala:190
-msgid "%u hours and %u minutes"
-msgstr "%u timer og %u minutter"
+msgid "%1$u hours and %2$u minutes"
+msgstr "%1$u timer og %2$u minutter"
 
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234
