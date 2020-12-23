@@ -217,7 +217,7 @@ class GOFI.TXT.TxtList : GOFI.TaskList, Object {
     /**
      * This function is called when this list is no longer in use but may be
      * loaded again in the future.
-     * Widgets and other objects should be freed to preserver resources.
+     * Widgets and other objects should be freed to preserve resources.
      */
     public void unload () {
         task_manager.prepare_free ();
