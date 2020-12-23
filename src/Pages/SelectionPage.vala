@@ -28,13 +28,13 @@ class GOFI.SelectionPage : Gtk.Grid {
     private TxtListEditDialog create_dialog;
     private Gtk.Widget placeholder;
 
+    private TodoListInfoRow? selected_row = null;
+
     /* Signals */
-    public signal void selection_changed (TodoListInfo selected_info);
     public signal void list_chosen (TodoListInfo selected_info);
 
     [Signal (action = true)]
     public virtual signal void list_edit_action () {
-        var selected_row = todolist_view.get_selected_row () as TodoListInfoRow;
         if (selected_row != null) {
             on_row_edit_clicked (selected_row.info);
         }
@@ -42,7 +42,6 @@ class GOFI.SelectionPage : Gtk.Grid {
 
     [Signal (action = true)]
     public virtual signal void list_delete_action () {
-        var selected_row = todolist_view.get_selected_row () as TodoListInfoRow;
         if (selected_row != null) {
             on_row_delete_clicked (selected_row.info);
         }
@@ -122,6 +121,9 @@ class GOFI.SelectionPage : Gtk.Grid {
         todolist_view.bind_model ((DragListModel)list_manager, create_row);
         todolist_view.vadjustment = scroll_view.vadjustment;
         todolist_view.row_activated.connect (on_todolist_view_row_activated);
+        todolist_view.row_selected.connect (on_todolist_view_row_selected);
+
+        on_todolist_view_row_selected (todolist_view.get_selected_row ());
 
         var placeholder_lbl = new Gtk.Label (_("Currently, no lists are configured.\nAdd one below!"));
         placeholder_lbl.margin = 10;
@@ -169,5 +171,17 @@ class GOFI.SelectionPage : Gtk.Grid {
             info = ((TodoListInfoRow) selected_row).info;
         }
         list_chosen (info);
+    }
+
+    private void on_todolist_view_row_selected (DragListRow? selected_row) {
+        if (this.selected_row != null) {
+            this.selected_row.show_menu_button = false;
+        }
+        if (selected_row != null) {
+            this.selected_row = (TodoListInfoRow) selected_row;
+            this.selected_row.show_menu_button = true;
+        } else {
+            this.selected_row = null;
+        }
     }
 }

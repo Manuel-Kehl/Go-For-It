@@ -30,6 +30,15 @@ class GOFI.TodoListInfoRow: DragListRow {
         private set;
     }
 
+    public bool show_menu_button {
+        get {
+            return option_revealer.reveal_child;
+        }
+        set {
+            option_revealer.reveal_child = value;
+        }
+    }
+
     public signal void delete_clicked (TodoListInfo info);
     public signal void edit_clicked (TodoListInfo info);
 
@@ -75,13 +84,16 @@ class GOFI.TodoListInfoRow: DragListRow {
     }
 
     private bool on_event_box_enter_notify_event (Gdk.EventCrossing event) {
-        option_revealer.reveal_child = true;
+        show_menu_button = true;
         return false;
     }
 
     private bool on_event_box_leave_notify_event (Gdk.EventCrossing event) {
         if (event.detail != Gdk.NotifyType.INFERIOR && !showing_menu) {
-            option_revealer.reveal_child = false;
+            if (is_selected ()) {
+                return false;
+            }
+            show_menu_button = false;
         }
         return false;
     }
@@ -90,7 +102,7 @@ class GOFI.TodoListInfoRow: DragListRow {
         if (showing_menu) {
             return;
         }
-        option_revealer.reveal_child = true;
+        show_menu_button = true;
         showing_menu = true;
         popover = new Gtk.Popover (options_button);
         popover.position = Gtk.PositionType.BOTTOM;
@@ -115,7 +127,7 @@ class GOFI.TodoListInfoRow: DragListRow {
     }
 
     private void on_popover_hidden () {
-        option_revealer.reveal_child = false;
+        show_menu_button = false;
         options_button.active = false;
 
         GLib.Idle.add (on_popover_animation_finished);
