@@ -548,19 +548,19 @@ msgstr "Nom de la liste"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 msgid ""
-"Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this file "
-"already exists."
+"Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this "
+"file already exists."
 msgstr ""
-"L'emplacement de la liste des tâches a été remplacé par « %1$s » (c'était « %2$s "
-"»), mais ce fichier existe déjà."
+"L'emplacement de la liste des tâches a été remplacé par « %1$s » (c'était « "
+"%2$s »), mais ce fichier existe déjà."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
-"The location to store completed tasks in has been changed to \"%1$s\" (was \"%2$s"
-"\"), but this file already exists."
+"The location to store completed tasks in has been changed to \"%1$s\" (was "
+"\"%2$s\"), but this file already exists."
 msgstr ""
-"L'emplacement dans lequel stocker les tâches terminées a été changé en « %1$s "
-"» (c'était « %2$s »), mais ce fichier existe déjà."
+"L'emplacement dans lequel stocker les tâches terminées a été changé en « "
+"%1$s » (c'était « %2$s »), mais ce fichier existe déjà."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"

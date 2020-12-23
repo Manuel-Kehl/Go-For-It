@@ -551,16 +551,16 @@ msgstr "Listenname"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 msgid ""
-"Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this file "
-"already exists."
+"Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this "
+"file already exists."
 msgstr ""
-"Der Speicherort der Aufgabenliste wurde in „%1$s“ geändert (war „%2$s“), aber "
-"diese Datei ist bereits vorhanden."
+"Der Speicherort der Aufgabenliste wurde in „%1$s“ geändert (war „%2$s“), "
+"aber diese Datei ist bereits vorhanden."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
-"The location to store completed tasks in has been changed to \"%1$s\" (was \"%2$s"
-"\"), but this file already exists."
+"The location to store completed tasks in has been changed to \"%1$s\" (was "
+"\"%2$s\"), but this file already exists."
 msgstr ""
 "Der Speicherort für abgeschlossene Aufgaben wurde in „%1$s“ geändert (war "
 "„%2$s“), aber diese Datei ist bereits vorhanden."
