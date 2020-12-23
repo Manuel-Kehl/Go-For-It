@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2020-11-02 14:53+0100\n"
-"Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/es/>\n"
+"PO-Revision-Date: 2020-12-25 12:29+0000\n"
+"Last-Translator: keponk <joel.gil05+gitlab@gmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2-dev\n"
+"X-Generator: Weblate 4.4.1-dev\n"
 "X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
 
 #: ../src/Constants.vala:72
@@ -21,11 +21,11 @@ msgstr ""
 
 #: ../src/Constants.vala:73
 msgid "Consider a donation to help the project"
-msgstr ""
+msgstr "Considera hacer una donación para apoyar el proyecto"
 
 #: ../src/Constants.vala:74
 msgid "Consider contributing to the project"
-msgstr ""
+msgstr "Considera contribuir al proyecto"
 
 #: ../src/Dialogs/AboutDialog.vala:27 ../src/MainWindow.vala:488
 msgid "About"
@@ -200,9 +200,8 @@ msgid "short breaks"
 msgstr "Descansos cortos"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:118
-#, fuzzy
 msgid "Resume task after the break"
-msgstr "Reanudar la tarea después del descanso"
+msgstr "Reanudar tarea después del descanso"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:125
 msgid "Reset timer after switching tasks"
@@ -273,22 +272,22 @@ msgstr "Sonido del fin del descanso"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:211
 msgid "Notification sounds"
-msgstr ""
+msgstr "Sonidos de notifiación"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:216
 msgid "Silent"
-msgstr ""
+msgstr "Mudo"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:259
 msgid "Select notification sound file"
-msgstr ""
+msgstr "Selecciona archivo de sonido de notificación"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:263
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:269
 #: ../src/Widgets/FileChooserWidget.vala:83
 #: ../src/Widgets/FileChooserWidget.vala:89
 msgid "_Select"
-msgstr ""
+msgstr "_Seleccionar"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
@@ -301,16 +300,16 @@ msgstr ""
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:4
 msgid "What should be done with these files?"
-msgstr ""
+msgstr "¿Que se debe hacer con estos archivos?"
 
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:5
 msgid "Overwrite"
-msgstr ""
+msgstr "Sobreescribir"
 
 #: ../src/LegacyStrings.vala:6
 msgid "The configured folder is already in use by another list."
-msgstr ""
+msgstr "El directorio seleccionado ya está siendo utilizada por otra lista."
 
 #: ../src/LegacyStrings.vala:7
 msgid "folder"
