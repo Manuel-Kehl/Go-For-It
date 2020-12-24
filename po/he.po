@@ -3,17 +3,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2020-12-22 13:29+0000\n"
+"PO-Revision-Date: 2020-12-25 12:29+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/he/>\n"
+"Language-Team: Hebrew <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.4.1-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Constants.vala:72
@@ -558,11 +558,11 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:92
 msgid "Edit to-do list properties"
-msgstr ""
+msgstr "עריכת מאפייני רשימת מטלות"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:94
 msgid "Apply"
-msgstr ""
+msgstr "החלה"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
 msgid "Log timer usage"
