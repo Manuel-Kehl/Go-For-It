@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2020-12-25 12:29+0000\n"
+"PO-Revision-Date: 2021-01-06 11:29+0000\n"
 "Last-Translator: keponk <joel.gil05+gitlab@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/es/>\n"
@@ -295,7 +295,7 @@ msgstr "%s necesita ser reiniciado para que los cambios surtan efecto."
 
 #: ../src/LegacyStrings.vala:3
 msgid "Todo.txt files were found in the destination folder."
-msgstr ""
+msgstr "Archivos Todo.txt fueron encontrados en la ruta de destino."
 
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:4
@@ -325,7 +325,7 @@ msgstr "Tema oscuro"
 
 #: ../src/LegacyStrings.vala:10
 msgid "Couldn't properly import settings from %s: %s"
-msgstr ""
+msgstr "No fue posible importar las configuraciones de %s: %s"
 
 #. / For versions <= 1.8, argument 1: filename, argument 2: error message
 #: ../src/LegacyStrings.vala:11
@@ -334,14 +334,17 @@ msgid ""
 "mountable location. Please change the path in the settings to a suitable "
 "folder or remove this file."
 msgstr ""
+"La ruta para el diretorio de todo.txt no apunta a un directorio, sino a un "
+"archivo o ubicación montada. Por favor cambia la ruta en las configuraciones "
+"a una adecuada o elimina este archivo."
 
 #: ../src/Main.vala:97
 msgid "Not a known list: %s"
-msgstr ""
+msgstr "Lista desconocida: %s"
 
 #: ../src/Main.vala:236
 msgid "%1$s: Error: %2$s"
-msgstr ""
+msgstr "%1$s: Error: %2$s"
 
 #. / Describes format of printed table (table contains the known lists)
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
@@ -352,7 +355,7 @@ msgstr ""
 #. / Translators: give translation of FILE in "--logfile=FILE" command line argument
 #: ../src/Main.vala:276
 msgid "FILE"
-msgstr ""
+msgstr "ARCHIVO"
 
 #. / Translators: give translation of LIST-TYPE in "--load LIST-TYPE LIST-ID" command line argument
 #: ../src/Main.vala:279
@@ -374,23 +377,23 @@ msgstr "Mostrar diálogo «Sobre»"
 
 #: ../src/Main.vala:286
 msgid "CSV file to log activities to."
-msgstr ""
+msgstr "Archivo CSV en donde registrar las actividades."
 
 #: ../src/Main.vala:287
 msgid "Show configured lists and exit"
-msgstr ""
+msgstr "Mostrar listas configuradas y salir"
 
 #: ../src/Main.vala:291
 msgid "Load the list specified by the list type and ID"
-msgstr ""
+msgstr "Cargar la lista especificada por el tipo de lista y ID"
 
 #: ../src/MainWindow.vala:66
 msgid "Go to overview"
-msgstr ""
+msgstr "Ir a la vista resumida"
 
 #: ../src/MainWindow.vala:67
 msgid "Go back to the to-do list"
-msgstr ""
+msgstr "Volver a la lista to-do"
 
 #: ../src/MainWindow.vala:358
 msgid "Menu"
@@ -402,11 +405,11 @@ msgstr "Contribuir / Donar"
 
 #: ../src/MainWindow.vala:506
 msgid "Mute sounds"
-msgstr ""
+msgstr "Mudo"
 
 #: ../src/MainWindow.vala:515 ../src/Services/Shortcuts.vala:164
 msgid "Filter tasks"
-msgstr ""
+msgstr "Filtrar tareas"
 
 #: ../src/Pages/SelectionPage.vala:123
 msgid ""
@@ -417,11 +420,11 @@ msgstr ""
 #: ../src/Pages/SelectionPage.vala:137 ../src/Pages/SelectionPage.vala:140
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
 msgid "Add list"
-msgstr ""
+msgstr "Agregar lista"
 
 #: ../src/Pages/TaskListPage.vala:142
 msgid "Lists"
-msgstr ""
+msgstr "Listas"
 
 #: ../src/Pages/TaskListPage.vala:148 ../src/Pages/TaskListPage.vala:236
 msgid "To-Do"
@@ -433,7 +436,7 @@ msgstr "Completado"
 
 #: ../src/Services/ActivityLog.vala:72
 msgid "Couldn't write to %1$s: %2$s"
-msgstr ""
+msgstr "No fue posible escribir a %1$s: %2$s"
 
 #: ../src/Services/Notifications.vala:100 ../src/Widgets/TimerView.vala:97
 #: ../plugins/appindicator/appindicator.vala:213
@@ -470,23 +473,23 @@ msgstr "Duración de la tarea"
 
 #: ../src/Services/Notifications.vala:143
 msgid "Consider switching to a different task"
-msgstr ""
+msgstr "Considera cambiar a una tarea distinta"
 
 #: ../src/Services/SettingsManager.vala:617
 msgid "Light"
-msgstr ""
+msgstr "Claro"
 
 #: ../src/Services/SettingsManager.vala:619
 msgid "Dark"
-msgstr ""
+msgstr "Oscuro"
 
 #: ../src/Services/SettingsManager.vala:621
 msgid "Default"
-msgstr ""
+msgstr "Predeterminado"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
-msgstr ""
+msgstr "desactivado"
 
 #: ../src/Services/Shortcuts.vala:165 ../src/Todo.txt/TxtList.vala:188
 #, fuzzy
@@ -501,7 +504,7 @@ msgstr "Agregar nueva tarea"
 
 #: ../src/Services/Shortcuts.vala:167
 msgid "Start/Stop the timer"
-msgstr ""
+msgstr "Empezar/Detener el cronómetro"
 
 #: ../src/Services/Shortcuts.vala:168
 msgid "Skip the break or skip to the break"
@@ -509,91 +512,97 @@ msgstr ""
 
 #: ../src/Services/Shortcuts.vala:169
 msgid "Edit the properties of a list or task"
-msgstr ""
+msgstr "Editar las propiedades de una lista o tarea"
 
 #: ../src/Services/Shortcuts.vala:171 ../src/Todo.txt/Widgets/TaskRow.vala:68
 #: ../src/Widgets/TimerView.vala:291
 #: ../plugins/appindicator/appindicator.vala:101
 msgid "Mark the task as complete"
-msgstr ""
+msgstr "Marcar la tarea como completada"
 
 #: ../src/Services/Shortcuts.vala:172
 msgid "Move selected row up"
-msgstr ""
+msgstr "Mover la fila seleccionada hacia arriba"
 
 #: ../src/Services/Shortcuts.vala:173
 msgid "Move selected row down"
-msgstr ""
+msgstr "Mover la fila seleccionada hacia abajo"
 
 #: ../src/Services/Shortcuts.vala:175
 msgid "Move to next task/row"
-msgstr ""
+msgstr "Mover a la siguiente tarea/fila"
 
 #: ../src/Services/Shortcuts.vala:176
 msgid "Move to previous task/row"
-msgstr ""
+msgstr "Mover a la tarea/fila anterior"
 
 #: ../src/Services/Shortcuts.vala:177
 msgid "Move to right screen"
-msgstr ""
+msgstr "Mover a la pantalla derecha"
 
 #: ../src/Services/Shortcuts.vala:178
 msgid "Move to left screen"
-msgstr ""
+msgstr "Mover a la pantalla izquierda"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid "Store to-do tasks in"
-msgstr ""
+msgstr "Guardar tareas to-do en"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid "Store completed tasks in"
-msgstr ""
+msgstr "Guardar tareas completadas en"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:68
 msgid "List name"
-msgstr ""
+msgstr "Nombre de la lista"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 msgid ""
 "Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this "
 "file already exists."
 msgstr ""
+"La ubicación de la lista de tareas cambió a \"%1$s\" (era \"%2$s\"), pero "
+"este archivo ya existe."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
 "The location to store completed tasks in has been changed to \"%1$s\" (was "
 "\"%2$s\"), but this file already exists."
 msgstr ""
+"La ubicación de las tareas completadas cambió a \"%1$s\" (era \"%2$s\"), "
+"pero este archivo ya existe."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
-msgstr ""
+msgstr "Nueva lista to-do"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:92
 msgid "Edit to-do list properties"
-msgstr ""
+msgstr "Editar la propiedades de la lista to-do"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:94
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
 msgid "Log timer usage"
-msgstr ""
+msgstr "Registrar uso del cronómetro"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:200
 msgid ""
 "Keep track of when you used the timer and what tasks you worked on while "
 "doing this."
 msgstr ""
+"Lleva un registro de cuándo se usó el temporizador y en qué tareas "
+"trabajaste mientras lo hacías."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
 msgid "This log will be saved as a CSV file."
-msgstr ""
+msgstr "Este registro será guardado como archivo CSV."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:205
 msgid "Log file"
-msgstr ""
+msgstr "Archivo de registro"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:215
 msgid "Select file to log timer usage in"
