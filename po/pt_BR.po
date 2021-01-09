@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2021-01-06 11:29+0000\n"
-"Last-Translator: Paulo Coghi <paulo@coghi.com.br>\n"
+"PO-Revision-Date: 2021-01-10 20:32+0000\n"
+"Last-Translator: Leandro Ramos <leandroembu@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "go-for-it/go-for-it/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -49,7 +49,7 @@ msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
 msgstr ""
-"submetendo código, artes, traduções ou documentação é um ótimo modo de "
+"Sumeter código, artes, traduções ou documentação é um ótimo meio de "
 "contribuir com o projeto:"
 
 #: ../src/Dialogs/ContributeDialog.vala:36
@@ -254,10 +254,8 @@ msgid "seconds"
 msgstr "segundos"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:130
-#, fuzzy
-#| msgid "Reminder before task ends"
 msgid "Reminder sound"
-msgstr "Lembrete antes do fim da tarefa"
+msgstr "Som de lembrete"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:140
 msgid "Start of break sound"
@@ -742,15 +740,15 @@ msgstr ""
 
 #: ../src/Widgets/DragList.vala:764
 msgid "Click and drag to reorder rows"
-msgstr ""
+msgstr "Clique e arraste para reordenar as linhas"
 
 #: ../src/Widgets/FileChooserWidget.vala:21
 msgid "Choose a file"
-msgstr ""
+msgstr "Escolha um arquivo"
 
 #: ../src/Widgets/TimerView.vala:100
 msgid "Skip the remainder of the break"
-msgstr ""
+msgstr "Pule o lembrete da pausa"
 
 #: ../src/Widgets/TimerView.vala:102
 msgid "Active Task"
@@ -758,7 +756,7 @@ msgstr "Tarefa ativa"
 
 #: ../src/Widgets/TimerView.vala:106
 msgid "Skip to the break"
-msgstr ""
+msgstr "Pule para a pausa"
 
 #: ../src/Widgets/TimerView.vala:147
 msgid "Pau_se"
@@ -777,7 +775,6 @@ msgstr "_Iniciar"
 #: ../src/Widgets/TimerView.vala:158
 #: ../plugins/appindicator/appindicator.vala:119
 #: ../plugins/appindicator/appindicator.vala:247
-#, fuzzy
 msgid "Start the timer"
 msgstr "Iniciar o temporizador"
 
@@ -817,19 +814,15 @@ msgstr "Editar"
 
 #: ../plugins/appindicator/appindicator.vala:78
 msgid "Open %s"
-msgstr ""
+msgstr "Abrir %s"
 
 #: ../plugins/appindicator/appindicator.vala:107
-#, fuzzy
-#| msgid "Move to next task/row"
 msgid "Switch to next task"
-msgstr "Avançar para a próxima tarefa/linha"
+msgstr "Mudar para a próxima tarefa"
 
 #: ../plugins/appindicator/appindicator.vala:113
-#, fuzzy
-#| msgid "Move to previous task/row"
 msgid "Switch to the previous task"
-msgstr "Ir para a tarefa/fila anterior"
+msgstr "Mudar para a tarefa anterior"
 
 #~ msgid "Couldn't create folder: %s"
 #~ msgstr "Não foi possível criar o diretório: %s"
