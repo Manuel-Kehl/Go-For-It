@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2020-11-27 07:29+0000\n"
-"Last-Translator: Asteriskers John <johnasteriskers@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/go-"
-"for-it/go-for-it/zh_Hans/>\n"
+"PO-Revision-Date: 2021-02-08 19:50+0000\n"
+"Last-Translator: Liu Tao <lyuutau@outlook.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"go-for-it/go-for-it/zh_Hans/>\n"
 "Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Constants.vala:72
@@ -91,7 +91,6 @@ msgid "Behavior"
 msgstr "行为"
 
 #: ../src/Dialogs/SettingsDialog.vala:77
-#, fuzzy
 msgid "Notifications"
 msgstr "通知"
 
@@ -148,7 +147,7 @@ msgstr "主题"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:56
 msgid "Timer mode"
-msgstr "计时器模式"
+msgstr "定时器模式"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:58
 msgid "Simple"
@@ -156,7 +155,7 @@ msgstr "简单"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:59
 msgid "Pomodoro"
-msgstr "番茄法"
+msgstr "番茄钟"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:60
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:215
@@ -206,7 +205,7 @@ msgstr "切换任务后重置计时器"
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:153
 #: ../src/Todo.txt/Widgets/TaskRow.vala:341
 msgid "Timer"
-msgstr "计时器"
+msgstr "定时器"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:147
 msgid "Placement of new tasks"
@@ -251,10 +250,8 @@ msgid "seconds"
 msgstr "秒"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:130
-#, fuzzy
-#| msgid "Reminder before task ends"
 msgid "Reminder sound"
-msgstr "任务结束前提醒"
+msgstr "提醒音"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:140
 msgid "Start of break sound"
@@ -266,7 +263,7 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:211
 msgid "Notification sounds"
-msgstr ""
+msgstr "通知音"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:216
 msgid "Silent"
@@ -274,52 +271,52 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:259
 msgid "Select notification sound file"
-msgstr ""
+msgstr "选择通知音文件"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:263
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:269
 #: ../src/Widgets/FileChooserWidget.vala:83
 #: ../src/Widgets/FileChooserWidget.vala:89
 msgid "_Select"
-msgstr ""
+msgstr "_选择"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
-msgstr ""
+msgstr "%s需要重新启动才能使更改生效。"
 
 #: ../src/LegacyStrings.vala:3
 msgid "Todo.txt files were found in the destination folder."
-msgstr ""
+msgstr "在目标文件夹中发现了 Todo.txt 文件。"
 
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:4
 msgid "What should be done with these files?"
-msgstr ""
+msgstr "这些文件应该如何处理？"
 
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:5
 msgid "Overwrite"
-msgstr ""
+msgstr "覆写"
 
 #: ../src/LegacyStrings.vala:6
 msgid "The configured folder is already in use by another list."
-msgstr ""
+msgstr "配置的文件夹已经被另一个列表使用。"
 
 #: ../src/LegacyStrings.vala:7
 msgid "folder"
-msgstr ""
+msgstr "文件夹"
 
 #: ../src/LegacyStrings.vala:8
 msgid "Inherit from GTK theme"
-msgstr ""
+msgstr "继承GTK主题"
 
 #: ../src/LegacyStrings.vala:9
 msgid "Dark theme"
-msgstr ""
+msgstr "黑暗主题"
 
 #: ../src/LegacyStrings.vala:10
 msgid "Couldn't properly import settings from %s: %s"
-msgstr ""
+msgstr "无法正确导入%s的设置。%s"
 
 #. / For versions <= 1.8, argument 1: filename, argument 2: error message
 #: ../src/LegacyStrings.vala:11
@@ -327,11 +324,11 @@ msgid ""
 "The path to the todo.txt folder does not point to a folder, but to a file or "
 "mountable location. Please change the path in the settings to a suitable "
 "folder or remove this file."
-msgstr ""
+msgstr "todo.txt 文件夹的路径并不指向文件夹，而是指向一个文件或可挂载位置。请在设置中把路径更改为合适的文件夹或删除该文件。"
 
 #: ../src/Main.vala:97
 msgid "Not a known list: %s"
-msgstr ""
+msgstr "不是已知名单：%s"
 
 #: ../src/Main.vala:236
 msgid "%1$s: Error: %2$s"
@@ -388,7 +385,7 @@ msgstr ""
 
 #: ../src/MainWindow.vala:358
 msgid "Menu"
-msgstr ""
+msgstr "菜单"
 
 #: ../src/MainWindow.vala:481
 msgid "Contribute / Donate"
@@ -423,7 +420,7 @@ msgstr ""
 
 #: ../src/Pages/TaskListPage.vala:150 ../src/Pages/TaskListPage.vala:239
 msgid "Done"
-msgstr ""
+msgstr "完成"
 
 #: ../src/Services/ActivityLog.vala:72
 msgid "Couldn't write to %1$s: %2$s"
@@ -432,7 +429,7 @@ msgstr ""
 #: ../src/Services/Notifications.vala:100 ../src/Widgets/TimerView.vala:97
 #: ../plugins/appindicator/appindicator.vala:213
 msgid "Take a Break"
-msgstr ""
+msgstr "休息一下"
 
 #: ../src/Services/Notifications.vala:102
 msgid "Relax and stop thinking about your current task for a while"
@@ -444,23 +441,23 @@ msgstr ""
 
 #: ../src/Services/Notifications.vala:108
 msgid "Your current task is"
-msgstr ""
+msgstr "你当前的任务是"
 
 #: ../src/Services/Notifications.vala:132
 msgid "Prepare for your break"
-msgstr ""
+msgstr "准备休息"
 
 #: ../src/Services/Notifications.vala:134
 msgid "You have %s seconds left"
-msgstr ""
+msgstr "你还有%s秒"
 
 #: ../src/Services/Notifications.vala:142
 msgid "Task duration exceeded"
-msgstr ""
+msgstr "超过任务持续时间"
 
 #: ../src/Services/Notifications.vala:143
 msgid "Consider switching to a different task"
-msgstr ""
+msgstr "考虑切换到其他任务"
 
 #: ../src/Services/SettingsManager.vala:617
 msgid "Light"
@@ -492,11 +489,11 @@ msgstr ""
 
 #: ../src/Services/Shortcuts.vala:168
 msgid "Skip the break or skip to the break"
-msgstr ""
+msgstr "跳过休息或跳到休息"
 
 #: ../src/Services/Shortcuts.vala:169
 msgid "Edit the properties of a list or task"
-msgstr ""
+msgstr "编辑列表或任务的属性"
 
 #: ../src/Services/Shortcuts.vala:171 ../src/Todo.txt/Widgets/TaskRow.vala:68
 #: ../src/Widgets/TimerView.vala:291
@@ -562,7 +559,7 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:94
 msgid "Apply"
-msgstr ""
+msgstr "应用"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
 msgid "Log timer usage"
@@ -612,7 +609,7 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:383
 msgid "Use default settings"
-msgstr ""
+msgstr "用默认设置"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:453
 msgid "The configured to-do file is already in use by another list."
@@ -629,7 +626,7 @@ msgstr ""
 
 #: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:397
 msgid "project"
-msgstr ""
+msgstr "项目"
 
 #: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:393
 msgid "context"
@@ -637,7 +634,7 @@ msgstr ""
 
 #: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:354
 msgid "priority"
-msgstr ""
+msgstr "优先"
 
 #: ../src/Todo.txt/TaskManager.vala:48
 msgid ""
@@ -686,7 +683,7 @@ msgstr ""
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:205
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:224
 msgid "Add new task"
-msgstr ""
+msgstr "新建任务"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
@@ -704,11 +701,11 @@ msgstr ""
 
 #: ../src/Utils.vala:180
 msgid "min."
-msgstr ""
+msgstr "分钟"
 
 #: ../src/Utils.vala:188
 msgid "%u minutes"
-msgstr ""
+msgstr "%u 分钟"
 
 #: ../src/Utils.vala:190
 msgid "%1$u hours and %2$u minutes"
@@ -778,7 +775,7 @@ msgstr ""
 
 #: ../src/Widgets/TimerView.vala:317
 msgid "Relax"
-msgstr ""
+msgstr "放松"
 
 #: ../src/Widgets/TimerView.vala:318
 msgid "You have nothing to do."
@@ -786,11 +783,11 @@ msgstr ""
 
 #: ../src/Widgets/TodoListInfoRow.vala:99
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
 #: ../src/Widgets/TodoListInfoRow.vala:100
 msgid "Edit"
-msgstr ""
+msgstr "编辑"
 
 #: ../plugins/appindicator/appindicator.vala:78
 msgid "Open %s"
