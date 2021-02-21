@@ -383,7 +383,8 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 #endif
         menu_btn.popover = menu_popover;
 
-        switch_img = new Gtk.Image.from_icon_name ("go-next", settings.toolbar_icon_size);
+        var next_icon = GOFI.Utils.get_image_fallback ("go-next-symbolic", "go-next");
+        switch_img = new Gtk.Image.from_icon_name (next_icon, settings.toolbar_icon_size);
         switch_btn = new Gtk.ToolButton (switch_img, null);
         switch_btn.hexpand = false;
         switch_btn.sensitive = false;
