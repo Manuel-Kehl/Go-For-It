@@ -36,7 +36,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     private SelectionPage selection_page;
     private TaskListPage task_page;
     private Gtk.MenuButton menu_btn;
-    private Gtk.ToolButton switch_btn;
+    private Gtk.Button switch_btn;
     private Gtk.Image switch_img;
 
     // Application Menu
@@ -216,8 +216,10 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     }
 
     private void on_icon_size_changed (Gtk.IconSize size) {
+#if USE_GRANITE
         ((Gtk.Image) menu_btn.image).icon_size = size;
         switch_img.icon_size = size;
+#endif
     }
 
     /**
@@ -366,10 +368,20 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     }
 
     private void setup_top_bar () {
+#if USE_GRANITE
+        var icon_size = settings.toolbar_icon_size;
         // Butons and their corresponding images
         var menu_img = GOFI.Utils.load_image_fallback (
-            settings.toolbar_icon_size, "open-menu", "open-menu-symbolic",
-            "open-menu-fallback");
+            icon_size, "open-menu", "open-menu-symbolic", "open-menu-fallback"
+        );
+#else
+        var icon_size = Gtk.IconSize.BUTTON;
+        // Butons and their corresponding images
+        var menu_img = GOFI.Utils.load_image_fallback (
+            icon_size, "open-menu-symbolic", "open-menu", "open-menu-fallback"
+        );
+#endif
+
         menu_btn = new Gtk.MenuButton ();
         menu_btn.hexpand = false;
         menu_btn.image = menu_img;
@@ -384,8 +396,9 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         menu_btn.popover = menu_popover;
 
         var next_icon = GOFI.Utils.get_image_fallback ("go-next-symbolic", "go-next");
-        switch_img = new Gtk.Image.from_icon_name (next_icon, settings.toolbar_icon_size);
-        switch_btn = new Gtk.ToolButton (switch_img, null);
+
+        switch_btn = new Gtk.Button.from_icon_name (next_icon, icon_size);
+        switch_img = (Gtk.Image) switch_btn.image;
         switch_btn.hexpand = false;
         switch_btn.sensitive = false;
         switch_btn.clicked.connect (toggle_top_stack);
@@ -403,6 +416,12 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     }
 
     private void switch_top_stack (bool show_select) {
+#if USE_GRANITE
+        var icon_size = settings.toolbar_icon_size;
+#else
+        var icon_size = Gtk.IconSize.BUTTON;
+#endif
+
         if (show_select) {
             var shown_list = task_page.shown_list;
             if (shown_list != null) {
@@ -412,7 +431,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             top_stack.set_visible_child (selection_page);
 
             var next_icon = GOFI.Utils.get_image_fallback ("go-next-symbolic", "go-next");
-            switch_img.set_from_icon_name (next_icon, settings.toolbar_icon_size);
+            switch_img.set_from_icon_name (next_icon, icon_size);
             switch_btn.tooltip_text = SWITCH_BTN_LIST_TEXT;
             settings.list_last_loaded = null;
             task_page.show_switcher (false);
@@ -422,7 +441,7 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             var current_list_info = task_page.shown_list.list_info;
             top_stack.set_visible_child (task_page);
             var prev_icon = GOFI.Utils.get_image_fallback ("go-previous-symbolic", "go-previous");
-            switch_img.set_from_icon_name (prev_icon, settings.toolbar_icon_size);
+            switch_img.set_from_icon_name (prev_icon, icon_size);
             switch_btn.tooltip_text = SWITCH_BTN_OVERVIEW_TEXT;
             if (current_list_info != null) {
                 settings.list_last_loaded = ListIdentifier.from_info (current_list_info);
