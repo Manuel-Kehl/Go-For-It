@@ -14,9 +14,6 @@ Go For It! is a simple and stylish productivity app, featuring a to-do list, mer
     <p>
 To-do lists are stored in the Todo.txt format. This simplifies synchronization with mobile devices and makes it possible to edit tasks using other front-ends.
     </p>
-    <p>
-If you already use Todo.txt, beware of the fact, that Go For It! automatically archives completed tasks to the done list!
-    </p>
   </description>
   <screenshots>
     <screenshot type="default">
@@ -35,6 +32,20 @@ If you already use Todo.txt, beware of the fact, that Go For It! automatically a
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
+    <release version="1.9.1" date="2021-02-22">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>For each list, You can now select wether you would like to log creation dates to the todo.txt files.</li>
+          <li>It should now be easier to edit list properties for touchscreen users.</li>
+        </ul>
+        <p>Bugfixes:</p>
+        <ul>
+          <li>At startup the "return to list" (->) button could use the wrong icon, depending on the icon theme.</li>
+          <li>The menu button would be blurry on Adwaita.</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.9.0" date="2020-12-09">
       <description>
         <p>Improvements:</p>

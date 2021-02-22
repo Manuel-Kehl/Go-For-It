@@ -1,5 +1,17 @@
 # Change Log
 
+## [1.9.1](https://github.com/JMoerman/Go-For-It/tree/1.9.1) (2020-02-22)
+
+**Implemented enhancements:**
+
+- For each list, You can now select wether you would like to log creation dates to the todo.txt files.
+- It should now be easier to edit list properties for touchscreen users.
+
+**Fixed bugs:**
+
+- At startup the "return to list" (->) button could use the wrong icon, depending on the icon theme.
+- The menu button would be blurry on Adwaita.
+
 ## [1.9.0](https://github.com/JMoerman/Go-For-It/tree/1.9.0) (2020-12-09)
 
 _Go For It!_ now no longer (directly) uses key files to store its settings. GLib.Settings is now used for this purpose (of which the default backend is often DConf). I'm not aware of any project that reads or modifies the old configuation files of _Go For It!_, so I don't expect this to cause any issues. Old settings still get imported into the new version, of course.
