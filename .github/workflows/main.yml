@@ -15,7 +15,7 @@ jobs:
     - name: Install Dependencies
       run: |
         apt update
-        apt install -y libgranite-dev libgtk-3-dev libcanberra-dev libayatana-appindicator3-dev libpeas-dev cmake ninja valac
+        apt install -y libgranite-dev libgtk-3-dev libcanberra-dev libayatana-appindicator3-dev libpeas-dev cmake ninja-buld valac
     - name: Build
       run: |
         mkdir build
@@ -23,15 +23,3 @@ jobs:
         cmake -DNO_CONTRIBUTE_DIALOG:BOOL="1" -DUSE_GRANITE:BOOL="1" -DDEFAULT_PLUGINS:STRING="['launcherindicator']" -DBUILD_TESTS:BOOL="1" -G Ninja ..
         ninja
         ninja install
-
-  lint:
-
-    runs-on: ubuntu-latest
-
-    container:
-      image: valalang/lint
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Lint
-      run: io.elementary.vala-lint -d .
