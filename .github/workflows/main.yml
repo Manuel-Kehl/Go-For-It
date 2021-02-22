@@ -23,3 +23,4 @@ jobs:
         cmake -DNO_CONTRIBUTE_DIALOG:BOOL="1" -DUSE_GRANITE:BOOL="1" -DDEFAULT_PLUGINS:STRING="['launcherindicator']" -DBUILD_TESTS:BOOL="1" -G Ninja ..
         ninja
         ninja install
+        ninja test
