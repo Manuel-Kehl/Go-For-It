@@ -122,6 +122,12 @@ class GOFI.Main : Gtk.Application {
 
         kbsettings = new KeyBindingSettings ();
 
+        var quit_action = new SimpleAction ("quit", null);
+        quit_action.activate.connect (quit_application);
+
+        add_action (quit_action);
+        set_accels_for_action ("app.quit", { "<Control>q" });
+
         if (info == null) {
             info = get_last_list_info ();
         }
@@ -129,6 +135,15 @@ class GOFI.Main : Gtk.Application {
         win = new MainWindow (this, task_timer, info);
         win.show_all ();
         win.delete_event.connect (on_win_delete_event);
+    }
+
+    private void quit_application () {
+        task_timer.stop ();
+        win.save_win_geometry ();
+        win.destroy ();
+        win = null;
+        task_timer = null;
+        notification_service = null;
     }
 
     private bool on_win_delete_event () {
