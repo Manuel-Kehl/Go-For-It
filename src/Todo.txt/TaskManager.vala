@@ -175,7 +175,10 @@ class GOFI.TXT.TaskManager {
     }
 
     private bool auto_refresh () {
-        if (todo_watcher.being_updated || done_watcher.being_updated) {
+        if (todo_watcher.being_updated) {
+            return true;
+        }
+        if (done_watcher != null && done_watcher.being_updated) {
             return true;
         }
 
