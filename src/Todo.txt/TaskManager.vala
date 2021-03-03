@@ -462,10 +462,10 @@ class GOFI.TXT.TaskManager {
 
         try {
             ensure_file_exists (file);
-            var file_io_stream =
-                file.replace_readwrite (null, true, FileCreateFlags.NONE);
+            var file_out_stream =
+                file.replace (null, true, FileCreateFlags.NONE);
             var stream_out =
-                new DataOutputStream (file_io_stream.output_stream);
+                new DataOutputStream (file_out_stream);
 
             foreach (var store in stores) {
                 write_tasks_to_stream (store, stream_out, lsettings.log_timer_in_txt);
