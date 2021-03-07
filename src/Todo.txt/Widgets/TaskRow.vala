@@ -317,8 +317,8 @@ class GOFI.TXT.TaskRow: DragListRow {
         }
 
         public void update_tooltip () {
-            DateTime completion_date = task.completion_date;
-            DateTime creation_date = task.creation_date;
+            GOFI.Date? completion_date = task.completion_date;
+            GOFI.Date? creation_date = task.creation_date;
 
             /// see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
             // formatting of DateTime
@@ -327,13 +327,13 @@ class GOFI.TXT.TaskRow: DragListRow {
             if (task.done && completion_date != null) {
                 this.tooltip_text =
                     _("Task completed at %1$s, created at %2$s").printf (
-                        completion_date.format (date_format),
-                        creation_date.format (date_format)
+                        completion_date.dt.format (date_format),
+                        creation_date.dt.format (date_format)
                     );
             } else if (creation_date != null) {
                 var timer_value = task.timer_value;
                 var new_tooltip_text = _("Task created at %s").printf (
-                        creation_date.format (date_format)
+                        creation_date.dt.format (date_format)
                 );
 
                 if (timer_value >= 60) {

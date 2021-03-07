@@ -1,4 +1,4 @@
-/* Copyright 2016-2020 GoForIt! developers
+/* Copyright 2016-2021 GoForIt! developers
 *
 * This file is part of GoForIt!.
 *
@@ -71,7 +71,7 @@ class GOFI.TXT.TxtTask : TodoTask {
         public set {
             if (_done != value) {
                 if (value && creation_date != null) {
-                    completion_date = new GLib.DateTime.now_local ();
+                    completion_date = new Date (new GLib.DateTime.now_local ());
                 } else {
                     completion_date = null;
                 }
@@ -82,14 +82,16 @@ class GOFI.TXT.TxtTask : TodoTask {
     }
     private bool _done;
 
-    public DateTime? creation_date {
+    public GOFI.Date? creation_date {
         public get;
         public set;
+        default = null;
     }
 
-    public DateTime? completion_date {
+    public GOFI.Date? completion_date {
         public get;
         public set;
+        default = null;
     }
 
     public uint8 priority {
@@ -97,7 +99,6 @@ class GOFI.TXT.TxtTask : TodoTask {
         public set;
     }
     public const uint8 NO_PRIO=127;
-
 
     private void set_descr_parts (owned TxtPart[] parts) {
         _parts = (owned) parts;
@@ -121,9 +122,10 @@ class GOFI.TXT.TxtTask : TodoTask {
     }
 
     public TxtTask.from_simple_txt (string descr, bool done) {
-        base ("");
-        creation_date = new GLib.DateTime.now_local ();
-        completion_date = null;
+        Object (
+            done: false,
+            creation_date: new Date (new GLib.DateTime.now_local ())
+        );
         update_from_simple_txt (descr);
     }
 
@@ -162,7 +164,7 @@ class GOFI.TXT.TxtTask : TodoTask {
         }
     }
 
-    private inline DateTime? try_parse_date (string[] parts, ref uint index) {
+    private inline GOFI.Date? try_parse_date (string[] parts, ref uint index) {
         uint _index = index;
         if (parts[_index] != null && is_date (parts[_index])) {
             index++;
@@ -172,8 +174,8 @@ class GOFI.TXT.TxtTask : TodoTask {
     }
 
     private inline void parse_dates (string[] parts, ref uint index) {
-        DateTime? date1 = try_parse_date (parts, ref index);
-        DateTime? date2 = null;
+        GOFI.Date? date1 = try_parse_date (parts, ref index);
+        GOFI.Date? date2 = null;
 
         if (date1 != null && _done && (date2 = try_parse_date (parts, ref index)) != null) {
             creation_date = date2;
@@ -218,14 +220,20 @@ class GOFI.TXT.TxtTask : TodoTask {
         for (p=unparsed[offset]; p != null; offset++, p=unparsed[offset]) {
             var t = tokenize_descr_part (p);
             if (t.part_type == TxtPartType.TAG) {
-                if (t.tag_name == "timer" && is_timer_value (t.content)) {
-                    timer_value = string_to_timer (t.content);
-                    continue;
-                }
-                uint new_duration = 0;
-                if (t.tag_name == "duration" && match_duration_value (t.content, out new_duration)) {
-                    duration = new_duration;
-                    continue;
+                switch (t.tag_name) {
+                    case "timer":
+                        if (is_timer_value (t.content)) {
+                            timer_value = string_to_timer (t.content);
+                            continue;
+                        }
+                        break;
+                    case "duration":
+                        uint new_duration = 0;
+                        if (match_duration_value (t.content, out new_duration)) {
+                            duration = new_duration;
+                            continue;
+                        }
+                        break;
                 }
             }
             parsed_parts += (owned) t;
@@ -314,8 +322,8 @@ class GOFI.TXT.TxtTask : TodoTask {
     public string to_txt (bool log_timer) {
         string status_str = done ? "x " : "";
         string prio_str = prio_to_string ();
-        string comp_str = (completion_date != null) ? date_to_string (completion_date) + " " : "";
-        string crea_str = (creation_date != null) ? date_to_string (creation_date) + " " : "";
+        string comp_str = (completion_date != null) ? dt_to_string (completion_date.dt) + " " : "";
+        string crea_str = (creation_date != null) ? dt_to_string (creation_date.dt) + " " : "";
         string timer_str = (log_timer && timer_value != 0) ? " timer:" + timer_to_string (timer_value) : "";
         string duration_str = duration != 0 ? " " + duration_to_string () : "";
 
@@ -327,14 +335,28 @@ class GOFI.TXT.TxtTask : TodoTask {
             return 0;
         }
         if (this.priority == other.priority) {
-            var cmp_tmp = this.description.ascii_casecmp (other.description);
+            int cmp_tmp;
+
+            // Sort by description, case insensitive
+            cmp_tmp = this.description.ascii_casecmp (other.description);
             if (cmp_tmp != 0) {
                 return cmp_tmp;
             }
+
+            // Sort by description, case sensitive
             cmp_tmp = GLib.strcmp (this.description, other.description);
             if (cmp_tmp != 0) {
                 return cmp_tmp;
             }
+
+            // Sort by creation date
+            if (this.creation_date != null) {
+                if (other.creation_date != null) {
+                    cmp_tmp = this.creation_date.compare (other.creation_date);
+                }
+            }
+
+            // Last option: sort by memory address
             if (((void*) this) > ((void*) other)) {
                 return 1;
             }

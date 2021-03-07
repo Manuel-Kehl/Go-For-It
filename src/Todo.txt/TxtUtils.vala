@@ -88,17 +88,16 @@ namespace GOFI.TXT.TxtUtils {
         return false;
     }
 
-    public static DateTime string_to_date (string date_txt) {
+    public static Date string_to_date (string date_txt) {
         string[] date_parts = date_txt.split ("-", 3);
-        return new DateTime.local (
+        return new GOFI.Date.from_ymd (
             int.parse (date_parts[0]),
             int.parse (date_parts[1]),
-            int.parse (date_parts[2]),
-            0, 0, 0
+            int.parse (date_parts[2])
         );
     }
 
-    public static string date_to_string (DateTime date) {
+    public static string dt_to_string (DateTime date) {
         return date.format ("%Y-%m-%d");
     }
 

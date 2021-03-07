@@ -36,6 +36,7 @@ endif ()
 include (ValaPrecompile)
 vala_precompile (VALA_C ${LIBNAME}
     Constants.vala
+    Date.vala
     Utils.vala
     ListIdentifier.vala
     TodoListInfo.vala
