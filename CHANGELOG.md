@@ -1,6 +1,18 @@
 # Change Log
 
+## [1.9.2](https://github.com/JMoerman/Go-For-It/tree/1.9.2) (2020-03-08)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.9.1...1.9.2)
+
+**Implemented enhancements:**
+
+- Added a keyboard shortcut (Ctrl + Q) to close the application.
+
+**Fixed bugs:**
+
+- _Go For It!_ would give an error when trying to save a todo.txt list on an SMB share. _Go For It!_ still won't let you pick such a file as it cannot mount SMB shares itself.
+
 ## [1.9.1](https://github.com/JMoerman/Go-For-It/tree/1.9.1) (2020-02-22)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.9.0...1.9.1)
 
 **Implemented enhancements:**
 

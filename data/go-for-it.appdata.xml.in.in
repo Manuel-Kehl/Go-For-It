@@ -32,6 +32,18 @@ To-do lists are stored in the Todo.txt format. This simplifies synchronization w
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
+    <release version="1.9.2" date="2021-03-08">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Added a keyboard shortcut (Ctrl + Q) to close the application.</li>
+        </ul>
+        <p>Bugfixes:</p>
+        <ul>
+          <li>Go For It! would give an error when trying to save a todo.txt list on an SMB share. Go For It! still won't let you pick such a file as it cannot mount SMB shares itself.</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.9.1" date="2021-02-22">
       <description>
         <p>Improvements:</p>
