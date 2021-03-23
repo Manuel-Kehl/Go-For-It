@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2021-01-28 13:32+0000\n"
+"PO-Revision-Date: 2021-03-24 17:29+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/he/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Constants.vala:72
@@ -592,11 +592,11 @@ msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
 msgid "Select file to store completed tasks in"
-msgstr ""
+msgstr "נא לבחור קובץ לאחסון המשימות שהושלמו"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:287
 msgid "Log the time spent working on each task"
-msgstr ""
+msgstr "לתעד את הזמן שארכה כל משימה"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:289
 msgid "Log the total time spent working on a task using the timer."
