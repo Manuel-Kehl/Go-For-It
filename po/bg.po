@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2020-12-22 13:29+0000\n"
-"Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
-"Language-Team: Bulgarian <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/bg/>\n"
+"PO-Revision-Date: 2021-03-26 03:29+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Constants.vala:72
@@ -57,7 +57,7 @@ msgstr "Ако сте доволни от приложението, може д�
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr "Замени \"%s\"?"
+msgstr "Замени „%s“?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
@@ -365,7 +365,7 @@ msgstr "Покажи информация за версията и изход"
 
 #: ../src/Main.vala:285
 msgid "Show about dialog"
-msgstr "Покажи диалога \"За нас\""
+msgstr "Покажи диалога „За нас“"
 
 #: ../src/Main.vala:286
 msgid "CSV file to log activities to."
