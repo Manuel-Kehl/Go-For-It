@@ -3,22 +3,22 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2020-12-22 13:29+0000\n"
-"Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/go-"
-"for-it/hr/>\n"
+"PO-Revision-Date: 2021-03-26 03:29+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Constants.vala:72
 msgid "Spread the word about \"%s\""
-msgstr "Širi vijest o „%s”"
+msgstr "Širi vijest o „%s“"
 
 #: ../src/Constants.vala:73
 msgid "Consider a donation to help the project"
@@ -59,7 +59,7 @@ msgstr "Ako ti se doista sviđa ova aplikacija, možeš mi kupiti piće:"
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr "Zamijeniti „%s”?"
+msgstr "Zamijeniti „%s“?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
@@ -550,7 +550,7 @@ msgid ""
 "Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this "
 "file already exists."
 msgstr ""
-"Mjesto popisa zadataka promijenjeno je u „%1$s” (bilo je „%2$s”), ali ta "
+"Mjesto popisa zadataka promijenjeno je u „%1$s“ (bilo je „%2$s“), ali ta "
 "datoteka već postoji."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
@@ -558,8 +558,8 @@ msgid ""
 "The location to store completed tasks in has been changed to \"%1$s\" (was "
 "\"%2$s\"), but this file already exists."
 msgstr ""
-"Mjesto za spremanje završenih zadataka promijenjeno je u „%1$s” (bilo je "
-"„%2$s”), ali ta datoteka već postoji."
+"Mjesto za spremanje završenih zadataka promijenjeno je u „%1$s“ (bilo je "
+"„%2$s”“), ali ta datoteka već postoji."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
