@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2020-12-25 12:29+0000\n"
-"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
+"PO-Revision-Date: 2021-03-26 03:29+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/ja/>\n"
 "Language: ja\n"
@@ -12,12 +12,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.4.1-dev\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
 
 #: ../src/Constants.vala:72
 msgid "Spread the word about \"%s\""
-msgstr "\"%s\" に関する単語を広める"
+msgstr "「%s」 に関する単語を広める"
 
 #: ../src/Constants.vala:73
 msgid "Consider a donation to help the project"
@@ -58,7 +58,7 @@ msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr "\"%s\" を置き換えますか？"
+msgstr "「%s」を置き換えますか？"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
@@ -550,17 +550,13 @@ msgstr "リストの名前"
 msgid ""
 "Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this "
 "file already exists."
-msgstr ""
-"タスク一覧の場所が \"%2$s\" から \"%1$s\" に変更されましたが、このファイルは"
-"すでに存在します。"
+msgstr "タスク一覧の場所が 「%2$s」 から 「%1$s」に変更されましたが、このファイルはすでに存在します。"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
 "The location to store completed tasks in has been changed to \"%1$s\" (was "
 "\"%2$s\"), but this file already exists."
-msgstr ""
-"完了したタスクを保存する場所が \"%2$s\" から \"%1$s\" に変更されましたが、こ"
-"のファイルはすでに存在します。"
+msgstr "完了したタスクを保存する場所が 「%2$s」 から「%1$s 」に変更されましたが、このファイルはすでに存在します。"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
