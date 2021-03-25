@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2021-03-11 10:02+0000\n"
-"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
+"PO-Revision-Date: 2021-03-25 06:10+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/sv/>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: ../src/Constants.vala:72
 msgid "Spread the word about \"%s\""
-msgstr "Sprid budskapet om \"%s\""
+msgstr "Sprid budskapet om ”%s”"
 
 #: ../src/Constants.vala:73
 msgid "Consider a donation to help the project"
@@ -59,7 +59,7 @@ msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr "Vill du ersätta \"%s\"?"
+msgstr "Vill du ersätta ”%s”?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
@@ -551,16 +551,16 @@ msgid ""
 "Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this "
 "file already exists."
 msgstr ""
-"Uppgiftslistans plats har ändrats till \"%1$s\" (tidigare \"%2$s\"), men den "
-"här filen finns redan."
+"Uppgiftslistans plats har ändrats till ”%1$s” (tidigare ”%2$s”), men den här "
+"filen finns redan."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
 "The location to store completed tasks in has been changed to \"%1$s\" (was "
 "\"%2$s\"), but this file already exists."
 msgstr ""
-"Platsen att lagra slutförda uppgifter på, har ändrats till \"%1$s\" ("
-"tidigare \"%2$s\"), men den här filen finns redan."
+"Platsen att lagra slutförda uppgifter på, har ändrats till ”%1$s” (tidigare "
+"”%2$s”), men den här filen finns redan."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
