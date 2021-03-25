@@ -3,21 +3,21 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2020-12-22 13:29+0000\n"
-"Last-Translator: Jonathan Moerman <jonathanmoerman@gmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/nl/>\n"
+"PO-Revision-Date: 2021-03-26 03:29+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Constants.vala:72
 msgid "Spread the word about \"%s\""
-msgstr "Vertel anderen over \"%s\""
+msgstr "Vertel anderen over ‘%s’"
 
 #: ../src/Constants.vala:73
 msgid "Consider a donation to help the project"
@@ -57,7 +57,7 @@ msgstr "Als u deze app geweldig vindt, kunt u mij een drankje kopen:"
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr "Vervang \"%s\"?"
+msgstr "Vervang ‘%s’?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
@@ -550,16 +550,16 @@ msgid ""
 "Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this "
 "file already exists."
 msgstr ""
-"De locatie van de takenlijst is gewijzigd naar \"%1$s\" (was \"%2$s\"), maar "
-"dit bestand bestaat al."
+"De locatie van de takenlijst is gewijzigd naar ‘%1$s’ (was ‘%2$s’), maar dit "
+"bestand bestaat al."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
 "The location to store completed tasks in has been changed to \"%1$s\" (was "
 "\"%2$s\"), but this file already exists."
 msgstr ""
-"Het bestand met voltooide taken is veranderd naar \"%1$s\" (was \"%2$s\"), "
-"maar dit bestand bestaat al."
+"Het bestand met voltooide taken is veranderd naar ‘%1$s’ (was ‘%2$s’), maar "
+"dit bestand bestaat al."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
