@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2021-03-26 03:29+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2021-03-27 08:29+0000\n"
+"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/ja/>\n"
 "Language: ja\n"
@@ -12,12 +12,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.5.2-dev\n"
+"X-Generator: Weblate 4.6-dev\n"
 "X-Launchpad-Export-Date: 2017-12-27 05:42+0000\n"
 
 #: ../src/Constants.vala:72
 msgid "Spread the word about \"%s\""
-msgstr "「%s」 に関する単語を広める"
+msgstr "\"%s\" に関する単語を広める"
 
 #: ../src/Constants.vala:73
 msgid "Consider a donation to help the project"
@@ -47,18 +47,15 @@ msgstr "ご支援ありがとうございます"
 msgid ""
 "Submitting code, artwork, translations or documentation is a great way of "
 "contributing to the project:"
-msgstr ""
-"コード、アートワーク、翻訳、ドキュメントの寄託はプロジェクトに貢献する素晴ら"
-"しい方法です:"
+msgstr "コーディング・アートワークの作成・翻訳・ドキュメント化は、プロジェクトに貢献する素晴らしい方法です:"
 
 #: ../src/Dialogs/ContributeDialog.vala:36
 msgid "If you really like this app, you can buy me a drink:"
-msgstr ""
-"このアプリを気に入ったのでしたら、何か飲み物でも奢っていただけると幸いです:"
+msgstr "このアプリを気に入っていただけたなら、飲み物でも奢っていただけると幸いです:"
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr "「%s」を置き換えますか？"
+msgstr "\"%s\" を置き換えますか？"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
@@ -67,7 +64,7 @@ msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
-msgstr "古いものを維持"
+msgstr "古いファイルを維持"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
@@ -132,7 +129,7 @@ msgstr "この設定を反映するには、%s を再起動する必要があり
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:54
 msgid "Use a header bar"
-msgstr "ヘッダーバーを使用"
+msgstr "ヘッダーバーを使う"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:69
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:126
@@ -290,7 +287,7 @@ msgstr "変更を反映するには、%s を再起動する必要があります
 
 #: ../src/LegacyStrings.vala:3
 msgid "Todo.txt files were found in the destination folder."
-msgstr "Todo.txt ファイルを指定したディレクトリに確認できました。"
+msgstr "指定したフォルダーに todo.txt ファイルを確認しました。"
 
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:4
@@ -304,11 +301,11 @@ msgstr "上書き"
 
 #: ../src/LegacyStrings.vala:6
 msgid "The configured folder is already in use by another list."
-msgstr "設定されたディレクトリは、すでに別のリストで使用されています。"
+msgstr "設定されたフォルダーは、すでに別のリストで使用されています。"
 
 #: ../src/LegacyStrings.vala:7
 msgid "folder"
-msgstr "ディレクトリ"
+msgstr "フォルダー"
 
 #: ../src/LegacyStrings.vala:8
 msgid "Inherit from GTK theme"
@@ -329,9 +326,8 @@ msgid ""
 "mountable location. Please change the path in the settings to a suitable "
 "folder or remove this file."
 msgstr ""
-"todo.txt ディレクトリへのパスが、ファイルやマウント可能な場所など、ディレクト"
-"リ以外へのパスになっています。適切なディレクトリへのパスに変更するか、ファイ"
-"ルを削除してください。"
+"todo.txt フォルダーへのパスが、ファイルやマウント可能な場所など、ディレクトリ以外へのパスになっています。適切なフォルダーへのパスに変更するか、フ"
+"ァイルを削除してください。"
 
 #: ../src/Main.vala:97
 msgid "Not a known list: %s"
@@ -550,13 +546,13 @@ msgstr "リストの名前"
 msgid ""
 "Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this "
 "file already exists."
-msgstr "タスク一覧の場所が 「%2$s」 から 「%1$s」に変更されましたが、このファイルはすでに存在します。"
+msgstr "タスク一覧の場所が \"%2$s\" から \"%1$s\" に変更されましたが、このファイルはすでに存在します。"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
 "The location to store completed tasks in has been changed to \"%1$s\" (was "
 "\"%2$s\"), but this file already exists."
-msgstr "完了したタスクを保存する場所が 「%2$s」 から「%1$s 」に変更されましたが、このファイルはすでに存在します。"
+msgstr "完了したタスクを保存する場所が \"%2$s\" から \"%1$s\" に変更されましたが、このファイルはすでに存在します。"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
@@ -720,11 +716,11 @@ msgstr "分"
 
 #: ../src/Utils.vala:188
 msgid "%u minutes"
-msgstr "%u 分"
+msgstr "%u分"
 
 #: ../src/Utils.vala:190
 msgid "%1$u hours and %2$u minutes"
-msgstr "%1$u 時間 %2$u 分"
+msgstr "%1$u時間%2$u分"
 
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234
