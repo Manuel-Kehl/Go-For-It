@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2021-03-24 17:29+0000\n"
+"PO-Revision-Date: 2021-04-15 08:26+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/he/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.5.2-dev\n"
+"X-Generator: Weblate 4.6-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Constants.vala:72
@@ -326,16 +326,16 @@ msgid ""
 "mountable location. Please change the path in the settings to a suitable "
 "folder or remove this file."
 msgstr ""
+"הנתיב לתיקיית todo.txt לא מצביעה על תיקייה אלא על קובץ או מקום מעוגן. נא "
+"לשנות את הנתיב בהגדרות לתיקייה תואמת או להסיר את הקובץ הזה."
 
 #: ../src/Main.vala:97
 msgid "Not a known list: %s"
 msgstr "רשימה בלתי מוכרת: %s"
 
 #: ../src/Main.vala:236
-#, fuzzy
-#| msgid "%s: Error: %s"
 msgid "%1$s: Error: %2$s"
-msgstr "%s: שגיאה: %s"
+msgstr "%1$s: שגיאה: %2$s"
 
 #. / Describes format of printed table (table contains the known lists)
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
@@ -364,11 +364,11 @@ msgstr "Print version info and exit"
 
 #: ../src/Main.vala:285
 msgid "Show about dialog"
-msgstr ""
+msgstr "להציג חלונית על אודות"
 
 #: ../src/Main.vala:286
 msgid "CSV file to log activities to."
-msgstr ""
+msgstr "קובץ CSV לתיעוד פעילויות אליו."
 
 #: ../src/Main.vala:287
 msgid "Show configured lists and exit"
