@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2020-10-06 15:27+0200\n"
-"Last-Translator: Jeannette L <j.lavoie@net-c.ca>\n"
-"Language-Team: Catalan <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/ca/>\n"
+"PO-Revision-Date: 2021-04-29 06:32+0000\n"
+"Last-Translator: Carles Mateu <carlesm@carlesm.com>\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Weblate 4.7-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Constants.vala:72
@@ -59,15 +59,15 @@ msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
-msgstr ""
+msgstr "S'ha de reemplaçar el fitxer o s'ha d'emprar aquest fitxer antic?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
-msgstr ""
+msgstr "Mantenir l'antic"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "Reemplaçar"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:268
@@ -92,7 +92,7 @@ msgstr "Comportament"
 
 #: ../src/Dialogs/SettingsDialog.vala:77
 msgid "Notifications"
-msgstr ""
+msgstr "Notificacions"
 
 #: ../src/Dialogs/SettingsDialog.vala:78
 msgid "Appearance"
@@ -104,11 +104,11 @@ msgstr "Dreceres"
 
 #: ../src/Dialogs/SettingsDialog.vala:81
 msgid "Plugins"
-msgstr ""
+msgstr "Connectors"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:30
 msgid "Use small toolbar icons"
-msgstr ""
+msgstr "Usa icones petites"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:37
 msgid "Appearance of the activity switcher"
@@ -128,7 +128,7 @@ msgstr "Heu de reiniciar el %s per tal d’aplicar aquesta configuració"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:54
 msgid "Use a header bar"
-msgstr ""
+msgstr "Usa una barra de títol"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:69
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:126
@@ -139,7 +139,7 @@ msgstr "General"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:73
 msgid "Color scheme"
-msgstr ""
+msgstr "Esquema de color"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:86
 msgid "Theme"
@@ -176,25 +176,25 @@ msgstr "minuts"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:76
 #: ../src/Widgets/TimerScheduleWidget.vala:133
 msgid "Break duration"
-msgstr ""
+msgstr "Durada de l'aturada"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:84
 msgid "Long break duration"
-msgstr ""
+msgstr "Durada de l'aturada llarga"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:93
 msgid "Have a long break after"
-msgstr ""
+msgstr "Fer una aturada llarga després de"
 
 #. / Part of "Have a long break after # short breaks"
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:95
 msgid "short breaks"
-msgstr ""
+msgstr "aturades curtes"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:118
 msgid "Resume task after the break"
-msgstr ""
+msgstr "Continuar la tasca després de l'aturada"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:125
 msgid "Reset timer after switching tasks"
@@ -209,15 +209,15 @@ msgstr "Temporitzador"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:147
 msgid "Placement of new tasks"
-msgstr ""
+msgstr "Ubicació de les tasques noves"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:150
 msgid "Top of the list"
-msgstr ""
+msgstr "Inici de la llista"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:151
 msgid "Bottom of the list"
-msgstr ""
+msgstr "Final de la llista"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:163
 msgid "Tasks"
@@ -286,7 +286,7 @@ msgstr ""
 
 #: ../src/LegacyStrings.vala:3
 msgid "Todo.txt files were found in the destination folder."
-msgstr ""
+msgstr "S'ha trobat fitxers todo.txt a la carpeta de destinació."
 
 #. / For versions <= 1.8, shown in a dialog when destination folder contains either todo.txt or done.txt
 #: ../src/LegacyStrings.vala:4
@@ -300,7 +300,7 @@ msgstr ""
 
 #: ../src/LegacyStrings.vala:6
 msgid "The configured folder is already in use by another list."
-msgstr ""
+msgstr "La carpeta de destinació ja s'estpa emprant per un altra llista."
 
 #: ../src/LegacyStrings.vala:7
 msgid "folder"
@@ -308,7 +308,7 @@ msgstr "directori"
 
 #: ../src/LegacyStrings.vala:8
 msgid "Inherit from GTK theme"
-msgstr ""
+msgstr "Hereta del tema GTK"
 
 #: ../src/LegacyStrings.vala:9
 msgid "Dark theme"
@@ -424,7 +424,7 @@ msgstr "Fetes"
 
 #: ../src/Services/ActivityLog.vala:72
 msgid "Couldn't write to %1$s: %2$s"
-msgstr "No s’ha pogut escriure a %s: %s"
+msgstr "No s’ha pogut escriure a %1$s: %2$s"
 
 #: ../src/Services/Notifications.vala:100 ../src/Widgets/TimerView.vala:97
 #: ../plugins/appindicator/appindicator.vala:213
@@ -580,10 +580,8 @@ msgid "Log file"
 msgstr ""
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:215
-#, fuzzy
-#| msgid "CSV file to log activities to."
 msgid "Select file to log timer usage in"
-msgstr "Un fitxer CSV on registrar activitats."
+msgstr "Selecciona fitxer on registrar activitat del temporitzador"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:277
 msgid "Select file to store to-do tasks in"
@@ -711,7 +709,7 @@ msgstr "%u minuts"
 
 #: ../src/Utils.vala:190
 msgid "%1$u hours and %2$u minutes"
-msgstr "%u hores i %u minuts"
+msgstr "%1$u hores i %2$u minuts"
 
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234
