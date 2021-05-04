@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2021-03-26 03:29+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2021-05-05 13:22+0000\n"
+"Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/pt/>\n"
 "Language: pt\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.5.2-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Constants.vala:72
@@ -58,11 +58,12 @@ msgstr "Se gosta mesmo desta aplicação, pode comprar-me uma bebida:"
 
 #: ../src/Dialogs/FileConflictDialog.vala:86
 msgid "Replace \"%s\"?"
-msgstr ""
+msgstr "Substituir “%s”?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
 msgstr ""
+"Este ficheiro deve ser substituído ou deseja utilizar o ficheiro antigo?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
@@ -70,7 +71,7 @@ msgstr "Manter antigos"
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "Substituir"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:268
@@ -95,7 +96,7 @@ msgstr "Comportamento"
 
 #: ../src/Dialogs/SettingsDialog.vala:77
 msgid "Notifications"
-msgstr ""
+msgstr "Notificações"
 
 #: ../src/Dialogs/SettingsDialog.vala:78
 msgid "Appearance"
@@ -107,7 +108,7 @@ msgstr "Atalhos"
 
 #: ../src/Dialogs/SettingsDialog.vala:81
 msgid "Plugins"
-msgstr ""
+msgstr "Plugins"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:30
 msgid "Use small toolbar icons"
@@ -142,7 +143,7 @@ msgstr "Geral"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:73
 msgid "Color scheme"
-msgstr ""
+msgstr "Esquema de cores"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:86
 msgid "Theme"
@@ -228,19 +229,19 @@ msgstr "Tarefas"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
-msgstr ""
+msgstr "Tigela de alumínio"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:37
 msgid "Singing bowl"
-msgstr ""
+msgstr "Tigela de canto"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
 msgid "Bell"
-msgstr ""
+msgstr "Campainha"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:41
 msgid "Loud bell"
-msgstr ""
+msgstr "Campainha forte"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:384
@@ -253,37 +254,35 @@ msgid "seconds"
 msgstr "segundos"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:130
-#, fuzzy
-#| msgid "Reminder before task ends"
 msgid "Reminder sound"
-msgstr "Lembrete antes do fim da tarefa"
+msgstr "Som de lembrete"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:140
 msgid "Start of break sound"
-msgstr ""
+msgstr "Início da pausa de som"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:150
 msgid "End of break sound"
-msgstr ""
+msgstr "Fim da pause de som"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:211
 msgid "Notification sounds"
-msgstr ""
+msgstr "Sons de notificação"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:216
 msgid "Silent"
-msgstr ""
+msgstr "Silêncio"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:259
 msgid "Select notification sound file"
-msgstr ""
+msgstr "Selecione o ficheiro do som de notificação"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:263
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:269
 #: ../src/Widgets/FileChooserWidget.vala:83
 #: ../src/Widgets/FileChooserWidget.vala:89
 msgid "_Select"
-msgstr ""
+msgstr "_Selecione"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
@@ -401,7 +400,7 @@ msgstr "Colaborar / doar"
 
 #: ../src/MainWindow.vala:506
 msgid "Mute sounds"
-msgstr ""
+msgstr "Mutar sons"
 
 #: ../src/MainWindow.vala:515 ../src/Services/Shortcuts.vala:164
 msgid "Filter tasks"
@@ -471,15 +470,15 @@ msgstr "Considere mudar para uma tarefa diferente"
 
 #: ../src/Services/SettingsManager.vala:617
 msgid "Light"
-msgstr ""
+msgstr "Claro"
 
 #: ../src/Services/SettingsManager.vala:619
 msgid "Dark"
-msgstr ""
+msgstr "Escuro"
 
 #: ../src/Services/SettingsManager.vala:621
 msgid "Default"
-msgstr ""
+msgstr "Predefinido"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
@@ -487,7 +486,7 @@ msgstr "desativado"
 
 #: ../src/Services/Shortcuts.vala:165 ../src/Todo.txt/TxtList.vala:188
 msgid "Sort Tasks"
-msgstr ""
+msgstr "Ordenar Tarefas"
 
 #: ../src/Services/Shortcuts.vala:166
 msgid "Add new task/list"
@@ -499,11 +498,11 @@ msgstr "Iniciar/Parar o temporizador"
 
 #: ../src/Services/Shortcuts.vala:168
 msgid "Skip the break or skip to the break"
-msgstr ""
+msgstr "Pular a pausa ou pular para a pausa"
 
 #: ../src/Services/Shortcuts.vala:169
 msgid "Edit the properties of a list or task"
-msgstr ""
+msgstr "Editar propriedades de uma lista ou tarefa"
 
 #: ../src/Services/Shortcuts.vala:171 ../src/Todo.txt/Widgets/TaskRow.vala:68
 #: ../src/Widgets/TimerView.vala:291
@@ -537,11 +536,11 @@ msgstr "Deslocar para o ecrã da esquerda"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid "Store to-do tasks in"
-msgstr ""
+msgstr "Gravar as tarefas não concluídas"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid "Store completed tasks in"
-msgstr ""
+msgstr "Gravar as tarefas concluídas"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:68
 msgid "List name"
@@ -552,12 +551,16 @@ msgid ""
 "Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this "
 "file already exists."
 msgstr ""
+"A localização da lista de tarefas mudou para “%1$s” (era “%2$s”), mas este "
+"ficheiro já existe."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
 "The location to store completed tasks in has been changed to \"%1$s\" (was "
 "\"%2$s\"), but this file already exists."
 msgstr ""
+"A localização da lista de tarefas concluídas mudou para “%1$s” (era “%2$s”), "
+"mas este ficheiro já existe."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
@@ -573,45 +576,43 @@ msgstr "Aplicar"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
 msgid "Log timer usage"
-msgstr ""
+msgstr "Registar o uso do timer"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:200
 msgid ""
 "Keep track of when you used the timer and what tasks you worked on while "
 "doing this."
 msgstr ""
+"Monitore quando usou o timer e em quais tarefas trabalhou enquanto o usava."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
 msgid "This log will be saved as a CSV file."
-msgstr ""
+msgstr "Este registo será salvo como um ficheiro CSV."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:205
 msgid "Log file"
-msgstr ""
+msgstr "Ficheiro de registo"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:215
-#, fuzzy
-#| msgid "CSV file to log activities to."
 msgid "Select file to log timer usage in"
-msgstr "O ficheiro CSV para registar atividades."
+msgstr "Selecione o ficheiro pra registar o uso to timer"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:277
 msgid "Select file to store to-do tasks in"
-msgstr ""
+msgstr "Selecione o ficheiro para gravar as tarefas não concluídas"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
 msgid "Select file to store completed tasks in"
-msgstr ""
+msgstr "Selecione o ficheiro para gravar as tarefas concluídas"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:287
 msgid "Log the time spent working on each task"
 msgstr "Registar o tempo gasto a trabalhar em cada tarefa"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:289
-#, fuzzy
-#| msgid "Log the time spent working on each task"
 msgid "Log the total time spent working on a task using the timer."
-msgstr "Registar o tempo gasto a trabalhar em cada tarefa"
+msgstr ""
+"Registe o tempo gasto a trabalhar em cada tarefa a usar\\ o temporizador."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
 msgid "This information will be stored in the todo.txt files."
@@ -619,22 +620,22 @@ msgstr "Essas informações serão armazenadas nos ficheiros todo.txt."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
 msgid "Log the creation date of tasks"
-msgstr ""
+msgstr "Registar a data de criação das tarefas"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:383
 msgid "Use default settings"
 msgstr "Usar configurações originais"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:453
-#, fuzzy
-#| msgid "The configured folder is already in use by another list."
 msgid "The configured to-do file is already in use by another list."
-msgstr "O diretório configurado já está a ser usado por outra lista."
+msgstr "O ficheiro configurado já está em uso por outra lista."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:469
 msgid ""
 "Another todo.txt list archives its completed tasks to the selected file."
 msgstr ""
+"Outra lista todo.txt arquiva as tarefas dela concluídas no ficheiro "
+"selecionado."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:489
 msgid "Please assign a name to the list."
@@ -734,19 +735,19 @@ msgstr "%1$u horas e %2$u minutos"
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234
 msgid "%s!"
-msgstr ""
+msgstr "%s!"
 
 #: ../src/Widgets/DragList.vala:764
 msgid "Click and drag to reorder rows"
-msgstr ""
+msgstr "Clique e arraste para reordenar as linhas"
 
 #: ../src/Widgets/FileChooserWidget.vala:21
 msgid "Choose a file"
-msgstr ""
+msgstr "Escolha um ficheiro"
 
 #: ../src/Widgets/TimerView.vala:100
 msgid "Skip the remainder of the break"
-msgstr ""
+msgstr "Pule o lembrete da pausa"
 
 #: ../src/Widgets/TimerView.vala:102
 msgid "Active Task"
@@ -754,7 +755,7 @@ msgstr "Tarefa ativa"
 
 #: ../src/Widgets/TimerView.vala:106
 msgid "Skip to the break"
-msgstr ""
+msgstr "Pule para a pausa"
 
 #: ../src/Widgets/TimerView.vala:147
 msgid "Pau_se"
@@ -762,7 +763,6 @@ msgstr "Pau_sa"
 
 #: ../src/Widgets/TimerView.vala:149
 #: ../plugins/appindicator/appindicator.vala:238
-#, fuzzy
 msgid "Stop the timer"
 msgstr "Parar o temporizador"
 
@@ -773,7 +773,6 @@ msgstr "_Iniciar"
 #: ../src/Widgets/TimerView.vala:158
 #: ../plugins/appindicator/appindicator.vala:119
 #: ../plugins/appindicator/appindicator.vala:247
-#, fuzzy
 msgid "Start the timer"
 msgstr "Iniciar o temporizador"
 
@@ -813,19 +812,15 @@ msgstr "Editar"
 
 #: ../plugins/appindicator/appindicator.vala:78
 msgid "Open %s"
-msgstr ""
+msgstr "Abrir %s"
 
 #: ../plugins/appindicator/appindicator.vala:107
-#, fuzzy
-#| msgid "Move to next task/row"
 msgid "Switch to next task"
-msgstr "Avançar para a próxima tarefa/linha"
+msgstr "Mudar para a próxima tarefa"
 
 #: ../plugins/appindicator/appindicator.vala:113
-#, fuzzy
-#| msgid "Move to previous task/row"
 msgid "Switch to the previous task"
-msgstr "Ir para a tarefa/fila anterior"
+msgstr "Mudar para a tarefa anterior"
 
 #~ msgid "Couldn't create folder: %s"
 #~ msgstr "Não foi possível criar o diretório: %s"
