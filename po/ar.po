@@ -3,17 +3,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2020-10-06 15:25+0200\n"
-"Last-Translator: Youssef Mohamed <youssef11bc@gmail.com>\n"
-"Language-Team: Arabic <https://hosted.weblate.org/projects/go-for-it/go-for-"
-"it/ar/>\n"
+"PO-Revision-Date: 2021-05-13 12:33+0000\n"
+"Last-Translator: sameer arb <smeerab@tuta.io>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/go-for-it/"
+"go-for-it/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Weblate 4.7-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:36+0000\n"
 
 #: ../src/Constants.vala:72
@@ -38,7 +38,7 @@ msgstr "قائمة مهام أنيقة مع مؤقت إنتاجي مدمج."
 
 #: ../src/Dialogs/ContributeDialog.vala:28
 msgid "Contributions and Donations"
-msgstr "مساهمات و التبرع"
+msgstr "المساهمات و التبرع"
 
 #: ../src/Dialogs/ContributeDialog.vala:31
 msgid "Thank you for supporting"
@@ -87,7 +87,7 @@ msgstr "إعدادات"
 #: ../src/Dialogs/SettingsDialog.vala:49
 #: ../plugins/appindicator/appindicator.vala:83
 msgid "Close"
-msgstr "أغلاق"
+msgstr "إغلاق"
 
 #: ../src/Dialogs/SettingsDialog.vala:76
 msgid "Behavior"
@@ -95,7 +95,7 @@ msgstr "الشكل"
 
 #: ../src/Dialogs/SettingsDialog.vala:77
 msgid "Notifications"
-msgstr ""
+msgstr "الإشعارات"
 
 #: ../src/Dialogs/SettingsDialog.vala:78
 msgid "Appearance"
