@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2017-10-02 17:26+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2021-06-17 23:34+0000\n"
+"Last-Translator: Muhammad Sohaib Raza <sohaibraza000@gmail.com>\n"
+"Language-Team: Urdu <https://hosted.weblate.org/projects/go-for-it/go-for-it/"
+"ur/>\n"
+"Language: ur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.7\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
-"X-Generator: Launchpad (build 18505)\n"
 
 #: ../src/Constants.vala:72
 msgid "Spread the word about \"%s\""
@@ -39,7 +41,7 @@ msgstr ""
 
 #: ../src/Dialogs/ContributeDialog.vala:31
 msgid "Thank you for supporting"
-msgstr ""
+msgstr "تعاون کرنے کا شکریہ"
 
 #: ../src/Dialogs/ContributeDialog.vala:32
 msgid ""
@@ -65,7 +67,7 @@ msgstr ""
 
 #: ../src/Dialogs/FileConflictDialog.vala:109
 msgid "Replace"
-msgstr ""
+msgstr "استبدال"
 
 #: ../src/Dialogs/FileConflictDialog.vala:115
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:268
@@ -73,7 +75,7 @@ msgstr ""
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:93
 #: ../src/Widgets/FileChooserWidget.vala:88
 msgid "Cancel"
-msgstr ""
+msgstr "منسوخ کریں"
 
 #: ../src/Dialogs/SettingsDialog.vala:47 ../src/MainWindow.vala:475
 msgid "Settings"
@@ -82,7 +84,7 @@ msgstr ""
 #: ../src/Dialogs/SettingsDialog.vala:49
 #: ../plugins/appindicator/appindicator.vala:83
 msgid "Close"
-msgstr ""
+msgstr "بند کریں"
 
 #: ../src/Dialogs/SettingsDialog.vala:76
 msgid "Behavior"
@@ -90,7 +92,7 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsDialog.vala:77
 msgid "Notifications"
-msgstr ""
+msgstr "اعلانات"
 
 #: ../src/Dialogs/SettingsDialog.vala:78
 msgid "Appearance"
@@ -98,7 +100,7 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsDialog.vala:79
 msgid "Shortcuts"
-msgstr ""
+msgstr "طریق مختصر"
 
 #: ../src/Dialogs/SettingsDialog.vala:81
 msgid "Plugins"
@@ -114,7 +116,7 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:39
 msgid "Icons"
-msgstr ""
+msgstr "تمثیلات"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:40
 msgid "Text"
@@ -133,7 +135,7 @@ msgstr ""
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:152
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:246
 msgid "General"
-msgstr ""
+msgstr "عمومی"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:73
 msgid "Color scheme"
@@ -149,11 +151,11 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:58
 msgid "Simple"
-msgstr ""
+msgstr "سادہ"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:59
 msgid "Pomodoro"
-msgstr ""
+msgstr "پوموڈورو"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:60
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:215
@@ -163,7 +165,7 @@ msgstr ""
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:68
 #: ../src/Widgets/TimerScheduleWidget.vala:132
 msgid "Task duration"
-msgstr ""
+msgstr "کام کا دورانیہ"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:69
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:77
@@ -192,7 +194,7 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:118
 msgid "Resume task after the break"
-msgstr ""
+msgstr "تفریح کے بعد کام جاری رکھیں"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:125
 msgid "Reset timer after switching tasks"
@@ -203,7 +205,7 @@ msgstr ""
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:153
 #: ../src/Todo.txt/Widgets/TaskRow.vala:341
 msgid "Timer"
-msgstr ""
+msgstr "ساعت گیر"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:147
 msgid "Placement of new tasks"
@@ -211,15 +213,15 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:150
 msgid "Top of the list"
-msgstr ""
+msgstr "اول از فہرست"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:151
 msgid "Bottom of the list"
-msgstr ""
+msgstr "اخیر از فہرست"
 
 #: ../src/Dialogs/SettingsPages/BehaviorPage.vala:163
 msgid "Tasks"
-msgstr ""
+msgstr "کام"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
@@ -231,16 +233,16 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
 msgid "Bell"
-msgstr ""
+msgstr "گھنٹی"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:41
 msgid "Loud bell"
-msgstr ""
+msgstr "بلند گھنٹی"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:111
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:384
 msgid "Reminder before task ends"
-msgstr ""
+msgstr "یاد دہانی قبل از اختتام کار"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:112
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:385
@@ -249,7 +251,7 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:130
 msgid "Reminder sound"
-msgstr ""
+msgstr "صوت یاد دہانی"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:140
 msgid "Start of break sound"
@@ -261,11 +263,11 @@ msgstr ""
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:211
 msgid "Notification sounds"
-msgstr ""
+msgstr "صوت اطلاع"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:216
 msgid "Silent"
-msgstr ""
+msgstr "ساکت"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:259
 msgid "Select notification sound file"
