@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2021-04-15 08:26+0000\n"
+"PO-Revision-Date: 2021-06-25 07:33+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/he/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.7.1-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Constants.vala:72
@@ -388,55 +388,57 @@ msgstr ""
 
 #: ../src/MainWindow.vala:358
 msgid "Menu"
-msgstr ""
+msgstr "תפריט"
 
 #: ../src/MainWindow.vala:481
 msgid "Contribute / Donate"
-msgstr ""
+msgstr "התנדבות / תרומה"
 
 #: ../src/MainWindow.vala:506
 msgid "Mute sounds"
-msgstr ""
+msgstr "השתקת צלילים"
 
 #: ../src/MainWindow.vala:515 ../src/Services/Shortcuts.vala:164
 msgid "Filter tasks"
-msgstr ""
+msgstr "סינון משימות"
 
 #: ../src/Pages/SelectionPage.vala:123
 msgid ""
 "Currently, no lists are configured.\n"
 "Add one below!"
 msgstr ""
+"נכון לעכשיו, לא הוגדרו רשימות.\n"
+"ניתן להוסיף אחת להלן!"
 
 #: ../src/Pages/SelectionPage.vala:137 ../src/Pages/SelectionPage.vala:140
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:87
 msgid "Add list"
-msgstr ""
+msgstr "הוספת רשימה"
 
 #: ../src/Pages/TaskListPage.vala:142
 msgid "Lists"
-msgstr ""
+msgstr "רשימות"
 
 #: ../src/Pages/TaskListPage.vala:148 ../src/Pages/TaskListPage.vala:236
 msgid "To-Do"
-msgstr ""
+msgstr "מטלות"
 
 #: ../src/Pages/TaskListPage.vala:150 ../src/Pages/TaskListPage.vala:239
 msgid "Done"
-msgstr ""
+msgstr "בוצע"
 
 #: ../src/Services/ActivityLog.vala:72
 msgid "Couldn't write to %1$s: %2$s"
-msgstr ""
+msgstr "לא ניתן לכתוב אל %1$s:‏ %2$s"
 
 #: ../src/Services/Notifications.vala:100 ../src/Widgets/TimerView.vala:97
 #: ../plugins/appindicator/appindicator.vala:213
 msgid "Take a Break"
-msgstr ""
+msgstr "לקחת הפסקה"
 
 #: ../src/Services/Notifications.vala:102
 msgid "Relax and stop thinking about your current task for a while"
-msgstr ""
+msgstr "מומלץ להירגע ולעצור את החשיבה על המשימה הנוכחית שלך לזמן מה"
 
 #: ../src/Services/Notifications.vala:106
 msgid "The Break is Over"
@@ -496,55 +498,56 @@ msgstr "לדלג על ההפסקה או לדלג אל ההפסקה"
 
 #: ../src/Services/Shortcuts.vala:169
 msgid "Edit the properties of a list or task"
-msgstr ""
+msgstr "עריכת מאפיינים של רשימה או משימה"
 
 #: ../src/Services/Shortcuts.vala:171 ../src/Todo.txt/Widgets/TaskRow.vala:68
 #: ../src/Widgets/TimerView.vala:291
 #: ../plugins/appindicator/appindicator.vala:101
 msgid "Mark the task as complete"
-msgstr ""
+msgstr "סימון המשימה כהושלמה"
 
 #: ../src/Services/Shortcuts.vala:172
 msgid "Move selected row up"
-msgstr ""
+msgstr "העברת השורה הנבחרת למעלה"
 
 #: ../src/Services/Shortcuts.vala:173
 msgid "Move selected row down"
-msgstr ""
+msgstr "העברת השורה הנבחרת למטה"
 
 #: ../src/Services/Shortcuts.vala:175
 msgid "Move to next task/row"
-msgstr ""
+msgstr "מעבר לשורה/משימה הבאה"
 
 #: ../src/Services/Shortcuts.vala:176
 msgid "Move to previous task/row"
-msgstr ""
+msgstr "מעבר לשורה/רשימה הקודמת"
 
 #: ../src/Services/Shortcuts.vala:177
 msgid "Move to right screen"
-msgstr ""
+msgstr "העברה למסך הימני"
 
 #: ../src/Services/Shortcuts.vala:178
 msgid "Move to left screen"
-msgstr ""
+msgstr "העברה למסך השמאלי"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid "Store to-do tasks in"
-msgstr ""
+msgstr "אחסון משימות תחת"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid "Store completed tasks in"
-msgstr ""
+msgstr "אחסון משימות שהושלמו תחת"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:68
 msgid "List name"
-msgstr ""
+msgstr "שם הרשימה"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:71
 msgid ""
 "Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this "
 "file already exists."
 msgstr ""
+"מקום רשימת המשימות השתנה לכדי „%1$s” (היה „%2$s”), אך הקובץ הזה כבר קיים."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
