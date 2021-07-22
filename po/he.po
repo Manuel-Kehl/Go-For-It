@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2021-06-25 07:33+0000\n"
+"PO-Revision-Date: 2021-07-23 14:34+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/he/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.7.1-dev\n"
+"X-Generator: Weblate 4.7.2-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Constants.vala:72
@@ -680,55 +680,55 @@ msgstr ""
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:37
 msgid "You don't have any completed tasks stored."
-msgstr ""
+msgstr "אין לך משימות שהושלמו מאוחסנות."
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:38
 msgid "You finished all tasks, good job!"
-msgstr ""
+msgstr "סיימת את כל המשימות, כל הכבוד!"
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:205
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:224
 msgid "Add new task"
-msgstr ""
+msgstr "הוספת משימה חדשה"
 
 #. / see https://valadoc.org/glib-2.0/GLib.DateTime.format.html for
 #. formatting of DateTime
 #: ../src/Todo.txt/Widgets/TaskRow.vala:325
 msgid "%Y-%m-%d"
-msgstr ""
+msgstr "%d/%m/%Y"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:329
 msgid "Task completed at %1$s, created at %2$s"
-msgstr ""
+msgstr "המשימה הושלמה ב־%1$s, נוצרה ב־%2$s"
 
 #: ../src/Todo.txt/Widgets/TaskRow.vala:335
 msgid "Task created at %s"
-msgstr ""
+msgstr "המשימה נוצרה ב־%s"
 
 #: ../src/Utils.vala:180
 msgid "min."
-msgstr ""
+msgstr "דק׳"
 
 #: ../src/Utils.vala:188
 msgid "%u minutes"
-msgstr ""
+msgstr "%u דקות"
 
 #: ../src/Utils.vala:190
 msgid "%1$u hours and %2$u minutes"
-msgstr ""
+msgstr "%1$u שעות ו־%2$u דקות"
 
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234
 msgid "%s!"
-msgstr ""
+msgstr "%s!"
 
 #: ../src/Widgets/DragList.vala:764
 msgid "Click and drag to reorder rows"
-msgstr ""
+msgstr "יש ללחוץ ולגרור כדי לסדר שורות מחדש"
 
 #: ../src/Widgets/FileChooserWidget.vala:21
 msgid "Choose a file"
-msgstr ""
+msgstr "נא לבחור קובץ"
 
 #: ../src/Widgets/TimerView.vala:100
 msgid "Skip the remainder of the break"
