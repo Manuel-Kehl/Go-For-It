@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2021-03-26 03:29+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2021-08-14 19:22+0000\n"
+"Last-Translator: Gediminas Murauskas <muziejusinfo@gmail.com>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/lt/>\n"
 "Language: lt\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 4.5.2-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 "X-Launchpad-Export-Date: 2018-04-05 05:31+0000\n"
 
 #: ../src/Constants.vala:72
@@ -62,7 +62,7 @@ msgstr "Pakeisti „%s“?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
-msgstr ""
+msgstr "Ar šį failą reikia pakeisti, ar šis senas failas bus naudojamas?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
@@ -142,7 +142,7 @@ msgstr "Bendra"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:73
 msgid "Color scheme"
-msgstr ""
+msgstr "Spalvų paletė"
 
 #: ../src/Dialogs/SettingsPages/AppearancePage.vala:86
 msgid "Theme"
@@ -228,11 +228,11 @@ msgstr "Užduotys"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:35
 msgid "Aluminium bowl"
-msgstr ""
+msgstr "Aliuminio dubuo"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:37
 msgid "Singing bowl"
-msgstr ""
+msgstr "Skambantis dubuo"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
 msgid "Bell"
@@ -270,18 +270,18 @@ msgstr "Pranešimų garsai"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:216
 msgid "Silent"
-msgstr ""
+msgstr "Begarsis"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:259
 msgid "Select notification sound file"
-msgstr ""
+msgstr "Pasirinkite pranešimo garso failą"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:263
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:269
 #: ../src/Widgets/FileChooserWidget.vala:83
 #: ../src/Widgets/FileChooserWidget.vala:89
 msgid "_Select"
-msgstr ""
+msgstr "_Pasirinkti"
 
 #: ../src/Dialogs/SettingsPages/ShortcutsPage.vala:40
 msgid "%s needs to be restarted for changes to take effect."
@@ -344,7 +344,7 @@ msgstr "%1$s: Klaida: %2$s"
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
 #: ../src/Main.vala:251
 msgid "Lists (List type : List ID - List name)"
-msgstr ""
+msgstr "Sąrašai (Sąrašo tipas : Sąrašo ID – Sąrašo pavadinimas)"
 
 #. / Translators: give translation of FILE in "--logfile=FILE" command line argument
 #: ../src/Main.vala:276
@@ -469,15 +469,15 @@ msgstr "Apsvarstykite galimybę pereiti prie kitos užduoties"
 
 #: ../src/Services/SettingsManager.vala:617
 msgid "Light"
-msgstr ""
+msgstr "Šviesi"
 
 #: ../src/Services/SettingsManager.vala:619
 msgid "Dark"
-msgstr ""
+msgstr "Tamsi"
 
 #: ../src/Services/SettingsManager.vala:621
 msgid "Default"
-msgstr ""
+msgstr "Numatytoji"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
@@ -497,7 +497,7 @@ msgstr "Paleisti/Stabdyti laikmatį"
 
 #: ../src/Services/Shortcuts.vala:168
 msgid "Skip the break or skip to the break"
-msgstr ""
+msgstr "Praleisti pertrauką arba peršokti iki pertraukos"
 
 #: ../src/Services/Shortcuts.vala:169
 msgid "Edit the properties of a list or task"
@@ -535,11 +535,11 @@ msgstr "Perkelti į kairįjį ekraną"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid "Store to-do tasks in"
-msgstr ""
+msgstr "Užduočių talpinimo vieta"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid "Store completed tasks in"
-msgstr ""
+msgstr "Atliktų užduočių talpinimo vieta"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:68
 msgid "List name"
@@ -550,12 +550,16 @@ msgid ""
 "Task list location has been changed to \"%1$s\" (was \"%2$s\"), but this "
 "file already exists."
 msgstr ""
+"Užduočių sąrašo vieta pakeista į „%1$s“ (buvo „%2$s“), tačiau šis failas jau "
+"egzistuoja."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:72
 msgid ""
 "The location to store completed tasks in has been changed to \"%1$s\" (was "
 "\"%2$s\"), but this file already exists."
 msgstr ""
+"Atliktų užduočių saugojimo vieta pakeista į „%1$s“ (buvo „%2$s“), tačiau šis "
+"failas jau egzistuoja."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
@@ -571,13 +575,15 @@ msgstr "Taikyti"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
 msgid "Log timer usage"
-msgstr ""
+msgstr "Žurnalo laikmačio naudojimas"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:200
 msgid ""
 "Keep track of when you used the timer and what tasks you worked on while "
 "doing this."
 msgstr ""
+"Stebėkite, kada naudojote laikmatį ir su kokiomis užduotimis dirbote tai "
+"darydami."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
 msgid "This log will be saved as a CSV file."
@@ -588,28 +594,24 @@ msgid "Log file"
 msgstr "Žurnalo failas"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:215
-#, fuzzy
-#| msgid "CSV file to log activities to."
 msgid "Select file to log timer usage in"
-msgstr "CSV failas, į kurį registruoti veiklą."
+msgstr "Pasirinkite failą, kuriame bus registruojamas laikmačio naudojimas"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:277
 msgid "Select file to store to-do tasks in"
-msgstr ""
+msgstr "Pasirinkite failą, kuriame bus saugomos užduotys"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
 msgid "Select file to store completed tasks in"
-msgstr ""
+msgstr "Pasirinkite failą, kuriame bus saugomos atliktos užduotys"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:287
 msgid "Log the time spent working on each task"
 msgstr "Registruoti kiekvienai užduočiai skirtą laiką"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:289
-#, fuzzy
-#| msgid "Log the time spent working on each task"
 msgid "Log the total time spent working on a task using the timer."
-msgstr "Registruoti kiekvienai užduočiai skirtą laiką"
+msgstr "Registruoti visą laiką, praleistą dirbant su užduotimi."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
 msgid "This information will be stored in the todo.txt files."
@@ -617,22 +619,22 @@ msgstr "Ši informacija bus saugoma todo.txt failuose."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
 msgid "Log the creation date of tasks"
-msgstr ""
+msgstr "Registruoti užduočių sukūrimo datą"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:383
 msgid "Use default settings"
 msgstr "Naudoti numatytuosius nustatymus"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:453
-#, fuzzy
-#| msgid "The configured folder is already in use by another list."
 msgid "The configured to-do file is already in use by another list."
-msgstr "Sukonfigūruotą katalogą jau naudoja kitas sąrašas."
+msgstr "Sukonfigūruotas užduočių failas jau naudojamas kitame sąraše."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:469
 msgid ""
 "Another todo.txt list archives its completed tasks to the selected file."
 msgstr ""
+"Kitame todo.txt sąraše užbaigtos užduotys jau yra archyvuojamos pasirinktame "
+"faile."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:489
 msgid "Please assign a name to the list."
@@ -732,19 +734,19 @@ msgstr "%1$u val. ir %2$u min."
 #. / In a few places a string is turned into an exclamation at runtime. Please translate this if appending '!' is not sufficient to accomplish this.
 #: ../src/Utils.vala:234
 msgid "%s!"
-msgstr ""
+msgstr "%s!"
 
 #: ../src/Widgets/DragList.vala:764
 msgid "Click and drag to reorder rows"
-msgstr ""
+msgstr "Spustelėkite ir vilkite, kad pakeistumėte eilučių eiliškumą"
 
 #: ../src/Widgets/FileChooserWidget.vala:21
 msgid "Choose a file"
-msgstr ""
+msgstr "Pasirinkti failą"
 
 #: ../src/Widgets/TimerView.vala:100
 msgid "Skip the remainder of the break"
-msgstr ""
+msgstr "Praleisti likusią pertraukos dalį"
 
 #: ../src/Widgets/TimerView.vala:102
 msgid "Active Task"
@@ -752,7 +754,7 @@ msgstr "Aktyvi užduotis"
 
 #: ../src/Widgets/TimerView.vala:106
 msgid "Skip to the break"
-msgstr ""
+msgstr "Peršokti iki pertraukos"
 
 #: ../src/Widgets/TimerView.vala:147
 msgid "Pau_se"
@@ -760,7 +762,6 @@ msgstr "Pri_stabdyti"
 
 #: ../src/Widgets/TimerView.vala:149
 #: ../plugins/appindicator/appindicator.vala:238
-#, fuzzy
 msgid "Stop the timer"
 msgstr "Stabdyti laikmatį"
 
@@ -771,7 +772,6 @@ msgstr "_Pradėti"
 #: ../src/Widgets/TimerView.vala:158
 #: ../plugins/appindicator/appindicator.vala:119
 #: ../plugins/appindicator/appindicator.vala:247
-#, fuzzy
 msgid "Start the timer"
 msgstr "Paleisti laikmatį"
 
@@ -811,19 +811,15 @@ msgstr "Taisyti"
 
 #: ../plugins/appindicator/appindicator.vala:78
 msgid "Open %s"
-msgstr ""
+msgstr "Atidaryti %s"
 
 #: ../plugins/appindicator/appindicator.vala:107
-#, fuzzy
-#| msgid "Move to next task/row"
 msgid "Switch to next task"
-msgstr "Perkelti į kitą užduotį/eilutę"
+msgstr "Peršokti į sekančią užduotį"
 
 #: ../plugins/appindicator/appindicator.vala:113
-#, fuzzy
-#| msgid "Move to previous task/row"
 msgid "Switch to the previous task"
-msgstr "Perkelti į ankstesnę užduotį/eilutę"
+msgstr "Peršokti į ankstesnę užduotį"
 
 #~ msgid "Couldn't create folder: %s"
 #~ msgstr "Nepavyko sukurti katalogo: %s"
