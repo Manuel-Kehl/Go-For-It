@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2021-07-23 14:34+0000\n"
+"PO-Revision-Date: 2021-08-18 14:33+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/he/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Constants.vala:72
@@ -372,19 +372,19 @@ msgstr "קובץ CSV לתיעוד פעילויות אליו."
 
 #: ../src/Main.vala:287
 msgid "Show configured lists and exit"
-msgstr ""
+msgstr "להציג רשימות מוגדרות ולצאת"
 
 #: ../src/Main.vala:291
 msgid "Load the list specified by the list type and ID"
-msgstr ""
+msgstr "טעינת רשימה שמצוינת לפי סוג הרשימה ומספר הזיהוי שלה"
 
 #: ../src/MainWindow.vala:66
 msgid "Go to overview"
-msgstr ""
+msgstr "מעבר לסקירה"
 
 #: ../src/MainWindow.vala:67
 msgid "Go back to the to-do list"
-msgstr ""
+msgstr "חזרה לרשימת המטלות"
 
 #: ../src/MainWindow.vala:358
 msgid "Menu"
