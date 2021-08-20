@@ -32,6 +32,14 @@ To-do lists are stored in the Todo.txt format. This simplifies synchronization w
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
+     <release version="1.9.3" date="2021-08-20">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Update various translations (Arabic, Bulgarian, Catalan, Croatian, Czech, Danish, Esperanto, German, Hebrew, Italian, Japanese, Lithuanian, Portuguese, Russian, Slovak, Swedish, Turkish, Urdu).</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.9.2" date="2021-03-08">
       <description>
         <p>Improvements:</p>

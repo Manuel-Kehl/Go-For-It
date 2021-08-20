@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.9.3](https://github.com/JMoerman/Go-For-It/tree/1.9.3) (2020-08-20)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.9.2...1.9.3)
+
+**Implemented enhancements:**
+
+- Update various translations (Arabic, Bulgarian, Catalan, Croatian, Czech, Danish, Esperanto, German, Hebrew, Italian, Japanese, Lithuanian, Portuguese, Russian, Slovak, Swedish, Turkish, Urdu).
+
 ## [1.9.2](https://github.com/JMoerman/Go-For-It/tree/1.9.2) (2020-03-08)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.9.1...1.9.2)
 
