@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2021-08-18 14:33+0000\n"
+"PO-Revision-Date: 2021-08-24 15:35+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/go-for-it/"
 "go-for-it/he/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:37+0000\n"
 
 #: ../src/Constants.vala:72
@@ -360,7 +360,7 @@ msgstr "LIST-ID"
 
 #: ../src/Main.vala:284
 msgid "Print version info and exit"
-msgstr "Print version info and exit"
+msgstr "להדפיס את פרטי הגרסה ולצאת"
 
 #: ../src/Main.vala:285
 msgid "Show about dialog"
@@ -554,10 +554,12 @@ msgid ""
 "The location to store completed tasks in has been changed to \"%1$s\" (was "
 "\"%2$s\"), but this file already exists."
 msgstr ""
+"המקום לשמירת המשימות שהושלמו הוחלף ל־„%1$s” (היה „%2$s”), אך הקובץ הזה כבר "
+"קיים."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:85
 msgid "New to-do list"
-msgstr ""
+msgstr "רשימת מטלות חדשה"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:92
 msgid "Edit to-do list properties"
@@ -569,13 +571,13 @@ msgstr "החלה"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:197
 msgid "Log timer usage"
-msgstr ""
+msgstr "תיעוד השימוש במתזמן"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:200
 msgid ""
 "Keep track of when you used the timer and what tasks you worked on while "
 "doing this."
-msgstr ""
+msgstr "לעקוב אחר מתי השתמשת במתזמן ועל אילו משימות עבדת בזמן השימוש בו."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
 msgid "This log will be saved as a CSV file."
@@ -587,11 +589,11 @@ msgstr "קובץ יומן"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:215
 msgid "Select file to log timer usage in"
-msgstr ""
+msgstr "נא לבחור קובץ בו יתועד השימוש במתזמן"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:277
 msgid "Select file to store to-do tasks in"
-msgstr ""
+msgstr "נא לבחור קובץ בו יאוחסנו המשימות"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:284
 msgid "Select file to store completed tasks in"
@@ -603,80 +605,85 @@ msgstr "לתעד את הזמן שארכה כל משימה"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:289
 msgid "Log the total time spent working on a task using the timer."
-msgstr ""
+msgstr "תיעוד הזמן הכולל שהושקע בעבודה על משימה באמצעות המתזמן."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:291
 msgid "This information will be stored in the todo.txt files."
-msgstr ""
+msgstr "מידע זה יאוחסן בקובצי todo.txt."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:295
 msgid "Log the creation date of tasks"
-msgstr ""
+msgstr "תיעוד תאריך יצירת משימות"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:383
 msgid "Use default settings"
-msgstr ""
+msgstr "להשתמש בהגדרות בררת המחדל"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:453
 msgid "The configured to-do file is already in use by another list."
-msgstr ""
+msgstr "בקובץ המשימות שהוגדר כבר משתמשת רשימה אחרת."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:469
 msgid ""
 "Another todo.txt list archives its completed tasks to the selected file."
 msgstr ""
+"רשימת todo.txt אחרת מעבירה את המשימות שהושלמו בה לארכיון אל הקובץ הנבחר."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:489
 msgid "Please assign a name to the list."
-msgstr ""
+msgstr "נא להקצות שם לרשימה."
 
 #: ../src/Todo.txt/Filter.vala:60 ../src/Todo.txt/Widgets/TaskRow.vala:397
 msgid "project"
-msgstr ""
+msgstr "מיזם"
 
 #: ../src/Todo.txt/Filter.vala:61 ../src/Todo.txt/Widgets/TaskRow.vala:393
 msgid "context"
-msgstr ""
+msgstr "הקשר"
 
 #: ../src/Todo.txt/Filter.vala:62 ../src/Todo.txt/Widgets/TaskRow.vala:354
 msgid "priority"
-msgstr ""
+msgstr "עדיפות"
 
 #: ../src/Todo.txt/TaskManager.vala:48
 msgid ""
 "%s won't save or load from the current todo.txt folder until it is either "
 "restarted or another location is chosen."
 msgstr ""
+"%s לא ישמור או יטען מתיקיית ה־todo.txt הנוכחית עד להפעלה מחדש או לבחירת מקום "
+"חלופי."
 
 #: ../src/Todo.txt/TaskManager.vala:49
 msgid "Couldn't read the todo.txt file (%s):"
-msgstr ""
+msgstr "קריאת קובץ todo.txt נכשלה (%s):"
 
 #: ../src/Todo.txt/TaskManager.vala:50
 msgid "Couldn't save the to-do list (%s):"
-msgstr ""
+msgstr "לא ניתן לשמור את רשימת המשימות (%s):"
 
 #: ../src/Todo.txt/TxtList.vala:184
 msgid "Clear Done List"
-msgstr ""
+msgstr "פינוי רשימת המשימות שבוצעו"
 
 #: ../src/Todo.txt/TxtListManager.vala:137
 msgid "An error was encountered while moving a file!"
-msgstr ""
+msgstr "אירעה שגיאה בעת העברת קובץ!"
 
 #: ../src/Todo.txt/TxtListManager.vala:138
 msgid "Error information: "
-msgstr ""
+msgstr "פרטי השגיאה: "
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:35
 msgid ""
 "You currently don't have any tasks.\n"
 "Add some!"
 msgstr ""
+"אין לך משימות כרגע.\n"
+"אפשר להוסיף!"
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:36
 msgid "No tasks found."
-msgstr ""
+msgstr "לא נמצאו משימות."
 
 #: ../src/Todo.txt/Widgets/TaskListWidget.vala:37
 msgid "You don't have any completed tasks stored."
@@ -732,28 +739,28 @@ msgstr "נא לבחור קובץ"
 
 #: ../src/Widgets/TimerView.vala:100
 msgid "Skip the remainder of the break"
-msgstr ""
+msgstr "דילוג על שאר ההפסקה"
 
 #: ../src/Widgets/TimerView.vala:102
 msgid "Active Task"
-msgstr ""
+msgstr "משימה פעילה"
 
 #: ../src/Widgets/TimerView.vala:106
 msgid "Skip to the break"
-msgstr ""
+msgstr "דילוג על ההפסקה"
 
 #: ../src/Widgets/TimerView.vala:147
 msgid "Pau_se"
-msgstr ""
+msgstr "ה_שהיה"
 
 #: ../src/Widgets/TimerView.vala:149
 #: ../plugins/appindicator/appindicator.vala:238
 msgid "Stop the timer"
-msgstr ""
+msgstr "עצירת המתזמן"
 
 #: ../src/Widgets/TimerView.vala:156
 msgid "_Start"
-msgstr ""
+msgstr "הת_חלה"
 
 #: ../src/Widgets/TimerView.vala:158
 #: ../plugins/appindicator/appindicator.vala:119
