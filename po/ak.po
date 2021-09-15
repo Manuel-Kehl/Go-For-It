@@ -817,7 +817,7 @@ msgid "Switch to the previous task"
 msgstr ""
 
 #~ msgid ""
-#~ "If no appropriate folder was found, Go For It! defaults to creating a "
+#~ "If no appropriate folder was found, GoForIt! defaults to creating a "
 #~ "Todo folder in your home directory."
 #~ msgstr ""
 #~ "Sɛ dwumadi no anhu akorae a woapaw no a, ɛbɛ kora wo nneɛma no home Todo "

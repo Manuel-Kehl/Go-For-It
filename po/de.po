@@ -838,10 +838,10 @@ msgstr "Zur vorherigen Aufgabe springen"
 #~ msgstr "Der Suchvorgang lieferte keine Aufgaben zurück."
 
 #~ msgid ""
-#~ "If no appropriate folder was found, Go For It! defaults to creating a "
+#~ "If no appropriate folder was found, GoForIt! defaults to creating a "
 #~ "Todo folder in your home directory."
 #~ msgstr ""
-#~ "Wird kein dazugehöriger Ordner gefunden, erstellt »Go For It!« einen "
+#~ "Wird kein dazugehöriger Ordner gefunden, erstellt »GoForIt!« einen "
 #~ "Aufgabenordner im persönlichen Ordner."
 
 #~ msgid ""

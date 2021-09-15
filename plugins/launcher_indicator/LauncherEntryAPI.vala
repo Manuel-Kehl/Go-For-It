@@ -19,7 +19,7 @@
 
 /**
  * LauncherEntry implementation from the Granite library.
- * This file is used if Granite isn't used to compile Go For It!.
+ * This file is used if Granite isn't used to compile GoForIt!.
  * It doesn't pull in additional dependencies and doesn't depend on the rest of
  * Granite.
  */

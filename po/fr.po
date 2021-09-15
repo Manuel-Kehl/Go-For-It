@@ -832,10 +832,10 @@ msgstr "Retourner à la tâche précédente"
 #~ msgstr "Impossible de créer le répertoire : %s"
 
 #~ msgid ""
-#~ "If no appropriate folder was found, Go For It! defaults to creating a "
+#~ "If no appropriate folder was found, GoForIt! defaults to creating a "
 #~ "Todo folder in your home directory."
 #~ msgstr ""
-#~ "Si aucun répertoire valide n'est trouvé, Go For It! créera un dossier "
+#~ "Si aucun répertoire valide n'est trouvé, GoForIt! créera un dossier "
 #~ "Todo dans votre dossier personnel."
 
 #~ msgid ""

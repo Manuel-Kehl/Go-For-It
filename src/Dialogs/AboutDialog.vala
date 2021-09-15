@@ -1,18 +1,18 @@
-/* Copyright 2014-2017 Go For It! developers
+/* Copyright 2014-2017 GoForIt! developers
 *
-* This file is part of Go For It!.
+* This file is part of GoForIt!.
 *
-* Go For It! is free software: you can redistribute it
+* GoForIt! is free software: you can redistribute it
 * and/or modify it under the terms of version 3 of the
 * GNU General Public License as published by the Free Software Foundation.
 *
-* Go For It! is distributed in the hope that it will be
+* GoForIt! is distributed in the hope that it will be
 * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 * Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Go For It!. If not, see http://www.gnu.org/licenses/.
+* with GoForIt!. If not, see http://www.gnu.org/licenses/.
 */
 
 /**
@@ -24,7 +24,7 @@ class GOFI.AboutDialog : Gtk.AboutDialog {
         /* Initalization */
         this.set_default_size (450, 500);
         this.get_content_area ().margin = 10;
-        this.title = _("About") + " Go For It!";
+        this.title = _("About") + " GoForIt!";
         setup_content ();
 
         /* Action Handling */
@@ -32,7 +32,7 @@ class GOFI.AboutDialog : Gtk.AboutDialog {
     }
 
     /**
-     * Displays a welcome message with basic information about Go For It!
+     * Displays a welcome message with basic information about GoForIt!
      */
     private void setup_content () {
         program_name = APP_NAME;

@@ -828,10 +828,10 @@ msgstr "Ga naar de vorige taak"
 #~ msgstr "De zoekactie leverde geen taken op."
 
 #~ msgid ""
-#~ "If no appropriate folder was found, Go For It! defaults to creating a "
+#~ "If no appropriate folder was found, GoForIt! defaults to creating a "
 #~ "Todo folder in your home directory."
 #~ msgstr ""
-#~ "Als geen geschikte map werd gevonden maakt Go For It! een Todo map in uw "
+#~ "Als geen geschikte map werd gevonden maakt GoForIt! een Todo map in uw "
 #~ "persoonlijke map aan."
 
 #~ msgid ""

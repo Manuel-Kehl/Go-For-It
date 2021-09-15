@@ -1,23 +1,23 @@
-/* Copyright 2014-2017 Go For It! developers
+/* Copyright 2014-2017 GoForIt! developers
 *
-* This file is part of Go For It!.
+* This file is part of GoForIt!.
 *
-* Go For It! is free software: you can redistribute it
+* GoForIt! is free software: you can redistribute it
 * and/or modify it under the terms of version 3 of the
 * GNU General Public License as published by the Free Software Foundation.
 *
-* Go For It! is distributed in the hope that it will be
+* GoForIt! is distributed in the hope that it will be
 * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 * Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Go For It!. If not, see http://www.gnu.org/licenses/.
+* with GoForIt!. If not, see http://www.gnu.org/licenses/.
 */
 
 /**
  * The GOFI namespace is a central collection of static constants that are
- * related to "Go For It!".
+ * related to "GoForIt!".
  */
 namespace GOFI {
 
@@ -64,7 +64,7 @@ namespace GOFI {
      */
     public class Utils {
         /**
-         * A convenient way to get the path of the directory where Go For It!
+         * A convenient way to get the path of the directory where GoForIt!
          * stores it's configuration files.
          */
         internal static string config_dir {
@@ -75,7 +75,7 @@ namespace GOFI {
         }
 
         /**
-         * A convenient way to get the path of Go For It!'s configuration file
+         * A convenient way to get the path of GoForIt!'s configuration file
          */
         internal static string config_file {
             owned get {

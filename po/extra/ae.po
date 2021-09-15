@@ -11,7 +11,7 @@ msgstr ""
 msgid "Productivity;Todo.txt;Todo;Timer;Task;PIM;Time Management;"
 msgstr ""
 
-msgid "About Go For It!"
+msgid "About GoForIt!"
 msgstr ""
 
 msgid "Panel indicator"
@@ -29,11 +29,11 @@ msgid ""
 "and the dash to dock GNOME extension."
 msgstr ""
 
-msgid "The Go For It! developers"
+msgid "The GoForIt! developers"
 msgstr ""
 
 msgid ""
-"Go For It! is a simple and stylish productivity app, featuring a to-do list, "
+"GoForIt! is a simple and stylish productivity app, featuring a to-do list, "
 "merged with a timer that keeps your focus on the current task."
 msgstr ""
 
@@ -44,6 +44,6 @@ msgid ""
 msgstr ""
 
 msgid ""
-"If you already use Todo.txt, beware of the fact, that Go For It! "
+"If you already use Todo.txt, beware of the fact, that GoForIt! "
 "automatically archives completed tasks to the done list!"
 msgstr ""

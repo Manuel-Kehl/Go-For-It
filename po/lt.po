@@ -825,7 +825,7 @@ msgstr "Peršokti į ankstesnę užduotį"
 #~ msgstr "Nepavyko sukurti katalogo: %s"
 
 #~ msgid ""
-#~ "If no appropriate folder was found, Go For It! defaults to creating a "
+#~ "If no appropriate folder was found, GoForIt! defaults to creating a "
 #~ "Todo folder in your home directory."
 #~ msgstr ""
 #~ "Jeigu nebus rastas joks tinkamas aplankas, tuomet pagal numatymą, Go For "

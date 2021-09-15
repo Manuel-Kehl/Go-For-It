@@ -1,18 +1,18 @@
-/* Copyright 2014-2019 Go For It! developers
+/* Copyright 2014-2019 GoForIt! developers
 *
-* This file is part of Go For It!.
+* This file is part of GoForIt!.
 *
-* Go For It! is free software: you can redistribute it
+* GoForIt! is free software: you can redistribute it
 * and/or modify it under the terms of version 3 of the
 * GNU General Public License as published by the Free Software Foundation.
 *
-* Go For It! is distributed in the hope that it will be
+* GoForIt! is distributed in the hope that it will be
 * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 * Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Go For It!. If not, see http://www.gnu.org/licenses/.
+* with GoForIt!. If not, see http://www.gnu.org/licenses/.
 */
 
 /**
@@ -28,7 +28,7 @@ class GOFI.ContributeDialog : Gtk.MessageDialog {
         this.title = _("Contributions and Donations");
 
         this.format_secondary_markup (
-        "<b>" + _("Thank you for supporting") + " <i>Go For It!</i>\n\n\n</b>"
+        "<b>" + _("Thank you for supporting") + " <i>GoForIt!</i>\n\n\n</b>"
         + _("Submitting code, artwork, translations or documentation is a great way of contributing to the project:")
         + "\n\n"
         + "<a href=\"" + GOFI.PROJECT_REPO + "\">" + GOFI.PROJECT_REPO + "</a>"

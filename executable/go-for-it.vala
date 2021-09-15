@@ -18,7 +18,7 @@ public static int main (string[] args) {
 
 /**
  * This function handles different tweaks that have to be applied to
- * make Go For It! work properly on certain desktop environments.
+ * make GoForIt! work properly on certain desktop environments.
  */
 public static void apply_desktop_specific_tweaks () {
     string desktop = Environment.get_variable ("DESKTOP_SESSION");

@@ -826,10 +826,10 @@ msgstr "Mudar para a tarefa anterior"
 #~ msgstr "Não foi possível criar o diretório: %s"
 
 #~ msgid ""
-#~ "If no appropriate folder was found, Go For It! defaults to creating a "
+#~ "If no appropriate folder was found, GoForIt! defaults to creating a "
 #~ "Todo folder in your home directory."
 #~ msgstr ""
-#~ "Se uma pasta apropriada não for encontrada, Go For It! irá criar uma nova "
+#~ "Se uma pasta apropriada não for encontrada, GoForIt! irá criar uma nova "
 #~ "pasta Todo no seu diretório inicial"
 
 #~ msgid ""
