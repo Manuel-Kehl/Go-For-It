@@ -18,7 +18,7 @@ set (PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/${APP_SYSTEM_NAME}/plugins")
 set (FILE_CONF ${PROJECT_NAME}.conf)
 
 set (EXEC_NAME ${APP_SYSTEM_NAME})
-set (APP_NAME "Go For It!")
+set (APP_NAME "GoForIt!")
 set (RELEASE_NAME "A stylish to-do list with built-in productivity timer")
 set (MAJOR_VERSION "1")
 set (MINOR_VERSION "9")
