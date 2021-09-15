@@ -12,7 +12,7 @@ namespace GOFI.DialogUtils {
         public unowned SynchronizedWBin widest_widget;
 
         public SynchronizedWCont () {
-            controlled = new List<SynchronizedWBin> ();
+            controlled = new List<unowned SynchronizedWBin> ();
             current_width = 0;
             widest_widget = null;
         }
