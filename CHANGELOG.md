@@ -1,13 +1,29 @@
 # Change Log
 
-## [1.9.3](https://github.com/JMoerman/Go-For-It/tree/1.9.3) (2020-08-20)
+## [1.9.4](https://github.com/JMoerman/Go-For-It/tree/1.9.4) (2021-09-15)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.9.3...1.9.4)
+
+**_Go For It!_ has been renamed to _GoForIt!_**
+
+Searching for _Go For It!_ generally doesn't yield usable results. For example, AppStream tools remove common words and as `go`, `for`, and `it` are all common words when searching for `go for it` the entire search string gets discarded.
+Though it probably still isn't a _great_ name, _GoForIt!_ doesn't have this issue.
+
+**Implemented enhancements:**
+
+- Update various translations (Hebrew, Persian, Portuguese, Spanish).
+
+**Fixed bugs:**
+
+- A few widgets wouldn't be freed after closing the settings dialog.
+
+## [1.9.3](https://github.com/JMoerman/Go-For-It/tree/1.9.3) (2021-08-20)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.9.2...1.9.3)
 
 **Implemented enhancements:**
 
 - Update various translations (Arabic, Bulgarian, Catalan, Croatian, Czech, Danish, Esperanto, German, Hebrew, Italian, Japanese, Lithuanian, Portuguese, Russian, Slovak, Swedish, Turkish, Urdu).
 
-## [1.9.2](https://github.com/JMoerman/Go-For-It/tree/1.9.2) (2020-03-08)
+## [1.9.2](https://github.com/JMoerman/Go-For-It/tree/1.9.2) (2021-03-08)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.9.1...1.9.2)
 
 **Implemented enhancements:**
@@ -18,7 +34,7 @@
 
 - _Go For It!_ would give an error when trying to save a todo.txt list on an SMB share. _Go For It!_ still won't let you pick such a file as it cannot mount SMB shares itself.
 
-## [1.9.1](https://github.com/JMoerman/Go-For-It/tree/1.9.1) (2020-02-22)
+## [1.9.1](https://github.com/JMoerman/Go-For-It/tree/1.9.1) (2021-02-22)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.9.0...1.9.1)
 
 **Implemented enhancements:**

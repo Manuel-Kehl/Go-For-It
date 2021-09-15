@@ -6,10 +6,10 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <summary>@RELEASE_NAME@</summary>
-  <developer_name>The Go For It! developers</developer_name>
+  <developer_name>The GoForIt! developers</developer_name>
   <description>
     <p>
-Go For It! is a simple and stylish productivity app, featuring a to-do list, merged with a timer that keeps your focus on the current task.
+GoForIt! is a simple and stylish productivity app, featuring a to-do list, merged with a timer that keeps your focus on the current task.
     </p>
     <p>
 To-do lists are stored in the Todo.txt format. This simplifies synchronization with mobile devices and makes it possible to edit tasks using other front-ends.
@@ -32,6 +32,22 @@ To-do lists are stored in the Todo.txt format. This simplifies synchronization w
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
+    <release version="1.9.5" date="2021-09-15">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Update various translations (Hebrew, Persian, Portuguese, Spanish).</li>
+        </ul>
+        <p>Fixed bugs:</p>
+        <ul>
+          <li>A few widgets wouldn't be freed after closing the settings dialog.</li>
+        </ul>
+        <p>Other changes:</p>
+        <ul>
+          <li>"Go For It!" has been renamed to "GoForIt!"</li>
+        </ul>
+      </description>
+    </release>
      <release version="1.9.3" date="2021-08-20">
       <description>
         <p>Improvements:</p>
@@ -221,52 +237,6 @@ To-do lists are stored in the Todo.txt format. This simplifies synchronization w
         <ul>
           <li>Go For It! now properly exports that it uses notifications.</li>
           <li>Non ascii character were not properly parsed when parsing contexts and projects.</li>
-        </ul>
-      </description>
-    </release>
-  	<release version="1.6.10" date="2019-02-13">
-      <description>
-        <p>Bugfixes:</p>
-        <ul>
-          <li>Pressing delete while editing a task description would remove the task instead of removing a character.</li>
-        </ul>
-        <p>Improvements:</p>
-        <ul>
-          <li>Updated french translations.</li>
-        </ul>
-      </description>
-    </release>
-    <release version="1.6.9" date="2018-12-02">
-      <description>
-        <p>Bugfixes:</p>
-        <ul>
-          <li>Editing tasks was a bit finicky for certain Gtk+ 3 versions. Editing should now never be aborted immediately.</li>
-        </ul>
-        <p>Improvements:</p>
-        <ul>
-          <li>Tasks can now be removed by pressing the delete key or by clicking a new delete button while editing a task.</li>
-        </ul>
-      </description>
-    </release>
-    <release version="1.6.8" date="2018-10-16">
-      <description>
-        <p>Bugfixes:</p>
-        <ul>
-          <li>The application menu was not alligned correctly on Juno and likely other modern distribution releases.</li>
-          <li>The use of a global dark theme no longer impacts the themeing of Go For It!, while it used to affect a part of the application. (Use the settings dialog if you want to use a dark theme.)</li>
-        </ul>
-      </description>
-    </release>
-    <release version="1.6.7" date="2018-10-05">
-      <description>
-        <p>Improvements:</p>
-        <ul>
-          <li>Added minimal support for creation and completion dates as well as the priority of a task.</li>
-          <li>The creation and completion dates are stored for new tasks.</li>
-        </ul>
-        <p>Bugfixes:</p>
-        <ul>
-          <li>Dragging a selected task could cause the timer to state that all tasks are finished.</li>
         </ul>
       </description>
     </release>
