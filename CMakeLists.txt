@@ -1,6 +1,6 @@
 project (go-for-it)
 
-cmake_minimum_required (VERSION 2.8.9)
+cmake_minimum_required (VERSION 3.5)
 # tell cmake where its modules can be found in our project directory
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 include (GNUInstallDirs)
