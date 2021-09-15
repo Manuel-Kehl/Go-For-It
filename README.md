@@ -1,26 +1,26 @@
-# _Go For It!_
+# _GoForIt!_
 
-_Go For It!_ has been translated into many languages already. If your language is missing or incomplete, please help to translate it at [Weblate](https://hosted.weblate.org/engage/go-for-it/?utm_source=widget).
+_GoForIt!_ has been translated into many languages already. If your language is missing or incomplete, please help to translate it at [Weblate](https://hosted.weblate.org/engage/go-for-it/?utm_source=widget).
 
 [![Translation status](https://hosted.weblate.org/widgets/go-for-it/-/horizontal-auto.svg)](https://hosted.weblate.org/engage/go-for-it/?utm_source=widget)
 ## Information for End Users
 
-_Go For It!_ is a simple and stylish productivity app, featuring a to-do list, merged with a timer that keeps your focus on the current task. More information for end users can be found [here](https://jmoerman.github.io/go-for-it/).
+_GoForIt!_ is a simple and stylish productivity app, featuring a to-do list, merged with a timer that keeps your focus on the current task. More information for end users can be found [here](https://jmoerman.github.io/go-for-it/).
 
 ![Screenshot](screenshot.png)
 
 ### How To
 
-The original author made the following video explaining the workflow of _Go For It!_:
+The original author made the following video explaining the workflow of _GoForIt!_:
 
-[![Go For It! Promotion Video](https://img.youtube.com/vi/mnw556C9FZQ/0.jpg)](https://www.youtube.com/watch?v=mnw556C9FZQ)
+[![GoForIt! Promotion Video](https://img.youtube.com/vi/mnw556C9FZQ/0.jpg)](https://www.youtube.com/watch?v=mnw556C9FZQ)
 
-This video shows a very old version of _Go For It!_, but most of what is shown still applies to the current version.
+This video shows a very old version of _GoForIt!_, but most of what is shown still applies to the current version.
 
 ### Storage and Synchronisation
 
 To-do lists are stored in the [Todo.txt](http://todotxt.com/) format. This simplifies synchronization with mobile devices and makes it possible to edit tasks using other Todo.txt front-ends (e.g. the official apps for [Android](https://play.google.com/store/apps/details?id=com.todotxt.todotxttouch&hl=en) or [iOS](https://itunes.apple.com/us/app/todo.txt-touch/id491342186?ls=1&mt=8) or the alternative Android client [Simpletask](https://play.google.com/store/apps/details?id=nl.mpcjanssen.todotxtholo&hl=en)).
-A comprehensive tutorial about setting up *Go For It!* with *Simpletask* can be found [here](http://itsfoss.com/go-for-it-to-do-app-in-linux/).
+A comprehensive tutorial about setting up *GoForIt!* with *Simpletask* can be found [here](http://itsfoss.com/go-for-it-to-do-app-in-linux/).
 
 ### Download and Installation
 
@@ -57,22 +57,22 @@ Stable releases are hosted on [Flathub](https://flathub.org):
 
 #### FreeBSD
 
-_Go For It!_ is avaiable in the [FreeBSD Ports Collection](https://freshports.org/deskutils/go-for-it):
+_GoForIt!_ is avaiable in the [FreeBSD Ports Collection](https://freshports.org/deskutils/go-for-it):
 
     pkg install go-for-it
 
 #### Windows
 
-Unfortunately, a recent Windows version isn't available. The https://github.com/mank319/Go-For-It/commits/windows-cmake branch may be a good starting point for porting the current version of _Go For It!_ to Windows.
+Unfortunately, a recent Windows version isn't available. The https://github.com/mank319/Go-For-It/commits/windows-cmake branch may be a good starting point for porting the current version of _GoForIt!_ to Windows.
 
 #### Others
 
-It should be fairly straightforward to compile _Go For It!_ on Unix-like platforms as long as Gtk+3, libcanberra and cmake are available.
+It should be fairly straightforward to compile _GoForIt!_ on Unix-like platforms as long as Gtk+3, libcanberra and cmake are available.
 Should you run into any difficulties feel free to add an [issue](https://github.com/JMoerman/Go-For-It/issues).
 
 ## Information For Nerds
 
-_Go For It!_ is free and open source software licensed under the GPLv3. It has been written in _Vala_ making heavy use of the _GTK_ framework.
+_GoForIt!_ is free and open source software licensed under the GPLv3. It has been written in _Vala_ making heavy use of the _GTK_ framework.
 
 The user interface is inspired by the design philosophy of [elementary OS](http://elementary.io/) and [Gnome](http://www.gnome.org/) applications, striving for elegant simplicity.
 
@@ -90,7 +90,7 @@ The user interface is inspired by the design philosophy of [elementary OS](http:
 - support for different synchronization and storage backends
 
 ### How To Build
-To build *Go For It!* you need to have the following software installed:
+To build *GoForIt!* you need to have the following software installed:
 
     valac >= 0.36
     cmake >= 2.8.9
@@ -104,7 +104,7 @@ To build all available plugins, the following development files are also necessa
 
     libayatana-appindicator3-dev
 
-Use the following commands in this order to build *Go For It!*:
+Use the following commands in this order to build *GoForIt!*:
 
     mkdir build
     cd build
