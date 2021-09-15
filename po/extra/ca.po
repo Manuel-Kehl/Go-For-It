@@ -54,6 +54,6 @@ msgid ""
 msgstr ""
 
 msgid ""
-"If you already use Todo.txt, beware of the fact, that GoForIt! "
-"automatically archives completed tasks to the done list!"
+"If you already use Todo.txt, beware of the fact, that GoForIt! automatically "
+"archives completed tasks to the done list!"
 msgstr ""
