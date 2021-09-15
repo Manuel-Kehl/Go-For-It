@@ -7,7 +7,7 @@ namespace GOFI.DialogUtils {
      * This may not be the best way of doing this, but it is simple and it works
      */
     private class SynchronizedWCont {
-        public List<SynchronizedWBin> controlled;
+        public List<unowned SynchronizedWBin> controlled;
         public int current_width;
         public unowned SynchronizedWBin widest_widget;
 
