@@ -71,7 +71,7 @@ class GOFI.TXT.TxtTask : TodoTask {
         public set {
             if (_done != value) {
                 if (value && creation_date != null) {
-                    completion_date = new Date (new GLib.DateTime.now_local ());
+                    completion_date = new GOFI.Date (new GLib.DateTime.now_local ());
                 } else {
                     completion_date = null;
                 }
@@ -97,6 +97,7 @@ class GOFI.TXT.TxtTask : TodoTask {
     public uint8 priority {
         public get;
         public set;
+        default = NO_PRIO;
     }
     public const uint8 NO_PRIO=127;
 
@@ -222,8 +223,9 @@ class GOFI.TXT.TxtTask : TodoTask {
             if (t.part_type == TxtPartType.TAG) {
                 switch (t.tag_name) {
                     case "timer":
-                        if (is_timer_value (t.content)) {
-                            timer_value = string_to_timer (t.content);
+                        uint new_timer_value = 0;
+                        if (match_duration_value (t.content, out new_timer_value)) {
+                            timer_value = new_timer_value;
                             continue;
                         }
                         break;
@@ -258,76 +260,117 @@ class GOFI.TXT.TxtTask : TodoTask {
     }
 
     public string parts_to_description () {
-        var descr = "";
+        var descr_builder = new StringBuilder.sized (100);
         bool add_leading_space = false;
         foreach (unowned TxtPart p in _parts) {
             if (add_leading_space) {
-                descr += " ";
+                descr_builder.append_c (' ');
             }
             add_leading_space = true;
+
+            // Adding tag prefix
             switch (p.part_type) {
                 case TxtPartType.TAG:
-                    descr += p.tag_name + ":" + p.content;
+                    descr_builder.append (p.tag_name);
+                    descr_builder.append_c (':');
                     break;
                 case TxtPartType.PROJECT:
-                    descr += "+" + p.content;
+                    descr_builder.append_c ('+');
                     break;
                 case TxtPartType.CONTEXT:
-                    descr += "@" + p.content;
+                    descr_builder.append_c ('@');
                     break;
                 case TxtPartType.URI:
                     if (p.tag_name != null && p.tag_name != "") {
-                        descr += p.tag_name + ":" + p.content;
-                    } else {
-                        descr += p.content;
+                        descr_builder.append (p.tag_name);
+                        descr_builder.append_c (':');
                     }
                     break;
                 default:
-                    descr += p.content;
                     break;
             }
+
+            descr_builder.append (p.content);
         }
-        return descr;
+        return descr_builder.str;
     }
 
-    private string duration_to_string () {
-        uint hours, minutes;
-        Utils.uint_to_time (duration, out hours, out minutes, null);
+    private void append_duration (uint duration, StringBuilder builder) {
+        uint hours, minutes, seconds;
+        bool append_hyphen = false;
+
+        Utils.uint_to_time (duration, out hours, out minutes, out seconds);
+
         if (hours > 0) {
-            if (minutes > 0) {
-                return "duration:%uh-%um".printf (hours, minutes);
+            builder.append_printf ("%uh", hours);
+            append_hyphen = true;
+        }
+        if (minutes > 0) {
+            if (append_hyphen) {
+                builder.append_c ('-');
             }
-            return "duration:%uh".printf (hours);
-        } else {
-            return "duration:%um".printf (minutes);
+            builder.append_printf ("%um", minutes);
+            append_hyphen = true;
+        }
+        if (seconds > 0) {
+            if (append_hyphen) {
+                builder.append_c ('-');
+            }
+            builder.append_printf ("%us", seconds);
         }
     }
 
     public string to_simple_txt () {
-        string prio_str = (priority != NO_PRIO) ? @"($((char) (priority + 65))) " : "";
-        string duration_str = duration != 0 ? " " + duration_to_string () : "";
+        StringBuilder str_builder = new StringBuilder.sized (80);
+        append_priority (str_builder);
+        str_builder.append (description);
+        if (duration > 0) {
+            str_builder.append (" duration:");
+            append_duration (this.duration, str_builder);
+        }
 
-        return prio_str + description + duration_str;
+        return str_builder.str;
     }
 
-    private string prio_to_string () {
+    private void append_priority (StringBuilder builder) {
         if (priority >= NO_PRIO) {
-            return "";
+            return;
         } else {
-            char prio_char = priority + 65;
-            return @"($prio_char) ";
+            builder.append_printf ("(%c) ", (char) priority + 65);
         }
     }
 
     public string to_txt (bool log_timer) {
-        string status_str = done ? "x " : "";
-        string prio_str = prio_to_string ();
-        string comp_str = (completion_date != null) ? dt_to_string (completion_date.dt) + " " : "";
-        string crea_str = (creation_date != null) ? dt_to_string (creation_date.dt) + " " : "";
-        string timer_str = (log_timer && timer_value != 0) ? " timer:" + timer_to_string (timer_value) : "";
-        string duration_str = duration != 0 ? " " + duration_to_string () : "";
+        var str_builder = new StringBuilder.sized (100);
+        if (done) {
+            str_builder.append ("x ");
+        }
 
-        return status_str + prio_str + comp_str + crea_str + description + timer_str + duration_str;
+        append_priority (str_builder);
+
+        if (creation_date != null) {
+            str_builder.append (dt_to_string (creation_date.dt));
+            str_builder.append_c (' ');
+
+            if (completion_date != null) {
+                str_builder.append (dt_to_string (completion_date.dt));
+                str_builder.append_c (' ');
+            }
+        }
+
+        str_builder.append (description);
+
+        if (log_timer && timer_value != 0) {
+            str_builder.append (" timer:");
+            str_builder.append (timer_to_string (timer_value));
+        }
+
+        if (duration != 0) {
+            str_builder.append (" duration:");
+            append_duration (duration, str_builder);
+        }
+
+        return str_builder.str;
     }
 
     public int cmp (TxtTask other) {

@@ -1,4 +1,4 @@
-/* Copyright 2018-2019 GoForIt! developers
+/* Copyright 2018-2021 GoForIt! developers
 *
 * This file is part of GoForIt!.
 *
@@ -56,36 +56,39 @@ namespace GOFI.TXT.TxtUtils {
         }
     }
 
-    public static bool is_timer_value (string token) {
-        MatchInfo info;
-        return /([0-9]+)h-([0-9]+)m-([0-9]+)s/.match (token, 0, out info); // vala-lint=space-before-paren
-    }
+    /**
+     * parse value of the form /([0-9]+)h-([0-9]+)m-([0-9]+)s/ where the
+     * h, m and s groups are all optional and the input string is not empty.
+     */
+    public static bool match_duration_value (string duration_str, out uint duration_value) {
+        long index = 0;
+        long lower = 0;
+        duration_value = 0;
 
-    public static bool match_duration_value (string token, out uint duration) {
-        duration = 0;
-        MatchInfo info;
-        if (/(([0-9]+)h-)?([0-9]+)(h|m)/.match (token, 0, out info)) { // vala-lint=space-before-paren
-            var hour_field = info.fetch (2);
-            var field2 = info.fetch (3);
-            var field2_unit = info.fetch (4);
-
-            if (hour_field != null && hour_field != "") {
-                if (field2_unit == "h") {
-                    return false;
-                }
-                duration = Utils.time_to_uint (
-                    (uint) int.parse (hour_field),
-                    (uint) int.parse (field2),
-                    0
-                );
-            } else if (field2_unit == "h") {
-                duration = Utils.time_to_uint ((uint) int.parse (field2), 0, 0);
+        for (; duration_str[index].isdigit (); index++) {}
+        if (duration_str[index] == 'h') {
+            duration_value = 3600 * (uint) int.parse (duration_str.offset (lower));
+            index++;
+            if (duration_str[index] == '-') {
+                for (lower = ++index; duration_str[index].isdigit (); index++) {}
             } else {
-                duration = Utils.time_to_uint (0, (uint) int.parse (field2), 0);
+                return duration_str[index] == '\0';
             }
-            return true;
         }
-        return false;
+        if (duration_str[index] == 'm') {
+            duration_value += 60 * (uint) int.parse (duration_str.offset (lower));
+            index++;
+            if (duration_str[index] == '-') {
+                for (lower = ++index; duration_str[index].isdigit (); index++) {}
+            } else {
+                return duration_str[index] == '\0';
+            }
+        }
+        if (duration_str[index] == 's') {
+            duration_value += (uint) int.parse (duration_str.offset (lower));
+            return duration_str[index + 1] == '\0';
+        }
+        return duration_str[index] == '\0' && index != 0;
     }
 
     public static Date string_to_date (string date_txt) {
