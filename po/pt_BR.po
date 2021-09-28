@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:25+0100\n"
-"PO-Revision-Date: 2021-03-26 03:29+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2021-09-29 15:34+0000\n"
+"Last-Translator: Wellington Terumi Uemura <wellingtonuemura@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "go-for-it/go-for-it/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.5.2-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Launchpad-Export-Date: 2017-11-11 05:38+0000\n"
 
 #: ../src/Constants.vala:72
@@ -63,7 +63,7 @@ msgstr "Substituir “%s”?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:87
 msgid "Should this file be replaced or should this old file be used?"
-msgstr "Este arquivo deve ser substituído ou deseja utilizar o arquivo antigo?"
+msgstr "Deseja substituir este arquivo ou utilizar o arquivo antigo?"
 
 #: ../src/Dialogs/FileConflictDialog.vala:108
 msgid "Keep old"
@@ -100,7 +100,7 @@ msgstr "Notificações"
 
 #: ../src/Dialogs/SettingsDialog.vala:78
 msgid "Appearance"
-msgstr "Aspecto"
+msgstr "Aparência"
 
 #: ../src/Dialogs/SettingsDialog.vala:79
 msgid "Shortcuts"
@@ -237,7 +237,7 @@ msgstr "Tigela de canto"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:39
 msgid "Bell"
-msgstr "Campainha"
+msgstr "Sino"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:41
 msgid "Loud bell"
@@ -255,27 +255,27 @@ msgstr "segundos"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:130
 msgid "Reminder sound"
-msgstr "Som de lembrete"
+msgstr "Som do lembrete"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:140
 msgid "Start of break sound"
-msgstr "Início da pausa de som"
+msgstr "Início do aviso de pausa"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:150
 msgid "End of break sound"
-msgstr "Fim da pause de som"
+msgstr "Fim do aviso de pausa"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:211
 msgid "Notification sounds"
-msgstr "Sons de notificação"
+msgstr "Sons das notificações"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:216
 msgid "Silent"
-msgstr "Silêncio"
+msgstr "Silencioso"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:259
 msgid "Select notification sound file"
-msgstr "Selecione o arquivo do som de notificação"
+msgstr "Selecione o arquivo de som para a notificação"
 
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:263
 #: ../src/Dialogs/SettingsPages/NotificationsPage.vala:269
@@ -345,7 +345,7 @@ msgstr "%1$s: Erro: %2$s"
 #. / The order of the segments ($1 : $2 - $3) between the brackets must remain the same!
 #: ../src/Main.vala:251
 msgid "Lists (List type : List ID - List name)"
-msgstr "Listas (Tipo da lista : ID da lista - Nome da lista)"
+msgstr "Listas (List type : List ID - List name)"
 
 #. / Translators: give translation of FILE in "--logfile=FILE" command line argument
 #: ../src/Main.vala:276
@@ -400,7 +400,7 @@ msgstr "contribuir / Doar"
 
 #: ../src/MainWindow.vala:506
 msgid "Mute sounds"
-msgstr "Mutar sons"
+msgstr "Mudo"
 
 #: ../src/MainWindow.vala:515 ../src/Services/Shortcuts.vala:164
 msgid "Filter tasks"
@@ -478,7 +478,7 @@ msgstr "Escuro"
 
 #: ../src/Services/SettingsManager.vala:621
 msgid "Default"
-msgstr "Predefinido"
+msgstr "Padrão"
 
 #: ../src/Services/Shortcuts.vala:57
 msgid "disabled"
@@ -486,7 +486,7 @@ msgstr "desabilitado"
 
 #: ../src/Services/Shortcuts.vala:165 ../src/Todo.txt/TxtList.vala:188
 msgid "Sort Tasks"
-msgstr "Ordenar Tarefas"
+msgstr "Filtre as Tarefas"
 
 #: ../src/Services/Shortcuts.vala:166
 msgid "Add new task/list"
@@ -498,11 +498,11 @@ msgstr "Iniciar/Parar o temporizador"
 
 #: ../src/Services/Shortcuts.vala:168
 msgid "Skip the break or skip to the break"
-msgstr "Pular a pausa ou pular para a pausa"
+msgstr "Pule a pausa ou pule para a pausa"
 
 #: ../src/Services/Shortcuts.vala:169
 msgid "Edit the properties of a list or task"
-msgstr "Editar propriedades de uma lista ou tarefa"
+msgstr "Edite as propriedades de uma lista ou tarefa"
 
 #: ../src/Services/Shortcuts.vala:171 ../src/Todo.txt/Widgets/TaskRow.vala:68
 #: ../src/Widgets/TimerView.vala:291
@@ -536,11 +536,11 @@ msgstr "Deslocar para a tela da esquerda"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:66
 msgid "Store to-do tasks in"
-msgstr "Gravar as tarefas não concluídas"
+msgstr "Arquive as tarefas em aberto"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:67
 msgid "Store completed tasks in"
-msgstr "Gravar as tarefas concluídas"
+msgstr "Arquive tarefas concluídas"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:68
 msgid "List name"
@@ -583,8 +583,8 @@ msgid ""
 "Keep track of when you used the timer and what tasks you worked on while "
 "doing this."
 msgstr ""
-"Monitore quando você usou o timer e em quais tarefas trabalhou enquanto o "
-"usava."
+"Acompanhe quando você utilizou o temporizador e em quais tarefas você "
+"trabalhou."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:202
 msgid "This log will be saved as a CSV file."
@@ -596,7 +596,7 @@ msgstr "Arquivo de registro"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:215
 msgid "Select file to log timer usage in"
-msgstr "Selecione o arquivo pra registrar o uso to timer"
+msgstr "Selecione o arquivo CSV para registrar o tempo de uso"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:277
 msgid "Select file to store to-do tasks in"
@@ -629,7 +629,8 @@ msgstr "Usar as configurações predefinidas"
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:453
 msgid "The configured to-do file is already in use by another list."
-msgstr "O arquivo configurado já está em uso por outra lista."
+msgstr ""
+"O arquivo da lista de taredas configurado já está em uso por outra lista."
 
 #: ../src/Todo.txt/Dialogs/TxtListEditDialog.vala:469
 msgid ""
@@ -739,7 +740,7 @@ msgstr "%s!"
 
 #: ../src/Widgets/DragList.vala:764
 msgid "Click and drag to reorder rows"
-msgstr "Clique e arraste para reordenar as linhas"
+msgstr "Selecione e arraste para reordenar linhas"
 
 #: ../src/Widgets/FileChooserWidget.vala:21
 msgid "Choose a file"
