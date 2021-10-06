@@ -281,7 +281,7 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         if (old_done_uri != null && old_done_uri != "") {
             done_file = File.new_for_uri (old_done_uri);
         }
-        done_uri_chooser = new FileChooserWidget (todo_file, _("Select file to store completed tasks in"), "done.txt");
+        done_uri_chooser = new FileChooserWidget (done_file, _("Select file to store completed tasks in"), "done.txt");
         done_uri_lbl = new SynchronizedWLabel (wcont, done_uri_text);
 
         log_total_timer_lbl = new SynchronizedWLabel (wcont, _("Log the time spent working on each task") + ":");
