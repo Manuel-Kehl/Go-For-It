@@ -1,4 +1,4 @@
-/* Copyright 2019-2020 GoForIt! developers
+/* Copyright 2019-2021 GoForIt! developers
 *
 * This file is part of GoForIt!.
 *
@@ -328,14 +328,10 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         var selected_file = todo_uri_chooser.selected_file;
         if (selected_file != null) {
             update_todo_uri (selected_file.get_uri ());
-            if (
-                (lsettings.done_uri == null || lsettings.done_uri == "") &&
-                selected_file.get_basename () == "todo.txt" &&
-                selected_file.has_parent (null)
-            ) {
-                // We can guess what the other file should be:
-                done_uri_chooser.selected_file =
-                    selected_file.get_parent ().get_child ("done.txt");
+            // Save the user the effort of manually selecting the file to store
+            // completed tasks in, if the user wants to use a single file
+            if (lsettings.done_uri == null || lsettings.done_uri == "") {
+                done_uri_chooser.selected_file = selected_file;
             }
         } else {
             update_todo_uri (null);
@@ -346,14 +342,10 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
         var selected_file = done_uri_chooser.selected_file;
         if (selected_file != null) {
             update_done_uri (selected_file.get_uri ());
-            if (
-                (lsettings.todo_uri == null || lsettings.todo_uri == "") &&
-                selected_file.get_basename () == "done.txt" &&
-                selected_file.has_parent (null)
-            ) {
-                // We can guess what the other file should be:
-                todo_uri_chooser.selected_file =
-                    selected_file.get_parent ().get_child ("todo.txt");
+            // Setting the todo file based on the done file may not be quite as
+            // intuitive, but it is still better than doing nothing.
+            if (lsettings.todo_uri == null || lsettings.todo_uri == "") {
+                todo_uri_chooser.selected_file = selected_file;
             }
         } else {
             update_done_uri (null);
