@@ -99,8 +99,8 @@ class GOFI.TXT.TxtListManager {
     public bool done_uri_available (ListSettings changed) {
         var done_uri = changed.done_uri;
         foreach (ListSettings list in list_table.get_values ()) {
-            if (list.todo_uri == done_uri) {
-                return list.id == changed.id;
+            if (list.todo_uri == done_uri && list.id != changed.id) {
+                return false;
             }
         }
         return true;
