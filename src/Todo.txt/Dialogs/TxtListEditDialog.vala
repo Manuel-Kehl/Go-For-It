@@ -548,8 +548,12 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
     }
 
     private void handle_conflicts (ConflictChoices? conflicts) {
-        if (conflicts == null || conflicts.get_next_conflict () == null) {
+        if (conflicts == null) {
             add_list_clicked (lsettings, null);
+            return;
+        }
+        if (conflicts.get_next_conflict () == null) {
+            add_list_clicked (lsettings, conflicts);
             return;
         }
 
