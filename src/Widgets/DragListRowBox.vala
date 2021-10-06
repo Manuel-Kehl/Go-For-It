@@ -23,7 +23,6 @@ class GOFI.DragListRowBox : Gtk.Container {
     private Gtk.Widget start_widget;
     private Gtk.Widget center_widget;
     private Gtk.Widget end_widget;
-    private int requested_edge_height;
 
     public int h_spacing {
         get {
@@ -37,7 +36,7 @@ class GOFI.DragListRowBox : Gtk.Container {
 
     public DragListRowBox (int h_spacing = 0) {
         base.set_has_window (false);
-        base.set_can_focus (true);
+        base.set_can_focus (false);
         base.set_redraw_on_allocate (false);
 
         this._h_spacing = h_spacing;
@@ -121,31 +120,18 @@ class GOFI.DragListRowBox : Gtk.Container {
     }
 
     public override void get_preferred_width (out int minimum_width, out int natural_width) {
-        int edge_min = 0;
-        int center_min = 0;
-        int center_nat = 0;
-
-        get_edge_width (out edge_min);
-        if (edge_min > 0) {
-            if (
-                start_widget == null || !start_widget.visible ||
-                end_widget == null || !end_widget.visible
-            ) {
-                edge_min += _h_spacing;
-            } else {
-                edge_min += edge_min + 2 * _h_spacing;
-            }
-        }
+        minimum_width = 0;
+        natural_width = 0;
 
         if (center_widget != null && center_widget.visible) {
-            center_widget.get_preferred_width (out center_min, out center_nat);
+            center_widget.get_preferred_width (out minimum_width, out natural_width);
         }
 
-        minimum_width = center_min + edge_min;
-        natural_width = center_nat + edge_min;
+        int edge_min = get_edge_width ();
 
-        if (minimum_width == 0) {
-            return;
+        if (edge_min > 0) {
+            minimum_width += 2 * edge_min + 2 * _h_spacing;
+            natural_width += 2 * edge_min + 2 * _h_spacing;
         }
     }
 
@@ -155,116 +141,100 @@ class GOFI.DragListRowBox : Gtk.Container {
         get_preferred_height_for_width (minimum_width, out minimum_height, out natural_height);
     }
 
-    private void get_edge_width (out int width) {
-        width = 0;
+    private int get_edge_width () {
+        int width = 0;
+        // Passing null to out parameters sometimes causes issues in Gtk methods
+        // lets play it safe
+        int unused;
 
         if (start_widget != null && start_widget.visible) {
-            start_widget.get_preferred_width (out width, null);
+            start_widget.get_preferred_width (out width, out unused);
         }
         if (end_widget != null && end_widget.visible) {
             int end_min;
-            end_widget.get_preferred_width (out end_min, null);
+            end_widget.get_preferred_width (out end_min, out unused);
 
             width = int.max (end_min, width);
         }
+        return width;
     }
 
-    private void get_edge_height (int width, out int height, out int nat_height) {
-        height = 0;
-        nat_height = 0;
+    private int get_edge_height (int width) {
+        int height = 0;
+        // Passing null to out parameters sometimes causes issues in Gtk methods
+        // lets play it safe
+        int unused;
 
         if (start_widget != null && start_widget.visible) {
-            start_widget.get_preferred_height_for_width (width, out height, out nat_height);
+            start_widget.get_preferred_height_for_width (width, out height, out unused);
         }
         if (end_widget != null && end_widget.visible) {
             int end_min;
-            int end_nat;
-            end_widget.get_preferred_height_for_width (width, out end_min, out end_nat);
+            end_widget.get_preferred_height_for_width (width, out end_min, out unused);
 
             height = int.max (end_min, height);
-            nat_height = int.max (end_nat, nat_height);
         }
+        return height;
+    }
+
+    private void calculate_widget_placement (int width, out int height, out Gtk.Allocation start_alloc, out Gtk.Allocation center_alloc) {
+        int unused;
+        start_alloc = {};
+        center_alloc = {};
+
+        start_alloc.x = 0;
+        start_alloc.width = get_edge_width ();
+        center_alloc.x = 0;
+        center_alloc.width = width;
+
+        if (start_alloc.width > 0) {
+            center_alloc.x += start_alloc.width + _h_spacing;
+            center_alloc.width -= start_alloc.width * 2 + _h_spacing * 2;
+        }
+
+        int center_v_center, edge_v_center;
+
+        start_alloc.height = get_edge_height (start_alloc.width);
+
+        edge_v_center = start_alloc.height / 2;
+
+        if (center_widget != null && center_widget.visible) {
+            center_widget.get_preferred_height_for_width (int.MAX/2, out center_alloc.height, out unused);
+            center_v_center = center_alloc.height / 2;
+
+            center_widget.get_preferred_height_for_width (center_alloc.width, out center_alloc.height, out unused);
+        } else {
+            center_v_center = edge_v_center;
+            center_alloc.height = start_alloc.height;
+        }
+
+        int centerline = int.max (edge_v_center, center_v_center);
+        start_alloc.y = centerline - edge_v_center;
+        center_alloc.y = centerline - center_v_center;
+
+        height = int.max (
+            start_alloc.y + start_alloc.height,
+            center_alloc.y + center_alloc.height
+        );
     }
 
     public override void size_allocate (Gtk.Allocation allocation) {
-        int edge_width, edge_height;
-        get_edge_width (out edge_width);
-        get_edge_height (edge_width, out edge_height, null);
+        Gtk.Allocation edge_alloc, center_alloc;
+        calculate_widget_placement (allocation.width, null, out edge_alloc, out center_alloc);
+        edge_alloc.x += allocation.x;
+        center_alloc.x += allocation.x;
+        edge_alloc.y += allocation.y;
+        center_alloc.y += allocation.y;
 
-        int child_height = allocation.height;
-
-        Gtk.Widget left;
-        Gtk.Widget right;
-
-        if (get_direction () != Gtk.TextDirection.RTL) {
-            left = start_widget;
-            right = end_widget;
-        } else {
-            left = end_widget;
-            right = start_widget;
+        if (start_widget != null && start_widget.visible) {
+            start_widget.size_allocate (edge_alloc);
         }
-        int baseline = 0;
-
         if (center_widget != null && center_widget.visible) {
-            Gtk.Allocation center_alloc = Gtk.Allocation ();
-            if (left != null && left.visible) {
-                center_alloc.x = allocation.x + edge_width + _h_spacing;
-            } else {
-                center_alloc.x = allocation.x;
-            }
-            center_alloc.width = allocation.width - center_alloc.x + allocation.x;
-            if (right != null && right.visible) {
-                center_alloc.width -= _h_spacing + edge_width;
-            }
-            int min_height, nat_height, baseline_min;
-            center_widget.get_preferred_height_and_baseline_for_width (
-                center_alloc.width, out min_height, out nat_height,
-                out baseline_min, out baseline
-            );
-            center_alloc.y = allocation.y;
-            center_alloc.height = child_height;
-            if (nat_height < child_height) {
-                baseline = baseline_min;
-                if (!center_widget.vexpand) {
-                    int offset = (child_height - nat_height) / 2;
-                    center_alloc.y = allocation.y + offset;
-                    center_alloc.height = nat_height;
-                    if (baseline > 0) {
-                        baseline += offset;
-                    }
-                }
-            }
-
             center_widget.size_allocate (center_alloc);
         }
-
-        int edge_y = allocation.y;
-        int edge_wid_height = child_height;
-
-        if (requested_edge_height <= child_height && baseline > 0) {
-            edge_wid_height = requested_edge_height;
-            int y_offset = baseline - requested_edge_height;
-            edge_y = int.max (edge_y, edge_y + y_offset);
-        }
-
-        if (left != null && left.visible) {
-            Gtk.Allocation start_alloc = Gtk.Allocation ();
-            start_alloc.x = allocation.x;
-            start_alloc.y = edge_y;
-            start_alloc.height = edge_wid_height;
-            start_alloc.width = edge_width;
-
-            left.size_allocate (start_alloc);
-        }
-
-        if (right != null && right.visible) {
-            Gtk.Allocation end_alloc = Gtk.Allocation ();
-            end_alloc.x = allocation.x + allocation.width - edge_width;
-            end_alloc.y = edge_y;
-            end_alloc.height = edge_wid_height;
-            end_alloc.width = edge_width;
-
-            right.size_allocate (end_alloc);
+        if (end_widget != null && end_widget.visible) {
+            edge_alloc.x = center_alloc.x + center_alloc.width + h_spacing;
+            end_widget.size_allocate (edge_alloc);
         }
 
         base.size_allocate (allocation);
@@ -274,27 +244,8 @@ class GOFI.DragListRowBox : Gtk.Container {
         if (width < 0) {
             get_preferred_width (out width, null);
         }
-        int edge_width;
-        get_edge_width (out edge_width);
-        get_edge_height (edge_width, out minimum_height, out requested_edge_height);
-        natural_height = requested_edge_height;
-        int edge_taken = 0;
 
-        if (start_widget != null && start_widget.visible) {
-            edge_taken += edge_width + _h_spacing;
-        }
-        if (end_widget != null && end_widget.visible) {
-            edge_taken += edge_width + _h_spacing;
-        }
-
-        if (center_widget != null && center_widget.visible) {
-            int center_min, center_nat;
-            center_widget.get_preferred_height_for_width (
-                width - edge_taken,
-                out center_min, out center_nat
-            );
-            minimum_height = int.max (minimum_height, center_min);
-            natural_height = int.max (natural_height, center_nat);
-        }
+        calculate_widget_placement (width, out minimum_height, null, null);
+        natural_height = minimum_height;
     }
 }
