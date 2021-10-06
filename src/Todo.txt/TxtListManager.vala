@@ -159,6 +159,23 @@ class GOFI.TXT.TxtListManager {
                 );
             }
         }
+        foreach (var to_merge in file_operations.get_merge_choices ()) {
+            var src_file = File.new_for_uri (to_merge.src_uri);
+            var dst_file = File.new_for_uri (to_merge.dst_uri);
+            merge_files (src_file, dst_file);
+        }
+    }
+
+    private void merge_files (File src, File dst) {
+        try {
+            var stream_in = new DataInputStream (src.read ());
+            var file_out_stream = dst.append_to (FileCreateFlags.NONE);
+            file_out_stream.splice (stream_in, OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET);
+            src.delete ();
+        } catch (Error e) {
+            warning (e.message);
+            show_error_dialog (e.message);
+        }
     }
 
     public List<TodoListInfo> get_list_infos () {
