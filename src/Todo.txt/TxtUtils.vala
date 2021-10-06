@@ -57,7 +57,7 @@ namespace GOFI.TXT.TxtUtils {
     }
 
     /**
-     * parse value of the form /([0-9]+)h-([0-9]+)m-([0-9]+)s/ where the
+     * parse value of the form /([0-9]+)[hH]-([0-9]+)[mM]-([0-9]+)[sS]/ where the
      * h, m and s groups are all optional and the input string is not empty.
      */
     public static bool match_duration_value (string duration_str, out uint duration_value) {
@@ -66,7 +66,8 @@ namespace GOFI.TXT.TxtUtils {
         duration_value = 0;
 
         for (; duration_str[index].isdigit (); index++) {}
-        if (duration_str[index] == 'h') {
+        char unit_char = duration_str[index];
+        if (unit_char == 'h' || unit_char == 'H') {
             duration_value = 3600 * (uint) int.parse (duration_str.offset (lower));
             index++;
             if (duration_str[index] == '-') {
@@ -75,7 +76,8 @@ namespace GOFI.TXT.TxtUtils {
                 return duration_str[index] == '\0';
             }
         }
-        if (duration_str[index] == 'm') {
+        unit_char = duration_str[index];
+        if (unit_char == 'm' || unit_char == 'M') {
             duration_value += 60 * (uint) int.parse (duration_str.offset (lower));
             index++;
             if (duration_str[index] == '-') {
@@ -84,7 +86,8 @@ namespace GOFI.TXT.TxtUtils {
                 return duration_str[index] == '\0';
             }
         }
-        if (duration_str[index] == 's') {
+        unit_char = duration_str[index];
+        if (unit_char == 's' || unit_char == 'S') {
             duration_value += (uint) int.parse (duration_str.offset (lower));
             return duration_str[index + 1] == '\0';
         }
