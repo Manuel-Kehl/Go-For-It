@@ -116,6 +116,8 @@ namespace GOFI {
 
             update_dialog ();
             dialog.response.connect (handle_confirm_dialog_response);
+            dialog.close.connect (on_dialog_closed);
+            dialog.show ();
         }
 
         private void update_dialog () {
@@ -139,6 +141,7 @@ namespace GOFI {
                     break;
                 case Gtk.ResponseType.REJECT:
                     choices.keep ();
+                    update_dialog ();
                     break;
                 default:
                     dialog.destroy ();
@@ -146,6 +149,11 @@ namespace GOFI {
                     aborted ();
                     break;
             }
+        }
+
+        private void on_dialog_closed () {
+            dialog = null;
+            aborted ();
         }
     }
 }
