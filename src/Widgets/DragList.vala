@@ -754,8 +754,8 @@ public class GOFI.DragListRow : Gtk.ListBoxRow {
         layout = new DragListRowBox (5);
         layout.margin_start = 5;
         layout.margin_end = 5;
-        layout.margin_top = 1;
-        layout.margin_bottom = 1;
+        layout.margin_top = 2;
+        layout.margin_bottom = 2;
         layout_revealer = new Gtk.Revealer ();
         layout_revealer.add (layout);
         add (layout_revealer);
