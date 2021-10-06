@@ -100,7 +100,7 @@ class GOFI.TXT.TxtListManager {
         var done_uri = changed.done_uri;
         foreach (ListSettings list in list_table.get_values ()) {
             if (list.todo_uri == done_uri) {
-                return false;
+                return list.id == changed.id;
             }
         }
         return true;
