@@ -515,12 +515,19 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
 
         var conflicts = new ConflictChoices ();
 
-        if (old_todo_uri == new_done_uri && old_done_uri == new_todo_uri) {
-            conflicts.add_simple_swap (new FileConflict (null, old_todo_uri, new_todo_uri));
+        // Have files been swapped or do we need to merge todo.txt files?
+        if (old_todo_uri == new_done_uri || old_done_uri == new_todo_uri) {
+            if (todo_txt_updated && done_txt_updated) {
+                conflicts.add_simple_swap (new FileConflict (null, old_todo_uri, new_todo_uri));
+            } else if (todo_txt_updated) {
+                conflicts.add_simple_merge (new FileConflict (null, old_todo_uri, new_todo_uri));
+            } else {
+                conflicts.add_simple_merge (new FileConflict (null, old_done_uri, new_done_uri));
+            }
             return conflicts;
         }
 
-        if (todo_txt_updated) {
+        if (todo_txt_updated && old_todo_uri != null) {
             var txt_conflict_info = todo_replace_info.printf (new_todo_uri, old_todo_uri);
             var conflict = new FileConflict (txt_conflict_info, old_todo_uri, new_todo_uri);
             var todo_txt = File.new_for_uri (new_todo_uri);
@@ -532,15 +539,17 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             }
         }
 
-        if (done_txt_updated) {
+        if (done_txt_updated && old_done_uri != null) {
             var done_conflict_info = done_replace_info.printf (new_done_uri, old_done_uri);
             var conflict = new FileConflict (done_conflict_info, old_done_uri, new_done_uri);
             var done_txt = File.new_for_uri (new_done_uri);
             bool done_exists = done_txt.query_exists ();
-            if (done_exists) {
-                conflicts.add_conflict (conflict);
-            } else {
-                conflicts.add_simple_replace (conflict);
+            if (old_done_uri != old_todo_uri) {
+                if (done_exists) {
+                    conflicts.add_conflict (conflict);
+                } else {
+                    conflicts.add_simple_replace (conflict);
+                }
             }
         }
 

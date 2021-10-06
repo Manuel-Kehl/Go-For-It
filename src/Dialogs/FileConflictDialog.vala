@@ -31,6 +31,7 @@ namespace GOFI {
         FileConflict[] conflicts;
         FileConflict[] replace_choices;
         FileConflict[] swap_choices;
+        FileConflict[] merge_choices;
         int i;
 
         public ConflictChoices () {
@@ -50,6 +51,10 @@ namespace GOFI {
 
         public void add_simple_swap (FileConflict simple_swap) {
             swap_choices += simple_swap;
+        }
+
+        public void add_simple_merge (FileConflict simple_merge) {
+            merge_choices += simple_merge;
         }
 
         public unowned FileConflict? get_next_conflict () {
@@ -78,6 +83,10 @@ namespace GOFI {
 
         public unowned FileConflict[] get_swap_choices () {
             return swap_choices;
+        }
+
+        public unowned FileConflict[] get_merge_choices () {
+            return merge_choices;
         }
     }
 
