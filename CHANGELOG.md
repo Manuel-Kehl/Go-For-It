@@ -1,5 +1,24 @@
 # Change Log
 
+## [1.9.5](https://github.com/JMoerman/Go-For-It/tree/1.9.5) (2021-10-07)
+[Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.9.4...1.9.5)
+
+**Implemented enhancements:**
+
+- The spacing between tasks has been increased to improve how the application looks on elementary OS 6.
+- Depending on the Gtk theme, task checkboxes and descriptions may be aligned better.
+- Made the parsing of timer and duration values more robust. For example: `timer:5m` will now also be parsed as a timer value, while previously only `timer:0h-5m-0s` would be accepted.
+- The Portuguese translations have been updated.
+- Now only `.txt` files are shown when selecting a file to store tasks in, by default.
+
+**Fixed bugs:**
+
+- Changing the location of todo.txt files should now actually be possible.
+
+**Other changes:**
+
+- By default, _GoForIt!_ now stores uncompleted and completed tasks in the same file. (After picking a location to store `todo.txt` in _GoForIt!_ will no longer _automatically_ set the file to store completed tasks to a `done.txt` file in the same directory.) This change allows _GoForIt!_ to work properly without full access to the home directory.
+
 ## [1.9.4](https://github.com/JMoerman/Go-For-It/tree/1.9.4) (2021-09-15)
 [Full Changelog](https://github.com/JMoerman/Go-For-It/compare/1.9.3...1.9.4)
 

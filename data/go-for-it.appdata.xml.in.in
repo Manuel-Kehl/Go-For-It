@@ -32,7 +32,27 @@ To-do lists are stored in the Todo.txt format. This simplifies synchronization w
     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
   </custom>
   <releases>
-    <release version="1.9.5" date="2021-09-15">
+    <release version="1.9.5" date="2021-10-07">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>The spacing between tasks has been increased to improve how the application looks on elementary OS 6.</li>
+          <li>Depending on the Gtk theme, task checkboxes and descriptions may be aligned better.</li>
+          <li>Made the parsing of timer and duration values more robust. For example: "timer:5m" will now also be parsed as a timer value, while previously only "timer:0h-5m-0s" would be accepted.</li>
+          <li>Now only `.txt` files are shown when selecting a file to store tasks in, by default.</li>
+          <li>The Portuguese translations have been updated.</li>
+        </ul>
+        <p>Fixed bugs:</p>
+        <ul>
+          <li>Changing the location of todo.txt files should now actually be possible.</li>
+        </ul>
+        <p>Other changes:</p>
+        <ul>
+          <li>By default, uncompleted and completed tasks will be stored in the same file. (After picking a location to store "todo.txt" the application will no longer automatically set the file to store completed tasks to a "done.txt" file in the same directory.) This change allows new installations to work properly without full access to the home directory.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.9.4" date="2021-09-15">
       <description>
         <p>Improvements:</p>
         <ul>
