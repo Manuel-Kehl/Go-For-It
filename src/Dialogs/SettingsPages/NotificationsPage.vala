@@ -272,11 +272,19 @@ class GOFI.NotificationsPage : Gtk.Box {
         file_chooser.select_multiple = false;
         file_chooser.local_only = true;
 
-        var filter = new Gtk.FileFilter ();
-        filter.add_mime_type ("audio/x-vorbis+ogg");
-        filter.add_mime_type ("audio/x-wav");
+        var all_files_filter = new Gtk.FileFilter ();
+        all_files_filter.set_filter_name (_("All files"));
+        all_files_filter.add_pattern ("*");
 
-        file_chooser.filter = filter;
+        var audio_filter = new Gtk.FileFilter ();
+        audio_filter.set_filter_name (_("Audio files"));
+        audio_filter.add_mime_type ("audio/x-vorbis+ogg");
+        audio_filter.add_mime_type ("audio/x-wav");
+
+        file_chooser.add_filter (audio_filter);
+        file_chooser.add_filter (all_files_filter);
+        file_chooser.filter = audio_filter;
+
         int response_id = file_chooser.run ();
         if (response_id == Gtk.ResponseType.OK ||
             response_id == Gtk.ResponseType.ACCEPT

@@ -46,11 +46,47 @@ public class FileChooserWidget : Gtk.Button {
     }
 
     public Gtk.FileFilter? filter {
-        get;
-        set;
+        get {
+            return _filter;
+        }
+        set {
+            _filter = value;
+            if (filters.index (value) < 0) {
+                filters.prepend (value);
+            }
+        }
+    }
+    Gtk.FileFilter? _filter;
+
+    private SList<Gtk.FileFilter> filters;
+
+    public SList<unowned Gtk.FileFilter> list_filters () {
+        return filters.copy ();
+    }
+
+    public void add_filter (Gtk.FileFilter filter) {
+        filters.prepend (filter);
+        if (this._filter == null) {
+            this._filter = filter;
+            notify_property ("filter");
+        }
+    }
+
+    public void remove_filter (Gtk.FileFilter filter) {
+        filters.remove (filter);
+        if (this.filter == filter) {
+            if (filters != null) {
+                this._filter = filters.data;
+            } else {
+                this._filter = null;
+            }
+            notify_property ("filter");
+        }
     }
 
     public FileChooserWidget (File? file, string dialog_title, string? default_filename = null) {
+        filters = new SList<Gtk.FileFilter> ();
+
         uri_lbl = new Gtk.Label (null);
         uri_lbl.ellipsize = Pango.EllipsizeMode.START;
         uri_lbl.hexpand = true;
@@ -101,6 +137,9 @@ public class FileChooserWidget : Gtk.Button {
             }
         } else if (default_filename != null) {
             file_chooser.set_current_name (default_filename);
+        }
+        foreach (var filter in filters) {
+            file_chooser.add_filter (filter);
         }
         if (filter != null) {
             file_chooser.filter = filter;

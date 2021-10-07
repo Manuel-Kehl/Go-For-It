@@ -275,6 +275,18 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             todo_file = File.new_for_uri (old_todo_uri);
         }
         todo_uri_chooser = new FileChooserWidget (todo_file, _("Select file to store to-do tasks in"), "todo.txt");
+
+        var txt_filter = new Gtk.FileFilter ();
+        txt_filter.set_filter_name (_("txt files"));
+        txt_filter.add_pattern ("*.txt");
+
+        var all_files_filter = new Gtk.FileFilter ();
+        all_files_filter.set_filter_name (_("All files"));
+        all_files_filter.add_pattern ("*");
+
+        todo_uri_chooser.filter = txt_filter;
+        todo_uri_chooser.add_filter (all_files_filter);
+
         todo_uri_lbl = new SynchronizedWLabel (wcont, todo_uri_text);
 
         File done_file = null;
@@ -282,6 +294,8 @@ class GOFI.TXT.TxtListEditDialog : Gtk.Dialog {
             done_file = File.new_for_uri (old_done_uri);
         }
         done_uri_chooser = new FileChooserWidget (done_file, _("Select file to store completed tasks in"), "done.txt");
+        done_uri_chooser.filter = txt_filter;
+        done_uri_chooser.add_filter (all_files_filter);
         done_uri_lbl = new SynchronizedWLabel (wcont, done_uri_text);
 
         log_total_timer_lbl = new SynchronizedWLabel (wcont, _("Log the time spent working on each task") + ":");
