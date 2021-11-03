@@ -51,8 +51,10 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
     private Gtk.Widget? list_menu;
 
-    // Menu icon
+    // System and Menu icon
     private Gtk.StatusIcon trayicon;
+    private Gtk.Menu trayMenu;
+    private bool onclose_status;
 
     public const string ACTION_PREFIX = "win";
     public const string ACTION_ABOUT = "about";
@@ -102,7 +104,15 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         trayicon.set_tooltip_text ("Tray");
         trayicon.set_visible(true);
         trayicon.activate.connect(tray_clicked);
+        trayicon.popup_menu.connect(tray_popup);
         this.delete_event.connect(on_delete_event);
+        onclose_status = false;
+
+        trayMenu = new Gtk.Menu();
+        var menuQuit = new Gtk.ImageMenuItem.from_stock(Gtk.Stock.QUIT, null);
+        menuQuit.activate.connect(tray_menu_quit);
+        trayMenu.append(menuQuit);
+        trayMenu.show_all();
 
         // Configure the app
         setup_window ();
@@ -168,13 +178,29 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
             this.hide();
         }
         else {
-        this.show();
+            this.show();
         }
     }
 
     private bool on_delete_event() {
-        this.hide();
-        return true;
+
+        if(onclose_status) {
+            return false;
+        }
+        else {
+            this.hide();
+            return true;
+        }
+    }
+
+    private void tray_popup(Gtk.StatusIcon widget, uint button, uint time) {
+        trayMenu.popup(null, null, null, button, time);
+    }
+
+    private void tray_menu_quit()
+    {
+        onclose_status = true;
+        this.close();
     }
 
 
