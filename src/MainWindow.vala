@@ -51,6 +51,9 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
     private Gtk.Widget? list_menu;
 
+    // Menu icon
+    private Gtk.StatusIcon trayicon;
+
     public const string ACTION_PREFIX = "win";
     public const string ACTION_ABOUT = "about";
     public const string ACTION_CONTRIBUTE = "contribute";
@@ -78,6 +81,8 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
         { ACTION_SWITCH_PAGE_RIGHT, action_switch_page_right }
     };
 
+    
+
     /**
      * The constructor of the MainWindow class.
      */
@@ -92,6 +97,14 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
 
         apply_settings ();
 
+        // Add the tray icon
+        trayicon = new Gtk.StatusIcon.from_stock(Gtk.Stock.HOME);
+        trayicon.set_tooltip_text ("Tray");
+        trayicon.set_visible(true);
+        trayicon.activate.connect(tray_clicked);
+        this.delete_event.connect(on_delete_event);
+
+        // Configure the app
         setup_window ();
         setup_actions (app_context);
         setup_menu ();
@@ -146,6 +159,24 @@ class GOFI.MainWindow : Gtk.ApplicationWindow {
     ~MainWindow () {
         task_page.remove_task_list ();
     }
+
+    /**
+     * Show or hide main window
+     */
+    private void tray_clicked () {
+        if(this.visible) {
+            this.hide();
+        }
+        else {
+        this.show();
+        }
+    }
+
+    private bool on_delete_event() {
+        this.hide();
+        return true;
+    }
+
 
     /**
      * Checks if this list is currently in use and removes this list from
